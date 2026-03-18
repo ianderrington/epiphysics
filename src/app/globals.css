@@ -2574,7 +2574,7 @@ body {
 
 /* === SIDENOTE STYLES (Tufte-inspired margin notes) === */
 
-/* Anchor point - zero-height block that provides positioning context */
+/* Anchor point */
 .sidenote-anchor {
   position: relative;
   height: 0;
@@ -2582,16 +2582,19 @@ body {
   z-index: 1;
 }
 
-/* Reference number in main text */
+/* Reference number in main text — enough spacing so adjacent refs don't collide */
 .sidenote-ref {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: #3182ce;
-  font-weight: 600;
-  line-height: 0;
+  font-weight: 700;
+  line-height: 1;
   vertical-align: super;
-  margin-left: 2px;
-  margin-right: 1px;
+  margin-left: 1px;
+  margin-right: 2px;
   cursor: default;
+  display: inline-block;
+  min-width: 0.6em;
+  text-align: center;
 }
 
 .dark .sidenote-ref {
@@ -2610,7 +2613,8 @@ body {
     color: #4a5568;
     border-left: 2px solid #e2e8f0;
     padding-left: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
     display: block;
   }
 
@@ -2620,10 +2624,12 @@ body {
   }
 
   .sidenote-number {
-    font-weight: 600;
+    font-weight: 700;
     color: #3182ce;
-    margin-right: 0.25rem;
-    font-size: 0.75rem;
+    margin-right: 0.35rem;
+    font-size: 0.7rem;
+    display: inline-block;
+    min-width: 1em;
   }
 
   .dark .sidenote-number {
