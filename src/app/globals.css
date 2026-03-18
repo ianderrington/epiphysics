@@ -2598,18 +2598,19 @@ body {
   color: #63b3ed;
 }
 
-/* Desktop: margin note positioned to the right */
+/* Desktop: margin note floated to the right margin — stacks naturally, no overlap */
 @media (min-width: 1280px) {
   .sidenote-margin {
-    position: absolute;
-    right: -280px;
-    top: 0;
+    float: right;
+    clear: right;
+    margin-right: -280px;
     width: 250px;
     font-size: 0.8125rem;
     line-height: 1.5;
     color: #4a5568;
     border-left: 2px solid #e2e8f0;
     padding-left: 0.75rem;
+    padding-bottom: 0.75rem;
     display: block;
   }
 
