@@ -116,6 +116,11 @@ export interface PostMetadata {
   views?: number | string;
   recommendationScore?: number | string;
   
+  // Feedback/Annotation Configuration
+  feedback?: {
+    enabled?: boolean;
+  };
+
   // TTS Widget Configuration
   tts?: {
     enabled: boolean;

@@ -9,6 +9,8 @@ import { resolveImagePath } from '@/lib/imageUtils';
 import CollectionDisplay from '@/components/CollectionDisplay';
 import { prepareCollectionRenderData } from '@/lib/content/collectionRenderer';
 import { ArticleSchema, BreadcrumbSchema } from '@/components/seo';
+import FeedbackAnnotator from '@/components/FeedbackAnnotator';
+import ContributeSection from '@/components/ContributeSection';
 
 // Force dynamic rendering to avoid SSR issues with client components
 export const dynamic = 'force-dynamic';
@@ -37,6 +39,9 @@ export default async function Page({ params }: PageProps) {
   // Get view configuration from index post frontmatter
   const defaultViewType = renderData.indexPost?.metadata?.defaultViewType || 'cards';
   const allowedViewTypes = renderData.indexPost?.metadata?.allowedViewTypes;
+
+  // Check if feedback is enabled (default: true unless explicitly disabled)
+  const feedbackEnabled = renderData.indexPost?.metadata?.feedback?.enabled !== false;
 
   // Prepare schema data
   const config = loadConfig();
@@ -100,8 +105,13 @@ export default async function Page({ params }: PageProps) {
           <div className="max-w-[1600px] mx-auto px-1 sm:px-6 py-4">
             <PostComponent post={renderData.indexPost} />
           </div>
+          <ContributeSection />
         </>
       )}
+      <FeedbackAnnotator
+        pageTitle={renderData.indexPost.metadata.title}
+        enabled={feedbackEnabled}
+      />
       <FloatingShareButton
         title={renderData.indexPost.metadata.title}
         description={renderData.indexPost.metadata.description || renderData.indexPost.excerpt || ''}
