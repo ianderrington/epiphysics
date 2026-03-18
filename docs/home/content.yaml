@@ -9,16 +9,16 @@ hero:
       link: "/theory"
       type: "writing"
     - title: "Applications"
-      description: "Domain-Specific Applications"
+      description: "Domain-Specific Tests"
       link: "/applications"
       type: "writing"
-    - title: "Popular"
-      description: "Accessible Introductions"
-      link: "https://ian.ceo/musings/existence_physics_and_life/physics_of_common_sense"
-      type: "writing"
     - title: "Research"
-      description: "Papers & Protocols"
+      description: "Papers & Proofs"
       link: "/research"
+      type: "writing"
+    - title: "Experiments"
+      description: "Empirical Protocols"
+      link: "/experiments"
       type: "writing"
   background_style: "dynamic"
 
@@ -34,48 +34,48 @@ featured_posts:
 
 features:
   title: Explore Epiphysics
-  description: From foundational theory to everyday applications
+  description: From foundational theory to empirical tests
   items:
-    - title: "Generalized Mechanics"
-      description: "F = dp/dt applied to any time-varying quantity. The mechanical grammar that works across all domains."
+    - title: "Foundations"
+      description: "X is a representation. Entities are anything representable. All representations have mechanical structure."
       icon: zap
+      url: "/theory/00_prelude"
+    - title: "Generalized Mechanics"
+      description: "State, mass, force, energy, coupling, fields, thermodynamics — the full mechanical apparatus."
+      icon: compass
       url: "/theory/01_generalized_mechanics"
-    - title: "Meta-Entities"
-      description: "How composite systems inherit, transform, and create new mechanical structure."
-      icon: git-branch
-      url: "/theory/02_meta_entities"
-    - title: "Intelligence & Consciousness"
-      description: "Functional definitions grounded in mechanical structure, not philosophical intuition."
-      icon: brain
-      url: "/theory/03_intelligence_consciousness_agency"
     - title: "Applications"
-      description: "Efficiency limits, robustness metrics, future cost of decisions, entropy in the household."
+      description: "Efficiency limits, robustness metrics, future cost of decisions. Testing the grammar in real domains."
       icon: arrow-right
       url: "/applications"
-    - title: "Experiments"
-      description: "Lagrangian vs neural ODE, conservation law discovery, perturbative hierarchy. Protocols designed and waiting."
+    - title: "Representational Efficiency"
+      description: "The central theorem and conjecture: optimal representations minimize predictive cost."
       icon: sparkles
+      url: "/research/paper_representational_efficiency"
+    - title: "Experiments"
+      description: "Lagrangian vs neural ODE, conservation law discovery. Protocols designed and waiting."
+      icon: activity
       url: "/experiments"
     - title: "Popular Introductions"
-      description: "Why your desk gets messy, why habits are hard to break, why the best description wins."
+      description: "Accessible on-ramp: why your desk gets messy, why habits stick, why the best description wins."
       icon: heart
       url: "https://ian.ceo/musings/existence_physics_and_life/physics_of_common_sense"
 
 cta:
   title: Get Involved
-  description: Epiphysics is open source. The theory is developed. The experiments need to be run. If you work in information theory, physics, organizational science, or machine learning, the empirical tests are designed and waiting.
+  description: Epiphysics is open source. The theory is developed. The experiments need to be run.
   button:
     text: View on GitHub
     link: https://github.com/ianderrington/epiphysics
 
 content: |
-  **Epiphysics** develops Epimechanics: a generalized mechanical framework that applies F = dp/dt to any time-varying quantity, not just physical ones.
+  **Epiphysics** is the empirical science of **Epimechanics** — a generalized mechanical framework where F = dp/dt applies to any time-varying representation, not just physical ones.
 
-  **Core insight:** All representations have mechanical structure. Good representations have *simple* mechanical structure -- simple enough to predict dynamics at minimal computational cost. The existence of an optimal representation is a theorem (Shannon, Rissanen, Solomonoff). That it has Lagrangian structure is the conjecture.
+  **Core insight:** All representations have mechanical structure. Good representations have *simple* mechanical structure — simple enough to predict dynamics at minimal computational cost. The existence of an optimal representation is a theorem (Shannon, Rissanen, Solomonoff). That it has Lagrangian structure is the conjecture.
 
-  **Current focus areas:**
-  - **Theory** -- Six-part series: atomic structure, generalized mechanics, meta-entities, consciousness, time & soul, ontology
-  - **Applications** -- Efficiency limits, robustness metrics, entropy in everyday systems
-  - **Research** -- Representational efficiency paper, rate-distortion proof, experimental protocols
-  - **Experiments** -- Lagrangian vs neural ODE, conservation law discovery, irreversibility signatures
-  - **Popular** -- Accessible introductions: why your desk gets messy, why habits are hard to break
+  **Structure:**
+  - **[Theory](/theory)** — Six-part series: foundations, atomic structure, generalized mechanics, meta-entities, consciousness, ontology
+  - **[Applications](/applications)** — Efficiency limits, robustness metrics, entropy in everyday systems
+  - **[Research](/research)** — Representational efficiency paper, rate-distortion proof, experimental protocols
+  - **[Experiments](/experiments)** — Lagrangian vs neural ODE, conservation law discovery, irreversibility signatures
+  - **[Popular](https://ian.ceo/musings/existence_physics_and_life/physics_of_common_sense)** — Accessible introductions on ian.ceo

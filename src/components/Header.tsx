@@ -200,8 +200,8 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
               <Link href="/" className="site-title flex items-center h-full">
                 {/* Mobile: Show logo only */}
                 <div className="md:hidden flex items-center">
-                  <img 
-                    src="/i_logo.png" 
+                  <img
+                    src="/epiphysics_logo.svg"
                     alt="Epiphysics"
                     className="h-8 w-8"
                   />
