@@ -321,16 +321,16 @@ const AnimatedHero = ({
                   className="mt-6 sm:mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 max-w-6xl mx-auto px-3 w-full"
                 >
                   {quick_links.map((link, index) => {
-                    // Define background images for each section with new custom images
+                    // Define background images for each section
                     const getBackgroundImage = (title: string) => {
-                      if (title.includes('Educational Music') || title.includes('🎵')) {
-                        return '/images/musings-bg.png';
-                      } else if (title.includes('Stories') || title.includes('Fiction') || title.includes('📚')) {
-                        return '/images/fiction-bg.png';
-                      } else if (title.includes('Companies') || title.includes('Projects') || title.includes('🚀')) {
-                        return '/images/projects-bg.png';
-                      } else if (title.includes('Ideas') || title.includes('Insights') || title.includes('💡')) {
-                        return '/images/ideas-bg.png';
+                      if (title.includes('Theory')) {
+                        return '/docs/theory/images/physics_as_metaphysics_00_series_overview-1-1.png';
+                      } else if (title.includes('Applications')) {
+                        return '/docs/applications/images/applications-cover-1.png';
+                      } else if (title.includes('Research')) {
+                        return '/docs/theory/images/epimechanics_00_prelude-1-1.png';
+                      } else if (title.includes('Experiments')) {
+                        return '/docs/theory/images/epimechanics_00_atomic_structure-1-1.png';
                       }
                       return '/images/default-collection.jpg';
                     };
