@@ -1,4 +1,18 @@
 {
-  "framework": "nextjs",
-  "cleanUrls": true
+  "buildCommand": "npm run vercel-build",
+  "functions": {
+    "src/app/api/**/*.ts": {
+      "maxDuration": 30,
+      "memory": 1024
+    },
+    "src/app/api/chat/route.ts": {
+      "maxDuration": 60,
+      "memory": 512
+    },
+    "src/app/api/story-graph/analyze/route.ts": {
+      "maxDuration": 60,
+      "memory": 512
+    }
+  },
+  "outputDirectory": ".next"
 }
