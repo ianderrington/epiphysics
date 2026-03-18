@@ -39,20 +39,62 @@ function estimateLineNumber(range: Range): number {
   return (allText.slice(0, charCount).match(/\n/g) || []).length + 1;
 }
 
+const HIGHLIGHT_CLASS = 'bg-teal-100/70 dark:bg-teal-500/25 rounded-sm cursor-pointer transition-colors hover:bg-teal-200 dark:hover:bg-teal-500/40';
+
 function highlightRange(range: Range, highlightId: string): void {
+  // Try simple case first (selection within one text node)
   try {
     const mark = document.createElement('mark');
     mark.setAttribute('data-feedback-id', highlightId);
-    mark.className = 'bg-teal-100/70 dark:bg-teal-500/25 rounded-sm cursor-pointer transition-colors hover:bg-teal-200 dark:hover:bg-teal-500/40';
+    mark.className = HIGHLIGHT_CLASS;
     range.surroundContents(mark);
+    return;
   } catch {
-    const mark = document.createElement('mark');
-    mark.setAttribute('data-feedback-id', highlightId);
-    mark.className = 'bg-teal-100/70 dark:bg-teal-500/25 rounded-sm';
-    mark.textContent = range.toString();
-    range.deleteContents();
-    range.insertNode(mark);
+    // Selection spans multiple elements — highlight each text node individually
   }
+
+  // Walk all text nodes in the range and wrap each one
+  const textNodes: Text[] = [];
+  const walker = document.createTreeWalker(
+    range.commonAncestorContainer,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode: (node) => {
+        const nodeRange = document.createRange();
+        nodeRange.selectNodeContents(node);
+        // Check if this text node is within or overlapping the selection range
+        if (range.compareBoundaryPoints(Range.START_TO_END, nodeRange) > 0 &&
+            range.compareBoundaryPoints(Range.END_TO_START, nodeRange) < 0) {
+          return NodeFilter.FILTER_ACCEPT;
+        }
+        return NodeFilter.FILTER_REJECT;
+      }
+    }
+  );
+  while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+
+  textNodes.forEach(textNode => {
+    try {
+      const nodeRange = document.createRange();
+      // Clip to the selection boundaries
+      if (textNode === range.startContainer) {
+        nodeRange.setStart(textNode, range.startOffset);
+      } else {
+        nodeRange.setStartBefore(textNode);
+      }
+      if (textNode === range.endContainer) {
+        nodeRange.setEnd(textNode, range.endOffset);
+      } else {
+        nodeRange.setEndAfter(textNode);
+      }
+      if (nodeRange.toString().trim()) {
+        const mark = document.createElement('mark');
+        mark.setAttribute('data-feedback-id', highlightId);
+        mark.className = HIGHLIGHT_CLASS;
+        nodeRange.surroundContents(mark);
+      }
+    } catch {}
+  });
 }
 
 function removeHighlight(highlightId: string): void {
@@ -168,7 +210,10 @@ export default function FeedbackAnnotator({ pageTitle, enabled = true }: Feedbac
     if (!pendingText) return;
     const highlightId = `fb-${Date.now()}`;
     if (pendingRange) { try { highlightRange(pendingRange, highlightId); } catch {} }
-    setAnnotations(prev => [...prev, { id: highlightId, selectedText: pendingText.length > 500 ? pendingText.slice(0, 500) + '...' : pendingText, comment: commentInput.trim(), approxLine: pendingLine, highlightId }]);
+    // Clean the text: normalize whitespace, collapse multiple newlines/spaces
+    const cleanText = pendingText.replace(/\s+/g, ' ').trim();
+    const truncated = cleanText.length > 500 ? cleanText.slice(0, 500) + '...' : cleanText;
+    setAnnotations(prev => [...prev, { id: highlightId, selectedText: truncated, comment: commentInput.trim(), approxLine: pendingLine, highlightId }]);
     setPopup(null); setPendingText(''); setPendingRange(null); setCommentInput('');
     setPanelOpen(true);
     window.getSelection()?.removeAllRanges();
@@ -188,22 +233,28 @@ export default function FeedbackAnnotator({ pageTitle, enabled = true }: Feedbac
 
   const buildIssueUrl = () => {
     const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
-    const parts: string[] = [];
-    parts.push(`## Feedback: ${pageTitle}`);
-    parts.push(`**Page:** [${pageTitle}](${pageUrl})`);
-    parts.push(`**Date:** ${new Date().toISOString().split('T')[0]}`);
-    parts.push(`**Annotations:** ${annotations.length}`);
-    if (generalNote.trim()) { parts.push(''); parts.push('### General Note'); parts.push(generalNote.trim()); }
+    let body = `## Feedback: ${pageTitle}\n`;
+    body += `**Page:** [${pageTitle}](${pageUrl})\n`;
+    body += `**Date:** ${new Date().toISOString().split('T')[0]}\n`;
+    body += `**Annotations:** ${annotations.length}\n`;
+
+    if (generalNote.trim()) {
+      body += `\n### General Note\n${generalNote.trim()}\n`;
+    }
+
     if (annotations.length > 0) {
-      parts.push(''); parts.push('---');
+      body += '\n---\n';
       annotations.forEach((a, i) => {
-        parts.push(''); parts.push(`### Annotation ${i + 1} (~line ${a.approxLine})`);
-        parts.push(a.selectedText.split('\n').map(l => `> ${l}`).join('\n'));
-        if (a.comment) { parts.push(''); parts.push(`**Comment:** ${a.comment}`); }
+        body += `\n### Annotation ${i + 1} (~line ${a.approxLine})\n`;
+        body += `> ${a.selectedText}\n`;
+        if (a.comment) {
+          body += `\n**Comment:** ${a.comment}\n`;
+        }
       });
     }
+
     const title = `Feedback: ${pageTitle} (${annotations.length} annotation${annotations.length !== 1 ? 's' : ''})`;
-    return `https://github.com/${GITHUB_REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(parts.join('\n'))}&labels=${encodeURIComponent('community-feedback')}`;
+    return `https://github.com/${GITHUB_REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}&labels=${encodeURIComponent('community-feedback')}`;
   };
 
   const handleSubmitClick = () => {
