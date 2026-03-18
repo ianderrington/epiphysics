@@ -14,7 +14,7 @@ hero:
       type: "writing"
     - title: "Popular"
       description: "Accessible Introductions"
-      link: "/popular"
+      link: "https://ian.ceo/musings/existence_physics_and_life/physics_of_common_sense"
       type: "writing"
     - title: "Research"
       description: "Papers & Protocols"
@@ -59,7 +59,7 @@ features:
     - title: "Popular Introductions"
       description: "Why your desk gets messy, why habits are hard to break, why the best description wins."
       icon: heart
-      url: "/popular"
+      url: "https://ian.ceo/musings/existence_physics_and_life/physics_of_common_sense"
 
 cta:
   title: Get Involved

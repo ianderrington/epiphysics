@@ -23,7 +23,7 @@ layout:
       variable: --font-space-grotesk
   header:
     navigation:
-      default_order: [theory, applications, popular, research, experiments]
+      default_order: [theory, applications, research, experiments]
       external_links:
         - title: GitHub
           href: https://github.com/ianderrington/epiphysics
