@@ -318,7 +318,7 @@ const AnimatedHero = ({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-                  className="mt-6 sm:mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 max-w-6xl mx-auto px-3 w-full"
+                  className="mt-6 sm:mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto px-3 w-full"
                 >
                   {quick_links.map((link, index) => {
                     // Define background images for each section
@@ -346,7 +346,7 @@ const AnimatedHero = ({
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                        className="h-32 sm:h-40 lg:h-48 w-full"
+                        className="aspect-square w-full"
                       >
                         <Link
                           href={link.link}
@@ -370,12 +370,17 @@ const AnimatedHero = ({
                             {getWatermarkIcon(link.type)}
                           </div>
 
-                          {/* Content - Only Title (No Emoji) */}
-                          <div className="relative h-full flex items-center justify-center p-4 text-white">
-                            <div className="text-center">
-                              <div className="text-lg sm:text-xl lg:text-2xl font-bold leading-tight text-white drop-shadow-lg">
-                                {link.title.replace(/^[^\s]+\s/, '')} {/* Remove emoji completely */}
+                          {/* Content */}
+                          <div className="relative h-full flex items-end p-4 sm:p-5 text-white">
+                            <div>
+                              <div className="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight text-white drop-shadow-lg">
+                                {link.title}
                               </div>
+                              {link.description && (
+                                <div className="text-xs sm:text-sm text-white/70 mt-1 drop-shadow">
+                                  {link.description}
+                                </div>
+                              )}
                             </div>
                           </div>
                         </Link>
