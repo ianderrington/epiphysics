@@ -70,19 +70,12 @@ export default async function Home() {
       // Continue with empty posts array to allow page to render
     }
   
-  // Organize posts by category - including the new categories
+  // Organize posts by category for Epiphysics
   const postsByCategory: Record<string, Post[]> = {
-    kids_corner: allPosts.filter(post => 
-      post.slug.includes('wise_songs') && 
-      !post.slug.includes('cerebral_songs') &&
-      !post.isIndex
-    ),
-    cerebral_songs: allPosts.filter(post => 
-      post.slug.includes('cerebral_songs') &&
-      !post.isIndex
-    ),
-    fiction: allPosts.filter(post => post.slug.startsWith('fiction/') && !post.isIndex),
-    projects: allPosts.filter(post => post.slug.startsWith('projects/') && !post.isIndex),
+    theory: allPosts.filter(post => post.slug.startsWith('theory/') && !post.isIndex),
+    applications: allPosts.filter(post => post.slug.startsWith('applications/') && !post.isIndex),
+    research: allPosts.filter(post => post.slug.startsWith('research/') && !post.isIndex),
+    experiments: allPosts.filter(post => post.slug.startsWith('experiments/') && !post.isIndex),
   };
 
   const html = await markdownToHtml(content.content || '');
@@ -98,34 +91,34 @@ export default async function Home() {
   
   const CustomFeaturedPosts = () => (
     <FeaturedPosts
-      title={content.featured_posts?.title || "Featured Content"}
+      title={content.featured_posts?.title || "Recent Content"}
       categories={{
-        kids_corner: {
-          title: content.featured_posts?.kids_corner?.title || "🎵 Kids Corner: Wise Songs",
-          description: content.featured_posts?.kids_corner?.description || "Educational songs for learning",
-          display_count: content.featured_posts?.kids_corner?.display_count || 4,
-          pinned: content.featured_posts?.kids_corner?.pinned || [],
-          posts: [],
-        },
-        cerebral_songs: {
-          title: content.featured_posts?.cerebral_songs?.title || "🧠 Cerebral Songs",
-          description: content.featured_posts?.cerebral_songs?.description || "Complex topics through music",
-          display_count: content.featured_posts?.cerebral_songs?.display_count || 3,
-          pinned: content.featured_posts?.cerebral_songs?.pinned || [],
-          posts: [],
-        },
-        fiction: {
-          title: content.featured_posts?.fiction?.title || "📚 Fiction & Stories",
-          description: content.featured_posts?.fiction?.description || "Speculative fiction",
-          display_count: content.featured_posts?.fiction?.display_count || 3,
-          pinned: content.featured_posts?.fiction?.pinned || [],
-          posts: [],
-        },
-        projects: {
-          title: content.featured_posts?.projects?.title || "🔬 Research & Projects",
-          description: content.featured_posts?.projects?.description || "Technical implementations",
-          display_count: content.featured_posts?.projects?.display_count || 3,
+        theory: {
+          title: "Theory",
+          description: "The Epimechanics framework — foundations through full ontology",
+          display_count: 4,
           pinned: content.featured_posts?.projects?.pinned || [],
+          posts: [],
+        },
+        applications: {
+          title: "Applications",
+          description: "Testing the framework in specific domains",
+          display_count: 4,
+          pinned: [],
+          posts: [],
+        },
+        research: {
+          title: "Research",
+          description: "Papers, proofs, and experimental protocols",
+          display_count: 3,
+          pinned: [],
+          posts: [],
+        },
+        experiments: {
+          title: "Experiments — Under Development",
+          description: "Empirical tests being designed — protocols ready, experiments not yet run",
+          display_count: 2,
+          pinned: [],
           posts: [],
         },
       }}

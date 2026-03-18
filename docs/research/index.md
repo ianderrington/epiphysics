@@ -13,6 +13,8 @@ coverImage:
   alt: "Research papers and proofs in Epiphysics"
 ---
 
+> **Status: Under active development.** These are draft papers and research notes, not peer-reviewed publications. The theorem is proven; the broader conjecture is open; the experimental protocols are designed but not yet run.
+
 ## Research Documents
 
 - [Representational Efficiency Paper](./paper_representational_efficiency.md) — standalone academic paper with theorem, proof, and empirical testing program

@@ -13,6 +13,8 @@ coverImage:
   alt: "Experimental protocols for Epiphysics"
 ---
 
+> **Status: Not yet started.** These experiments are designed and specified but have not been run. We are looking for collaborators with access to longitudinal data in organizational science, social psychology, or ML training dynamics.
+
 ## Planned Experiments
 
 The theory is developed. The experiments need to be run. Four empirical tests are designed:

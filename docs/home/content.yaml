@@ -23,14 +23,8 @@ hero:
   background_style: "dynamic"
 
 featured_posts:
-  title: Core Framework
-  description: A generalized mechanical framework that applies the mathematical structure of physics to any representable system
-  projects:
-    title: "Theory Series"
-    description: "The six-part Epimechanics development"
-    display_count: 6
-    pinned:
-      - theory/index
+  title: Recent Content
+  description: The latest from theory development, applications, and research
 
 features:
   title: Explore Epiphysics

@@ -26,9 +26,11 @@ tts:
   enableSpeed: true
 ---
 
+> **Status: Draft.** These applications are written but not empirically validated. Each needs domain-specific data to test its predictions.
+
 ## What These Are
 
-The [Epimechanics series](../index.md) develops a framework - grammar for describing how representations change under forces across any substrate. These application documents test whether that grammar generates real sentences. Each imports the framework's structural relationships (state, mass, force, energy, coupling, temperature, entropy, free energy) and fills them with domain-specific vocabulary.
+The [Epimechanics series](../theory/index.md) develops a framework — grammar for describing how representations change under forces across any substrate. These application documents test whether that grammar generates real sentences. Each imports the framework's structural relationships (state, mass, force, energy, coupling, temperature, entropy, free energy) and fills them with domain-specific vocabulary.
 
 The litmus test: **does Epimechanics generate a prediction that the domain-specific theory alone does NOT make?** If not, it is relabeling. Sections are tagged: **relabeling** (renaming known concepts), **structural** (predictions from the grammar), or **novel** (predictions that neither domain theory nor physics alone would generate).
 
