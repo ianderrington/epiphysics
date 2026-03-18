@@ -1,0 +1,88 @@
+import React from 'react';
+import Link from 'next/link';
+import BlogCard from './BlogCard';
+import FloatingShareButton from './FloatingShareButton';
+import { BlogPostProps } from '@/lib/getBlogPosts';
+
+interface BlogPostWithChildrenProps {
+  post: BlogPostProps;
+  childPosts: BlogPostProps[];
+}
+
+const BlogPostWithChildren: React.FC<BlogPostWithChildrenProps> = ({ post, childPosts }) => {
+  // Adapt child posts to match BlogPostProps interface
+  const adaptedChildPosts = childPosts.map(childPost => ({
+    ...childPost,
+    // Ensure all required properties are present
+    slug: childPost.slug || '',
+    title: childPost.title || 'Untitled',
+    date: childPost.date || new Date().toISOString().split('T')[0],
+    content: childPost.content || '',
+    htmlContent: childPost.htmlContent || '',
+    excerpt: childPost.excerpt || '',
+    description: childPost.description || '',
+    categories: childPost.categories || [],
+    bullets: childPost.bullets || [],
+    draft: childPost.draft || false,
+    path: childPost.path || [],
+    childPosts: childPost.childPosts || [],
+    childSlugs: childPost.childSlugs || [],
+    displayStyle: childPost.displayStyle || 'standard',
+    hierarchicalSlug: childPost.hierarchicalSlug || childPost.slug || '',
+    isIndexFile: childPost.isIndexFile || false
+  }));
+
+  return (
+    <div className="space-y-8">
+      {/* Main post content */}
+      <article className="prose max-w-none relative">
+        <h1>{post.title}</h1>
+        <div className="flex flex-wrap gap-2 my-4">
+          {post.categories?.map((category) => (
+            <span
+              key={category}
+              className="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full"
+            >
+              {category}
+            </span>
+          ))}
+        </div>
+        
+        <div dangerouslySetInnerHTML={{ __html: post.htmlContent }} />
+      </article>
+
+      {/* Child posts section */}
+      {childPosts.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-2xl font-bold mb-6">Related Articles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {adaptedChildPosts.map((childPost, index) => (
+              <BlogCard key={`child-${index}`} post={childPost} showDate={false} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Navigation */}
+      {post.parentSlug && (
+        <div className="mt-8 pt-4 border-t">
+          <Link 
+            href={`/blog/${post.parentSlug}`}
+            className="text-blue-600 hover:text-blue-800"
+          >
+            ← Back to parent article
+          </Link>
+        </div>
+      )}
+
+      <FloatingShareButton 
+        title={post.title || "Untitled Post"} 
+        description={post.excerpt}
+        tags={post.tags}
+        shareBlurbs={post.shareBlurbs}
+      />
+    </div>
+  );
+};
+
+export default BlogPostWithChildren; 

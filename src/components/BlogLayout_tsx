@@ -1,0 +1,127 @@
+import React, { useState } from 'react';
+import { BlogPostProps } from '@/lib/getBlogPosts';
+import Link from 'next/link';
+
+interface SidebarItemProps {
+  post: BlogPostProps;
+  currentSlug: string;
+  level?: number;
+}
+
+const SidebarItem: React.FC<SidebarItemProps> = ({ post, currentSlug, level = 0 }) => (
+  <Link 
+    href={`/blog/${post.slug}`}
+    className={`
+      block py-2 pl-${level * 4} hover:bg-gray-100 dark:hover:bg-gray-800
+      ${currentSlug === post.slug ? 'bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300'}
+    `}
+  >
+    {post.title}
+  </Link>
+);
+
+interface BlogLayoutProps {
+  post: BlogPostProps;
+  siblingPosts: BlogPostProps[];
+  childPosts: BlogPostProps[];
+  children: React.ReactNode;
+}
+
+const BlogLayout: React.FC<BlogLayoutProps> = ({ 
+  post, 
+  siblingPosts, 
+  childPosts, 
+  children 
+}) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  return (
+    <div className="flex min-h-screen relative">
+      {/* Mobile Sidebar Toggle Button */}
+      <button
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-white dark:bg-gray-800 shadow-lg"
+      >
+        <svg
+          className="h-6 w-6 text-gray-600 dark:text-gray-300"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          {isSidebarOpen ? (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          ) : (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          )}
+        </svg>
+      </button>
+
+      {/* Sidebar */}
+      <aside 
+        className={`
+          fixed md:static inset-y-0 left-0 z-40
+          transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
+          md:translate-x-0 transition-transform duration-300 ease-in-out
+          w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 
+          overflow-y-auto
+        `}
+      >
+        <div className="p-4 pt-16 md:pt-4">
+          {/* Parent/Sibling Navigation */}
+          {siblingPosts.length > 0 && (
+            <div className="mb-6">
+              <h3 className="font-semibold text-gray-500 dark:text-gray-400 uppercase text-sm mb-2">
+                In This Section
+              </h3>
+              <nav>
+                {siblingPosts.map(sibling => (
+                  <SidebarItem 
+                    key={sibling.slug} 
+                    post={sibling} 
+                    currentSlug={post.slug}
+                  />
+                ))}
+              </nav>
+            </div>
+          )}
+
+          {/* Child Pages */}
+          {childPosts.length > 0 && (
+            <div>
+              <h3 className="font-semibold text-gray-500 dark:text-gray-400 uppercase text-sm mb-2">
+                Sub Pages
+              </h3>
+              <nav>
+                {childPosts.map(child => (
+                  <SidebarItem 
+                    key={child.slug} 
+                    post={child} 
+                    currentSlug={post.slug}
+                    level={1}
+                  />
+                ))}
+              </nav>
+            </div>
+          )}
+        </div>
+      </aside>
+
+      {/* Overlay for mobile */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      {/* Main Content */}
+      <main className="flex-1 overflow-y-auto bg-white dark:bg-gray-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+          {children}
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default BlogLayout; 

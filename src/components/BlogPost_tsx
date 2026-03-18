@@ -1,0 +1,198 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
+// src/components/BlogPost.tsx
+
+"use client";
+
+import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { formatDate } from "@/utils/dateFormatter";
+import { BlogPostProps } from "@/lib/getBlogPosts";
+import { FaGithub, FaTwitter, FaLinkedin, FaUser } from "react-icons/fa";
+import RelatedPosts from "./RelatedPosts";
+import ErrorBoundary from "./ErrorBoundary";
+import ScrollProgressBar from "./ScrollProgressBar";
+import FloatingShareButton from "./FloatingShareButton";
+import Image from 'next/image';
+import SafeContent from './SafeContent';
+import TableOfContents from './TableOfContents';
+import { BookOpen, X } from 'lucide-react';
+
+interface BlogPostComponentProps {
+  post: BlogPostProps;
+  relatedPosts?: BlogPostProps[];
+}
+
+const BlogPost: React.FC<BlogPostComponentProps> = ({ post, relatedPosts = [] }) => {
+  const [tocOpen, setTocOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const headerVisibilityObserver = useRef<IntersectionObserver | null>(null);
+  const headerSentinelRef = useRef<HTMLDivElement | null>(null);
+  
+  // Use IntersectionObserver instead of scroll events for header visibility
+  useEffect(() => {
+    // Create sentinel element for header visibility
+    const headerSentinel = document.createElement('div');
+    headerSentinel.style.position = 'fixed';
+    headerSentinel.style.top = '0';
+    headerSentinel.style.height = '5px';
+    headerSentinel.style.width = '100%';
+    headerSentinel.style.pointerEvents = 'none';
+    headerSentinel.style.opacity = '0';
+    document.body.appendChild(headerSentinel);
+    headerSentinelRef.current = headerSentinel;
+    
+    // Create observer for header visibility
+    headerVisibilityObserver.current = new IntersectionObserver(
+      (entries) => {
+        // When top sentinel is visible, show header (scrolling up)
+        // When not visible (scrolled down), hide header
+        setIsHeaderVisible(entries[0].isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+    
+    // Start observing
+    if (headerSentinelRef.current) {
+      headerVisibilityObserver.current.observe(headerSentinelRef.current);
+    }
+    
+    // Cleanup
+    return () => {
+      headerVisibilityObserver.current?.disconnect();
+      headerSentinelRef.current?.remove();
+    };
+  }, []);
+  
+  // Listen for toggle-chapter-index event from MobileBottomNav
+  useEffect(() => {
+    const handleToggleChapterIndex = () => {
+      setTocOpen(prev => !prev); // Use state updater function
+    };
+    
+    window.addEventListener('toggle-chapter-index', handleToggleChapterIndex);
+    return () => window.removeEventListener('toggle-chapter-index', handleToggleChapterIndex);
+  }, []); // No dependencies because we use a function updater
+  
+  if (!post) {
+    return (
+      <div className="container mx-auto px-4 py-8 text-center">
+        Error: Post data is missing
+      </div>
+    );
+  }
+
+  const renderHTMLContent = () => {
+    if (!post.htmlContent) {
+      return <div className="text-red-500">Error: HTML content is missing</div>;
+    }
+
+    return (
+      <div
+        className="prose lg:prose-xl"
+        dangerouslySetInnerHTML={{ __html: post.htmlContent }}
+      />
+    );
+  };
+
+  return (
+    <div className="flex flex-col md:flex-row flex-1 relative">
+      {/* Share button */}
+      <ErrorBoundary
+        fallback={<div>Something went wrong loading the share button.</div>}
+      >
+        <FloatingShareButton
+          title={post.title}
+          description={post.description}
+          tags={post.tags}
+          shareBlurbs={post.shareBlurbs}
+        />
+      </ErrorBoundary>
+
+      {/* TOC toggle button - fixed position */}
+      <button 
+        onClick={() => setTocOpen(!tocOpen)}
+        className={`
+          hidden md:block fixed z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg
+          right-6 top-6 hover:bg-blue-700 transition-colors duration-200
+        `}
+        aria-label="Toggle table of contents"
+      >
+        <BookOpen size={20} />
+      </button>
+
+      {/* Main content */}
+      <div className="flex-1 p-4 md:p-8 
+        bg-gray-50 dark:bg-gray-900 
+        transition-colors duration-200"
+      >
+        <div className="prose prose-lg max-w-none mb-12
+          bg-white dark:bg-gray-800 rounded-xl p-4 md:p-8
+          shadow-sm dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]
+          prose-headings:text-gray-900 dark:prose-headings:text-white
+          prose-p:text-gray-600 dark:prose-p:text-gray-300
+          dark:prose-invert
+          transition-colors duration-200
+          relative"
+        >
+          <h1 className="text-3xl md:text-4xl font-bold mb-6 font-display">
+            {post.title}
+          </h1>
+          
+          <SafeContent html={post.htmlContent} />
+        </div>
+
+        {/* Related posts */}
+        {relatedPosts.length > 0 && (
+          <div className="mt-8">
+            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Related Posts</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              {relatedPosts.map(relatedPost => (
+                <div 
+                  key={relatedPost.slug}
+                  className="bg-white dark:bg-gray-800 rounded-lg p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                    <Link href={`/blog/${relatedPost.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400">
+                      {relatedPost.title}
+                    </Link>
+                  </h3>
+                  <div className="text-gray-600 dark:text-gray-300 mb-4">
+                    {relatedPost.excerpt && <SafeContent html={relatedPost.excerpt} />}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Table of Contents Sidebar */}
+      <div 
+        className={`
+          fixed top-0 right-0 h-full w-64 md:w-80 bg-white dark:bg-gray-800 shadow-lg z-40
+          transform transition-transform duration-300 ease-in-out
+          ${tocOpen ? 'translate-x-0' : 'translate-x-full'}
+          overflow-y-auto pt-16
+        `}
+      >
+        <div className="p-4">
+          <TableOfContents 
+            content={post.htmlContent} 
+            onLinkClick={() => setTocOpen(false)}
+          />
+        </div>
+      </div>
+
+      {/* Overlay for mobile TOC */}
+      {tocOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-30"
+          onClick={() => setTocOpen(false)}
+        />
+      )}
+    </div>
+  );
+};
+
+export default BlogPost;

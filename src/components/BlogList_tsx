@@ -1,0 +1,576 @@
+// src/components/BlogList.tsx
+'use client';
+
+import React from 'react';
+import { BlogPostProps } from '@/lib/getBlogPosts';
+import ErrorBoundary from '@/components/ErrorBoundary';
+import BlogCard from '@/components/BlogCard';
+import Link from 'next/link';
+import Breadcrumb from './Breadcrumb';
+import { useRouter, usePathname } from 'next/navigation';
+import SafeContent from './SafeContent';
+import SearchBar from './SearchBar';
+import { logger } from '@/lib/logger';
+import TableOfContents from './TableOfContents';
+import FloatingShareButton from './FloatingShareButton';
+import { BlogContext } from '@/app/providers';
+import { Menu, X } from 'lucide-react';
+import { Post } from '@/lib/content';
+
+interface BlogListProps {
+  posts: BlogPostProps[];
+  rootIndex: BlogPostProps | null;
+}
+
+interface FolderItem {
+  folder: string;
+  post: BlogPostProps;
+}
+
+interface ContentSection {
+  index: BlogPostProps | null;
+  folders: FolderItem[];
+  posts: BlogPostProps[];
+}
+
+const BlogList: React.FC<BlogListProps> = ({ posts, rootIndex }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [mounted, setMounted] = React.useState(false);
+  const [selectedPost, setSelectedPost] = React.useState<BlogPostProps | null>(null);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [retryCount, setRetryCount] = React.useState(0);
+  const contentCache = React.useMemo(() => new Map<string, ContentSection>(), []);
+  const [contentLoaded, setContentLoaded] = React.useState(false);
+  const { setPosts } = React.useContext(BlogContext);
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+
+  // Wait for client-side hydration to complete
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Ensure consistent path handling
+  const currentPath = React.useMemo(() => {
+    // Extract the section from the pathname
+    const pathParts = pathname?.split('/').filter(Boolean);
+    const section = pathParts?.[0] || '';
+    
+    // Remove the section from the path
+    return pathParts?.slice(1) || [];
+  }, [pathname]);
+
+  // Get all main folders for sidebar
+  const mainFolders = React.useMemo(() => {
+    return Array.from(new Set(
+      posts
+        .map(post => post.slug.split('/')[0])
+        .filter(folder => folder !== 'index' && folder !== 'images')
+    )).sort();
+  }, [posts]);
+
+  // Get content for current path
+  const getCurrentContent = React.useCallback(() => {
+    return (() => {
+      const cacheKey = currentPath.join('/');
+      if (contentCache.has(cacheKey)) {
+        return contentCache.get(cacheKey)!;
+      }
+
+      // Extract the current section from the pathname
+      const section = pathname?.split('/').filter(Boolean)[0] || '';
+      
+      // Construct the current prefix for finding the index post
+      const currentPrefix = currentPath.length > 0 
+        ? `${section}/${currentPath.join('/')}`
+        : section;
+      
+      logger.debug(`Getting content for path: ${currentPrefix}`);
+
+      // Get the index for current level - try multiple formats
+      const currentIndex = posts.find(post => 
+        post.slug === currentPrefix || 
+        post.slug === `${currentPrefix}/index` ||
+        post.slug === currentPrefix.replace(/-/g, '_') ||
+        post.slug === `${currentPrefix.replace(/-/g, '_')}/index`
+      ) || rootIndex;
+      
+      if (currentIndex) {
+        logger.debug(`Found index post: ${currentIndex.slug}`);
+      } else {
+        logger.debug(`No index post found for: ${currentPrefix}`);
+      }
+
+      // SIMPLIFIED APPROACH: Get all direct child posts for the current path
+      // This is a more straightforward approach that should work for all collections
+      const currentLevelPosts = posts.filter(post => {
+        // Skip the current index post
+        if (post.slug === currentIndex?.slug) return false;
+        
+        // Skip draft posts
+        if (post.draft) return false;
+        
+        // Skip index files
+        if (post.isIndexFile) return false;
+        
+        // Check if this post is a direct child of the current path
+        // A direct child has exactly one more segment than the current path
+        // and starts with the current path prefix
+        const pathSegments = post.slug.split('/');
+        const currentPrefixSegments = currentPrefix.split('/');
+        
+        // Try both hyphenated and underscore versions of the path
+        const hyphenatedPrefix = currentPrefix.replace(/_/g, '-');
+        const underscorePrefix = currentPrefix.replace(/-/g, '_');
+        
+        return (
+          // Direct child of the current path
+          (pathSegments.length === currentPrefixSegments.length + 1 &&
+           (post.slug.startsWith(`${currentPrefix}/`) ||
+            post.slug.startsWith(`${hyphenatedPrefix}/`) ||
+            post.slug.startsWith(`${underscorePrefix}/`)))
+        );
+      });
+      
+      logger.debug(`Found ${currentLevelPosts.length} direct child posts for path: ${currentPrefix}`);
+
+      // SIMPLIFIED APPROACH: Get all subdirectories (collections) at this level
+      const foldersAtCurrentLevel = new Map<string, FolderItem>();
+      
+      // Look for index files that are one level deeper
+      posts.forEach(post => {
+        // Skip draft posts
+        if (post.draft) return;
+        
+        // Check if this is an index file or has child posts
+        const isCollection = post.isIndexFile || (post.childPosts && post.childPosts.length > 0);
+        
+        if (!isCollection) return;
+        
+        const pathSegments = post.slug.split('/');
+        
+        // Remove the 'index' part if present
+        if (pathSegments[pathSegments.length - 1] === 'index') {
+          pathSegments.pop();
+        }
+        
+        // Check if this index is a direct child of the current path
+        const currentPrefixSegments = currentPrefix.split('/');
+        
+        // Try both hyphenated and underscore versions of the path
+        const hyphenatedPrefix = currentPrefix.replace(/_/g, '-');
+        const underscorePrefix = currentPrefix.replace(/-/g, '_');
+        
+        if (
+          (pathSegments.length === currentPrefixSegments.length + 1 && 
+           pathSegments.join('/').startsWith(`${currentPrefix}/`)) ||
+          (pathSegments.length === currentPrefixSegments.length + 1 && 
+           pathSegments.join('/').startsWith(`${hyphenatedPrefix}/`)) ||
+          (pathSegments.length === currentPrefixSegments.length + 1 && 
+           pathSegments.join('/').startsWith(`${underscorePrefix}/`))
+        ) {
+          // Get the folder name (last segment of the path)
+          const folderName = pathSegments[pathSegments.length - 1];
+          
+          // Skip if we already have this folder
+          if (foldersAtCurrentLevel.has(folderName)) return;
+          
+          // This is a collection
+          foldersAtCurrentLevel.set(folderName, {
+            folder: folderName,
+            post: post
+          });
+          
+          logger.debug(`Added collection: ${folderName} (${post.slug})`);
+        }
+      });
+      
+      // Create the final content object
+      const content = {
+        index: currentIndex || null,
+        folders: Array.from(foldersAtCurrentLevel.values()),
+        posts: currentLevelPosts
+      };
+      
+      contentCache.set(cacheKey, content);
+      return content;
+    })();
+  }, [currentPath, posts, rootIndex, contentCache, pathname]);
+
+  // Handle folder navigation with retry
+  const handleFolderClick = React.useCallback(async (folder: string) => {
+    setIsLoading(true);
+    setContentLoaded(false);
+    
+    // Extract the section from the pathname
+    const pathParts = pathname?.split('/').filter(Boolean);
+    const section = pathParts?.[0] || '';
+    
+    // Create the folder path with the correct section
+    // Always use hyphens in URLs for consistency
+    const folderForUrl = folder.replace(/_/g, '-');
+    
+    let folderPath;
+    if (currentPath.length === 0) {
+      // If we're at the root level, navigate to the folder within the current section
+      folderPath = `/${section}/${folderForUrl}`;
+    } else {
+      // If we're already in a subfolder, append to the current path
+      // Make sure all path segments use hyphens for consistency in URLs
+      const normalizedCurrentPath = currentPath.map(segment => segment.replace(/_/g, '-'));
+      folderPath = `/${section}/${[...normalizedCurrentPath, folderForUrl].join('/')}`;
+    }
+    
+    console.log(`DEBUG - Navigating to folder: ${folderPath}`);
+    
+    try {
+      await router.push(folderPath);
+      // Try to get content multiple times
+      let attempts = 0;
+      const maxAttempts = 3;
+      
+      const tryLoadContent = () => {
+        const content = getCurrentContent();
+        if (content.folders.length > 0 || content.posts.length > 0) {
+          setContentLoaded(true);
+          setIsLoading(false);
+        } else if (attempts < maxAttempts) {
+          attempts++;
+          setTimeout(tryLoadContent, 100);
+        } else {
+          setIsLoading(false);
+        }
+      };
+      
+      tryLoadContent();
+    } catch (e) {
+      setIsLoading(false);
+      logger.error(`Navigation error: ${e}`);
+    }
+  }, [router, getCurrentContent, pathname, currentPath]);
+
+  // Get content on path change
+  React.useEffect(() => {
+    const content = getCurrentContent();
+    if (content.index) {
+      setSelectedPost(null);
+    }
+  }, [pathname, getCurrentContent]);
+
+  const content = React.useMemo(() => {
+    if (!mounted) {
+      // Return minimal initial state for SSR
+      return {
+        index: null,
+        folders: [],
+        posts: []
+      };
+    }
+    
+    const result = getCurrentContent();
+    
+    // SIMPLIFIED APPROACH: If we have an index post with child posts, make sure to include them
+    if (result.index && result.index.childPosts && result.index.childPosts.length > 0) {
+      // Get all non-draft child posts from the current index
+      const nonDraftChildPosts = result.index.childPosts.filter(p => !p.draft);
+      
+      if (nonDraftChildPosts.length > 0) {
+        logger.debug(`Found ${nonDraftChildPosts.length} non-draft child posts in current index`);
+        
+        // Add all non-draft child posts to the result
+        // Make sure we don't add duplicates
+        const existingSlugs = new Set(result.posts.map(p => p.slug));
+        const newPosts = nonDraftChildPosts.filter(p => !existingSlugs.has(p.slug));
+        
+        result.posts = [...result.posts, ...newPosts];
+        
+        logger.debug(`Added ${newPosts.length} new posts from current index`);
+      }
+    }
+    
+    // SIMPLIFIED APPROACH: For terminal collections, ensure all posts are displayed
+    // This is a more direct approach that should work for all terminal collections
+    const section = pathname?.split('/').filter(Boolean)[0] || '';
+    
+    if (currentPath.length > 0) {
+      // Construct the current path prefix
+      const currentPathPrefix = `${section}/${currentPath.join('/')}`;
+      
+      // Try both hyphenated and underscore versions of the path
+      const hyphenatedPrefix = currentPathPrefix.replace(/_/g, '-');
+      const underscorePrefix = currentPathPrefix.replace(/-/g, '_');
+      
+      logger.debug(`Checking for posts in terminal collection: ${currentPathPrefix}`);
+      
+      // Find all posts that are related to this path
+      const terminalPosts = posts.filter(post => {
+        // Skip draft posts
+        if (post.draft) return false;
+        
+        // Skip posts that are already in the result
+        if (result.posts.some(p => p.slug === post.slug)) return false;
+        
+        // Skip index files
+        if (post.slug.endsWith('/index') || post.isIndexFile) return false;
+        
+        // Skip the current index post
+        if (post.slug === currentPathPrefix || post.slug === hyphenatedPrefix || post.slug === underscorePrefix ||
+            post.slug === `${currentPathPrefix}/index` || post.slug === `${hyphenatedPrefix}/index` || post.slug === `${underscorePrefix}/index`) return false;
+        
+        // Include posts that are direct children of the current path
+        // or are in any subdirectory of the current path
+        return (post.slug.startsWith(`${currentPathPrefix}/`) || 
+                post.slug.startsWith(`${hyphenatedPrefix}/`) ||
+                post.slug.startsWith(`${underscorePrefix}/`));
+      });
+      
+      if (terminalPosts.length > 0) {
+        logger.debug(`Found ${terminalPosts.length} posts for terminal collection ${currentPathPrefix}`);
+        
+        // Add these posts to the result
+        result.posts = [...result.posts, ...terminalPosts];
+        
+        // Log each post we're adding for debugging
+        terminalPosts.forEach(post => {
+          logger.debug(`Added post ${post.slug} to result.posts`);
+        });
+      }
+    }
+    
+    // Debug logging
+    logger.debug(JSON.stringify({
+      path: `Final content for ${pathname}:`,
+      folderCount: result.folders.length,
+      postCount: result.posts.length,
+      folders: result.folders.map(f => f.folder),
+      posts: result.posts.map(p => p.slug)
+    }));
+    
+    return result;
+  }, [mounted, getCurrentContent, pathname, currentPath, posts]);
+
+  // Set posts in context when they change
+  React.useEffect(() => {
+    const transformPost = (post: BlogPostProps): Post => ({
+      ...post,
+      path: post.slug.split('/'),
+      html: post.htmlContent,
+      metadata: {
+        title: post.title,
+        date: post.date
+      },
+      isIndex: post.isIndexFile || false,
+      childPosts: post.childPosts?.map(transformPost) || [],
+      childSlugs: post.childPosts?.map(p => p.slug) || []
+    });
+    
+    const transformedPosts = posts.map(transformPost);
+    setPosts(transformedPosts);
+  }, [posts, setPosts]);
+
+  // Show loading or initial state
+  if (!mounted || isLoading) {
+    return (
+      <div className="flex min-h-screen w-full bg-gray-900">
+        <div className="flex items-center justify-center w-full">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <ErrorBoundary fallback={
+      <div className="text-center p-8 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-300">
+        Error loading blog posts. Please try refreshing the page.
+      </div>
+    }>
+      <div className="flex min-h-screen w-full bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+        <div className="flex flex-1 max-w-screen-2xl mx-auto relative">
+          {/* Mobile sidebar toggle - only show if we have folders */}
+          {mainFolders.length > 0 && (
+            <button 
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="md:hidden fixed bottom-6 right-6 z-30 p-3 rounded-full bg-blue-600 text-white shadow-lg"
+              aria-label="Toggle sidebar"
+            >
+              {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          )}
+
+          {/* Left sidebar - only show if we have folders */}
+          {mainFolders.length > 0 && (
+            <div className={`
+              ${sidebarOpen ? 'fixed inset-0 z-20' : 'hidden'} 
+              md:relative md:block md:inset-auto
+              md:w-64 md:shrink-0 
+              transition-all duration-300 ease-in-out
+            `}>
+              {/* Overlay for mobile */}
+              {sidebarOpen && (
+                <div 
+                  className="absolute inset-0 bg-black/50 md:hidden"
+                  onClick={() => setSidebarOpen(false)}
+                />
+              )}
+              
+              <div className="
+                w-3/4 max-w-xs md:w-full h-full
+                p-6 
+                border-r border-gray-200 dark:border-gray-700 
+                bg-white dark:bg-gray-800
+                transition-colors duration-200
+                relative z-10
+              ">
+                <nav className="space-y-2 sticky top-6">
+                  {mainFolders.map(folder => (
+                    <button
+                      key={folder}
+                      onClick={() => {
+                        handleFolderClick(folder);
+                        setSidebarOpen(false);
+                      }}
+                      className={`
+                        w-full text-left px-4 py-3 rounded-lg
+                        transition-all duration-200 ease-in-out
+                        hover:bg-blue-50 dark:hover:bg-blue-500/10 
+                        hover:shadow-sm dark:hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]
+                        ${currentPath[0] === folder 
+                          ? 'bg-blue-100 dark:bg-blue-500/20 text-blue-900 dark:text-blue-300 font-medium' 
+                          : 'text-gray-700 dark:text-gray-300'}
+                      `}
+                    >
+                      <h3 className="font-medium capitalize">{folder.replace(/_/g, ' ')}</h3>
+                    </button>
+                  ))}
+                </nav>
+              </div>
+            </div>
+          )}
+
+          {/* Main content area */}
+          <div className="flex flex-1 flex-col md:flex-row">
+            <div className="flex-1 p-4 md:p-8 
+              bg-gray-50 dark:bg-gray-900 
+              transition-colors duration-200"
+            >
+              {/* Always show breadcrumbs */}
+              <Breadcrumb path={currentPath} />
+              
+              {/* Show selected post content if available */}
+              {selectedPost ? (
+                <div className="prose prose-lg max-w-none mb-12 bg-white dark:bg-gray-800 rounded-xl p-4 md:p-8 shadow-sm dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-300 dark:prose-invert transition-colors duration-200 relative text-left">
+                  <h1 className="text-3xl md:text-4xl font-bold mb-6 font-display text-left">{selectedPost.title}</h1>
+                  
+                  {/* FloatingShareButton */}
+                  <div className="absolute top-4 right-4 z-40">
+                    <FloatingShareButton
+                      title={selectedPost.title || ""}
+                      description={selectedPost.excerpt || ""}
+                      tags={selectedPost.tags}
+                      shareBlurbs={selectedPost.shareBlurbs}
+                    />
+                  </div>
+                  
+                  <SafeContent html={selectedPost.htmlContent} />
+                </div>
+              ) : content.index ? (
+                <div className="prose prose-lg max-w-none mb-12 bg-white dark:bg-gray-800 rounded-xl p-4 md:p-8 shadow-sm dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-300 dark:prose-invert transition-colors duration-200 relative">
+                  <h1 className="text-3xl md:text-4xl font-bold mb-8 font-display">{content.index.title}</h1>
+                  
+                  {/* FloatingShareButton */}
+                  <div className="absolute top-4 right-4 z-40">
+                    <FloatingShareButton
+                      title={content.index.title || ""}
+                      description={content.index.excerpt || ""}
+                      tags={content.index.tags}
+                      shareBlurbs={content.index.shareBlurbs}
+                    />
+                  </div>
+                  
+                  <div>
+                    <SafeContent html={content.index.htmlContent} />
+                  </div>
+                </div>
+              ) : null}
+              
+              {/* Always show cards if there are folders or posts to display */}
+              {(content.folders.length > 0 || content.posts.length > 0) && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mx-auto max-w-6xl px-4 md:px-6 pt-0">
+                  {/* Render folders first, ensuring no duplicates by using a Set for folder names */}
+                  {Array.from(new Set(content.folders.map(item => item.folder))).map(folderName => {
+                    // Find the first folder item with this name
+                    const folderItem = content.folders.find(item => 
+                      item.folder === folderName || 
+                      item.folder.replace(/_/g, '-') === folderName.replace(/_/g, '-')
+                    );
+                    if (!folderItem) return null;
+                    
+                    // Log the folder being rendered
+                    logger.debug(`Rendering folder: ${folderName} (${folderItem.post.slug}) with ${folderItem.post.childPosts?.length || 0} child posts`);
+                    
+                    return (
+                      <BlogCard key={`folder-${folderItem.post.slug}`} post={folderItem.post} showDate={false} />
+                    );
+                  })}
+                  
+                  {/* Render regular posts that are direct children of this folder */}
+                  {content.posts.map(post => {
+                    if (!post) return null;
+                    
+                    // Log the post being rendered
+                    logger.debug(`Rendering post: ${post.slug}`);
+                    
+                    return (
+                      <BlogCard key={`post-${post.slug}`} post={post} showDate={false} />
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Show TOC only for index or leaf markdown files - hidden on mobile */}
+            {content.index && content.folders.length === 0 && content.posts.length === 0 && (
+              <div className="hidden md:block">
+                <TableOfContents
+                  content={content.index.htmlContent}
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Post modal */}
+          {selectedPost && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+                  <h2 className="text-xl font-semibold">{selectedPost.title}</h2>
+                  <button 
+                    onClick={() => setSelectedPost(null)}
+                    className="text-gray-500 hover:text-gray-700"
+                  >
+                    &times;
+                  </button>
+                </div>
+                <div className="p-6 relative">
+                  <FloatingShareButton
+                    title={selectedPost.title || ""}
+                    description={selectedPost.excerpt || ""}
+                    tags={selectedPost.tags}
+                    shareBlurbs={selectedPost.shareBlurbs}
+                  />
+                  
+                  <SafeContent html={selectedPost.htmlContent} />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </ErrorBoundary>
+  );
+};
+
+export default BlogList;
+
+

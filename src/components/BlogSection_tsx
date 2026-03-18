@@ -1,0 +1,35 @@
+import React from 'react';
+import { BlogPostProps } from '@/lib/getBlogPosts';
+import BlogCard from './BlogCard';
+
+const BlogSection: React.FC<{ posts: BlogPostProps[]; section: string }> = ({ posts, section }) => {
+  const sectionPosts = posts.filter(post => post.slug.startsWith(section + '/'));
+  const mainPost = sectionPosts.find(post => post.slug === `${section}/index`) || 
+    sectionPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0];
+
+  const otherPosts = sectionPosts.filter(post => post !== mainPost);
+
+  return (
+    <div className="space-y-8">
+      {mainPost && (
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">{section}</h2>
+          <BlogCard post={mainPost} showDate={false} />
+        </div>
+      )}
+      
+      {otherPosts.length > 0 && (
+        <div>
+          <h2 className="text-xl font-bold mb-4">Recent posts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {otherPosts.map(post => (
+              <BlogCard key={post.slug} post={post} showDate={false} />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default BlogSection; 

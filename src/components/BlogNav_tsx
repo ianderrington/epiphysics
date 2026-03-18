@@ -1,0 +1,163 @@
+import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { DocTree, BlogPostProps } from '@/lib/getBlogPosts';
+import { getBlogUrl } from '@/lib/urlUtils';
+import { Menu, X } from 'lucide-react';
+import { scrollThrottle } from '@/utils/debounce';
+
+interface BlogNavProps {
+  tree: DocTree;
+  currentSlug?: string;
+}
+
+const BlogNav: React.FC<BlogNavProps> = ({ tree, currentSlug }) => {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const prevScrollY = useRef(0);
+  
+  // Handle window resize
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkIsMobile();
+    
+    // Add event listener
+    window.addEventListener('resize', checkIsMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+  
+  // Listen for custom event from Header component or MobileBottomNav
+  useEffect(() => {
+    const handleToggleChapterIndex = () => {
+      setMobileNavOpen(!mobileNavOpen);
+    };
+    
+    window.addEventListener('toggle-chapter-index', handleToggleChapterIndex);
+    
+    return () => window.removeEventListener('toggle-chapter-index', handleToggleChapterIndex);
+  }, [mobileNavOpen]);
+  
+  // Handle scroll behavior with IntersectionObserver instead of scroll events
+  useEffect(() => {
+    const topSentinel = document.createElement('div');
+    topSentinel.style.position = 'fixed';
+    topSentinel.style.top = '0';
+    topSentinel.style.height = '5px';
+    topSentinel.style.width = '100%';
+    topSentinel.style.pointerEvents = 'none';
+    topSentinel.style.opacity = '0';
+    document.body.appendChild(topSentinel);
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          // At top of page or scrolling up
+          setIsHeaderVisible(true);
+        } else {
+          // Check if we're not at the top before hiding
+          if (window.scrollY > 10) {
+            setIsHeaderVisible(false);
+          }
+        }
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '-5px 0px 0px 0px'
+      }
+    );
+    
+    observer.observe(topSentinel);
+    
+    return () => {
+      observer.disconnect();
+      topSentinel.remove();
+    };
+  }, []);
+  
+  const renderTree = (node: DocTree, depth = 0) => {
+    return Object.entries(node).map(([key, value]) => {
+      const hasChildren = Object.keys(value.children).length > 0;
+      
+      return (
+        <div key={key} className="mb-2">
+          {value.post ? (
+            <Link 
+              href={getBlogUrl(value.post)}
+              className={`
+                block py-2 px-4 rounded hover:bg-gray-100 dark:hover:bg-gray-800
+                ${currentSlug === value.post.hierarchicalSlug ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : 'text-gray-700 dark:text-gray-300'}
+                transition-colors duration-200
+              `}
+              onClick={() => setMobileNavOpen(false)}
+            >
+              {value.post.title}
+            </Link>
+          ) : (
+            <div className={`py-2 px-4 font-semibold text-gray-900 dark:text-gray-100 ${hasChildren ? 'mb-2' : ''}`}>
+              {key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')}
+            </div>
+          )}
+          
+          {hasChildren && (
+            <div className="border-l-2 border-gray-200 dark:border-gray-700 ml-4 pl-2">
+              {renderTree(value.children, depth + 1)}
+            </div>
+          )}
+        </div>
+      );
+    });
+  };
+
+  return (
+    <>
+      {/* Mobile navigation overlay */}
+      {isMobile && mobileNavOpen ? (
+        <div className="fixed inset-0 z-50 md:hidden">
+          <div 
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setMobileNavOpen(false)}
+          />
+          <div 
+            className="absolute left-0 top-0 bottom-0 w-3/4 max-w-xs bg-white dark:bg-gray-800 shadow-xl overflow-y-auto transition-all duration-300"
+            style={{
+              height: '100%',
+              transform: 'translateX(0)',
+              transition: 'transform 0.3s ease-in-out'
+            }}
+          >
+            <div className="sticky top-0 bg-white dark:bg-gray-800 z-10 flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white">Navigation</h2>
+              <button 
+                onClick={() => setMobileNavOpen(false)}
+                className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                aria-label="Close navigation"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <div className="p-4 pt-2 pb-20">
+              {renderTree(tree)}
+            </div>
+          </div>
+        </div>
+      ) : (
+        // Desktop navigation
+        <nav className={`${isMobile ? 'hidden' : 'block'} w-64 bg-white dark:bg-gray-800 shadow-md dark:shadow-lg rounded-lg overflow-hidden transition-colors duration-200`}>
+          <div className="p-4">
+            <h2 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Navigation</h2>
+            {renderTree(tree)}
+          </div>
+        </nav>
+      )}
+    </>
+  );
+};
+
+export default BlogNav; 

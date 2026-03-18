@@ -1,0 +1,206 @@
+import React from 'react';
+import Link from 'next/link';
+import SafeImage from './SafeImage';
+import SafeHTML from '@/components/SafeHTML';
+import PostCard from './PostCard';
+import SocialShare from './SocialShare';
+import { readPagesConfig, sortByPagesConfig } from '@/lib/content/pages-config';
+import CardGrid from '@/components/CardGrid';
+import { getContentDirectory } from '@/lib/content/filesystem';
+import { DEFAULT_IMAGES } from '@/lib/constants';
+import { filterDrafts } from '@/lib/content/filters';
+import { formatDate } from '@/lib/utils/dates';
+import { Post } from '@/lib/content';
+
+interface CollectionProps {
+  post: Post;
+}
+
+interface FolderItem {
+  slug: string;
+  fullSlug: string;
+  posts: Post[];
+  indexPost?: Post;
+  path: string;
+}
+
+interface CoverImage {
+  url: string;
+  alt?: string;
+  caption?: string;
+}
+
+// Move getImagePath outside the component and make it handle relative paths
+function getImagePath(coverImage: CoverImage | string | null | undefined, fallbackImage: string | undefined, section: string, fullSlug: string): string {
+  // Handle coverImage object or string, ensuring null becomes undefined
+  const imageUrl = coverImage 
+    ? (typeof coverImage === 'string' ? coverImage : coverImage.url) 
+    : undefined;
+  
+  if (!imageUrl && !fallbackImage) {
+    if (section && DEFAULT_IMAGES.section[section as keyof typeof DEFAULT_IMAGES.section]) {
+      return DEFAULT_IMAGES.section[section as keyof typeof DEFAULT_IMAGES.section];
+    }
+    return DEFAULT_IMAGES.collection;
+  }
+
+  const imagePath = imageUrl || fallbackImage;
+  
+  if (!imagePath) {
+    return DEFAULT_IMAGES.collection;
+  }
+
+  // If the image path is already absolute or a URL, return it as is
+  if (imagePath.startsWith('/') || imagePath.startsWith('http')) {
+    return imagePath;
+  }
+
+  // Handle all relative paths by resolving them against the parent directory
+  // Remove any './' prefix from the image path
+  const cleanImagePath = imagePath.replace(/^\.\//, '');
+
+  // Get the parent directory path (excluding the current file name)
+  const slugParts = fullSlug.split('/');
+  const parentDir = slugParts.slice(0, -1).join('/');
+
+  // For any relative path, resolve it against the parent directory
+  // This works for any path structure, not just "images/"
+  if (parentDir) {
+    return `/${parentDir}/${cleanImagePath}`;
+  } else {
+    // If there's no parent directory (we're at the root),
+    // then resolve against the section
+    return `/${section}/${cleanImagePath}`;
+  }
+}
+
+export default async function Collection({ post }: CollectionProps) {
+  const { childPosts } = post;
+  
+  if (!childPosts) {
+    return null;
+  }
+  
+  // Get the section from the post slug
+  const section = post.slug.split('/')[0];
+  
+  // Filter out drafts and duplicates
+  const visiblePosts = filterDrafts(childPosts).filter(childPost => {
+    // Don't show the current post
+    if (childPost.slug === post.slug) return false;
+    // Don't show exact duplicates (same slug)
+    if (childPosts.findIndex(p => p.slug === childPost.slug) !== childPosts.indexOf(childPost)) return false;
+    return true;
+  });
+  
+  // Group posts by their parent folder
+  const postsByFolder: Record<string, Post[]> = {};
+  const directChildPosts: Post[] = [];
+  
+  visiblePosts.forEach(childPost => {
+    // Get paths without /index suffix
+    const currentPath = post.path.join('/').replace(/\/index$/, '');
+    const childPath = childPost.path.join('/').replace(/\/index$/, '');
+    const childDir = childPost.path.slice(0, -1).join('/');
+    
+    // A post is a direct child if its directory matches the current path
+    // or if it's an index file whose parent matches the current path
+    if (childDir === currentPath || (childPost.isIndex && childPath === currentPath)) {
+      directChildPosts.push(childPost);
+      return;
+    }
+    
+    // Handle nested directories
+    if (childPath.startsWith(currentPath + '/')) {
+      // Get the next directory level while maintaining full path
+      const remainingPath = childPath.substring(currentPath.length + 1);
+      const nextDir = remainingPath.split('/')[0];
+      
+      // Create the folder slug maintaining the full path
+      const folderPath = `${currentPath}/${nextDir}`;
+      const folderSlug = folderPath.replace(/^docs\//, '');
+      
+      // If this is an index file for this exact folder/directory level
+      // We want to treat it as a direct child so it gets rendered properly
+      // This ensures nested collection indexes are treated like other collections
+      if (childPost.isIndex && childPost.slug === folderSlug) {
+        directChildPosts.push(childPost);
+        return;
+      }
+      
+      if (!postsByFolder[folderSlug]) {
+        postsByFolder[folderSlug] = [];
+      }
+      
+      // Add to folder if not already present
+      if (!postsByFolder[folderSlug].some(p => p.slug === childPost.slug)) {
+        postsByFolder[folderSlug].push(childPost);
+      }
+    }
+  });
+  
+  // Sort content based on .pages config
+  const collectionPath = post.path.join('/');
+  const pagesConfig = await readPagesConfig(collectionPath);
+  const sortedDirectChildPosts = sortByPagesConfig(directChildPosts, pagesConfig);
+  
+  // Sort and prepare folder items
+  const folderItems = Object.entries(postsByFolder).map(([slug, posts]) => {
+    // Find the index post for this folder if it exists
+    const indexPost = posts.find(p => p.isIndex);
+    // Get all non-index posts
+    const regularPosts = posts.filter(p => !p.isIndex);
+    
+    return {
+      slug: slug.split('/').pop() || '',
+      fullSlug: slug,
+      posts: regularPosts,
+      indexPost,
+      path: slug
+    } as FolderItem;
+  });
+  
+  const sortedFolderItems = sortByPagesConfig(folderItems, pagesConfig);
+  
+  // Combine all items
+  const allItems = [...sortedFolderItems, ...sortedDirectChildPosts];
+  
+  return (
+    <div className="w-full">
+      {/* Index content styled like a post */}
+      {post.html && (
+        <div className="max-w-4xl mx-auto mb-8">
+          <article className="bg-white dark:bg-gray-900 rounded-lg overflow-hidden lg:shadow-lg lg:border lg:border-gray-100 dark:lg:border-gray-800">
+            <div className="p-4 sm:p-8">
+              <header className="mb-8 text-center">
+                <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+                  {post.metadata.title}
+                </h1>
+                
+                {post.metadata.date && (
+                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                    {formatDate(post.metadata.date)}
+                  </div>
+                )}
+              </header>
+
+              <div className="prose prose-lg max-w-none dark:prose-invert text-gray-600 dark:text-gray-300">
+                <SafeHTML html={post.html} />
+              </div>
+            </div>
+          </article>
+        </div>
+      )}
+      
+      {/* Card Grid */}
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-4">
+        <CardGrid 
+          items={childPosts}
+          section={post.sectionId || ''}
+          getImagePath={getImagePath}
+          defaultImage={DEFAULT_IMAGES.collection}
+        />
+      </div>
+    </div>
+  );
+} 

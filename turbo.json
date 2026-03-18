@@ -1,0 +1,38 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build", "prebuild"],
+      "outputs": [".next/**", "!.next/cache/**", "public/diagrams/**"],
+      "env": ["NODE_ENV"]
+    },
+    "prebuild": {
+      "dependsOn": ["twitter:qc", "render-mermaid"],
+      "outputs": ["public/diagrams/**"],
+      "env": ["NODE_ENV"]
+    },
+    "dev": {
+      "dependsOn": ["render-mermaid"],
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "outputs": []
+    },
+    "twitter:qc": {
+      "outputs": [],
+      "inputs": ["docs/**/*.md", "scripts/twitter-qc.js"]
+    },
+    "render-mermaid": {
+      "outputs": ["public/diagrams/**"],
+      "inputs": ["docs/**/*.md", "src/scripts/renderMermaid.js"]
+    },
+    "clean": {
+      "cache": false
+    }
+  },
+  "globalDependencies": [
+    "package.json",
+    ".env.local"
+  ]
+} 

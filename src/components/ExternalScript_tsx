@@ -1,0 +1,20 @@
+'use client';
+
+import Script from 'next/script';
+import React from 'react';
+
+interface ExternalScriptProps {
+  src: string;
+  strategy?: 'beforeInteractive' | 'afterInteractive' | 'lazyOnload';
+  onLoad?: () => void;
+}
+
+export default function ExternalScript({ src, strategy = 'afterInteractive', onLoad }: ExternalScriptProps) {
+  return (
+    <Script 
+      src={src} 
+      strategy={strategy}
+      onLoad={onLoad}
+    />
+  );
+} 

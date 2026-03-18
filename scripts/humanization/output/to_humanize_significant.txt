@@ -1,0 +1,583 @@
+docs/about/research/increasing-accuracy.md
+  Words found:
+    - Leverage (2 occurrences)
+    - harnessing (1 occurrences)
+    - revolutionize (1 occurrences)
+    - Harnessing (1 occurrences)
+    - Inherent (2 occurrences)
+    - Implications (2 occurrences)
+    - Leverage (2 occurrences)
+    - harnessing (1 occurrences)
+    - revolutionize (1 occurrences)
+    - Harnessing (1 occurrences)
+
+docs/about/research/index.md
+  Words found:
+    - Explore (1 occurrences)
+    - revolutionize (1 occurrences)
+    - Unprecedented (2 occurrences)
+    - Unlock (1 occurrences)
+    - Journey (5 occurrences)
+    - Navigation (1 occurrences) (basic)
+    - Intricacies (1 occurrences)
+    - Paradigm (2 occurrences)
+    - Explore (1 occurrences)
+    - revolutionize (1 occurrences)
+    - Unprecedented (2 occurrences)
+    - Unlock (1 occurrences)
+    - Journey (5 occurrences)
+    - Navigation (1 occurrences) (basic)
+
+docs/fiction/in_the_beginning.md
+  Words found:
+    - Testament (2 occurrences)
+    - Tapestry (1 occurrences)
+    - Symphony (1 occurrences)
+    - Explore (1 occurrences)
+    - Realm (1 occurrences)
+    - Unravel (1 occurrences)
+    - Dive (4 occurrences)
+    - Blend (1 occurrences)
+    - Unity (3 occurrences)
+    - Harmony (2 occurrences)
+    - Testament (2 occurrences)
+    - Tapestry (1 occurrences)
+    - Symphony (1 occurrences)
+    - Explore (1 occurrences)
+    - Realm (1 occurrences)
+    - Unravel (1 occurrences)
+    - Dive (4 occurrences)
+    - Realm (1 occurrences)
+    - Tapestry (1 occurrences)
+
+docs/fiction/index.md
+  Words found:
+    - Explore (3 occurrences)
+    - Discover (1 occurrences)
+    - Evolve (1 occurrences)
+    - Blend (2 occurrences)
+    - Explore (3 occurrences)
+    - Discover (1 occurrences)
+
+docs/fiction/the_resonance/resonance_7.md
+  Words found:
+    - Resonate (2 occurrences)
+    - Symphony (1 occurrences)
+    - Explore (1 occurrences)
+    - Unprecedented (1 occurrences)
+    - Dive (2 occurrences)
+    - Architect (4 occurrences)
+    - Journey (1 occurrences)
+    - Navigation (1 occurrences) (basic)
+    - Crucial (1 occurrences)
+    - Core (1 occurrences)
+    - Inherent (1 occurrences)
+    - Dynamics (2 occurrences)
+    - Implications (1 occurrences)
+    - Fusion (9 occurrences)
+    - Emanate (2 occurrences)
+    - Embody (1 occurrences)
+    - Evolve (2 occurrences)
+    - Harmony (1 occurrences)
+    - Conceptualize (1 occurrences)
+    - Reinforce (2 occurrences)
+    - Resonate (2 occurrences)
+    - Symphony (1 occurrences)
+    - Explore (1 occurrences)
+    - Unprecedented (1 occurrences)
+    - Dive (2 occurrences)
+    - Architect (4 occurrences)
+    - Journey (1 occurrences)
+    - Navigation (1 occurrences) (basic)
+    - Crucial (1 occurrences)
+
+docs/humanization_guide.md
+  Words found:
+    - Leverage (2 occurrences)
+    - Tapestry (1 occurrences)
+    - Explore (2 occurrences)
+    - Unlock (1 occurrences)
+    - Elegant (2 occurrences)
+    - Architect (1 occurrences)
+    - Journey (1 occurrences)
+    - Facet (1 occurrences)
+    - Intricacies (1 occurrences)
+    - Paradigm (2 occurrences)
+    - Dynamics (1 occurrences)
+    - Fusion (1 occurrences)
+    - Integration (1 occurrences)
+    - Leverage (2 occurrences)
+    - Tapestry (1 occurrences)
+    - Explore (2 occurrences)
+    - Unlock (1 occurrences)
+    - Elegant (2 occurrences)
+    - Architect (1 occurrences)
+    - Journey (1 occurrences)
+    - Tapestry (1 occurrences)
+
+docs/musings/building_code/ai_customizability.md
+  Words found:
+    - Leverage (5 occurrences)
+    - Discover (2 occurrences)
+    - Architect (5 occurrences)
+    - Navigation (1 occurrences) (basic)
+    - Ensure (1 occurrences)
+    - Paradigm (1 occurrences)
+    - Integration (8 occurrences)
+    - Evolve (2 occurrences)
+    - Unity (1 occurrences)
+    - Leverage (5 occurrences)
+    - Discover (2 occurrences)
+    - Architect (5 occurrences)
+    - Navigation (1 occurrences) (basic)
+
+docs/musings/building_code/inaccurate-time-delay.md
+  Words found:
+    - Explore (1 occurrences)
+    - Picture (1 occurrences)
+    - Ensure (2 occurrences)
+    - Core (1 occurrences)
+    - Explore (1 occurrences)
+    - Picture (1 occurrences)
+
+docs/musings/building_code/index.md
+  Words found:
+    - Discover (1 occurrences)
+    - Dive (1 occurrences)
+    - Architect (3 occurrences)
+    - Integration (2 occurrences)
+    - Discover (1 occurrences)
+    - Dive (1 occurrences)
+    - Architect (3 occurrences)
+
+docs/musings/building_code/seed_apps.md
+  Words found:
+    - Dive (1 occurrences)
+    - Architect (7 occurrences)
+    - Navigation (1 occurrences) (basic)
+    - Vital (1 occurrences)
+    - Core (1 occurrences)
+    - Integration (14 occurrences)
+    - Augment (2 occurrences)
+    - Evolve (2 occurrences)
+    - Unity (1 occurrences)
+    - Dive (1 occurrences)
+    - Architect (7 occurrences)
+    - Navigation (1 occurrences) (basic)
+
+docs/musings/existence_physics_and_life/daily_entropy.md
+  Words found:
+    - Explore (1 occurrences)
+    - Dive (1 occurrences)
+    - Implications (1 occurrences)
+    - Explore (1 occurrences)
+    - Dive (1 occurrences)
+
+docs/musings/existence_physics_and_life/daily_physics.md
+  Words found:
+    - Constantly (2 occurrences)
+    - Discover (2 occurrences)
+    - Dynamics (3 occurrences)
+    - Implications (1 occurrences)
+    - Fusion (5 occurrences)
+    - Constantly (2 occurrences)
+    - Discover (2 occurrences)
+
+docs/musings/existence_physics_and_life/entropy_durability_and_complexity.md
+  Words found:
+    - Explore (2 occurrences)
+    - Dive (2 occurrences)
+    - Implications (1 occurrences)
+    - Blend (1 occurrences)
+    - Explore (2 occurrences)
+    - Dive (2 occurrences)
+
+docs/musings/existence_physics_and_life/index.md
+  Words found:
+    - Resonate (1 occurrences)
+    - Explore (1 occurrences)
+    - Delve (1 occurrences)
+    - Discover (1 occurrences)
+    - Implications (1 occurrences)
+    - Resonate (1 occurrences)
+    - Explore (1 occurrences)
+    - Delve (1 occurrences)
+    - Delve (1 occurrences)
+    - Discover (1 occurrences)
+    - Delve (1 occurrences)
+
+docs/musings/existence_physics_and_life/love_and_hate.md
+  Words found:
+    - Tapestry (1 occurrences)
+    - Explore (2 occurrences)
+    - Discover (1 occurrences)
+    - Dive (2 occurrences)
+    - Architect (3 occurrences)
+    - Facet (2 occurrences)
+    - Dynamics (6 occurrences)
+    - Implications (1 occurrences)
+    - Unify (1 occurrences)
+    - Catalyze (1 occurrences)
+    - Unity (5 occurrences)
+    - Reinforce (2 occurrences)
+    - Tapestry (1 occurrences)
+    - Explore (2 occurrences)
+    - Discover (1 occurrences)
+    - Dive (2 occurrences)
+    - Architect (3 occurrences)
+    - Tapestry (1 occurrences)
+
+docs/musings/existence_physics_and_life/timescales_of_intelligence.md
+  Words found:
+    - Constantly (1 occurrences)
+    - Discover (1 occurrences)
+    - Dive (1 occurrences)
+    - Navigate (1 occurrences)
+    - Crucial (1 occurrences)
+    - Ensure (2 occurrences)
+    - In essence (1 occurrences)
+    - Implications (1 occurrences)
+    - Resilience (1 occurrences)
+    - Evolve (5 occurrences)
+    - Constantly (1 occurrences)
+    - Discover (1 occurrences)
+    - Dive (1 occurrences)
+    - Navigate (1 occurrences)
+    - Crucial (1 occurrences)
+
+docs/musings/existence_physics_and_life/true_immortality.md
+  Words found:
+    - Explore (1 occurrences)
+    - Encompass (1 occurrences)
+    - Embody (1 occurrences)
+    - Unify (1 occurrences)
+    - Evolve (2 occurrences)
+    - Explore (1 occurrences)
+
+docs/musings/extremists_are_always_wrong.md
+  Words found:
+    - Explore (2 occurrences)
+    - Discover (2 occurrences)
+    - Picture (1 occurrences)
+    - To consider (1 occurrences)
+    - Nuance (2 occurrences)
+    - Holistic (1 occurrences)
+    - Explore (2 occurrences)
+    - Discover (2 occurrences)
+    - Picture (1 occurrences)
+
+docs/musings/growing_corner/responsibility.md
+  Words found:
+    - Explore (1 occurrences)
+    - Architect (1 occurrences)
+    - Navigate (2 occurrences)
+    - Navigation (1 occurrences) (basic)
+    - Crucial (1 occurrences)
+    - However (1 occurrences) (basic)
+    - Core (1 occurrences)
+    - Nuance (4 occurrences)
+    - Inherent (1 occurrences)
+    - Dynamics (2 occurrences)
+    - Implications (2 occurrences)
+    - Fusion (1 occurrences)
+    - Explore (1 occurrences)
+    - Architect (1 occurrences)
+    - Navigate (2 occurrences)
+    - Navigation (1 occurrences) (basic)
+    - Crucial (1 occurrences)
+
+docs/musings/growing_corner/wise_songs/what_is_wifi.md
+  Words found:
+    - Explore (1 occurrences)
+    - Discover (1 occurrences)
+    - Picture (1 occurrences)
+    - Navigation (1 occurrences) (basic)
+    - Explore (1 occurrences)
+    - Discover (1 occurrences)
+    - Picture (1 occurrences)
+    - Navigation (1 occurrences) (basic)
+
+docs/musings/lightbulb_in_a_closet.md
+  Words found:
+    - Discover (8 occurrences)
+    - Elegant (2 occurrences)
+    - Journey (1 occurrences)
+    - Ensure (3 occurrences)
+    - Amplify (1 occurrences)
+    - Integration (1 occurrences)
+    - Illuminate (4 occurrences)
+    - Evolve (2 occurrences)
+    - Unity (3 occurrences)
+    - Reinforce (1 occurrences)
+    - Discover (8 occurrences)
+    - Elegant (2 occurrences)
+    - Journey (1 occurrences)
+
+docs/musings/markets_and_value/market_effects_due_to_deportation.md
+  Words found:
+    - Dive (4 occurrences)
+    - Navigate (1 occurrences)
+    - Crucial (1 occurrences)
+    - To consider (1 occurrences)
+    - However (1 occurrences) (basic)
+    - Core (1 occurrences)
+    - Dynamics (5 occurrences)
+    - Reverberate (1 occurrences)
+    - Comprehensive (1 occurrences)
+    - Dive (4 occurrences)
+    - Navigate (1 occurrences)
+    - Crucial (1 occurrences)
+
+docs/musings/markets_and_value/value_and_potential_value.md
+  Words found:
+    - Captivate (1 occurrences)
+    - Realm (1 occurrences)
+    - Dive (2 occurrences)
+    - Crucial (1 occurrences)
+    - Implications (1 occurrences)
+    - Captivate (1 occurrences)
+    - Realm (1 occurrences)
+    - Dive (2 occurrences)
+    - Realm (1 occurrences)
+    - Crucial (1 occurrences)
+
+docs/musings/moloch/index.md
+  Words found:
+    - Explore (1 occurrences)
+    - Manifestation (1 occurrences)
+    - Dynamics (3 occurrences)
+    - Implications (1 occurrences)
+    - Explore (1 occurrences)
+
+docs/musings/moloch/moloch.md
+  Words found:
+    - Explore (1 occurrences)
+    - Depicted (1 occurrences)
+    - Dive (1 occurrences)
+    - Core (1 occurrences)
+    - Manifestation (1 occurrences)
+    - Dynamics (4 occurrences)
+    - Implications (1 occurrences)
+    - Unity (1 occurrences)
+    - Explore (1 occurrences)
+    - Depicted (1 occurrences)
+    - Dive (1 occurrences)
+
+docs/musings/moloch/molochian_ai_endgame.md
+  Words found:
+    - Unleash (1 occurrences)
+    - Architect (1 occurrences)
+    - Crucial (1 occurrences)
+    - Ensure (1 occurrences)
+    - Core (2 occurrences)
+    - Inherent (3 occurrences)
+    - Paradigm (1 occurrences)
+    - Dynamics (1 occurrences)
+    - Resilience (1 occurrences)
+    - Unleash (1 occurrences)
+    - Unleash (1 occurrences)
+    - Architect (1 occurrences)
+    - Crucial (1 occurrences)
+
+docs/musings/moloch/molochian_ai.md
+  Words found:
+    - Leverage (1 occurrences)
+    - Explore (1 occurrences)
+    - Depicted (2 occurrences)
+    - Journey (1 occurrences)
+    - Crucial (1 occurrences)
+    - However (1 occurrences) (basic)
+    - Core (3 occurrences)
+    - Nuance (2 occurrences)
+    - Inherent (1 occurrences)
+    - Paradigm (1 occurrences)
+    - Dynamics (2 occurrences)
+    - Evolve (1 occurrences)
+    - Unity (1 occurrences)
+    - Leverage (1 occurrences)
+    - Explore (1 occurrences)
+    - Depicted (2 occurrences)
+    - Journey (1 occurrences)
+    - Crucial (1 occurrences)
+
+docs/musings/moloch/the_rise_of_molochian_ai.md
+  Words found:
+    - Explore (1 occurrences)
+    - Depicted (1 occurrences)
+    - New Era (1 occurrences)
+    - Elegant (1 occurrences)
+    - Crucial (1 occurrences)
+    - Ensure (1 occurrences)
+    - Manifestation (1 occurrences)
+    - Inherent (1 occurrences)
+    - Dynamics (2 occurrences)
+    - Embody (3 occurrences)
+    - Evolve (1 occurrences)
+    - Unity (1 occurrences)
+    - Explore (1 occurrences)
+    - Depicted (1 occurrences)
+    - New Era (1 occurrences)
+    - Elegant (1 occurrences)
+    - Crucial (1 occurrences)
+
+docs/musings/the_future/index.md
+  Words found:
+    - Tapestry (3 occurrences)
+    - New Era (2 occurrences)
+    - Evolve (1 occurrences)
+    - Tapestry (3 occurrences)
+    - New Era (2 occurrences)
+    - Tapestry (3 occurrences)
+
+docs/musings/the_future/information_pollution_and_recursive_training.md
+  Words found:
+    - Architect (1 occurrences)
+    - Ensure (1 occurrences)
+    - However (1 occurrences) (basic)
+    - Dynamics (5 occurrences)
+    - Fusion (1 occurrences)
+    - Architect (1 occurrences)
+
+docs/musings/the_future/intelligent_organizations/building_a_conscious_organization.md
+  Words found:
+    - Leverage (1 occurrences)
+    - Architect (1 occurrences)
+    - Navigate (1 occurrences)
+    - Core (1 occurrences)
+    - Implications (1 occurrences)
+    - Resilience (1 occurrences)
+    - Leverage (1 occurrences)
+    - Architect (1 occurrences)
+    - Navigate (1 occurrences)
+
+docs/musings/the_future/intelligent_organizations/code_integrated_companies.md
+  Words found:
+    - Unprecedented (1 occurrences)
+    - However (1 occurrences) (basic)
+    - Integration (2 occurrences)
+    - Augment (1 occurrences)
+    - Evolve (1 occurrences)
+    - Blend (1 occurrences)
+    - Conceptualize (1 occurrences)
+    - Unprecedented (1 occurrences)
+
+docs/musings/the_future/intelligent_organizations/distributed_super_intelligence.md
+  Words found:
+    - Leverage (1 occurrences)
+    - Dive (1 occurrences)
+    - Architect (1 occurrences)
+    - Ensure (7 occurrences)
+    - However (3 occurrences) (basic)
+    - Core (1 occurrences)
+    - Embodiment (1 occurrences)
+    - Dynamics (1 occurrences)
+    - Implications (1 occurrences)
+    - Integration (4 occurrences)
+    - Encompass (1 occurrences)
+    - Unify (1 occurrences)
+    - Evolve (4 occurrences)
+    - Leverage (1 occurrences)
+    - Dive (1 occurrences)
+    - Architect (1 occurrences)
+
+docs/musings/the_future/intelligent_organizations/foundationally_ai_company.md
+  Words found:
+    - Leverage (1 occurrences)
+    - Unprecedented (1 occurrences)
+    - Architect (1 occurrences)
+    - Core (3 occurrences)
+    - Iteration (3 occurrences)
+    - Integration (1 occurrences)
+    - Leverage (1 occurrences)
+    - Unprecedented (1 occurrences)
+    - Architect (1 occurrences)
+
+docs/musings/the_future/intelligent_organizations/genasi.md
+  Words found:
+    - Explore (1 occurrences)
+    - Dive (1 occurrences)
+    - Navigate (1 occurrences)
+    - Ensure (1 occurrences)
+    - Integration (1 occurrences)
+    - Inflection (1 occurrences)
+    - Explore (1 occurrences)
+    - Dive (1 occurrences)
+    - Navigate (1 occurrences)
+
+docs/musings/the_future/intelligent_organizations/index.md
+  Words found:
+    - Leverage (1 occurrences)
+    - Ensure (1 occurrences)
+    - Core (1 occurrences)
+    - Dynamics (1 occurrences)
+    - Implications (2 occurrences)
+    - Integration (2 occurrences)
+    - Evolve (2 occurrences)
+    - Leverage (1 occurrences)
+
+docs/musings/the_future/intelligent_organizations/intelligent_authoritarianism.md
+  Words found:
+    - Unprecedented (2 occurrences)
+    - Crucial (1 occurrences)
+    - Ensure (1 occurrences)
+    - Dynamics (1 occurrences)
+    - Unprecedented (2 occurrences)
+    - Crucial (1 occurrences)
+
+docs/musings/the_future/intelligent_organizations/intelligent_religions.md
+  Words found:
+    - Leverage (1 occurrences)
+    - Core (1 occurrences)
+    - Implications (1 occurrences)
+    - Integration (1 occurrences)
+    - Evolve (2 occurrences)
+    - Blend (1 occurrences)
+    - Unity (1 occurrences)
+    - Leverage (1 occurrences)
+
+docs/musings/the_future/intelligent_organizations/organizations_as_code.md
+  Words found:
+    - Leverage (1 occurrences)
+    - revolutionize (2 occurrences)
+    - Unprecedented (2 occurrences)
+    - However (2 occurrences) (basic)
+    - Integral (1 occurrences)
+    - Core (3 occurrences)
+    - Embodiment (1 occurrences)
+    - Paradigm (3 occurrences)
+    - Integration (1 occurrences)
+    - Evolve (9 occurrences)
+    - Leverage (1 occurrences)
+    - revolutionize (2 occurrences)
+    - Unprecedented (2 occurrences)
+
+docs/musings/the_future/intelligent_organizations/self_reproducing_ai.md
+  Words found:
+    - Leverage (1 occurrences)
+    - Explore (2 occurrences)
+    - Multifaceted (1 occurrences)
+    - Dive (2 occurrences)
+    - Crucial (1 occurrences)
+    - However (1 occurrences) (basic)
+    - Facet (1 occurrences)
+    - Inherent (1 occurrences)
+    - Underlying (1 occurrences)
+    - Amplify (1 occurrences)
+    - Implications (4 occurrences)
+    - Integration (2 occurrences)
+    - Inflection (1 occurrences)
+    - Evolve (3 occurrences)
+    - Leverage (1 occurrences)
+    - Explore (2 occurrences)
+    - Multifaceted (1 occurrences)
+    - Dive (2 occurrences)
+    - Crucial (1 occurrences)
+
+docs/projects/supernal.md
+  Words found:
+    - Discover (2 occurrences)
+    - Amplify (2 occurrences)
+    - Integration (2 occurrences)
+    - Augment (4 occurrences)
+    - Discover (2 occurrences)
+

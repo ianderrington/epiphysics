@@ -1,0 +1,376 @@
+docs/about/experience/index.md
+  Words found:
+    - Journey (1 occurrences)
+    - Journey (1 occurrences)
+
+docs/about/experience/make-truth-matter.md
+  Words found:
+    - Inherent (1 occurrences)
+    - Unity (5 occurrences)
+
+docs/about/experience/roche.md
+  Words found:
+    - Discover (1 occurrences)
+    - Discover (1 occurrences)
+
+docs/about/index.md
+  Words found:
+    - Navigation (1 occurrences)
+    - Navigation (1 occurrences)
+
+docs/about/other_interests.md
+  Words found:
+    - Explore (1 occurrences)
+    - Navigation (1 occurrences)
+    - Explore (1 occurrences)
+    - Navigation (1 occurrences)
+
+docs/about/research/decoding-long-reads.md
+  Words found:
+    - Navigation (1 occurrences)
+    - Navigation (1 occurrences)
+
+docs/about/research/detection-mapping.md
+  Words found:
+    - Navigation (1 occurrences)
+    - Navigation (1 occurrences)
+
+docs/about/research/increasing-accuracy.md
+  Words found:
+    - Leverage (2 occurrences)
+    - harnessing (1 occurrences)
+    - revolutionize (1 occurrences)
+    - Harnessing (1 occurrences)
+    - Inherent (2 occurrences)
+    - Implications (2 occurrences)
+    - Leverage (2 occurrences)
+    - harnessing (1 occurrences)
+    - revolutionize (1 occurrences)
+    - Harnessing (1 occurrences)
+
+docs/about/research/index.md
+  Words found:
+    - Explore (1 occurrences)
+    - revolutionize (1 occurrences)
+    - Unprecedented (2 occurrences)
+    - Unlock (1 occurrences)
+    - Journey (5 occurrences)
+    - Navigation (1 occurrences)
+    - Intricacies (1 occurrences)
+    - Paradigm (2 occurrences)
+    - Explore (1 occurrences)
+    - revolutionize (1 occurrences)
+    - Unprecedented (2 occurrences)
+    - Unlock (1 occurrences)
+    - Journey (5 occurrences)
+    - Navigation (1 occurrences)
+
+docs/about/research/nanopore-dna-sequencing.md
+  Words found:
+    - Navigation (1 occurrences)
+    - Navigation (1 occurrences)
+
+docs/about/research/nanopore-tweezers.md
+  Words found:
+    - Unprecedented (4 occurrences)
+    - Implications (1 occurrences)
+    - Unprecedented (4 occurrences)
+
+docs/about/research/reading-dna.md
+  Words found:
+    - Navigation (1 occurrences)
+    - Paradigm (1 occurrences)
+    - Integration (1 occurrences)
+    - Navigation (1 occurrences)
+
+docs/about/research/single-molecule-detection.md
+  Words found:
+    - Crucial (1 occurrences)
+    - Crucial (1 occurrences)
+
+docs/about/research/subangstrom-measurements.md
+  Words found:
+    - Unprecedented (1 occurrences)
+    - Navigation (1 occurrences)
+    - Implications (1 occurrences)
+    - Unprecedented (1 occurrences)
+    - Navigation (1 occurrences)
+
+docs/contact/index.md
+  Words found:
+    - Navigation (1 occurrences)
+    - Implications (1 occurrences)
+    - Navigation (1 occurrences)
+
+docs/fiction/in_the_beginning.md
+  Words found:
+    - Explore (1 occurrences)
+    - Discover (1 occurrences)
+    - Core (1 occurrences)
+    - Blend (1 occurrences)
+    - Unity (3 occurrences)
+    - Harmony (3 occurrences)
+    - Explore (1 occurrences)
+    - Discover (1 occurrences)
+
+docs/fiction/index.md
+  Words found:
+    - Explore (3 occurrences)
+    - Discover (1 occurrences)
+    - Evolve (1 occurrences)
+    - Blend (2 occurrences)
+    - Explore (3 occurrences)
+    - Discover (1 occurrences)
+
+docs/fiction/MolochoV.md
+  Words found:
+    - Dive (1 occurrences)
+    - Journey (1 occurrences)
+    - Core (3 occurrences)
+    - Cohesive (1 occurrences)
+    - Symbiosis (1 occurrences)
+    - Illuminate (1 occurrences)
+    - Augment (1 occurrences)
+    - Embody (1 occurrences)
+    - Evolve (1 occurrences)
+    - Reinforce (1 occurrences)
+    - Dive (1 occurrences)
+    - Journey (1 occurrences)
+
+docs/fiction/multiversers.md
+  Words found:
+    - Explore (1 occurrences)
+    - Explore (1 occurrences)
+
+docs/fiction/refactor.md
+  Words found:
+    - Resonate (1 occurrences)
+    - revolutionize (1 occurrences)
+    - Dive (1 occurrences)
+    - Picture (1 occurrences)
+    - To consider (1 occurrences)
+    - Ensure (3 occurrences)
+    - However (1 occurrences)
+    - Confluence (6 occurrences)
+    - Augment (1 occurrences)
+    - Evolve (3 occurrences)
+    - Unity (2 occurrences)
+    - Resonate (1 occurrences)
+    - revolutionize (1 occurrences)
+    - Dive (1 occurrences)
+    - Picture (1 occurrences)
+
+docs/fiction/super_control.md
+  Words found:
+    - Explore (2 occurrences)
+    - Unprecedented (2 occurrences)
+    - Explore (2 occurrences)
+    - Unprecedented (2 occurrences)
+
+docs/fiction/the_access_ladder.md
+  Words found:
+    - Vital (1 occurrences)
+    - Integration (1 occurrences)
+    - Evoke (1 occurrences)
+    - Unity (1 occurrences)
+    - Harmony (1 occurrences)
+
+docs/fiction/the_exchange.md
+  Words found:
+    - Explore (2 occurrences)
+    - Realm (3 occurrences)
+    - Architect (6 occurrences)
+    - Journey (1 occurrences)
+    - Core (1 occurrences)
+    - Inherent (1 occurrences)
+    - Explore (2 occurrences)
+    - Realm (3 occurrences)
+    - Realm (3 occurrences)
+    - Architect (6 occurrences)
+    - Journey (1 occurrences)
+
+docs/fiction/the_resonance/index.md
+  Words found:
+    - Discover (1 occurrences)
+    - Journey (1 occurrences)
+    - Discover (1 occurrences)
+    - Journey (1 occurrences)
+
+docs/fiction/the_resonance/resonance_7.md
+  Words found:
+    - Resonate (2 occurrences)
+    - Symphony (1 occurrences)
+    - Dive (1 occurrences)
+    - Architect (2 occurrences)
+    - Navigation (1 occurrences)
+    - Core (1 occurrences)
+    - Dynamics (2 occurrences)
+    - Fusion (10 occurrences)
+    - Emanate (1 occurrences)
+    - Harmony (1 occurrences)
+    - Conceptualize (1 occurrences)
+    - Reinforce (1 occurrences)
+    - Resonate (2 occurrences)
+    - Symphony (1 occurrences)
+    - Dive (1 occurrences)
+    - Architect (2 occurrences)
+    - Navigation (1 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/_index.md
+  Words found:
+    - Enrich (1 occurrences)
+    - Enrich (1 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/characters/char-callum.md
+  Words found:
+    - Realm (2 occurrences)
+    - Architect (2 occurrences)
+    - Realm (2 occurrences)
+    - Realm (2 occurrences)
+    - Architect (2 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/characters/char-chiana.md
+  Words found:
+    - Discover (1 occurrences)
+    - Dive (5 occurrences)
+    - To consider (1 occurrences)
+    - Ensure (2 occurrences)
+    - Core (1 occurrences)
+    - Dynamics (1 occurrences)
+    - Implications (1 occurrences)
+    - Evolve (1 occurrences)
+    - Reinforce (1 occurrences)
+    - Discover (1 occurrences)
+    - Dive (5 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/characters/char-dioro.md
+  Words found:
+    - Amplify (1 occurrences)
+    - Evolve (3 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/characters/char-s-animas.md
+  Words found:
+    - Constantly (1 occurrences)
+    - Realm (2 occurrences)
+    - Discover (1 occurrences)
+    - Dive (1 occurrences)
+    - Architect (3 occurrences)
+    - However (5 occurrences)
+    - Core (1 occurrences)
+    - Manifestation (1 occurrences)
+    - Paradigm (1 occurrences)
+    - Fusion (1 occurrences)
+    - Integration (1 occurrences)
+    - Unify (2 occurrences)
+    - Evolve (9 occurrences)
+    - Unity (1 occurrences)
+    - Constantly (1 occurrences)
+    - Realm (2 occurrences)
+    - Discover (1 occurrences)
+    - Dive (1 occurrences)
+    - Realm (2 occurrences)
+    - Architect (3 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/characters/originals/C_Callum.md
+  Words found:
+    - Realm (1 occurrences)
+    - Architect (1 occurrences)
+    - Realm (1 occurrences)
+    - Realm (1 occurrences)
+    - Architect (1 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/characters/originals/C_Chiana.md
+  Words found:
+    - Discover (1 occurrences)
+    - Dive (5 occurrences)
+    - To consider (1 occurrences)
+    - Ensure (2 occurrences)
+    - Core (1 occurrences)
+    - Implications (1 occurrences)
+    - Evolve (1 occurrences)
+    - Reinforce (1 occurrences)
+    - Discover (1 occurrences)
+    - Dive (5 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/characters/originals/C_Dioro.md
+  Words found:
+    - Amplify (1 occurrences)
+    - Evolve (3 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/characters/originals/C_S.animas.md
+  Words found:
+    - Constantly (1 occurrences)
+    - Realm (2 occurrences)
+    - Discover (1 occurrences)
+    - Dive (1 occurrences)
+    - Architect (3 occurrences)
+    - However (5 occurrences)
+    - Core (1 occurrences)
+    - Manifestation (1 occurrences)
+    - Paradigm (1 occurrences)
+    - Fusion (1 occurrences)
+    - Integration (1 occurrences)
+    - Unify (2 occurrences)
+    - Evolve (9 occurrences)
+    - Unity (1 occurrences)
+    - Constantly (1 occurrences)
+    - Realm (2 occurrences)
+    - Discover (1 occurrences)
+    - Dive (1 occurrences)
+    - Realm (2 occurrences)
+    - Architect (3 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/concepts/concept-insectals.md
+  Words found:
+    - However (1 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/concepts/concept-kesslerian-shield.md
+  Words found:
+    - Leverage (1 occurrences)
+    - Explore (1 occurrences)
+    - Architect (3 occurrences)
+    - Ensure (3 occurrences)
+    - Paradigm (1 occurrences)
+    - Implications (3 occurrences)
+    - Integration (1 occurrences)
+    - Inflection (1 occurrences)
+    - Resilience (3 occurrences)
+    - Evolve (3 occurrences)
+    - Comprehensive (1 occurrences)
+    - Leverage (1 occurrences)
+    - Explore (1 occurrences)
+    - Architect (3 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/concepts/concept-puras.md
+  Words found:
+    - Unity (1 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/concepts/originals/C_Insectals.md
+  Words found:
+    - However (1 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/concepts/originals/C_Puras.md
+  Words found:
+    - Unity (1 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/CURATION_CHECKLIST.md
+  Words found:
+    - Core (1 occurrences)
+
+docs/fiction/the_resonance/the_saga/_kb/events/evt-outline-ch-02-ararat-explosion.md
+  Words found:
+    - Catalyze (1 occurrences)
+
+docs/fiction/the_resonance/the_saga/00_Chapter_Outline.md
+  Words found:
+    - Leverage (1 occurrences)
+    - To consider (1 occurrences)
+    - Ensure (1 occurrences)
+    - Integral (1 occurrences)
+    - Core (1 occurrences)
+    - Fusion (1 occurrences)
+    - Augment (3 occurrences)
+    - Embody (1 occurrences)
+    - Evolve (1 occurrences)
+    - Leverage (1 occurrences)
+

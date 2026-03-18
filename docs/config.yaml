@@ -1,0 +1,31 @@
+site:
+  title: Epiphysics
+  description: The empirical science of Epimechanics - a generalized mechanical framework for any representable system
+  url: https://epiphysics.xyz
+  images:
+    og: /images/og-image.jpg
+    twitter: /images/twitter-image.jpg
+    favicon: /favicon.ico
+  social:
+    twitter:
+      card: summary_large_image
+      handle: '@ianderrington'
+    openGraph:
+      type: website
+      locale: en_US
+
+layout:
+  fonts:
+    - family: Inter
+      subsets: [latin]
+    - family: Space_Grotesk
+      subsets: [latin]
+      variable: --font-space-grotesk
+  header:
+    navigation:
+      default_order: [theory, applications, popular, research, experiments]
+      external_links:
+        - title: GitHub
+          href: https://github.com/ianderrington/epiphysics
+  footer:
+    copyright: "\u00A9 {year} Ian Derrington. All rights reserved."

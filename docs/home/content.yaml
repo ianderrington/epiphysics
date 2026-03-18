@@ -1,0 +1,81 @@
+title: Epiphysics
+description: The empirical science of Epimechanics
+
+hero:
+  subtitle: All representations have mechanical structure. Good ones are predictively efficient. That's a theorem.
+  quick_links:
+    - title: "Theory"
+      description: "The Epimechanics Framework"
+      link: "/theory"
+      type: "writing"
+    - title: "Applications"
+      description: "Domain-Specific Applications"
+      link: "/applications"
+      type: "writing"
+    - title: "Popular"
+      description: "Accessible Introductions"
+      link: "/popular"
+      type: "writing"
+    - title: "Research"
+      description: "Papers & Protocols"
+      link: "/research"
+      type: "writing"
+  background_style: "dynamic"
+
+featured_posts:
+  title: Core Framework
+  description: A generalized mechanical framework that applies the mathematical structure of physics to any representable system
+  projects:
+    title: "Theory Series"
+    description: "The six-part Epimechanics development"
+    display_count: 6
+    pinned:
+      - theory/index
+
+features:
+  title: Explore Epiphysics
+  description: From foundational theory to everyday applications
+  items:
+    - title: "Generalized Mechanics"
+      description: "F = dp/dt applied to any time-varying quantity. The mechanical grammar that works across all domains."
+      icon: zap
+      url: "/theory/01_generalized_mechanics"
+    - title: "Meta-Entities"
+      description: "How composite systems inherit, transform, and create new mechanical structure."
+      icon: git-branch
+      url: "/theory/02_meta_entities"
+    - title: "Intelligence & Consciousness"
+      description: "Functional definitions grounded in mechanical structure, not philosophical intuition."
+      icon: brain
+      url: "/theory/03_intelligence_consciousness_agency"
+    - title: "Applications"
+      description: "Efficiency limits, robustness metrics, future cost of decisions, entropy in the household."
+      icon: arrow-right
+      url: "/applications"
+    - title: "Experiments"
+      description: "Lagrangian vs neural ODE, conservation law discovery, perturbative hierarchy. Protocols designed and waiting."
+      icon: sparkles
+      url: "/experiments"
+    - title: "Popular Introductions"
+      description: "Why your desk gets messy, why habits are hard to break, why the best description wins."
+      icon: heart
+      url: "/popular"
+
+cta:
+  title: Get Involved
+  description: Epiphysics is open source. The theory is developed. The experiments need to be run. If you work in information theory, physics, organizational science, or machine learning, the empirical tests are designed and waiting.
+  button:
+    text: View on GitHub
+    link: https://github.com/ianderrington/epiphysics
+
+content: |
+  **Epiphysics** develops Epimechanics: a generalized mechanical framework that applies F = dp/dt to any time-varying quantity, not just physical ones.
+
+  **Core insight:** All representations have mechanical structure. Good representations have *simple* mechanical structure -- simple enough to predict dynamics at minimal computational cost. The existence of an optimal representation is a theorem (Shannon, Rissanen, Solomonoff). That it has Lagrangian structure is the conjecture.
+
+  **Current focus areas:**
+  - **Theory** -- Six-part series: atomic structure, generalized mechanics, meta-entities, consciousness, time & soul, ontology
+  - **Applications** -- Efficiency limits, robustness metrics, entropy in everyday systems
+  - **Research** -- Representational efficiency paper, rate-distortion proof, experimental protocols
+  - **Experiments** -- Lagrangian vs neural ODE, conservation law discovery, irreversibility signatures
+  - **Popular** -- Accessible introductions: why your desk gets messy, why habits are hard to break

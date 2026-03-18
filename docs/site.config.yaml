@@ -1,0 +1,28 @@
+site:
+  title: "Epiphysics"
+  description: "The empirical science of Epimechanics"
+  url: "https://epiphysics.xyz"
+  language: "en"
+  favicon: "/favicon.ico"
+  copyright: "All rights reserved"
+
+author:
+  name: "Ian Derrington"
+  email: "ianderrington@gmail.com"
+  link: "/theory"
+  jobTitle: "CEO & Founder"
+  description: "CEO/Founder of Supernal Intelligence, inventor of Nanopore Sequencing Technology, PhD in Physics"
+  social:
+    twitter: "https://x.com/ian_derrington"
+    github: "https://github.com/ianderrington"
+    linkedin: "https://www.linkedin.com/in/ian-derrington"
+
+rss:
+  title: "Epiphysics"
+  description: "Updates from Epiphysics - the empirical science of Epimechanics"
+  categories:
+    - Physics
+    - Philosophy
+    - Information Theory
+    - Complex Systems
+  ttl: 60
