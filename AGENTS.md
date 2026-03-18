@@ -128,21 +128,9 @@ npm run build        # Production build (must pass before PR)
 
 Content changes only need the build to pass. Source changes should also pass lint.
 
-## What Needs Work Right Now
+## What Needs Work
 
-### High Priority
-1. **Run Experiment 2** (simplest: quadratic vs quartic on low-dimensional time-series data)
-2. **Add missing citations** to the paper: Caticha (2012), Balasubramanian (1997), Transtrum/Sethna (sloppy models), Cranmer et al. (2020, Lagrangian NNs), Greydanus et al. (2019, Hamiltonian NNs)
-3. **Update cross-references** in theory docs (file paths changed during migration from blog)
-
-### Medium Priority
-4. Write the AI Scaling Laws application (planned in applications-plan.md)
-5. Address the circularity concern in the paper (physical conditions in → physical structure out)
-6. Refine the MDL analysis with Fisher information geometry
-
-### Lower Priority
-7. Write remaining Physics of Common Sense posts (popular series on ian.ceo, not this repo)
-8. Add P/D/C (postulate/definition/consequence) tags to equations in Parts 1-4
+See **[TODO.md](./TODO.md)** for the prioritized work queue. Check it when you're looking for what to do next.
 
 ## PR Guidelines
 
