@@ -2574,15 +2574,21 @@ body {
 
 /* === SIDENOTE STYLES (Tufte-inspired margin notes) === */
 
-/* Anchor point */
+/* Anchor point — must have layout so floated margin notes establish position */
 .sidenote-anchor {
   position: relative;
-  height: 0;
+  display: block;
   overflow: visible;
   z-index: 1;
+  /* No height:0 — let the inline content determine height */
 }
 
-/* Reference number in main text — enough spacing so adjacent refs don't collide */
+/* Block wrapper for desktop sidenotes — lets float establish position */
+.sidenote-wrapper-block {
+  display: inline;
+}
+
+/* Reference number in main text */
 .sidenote-ref {
   font-size: 0.65rem;
   color: #3182ce;
@@ -2601,20 +2607,21 @@ body {
   color: #63b3ed;
 }
 
-/* Desktop: margin note floated to the right margin — stacks naturally, no overlap */
+/* Desktop: margin note — float right, clear right so adjacent notes stack downward */
 @media (min-width: 1280px) {
   .sidenote-margin {
     float: right;
     clear: right;
-    margin-right: -280px;
-    width: 250px;
-    font-size: 0.8125rem;
+    width: 220px;
+    margin-right: -260px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-left: 0.75rem;
+    padding-bottom: 0.25rem;
+    font-size: 0.8rem;
     line-height: 1.5;
     color: #4a5568;
     border-left: 2px solid #e2e8f0;
-    padding-left: 0.75rem;
-    padding-bottom: 1rem;
-    margin-bottom: 0.5rem;
     display: block;
   }
 

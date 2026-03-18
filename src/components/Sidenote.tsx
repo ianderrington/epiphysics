@@ -27,16 +27,16 @@ export default function Sidenote({ id, number, children }: SidenoteProps) {
     return () => window.removeEventListener('resize', updateMode);
   }, []);
 
-  // Desktop: margin note
+  // Desktop: margin note — uses div (block) so float works properly
   if (mode === 'margin') {
     return (
-      <span className="sidenote-wrapper" data-sidenote-rendered={id}>
-        <sup className="sidenote-ref">{number}</sup>
-        <span className="sidenote-margin" role="note" aria-label={`Sidenote ${number}`}>
+      <div className="sidenote-wrapper-block" data-sidenote-rendered={id}>
+        <aside className="sidenote-margin" role="note" aria-label={`Sidenote ${number}`}>
           <span className="sidenote-number">{number}</span>
           {children}
-        </span>
-      </span>
+        </aside>
+        <sup className="sidenote-ref">{number}</sup>
+      </div>
     );
   }
 
