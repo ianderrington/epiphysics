@@ -202,13 +202,13 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
                 <div className="md:hidden flex items-center">
                   <img 
                     src="/i_logo.png" 
-                    alt="Ian Derrington" 
+                    alt="Epiphysics"
                     className="h-8 w-8"
                   />
                 </div>
                 {/* Desktop: Show full text */}
                 <span className="hidden md:block text-lg md:text-xl font-bold truncate">
-                  Ian Derrington
+                  Epiphysics
                 </span>
               </Link>
             </div>

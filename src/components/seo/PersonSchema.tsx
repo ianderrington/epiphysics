@@ -15,12 +15,12 @@ interface PersonSchemaProps {
 }
 
 export default function PersonSchema({
-  name = "Ian Derrington",
+  name = "Epiphysics",
   jobTitle = "CEO & Founder",
   description = "CEO/Founder of Supernal Intelligence, inventor of Nanopore Sequencing Technology, PhD in Physics",
   email = "ianderrington@gmail.com",
-  url = "https://ian.ceo",
-  image = "https://ian.ceo/images/authors/i_logo.png",
+  url = "https://epiphysics.xyz",
+  image = "https://epiphysics.xyz/favicon.ico",
   sameAs = [
     "https://x.com/ian_derrington",
     "https://github.com/ianderrington",

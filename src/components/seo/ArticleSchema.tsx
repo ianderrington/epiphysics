@@ -23,8 +23,8 @@ export default function ArticleSchema({
   image,
   url,
   author = {
-    name: "Ian Derrington",
-    url: "https://ian.ceo/#person"
+    name: "Epiphysics",
+    url: "https://epiphysics.xyz/#org"
   },
   keywords = [],
   wordCount

@@ -8,10 +8,10 @@ interface WebSiteSchemaProps {
 }
 
 export default function WebSiteSchema({
-  name = "Ian Derrington",
-  url = "https://ian.ceo",
+  name = "Epiphysics",
+  url = "https://epiphysics.xyz",
   description = "Personal blog, research insights, and musings on AI, physics, and genomics",
-  author = "https://ian.ceo/#person"
+  author = "https://epiphysics.xyz/#org"
 }: WebSiteSchemaProps) {
   const schema = {
     "@context": "https://schema.org",

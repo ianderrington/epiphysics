@@ -402,7 +402,7 @@ export default function PostComponent({ post }: PostComponentProps) {
                 {typeof post.metadata.author === 'object' && post.metadata.author !== null
                   ? post.metadata.author.name
                   : (post.metadata.authors || 
-                     (typeof post.metadata.author === 'string' ? post.metadata.author : 'Ian Derrington'))}
+                     (typeof post.metadata.author === 'string' ? post.metadata.author : 'Epiphysics'))}
                 {typeof post.metadata.author === 'object' && post.metadata.author !== null && post.metadata.author.title && (
                   <span className="text-gray-500 dark:text-gray-400 ml-1">
                     • {post.metadata.author.title}
