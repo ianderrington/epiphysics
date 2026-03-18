@@ -68,7 +68,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <ThemeProvider
       attribute="class"
       defaultTheme="light"
-      storageKey="blog-theme-preference"
+      storageKey="epiphysics-theme"
       enableSystem={false}
       disableTransitionOnChange
     >
