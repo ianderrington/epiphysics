@@ -76,9 +76,12 @@ export default function FeedbackAnnotator({ pageTitle, enabled = true }: Feedbac
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editComment, setEditComment] = useState('');
   const [confirmClear, setConfirmClear] = useState(false);
+  const [confirmSubmit, setConfirmSubmit] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
   const [mounted, setMounted] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
   const commentInputRef = useRef<HTMLTextAreaElement>(null);
+  const confettiRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -183,7 +186,7 @@ export default function FeedbackAnnotator({ pageTitle, enabled = true }: Feedbac
   const startEdit = (a: Annotation) => { setEditingId(a.id); setEditComment(a.comment); };
   const saveEdit = (id: string) => { setAnnotations(prev => prev.map(a => a.id === id ? { ...a, comment: editComment.trim() } : a)); setEditingId(null); setEditComment(''); };
 
-  const submitAsIssue = () => {
+  const buildIssueUrl = () => {
     const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
     const parts: string[] = [];
     parts.push(`## Feedback: ${pageTitle}`);
@@ -200,7 +203,25 @@ export default function FeedbackAnnotator({ pageTitle, enabled = true }: Feedbac
       });
     }
     const title = `Feedback: ${pageTitle} (${annotations.length} annotation${annotations.length !== 1 ? 's' : ''})`;
-    window.open(`https://github.com/${GITHUB_REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(parts.join('\n'))}&labels=${encodeURIComponent('community-feedback')}`, '_blank');
+    return `https://github.com/${GITHUB_REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(parts.join('\n'))}&labels=${encodeURIComponent('community-feedback')}`;
+  };
+
+  const handleSubmitClick = () => {
+    if (!confirmSubmit) { setConfirmSubmit(true); return; }
+    // Build URL before clearing
+    const url = buildIssueUrl();
+    // Show confetti + thank you
+    setShowThankYou(true);
+    setConfirmSubmit(false);
+    // Clear after a moment, then open GitHub
+    setTimeout(() => {
+      annotations.forEach(a => removeHighlight(a.id));
+      setAnnotations([]); setGeneralNote(''); setAnnotationMode(false);
+      localStorage.removeItem(getStorageKey(pageTitle));
+      window.open(url, '_blank');
+    }, 1800);
+    // Hide thank you after animation
+    setTimeout(() => { setShowThankYou(false); setPanelOpen(false); }, 3000);
   };
 
   if (!mounted || !enabled) return null;
@@ -261,6 +282,46 @@ export default function FeedbackAnnotator({ pageTitle, enabled = true }: Feedbac
           </div>
         </div>
       )}
+
+      {/* Thank you + confetti overlay */}
+      {showThankYou && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center pointer-events-none">
+          {/* Confetti particles */}
+          <div ref={confettiRef} className="absolute inset-0 overflow-hidden">
+            {Array.from({ length: 40 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute animate-bounce"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `-${Math.random() * 20 + 5}%`,
+                  width: `${Math.random() * 8 + 4}px`,
+                  height: `${Math.random() * 8 + 4}px`,
+                  backgroundColor: ['#14b8a6', '#f59e0b', '#3b82f6', '#ef4444', '#a855f7', '#22c55e', '#ec4899'][Math.floor(Math.random() * 7)],
+                  borderRadius: Math.random() > 0.5 ? '50%' : '2px',
+                  animation: `confetti-fall ${1.5 + Math.random() * 2}s ease-in forwards`,
+                  animationDelay: `${Math.random() * 0.5}s`,
+                  transform: `rotate(${Math.random() * 360}deg)`,
+                }}
+              />
+            ))}
+          </div>
+          {/* Thank you message */}
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl px-8 py-6 text-center animate-pulse border-2 border-teal-200 dark:border-teal-700">
+            <div className="text-3xl mb-2">🎉</div>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">Thank you!</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Your feedback makes Epiphysics better.<br/>Opening GitHub...</p>
+          </div>
+        </div>
+      )}
+
+      {/* CSS for confetti animation */}
+      <style jsx>{`
+        @keyframes confetti-fall {
+          0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+          100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+      `}</style>
 
       {/* Panel */}
       {panelOpen && (
@@ -355,19 +416,37 @@ export default function FeedbackAnnotator({ pageTitle, enabled = true }: Feedbac
           <div className="px-3 py-2.5 border-t border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/50 flex gap-2">
             {hasContent && (
               <>
-                <button onClick={submitAsIssue}
-                  className="flex-1 flex items-center justify-center gap-2 bg-teal-600 text-white text-xs font-medium py-2 px-3 rounded-lg hover:bg-teal-700 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 16 16" fill="currentColor">
-                    <path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-                  </svg>
-                  Submit Issue
-                </button>
-                <button onClick={clearAll}
-                  className={`text-xs px-3 py-2 rounded-lg transition-colors font-medium ${
-                    confirmClear ? 'bg-red-500 text-white hover:bg-red-600' : 'text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
-                  }`}>
-                  {confirmClear ? 'Confirm clear?' : 'Clear'}
-                </button>
+                {confirmSubmit ? (
+                  <div className="flex-1 flex flex-col gap-1.5">
+                    <p className="text-[10px] text-gray-500 text-center">This will clear your annotations from this page and open GitHub to submit the issue.</p>
+                    <div className="flex gap-2">
+                      <button onClick={() => setConfirmSubmit(false)}
+                        className="flex-1 text-xs py-2 px-3 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        Cancel
+                      </button>
+                      <button onClick={handleSubmitClick}
+                        className="flex-1 flex items-center justify-center gap-1.5 bg-teal-600 text-white text-xs font-medium py-2 px-3 rounded-lg hover:bg-teal-700 transition-colors">
+                        Confirm & Submit
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <button onClick={handleSubmitClick}
+                      className="flex-1 flex items-center justify-center gap-2 bg-teal-600 text-white text-xs font-medium py-2 px-3 rounded-lg hover:bg-teal-700 transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 16 16" fill="currentColor">
+                        <path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                      </svg>
+                      Submit Issue
+                    </button>
+                    <button onClick={clearAll}
+                      className={`text-xs px-3 py-2 rounded-lg transition-colors font-medium ${
+                        confirmClear ? 'bg-red-500 text-white hover:bg-red-600' : 'text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
+                      }`}>
+                      {confirmClear ? 'Confirm?' : 'Clear'}
+                    </button>
+                  </>
+                )}
               </>
             )}
           </div>
