@@ -371,13 +371,13 @@ const AnimatedHero = ({
                           </div>
 
                           {/* Content */}
-                          <div className="relative h-full flex items-end p-4 sm:p-5 text-white">
-                            <div>
+                          <div className="relative h-full flex items-center justify-center p-4 sm:p-5 text-white">
+                            <div className="text-center">
                               <div className="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight text-white drop-shadow-lg">
                                 {link.title}
                               </div>
                               {link.description && (
-                                <div className="text-xs sm:text-sm text-white/70 mt-1 drop-shadow">
+                                <div className="text-xs sm:text-sm text-white/70 mt-2 drop-shadow">
                                   {link.description}
                                 </div>
                               )}
