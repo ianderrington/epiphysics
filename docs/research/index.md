@@ -11,6 +11,11 @@ contentType: article
 coverImage:
   url: /images/default-projects.jpg
   alt: "Research papers and proofs in Epiphysics"
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 > **Status: Under active development.** These are draft papers and research notes, not peer-reviewed publications. The theorem is proven; the broader conjecture is open; the experimental protocols are designed but not yet run.

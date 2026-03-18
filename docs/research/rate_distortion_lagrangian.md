@@ -17,6 +17,11 @@ tags:
   - Lagrangian mechanics
   - Rate-distortion
   - Proofs
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## The Problem
@@ -29,6 +34,11 @@ Epimechanics' central conjecture: the information-theoretically optimal represen
 
 **What remains open:** Whether the quadratic form is optimal for fundamentally irreversible systems.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## Definition: Predictive Cost $C$
@@ -49,6 +59,11 @@ Both components matter. Two models can have the same description length $\mathca
 
 **Comparison assumption:** All complexity comparisons below are at **matched symmetry level**. The generic quadratic (arbitrary $a_{ij}$) is compared to the generic quartic (arbitrary $b_{ijkl}$). The isotropic quadratic ($m \cdot \delta_{ij}$) is compared to the isotropic quartic ($c \cdot \delta_{ij}\delta_{kl}$). Mixing symmetry levels (isotropic quartic vs. generic quadratic) is not a valid comparison.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## The Six-Step Argument
@@ -75,6 +90,11 @@ Block-diagonal $T$ allows independent prediction of each block. Total cost = $\m
 
 This was previously the gap. Here is the proof.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## Theorem (Minimum-Complexity Kinetic Energy)
@@ -170,6 +190,11 @@ Each step reduces $C(X, \varepsilon)$. Together they characterize $X^*$ as havin
 
 **Status:** The connection from Steps 2-5 to rate-distortion is structurally sound. What remains open: (a) whether all real systems have exploitable symmetries (if not, Step 5's Lagrangian advantage vanishes), and (b) the irreversible case (Step 4b below).
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## Perturbative Analysis: What Higher-Order Terms Do
@@ -215,6 +240,11 @@ Each successive theory adds parameters (more complex model) and gains accuracy (
 
 **The Epimechanics prediction:** The same hierarchy should appear in any domain. The quadratic Lagrangian is the first-order optimal description. When it fails to predict at the required accuracy, the corrections take the form of higher-even-order terms in $\dot{X}$ — and the number of parameters required grows polynomially with each order. This gives a specific, testable prediction about the *form* of model improvement in non-physical domains.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## The Irreversible Case: The Remaining Open Problem
@@ -255,6 +285,11 @@ If this is true, the theorem extends to the irreversible case and the quadratic 
 
 This is directly testable with existing data and modeling tools.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## Completing the Five-Step Argument
@@ -276,6 +311,11 @@ With the theorem above, the five-step argument is now:
 
 **For irreversible systems:** Steps 2-3 still hold. Step 4b is the remaining open problem, with three specific possibilities to test.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## Empirical Testing Program (Epiphysics)
@@ -367,6 +407,11 @@ The theoretical results above generate specific, non-trivially testable empirica
 
 **Why this is non-trivial:** This gives a *quantitative measure of irreversibility* extracted from data, not from first principles. If the linear correction's direction and magnitude match independently known irreversibility indicators, that's a non-circular validation of the Epimechanics framework applied to irreversible systems.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ### Summary: What Would Constitute Proof or Disproof
@@ -383,6 +428,11 @@ The theoretical results above generate specific, non-trivially testable empirica
 
 Each test is independently informative. Together they constitute a comprehensive epiphysics program for the central conjecture.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## Significance

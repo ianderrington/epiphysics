@@ -16,6 +16,11 @@ tags:
   - Information theory
   - Representational fields
   - Survival
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## The Structural Vulnerability
@@ -24,6 +29,11 @@ If $X$ is a representation ([Part 0](./epimechanics_00_prelude.md)) and fields a
 
 This is not a political observation. It is a structural consequence of any system where entities couple to representational fields rather than to reality directly ([Hoffman's Interface Theory](https://doi.org/10.1093/oso/9780393254693.001.0001)).
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## Propaganda as Field Manipulation
@@ -32,6 +42,11 @@ A reputation field $\Phi_{\text{rep}}^{(D)}(E) = \sum_j w_j \cdot r_j^{(D)}(E)$ 
 
 This is propaganda formalized: the deliberate distortion of the representational field to redirect other entities' trajectories. It works because entities couple to the field, not to reality directly. A sufficiently distorted field can make entities act against their own persistence — consuming resources that harm them, supporting structures that exploit them, attacking allies and defending threats.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## Information Pollution as Entropy Injection
@@ -40,6 +55,11 @@ This is propaganda formalized: the deliberate distortion of the representational
 
 [Disinformation campaigns](../../the_future/governance/shadow_disinformation.md) operate by the same mechanism at the social level: flooding the representational environment with false or misleading $X$'s increases the effective $\mathcal{T}_{\text{env}}$ (environmental noise temperature). This lowers the Carnot ceiling ([efficiency limits](./applications/efficiency_limits.md)) for every entity operating in that environment — collective capacity for directed action drops, even if individual entities are unaffected, because the shared field they navigate by has been degraded.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## Why This Matters for Survival
@@ -57,6 +77,11 @@ The only interventions that work are:
 
 This is a structural prediction: representational systems have a maintenance cost, and neglecting that maintenance is thermodynamically equivalent to letting entropy accumulate in a physical structure. The structure degrades. Eventually it fails.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## Connected Posts

@@ -11,6 +11,11 @@ contentType: article
 coverImage:
   url: /images/default-projects.jpg
   alt: "Experimental protocols for Epiphysics"
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 > **Status: Not yet started.** These experiments are designed and specified but have not been run. We are looking for collaborators with access to longitudinal data in organizational science, social psychology, or ML training dynamics.

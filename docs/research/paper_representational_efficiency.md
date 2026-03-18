@@ -18,18 +18,33 @@ tags:
   - Lagrangian mechanics
   - Rate-distortion
   - Representational efficiency
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 # Representational Efficiency: Why Optimal Description Has Lagrangian Structure
 
 **Ian Derrington**
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## Abstract
 
 We ask why the mathematical structure of physics — Lagrangian mechanics with quadratic kinetic energy — appears as the natural language for describing dynamical systems. We establish three results at different levels of rigor. *Proven:* among real-analytic, non-negative, zero-at-rest, time-reversible kinetic energies, the positive-definite quadratic form minimizes total predictive cost (description length plus integration cost). *Argued:* the Lagrangian framework is more compressed than generic ODE specifications for systems possessing symmetries, because Noether's theorem provides conservation laws automatically. *Conjectured:* these results suggest — but do not prove — that the information-theoretically optimal representation of dynamical systems has Lagrangian structure with quadratic kinetic energy. We develop the perturbative hierarchy of corrections when the quadratic model is insufficient, identify the irreversible case as the principal open problem, and propose four empirical tests that would confirm or refute the conjecture. The result, if it generalizes, implies that Lagrangian structure is what optimal description looks like — in any domain, not only physics.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## 1. Introduction
@@ -44,6 +59,11 @@ This reframes a metaphysical question as a mathematical one. We do not ask "why 
 
 The paper proceeds as follows. Section 2 defines predictive cost precisely, distinguishing description length from integration cost and specifying the comparison rules. Section 3 proves that the quadratic kinetic energy is the minimum-complexity form satisfying physical constraints, for time-reversible systems. Section 4 presents the compression argument for why Lagrangian specifications outperform generic ODEs when symmetries exist. Section 5 develops the perturbative hierarchy of corrections. Section 6 discusses the irreversible case. Section 7 proposes four empirical tests. Section 8 discusses implications.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## 2. Definitions
@@ -86,6 +106,11 @@ The existence of $X^*$ is established by multiple independent results: rate-dist
 
 Description length $\mathcal{K}$ is not Kolmogorov complexity. Kolmogorov complexity $K(x)$ is uncomputable (by Chaitin's incompleteness theorem [5]). $\mathcal{K}$ is the computable MDL approximation: given a model class, it counts the bits needed to specify the model and the residuals. The predictive cost $C$ extends MDL by adding integration cost — a quantity MDL does not consider, because MDL was designed for static data, not dynamical systems.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## 3. Theorem: Minimum-Complexity Kinetic Energy
@@ -164,6 +189,11 @@ These equations are linear in $\ddot{X}$ (solvable for the acceleration in $O(n^
 
 The theorem establishes that the quadratic form is optimal *within the class of kinetic energies satisfying conditions (1)–(4)*. It does not, by itself, show that the Lagrangian framework is optimal among all dynamics specifications. That is the subject of Section 4.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## 4. The Lagrangian Compression Argument
@@ -201,6 +231,11 @@ This section presents a structural argument, not a formal proof. The compression
 
 What the argument does establish is *when and why* the Lagrangian wins: when symmetries exist to exploit. It also predicts its own failure mode: for genuinely asymmetric systems, a flexible nonparametric model (e.g., a neural ODE) may match or beat the Lagrangian.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## 5. The Perturbative Hierarchy
@@ -246,6 +281,11 @@ Each successive theory adds parameters and gains accuracy. The hierarchy is exac
 
 **Prediction.** The same hierarchy should appear in any domain. When the quadratic Lagrangian fails to predict at required accuracy, corrections take the form of higher-even-order terms in $\dot{X}$, with parameter counts growing polynomially at each order. This gives a specific, testable prediction about the *form* of model improvement in non-physical domains.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## 6. The Irreversible Case
@@ -280,6 +320,11 @@ provided the linear term is small enough that $K$ remains non-negative. This is 
 
 **Empirically:** For known irreversible systems (biological evolution, institutional change, market dynamics), fit competing model forms and determine whether the best-fitting kinetic energy is quadratic (supporting (a)), Finslerian (supporting (b)), or quadratic-plus-linear (supporting (c)). This is directly testable with existing data; see Section 7, Test 4.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## 7. Empirical Testing Program
@@ -353,6 +398,11 @@ The theoretical results generate four specific, non-trivially testable predictio
 | No Lagrangian model beats a generic neural network | Lagrangian form adds no compression; the conjecture fails |
 | Symmetries found with conservation laws (Test 3) | Mechanical structure captures real dynamics |
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## 8. Discussion
@@ -402,6 +452,11 @@ The theorem is proven for time-reversible, real-analytic systems. The structural
 
 Each of these is tractable. The first is a mathematical problem with three specific candidate answers. The second requires specifying the function class precisely enough to compute description lengths. The third requires fitting models to data — a computational task, not a conceptual one.
 
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
 ---
 
 ## References
