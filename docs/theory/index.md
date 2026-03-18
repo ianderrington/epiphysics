@@ -130,7 +130,7 @@ The final part assembles the full formal ontology and states nine open questions
 
 ### Concept Flow Across Parts
 
-![Concept flow across the six parts of the series, showing how ideas build from mechanics through meta-entities, mind, time and soul, to synthesis](/docs/musings/existence_physics_and_life/epimechanics/images/concept_flow.svg)
+![Concept flow across the six parts of the series, showing how ideas build from mechanics through meta-entities, mind, time and soul, to synthesis](/docs/theory/images/concept_flow.svg)
 
 ### Applications
 

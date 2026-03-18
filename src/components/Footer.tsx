@@ -118,8 +118,15 @@ const Footer = forwardRef<HTMLElement, FooterProps>(({ config }, ref) => {
             </button>
           </div>
 
-          <div className="text-sm text-gray-600 dark:text-gray-400 text-center">
-            © {currentYear} {config.site.title} • {config.site.copyright}
+          <div className="text-sm text-gray-600 dark:text-gray-400 text-center space-y-1">
+            <div>© {currentYear} {config.site.title} • {config.site.copyright}</div>
+            <div className="text-xs text-gray-400 dark:text-gray-500">
+              Made with{' '}
+              <a href="https://supernal.ai" target="_blank" rel="noopener noreferrer"
+                className="text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-medium transition-colors">
+                Supernal Intelligence
+              </a>
+            </div>
           </div>
         </div>
       </div>

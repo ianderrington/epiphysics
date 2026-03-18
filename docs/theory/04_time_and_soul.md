@@ -100,7 +100,7 @@ The eigenvalue formulation captures the essential insight: a meta-entity persist
 
 ## Section 2: Non-Local Time and the Representational Footprint $R(E,t)$
 
-![Soul propagation: an entity's representational footprint R(E,t) growing during local time, then decaying with a long tail as patterns persist in students, institutions, and texts](/docs/musings/existence_physics_and_life/epimechanics/images/soul_propagation.svg)
+![Soul propagation: an entity's representational footprint R(E,t) growing during local time, then decaying with a long tail as patterns persist in students, institutions, and texts](/docs/theory/images/soul_propagation.svg)
 
 Every entity that exists exerts effects on the state space $X$ during $T_{\text{local}}$. Some of those effects propagate *beyond* $T_{\text{local}}$ - the entity's pattern persists in other entities, shaping their trajectories, even after the original entity's causal coherence has ended.
 

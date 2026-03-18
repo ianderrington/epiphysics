@@ -61,7 +61,7 @@ What follows is a full definitional glossary. Every concept in the series is res
 
 ### Ontology Map
 
-![Full ontology map across all six parts: Mechanics, Many-Entity, Entities, and Time and Soul, showing concept dependencies between groups](/docs/musings/existence_physics_and_life/epimechanics/images/ontology_map.svg)
+![Full ontology map across all six parts: Mechanics, Many-Entity, Entities, and Time and Soul, showing concept dependencies between groups](/docs/theory/images/ontology_map.svg)
 
 ---
 
@@ -525,7 +525,7 @@ Track $Re$ over time for multiple communities. Predict that above a threshold $R
 
 ### 4.3 Governance and Policy Utility
 
-![Early warning dashboard: measurable thermodynamic quantities feed risk assessment, which informs intervention strategies - cooling, pressure release, viscosity adjustment, and institutional reinforcement](/docs/musings/existence_physics_and_life/epimechanics/images/early_warning_dashboard.svg)
+![Early warning dashboard: measurable thermodynamic quantities feed risk assessment, which informs intervention strategies - cooling, pressure release, viscosity adjustment, and institutional reinforcement](/docs/theory/images/early_warning_dashboard.svg)
 
 **P10. Landscape vs. force interventions.** The Lagrangian framework implies two fundamentally different intervention strategies: applying force $F$ (direct persuasion, mandates, incentives, enforcement) vs. reshaping the potential landscape $V(X)$ (institutional redesign, norm engineering, information environment restructuring). Epimechanics predicts that landscape interventions are more efficient for lasting change - they move the attractor, so entities naturally flow toward the new equilibrium - while force interventions require continuous application and produce reversion when removed.
 
