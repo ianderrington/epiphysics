@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface SidenoteProps {
   id: string;
@@ -14,6 +14,9 @@ export default function Sidenote({ id, number, children }: SidenoteProps) {
   const [mode, setMode] = useState<DisplayMode>('margin');
   const [expanded, setExpanded] = useState(false);
   const [tooltipVisible, setTooltipVisible] = useState(false);
+  const [highlighted, setHighlighted] = useState(false);
+  const marginRef = useRef<HTMLElement>(null);
+  const refRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const updateMode = () => {
@@ -27,15 +30,50 @@ export default function Sidenote({ id, number, children }: SidenoteProps) {
     return () => window.removeEventListener('resize', updateMode);
   }, []);
 
-  // Desktop: margin note — uses div (block) so float works properly
+  const flashMarginNote = () => {
+    if (marginRef.current) {
+      marginRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setHighlighted(true);
+      setTimeout(() => setHighlighted(false), 1500);
+    }
+  };
+
+  const flashRef = () => {
+    if (refRef.current) {
+      refRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setHighlighted(true);
+      setTimeout(() => setHighlighted(false), 1500);
+    }
+  };
+
+  // Odd = right margin, even = left margin
+  const side = number % 2 === 1 ? 'right' : 'left';
+
+  // Desktop: margin note
   if (mode === 'margin') {
     return (
       <div className="sidenote-wrapper-block" data-sidenote-rendered={id}>
-        <aside className="sidenote-margin" role="note" aria-label={`Sidenote ${number}`}>
+        <aside
+          ref={marginRef}
+          className={`sidenote-margin sidenote-margin-${side} ${highlighted ? 'sidenote-flash' : ''}`}
+          role="note"
+          aria-label={`Sidenote ${number}`}
+          onClick={flashRef}
+          style={{ cursor: 'pointer' }}
+        >
           <span className="sidenote-number">{number}</span>
           {children}
         </aside>
-        <sup className="sidenote-ref">{number}</sup>
+        <sup
+          ref={refRef}
+          className={`sidenote-ref sidenote-ref-interactive ${highlighted ? 'sidenote-ref-flash' : ''}`}
+          onClick={flashMarginNote}
+          role="button"
+          tabIndex={0}
+          title={`Go to sidenote ${number}`}
+        >
+          {number}
+        </sup>
       </div>
     );
   }

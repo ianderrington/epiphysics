@@ -2583,9 +2583,10 @@ body {
   /* No height:0 — let the inline content determine height */
 }
 
-/* Block wrapper for desktop sidenotes — lets float establish position */
+/* Block wrapper for desktop sidenotes — position context for absolute margin notes */
 .sidenote-wrapper-block {
   display: inline;
+  position: relative;
 }
 
 /* Reference number in main text */
@@ -2597,37 +2598,74 @@ body {
   vertical-align: super;
   margin-left: 1px;
   margin-right: 2px;
-  cursor: default;
+  cursor: pointer;
   display: inline-block;
   min-width: 0.6em;
   text-align: center;
+  transition: background-color 0.3s ease;
+  border-radius: 3px;
+  padding: 0 1px;
+}
+
+.sidenote-ref:hover {
+  background-color: rgba(49, 130, 206, 0.15);
 }
 
 .dark .sidenote-ref {
   color: #63b3ed;
 }
 
-/* Desktop: margin note — float right, clear right so adjacent notes stack downward */
+/* Desktop: margin notes — odd numbers right, even numbers left */
 @media (min-width: 1280px) {
   .sidenote-margin {
-    float: right;
-    clear: right;
-    width: 220px;
-    margin-right: -260px;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    padding-left: 0.75rem;
-    padding-bottom: 0.25rem;
+    position: absolute;
+    width: 200px;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0.75rem;
     font-size: 0.8rem;
     line-height: 1.5;
     color: #4a5568;
-    border-left: 2px solid #e2e8f0;
     display: block;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 4px;
+  }
+
+  /* Odd sidenotes: right margin */
+  .sidenote-margin-right {
+    right: -240px;
+    top: 0;
+    border-left: 2px solid #e2e8f0;
+  }
+
+  /* Even sidenotes: left margin */
+  .sidenote-margin-left {
+    left: -240px;
+    top: 0;
+    border-right: 2px solid #e2e8f0;
+    text-align: right;
   }
 
   .dark .sidenote-margin {
     color: #a0aec0;
+  }
+
+  .dark .sidenote-margin-right {
     border-left-color: #4a5568;
+  }
+
+  .dark .sidenote-margin-left {
+    border-right-color: #4a5568;
+  }
+
+  /* Flash animation when clicking ref ↔ note */
+  .sidenote-flash {
+    background-color: rgba(20, 184, 166, 0.15) !important;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.3);
+  }
+
+  .dark .sidenote-flash {
+    background-color: rgba(20, 184, 166, 0.2) !important;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.25);
   }
 
   .sidenote-number {
@@ -2639,9 +2677,22 @@ body {
     min-width: 1em;
   }
 
+  .sidenote-margin-left .sidenote-number {
+    margin-right: 0;
+    margin-left: 0.35rem;
+  }
+
   .dark .sidenote-number {
     color: #63b3ed;
   }
+}
+
+/* Ref flash when clicking margin note to go back */
+.sidenote-ref-flash {
+  background-color: rgba(20, 184, 166, 0.3);
+  border-radius: 3px;
+  padding: 0 2px;
+  transition: background-color 0.3s ease;
 }
 
 /* Tablet: tooltip on hover (768px - 1279px) */
