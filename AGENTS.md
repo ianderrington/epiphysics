@@ -85,7 +85,13 @@ Every application document must tag each section:
 
 If a section is only relabeling, say so honestly. The litmus test: does Epimechanics generate a prediction that the domain-specific theory alone does NOT make?
 
-### 3. Mathematical conventions
+### 3. Sidenotes
+
+Use `> [!sidenote]` for margin notes. Variants: `[!caveat]` (amber), `[!tip]` (purple), `[!note]` (green), `[!important]` (red).
+
+**Keep sidenotes short** — one medium paragraph or two short sentences max. Long sidenotes break the margin layout and overwhelm the main text. If it's longer than ~3 lines in the margin, it belongs in the body text, not a sidenote.
+
+### 4. Mathematical conventions
 
 - Mass is potentially tensorial: $p_i = \mathcal{M}_{ij}\dot{X}^j$ (general form). The scalar $p = \mathcal{M}\dot{X}$ is the isotropic approximation. Always note which you're using.
 - The Lagrangian $L = \frac{1}{2}\mathcal{M}_{ij}\dot{X}^i\dot{X}^j - V(X)$ is the **strongest structural postulate**. Label it as such.

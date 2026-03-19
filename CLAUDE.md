@@ -10,6 +10,7 @@ Epiphysics is the empirical science of Epimechanics. Theory in `docs/theory/`, a
 - The Lagrangian is the STRONGEST STRUCTURAL POSTULATE — label it as such
 - ρ_ac is EMERGENT at the loop level, not the bond level
 - All content needs `tts:` and `feedback:` in frontmatter
+- Sidenotes: keep SHORT (1 medium paragraph max). Use `[!sidenote]`, `[!caveat]`, `[!tip]`, `[!note]`, `[!important]`
 
 ## Content Structure
 - `docs/` → rendered by Next.js as the site
