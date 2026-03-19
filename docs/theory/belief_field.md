@@ -102,7 +102,7 @@ Physics determines what happens to everything — rocks, bacteria, brains. [Wolf
 
 The missing ingredient is **scale**. When you coarse-grain from micro to macro — integrating out fine-grained degrees of freedom to obtain an effective description at a larger scale — most micro-level dynamics average away. They contribute nothing to the macro-level trajectory. Some do not average away. They persist across scales, making a macro-level difference.
 
-**Computation, in Epimechanics, is what survives coarse-graining: the internal degrees of freedom whose contribution to future states does not average away when you move to a coarser description.** It is a continuous quantity, not a binary, and it is always relative to a scale of description.
+**Computation, in Epimechanics, is what survives coarse-graining: the internal degrees of freedom whose contribution to future states does not average away when you coarse-grain to the scale required by a given prediction task.** It is a continuous quantity, not a binary, and it is relative to the task — just as intelligence $I$ is defined relative to a domain and horizon ([Part 3](./03_intelligence_consciousness_agency.md)). The scale is not arbitrary or subjective: it is determined by what you are trying to predict, at what accuracy, over what time horizon. Predict where a rock lands → center-of-mass scale → ~0 surviving DOF → ~0 computation. Predict how it fractures → crystal-defect scale → some surviving DOF → some computation. The system is the same; the computation depends on the question.
 
 ### The argument by example
 
@@ -119,7 +119,7 @@ In physics, coarse-graining has a precise meaning via the renormalization group:
 
 ### Distinguishing computation from mere causal relevance
 
-Not every internal DOF that survives coarse-graining is performing computation. A spring's elastic constant survives coarse-graining (it determines macro-trajectory), but it is fixed — it does not update based on input. The surviving DOF must satisfy a second condition: they must be **updated by interaction with the environment in ways that alter future-state selection**. A spring's stiffness is a parameter. A synapse's weight is a computation — it changes based on input and that change alters future behavior. The full definition is: computation = internal DOF that (a) survive coarse-graining at the relevant scale, AND (b) are input-dependent — updated by environmental interaction in ways that modify which future states are selected.
+Not every internal DOF that survives coarse-graining is performing computation. A spring's elastic constant survives coarse-graining (it determines macro-trajectory), but it is fixed — it does not update based on input. The surviving DOF must satisfy a second condition: they must be **updated by interaction with the environment in ways that alter future-state selection**. A spring's stiffness is a parameter. A synapse's weight is a computation — it changes based on input and that change alters future behavior. The full definition is: **computation = internal DOF that (a) survive coarse-graining to the scale required by a prediction task, AND (b) are input-dependent — updated by environmental interaction in ways that modify which future states are selected.**
 
 | Entity | Surviving DOF | Input-dependent? | Computation | Belief field |
 |---|---|---|---|---|
