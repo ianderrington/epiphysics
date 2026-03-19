@@ -51,7 +51,7 @@ tts:
 
 The standard move when connecting physics to social or metaphysical ideas is analogy. *Society is like a physical system*. *Ideas behave like particles*. *Culture flows like a fluid*.
 
-The claim here is that the mathematical structure of physics - state, derivative, force, energy, coupling - does not depend on the substrate being physical. When the state variable $X$ is left abstract, the same equations can describe a wide range of systems with quantities that change continuously under influences. Physics as it is taught is one instantiation - state spaces are physical, constants are measured, and the potential landscape $V(X)$ is known. What follows explores the general case: the same formal skeleton applied to any domain, with domain-specific empirical content filling in what the skeleton leaves open.
+The claim here is that the mathematical structure of physics - state, derivative, force, energy, coupling - does not depend on the substrate being physical. When the state variable $X$ is left abstract, the same equations can describe a wide range of systems with quantities that change continuously under influences. Physics as it is taught is one instantiation - state spaces are physical, constants are measured, and the potential landscape $V(X)$ is known. What follows explores the general case: the same formal skeleton applied to any domain, with domain-specific empirical content filling in what the skeleton leaves open. At coarse-grained levels, this grammar acquires dissipation and stochastic terms absent at the fundamental level — see Part 0.5 on cross-level tracing.
 
 This abstraction has precedent. [Strogatz's *Nonlinear Dynamics and Chaos* (1994)](https://www.stevenstrogatz.com/books/nonlinear-dynamics-and-chaos-with-applications-to-physics-biology-chemistry-and-engineering) presents the phase space formalism as applicable to physics, biology, chemistry, and engineering simultaneously - large classes of systems from completely different domains described by the same mathematical skeleton. Strogatz's framework uses states and trajectories - the phase space formalism. The present series extends this further, proposing that the full mechanical apparatus (mass, force, energy, Lagrangian) also carries over when causal density provides the analogue of mass. [Norbert Wiener's *Cybernetics* (1948)](https://mitpress.mit.edu/9780262730099/cybernetics/) elevated state, feedback, and control to a universal level covering machines, organisms, and societies. The [Scholarpedia article on state space](https://www.scholarpedia.org/article/State_space) states directly: "Large classes of engineering, biological, social, and economic systems may be represented by state-determined system models." The generalization in this series extends this tradition further - to the informational and mimetic substrates that constitute minds, cultures, and distributed entities, and to the coupling structure that connects entities to domains of reality.
 
@@ -103,6 +103,8 @@ Epimechanics begins with $X$ - a state variable. But what *has* a state? The wor
 An **entity** is anything with a describable state - anything you can assign an $X$ to. What makes some entities more interesting than others is **auto-causal density** - the degree to which a structure's causal events produce the conditions for their own continuation.
 
 $$\rho_{\text{ac}}(x) = \text{density of causal events at } x \text{ that sustain the structure producing them}$$
+
+**Note:** $\rho_{\text{ac}}(x)$ is evaluated at point $x$ but reflects the loop structure passing through $x$ — it is an emergent property of causal cycles, not measurable from single-point bond data alone (see Part 0.5 on emergent auto-causality).
 
 A flame's combustion maintains the heat that maintains combustion. An organism's metabolism maintains the cells that perform metabolism. An institution's processes maintain the institution that runs the processes. [Hofstadter (*I Am a Strange Loop*, 2007)](https://en.wikipedia.org/wiki/I_Am_a_Strange_Loop) explored a related concept - 'strange loops' - self-referential structures whose high-level patterns causally influence the low-level processes that produce them. Auto-causal density generalizes this: it includes non-representational self-sustaining structures (like flames) as well as the representational ones Hofstadter focused on.
 
@@ -233,7 +235,7 @@ This structure is hierarchical. An organism's momentum is the $\rho_{\text{causa
 
 **$E = \mathcal{M}c_{\mathcal{D}}^2$ - stored energy in internal structure**: In physics, $E = mc^2$ says the energy stored in a body's internal structure equals its mass times the square of the maximum causal propagation speed. Generalized: the energy locked into maintaining an entity's persistent configuration is proportional to $\mathcal{M}$ times $c_{\mathcal{D}}^2$, where $c_{\mathcal{D}}$ is the maximum speed at which causal influence propagates in domain $\mathcal{D}$. Every domain has a finite propagation speed: information travels at finite speed through social networks, causal influence propagates at finite speed through institutional hierarchies, ideas spread at finite speed through epistemic communities. When an entity's internal structure is disrupted - a belief system shatters, an institution collapses - the energy that was maintaining that structure is released as capacity for state change. This is the same mathematical relationship as $E = mc^2$ - causal density times maximum propagation speed squared - applied at a higher level of abstraction. Whether the structural isomorphism reflects a deeper identity (as the Wolfram conjecture suggests) or a powerful formal analogy is an open question addressed in the Coda below.
 
-**Form**: $p = \mathcal{M} \cdot \dot{X}$, where $\mathcal{M}$ is the entity's causal event density - its generalized mass.
+**Form**: $p = \mathcal{M} \cdot \dot{X}$, where $\mathcal{M}$ is the entity's total causal content — the integral of causal event density over the entity's region — its generalized mass.
 
 **The mass tensor generalization.** The form $p = \mathcal{M} \cdot \dot{X}$ treats mass as a scalar - the same resistance to change in every direction through state space. This is valid when the state space is **isotropic** with respect to the entity. For abstract entities, it generally does not hold: a belief system resists identity-related change far more than aesthetic change. The resistance is direction-dependent, which means mass is properly a **tensor**:
 
@@ -359,6 +361,8 @@ $$V = V(X)$$
 
 is the **potential energy** - energy stored in the entity's position within a field, available to be converted into state change. A person in an unstable social position has high potential energy: capacity for state change stored in their configuration relative to the social field, waiting for a perturbation to release it. A compressed spring, a person on the verge of a decision, an institution at the tipping point of reform - all have high $V(X)$ relative to the attractor they are about to fall toward.
 
+$V$'s value lies in its topology — the shape of the landscape (where basins, barriers, and gradients are) — not in converting everything to a single energy number.
+
 Total energy is:
 
 $$E_{\text{total}} = T + V + E_{\text{int}}$$
@@ -397,7 +401,7 @@ The generalized implications are immediate:
 
 ## 4b. The Lagrangian, Least Action, and Equilibrium Principles
 
-Epimechanics so far has asserted $F = dp/dt$ and $p = \mathcal{M}\dot{X}$ as postulates. But in physics, these are not postulates - they are consequences of a deeper principle. The most fundamental formulation of mechanics is not $F = ma$ but the **principle of stationary action**:
+Epimechanics so far has asserted $F = dp/dt$ and $p = \mathcal{M}\dot{X}$ as postulates. But in physics, these are not postulates - they are consequences of a deeper principle. In physics, the most fundamental formulation of mechanics is not $F = ma$ but the **principle of stationary action**. Epimechanics proposes (as its strongest structural postulate) that this extends to generalized state spaces:
 
 $$\delta S = 0, \quad S = \int_0^T L(X, \dot{X}, t) \, dt$$
 

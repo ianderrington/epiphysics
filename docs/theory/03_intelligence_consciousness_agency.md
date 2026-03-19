@@ -280,4 +280,6 @@ That requires the concepts of local time, non-local time, and soul.
 
 ---
 
+For the formal definition of computation in Epimechanics — as internal degrees of freedom that survive coarse-graining and are input-dependent — see the [Belief Fields](./belief_field.md) theory document.
+
 [← Part 2: Meta-Entities](./epimechanics_02_meta_entities.md) | [→ Part 4: Local Time, Non-Local Time, and Soul](./epimechanics_04_time_and_soul.md)

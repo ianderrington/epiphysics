@@ -109,7 +109,7 @@ We do not claim that reality is "made of" states. We claim that for any system, 
 
 An **entity**, in Epimechanics, is anything you can represent with an $X$ — anything you can describe, name, or model. A proton is an entity. A fleeting thought is an entity. A nonsense idea that exists for two seconds before being forgotten is an entity. The word is deliberately broad.
 
-What distinguishes *vitality of* entities from trivial ones is **auto-causal density** $\rho_{\text{ac}}$ — how densely self-sustaining causal events are packed within the structure of that entity. A flame actively maintains the conditions for its own continuation ($\rho_{\text{ac}}$ moderate). An organism does this intensely ($\rho_{\text{ac}}$ high). The average humidity over Kansas does not sustain itself at all ($\rho_{\text{ac}} \approx 0$).
+What distinguishes *interesting* entities from trivial ones is **auto-causal density** $\rho_{\text{ac}}$ — how densely self-sustaining causal events are packed within the structure of that entity. A flame actively maintains the conditions for its own continuation ($\rho_{\text{ac}}$ moderate). An organism does this intensely ($\rho_{\text{ac}}$ high). The average humidity over Kansas does not sustain itself at all ($\rho_{\text{ac}} \approx 0$).
 
 Entity-ness is a spectrum, not a binary. A proton, an organism, an institution, a meme, a cloud, a fleeting thought, a random fluctuation — all are entities. They differ in how strongly they sustain themselves. The framework's mechanical apparatus (mass, force, energy) applies to all of them; for very low $\rho_{\text{ac}}$ entities, the quantities are near-zero and uninteresting.
 

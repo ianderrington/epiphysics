@@ -66,7 +66,7 @@ The framework commits to the following: **a causal event is an energy exchange, 
 | Quantity | Definition | Units (physical level) |
 |---|---|---|
 | $\rho_{\text{causal}}$ | Energy density of causal events | J per unit measure ($\text{J/m}^3$ for spatial systems) |
-| $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ | Total internal energy | J |
+| $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ | Total causal content (integral of $\rho_{\text{causal}}$ over entity's region). Related to internal energy via $E_{\text{int}} = \mathcal{M} \cdot c_D^2$. In natural units ($c_D = 1$), $\mathcal{M}$ and $E_{\text{int}}$ coincide numerically but they measure different things: $\mathcal{M}$ measures causal structure, $E_{\text{int}}$ measures the energy maintaining it. | J |
 | Mass-equivalent | $\mathcal{M} / c_D^2$ | kg |
 | $E_{\text{int}} = \mathcal{M} \, c_D^2$ | Internal energy (tautology at physical level) | J |
 
@@ -178,7 +178,7 @@ The six atomic quantities combine to produce the framework's higher-level concep
 
 | Derived Quantity | Atomic Composition | What It Means |
 |---|---|---|
-| **Generalized mass** $\mathcal{M}$ | $\sum_{\text{bonds}} \sigma_b$ | Total bond strength - resistance to state change |
+| **Generalized mass** $\mathcal{M}$ | $\sum_{\text{bonds}} \sigma_b$ | Total causal content — sum of bond strengths; determines resistance to state change |
 | **Auto-causal density** $\rho_{\text{ac}}$ | **Emergent** - density of *closed loops*, not individual bonds; individual steps may have $\rho_{\text{ac}} = 0$ while the loop has $\rho_{\text{ac}} > 0$ | Self-sustaining fraction of causal structure (a loop-level property) |
 | **Maintenance cost** $C_{\text{maint}}$ | $\dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$ | Net entropy accumulation rate - NOT proportional to $\mathcal{M}$ |
 | **Robustness** | $\Delta V / \langle \text{perturbation} \rangle$ | Basin depth relative to typical environmental shocks |
@@ -186,6 +186,8 @@ The six atomic quantities combine to produce the framework's higher-level concep
 | **Durability** | $\Delta V \times \dot{R}_{\text{repair}} / \dot{S}_{\text{int}}$ | How long the entity persists without external intervention |
 | **Fragility** | $(\partial \mathcal{M} / \partial \text{perturbation})$ near $\Delta V$ boundary | How sharply mass drops when basin boundary is approached |
 | **Antifragility** | $\partial \Delta V / \partial \text{stress} > 0$ | Basin depth *increases* under perturbation (the entity gets stronger from stress) |
+
+**Note:** $\mathcal{M} = \sum \sigma_b$ is the isotropic (scalar) approximation. When bond strengths vary by direction, $\mathcal{M}$ becomes a tensor $\mathcal{M}_{ij}$ whose eigenvalues give directional resistance. The bond network's anisotropy determines the mass tensor's structure (see Part 1, Section 2b).
 
 ### Why $\mathcal{M}$ and maintenance cost diverge
 
