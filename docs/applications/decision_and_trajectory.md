@@ -52,7 +52,7 @@ tts:
   enableSpeed: true
 ---
 
-[Parts 1](../epimechanics_01_generalized_mechanics.md) through [5](../epimechanics_05_ontology_and_open_questions.md) built Epimechanics: entities, forces, intelligence, consciousness, agency, and soul. But Epimechanics, as stated, is primarily *descriptive* - it characterizes what entities are, how they couple to fields, and what they leave behind. It does not yet formalize how entities *choose*. An entity with nonzero agency ($A > 0$) selects actions, rather than passively responding to forces. The selection process is not captured by the force equation $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$ alone, because that equation describes the *result* of forces on state trajectories, not the *generation* of forces by agents operating under uncertainty.
+[Parts 1](../theory/01_generalized_mechanics.md) through [5](../theory/05_ontology_and_open_questions.md) built Epimechanics: entities, forces, intelligence, consciousness, agency, and soul. But Epimechanics, as stated, is primarily *descriptive* - it characterizes what entities are, how they couple to fields, and what they leave behind. It does not yet formalize how entities *choose*. An entity with nonzero agency ($A > 0$) selects actions, rather than passively responding to forces. The selection process is not captured by the force equation $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$ alone, because that equation describes the *result* of forces on state trajectories, not the *generation* of forces by agents operating under uncertainty.
 
 This part asks: given an entity with bounded consciousness (partial access to $X$), nonzero intelligence (predictive accuracy over $dX/dt$), and nonzero agency (consciousness-directed causal power) - how does it select among possible actions? What is the formal structure of choosing?
 
@@ -76,13 +76,13 @@ The POMDP framework was formalized by [Åström (1965)](https://doi.org/10.1016/
 
 ### 1.1 State Space $S$ → Generalized State Space
 
-The POMDP state space $S$ is the generalized state space from [Part 1](../epimechanics_01_generalized_mechanics.md): $X \in S$, where $S$ may be physical, informational, social, or any projection of the Ruliad. The state includes not only the entity's own configuration but the full configuration of all entities and fields it interacts with. The true state is the entire relevant section of $X$ - the entity's own state, the states of other entities, and the field values at the entity's position.
+The POMDP state space $S$ is the generalized state space from [Part 1](../theory/01_generalized_mechanics.md): $X \in S$, where $S$ may be physical, informational, social, or any projection of the Ruliad. The state includes not only the entity's own configuration but the full configuration of all entities and fields it interacts with. The true state is the entire relevant section of $X$ - the entity's own state, the states of other entities, and the field values at the entity's position.
 
 This immediately establishes a structural fact: the state space is vastly larger than any entity's capacity to observe it. Even an entity with maximal consciousness $C$ models only a projection of $S$. The gap between the true state and the entity's model of it is the fundamental driver of decision-theoretic structure.
 
 ### 1.2 Action Space $\mathcal{A}$ → Outgoing Causal Power
 
-An action $a \in \mathcal{A}$ is any exertion of outgoing causal power $\mathcal{P}_E$ ([Part 3](../epimechanics_03_intelligence_consciousness_agency.md)). Recall:
+An action $a \in \mathcal{A}$ is any exertion of outgoing causal power $\mathcal{P}_E$ ([Part 3](../theory/03_intelligence_consciousness_agency.md)). Recall:
 
 $$\mathcal{P}_{E \to j}^{(\mathcal{D})} = \mathbf{F}_{E \to j}^{(\mathcal{D})} \cdot \mathbf{v}_{X_j}^{(\mathcal{D})}$$
 
@@ -114,9 +114,9 @@ Three regimes of transition-model quality matter:
 
 The observation function $O(o | s', a)$ specifies what the entity actually perceives of the state after acting. This is the formal structure of **consciousness** in its role as observational access.
 
-[Part 3](../epimechanics_03_intelligence_consciousness_agency.md) defined consciousness $C$ as the scope and accuracy of an entity's internal model of states $X$ - representing actual, possible, counterfactual, or hypothetical conditions. Here we make the connection precise: the observation function $O$ is the *mechanism* through which consciousness $C$ is realized. The entity does not observe $X$ directly. It observes $o \in \Omega$, a lossy, noisy projection of $X$ through $O$.
+[Part 3](../theory/03_intelligence_consciousness_agency.md) defined consciousness $C$ as the scope and accuracy of an entity's internal model of states $X$ - representing actual, possible, counterfactual, or hypothetical conditions. Here we make the connection precise: the observation function $O$ is the *mechanism* through which consciousness $C$ is realized. The entity does not observe $X$ directly. It observes $o \in \Omega$, a lossy, noisy projection of $X$ through $O$.
 
-The consciousness tensor $\mathbf{C} \in \mathbb{R}^{n_i \times n_j \times n_k}$ from [Part 3](../epimechanics_03_intelligence_consciousness_agency.md) determines the structure of $O$:
+The consciousness tensor $\mathbf{C} \in \mathbb{R}^{n_i \times n_j \times n_k}$ from [Part 3](../theory/03_intelligence_consciousness_agency.md) determines the structure of $O$:
 
 - **Allo-representation** determines which other entities' states are observable: high allo-representation means $O$ transmits information about others' internal states (their beliefs, intentions, emotional valence). Low allo-representation means $O$ is opaque to others - the entity sees their behavior but not their internal configuration.
 - **Auto-modeling** determines which of the entity's own states are observable to itself: high auto-modeling means $O$ includes accurate proprioceptive information about the entity's own belief states, emotional states, and coupling parameters. Low auto-modeling means the entity acts without accurate self-knowledge - it may not know its own biases, limitations, or current emotional state.
@@ -124,13 +124,13 @@ The consciousness tensor $\mathbf{C} \in \mathbb{R}^{n_i \times n_j \times n_k}$
 
 The degree of partial observability - how much of the true state $s$ is hidden from the entity - is therefore a direct function of $\mathbf{C}$. An entity with $\|\mathbf{C}\| = 0$ (zero consciousness) observes nothing: $O$ transmits no information, and the POMDP degenerates into a process with no observational input. An entity with perfect consciousness across all dimensions would have a bijective $O$ - full observability, reducing the POMDP to a standard MDP. All real entities fall between these extremes.
 
-[Part 1b](../epimechanics_01b_uncertainty_coordinates_relativity.md) established that observation changes the state (the observer effect). In the POMDP formalism, this is captured by the dependence of $O$ on the action $a$: the entity's choice of how to observe - which questions to ask, which instruments to deploy, which aspects of the environment to attend to - affects what it sees. Observation is not passive reception; it is an action with consequences for subsequent states. The observation function $O(o | s', a)$ encodes this: the observation depends on what the entity did, because doing changes the state from which the observation is drawn.
+[Part 1b](../theory/01b_uncertainty_coordinates_relativity.md) established that observation changes the state (the observer effect). In the POMDP formalism, this is captured by the dependence of $O$ on the action $a$: the entity's choice of how to observe - which questions to ask, which instruments to deploy, which aspects of the environment to attend to - affects what it sees. Observation is not passive reception; it is an action with consequences for subsequent states. The observation function $O(o | s', a)$ encodes this: the observation depends on what the entity did, because doing changes the state from which the observation is drawn.
 
 ### 1.5 Reward Function $r$ → Soul Trajectory Optimization
 
 The reward function $r(s, a)$ specifies the immediate value of being in state $s$ and taking action $a$. What is the entity optimizing?
 
-Epimechanics' answer connects decision to soul. From [Part 4](../epimechanics_04_time_and_soul.md), the representational footprint:
+Epimechanics' answer connects decision to soul. From [Part 4](../theory/04_time_and_soul.md), the representational footprint:
 
 $$\mathbf{R}(E,t) = \sum_j \mathbf{K}_{Ej}(t) \cdot \delta X_j(E,t)$$
 
@@ -182,9 +182,9 @@ $$b(s) = P(S_t = s \mid o_1, a_1, o_2, a_2, \ldots, o_t)$$
 
 The belief state $b$ is a probability distribution over $S$, conditioned on the entity's entire history of observations and actions. It is the Bayesian summary of everything the entity knows about the current state of the world.
 
-The belief state is the entity's **internal model** $M_E$ from [Part 3](../epimechanics_03_intelligence_consciousness_agency.md), now given precise probabilistic form. Intelligence $I(E)$ is the quality of the transition model $\hat{P}_E$ that propagates beliefs forward; consciousness $C$ is the scope of the observation function $O$ that updates beliefs with new information. Together they determine the accuracy and breadth of $b$.
+The belief state is the entity's **internal model** $M_E$ from [Part 3](../theory/03_intelligence_consciousness_agency.md), now given precise probabilistic form. Intelligence $I(E)$ is the quality of the transition model $\hat{P}_E$ that propagates beliefs forward; consciousness $C$ is the scope of the observation function $O$ that updates beliefs with new information. Together they determine the accuracy and breadth of $b$.
 
-**Two roles of consciousness in the POMDP mapping**: [Part 3](../epimechanics_03_intelligence_consciousness_agency.md)'s consciousness $C$ performs two distinct functions that the POMDP separates: (1) the *observation function* $O(o|s',a)$ - what the entity perceives, determined by the scope of its sensory access - and (2) the *belief state* $b(t)$ - the entity's internal model of $X$, maintained by Bayesian updating. Mapping $C$ onto $O$ alone (as in Section 1.4) captures only the first role. The belief state $b(t)$ captures the second - the representational content of the model, which is the aspect of consciousness most relevant to intelligence and agency. A high-$C$ entity has both a rich observation function (perceives much) and a well-maintained belief state (represents accurately); the POMDP decomposition makes this two-factor structure explicit.
+**Two roles of consciousness in the POMDP mapping**: [Part 3](../theory/03_intelligence_consciousness_agency.md)'s consciousness $C$ performs two distinct functions that the POMDP separates: (1) the *observation function* $O(o|s',a)$ - what the entity perceives, determined by the scope of its sensory access - and (2) the *belief state* $b(t)$ - the entity's internal model of $X$, maintained by Bayesian updating. Mapping $C$ onto $O$ alone (as in Section 1.4) captures only the first role. The belief state $b(t)$ captures the second - the representational content of the model, which is the aspect of consciousness most relevant to intelligence and agency. A high-$C$ entity has both a rich observation function (perceives much) and a well-maintained belief state (represents accurately); the POMDP decomposition makes this two-factor structure explicit.
 
 ### 2.2 Belief Update: The Bayesian Filter
 
@@ -218,7 +218,7 @@ This yields a taxonomy of epistemic failure modes:
 
 The belief state has its own generalized mass. A belief state $b$ that is sharply peaked (high confidence) around a particular state $s^*$ has high $\mathcal{M}_b$ - it takes a strong observation (high likelihood ratio) to shift the peak. A diffuse belief state (high uncertainty) has low $\mathcal{M}_b$ - even a weak observation can reshape it.
 
-This connects directly to [Part 1](../epimechanics_01_generalized_mechanics.md)'s concept of generalized mass as resistance to state change. A person with high conviction has a peaked $b$ - high $\mathcal{M}_b$. Shifting that conviction requires either very strong evidence (a high-likelihood observation that overwhelms the prior) or sustained moderate evidence over time (many observations, each contributing a small Bayesian update). The informal observation that "deeply held beliefs are hard to change" sounds tautological - and it is, taken alone (see [Part 1, Section 2b](../epimechanics_01_generalized_mechanics.md) and [Part 5, Section 4.0](../epimechanics_05_ontology_and_open_questions.md) for the full tautology discussion). The non-tautological content here is the *mechanism*: the peaked prior functions as generalized mass because the Bayesian update equation $b'(s') = \eta \cdot O(o|s',a) \cdot \bar{b}(s')$ produces smaller shifts when $b$ is sharply peaked, regardless of the evidence's strength. This is a structural prediction about the *functional form* of belief resistance, not merely a relabeling.
+This connects directly to [Part 1](../theory/01_generalized_mechanics.md)'s concept of generalized mass as resistance to state change. A person with high conviction has a peaked $b$ - high $\mathcal{M}_b$. Shifting that conviction requires either very strong evidence (a high-likelihood observation that overwhelms the prior) or sustained moderate evidence over time (many observations, each contributing a small Bayesian update). The informal observation that "deeply held beliefs are hard to change" sounds tautological - and it is, taken alone (see [Part 1, Section 2b](../theory/01_generalized_mechanics.md) and [Part 5, Section 4.0](../theory/05_ontology_and_open_questions.md) for the full tautology discussion). The non-tautological content here is the *mechanism*: the peaked prior functions as generalized mass because the Bayesian update equation $b'(s') = \eta \cdot O(o|s',a) \cdot \bar{b}(s')$ produces smaller shifts when $b$ is sharply peaked, regardless of the evidence's strength. This is a structural prediction about the *functional form* of belief resistance, not merely a relabeling.
 
 The force required to shift a belief state is the **Kullback-Leibler divergence** between the prior and the posterior:
 
@@ -272,7 +272,7 @@ Agency $A = \Pi_{\text{out}} \times \mu_{\text{meta}} \times C_{\text{consciousn
 - **$C_{\text{consciousness}}$** determines the observation function: how much information the entity has about $X$. An entity with zero consciousness has a trivially uninformative belief state - the policy cannot condition on the world because the world is unobserved.
 - **$\mu_{\text{meta}}$** determines whether the entity can represent its policy *as* a policy - whether it can deliberate about its own decision rule. An entity with $\mu_{\text{meta}} = 0$ executes a policy but does not represent the fact that it is doing so. It cannot reason about whether to change its policy. It is, in Metzinger's terms, transparent to its own decision process.
 
-Full agency ($A \approx 1$) means the entity has a rich action space, a well-informed belief state, and the capacity to deliberate about and revise its own policy. This is the decision-theoretic unpacking of what [Part 3](../epimechanics_03_intelligence_consciousness_agency.md) defined algebraically.
+Full agency ($A \approx 1$) means the entity has a rich action space, a well-informed belief state, and the capacity to deliberate about and revise its own policy. This is the decision-theoretic unpacking of what [Part 3](../theory/03_intelligence_consciousness_agency.md) defined algebraically.
 
 ### 3.3 Stochastic Policies and Exploration
 
@@ -332,9 +332,9 @@ The value function, when the reward function is the soul reward $r_{\text{soul}}
 
 $$J^*(b) = \text{expected cumulative representational footprint from belief state } b \text{ under optimal policy}$$
 
-This connects [Parts 4](../epimechanics_04_time_and_soul.md) and 6: the soul is the *realized* representational footprint; the value function is the *expected* representational footprint. An entity's value function is, in this interpretation, its assessment of how much soul it can accumulate from its current epistemic position. The optimal policy $\pi^*$ is the soul-maximizing strategy - the sequence of actions that produces the largest valued representational footprint given current beliefs about the world.
+This connects [Parts 4](../theory/04_time_and_soul.md) and 6: the soul is the *realized* representational footprint; the value function is the *expected* representational footprint. An entity's value function is, in this interpretation, its assessment of how much soul it can accumulate from its current epistemic position. The optimal policy $\pi^*$ is the soul-maximizing strategy - the sequence of actions that produces the largest valued representational footprint given current beliefs about the world.
 
-This framing resolves a tension in the original soul definition. [Part 4](../epimechanics_04_time_and_soul.md) defined the soul as a *descriptive* quantity - what difference did E make to others' trajectories? Here it becomes additionally a *normative* quantity - the value function provides a criterion for *choosing* actions that shape the soul. The entity *grows* a soul through policy execution, and the quality of its policy determines the trajectory of its representational footprint.
+This framing resolves a tension in the original soul definition. [Part 4](../theory/04_time_and_soul.md) defined the soul as a *descriptive* quantity - what difference did E make to others' trajectories? Here it becomes additionally a *normative* quantity - the value function provides a criterion for *choosing* actions that shape the soul. The entity *grows* a soul through policy execution, and the quality of its policy determines the trajectory of its representational footprint.
 
 ### 4.3 Trajectory Optimization in State Space
 
@@ -363,7 +363,7 @@ When multiple agents share a state space, the single-agent POMDP becomes a **dec
 - Its own policy $\pi_i(b_i)$
 - Its own belief state $b_i$, which includes beliefs about others' belief states (recursive modeling)
 
-The collective dynamics are the simultaneous execution of all entities' policies, with each entity's actions appearing as state transitions to every other entity. The field $\Phi(x)$ from [Part 1](../epimechanics_01_generalized_mechanics.md) is, in this view, the mean-field summary of all entities' action-generated forces - the aggregate effect of everyone's policy execution on the state space.
+The collective dynamics are the simultaneous execution of all entities' policies, with each entity's actions appearing as state transitions to every other entity. The field $\Phi(x)$ from [Part 1](../theory/01_generalized_mechanics.md) is, in this view, the mean-field summary of all entities' action-generated forces - the aggregate effect of everyone's policy execution on the state space.
 
 [Bernstein, Givan, Immerman & Zilberstein (2002)](https://doi.org/10.1287/moor.27.4.819.297) proved that Dec-POMDPs are NEXP-complete - computationally intractable in the worst case. This is the formal result behind the informal observation that coordinating large groups is hard. The complexity does not arise from any single entity's limitations but from the combinatorial explosion of joint policies.
 
@@ -373,11 +373,11 @@ The user's original observation - that sociological concepts can be understood a
 
 | Sociological Concept | POMDP / Framework Quantity |
 |---|---|
-| Social state | State $X \in S$ ([Part 1](../epimechanics_01_generalized_mechanics.md)) |
-| Social action | Action $a \in \mathcal{A}$ - outgoing causal power ([Part 3](../epimechanics_03_intelligence_consciousness_agency.md)) |
-| Social observation | Observation $o \in \Omega$ - consciousness-filtered access to $X$ ([Part 3](../epimechanics_03_intelligence_consciousness_agency.md)) |
+| Social state | State $X \in S$ ([Part 1](../theory/01_generalized_mechanics.md)) |
+| Social action | Action $a \in \mathcal{A}$ - outgoing causal power ([Part 3](../theory/03_intelligence_consciousness_agency.md)) |
+| Social observation | Observation $o \in \Omega$ - consciousness-filtered access to $X$ ([Part 3](../theory/03_intelligence_consciousness_agency.md)) |
 | Social norms | Potential landscape $V(X)$ - attractors in the field that pull entities toward equilibrium behavior |
-| Institutions | High-$\mathcal{M}$ meta-entities ([Part 2](../epimechanics_02_meta_entities.md)) whose policies generate persistent field structure |
+| Institutions | High-$\mathcal{M}$ meta-entities ([Part 2](../theory/02_meta_entities.md)) whose policies generate persistent field structure |
 | Cultural beliefs | Collective belief state $\bar{b} = \frac{1}{N}\sum_i b_i$ - the population average over individual beliefs |
 | Polarization | High $\Delta b_{ij}$ - divergent belief states across groups (Section 2.4) |
 | Social influence | Cross-entity coupling $\kappa_{ij}$ - the mechanism by which one entity's actions enter another's observation function |
@@ -394,7 +394,7 @@ $$P_{\text{social}}(s' | s, \{a_i\}) = \prod_j P_j(X_j' | X_j, \{a_i\}_{i \in \m
 
 in the mean-field approximation, where $\mathcal{N}(j)$ is the neighborhood of entity $j$ - the set of entities whose actions directly affect $j$'s state transition. This is a factored transition model: each entity's next state depends on the actions of its neighbors, and the global transition is the product of local transitions.
 
-The approximation breaks down when long-range correlations emerge - precisely at phase transitions ([Part 5, Open Question 1, Prediction P5](../epimechanics_05_ontology_and_open_questions.md)). Near criticality, the factored model fails because distant entities become correlated, and the transition function cannot be decomposed into local factors. This is the sociological analogue of the breakdown of mean-field theory near physical phase transitions.
+The approximation breaks down when long-range correlations emerge - precisely at phase transitions ([Part 5, Open Question 1, Prediction P5](../theory/05_ontology_and_open_questions.md)). Near criticality, the factored model fails because distant entities become correlated, and the transition function cannot be decomposed into local factors. This is the sociological analogue of the breakdown of mean-field theory near physical phase transitions.
 
 [Turchin's cliodynamics (*Ages of Discord*, 2016)](https://peterturchin.com/book/ages-of-discord/) is an empirical application of this framework at civilizational scale. Turchin's five-variable structural-demographic model $(N, E, S, W, P)$ - population, elite overproduction, state fiscal health, social cohesion, political instability - is a low-dimensional projection of the collective state $X$, and his dynamical equations are an estimated transition function $\hat{P}_{\text{clio}}$. The model's predictive success over historical data (secular cycles of ~150 years verified across multiple civilizations) is evidence that the collective transition function has exploitable structure even in high-dimensional social systems.
 
@@ -448,7 +448,7 @@ This recursive structure - agents are Bayesian decision-makers, and analysts of 
 
 **Transition model**: The AI's ability to predict how different outputs will affect the user's trajectory - their understanding, their next actions, their downstream decisions. A model with high $I$ in this domain can anticipate how different phrasings, levels of detail, or framings will be received. A model with low $I$ generates text without modeling its consequences.
 
-**Reward function**: Specified by training - typically a combination of helpfulness, accuracy, and safety constraints. This is an externally imposed reward function, not one the system chose. Whether the system has an *internal* reward that diverges from the training signal is an open question about AI consciousness ([Part 3](../epimechanics_03_intelligence_consciousness_agency.md), [Part 5 Open Question 5](../epimechanics_05_ontology_and_open_questions.md)).
+**Reward function**: Specified by training - typically a combination of helpfulness, accuracy, and safety constraints. This is an externally imposed reward function, not one the system chose. Whether the system has an *internal* reward that diverges from the training signal is an open question about AI consciousness ([Part 3](../theory/03_intelligence_consciousness_agency.md), [Part 5 Open Question 5](../theory/05_ontology_and_open_questions.md)).
 
 **Policy**: The output selection process. Current large language models execute what is approximately a stochastic policy $\pi(a | o)$ - a probability distribution over next tokens conditioned on observations (the input context). Whether this policy is mediated by a genuine belief state $b$ or is a direct observation-to-action mapping (model-free, System 1-like) is the structural question that determines whether the system has $\mu_{\text{meta}} > 0$ for its outputs.
 
@@ -559,20 +559,20 @@ Each mechanism can be measured, modeled, and - critically - engineered. Institut
 Strategy - whether competitive or cooperative - requires a specific structure in the consciousness tensor $\mathbf{C}$. An entity engaged in strategic interaction must maintain:
 
 1. **A model of the other's policy**: $\hat{\pi}_j$ - what will the other entity do? This is allo-representation applied to action prediction, not merely state observation.
-2. **A model of the other's model of oneself**: $\hat{\pi}_j(\hat{\pi}_i)$ - what does the other think I will do? This is the recursive cross-term from [Part 3](../epimechanics_03_intelligence_consciousness_agency.md): $C_{ijk}$ where $i$ indexes the self-as-modeled-by-other.
+2. **A model of the other's model of oneself**: $\hat{\pi}_j(\hat{\pi}_i)$ - what does the other think I will do? This is the recursive cross-term from [Part 3](../theory/03_intelligence_consciousness_agency.md): $C_{ijk}$ where $i$ indexes the self-as-modeled-by-other.
 3. **A model of the strategic structure**: is this interaction zero-sum, cooperative, or mixed? The entity must classify the interaction type to select the appropriate policy regime (minimax, coordination, or Schelling-style mixed-motive bargaining).
 
 The depth of recursive modeling - how many levels of "I think that you think that I think..." the entity can sustain - determines the sophistication of its strategic play. [Camerer, Ho & Chong's cognitive hierarchy model (2004)](https://doi.org/10.1162/0033553041502225) shows that humans typically sustain 1–2 levels of recursive modeling, with diminishing accuracy at each level. In Epimechanics' terms, the $\mathbf{C}$ tensor's cross-term entries decay rapidly with recursion depth - most entities' allo-representation of others' allo-representation of them is noisy and shallow.
 
-For meta-entities, strategic consciousness is distributed. A corporation's strategic analysis department models competitors' likely actions; its legal team models regulators' models of the corporation's likely actions; its public relations team models the public's model of the corporation's intentions. The meta-entity's strategic consciousness is the aggregate of these specialized representational subsystems - and the quality of internal coupling among them ([Part 2](../epimechanics_02_meta_entities.md)'s inter-substrate coupling $\Gamma$) determines whether the meta-entity's strategic behavior is coherent or fragmented.
+For meta-entities, strategic consciousness is distributed. A corporation's strategic analysis department models competitors' likely actions; its legal team models regulators' models of the corporation's likely actions; its public relations team models the public's model of the corporation's intentions. The meta-entity's strategic consciousness is the aggregate of these specialized representational subsystems - and the quality of internal coupling among them ([Part 2](../theory/02_meta_entities.md)'s inter-substrate coupling $\Gamma$) determines whether the meta-entity's strategic behavior is coherent or fragmented.
 
 ---
 
 ## Closing
 
-Epimechanics now has a decision-theoretic layer. [Parts 1](../epimechanics_01_generalized_mechanics.md)–[5](../epimechanics_05_ontology_and_open_questions.md) described the world from the outside - states, forces, entities, souls. Part 6 describes the world from the entity's interior - beliefs, policies, value, choice. The two descriptions are dual:
+Epimechanics now has a decision-theoretic layer. [Parts 1](../theory/01_generalized_mechanics.md)–[5](../theory/05_ontology_and_open_questions.md) described the world from the outside - states, forces, entities, souls. Part 6 describes the world from the entity's interior - beliefs, policies, value, choice. The two descriptions are dual:
 
-| External ([Parts 1](../epimechanics_01_generalized_mechanics.md)–[5](../epimechanics_05_ontology_and_open_questions.md)) | Internal (Part 6) |
+| External ([Parts 1](../theory/01_generalized_mechanics.md)–[5](../theory/05_ontology_and_open_questions.md)) | Internal (Part 6) |
 |---|---|
 | State $X$ | Belief state $b$ over $X$ |
 | Force $F$ | Action $a = \pi(b)$ - self-generated force |
@@ -587,4 +587,4 @@ The original intuition - that sociological concepts are definable variables with
 
 ---
 
-[← Part 5: Full Ontology and Open Questions](../epimechanics_05_ontology_and_open_questions.md)
+[← Part 5: Full Ontology and Open Questions](../theory/05_ontology_and_open_questions.md)

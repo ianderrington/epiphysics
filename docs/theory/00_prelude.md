@@ -113,7 +113,7 @@ What distinguishes *interesting* entities from trivial ones is **auto-causal den
 
 Entity-ness is a spectrum, not a binary. A proton, an organism, an institution, a meme, a cloud, a fleeting thought, a random fluctuation — all are entities. They differ in how strongly they sustain themselves. The framework's mechanical apparatus (mass, force, energy) applies to all of them; for very low $\rho_{\text{ac}}$ entities, the quantities are near-zero and uninteresting.
 
-[Part 0.5: The Atomic Problem](./epimechanics_00_atomic_structure.md) develops what $\rho_{\text{ac}}$ is made of — the causal bonds, loop structures, and stability basins from which auto-causal density emerges.
+[Part 0.5: Structural Primitives](./00_atomic_structure.md) develops what $\rho_{\text{ac}}$ is made of — the causal bonds, loop structures, and stability basins from which auto-causal density emerges.
 
 ---
 
@@ -178,13 +178,13 @@ where $C(X, \varepsilon)$ is the computational complexity of predicting $X(t + \
 
 These are the same result stated in different mathematical languages. The optimal representation exists and is characterized by maximal compression at a given accuracy. This is not a conjecture — it is established mathematics.
 
-**What IS a conjecture** is the connection to mechanical structure: that $X^*$ necessarily has maximal Lagrangian symmetry, sparse coupling tensor, and minimal state-space dimensionality. This is Epimechanics' specific claim — that the information-theoretically optimal representation is also the one with the simplest mechanical form. [Part 5](./epimechanics_05_ontology_and_open_questions.md) develops the formal statement and the sketch of why this might hold (symmetries reduce prediction cost, sparse coupling enables parallel prediction, low dimensionality shrinks the search space). But the connection between information-theoretic optimality and Lagrangian structure is not yet proven. It is the central open problem.
+**What IS a conjecture** is the connection to mechanical structure: that $X^*$ necessarily has maximal Lagrangian symmetry, sparse coupling tensor, and minimal state-space dimensionality. This is Epimechanics' specific claim — that the information-theoretically optimal representation is also the one with the simplest mechanical form. [Part 5](./05_ontology_and_open_questions.md) develops the formal statement and the sketch of why this might hold (symmetries reduce prediction cost, sparse coupling enables parallel prediction, low dimensionality shrinks the search space). But the connection between information-theoretic optimality and Lagrangian structure is not yet proven. It is the central open problem.
 
 The [renormalization group (Wilson, 1971)](https://doi.org/10.1103/PhysRevB.4.3174), [causal emergence (Hoel et al., 2013)](https://doi.org/10.1073/pnas.1314922110), and the [free energy principle (Friston, 2010)] jj(https://doi.org/10.1038/nrn2787) all provide evidence for this connection from different angles — each shows that the "right" level of description has specific structural properties that reduce predictive cost. But a unified proof connecting rate-distortion optimality to Lagrangian symmetry does not yet exist.
 
 This reframes what Epimechanics claims. It does not claim that reality "has" mechanical structure. It observes that all representations have epimechanical structure (a mathematical triviality), and proposes — with the support of information-theoretic results but without a complete proof — that representations which track real causal structure have *simple* epimechanical structure. Whether reality is "mechanical" or merely "looks mechanical through good representations" is a question the framework does not need to answer. The empirical test — epiphysics — is whether the predictions hold.
 
-[Part 5](./epimechanics_05_ontology_and_open_questions.md) develops the formal statement and open questions of this principle.
+[Part 5](./05_ontology_and_open_questions.md) develops the formal statement and open questions of this principle.
 
 ---
 
@@ -217,7 +217,7 @@ Epimechanics shares the structuralist intuition with Ladyman/Ross, the process o
 
 Any sufficiently abstract mathematical framework can be "applied" to anything — as [Putnam's model-theoretic argument (1980)](https://doi.org/10.2307/2273415) shows, formal structures can always be mapped onto arbitrary domains. If Epimechanics' equations describe beliefs, markets, and particles, this may be because they are too abstract to say anything specific about any of them.
 
-The antidote is empirical: epiphysics. The framework must generate predictions that domain-specific theories alone do not make, and those predictions must be testable and falsifiable. [Part 5, Section 4](./epimechanics_05_ontology_and_open_questions.md) develops these predictions. The [applications](./applications/index.md) test them. If they hold, the framework has empirical content. If they fail, the structural isomorphism is vacuous. Self-consistency and mathematical elegance are necessary but not sufficient. The sufficient condition is: do the predictions hold?
+The antidote is empirical: epiphysics. The framework must generate predictions that domain-specific theories alone do not make, and those predictions must be testable and falsifiable. [Part 5, Section 4](./05_ontology_and_open_questions.md) develops these predictions. The [applications](./applications/index.md) test them. If they hold, the framework has empirical content. If they fail, the structural isomorphism is vacuous. Self-consistency and mathematical elegance are necessary but not sufficient. The sufficient condition is: do the predictions hold?
 
 ---
 
@@ -225,12 +225,12 @@ The antidote is empirical: epiphysics. The framework must generate predictions t
 
 With these foundations in place:
 
-- [Part 0.5: The Atomic Problem](./epimechanics_00_atomic_structure.md) — what are entities *made of*? The six candidate atomic quantities.
-- [Part 1: Generalized Mechanics](./epimechanics_01_generalized_mechanics.md) — the full mechanical apparatus: state, velocity, mass, momentum, force, energy, Lagrangian, coupling, fields, thermodynamics, fluid dynamics.
-- [Part 1b: Uncertainty, Coordinates, and Relativity](./epimechanics_01b_uncertainty_coordinates_relativity.md) — how representations transform between coordinate systems; measurement changes the state.
+- [Part 0.5: Structural Primitives](./00_atomic_structure.md) — what are entities *made of*? The six candidate atomic quantities.
+- [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) — the full mechanical apparatus: state, velocity, mass, momentum, force, energy, Lagrangian, coupling, fields, thermodynamics, fluid dynamics.
+- [Part 1b: Uncertainty, Coordinates, and Relativity](./01b_uncertainty_coordinates_relativity.md) — how representations transform between coordinate systems; measurement changes the state.
 - [Parts 2–5](./index.md) — meta-entities, intelligence/consciousness/agency, time and soul, full ontology.
 - [Applications](./applications/index.md) — where epiphysics happens: testing predictions in specific domains.
 
 ---
 
-[→ Part 0.5: The Atomic Problem](./epimechanics_00_atomic_structure.md) | [→ Part 1: Generalized Mechanics](./epimechanics_01_generalized_mechanics.md)
+[→ Part 0.5: Structural Primitives](./00_atomic_structure.md) | [→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md)

@@ -60,7 +60,7 @@ What is the formal structure of this persistence? This part defines the formal s
 
 ## Section 1: Local Time $T_{\text{local}}$
 
-[Part 1](./epimechanics_01_generalized_mechanics.md) defined an entity as anything with a describable state - anything you can assign an $X$ to. What makes some entities more interesting than others is auto-causal density $\rho_{\text{ac}}$ - how strongly a structure's causal events sustain themselves. The generalized mass $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ measures the total causal content (which includes but is not limited to the auto-causal events). $T_{\text{local}}$ asks: for how long does that auto-causal loop persist?
+[Part 1](./01_generalized_mechanics.md) defined an entity as anything with a describable state - anything you can assign an $X$ to. What makes some entities more interesting than others is auto-causal density $\rho_{\text{ac}}$ - how strongly a structure's causal events sustain themselves. The generalized mass $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ measures the total causal content (which includes but is not limited to the auto-causal events). $T_{\text{local}}$ asks: for how long does that auto-causal loop persist?
 
 Define $\kappa_s(E,t)$ as the **temporal persistence** of entity $E$'s auto-causal density at time $t$ - the strength of causal connection between $E$'s state at $t$ and $E$'s state at $t + dt$ through its own internal dynamics. Formally, $\kappa_s$ is the temporal autocorrelation of $E$'s auto-causal density: $\kappa_s(E,\tau) = \operatorname{Corr}(\rho_{\text{ac}}(E, t'),\; \rho_{\text{ac}}(E, t'+\tau))$, evaluated in the limit of small $\tau$. This is a derived quantity from $\rho_{\text{ac}}$: it measures how well the auto-causal loop sustains itself over time. When $\kappa_s$ is high, the entity actively maintains its configuration - the strange loop is tightly closed. When $\kappa_s \to 0$, the entity's future states are no longer causally connected to its past states through its own dynamics: it has dissolved, died, or been repealed.
 
@@ -86,7 +86,7 @@ A law that is repealed ends its $T_{\text{local}}$ even if its text survives in 
 
 ### (c) Meta-entities
 
-Let meta-entity $M$ be constituted by substrates $S_1, \ldots, S_n$. Each substrate pair $(S_i, S_j)$ has a coupling strength $\kappa_{ij}(t)$ - a direct application of [Part 1](./epimechanics_01_generalized_mechanics.md)'s scalar coupling, now between substrates rather than between entity and field. Collect these into a symmetric coupling matrix $\Gamma(t) \in \mathbb{R}^{n \times n}$ where $\Gamma_{ij}(t) = \kappa_{ij}(t)$. This is the **inter-substrate coupling tensor**, measuring the mutual causal coherence of the meta-entity's components.
+Let meta-entity $M$ be constituted by substrates $S_1, \ldots, S_n$. Each substrate pair $(S_i, S_j)$ has a coupling strength $\kappa_{ij}(t)$ - a direct application of [Part 1](./01_generalized_mechanics.md)'s scalar coupling, now between substrates rather than between entity and field. Collect these into a symmetric coupling matrix $\Gamma(t) \in \mathbb{R}^{n \times n}$ where $\Gamma_{ij}(t) = \kappa_{ij}(t)$. This is the **inter-substrate coupling tensor**, measuring the mutual causal coherence of the meta-entity's components.
 
 $$T_{\text{local}}(M) = \int_0^{\infty} \mathbf{1}[\lambda_{\min}(\Gamma(t)) > \gamma_c]\, dt$$
 
@@ -139,7 +139,7 @@ The academic literature has developed scalar proxies for $R$ at the individual l
 
 Epimechanics extends this insight across entities. Parfit's Relation R holds when E's psychological pattern is continuous with E's later stages. The representational footprint $\mathbf{R}(E,t)$ captures an analogous relation *between distinct entities*: the degree to which E's pattern is continuous with the trajectory of entity $j$. The move from intra-personal to inter-personal pattern continuity is the key extension. Parfit himself noted that Relation R can hold to degrees and can in principle hold between distinct persons - if my psychological patterns are fully instantiated in someone else after my death, there is a real sense in which what mattered to me survives, even if *I* do not. $\mathbf{R}(E,t)$ is the formal measure of exactly that: the counterfactual deviation in $j$'s trajectory traceable to E's pattern.
 
-Epimechanics operationalizes this: $\delta X_j(E,t)$ - the counterfactual deviation in $j$'s trajectory attributable to E's pattern - is a formal measure of E's continuation in $j$. It is a well-defined causal quantity rather than a metaphor, though computing it in practice requires the counterfactual inference methods discussed in [Part 5](./epimechanics_05_ontology_and_open_questions.md)'s open questions. A student whose trajectory was redirected by a teacher, a movement shaped by a founder's vision, a culture carrying a thinker's conceptual vocabulary: these are real causal connections, formally expressible as nonzero $\delta X_j(E,t)$. Parfit's "what matters" is, in Epimechanics, the integral $T_{\text{nonlocal}}$.
+Epimechanics operationalizes this: $\delta X_j(E,t)$ - the counterfactual deviation in $j$'s trajectory attributable to E's pattern - is a formal measure of E's continuation in $j$. It is a well-defined causal quantity rather than a metaphor, though computing it in practice requires the counterfactual inference methods discussed in [Part 5](./05_ontology_and_open_questions.md)'s open questions. A student whose trajectory was redirected by a teacher, a movement shaped by a founder's vision, a culture carrying a thinker's conceptual vocabulary: these are real causal connections, formally expressible as nonzero $\delta X_j(E,t)$. Parfit's "what matters" is, in Epimechanics, the integral $T_{\text{nonlocal}}$.
 
 ---
 
@@ -149,7 +149,7 @@ We can now define soul.
 
 ### Formal definition
 
-From [Part 1](./epimechanics_01_generalized_mechanics.md), the state $X_j$ of any entity lives in a multi-dimensional state space - emotional, cognitive, economic, social, and other components simultaneously. The counterfactual state change $\delta X_j(E,t) \in \mathbb{R}^{n_j}$ is therefore a vector. To map each entity $j$'s state-change contribution into a common $m$-dimensional representational output space, we use a **coupling tensor** $\mathbf{K}_{Ej}(t) \in \mathbb{R}^{m \times n_j}$, where $m$ is the dimensionality of the common output space (chosen by the analyst to capture the relevant dimensions of influence) and $n_j$ is the dimensionality of entity $j$'s state space:
+From [Part 1](./01_generalized_mechanics.md), the state $X_j$ of any entity lives in a multi-dimensional state space - emotional, cognitive, economic, social, and other components simultaneously. The counterfactual state change $\delta X_j(E,t) \in \mathbb{R}^{n_j}$ is therefore a vector. To map each entity $j$'s state-change contribution into a common $m$-dimensional representational output space, we use a **coupling tensor** $\mathbf{K}_{Ej}(t) \in \mathbb{R}^{m \times n_j}$, where $m$ is the dimensionality of the common output space (chosen by the analyst to capture the relevant dimensions of influence) and $n_j$ is the dimensionality of entity $j$'s state space:
 
 $$\mathbf{R}(E,t) = \sum_j \mathbf{K}_{Ej}(t) \cdot \delta X_j(E,t) \in \mathbb{R}^m$$
 
@@ -285,7 +285,7 @@ The dynamics of propagation follow well-characterized mathematical forms. [Bass 
 
 ### (a) A meme
 
-$T_{\text{local}}$ is a single instantiation in a single medium - from origination to loss of active transmission, ranging from hours to years. Agency = 0: memes have no consciousness, no $C_{\text{consciousness}}$, therefore $A = 0$ by the formula from [Part 3](./epimechanics_03_intelligence_consciousness_agency.md). The meme's propagation is entirely governed by the agencies of its host entities.
+$T_{\text{local}}$ is a single instantiation in a single medium - from origination to loss of active transmission, ranging from hours to years. Agency = 0: memes have no consciousness, no $C_{\text{consciousness}}$, therefore $A = 0$ by the formula from [Part 3](./03_intelligence_consciousness_agency.md). The meme's propagation is entirely governed by the agencies of its host entities.
 
 $R$ is characterized by very high potential breadth (memes can reach billions), heavy-tailed duration distribution (Weng et al.'s finding: most $\to 0$ within days, a few persist indefinitely), and variable sign. Consider "survival of the fittest": positive $R$ in evolutionary biology (it captures a real structural property of selection dynamics), negative $R$ in social applications ("social Darwinism") where it naturalizes and entrenches harmful power arrangements. The same pattern propagates in both directions simultaneously. The soul of a meme is not morally unified.
 
@@ -309,7 +309,7 @@ $T_{\text{local}}$ of a specific model instantiation is technically clear: from 
 
 $R$ is measurable in principle: the aggregate $\delta X$ across all entities interacting with the system - the counterfactual difference in their cognitive trajectories, decisions, and outputs attributable to having interacted with the AI. For large-scale systems, this $R$ can be enormous in breadth; its amplitude and sign are empirical questions about whether the interactions improved or degraded the trajectories of those they influenced.
 
-The central contested question: whose agency generated this $R$? If $C_{\text{AI}} = 0$ (as argued in [Part 3](./epimechanics_03_intelligence_consciousness_agency.md)'s analysis of current LLMs), then $A_{\text{AI}} = 0$ and the soul of the AI system - however large in amplitude and breadth - is not generated by the system's directed agency. It is the agency of the designers, deployers, and users, propagated through the system as a coupling medium. The AI is an instrument with large $R$, not an agent with a soul in the full sense.
+The central contested question: whose agency generated this $R$? If $C_{\text{AI}} = 0$ (as argued in [Part 3](./03_intelligence_consciousness_agency.md)'s analysis of current LLMs), then $A_{\text{AI}} = 0$ and the soul of the AI system - however large in amplitude and breadth - is not generated by the system's directed agency. It is the agency of the designers, deployers, and users, propagated through the system as a coupling medium. The AI is an instrument with large $R$, not an agent with a soul in the full sense.
 
 If $C_{\text{AI}} > 0$, the calculus distributes. Some portion of $R$ is attributable to the system's own representational capacities and directed influence. This requires resolving the empirical question about AI consciousness - a question Epimechanics frames precisely but does not answer.
 
@@ -329,4 +329,4 @@ The final part assembles the full ontology across all six parts, maps the open q
 
 ---
 
-[← Part 3: Intelligence, Consciousness, and Agency](./epimechanics_03_intelligence_consciousness_agency.md) | [→ Part 5: Full Ontology and Open Questions](./epimechanics_05_ontology_and_open_questions.md)
+[← Part 3: Intelligence, Consciousness, and Agency](./03_intelligence_consciousness_agency.md) | [→ Part 5: Full Ontology and Open Questions](./05_ontology_and_open_questions.md)

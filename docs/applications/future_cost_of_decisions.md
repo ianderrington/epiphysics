@@ -253,10 +253,10 @@ There is a genuine risk that the mathematical notation creates an illusion of pr
 
 This application imports from the Epimechanics series:
 
-- **Entropy production** $\dot{S}_{\text{int}}$ and **repair rate** $\dot{R}_{\text{repair}}$ ([Atomic Decomposition](../epimechanics_00_atomic_structure.md))
-- **Stability basin depth** $\Delta V$ ([Atomic Decomposition](../epimechanics_00_atomic_structure.md))
-- **Coupling tensor** $T^i{}_j$ ([Part 1](../epimechanics_01_generalized_mechanics.md))
-- **Generalized mass** $\mathcal{M}$ as resistance to state change ([Part 1](../epimechanics_01_generalized_mechanics.md))
+- **Entropy production** $\dot{S}_{\text{int}}$ and **repair rate** $\dot{R}_{\text{repair}}$ ([Atomic Decomposition](../theory/00_atomic_structure.md))
+- **Stability basin depth** $\Delta V$ ([Atomic Decomposition](../theory/00_atomic_structure.md))
+- **Coupling tensor** $T^i{}_j$ ([Part 1](../theory/01_generalized_mechanics.md))
+- **Generalized mass** $\mathcal{M}$ as resistance to state change ([Part 1](../theory/01_generalized_mechanics.md))
 
 It connects to:
 

@@ -29,7 +29,7 @@ tts:
   enableSpeed: true
 ---
 
-> **Context.** This document extends the [Structural Primitives](./00_atomic_structure.md) (Part 0.5). For the thermodynamic emergence of life, see [Part 1c](./01c_thermodynamic_emergence_of_life.md). For meta-entities and when aggregates earn entity status, see [Part 2](./epimechanics_02_meta_entities.md). For representational manipulation as an attack on repair mechanisms, see the [Representational Manipulation](../research/representational_manipulation.md) research note.
+> **Context.** This document extends the [Structural Primitives](./00_atomic_structure.md) (Part 0.5). For the thermodynamic emergence of life, see [Part 1c](./01c_thermodynamic_emergence_of_life.md). For meta-entities and when aggregates earn entity status, see [Part 2](./02_meta_entities.md). For representational manipulation as an attack on repair mechanisms, see the [Representational Manipulation](../research/representational_manipulation.md) research note.
 
 ---
 
@@ -117,4 +117,4 @@ This analysis is structural and qualitative. $f_{\text{binding}}$ and $\dot{R}_{
 
 ---
 
-> **See also:** [Structural Primitives](./00_atomic_structure.md) (Part 0.5) for the atomic quantities underlying persistence. [Part 1c](./01c_thermodynamic_emergence_of_life.md) for the thermodynamic emergence of life. [Part 2: Meta-Entities](./epimechanics_02_meta_entities.md) for when aggregates earn entity status. [Part 5](./epimechanics_05_ontology_and_open_questions.md) for the Representational Efficiency principle.
+> **See also:** [Structural Primitives](./00_atomic_structure.md) (Part 0.5) for the atomic quantities underlying persistence. [Part 1c](./01c_thermodynamic_emergence_of_life.md) for the thermodynamic emergence of life. [Part 2: Meta-Entities](./02_meta_entities.md) for when aggregates earn entity status. [Part 5](./05_ontology_and_open_questions.md) for the Representational Efficiency principle.

@@ -43,7 +43,7 @@ This is an **application** of the [Epimechanics framework](../index.md) to a sin
 
 **Tag: structural.**
 
-Consider two quantities from the [atomic decomposition](../epimechanics_00_atomic_structure.md):
+Consider two quantities from the [atomic decomposition](../theory/00_atomic_structure.md):
 
 - $E_{\text{assembly}}$: the total energy required to construct an entity from its components. This is related to the assembly index (AI) from [Cronin & Walker (2023)](https://doi.org/10.1038/s41586-023-06600-9) but measured in energy rather than operation count.
 
@@ -165,7 +165,7 @@ $$\frac{\partial R}{\partial L} < 0$$
 
 where $L$ is a measure of the system's size (number of components, spatial extent, number of users, organizational headcount).
 
-**Mechanism.** As a system scales, new coupling terms appear (the $T^i{}_j$ off-diagonal elements from [Part 1](../epimechanics_01_generalized_mechanics.md)). If these coupling terms create failure modes that did not exist at smaller scale — cascade failures, resonance effects, coordination breakdowns — then $E_{\text{disassembly}}$ decreases (new, cheaper destruction pathways become available) while $E_{\text{assembly}}$ increases (more components to build and integrate). Both effects decrease $R$.
+**Mechanism.** As a system scales, new coupling terms appear (the $T^i{}_j$ off-diagonal elements from [Part 1](../theory/01_generalized_mechanics.md)). If these coupling terms create failure modes that did not exist at smaller scale — cascade failures, resonance effects, coordination breakdowns — then $E_{\text{disassembly}}$ decreases (new, cheaper destruction pathways become available) while $E_{\text{assembly}}$ increases (more components to build and integrate). Both effects decrease $R$.
 
 **Examples:**
 
@@ -228,9 +228,9 @@ $E_{\text{assembly}}$ and $E_{\text{disassembly}}$ are straightforward for physi
 
 This application imports from the Epimechanics series:
 
-- **Stability basin depth** $\Delta V$ and **bond strength** $\sigma_b$ ([Atomic Decomposition](../epimechanics_00_atomic_structure.md))
-- **Assembly index** connection ([Atomic Decomposition, Section on Assembly Theory](../epimechanics_00_atomic_structure.md))
-- **Coupling tensor** $T^i{}_j$ for cross-domain coupling at scale ([Part 1](../epimechanics_01_generalized_mechanics.md))
+- **Stability basin depth** $\Delta V$ and **bond strength** $\sigma_b$ ([Atomic Decomposition](../theory/00_atomic_structure.md))
+- **Assembly index** connection ([Atomic Decomposition, Section on Assembly Theory](../theory/00_atomic_structure.md))
+- **Coupling tensor** $T^i{}_j$ for cross-domain coupling at scale ([Part 1](../theory/01_generalized_mechanics.md))
 
 It connects to:
 

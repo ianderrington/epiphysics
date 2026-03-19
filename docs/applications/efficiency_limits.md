@@ -129,7 +129,7 @@ An organization or individual that accumulates knowledge, plans, prototypes, and
 
 ### 3.1 Generalized Temperature $\mathcal{T}$
 
-In Epimechanics, $\mathcal{T} \propto \langle K \rangle$ - temperature is proportional to average kinetic energy per degree of freedom ([Part 1](../epimechanics_01_generalized_mechanics.md), equipartition). For an organization:
+In Epimechanics, $\mathcal{T} \propto \langle K \rangle$ - temperature is proportional to average kinetic energy per degree of freedom ([Part 1](../theory/01_generalized_mechanics.md), equipartition). For an organization:
 
 **Proposed operationalization:** $\mathcal{T}_{\text{org}} \propto$ average rate of undirected activity per agent - the energy expenditure that does not contribute to any identified goal. Proxy measurements:
 - Fraction of work hours spent on unplanned interruptions
@@ -247,10 +247,10 @@ The framework's value here is in providing a *classification scheme* that connec
 
 This application imports from the Epimechanics series:
 
-- **Generalized thermodynamic quantities** $\mathcal{T}$, $S$, $\mathcal{F}$ ([Part 1, Sections 12-13](../epimechanics_01_generalized_mechanics.md))
-- **Reynolds number and fluid dynamics analogue** ([Part 1, Section 14](../epimechanics_01_generalized_mechanics.md))
-- **Viscosity as coordination resistance** ([Part 1, Section 14](../epimechanics_01_generalized_mechanics.md))
-- **Meta-entity structure** - organizations as entities with their own $\mathcal{M}$, $\dot{X}$, and $\rho_{\text{ac}}$ ([Part 2](../epimechanics_02_meta_entities.md))
+- **Generalized thermodynamic quantities** $\mathcal{T}$, $S$, $\mathcal{F}$ ([Part 1, Sections 12-13](../theory/01_generalized_mechanics.md))
+- **Reynolds number and fluid dynamics analogue** ([Part 1, Section 14](../theory/01_generalized_mechanics.md))
+- **Viscosity as coordination resistance** ([Part 1, Section 14](../theory/01_generalized_mechanics.md))
+- **Meta-entity structure** - organizations as entities with their own $\mathcal{M}$, $\dot{X}$, and $\rho_{\text{ac}}$ ([Part 2](../theory/02_meta_entities.md))
 
 It connects to:
 

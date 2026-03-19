@@ -28,7 +28,7 @@ tts:
   enableSpeed: true
 ---
 
-> **Context.** This document extends the [Structural Primitives](./00_atomic_structure.md) (Part 0.5) by showing how the medium modifies an entity's measured inertia. For the general mechanical framework, see [Part 1: Generalized Mechanics](./epimechanics_01_generalized_mechanics.md).
+> **Context.** This document extends the [Structural Primitives](./00_atomic_structure.md) (Part 0.5) by showing how the medium modifies an entity's measured inertia. For the general mechanical framework, see [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
 
 ---
 
@@ -62,7 +62,7 @@ where $\mathcal{M}_{\text{coupling}}$ depends on position (where in state space)
 
 The constraining case is especially important: it's not just high $\mathcal{M}_{\text{eff}}$ — it's $\mathcal{M}_{\text{eff}}$ that is **directionally infinite along certain axes while finite along others**. A person in prison has effectively infinite mass in physical state space (can't move) but finite mass in cognitive state space (can still think, write, plan). The prison is a highly anisotropic coupling to the medium — it blocks some dimensions of motion while leaving others open. This is exactly what the mass tensor captures: the eigenvalues of $\mathcal{M}_{ij}$ can range from near-zero (free motion along assisted directions) to effectively infinite (completely blocked directions), all for the same entity in the same medium.
 
-**Connection to the mass tensor.** The mass tensor $\mathcal{M}_{ij}$ defined in [Part 1](./epimechanics_01_generalized_mechanics.md) is the effective mass tensor — it includes both internal structure and medium coupling. Part 1 attributes anisotropy to "within-entity" structure (a belief system resists identity change more than aesthetic change). This is incomplete: anisotropy comes from *both* internal structure *and* the medium. The belief system's resistance to identity change is high partly because the social medium (reputation, relationships, institutional roles) couples strongly along that axis. The mass tensor's eigenvalues reflect entity-plus-medium, not entity alone. This is why the same entity has different $\mathcal{M}_{ij}$ in different contexts: bare mass is approximately constant; the medium changes.
+**Connection to the mass tensor.** The mass tensor $\mathcal{M}_{ij}$ defined in [Part 1](./01_generalized_mechanics.md) is the effective mass tensor — it includes both internal structure and medium coupling. Part 1 attributes anisotropy to "within-entity" structure (a belief system resists identity change more than aesthetic change). This is incomplete: anisotropy comes from *both* internal structure *and* the medium. The belief system's resistance to identity change is high partly because the social medium (reputation, relationships, institutional roles) couples strongly along that axis. The mass tensor's eigenvalues reflect entity-plus-medium, not entity alone. This is why the same entity has different $\mathcal{M}_{ij}$ in different contexts: bare mass is approximately constant; the medium changes.
 
 | Symbol | Name | What it measures |
 |---|---|---|
@@ -73,4 +73,4 @@ The constraining case is especially important: it's not just high $\mathcal{M}_{
 
 ---
 
-> **See also:** [Structural Primitives](./00_atomic_structure.md) (Part 0.5) for the six atomic quantities from which mass is composed. [Part 1: Generalized Mechanics](./epimechanics_01_generalized_mechanics.md) for the full tensorial treatment of $\mathcal{M}_{ij}$.
+> **See also:** [Structural Primitives](./00_atomic_structure.md) (Part 0.5) for the six atomic quantities from which mass is composed. [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) for the full tensorial treatment of $\mathcal{M}_{ij}$.

@@ -25,7 +25,7 @@ tts:
 
 ## The Structural Vulnerability
 
-If $X$ is a representation ([Part 0](./epimechanics_00_prelude.md)) and fields are aggregates of representations ([Part 1, Section 6](./epimechanics_01_generalized_mechanics.md)), then a fundamental vulnerability follows: **deliberately injecting false representations distorts the fields that other entities navigate by.**
+If $X$ is a representation ([Part 0]../theory/00_prelude.md)) and fields are aggregates of representations ([Part 1, Section 6]../theory/01_generalized_mechanics.md)), then a fundamental vulnerability follows: **deliberately injecting false representations distorts the fields that other entities navigate by.**
 
 This is not a political observation. It is a structural consequence of any system where entities couple to representational fields rather than to reality directly ([Hoffman's Interface Theory](https://doi.org/10.1093/oso/9780393254693.001.0001)).
 

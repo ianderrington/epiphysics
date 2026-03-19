@@ -50,7 +50,7 @@ tts:
   enableSpeed: true
 ---
 
-[Part 1](./epimechanics_01_generalized_mechanics.md) established the skeleton: $X \in S$, $\dot{X}$, $\mathcal{M}$, $p = \mathcal{M}\dot{X}$, $F$, $W$, $\kappa$, $T^i{}_j$, $\Phi$. It presented this in its clean, deterministic form - the mean-field limit, as physicists call it. But three structural complications arise immediately when Epimechanics is applied to social, psychological, and informational domains. Each of these complications has a precise analogue in fundamental physics. And in each case, the physics analogy suggests the correct formal treatment.
+[Part 1](./01_generalized_mechanics.md) established the skeleton: $X \in S$, $\dot{X}$, $\mathcal{M}$, $p = \mathcal{M}\dot{X}$, $F$, $W$, $\kappa$, $T^i{}_j$, $\Phi$. It presented this in its clean, deterministic form - the mean-field limit, as physicists call it. But three structural complications arise immediately when Epimechanics is applied to social, psychological, and informational domains. Each of these complications has a precise analogue in fundamental physics. And in each case, the physics analogy suggests the correct formal treatment.
 
 The three complications:
 
@@ -66,9 +66,9 @@ Treating these as objections to Epimechanics would be a mistake. They are refine
 
 A point that is easy to miss because it is so obvious: **if you can label something, you have already assigned it a representation.** The act of naming a quantity - "trust," "morale," "market sentiment" - is itself a representational act. You have distinguished it from other quantities and implicitly placed it somewhere in a space of possible values. You may not know the state space's geometry, its dimensionality, or its metric - but you have committed to the claim that the thing you named can be represented as having a value that could, in principle, be different. That is all $X \in S$ requires. The label is arbitrary - you could call your car a shoe - but the act of labeling commits you to the existence of something being represented, however poorly.
 
-This renaming — from "The Physics of Metaphysics" to "Epimechanics" — was itself a coordinate transform: the content didn't change, the label did (see [Part 0](./epimechanics_00_prelude.md) for the full example).
+This renaming — from "The Physics of Metaphysics" to "Epimechanics" — was itself a coordinate transform: the content didn't change, the label did (see [Part 0](./00_prelude.md) for the full example).
 
-This illustrates a point developed fully in [Part 0 (Foundations)](./epimechanics_00_prelude.md): observer-dependence is a spectrum, not a taxonomy. Representations range from fully observer-imposed (a name, an aesthetic rating) through observer-accessible (a height, a price — determinable through interaction but existing independently) to observer-invariant (the speed of light, a network's topology — agreed upon regardless of method or coordinate system). The degree of observer-independence is itself an empirical question, established by testing convergence across independent observers and methods. The more independent measurements agree, the more confident we are that the representation tracks structure in reality rather than structure in the observer.
+This illustrates a point developed fully in [Part 0 (Foundations)](./00_prelude.md): observer-dependence is a spectrum, not a taxonomy. Representations range from fully observer-imposed (a name, an aesthetic rating) through observer-accessible (a height, a price — determinable through interaction but existing independently) to observer-invariant (the speed of light, a network's topology — agreed upon regardless of method or coordinate system). The degree of observer-independence is itself an empirical question, established by testing convergence across independent observers and methods. The more independent measurements agree, the more confident we are that the representation tracks structure in reality rather than structure in the observer.
 
 A "wrong" label - calling a tree a "car" - does not change the tree's measurable state. But it does change the state of the system that includes the labeler: the tree now carries the assigned property "has been called 'car' by observer $O$." The label is a coordinate choice, and a bad one - it places the tree in a region of state space (vehicles) where none of the dynamics (fuel consumption, traffic laws, depreciation) apply. The mislabel is a coordinate error: it assigns the wrong $X$ to the wrong $S$. The tree's measurable properties are unaffected.
 
@@ -78,7 +78,7 @@ Which labels carve reality at its joints - which coordinate systems capture the 
 
 ## 1. Epistemic Uncertainty of X - The Observer Changes the State
 
-In [Part 1](./epimechanics_01_generalized_mechanics.md), we assumed X could be assigned a definite value. This is the classical assumption. It fails in at least two distinct ways in non-physical domains - and in a third way that turns out to apply even in fundamental physics.
+In [Part 1](./01_generalized_mechanics.md), we assumed X could be assigned a definite value. This is the classical assumption. It fails in at least two distinct ways in non-physical domains - and in a third way that turns out to apply even in fundamental physics.
 
 ### 1.1 The Observer Effect in Measurement
 
@@ -114,7 +114,7 @@ where $\rho$ is a probability density over $S$. The Fokker-Planck equation gover
 
 $$\frac{\partial \rho}{\partial t} = -\nabla \cdot \!\left(\frac{F}{\mathcal{M}} \rho\right) + D \nabla^2 \rho$$
 
-where $F/\mathcal{M}$ is the drift velocity (force divided by generalized mass - acceleration integrated into velocity), and $D$ is a diffusion coefficient encoding measurement noise and intrinsic stochasticity. In the deterministic limit ($D \to 0$), $\rho$ collapses to a delta function and we recover the classical framework of [Part 1](./epimechanics_01_generalized_mechanics.md). In the high-noise limit, $\rho$ is broad - the state is genuinely uncertain, and only distributions over outcomes are well-defined.
+where $F/\mathcal{M}$ is the drift velocity (force divided by generalized mass - acceleration integrated into velocity), and $D$ is a diffusion coefficient encoding measurement noise and intrinsic stochasticity. In the deterministic limit ($D \to 0$), $\rho$ collapses to a delta function and we recover the classical framework of [Part 1](./01_generalized_mechanics.md). In the high-noise limit, $\rho$ is broad - the state is genuinely uncertain, and only distributions over outcomes are well-defined.
 
 The uncertainty principle in this context: if $X$ and $p = \mathcal{M}\dot{X}$ (state and generalized momentum) are conjugate variables in the Hamiltonian sense, then there is an irreducible trade-off:
 
@@ -128,9 +128,9 @@ Position and momentum are one conjugate pair. A second uncertainty relation conn
 
 $$\sigma_E \cdot \sigma_t \geq C'$$
 
-You cannot simultaneously specify exactly how much capacity for state change a system possesses and exactly when that capacity will be deployed. In quantum mechanics, this produces the energy-time uncertainty relation $\Delta E \cdot \Delta t \geq \hbar/2$. In Epimechanics, the analogous Hamiltonian structure motivates the same constraint. But an important caveat: in quantum mechanics, the energy-time uncertainty follows from the Mandelstam-Tamm relation and the non-commutativity of energy and time operators (or, more precisely, the non-commutativity of the Hamiltonian with observables whose expectation values define the "clock"). In Epimechanics, what plays the role of non-commutativity - the algebraic structure that would make this a theorem rather than a postulate - has not been formally specified. The energy-time uncertainty relation here is therefore a structural postulate motivated by the Hamiltonian analogy, not a derived result. Deriving it would require specifying the algebraic structure of Epimechanics' state space, which remains an open question (see [Part 5, Open Question 8](./epimechanics_05_ontology_and_open_questions.md)).
+You cannot simultaneously specify exactly how much capacity for state change a system possesses and exactly when that capacity will be deployed. In quantum mechanics, this produces the energy-time uncertainty relation $\Delta E \cdot \Delta t \geq \hbar/2$. In Epimechanics, the analogous Hamiltonian structure motivates the same constraint. But an important caveat: in quantum mechanics, the energy-time uncertainty follows from the Mandelstam-Tamm relation and the non-commutativity of energy and time operators (or, more precisely, the non-commutativity of the Hamiltonian with observables whose expectation values define the "clock"). In Epimechanics, what plays the role of non-commutativity - the algebraic structure that would make this a theorem rather than a postulate - has not been formally specified. The energy-time uncertainty relation here is therefore a structural postulate motivated by the Hamiltonian analogy, not a derived result. Deriving it would require specifying the algebraic structure of Epimechanics' state space, which remains an open question (see [Part 5, Open Question 8](./05_ontology_and_open_questions.md)).
 
-Both relations constrain the precision of joint knowledge, but they have different formal status. In the Hamiltonian formulation ([Part 1, Section 4b](./epimechanics_01_generalized_mechanics.md)), the Lagrangian $L = T - V$ defines conjugate momentum via $p = \partial L / \partial \dot{X}$, and the Hamiltonian (total energy) via $H = p\dot{X} - L$. The position-momentum uncertainty follows from the canonical commutator $[\hat{X}, \hat{p}] = i\hbar$ (or its generalized analogue). The energy-time relation is derived differently - from the Mandelstam-Tamm relation governing the rate of change of expectation values - because time is a parameter, not an observable with its own operator. In relativistic formulations where energy and momentum form a 4-vector, the two relations become more symmetric. For Epimechanics, the distinction matters less than the structural consequence: both impose irreducible bounds on joint specification.
+Both relations constrain the precision of joint knowledge, but they have different formal status. In the Hamiltonian formulation ([Part 1, Section 4b](./01_generalized_mechanics.md)), the Lagrangian $L = T - V$ defines conjugate momentum via $p = \partial L / \partial \dot{X}$, and the Hamiltonian (total energy) via $H = p\dot{X} - L$. The position-momentum uncertainty follows from the canonical commutator $[\hat{X}, \hat{p}] = i\hbar$ (or its generalized analogue). The energy-time relation is derived differently - from the Mandelstam-Tamm relation governing the rate of change of expectation values - because time is a parameter, not an observable with its own operator. In relativistic formulations where energy and momentum form a 4-vector, the two relations become more symmetric. For Epimechanics, the distinction matters less than the structural consequence: both impose irreducible bounds on joint specification.
 
 The generalized implications are substantive:
 
@@ -140,7 +140,7 @@ The generalized implications are substantive:
 
 **Revolutionary movements.** A revolutionary movement has enormous $E$ (capacity to change the political state space) with fundamentally uncertain $t$ (when the revolution occurs is unpredictable). This is the energy-time uncertainty principle applied to social dynamics. The movement's energy is real; its timing is structurally indeterminate.
 
-This second conjugate pair completes the uncertainty structure of Epimechanics. [Part 1](./epimechanics_01_generalized_mechanics.md)'s mechanics defines the quantities ($X$, $p$, $E$, $t$). This section establishes the irreducible limits on jointly knowing them: $\sigma_X \sigma_p \geq C$ and $\sigma_E \sigma_t \geq C'$.
+This second conjugate pair completes the uncertainty structure of Epimechanics. [Part 1](./01_generalized_mechanics.md)'s mechanics defines the quantities ($X$, $p$, $E$, $t$). This section establishes the irreducible limits on jointly knowing them: $\sigma_X \sigma_p \geq C$ and $\sigma_E \sigma_t \geq C'$.
 
 ---
 
@@ -262,7 +262,7 @@ The true state of an entity is not a point $X \in S$ but a probability distribut
 
 Generalized mass $\mathcal{M}$ is particularly sensitive to all three complications. **Epistemically**: an entity may not know its own mass - how entangled its beliefs really are, how dense its internal causal structure is. Asking "how strongly do you hold this belief?" is a measurement that can change $\mathcal{M}$ itself, just as measuring X can change X. **Coordinate-relatively**: two entities' internal causal densities may be structured in incommensurable dimensions - one entity's "deeply held" may correspond to a different geometry of internal connections than another's, making direct comparison of $\mathcal{M}$ values across entities require the same mapping $f: S_A \to S_B$ that state comparison requires. **Frame-relatively**: whether an entity appears to have high or low inertia depends on the observer's reference frame. A parent may perceive a child's worldview as flimsy (low $\mathcal{M}$) while the child experiences it as the densest, most load-bearing structure they have.
 
-This is considerably more complex than the clean formalism of [Part 1](./epimechanics_01_generalized_mechanics.md). But it is also more honest. [Part 1](./epimechanics_01_generalized_mechanics.md)'s clean formalism is the mean-field, classical, single-frame limit - valid when:
+This is considerably more complex than the clean formalism of [Part 1](./01_generalized_mechanics.md). But it is also more honest. [Part 1](./01_generalized_mechanics.md)'s clean formalism is the mean-field, classical, single-frame limit - valid when:
 
 - States are well-defined and observable without disturbing them (classical limit: $D \to 0$)
 - All entities share approximately the same state space geometry (common coordinate limit: $S_A \cong S_B$)
@@ -272,7 +272,7 @@ When these conditions fail - which they do, routinely, in social and psychologic
 
 The good news: physics went through exactly this progression. Classical mechanics was good enough for most engineering purposes at human scales. Quantum mechanics was needed for atomic-scale phenomena. Riemannian geometry and general relativity were needed for cosmological scales and strong gravitational fields. The generalizations did not invalidate classical mechanics - they showed precisely where it is valid and where it breaks down. Newtonian mechanics is the weak-field, low-velocity limit of general relativity - valid when gravitational fields are weak and velocities are small compared to $c$. It is approximately right in a specific domain.
 
-The same structure applies here. [Part 1](./epimechanics_01_generalized_mechanics.md)'s formalism is valid for systems where state uncertainty is low, state spaces are approximately shared, and reference frame effects are small. The extensions developed in this post apply when those conditions fail. Both levels of Epimechanics are needed; neither makes the other obsolete.
+The same structure applies here. [Part 1](./01_generalized_mechanics.md)'s formalism is valid for systems where state uncertainty is low, state spaces are approximately shared, and reference frame effects are small. The extensions developed in this post apply when those conditions fail. Both levels of Epimechanics are needed; neither makes the other obsolete.
 
 ---
 
@@ -289,7 +289,7 @@ The same structure applies here. [Part 1](./epimechanics_01_generalized_mechanic
 
 ## Closing
 
-[Part 1](./epimechanics_01_generalized_mechanics.md)'s formalism is the skeleton. These extensions are the acknowledgment that the skeleton operates in a more complex world than classical mechanics assumes. A person asking "how are you feeling?" is performing a measurement that perturbs the state being measured. A therapist trying to understand a client's anger is working across potentially non-isomorphic state spaces. A historian trying to understand why a civilization collapsed is computing forces from a reference frame that did not exist during the events - a frame with access to information that was, in the causal sense, in the future of the phenomenon being described.
+[Part 1](./01_generalized_mechanics.md)'s formalism is the skeleton. These extensions are the acknowledgment that the skeleton operates in a more complex world than classical mechanics assumes. A person asking "how are you feeling?" is performing a measurement that perturbs the state being measured. A therapist trying to understand a client's anger is working across potentially non-isomorphic state spaces. A historian trying to understand why a civilization collapsed is computing forces from a reference frame that did not exist during the events - a frame with access to information that was, in the causal sense, in the future of the phenomenon being described.
 
 Epimechanics remains valid. This specifies its domain of validity and extends it to the harder cases.
 
@@ -297,4 +297,4 @@ The question "what is X, exactly?" is one of the harder questions in the program
 
 ---
 
-[← Part 1: Generalized Mechanics](./epimechanics_01_generalized_mechanics.md) | [→ Part 2: Meta-Entities](./epimechanics_02_meta_entities.md)
+[← Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 2: Meta-Entities](./02_meta_entities.md)

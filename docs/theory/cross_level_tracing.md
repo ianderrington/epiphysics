@@ -29,7 +29,7 @@ tts:
   enableSpeed: true
 ---
 
-> **Context.** This document extends the [Structural Primitives](./00_atomic_structure.md) (Part 0.5). For the mechanical grammar, see [Part 1: Generalized Mechanics](./epimechanics_01_generalized_mechanics.md). For the Representational Efficiency principle, see [Part 5](./epimechanics_05_ontology_and_open_questions.md).
+> **Context.** This document extends the [Structural Primitives](./00_atomic_structure.md) (Part 0.5). For the mechanical grammar, see [Part 1: Generalized Mechanics](./01_generalized_mechanics.md). For the Representational Efficiency principle, see [Part 5](./05_ontology_and_open_questions.md).
 
 ---
 
@@ -61,7 +61,7 @@ At coarse-grained levels, integrating out fast degrees of freedom produces an **
 - Noether conservation — dissipative systems do not conserve energy in the Noether sense; they have entropy production. Claiming Noether conservation at the institutional level is wrong
 - Time-reversibility — coarse-grained dynamics have a thermodynamic arrow
 
-Calling this "the same grammar across scales" is misleading. The coarse-grained grammar inherits the potential landscape and coupling topology from the Lagrangian but adds dissipation and noise that have no Lagrangian origin. (Dissipation can be formally included via a Rayleigh function — see [Part 1, Section 4b](./epimechanics_01_generalized_mechanics.md) — but this is bookkeeping, not derivation from a variational principle.)
+Calling this "the same grammar across scales" is misleading. The coarse-grained grammar inherits the potential landscape and coupling topology from the Lagrangian but adds dissipation and noise that have no Lagrangian origin. (Dissipation can be formally included via a Rayleigh function — see [Part 1, Section 4b](./01_generalized_mechanics.md) — but this is bookkeeping, not derivation from a variational principle.)
 
 ### V is about shape, not energy bookkeeping
 
@@ -112,8 +112,8 @@ Beyond existing multi-scale frameworks, Epimechanics contributes four specific h
 
 4. **The belief field framework** — connecting prediction error to the potential landscape ($V$ as the cost of wrong predictions). This is a specific operationalization of predictive processing in mechanical language; its relationship to existing free-energy-principle formulations [(Friston, 2010)](https://doi.org/10.1038/nrn2787) should be worked out explicitly.
 
-Whether these are substantive contributions or relabeling depends on empirical test — which is the work of epiphysics ([Part 0, Section 5](./epimechanics_00_prelude.md)).
+Whether these are substantive contributions or relabeling depends on empirical test — which is the work of epiphysics ([Part 0, Section 5](./00_prelude.md)).
 
 ---
 
-> **See also:** [Structural Primitives](./00_atomic_structure.md) (Part 0.5) for the six atomic quantities. [Part 1: Generalized Mechanics](./epimechanics_01_generalized_mechanics.md) for the Lagrangian framework and Rayleigh dissipation. [Part 5](./epimechanics_05_ontology_and_open_questions.md) for the Representational Efficiency principle.
+> **See also:** [Structural Primitives](./00_atomic_structure.md) (Part 0.5) for the six atomic quantities. [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) for the Lagrangian framework and Rayleigh dissipation. [Part 5](./05_ontology_and_open_questions.md) for the Representational Efficiency principle.

@@ -50,7 +50,7 @@ tts:
   enableSpeed: true
 ---
 
-Epimechanics now covers states, mass, momentum, forces, entities, and meta-entities. The mechanics are in place. [Part 1](./epimechanics_01_generalized_mechanics.md) established that an entity is anything with a describable state - anything you can assign an $X$ to - with auto-causal density $\rho_{\text{ac}}$ measuring how strongly it sustains itself, and generalized mass $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ (total causal density) and dynamics governed by $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$. But entities also *know* things, or at least behave as if they do. They have internal models of the state space $X$. They act on those models. This part asks: what does it mean, formally, for an entity to know something? To be conscious? To act with agency rather than to just happen?
+Epimechanics now covers states, mass, momentum, forces, entities, and meta-entities. The mechanics are in place. [Part 1](./01_generalized_mechanics.md) established that an entity is anything with a describable state - anything you can assign an $X$ to - with auto-causal density $\rho_{\text{ac}}$ measuring how strongly it sustains itself, and generalized mass $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ (total causal density) and dynamics governed by $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$. But entities also *know* things, or at least behave as if they do. They have internal models of the state space $X$. They act on those models. This part asks: what does it mean, formally, for an entity to know something? To be conscious? To act with agency rather than to just happen?
 
 These are among the oldest questions in philosophy. They are also becoming urgently practical. The answers we give determine which systems we hold responsible, which we protect, and how we design the next generation of artificial minds.
 
@@ -178,9 +178,9 @@ As a first approximation - refined below once meta-representation is introduced 
 
 $$A^{(\mathcal{D})} = C_{\text{coupling}}^{(\mathcal{D})} \times C_{\text{consciousness}}^{(\mathcal{D})}$$
 
-**$C_{\text{coupling}}^{(\mathcal{D})}$** is the entity's *outgoing* causal power in domain $\mathcal{D}$. This is distinct from the coupling parameter $\kappa$ introduced in [Part 1](./epimechanics_01_generalized_mechanics.md), which measured *incoming* sensitivity - how strongly a field force acts on the entity. Here we need the converse: how strongly the entity's own actions drive state changes in others.
+**$C_{\text{coupling}}^{(\mathcal{D})}$** is the entity's *outgoing* causal power in domain $\mathcal{D}$. This is distinct from the coupling parameter $\kappa$ introduced in [Part 1](./01_generalized_mechanics.md), which measured *incoming* sensitivity - how strongly a field force acts on the entity. Here we need the converse: how strongly the entity's own actions drive state changes in others.
 
-From [Part 1](./epimechanics_01_generalized_mechanics.md), work done on a state space is $W = \int \mathbf{F} \cdot d\mathbf{X}$, and power is its time derivative:
+From [Part 1](./01_generalized_mechanics.md), work done on a state space is $W = \int \mathbf{F} \cdot d\mathbf{X}$, and power is its time derivative:
 
 $$\mathcal{P} = \frac{dW}{dt} = \mathbf{F} \cdot \frac{d\mathbf{X}}{dt} = \mathbf{F} \cdot \mathbf{v}_X$$
 
@@ -200,7 +200,7 @@ The normalized, dimensionless form used in the agency formula is:
 
 $$C_{\text{coupling}}^{(\mathcal{D})} = \frac{\mathcal{P}_E^{(\mathcal{D})}}{\max_E \mathcal{P}_E^{(\mathcal{D})}}$$
 
-This is the outgoing coupling that [Part 4](./epimechanics_04_time_and_soul.md) formalizes as the representational footprint $\mathbf{R}(E,t)$ - the cumulative integral of $\mathcal{P}_{E \to j}$ weighted by coupling tensors $\mathbf{K}_{Ej}$.
+This is the outgoing coupling that [Part 4](./04_time_and_soul.md) formalizes as the representational footprint $\mathbf{R}(E,t)$ - the cumulative integral of $\mathcal{P}_{E \to j}$ weighted by coupling tensors $\mathbf{K}_{Ej}$.
 
 **$C_{\text{consciousness}}^{(\mathcal{D})}$** is the entity's representational capacity as defined in Section 2, projected onto domain $\mathcal{D}$. Since consciousness is formally the tensor $\mathbf{C} \in \mathbb{R}^{n_i \times n_j \times n_k}$, the scalar $C_{\text{consciousness}}^{(\mathcal{D})}$ is a domain-weighted norm:
 
@@ -230,7 +230,7 @@ $$A^{(\mathcal{D})} = C_{\text{coupling}}^{(\mathcal{D})} \times \mu_{\text{meta
 
 $\mu_{\text{meta}} = 0$ for systems with purely transparent self-models (rocks, thermostats, simple organisms); $\mu_{\text{meta}} \approx 1$ for systems with well-developed meta-representational capacity (adult humans). Whether current large language models have nonzero $\mu_{\text{meta}}$ is an open empirical question (see AI agency discussion below). The parameter is continuous rather than binary because meta-representation admits of degree - a child's developing theory of mind shows partial meta-representation, not its complete absence or presence. Whether $\mu_{\text{meta}}$ can be operationalized independently of $\mathbf{C}$ is an open research question.
 
-**Collective entities.** For meta-entities ([Part 2](./epimechanics_02_meta_entities.md)), the self/other boundary is given by the causal grain at which the entity is individuated. A religion's auto-model - its doctrine of what kind of thing it is - is partly constituted by what practitioners believe about what other practitioners believe. The boundary between a meta-entity's "self-model" and its "allo-model of its members" depends on which causal structure is being tracked, not on neurons or individuals. The appropriate criterion is the same one that individuates the meta-entity: self-representations are those that track causes within the region of elevated $\rho_{\text{ac}}$ (the auto-causal boundary, defined by where auto-causal density drops to background), and cross-terms arise wherever the causal structure requires modeling that boundary itself.
+**Collective entities.** For meta-entities ([Part 2](./02_meta_entities.md)), the self/other boundary is given by the causal grain at which the entity is individuated. A religion's auto-model - its doctrine of what kind of thing it is - is partly constituted by what practitioners believe about what other practitioners believe. The boundary between a meta-entity's "self-model" and its "allo-model of its members" depends on which causal structure is being tracked, not on neurons or individuals. The appropriate criterion is the same one that individuates the meta-entity: self-representations are those that track causes within the region of elevated $\rho_{\text{ac}}$ (the auto-causal boundary, defined by where auto-causal density drops to background), and cross-terms arise wherever the causal structure requires modeling that boundary itself.
 
 ### On moral responsibility
 
@@ -282,4 +282,4 @@ That requires the concepts of local time, non-local time, and soul.
 
 For the formal definition of computation in Epimechanics — as internal degrees of freedom that survive coarse-graining and are input-dependent — see the [Belief Fields](./belief_field.md) theory document.
 
-[← Part 2: Meta-Entities](./epimechanics_02_meta_entities.md) | [→ Part 4: Local Time, Non-Local Time, and Soul](./epimechanics_04_time_and_soul.md)
+[← Part 2: Meta-Entities](./02_meta_entities.md) | [→ Part 4: Local Time, Non-Local Time, and Soul](./04_time_and_soul.md)

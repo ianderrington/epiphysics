@@ -47,7 +47,7 @@ tts:
   enableSpeed: true
 ---
 
-[Part 1](./epimechanics_01_generalized_mechanics.md) established the skeleton: an entity is anything with a describable state - anything you can assign an $X$ to - and auto-causal density $\rho_{\text{ac}}$ measures how strongly it sustains itself. A *strong* entity is a structure with high auto-causal density $\rho_{\text{ac}}$. Its generalized mass $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ measures total causal content, its momentum is $p = \mathcal{M}\dot{X}$, and it is subject to forces $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$. Entities differ in how strongly they couple to various domains - captured by a scalar $\kappa$ or a coupling tensor $T^i{}_j$. Fields $\Phi(x)$ assign force values across domains; entities at different positions experience different forces even with identical coupling structure.
+[Part 1](./01_generalized_mechanics.md) established the skeleton: an entity is anything with a describable state - anything you can assign an $X$ to - and auto-causal density $\rho_{\text{ac}}$ measures how strongly it sustains itself. A *strong* entity is a structure with high auto-causal density $\rho_{\text{ac}}$. Its generalized mass $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ measures total causal content, its momentum is $p = \mathcal{M}\dot{X}$, and it is subject to forces $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$. Entities differ in how strongly they couple to various domains - captured by a scalar $\kappa$ or a coupling tensor $T^i{}_j$. Fields $\Phi(x)$ assign force values across domains; entities at different positions experience different forces even with identical coupling structure.
 
 Epimechanics handles most entities straightforwardly. A rock, a person, a protein, a market price - each has a state, a state space, and coupling to fields (with varying degrees of auto-causal density). But some structures resist this description. They are distributed. They have no single location. They persist after their original instantiation dissolves. They exert causal force through mechanisms no individual part possesses. The scientific method is not a person or a text. A religion is not its founder or its scripture. A market is not any of the traders who constitute it. What are these things?
 
@@ -231,7 +231,7 @@ Simon's criterion: is the within-system coupling (between model weights, trainin
 
 Daniels et al.'s criterion: is the collective influence synergistic - does the AI system produce epistemic and behavioral changes that no description of individual interactions predicts? Yes, if the system's influence includes emergent cultural patterns, new linguistic norms, or shifts in collective epistemic standards.
 
-If these criteria are met, the AI system has earned entity status. This does not settle questions of consciousness or moral standing - those are separate questions addressed in [Part 3](./epimechanics_03_intelligence_consciousness_agency.md). It does mean the appropriate unit of causal analysis is the system as a whole, not the individual interaction.
+If these criteria are met, the AI system has earned entity status. This does not settle questions of consciousness or moral standing - those are separate questions addressed in [Part 3](./03_intelligence_consciousness_agency.md). It does mean the appropriate unit of causal analysis is the system as a whole, not the individual interaction.
 
 When does a platform become a meta-entity? By the same criteria: when its macro-level description captures more causal structure than the description of individual users; when within-platform coupling substantially exceeds off-platform coupling; when collective behavior is synergistic. By these measures, major social media platforms are already meta-entities - their effects on political discourse, epistemic standards, and social norms are not decomposable into the sum of individual user interactions.
 
@@ -248,10 +248,10 @@ This has direct implications for:
 
 ## Closing
 
-Epimechanics now has two layers: the generalized mechanics of [Part 1](./epimechanics_01_generalized_mechanics.md) ($X$, $\dot{X}$, $\mathcal{M}$, $p = \mathcal{M}\dot{X}$, $F$, $W$, $T^i{}_j$, $\Phi$) and the meta-entity theory of this part (three substrates, three entity criteria, distributed coupling as the source of causal power).
+Epimechanics now has two layers: the generalized mechanics of [Part 1](./01_generalized_mechanics.md) ($X$, $\dot{X}$, $\mathcal{M}$, $p = \mathcal{M}\dot{X}$, $F$, $W$, $T^i{}_j$, $\Phi$) and the meta-entity theory of this part (three substrates, three entity criteria, distributed coupling as the source of causal power).
 
 Together they describe how higher-level auto-causal loops emerge from lower-level ones - how the mutual coupling of practitioners, informational infrastructure, and mimetic patterns can produce a new region of elevated $\rho_{\text{ac}}$ at the macro scale, with its own state variables, its own mass, its own local time. The meta-entity is the emergent auto-causal loop - and by the three criteria above, that emergence is causal.
 
 The next question follows naturally: what do these entities - individual and meta - know? How do they model the world? What are they trying to do? That requires the concepts of intelligence, consciousness, and agency.
 
-[← Part 1: Generalized Mechanics](./epimechanics_01_generalized_mechanics.md) | [→ Part 3: Intelligence, Consciousness, and Agency](./epimechanics_03_intelligence_consciousness_agency.md)
+[← Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 3: Intelligence, Consciousness, and Agency](./03_intelligence_consciousness_agency.md)

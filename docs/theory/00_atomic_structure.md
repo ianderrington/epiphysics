@@ -43,7 +43,7 @@ tts:
 
 ## The Problem
 
-[Epimechanics](./index.md) provides a mechanics - state, force, energy, coupling, thermodynamics - that applies to any representation of any system. [Part 1](./epimechanics_01_generalized_mechanics.md) defines the grammar. [Part 5](./epimechanics_05_ontology_and_open_questions.md) assembles the full ontology and states the Representational Efficiency principle: all representations have epimechanical structure; good ones are predictively efficient at minimal computational cost.
+[Epimechanics](./index.md) provides a mechanics - state, force, energy, coupling, thermodynamics - that applies to any representation of any system. [Part 1](./01_generalized_mechanics.md) defines the grammar. [Part 5](./05_ontology_and_open_questions.md) assembles the full ontology and states the Representational Efficiency principle: all representations have epimechanical structure; good ones are predictively efficient at minimal computational cost.
 
 But the grammar has a gap. It defines $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ without specifying what $\rho_{\text{causal}}$ is *made of*. It defines auto-causal density $\rho_{\text{ac}}$ without decomposing it into components. It treats $\mathcal{M}$ as if it were a single quantity - but as a simple example shows, it cannot be.
 
@@ -51,7 +51,7 @@ But the grammar has a gap. It defines $\mathcal{M} = \int \rho_{\text{causal}} \
 
 **The implication:** $\mathcal{M}$ (total causal density) and maintenance cost are *different quantities*. They are built from different combinations of more fundamental components. Saying "maintenance cost is proportional to causal density" is like saying "weight is proportional to volume" - true for uniform density, false in general.
 
-This is the periodic table problem. Physics had $F = ma$ for two centuries before understanding what mass is *made of*. Chemistry had reaction equations before knowing what substances are made of. Epimechanics has $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$ (scalar approximation; see [Part 1](./epimechanics_01_generalized_mechanics.md) for the general tensorial form) - and now needs to understand what $\mathcal{M}$ is made of, in a way that distinguishes diamonds from sandcastles.
+This is the periodic table problem. Physics had $F = ma$ for two centuries before understanding what mass is *made of*. Chemistry had reaction equations before knowing what substances are made of. Epimechanics has $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$ (scalar approximation; see [Part 1](./01_generalized_mechanics.md) for the general tensorial form) - and now needs to understand what $\mathcal{M}$ is made of, in a way that distinguishes diamonds from sandcastles.
 
 ---
 
@@ -227,7 +227,7 @@ For how composites can outlive their constituents, see [The Persistence Reversal
 
 ## Connection to the Representational Efficiency Principle
 
-The Representational Efficiency principle ([Part 5](./epimechanics_05_ontology_and_open_questions.md)) connects these primitives to optimal representation: the "right" description is the one whose state variables correspond to natural clusters of bonds — the mesoscale structures that have their own dynamics. This is exactly what coarse-graining does in physics: identify the collective degrees of freedom (phonons, quasiparticles) that capture the system's behavior more efficiently than tracking individual atoms.
+The Representational Efficiency principle ([Part 5](./05_ontology_and_open_questions.md)) connects these primitives to optimal representation: the "right" description is the one whose state variables correspond to natural clusters of bonds — the mesoscale structures that have their own dynamics. This is exactly what coarse-graining does in physics: identify the collective degrees of freedom (phonons, quasiparticles) that capture the system's behavior more efficiently than tracking individual atoms.
 
 ---
 
@@ -235,7 +235,7 @@ The Representational Efficiency principle ([Part 5](./epimechanics_05_ontology_a
 
 ### Q1: Are these the right atoms?
 
-The six quantities proposed here (bond, strength, loop order, basin depth, entropy production, repair rate) are candidates, not conclusions. The test: can they be measured independently in at least one domain, and do the derived quantities ($\mathcal{M}$, $C_{\text{maint}}$, robustness, etc.) computed from them match independent measurements of those derived quantities? This is the atomic-level version of the equivalence principle test from [Part 1, Section 2b](./epimechanics_01_generalized_mechanics.md).
+The six quantities proposed here (bond, strength, loop order, basin depth, entropy production, repair rate) are candidates, not conclusions. The test: can they be measured independently in at least one domain, and do the derived quantities ($\mathcal{M}$, $C_{\text{maint}}$, robustness, etc.) computed from them match independent measurements of those derived quantities? This is the atomic-level version of the equivalence principle test from [Part 1, Section 2b](./01_generalized_mechanics.md).
 
 ### Q2: Are the atoms domain-independent?
 
@@ -257,7 +257,7 @@ The Lagrangian $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V(X)$ (scalar approximat
 
 ## Relationship to the Series
 
-This document sits between the [series overview](./index.md) and [Part 1](./epimechanics_01_generalized_mechanics.md). It addresses the question that Part 1's grammar leaves open: what is the grammar *about*? The grammar describes how $\mathcal{M}$, $F$, $V$, $T^i{}_j$ relate to each other. This document asks what these quantities are *made of* - and proposes that the answer, like chemistry's periodic table, is a small set of atomic quantities that combine differently in different domains to produce the observed diversity of entities.
+This document sits between the [series overview](./index.md) and [Part 1](./01_generalized_mechanics.md). It addresses the question that Part 1's grammar leaves open: what is the grammar *about*? The grammar describes how $\mathcal{M}$, $F$, $V$, $T^i{}_j$ relate to each other. This document asks what these quantities are *made of* - and proposes that the answer, like chemistry's periodic table, is a small set of atomic quantities that combine differently in different domains to produce the observed diversity of entities.
 
 The grammar works regardless of whether the atomic decomposition is correct - $F = \mathcal{M}\ddot{X}$ (or more generally $F_i = \mathcal{M}_{ij}\ddot{X}^j$) holds whether or not we know what $\mathcal{M}$ is made of, just as $F = ma$ held before the discovery of atoms. But the atomic decomposition, if correct, would:
 
@@ -269,4 +269,4 @@ The grammar works regardless of whether the atomic decomposition is correct - $F
 
 ---
 
-[→ Part 1: The Generalized Mechanics](./epimechanics_01_generalized_mechanics.md)
+[→ Part 1: The Generalized Mechanics](./01_generalized_mechanics.md)
