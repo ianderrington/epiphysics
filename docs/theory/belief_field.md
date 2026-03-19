@@ -96,6 +96,30 @@ The deviation $\Delta V = \hat{V} - V$ — the gap between what the entity belie
 
 ---
 
+## Computation as State Evolution
+
+A deeper point before we continue: **every state computes its own future.** A rock in a gravitational field "computes" its trajectory — the next state is determined by the current state plus the forces acting on it. The rock doesn't have a separate model of its future; its physical state IS the computation. The potential field of accessible futures is implicit in the current configuration plus the dynamics.
+
+This aligns with [Wolfram's](https://arxiv.org/abs/2004.08210) definition: computation is rule application to states. The Ruliad is the space of all possible computations. Every physical process computes.
+
+What differs across entities is not WHETHER they compute but HOW:
+
+| Level | What computes | Belief field type | Agency |
+|---|---|---|---|
+| **Physical** | State evolves under dynamics | **Implicit** — the potential field IS the set of reachable future states, determined by physics | Zero — the trajectory is determined |
+| **Reactive** | State + stimulus → response | **Reflexive** — a lookup from current input to immediate action (thermostat, bacterium) | Minimal — one-bit steering |
+| **Predictive** | State + model → anticipated futures | **Explicit** — a separate internal model predicts beyond the immediate physical potential | Moderate — can select among modeled futures |
+| **Recursive** | State + model of model → strategic futures | **Self-referential** — the model includes itself and other models (theory of mind, meta-cognition) | High — can reason about its own predictions and revise its strategy |
+
+A rock's belief field is implicit: the set of states it could reach given its current position and forces. It is "computed" by physics. A brain's belief field is explicit: a separate model that can represent states the entity has never visited, futures that may never occur, and counterfactuals that depend on choices not yet made. Both are computation. The brain's computation is *richer* — more dimensions, more futures, more steering capacity — but not different in kind.
+
+**Computation in Epimechanics:** state evolution under dynamics. Every entity computes. What distinguishes entities is the dimensionality of their computed futures (how many trajectories they track), their agency (capacity to steer among those trajectories), and whether their belief field is implicit (determined by physics) or explicit (maintained as a separate model that can diverge from physical potential).
+
+> [!sidenote]
+> *Compatibility.* This definition aligns with Wolfram (rule application), is compatible with Turing (TM simulates any dynamics), matches Friston (free energy minimization = belief-field update), and extends Shannon (information processing = uncertainty reduction about futures). It is broader than definitions requiring explicit symbol manipulation.
+
+---
+
 ## Instinct vs Cognition: Two Sources of $\hat{V}$
 
 The belief field has (at least) two sources, operating at different timescales:
