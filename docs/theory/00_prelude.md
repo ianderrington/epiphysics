@@ -97,7 +97,7 @@ These are not types. A state can be observer-imposed in one context and observer
 
 **If you can label something, you have already assigned it a representation.** The act of naming a quantity — "trust," "morale," "market sentiment" — commits you to the existence of something being represented. The label is arbitrary (you could use any word), but the act of labeling is not: it places something in a space of possible values.
 
-This series is itself an example. It was originally labeled "The Physics of Metaphysics" — a coordinate choice that placed it in a region of intellectual state space where the dynamics (empirical prediction, formal mechanics) did not apply well. Relabeling it "Epimechanics" was a coordinate transform: the content didn't change, but the representation now sits in a region where the dynamics are more applicable. A framework that emphasizes choosing the right $X$ should eventually apply that principle to its own name.
+Epimechanics is itself an example. It was originally labeled "The Physics of Metaphysics" — a coordinate choice that placed it in a region of intellectual state space where the dynamics (empirical prediction, formal mechanics) did not apply well. Relabeling it "Epimechanics" was a coordinate transform: the content didn't change, but the representation now sits in a region where the dynamics are more applicable. A framework that emphasizes choosing the right $X$ should eventually apply that principle to its own name.
 
 ### What this commits us to
 
