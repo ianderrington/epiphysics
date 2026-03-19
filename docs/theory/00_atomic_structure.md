@@ -59,9 +59,26 @@ This is the periodic table problem. Physics had $F = ma$ for two centuries befor
 
 The following are proposed as domain-independent primitives - the "atoms" from which $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, robustness, and other derived quantities are composed. Each is defined abstractly; domain-specific operationalizations follow in Section 3.
 
+### Units and dimensional analysis
+
+The framework commits to the following: **a causal event is an energy exchange, measured in Joules at the physical level.** This fixes the dimensional chain:
+
+| Quantity | Definition | Units (physical level) |
+|---|---|---|
+| $\rho_{\text{causal}}$ | Energy density of causal events | J per unit measure ($\text{J/m}^3$ for spatial systems) |
+| $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ | Total internal energy | J |
+| Mass-equivalent | $\mathcal{M} / c_D^2$ | kg |
+| $E_{\text{int}} = \mathcal{M} \, c_D^2$ | Internal energy (tautology at physical level) | J |
+
+This is dimensionally consistent with Chaisson's energy rate density: $\dot{\varepsilon}_m = \text{power} / \text{mass} = (\text{d}\mathcal{M}/\text{d}t) / (\mathcal{M}/c_D^2) = \text{W/kg}$, which is exactly his measured quantity.
+
+**For abstract state spaces**, the measure $d\mu$ has domain-specific units (e.g., per-agent, per-belief, per-organizational-unit), and "energy" must be operationalized domain by domain. Bond strength $\sigma_b$ at the institutional level might be measured in dollars-to-sever, hours-of-disruption, or bits-of-information-lost — all legitimate energy-equivalents within their domain, but not convertible to Joules without an empirical bridging function. The hierarchical tensor summation of bond strengths (each in domain-appropriate energy units) composes to give $\mathcal{M}$ at each level.
+
+**This is the framework's measurement frontier.** At the physical level, units are clean: Joules, meters, seconds. At biological levels, they are operationalizable (ATP hydrolysis, metabolic watts). At institutional and cognitive levels, the "energy" of a causal bond is a modeling choice, not a physical fact. The framework provides the grammar ($\mathcal{M} = \sum \sigma_b$); the domain provides the units. Honesty requires acknowledging that dimensional cleanliness degrades as abstraction increases.
+
 ### 1. Causal Bond ($b$)
 
-A single directed causal connection between two state variables: a change in $X_i$ produces a change in $X_j$. This is the atomic unit of causal structure. In [Pearl's framework](https://doi.org/10.1017/CBO9780511803161), it corresponds to a single edge in a causal DAG.
+A single directed causal connection between two state variables: a change in $X_i$ produces a change in $X_j$. This is the atomic unit of causal structure (dimensionless — it is a structural element, not a measured quantity). In [Pearl's framework](https://doi.org/10.1017/CBO9780511803161), it corresponds to a single edge in a causal DAG.
 
 A causal bond has:
 - **Direction**: $i \to j$ (asymmetric in general)
@@ -71,13 +88,13 @@ A causal bond has:
 
 ### 2. Bond Strength ($\sigma_b$)
 
-The energy required to sever a single causal bond - to make a change in $X_i$ that no longer produces a change in $X_j$. Analogous to bond dissociation energy in chemistry.
+The energy required to sever a single causal bond (Joules at the physical level; domain-specific energy-equivalent at higher levels — e.g., dollars, disruption-hours, bits lost). Analogous to bond dissociation energy in chemistry.
 
 Strong bonds are hard to break: a covalent bond between carbon atoms, a deeply ingrained habit, a legal contract. Weak bonds break easily: a van der Waals interaction, a casual acquaintance, a verbal agreement.
 
 ### 3. Loop Order ($\ell$)
 
-The length of the shortest self-referential causal cycle passing through a given point. A loop of order 1 is direct self-causation ($X_i \to X_i$). A loop of order 2 is $X_i \to X_j \to X_i$. A loop of order $\ell$ passes through $\ell$ intermediate states before returning.
+The length of the shortest self-referential causal cycle passing through a given point (dimensionless integer). A loop of order 1 is direct self-causation ($X_i \to X_i$). A loop of order 2 is $X_i \to X_j \to X_i$. A loop of order $\ell$ passes through $\ell$ intermediate states before returning.
 
 Loop order determines the *character* of auto-causal structure:
 - $\ell = 1$: direct self-reinforcement (a thermostat, a habit loop)
@@ -109,7 +126,7 @@ Bonds are to loops as atoms are to molecules. The interesting chemistry happens 
 
 ### 4. Stability Basin Depth ($\Delta V$)
 
-The energy barrier between the entity's current configuration and the nearest dissolution pathway. Formally: the height of the lowest saddle point on the potential energy surface surrounding the entity's equilibrium position.
+The energy barrier between the entity's current configuration and the nearest dissolution pathway (Joules at the physical level; domain-specific energy-equivalent at higher levels). Formally: the height of the lowest saddle point on the potential energy surface surrounding the entity's equilibrium position.
 
 $$\Delta V = V_{\text{saddle}} - V_{\text{equilibrium}}$$
 
@@ -123,7 +140,7 @@ Deep basins mean the entity can absorb large perturbations without leaving its c
 
 ### 5. Entropy Production Rate ($\dot{S}_{\text{int}}$)
 
-The rate at which the entity's internal structure generates disorder that must be managed. Every causal bond produces some entropy - some fraction of the causal activity degrades the structure rather than maintaining it.
+The rate at which the entity's internal structure generates disorder that must be managed (W/K at the physical level; domain-specific entropy-rate at higher levels). Every causal bond produces some entropy - some fraction of the causal activity degrades the structure rather than maintaining it.
 
 $$\dot{S}_{\text{int}} = \sum_{\text{bonds}} \dot{s}_b$$
 
@@ -136,7 +153,7 @@ $\dot{S}_{\text{int}}$ is what makes entities mortal. Even the most robust struc
 
 ### 6. Repair Rate ($\dot{R}_{\text{repair}}$)
 
-The rate at which the auto-causal structure restores broken or degraded bonds. This is the operational definition of "self-sustaining" - the entity does degrade, but it fixes itself faster than it breaks.
+The rate at which the auto-causal structure restores broken or degraded bonds (bonds restored per unit time; dimensionally must match $\dot{S}_{\text{int}}$ for $C_{\text{maint}}$ to be well-defined). This is the operational definition of "self-sustaining" - the entity does degrade, but it fixes itself faster than it breaks.
 
 $$\dot{R}_{\text{repair}} = \text{bonds restored per unit time}$$
 
