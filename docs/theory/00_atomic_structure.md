@@ -221,6 +221,37 @@ The prediction: **AI and durability should be correlated but not identical.** Hi
 
 ---
 
+## Bare Mass and Effective Mass
+
+An entity's resistance to state change is not purely internal. It depends on the medium the entity moves through.
+
+**Bare mass** $\mathcal{M}_{\text{bare}}$ is the entity's internal causal activity in isolation — its own bonds, loops, and self-maintaining structure. **Effective mass** $\mathcal{M}_{\text{eff}}$ is what you actually measure: the total resistance to state change in context, including the medium's response to the entity's motion.
+
+$$\mathcal{M}_{\text{eff}} = \mathcal{M}_{\text{bare}} + \mathcal{M}_{\text{coupling}}(X, \dot{X})$$
+
+where $\mathcal{M}_{\text{coupling}}$ depends on position (where in state space) and velocity (how fast and in what direction the entity moves). The coupling contribution is not a constant — it is a field property of the medium.
+
+**Physics grounding (not analogy).** An electron has bare mass 0.511 MeV. In a silicon crystal, its effective mass is 0.26$m_e$ along one axis and 1.08$m_e$ along another. The crystal's band structure — the periodic potential landscape — reshapes the electron's inertia directionally. Effective mass is tensorial, and the medium determines its anisotropy. This is standard condensed matter physics.
+
+**Caveat on additivity.** In condensed matter, effective mass arises from the curvature of $E(\mathbf{k})$: $m^*_{ij} = \hbar^2 (\partial^2 E / \partial k_i \partial k_j)^{-1}$. It is not computed by adding bare mass plus a coupling term — it emerges from the electron-lattice system as a whole. The additive decomposition $\mathcal{M}_{\text{eff}} = \mathcal{M}_{\text{bare}} + \mathcal{M}_{\text{coupling}}$ is therefore a *linearized approximation*: valid when the entity-medium coupling is weak enough that bare and coupling contributions are separable, but potentially misleading for strongly coupled systems where the entity's identity is constituted by its medium. The honest statement is: effective mass is the operationally measured quantity; bare mass is a counterfactual (how the entity would respond in isolation); the decomposition is useful when the counterfactual is meaningful.
+
+**Generalization to non-physical systems.** A CEO pivoting their company drags the entire organizational structure — high $\mathcal{M}_{\text{eff}}$ from institutional coupling. A new hire pivots freely — low $\mathcal{M}_{\text{coupling}}$. The same idea encounters different effective mass in receptive versus hostile cultures: a proposal aligned with institutional momentum has *reduced* $\mathcal{M}_{\text{eff}}$ (the medium assists motion), while one opposing it has increased $\mathcal{M}_{\text{eff}}$.
+
+**Caveat on "bare mass in isolation."** For a CEO, "bare mass" requires imagining them outside their institution — but a CEO *is* constituted partly by the institution. The counterfactual may not be cleanly separable. This is less problematic for entities with clear medium boundaries (electron in crystal, company in regulatory environment) and more problematic for entities defined by their medium (person-in-culture, idea-in-language). The framework is most honest when it acknowledges: bare mass is well-defined when the entity-medium boundary is sharp; it becomes a useful approximation, not a fundamental decomposition, when that boundary is diffuse.
+
+**Key point: $\mathcal{M}_{\text{eff}}$ can be less than $\mathcal{M}_{\text{bare}}$.** The medium does not just resist — it can assist. An electron in a semiconductor can be *lighter* than a free electron. A reform proposal in a culture already moving that direction meets less resistance than the proposer would face alone. This directional assistance is not "negative resistance" — it is the medium's structure channeling motion along preferred directions. Concrete institutional example: a corporate restructuring announced during an industry-wide shift toward that model encounters measurably less resistance (faster adoption, fewer defections) than the same restructuring in a stable industry — the cultural medium reduces effective mass along the direction of change.
+
+**Connection to the mass tensor.** The mass tensor $\mathcal{M}_{ij}$ defined in [Part 1](./epimechanics_01_generalized_mechanics.md) is the effective mass tensor — it includes both internal structure and medium coupling. Part 1 attributes anisotropy to "within-entity" structure (a belief system resists identity change more than aesthetic change). This is incomplete: anisotropy comes from *both* internal structure *and* the medium. The belief system's resistance to identity change is high partly because the social medium (reputation, relationships, institutional roles) couples strongly along that axis. The mass tensor's eigenvalues reflect entity-plus-medium, not entity alone. This is why the same entity has different $\mathcal{M}_{ij}$ in different contexts: bare mass is approximately constant; the medium changes.
+
+| Symbol | Name | What it measures |
+|---|---|---|
+| $\mathcal{M}_{\text{bare}}$ | Bare mass | Internal causal activity in isolation (counterfactual) |
+| $\mathcal{M}_{\text{coupling}}$ | Coupling mass | Medium's contribution to effective inertia (position- and velocity-dependent) |
+| $\mathcal{M}_{\text{eff}} = \mathcal{M}_{\text{bare}} + \mathcal{M}_{\text{coupling}}$ | Effective mass | Total resistance to state change in context — the operationally measured quantity |
+| $\mathcal{M}_{ij}$ | Mass tensor | Effective mass decomposed by direction; eigenvalues = resistance along principal axes of entity-plus-medium system |
+
+---
+
 ## Connection to the Representational Efficiency Principle
 
 [Part 5](./epimechanics_05_ontology_and_open_questions.md) states that the optimal representation $X^*$ minimizes predictive cost. The atomic framework says *what makes one representation cheaper than another*: a representation is predictively efficient when it decomposes the system into bonds, loops, and basins whose dynamics are *separable* - predictable independently, then composed.
