@@ -5,7 +5,7 @@ description: >-
   Reality has its own potential field. The gap between them is where learning, delusion,
   preparation, and surprise live.
 date: 2026-03-18T00:00:00.000Z
-draft: true
+draft: false
 author:
   name: "Ian Derrington"
 contentType: article

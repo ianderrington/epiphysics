@@ -5,7 +5,7 @@ description: >-
   What survives coarse-graining, what doesn't, and where the framework stands against existing
   multi-scale approaches.
 date: 2026-03-17T00:00:00.000Z
-draft: true
+draft: false
 author:
   name: "Ian Derrington"
 contentType: article

@@ -5,7 +5,7 @@ description: >-
   it moves through. Bare mass vs. effective mass, and why the same entity has different inertia in
   different contexts.
 date: 2026-03-17T00:00:00.000Z
-draft: true
+draft: false
 author:
   name: "Ian Derrington"
 contentType: article

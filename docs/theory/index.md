@@ -1,8 +1,8 @@
 ---
-title: "Epimechanics - Series Overview"
+title: "Epiphysics — Theory (Epimechanics)"
 description: >-
   A six-part series developing Epimechanics - a generalized mechanical framework that applies
-  the mathematical structure of physics to metaphysical reality, with the state variable X left abstract.
+  the mathematical structure of physics to any representable system, with the state variable X left abstract.
   Series index with summaries and links.
 date: 2026-03-11T00:00:00.000Z
 draft: false
@@ -31,7 +31,7 @@ tags:
   - Series
 bullets:
   - Six parts covering generalized mechanics (entities as auto-causal loops, mass, force, energy, Lagrangian, thermodynamics, fluid dynamics), uncertainty/coordinates/relativity, meta-entities, intelligence/consciousness/agency, time and soul, and full ontology
-  - Every metaphysical concept defined in terms of physical primitives - states, derivatives, coupling, information
+  - Every concept defined in terms of physical primitives - states, derivatives, coupling, information
   - No supernatural machinery - every concept is a measurement problem
 shareBlurbs:
   twitter: >-
@@ -45,6 +45,8 @@ tts:
 ---
 
 ## What Epimechanics Is About
+
+**Epiphysics** is the project. **Epimechanics** is the theory within it. This section develops the theory — the mathematical grammar. For how it's tested empirically, see [Applications](../applications/index.md). For the broader project, see [epiphysics.xyz](https://epiphysics.xyz).
 
 A person "has energy." An institution "has inertia." A society "reaches a tipping point." A belief "resists change." These sound like metaphors borrowed from physics. [Lakoff and Johnson (*Metaphors We Live By*, 1980)](https://press.uchicago.edu/ucp/books/book/chicago/M/bo3637992.html) showed that such metaphors are not decorative but structurally load-bearing - we think *through* them. The standard account holds that they are figurative: useful for communication, not literally true.
 
@@ -134,12 +136,12 @@ The final part assembles the full formal ontology and states nine open questions
 
 ### Applications
 
-Domain-specific documents testing whether Epimechanics' grammar generates real predictions. See the [Applications index](./applications/index.md).
+Domain-specific documents testing whether Epimechanics' grammar generates real predictions. See the [Applications index](../applications/index.md).
 
 | Application | Domain | Status |
 |---|---|---|
-| [Efficiency Limits for Organizations](./applications/efficiency_limits.md) | Organizational science | Draft |
-| [Decision and Trajectory](./applications/decision_and_trajectory.md) | Decision theory | Draft |
+| [Efficiency Limits for Organizations](../applications/efficiency_limits.md) | Organizational science | Draft |
+| [Decision and Trajectory](../applications/decision_and_trajectory.md) | Decision theory | Draft |
 
 ### Theory Notes
 

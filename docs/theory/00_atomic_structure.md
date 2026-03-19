@@ -5,7 +5,7 @@ description: >-
   building blocks from which generalized mass, auto-causal density, maintenance cost, and robustness
   are composed? The periodic table problem for a general mechanics.
 date: 2026-03-17T00:00:00.000Z
-draft: true
+draft: false
 author:
   name: "Ian Derrington"
 contentType: article

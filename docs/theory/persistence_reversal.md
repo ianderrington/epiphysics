@@ -5,7 +5,7 @@ description: >-
   outlive constituents. This reversal marks the boundary between passive and active stability —
   the structural signature of the life transition.
 date: 2026-03-17T00:00:00.000Z
-draft: true
+draft: false
 author:
   name: "Ian Derrington"
 contentType: article

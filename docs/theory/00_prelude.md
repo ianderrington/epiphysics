@@ -6,7 +6,7 @@ description: >-
   distinction, and the relationship between Epimechanics (the theory) and Epiphysics
   (the empirical program).
 date: 2026-03-17T00:00:00.000Z
-draft: true
+draft: false
 author:
   name: "Ian Derrington"
 contentType: article
