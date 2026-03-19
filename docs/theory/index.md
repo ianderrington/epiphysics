@@ -46,7 +46,7 @@ tts:
 
 ## What Epimechanics Is About
 
-**Epiphysics** is the project. **Epimechanics** is the theory within it. This section develops the theory — the mathematical grammar. For how it's tested empirically, see [Applications](../applications/index.md). For the broader project, see [epiphysics.xyz](https://epiphysics.xyz).
+**Epiphysics** is the project. **Epimechanics** is the theory within it. This section develops the theory — the mathematical grammar. For how it's tested empirically, see [Applications](../applications/index.md). For [Research](../research/index.md) and [Experiments](../experiments/index.md), see those sections.
 
 A person "has energy." An institution "has inertia." A society "reaches a tipping point." A belief "resists change." These sound like metaphors borrowed from physics. [Lakoff and Johnson (*Metaphors We Live By*, 1980)](https://press.uchicago.edu/ucp/books/book/chicago/M/bo3637992.html) showed that such metaphors are not decorative but structurally load-bearing - we think *through* them. The standard account holds that they are figurative: useful for communication, not literally true.
 
