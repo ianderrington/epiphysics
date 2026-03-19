@@ -2615,77 +2615,89 @@ body {
   color: #63b3ed;
 }
 
-/* Desktop: margin notes — odd numbers right, even numbers left */
+/* Desktop: margin notes — all on right side */
 @media (min-width: 1280px) {
   .sidenote-margin {
     position: absolute;
+    right: -240px;
+    top: 0;
     width: 200px;
     margin-bottom: 0.75rem;
     padding: 0.5rem 0.75rem;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     line-height: 1.5;
     color: #4a5568;
     display: block;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 4px;
-  }
-
-  /* Odd sidenotes: right margin */
-  .sidenote-margin-right {
-    right: -240px;
-    top: 0;
-    border-left: 2px solid #e2e8f0;
-  }
-
-  /* Even sidenotes: left margin */
-  .sidenote-margin-left {
-    left: -240px;
-    top: 0;
-    border-right: 2px solid #e2e8f0;
-    text-align: right;
+    border-radius: 6px;
+    border-left: 3px solid #cbd5e0;
   }
 
   .dark .sidenote-margin {
     color: #a0aec0;
-  }
-
-  .dark .sidenote-margin-right {
     border-left-color: #4a5568;
   }
 
-  .dark .sidenote-margin-left {
-    border-right-color: #4a5568;
-  }
+  /* === Color variants === */
+
+  /* Default: subtle gray-blue */
+  .sidenote-variant-default { border-left-color: #93c5fd; background: rgba(147, 197, 253, 0.06); }
+  .dark .sidenote-variant-default { border-left-color: #3b82f6; background: rgba(59, 130, 246, 0.08); }
+
+  /* Caveat/Warning: amber */
+  .sidenote-variant-warning { border-left-color: #fbbf24; background: rgba(251, 191, 36, 0.08); }
+  .dark .sidenote-variant-warning { border-left-color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
+
+  /* Tip/Hint: purple */
+  .sidenote-variant-tip { border-left-color: #a78bfa; background: rgba(167, 139, 250, 0.06); }
+  .dark .sidenote-variant-tip { border-left-color: #8b5cf6; background: rgba(139, 92, 246, 0.08); }
+
+  /* Info/Note: green */
+  .sidenote-variant-info { border-left-color: #34d399; background: rgba(52, 211, 153, 0.06); }
+  .dark .sidenote-variant-info { border-left-color: #10b981; background: rgba(16, 185, 129, 0.08); }
+
+  /* Critical/Important: red */
+  .sidenote-variant-critical { border-left-color: #f87171; background: rgba(248, 113, 113, 0.06); }
+  .dark .sidenote-variant-critical { border-left-color: #ef4444; background: rgba(239, 68, 68, 0.08); }
 
   /* Flash animation when clicking ref ↔ note */
   .sidenote-flash {
-    background-color: rgba(20, 184, 166, 0.15) !important;
-    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.3);
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.35) !important;
+    background-color: rgba(20, 184, 166, 0.12) !important;
   }
 
   .dark .sidenote-flash {
-    background-color: rgba(20, 184, 166, 0.2) !important;
-    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.25);
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.25) !important;
+    background-color: rgba(20, 184, 166, 0.15) !important;
   }
 
-  .sidenote-number {
-    font-weight: 700;
-    color: #3182ce;
-    margin-right: 0.35rem;
-    font-size: 0.7rem;
-    display: inline-block;
-    min-width: 1em;
-  }
+  /* Sidenote number inside margin note — color matches variant */
+  .sidenote-number { font-weight: 700; margin-right: 0.35rem; font-size: 0.7rem; display: inline-block; min-width: 1em; }
+  .sidenote-number-default { color: #3b82f6; }
+  .sidenote-number-warning { color: #f59e0b; }
+  .sidenote-number-tip { color: #8b5cf6; }
+  .sidenote-number-info { color: #10b981; }
+  .sidenote-number-critical { color: #ef4444; }
 
-  .sidenote-margin-left .sidenote-number {
-    margin-right: 0;
-    margin-left: 0.35rem;
-  }
-
-  .dark .sidenote-number {
-    color: #63b3ed;
-  }
+  .dark .sidenote-number-default { color: #60a5fa; }
+  .dark .sidenote-number-warning { color: #fbbf24; }
+  .dark .sidenote-number-tip { color: #a78bfa; }
+  .dark .sidenote-number-info { color: #34d399; }
+  .dark .sidenote-number-critical { color: #f87171; }
 }
+
+/* Ref number colors match variant */
+.sidenote-ref-default { color: #3b82f6; }
+.sidenote-ref-warning { color: #f59e0b; }
+.sidenote-ref-tip { color: #8b5cf6; }
+.sidenote-ref-info { color: #10b981; }
+.sidenote-ref-critical { color: #ef4444; }
+
+.dark .sidenote-ref-default { color: #60a5fa; }
+.dark .sidenote-ref-warning { color: #fbbf24; }
+.dark .sidenote-ref-tip { color: #a78bfa; }
+.dark .sidenote-ref-info { color: #34d399; }
+.dark .sidenote-ref-critical { color: #f87171; }
 
 /* Ref flash when clicking margin note to go back */
 .sidenote-ref-flash {

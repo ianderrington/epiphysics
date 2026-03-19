@@ -46,27 +46,35 @@ export default function Sidenote({ id, number, children }: SidenoteProps) {
     }
   };
 
-  // Odd = right margin, even = left margin
-  const side = number % 2 === 1 ? 'right' : 'left';
+  // Detect callout type from id (e.g., sn-caveat-1, sn-sidenote-2)
+  // Types: sidenote (default/blue), caveat (amber), note (green), warning (red), tip (purple)
+  const getVariant = (): string => {
+    if (id.includes('caveat') || id.includes('warning')) return 'warning';
+    if (id.includes('tip') || id.includes('hint')) return 'tip';
+    if (id.includes('note') || id.includes('info')) return 'info';
+    if (id.includes('important') || id.includes('critical')) return 'critical';
+    return 'default';
+  };
+  const variant = getVariant();
 
-  // Desktop: margin note
+  // Desktop: margin note — all on right to avoid TOC conflict
   if (mode === 'margin') {
     return (
       <div className="sidenote-wrapper-block" data-sidenote-rendered={id}>
         <aside
           ref={marginRef}
-          className={`sidenote-margin sidenote-margin-${side} ${highlighted ? 'sidenote-flash' : ''}`}
+          className={`sidenote-margin sidenote-variant-${variant} ${highlighted ? 'sidenote-flash' : ''}`}
           role="note"
           aria-label={`Sidenote ${number}`}
           onClick={flashRef}
           style={{ cursor: 'pointer' }}
         >
-          <span className="sidenote-number">{number}</span>
+          <span className={`sidenote-number sidenote-number-${variant}`}>{number}</span>
           {children}
         </aside>
         <sup
           ref={refRef}
-          className={`sidenote-ref sidenote-ref-interactive ${highlighted ? 'sidenote-ref-flash' : ''}`}
+          className={`sidenote-ref sidenote-ref-${variant} ${highlighted ? 'sidenote-ref-flash' : ''}`}
           onClick={flashMarginNote}
           role="button"
           tabIndex={0}

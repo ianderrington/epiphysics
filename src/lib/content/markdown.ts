@@ -278,11 +278,13 @@ const remarkProcessSidenotes = () => {
           'value' in firstChild.children[0]
         ) {
           const text = firstChild.children[0].value;
-          const match = text.match(/^\[!sidenote\]/i);
+          // Match [!sidenote], [!caveat], [!tip], [!note], [!warning], [!important], [!info], [!critical], [!hint]
+          const match = text.match(/^\[!(sidenote|caveat|tip|note|warning|important|info|critical|hint)\]/i);
           if (match) {
             counter++;
-            // Remove the [!sidenote] prefix from the text
-            firstChild.children[0].value = text.replace(/^\[!sidenote\]\s*/i, '');
+            const variant = match[1].toLowerCase();
+            // Remove the [!variant] prefix from the text
+            firstChild.children[0].value = text.replace(/^\[!(sidenote|caveat|tip|note|warning|important|info|critical|hint)\]\s*/i, '');
 
             // If the text node is now empty, remove it
             if (firstChild.children[0].value === '') {
@@ -294,11 +296,12 @@ const remarkProcessSidenotes = () => {
             }
 
             // Convert blockquote to a div with sidenote data attributes
+            // Variant is encoded in the ID so the Sidenote component can detect it
             node.data = node.data || {};
             node.data.hName = 'div';
             node.data.hProperties = node.data.hProperties || {};
             node.data.hProperties.dataSidenote = 'true';
-            node.data.hProperties.dataSidenoteId = `sn-${counter}`;
+            node.data.hProperties.dataSidenoteId = `sn-${variant}-${counter}`;
           }
         }
       }
