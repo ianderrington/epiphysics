@@ -96,33 +96,71 @@ The deviation $\Delta V = \hat{V} - V$ — the gap between what the entity belie
 
 ---
 
-## Computation as Future-Selection
+## Computation as Renormalization Survival
 
-Physics determines what happens to everything — rocks, bacteria, brains. But not everything *computes*. A rock's trajectory is determined by external forces; its internal structure doesn't participate in selecting among possible futures. A bacterium's trajectory depends on its internal state — chemical sensors steer it toward food. The bacterium's internal degrees of freedom select among futures that the rock's don't.
+Physics determines what happens to everything — rocks, bacteria, brains. [Wolfram's](https://arxiv.org/abs/2004.08210) framework says everything computes at the finest grain: every rule application to every state is a computation, and the [Ruliad](https://writings.stephenwolfram.com/2021/11/the-concept-of-the-ruliad/) contains all of them. This is formally correct and empirically useless — it makes "computation" synonymous with "physics."
 
-**Computation, in Epimechanics, is the number of internal degrees of freedom that participate in selecting among possible future states.** It is a continuous quantity, not a binary:
+The missing ingredient is **scale**. When you coarse-grain from micro to macro — integrating out fine-grained degrees of freedom to obtain an effective description at a larger scale — most micro-level dynamics average away. They contribute nothing to the macro-level trajectory. Some do not average away. They persist across scales, making a macro-level difference.
 
-| Entity | Internal DOF selecting futures | Computation | Belief field |
-|---|---|---|---|
-| Rock | ~0 — internal structure maintains shape but doesn't select trajectory | ~0 | None — physics determines trajectory |
-| Thermostat | 1 bit — above/below setpoint selects on/off | 1 bit | One-bit: "too hot" or "too cold" |
-| Bacterium | ~100 bits — chemotactic state biases random walk | ~100 bits | Low-dimensional gradient map |
-| Mouse | ~10⁸ — hippocampus, amygdala, reward circuits | ~10⁸ bits | Spatial map + threat + reward landscape |
-| Human brain | ~10¹⁵ — synaptic weights selecting among vast futures | ~10¹⁵ bits | High-dimensional, recursive, self-referential |
-| Transformer | ~10⁹-10¹² — parameters selecting next-token distributions | ~10⁹-10¹² bits | Context-conditioned probability field |
-| Institution | Aggregate of members' DOF + formalized processes | Variable | Strategic plans, budgets, risk models |
+**Computation, in Epimechanics, is what survives coarse-graining: the internal degrees of freedom whose contribution to future states does not average away when you move to a coarser description.** It is a continuous quantity, not a binary, and it is always relative to a scale of description.
 
-This definition is consistent with the rest of Epimechanics:
-- **Intelligence** $I$ ([Part 3](./03_intelligence_consciousness_agency.md)) = predictive accuracy — requires internal DOF doing prediction
-- **Consciousness** $C$ = scope of internal model — the model IS those internal DOF
-- **Agency** $A$ = steering capacity — steering requires internal DOF to select among futures
-- **Auto-causal density** $\rho_{\text{ac}}$ = self-sustaining loops — the loops ARE internal DOF participating in self-selection
-- **Representational Efficiency** = minimizing the computational cost of prediction — cost of maintaining the internal DOF that select futures
+### The argument by example
 
-It is compatible with [Wolfram's](https://arxiv.org/abs/2004.08210) framework without being identical: Wolfram says the Ruliad contains all possible computations (all possible rule applications to all possible states). Epimechanics adds structure on top — entities differ in how many internal DOF participate in selecting their futures. The Ruliad contains rocks (zero future-selecting DOF) and brains (vast future-selecting DOF). Both exist in the Ruliad; computation measures the difference between them.
+A rock's atoms all undergo dynamics (Wolfram: they compute). Coarse-grain to the rock level and those micro-dynamics average to $F = ma$ — the rock's internal structure contributes near-zero bits to predicting its center-of-mass trajectory. A brain's atoms also undergo dynamics. Coarse-grain to the neuron level and synaptic weights do NOT average away — they determine which action potential fires, which determines behavior. The synaptic computation *survives* the coarse-graining.
 
-> [!sidenote]
-> *Compatible with:* Turing (TM tape = internal DOF), Shannon (bits of information = bits of internal state), Landauer (each selecting bit costs $k_B T \ln 2$), Friston (free energy minimization = updating internal DOF to track reality), Deutsch (computation makes counterfactual difference through information). Narrower than Wolfram's "all dynamics compute" — requires internal DOF that select, not just external forces that push.
+This is not a binary. A rock's crystal defects and fault lines do affect its macro-behavior (a cracked rock breaks where the crack is). The claim is not that rocks have exactly zero surviving DOF, but that across experimentally natural coarse-grainings, the number of internal DOF that survive to influence macro-trajectory is vastly smaller for rocks than for brains. Computation is continuous and scale-relative.
+
+### What "coarse-graining" means outside physics
+
+In physics, coarse-graining has a precise meaning via the renormalization group: integrate out short-wavelength modes, ask what effective theory governs the remaining long-wavelength modes. For non-physical systems — beliefs, institutions, economies — there is no spatial wavelength to integrate out. The generalization is **lossy compression of the state description**: given a full micro-description of the system, compress it to a macro-description at some resolution, and ask which micro-DOF must be retained for the macro-description to remain predictive. The formal backbone is [rate-distortion theory (Shannon, 1959)](https://doi.org/10.1109/TIT.1959.1055721): for any source and distortion level, there exists an optimal lossy encoding. The DOF that appear in that encoding are the ones that survived compression. This is well-defined for any system with a state description — not only systems with a spatial metric.
+
+> [!caveat]
+> *Scale-relativity.* Because computation-as-renormalization is relative to a coarse-graining scale, the question "does X compute?" always requires specifying "at what scale?" A rock computes at the atomic scale (Wolfram) and barely computes at the center-of-mass scale. This is a feature, not a bug — it is the same scale-relativity that makes renormalization powerful in physics. But it means computation is a property of *system-at-scale*, not of system alone.
+
+### Distinguishing computation from mere causal relevance
+
+Not every internal DOF that survives coarse-graining is performing computation. A spring's elastic constant survives coarse-graining (it determines macro-trajectory), but it is fixed — it does not update based on input. The surviving DOF must satisfy a second condition: they must be **updated by interaction with the environment in ways that alter future-state selection**. A spring's stiffness is a parameter. A synapse's weight is a computation — it changes based on input and that change alters future behavior. The full definition is: computation = internal DOF that (a) survive coarse-graining at the relevant scale, AND (b) are input-dependent — updated by environmental interaction in ways that modify which future states are selected.
+
+| Entity | Surviving DOF | Input-dependent? | Computation | Belief field |
+|---|---|---|---|---|
+| Rock | ~0 at center-of-mass scale; crystal defects survive at material scale | No — defects are fixed parameters | ~0 | None — physics determines trajectory |
+| Spring | Elastic constant survives | No — fixed parameter | ~0 | None |
+| Thermostat | 1 bit — above/below setpoint | Yes — updated by temperature sensor | 1 bit | One-bit: "too hot" or "too cold" |
+| Bacterium | ~100 bits — chemotactic state | Yes — updated by chemical gradients | ~100 bits | Low-dimensional gradient map |
+| Mouse | ~10⁸ — hippocampus, amygdala, reward circuits | Yes — updated by experience | ~10⁸ bits | Spatial map + threat + reward landscape |
+| Human brain | ~10¹⁵ — synaptic weights | Yes — updated by learning | ~10¹⁵ bits | High-dimensional, recursive, self-referential |
+| Transformer | ~10⁹-10¹² — trained parameters | Yes — updated by training (and in-context) | ~10⁹-10¹² bits | Context-conditioned probability field |
+| Institution | Aggregate of members' DOF + formalized processes | Yes — updated by decisions, feedback | Variable | Strategic plans, budgets, risk models |
+
+### Connection to causal emergence
+
+[Hoel et al. (2013)](https://doi.org/10.1073/pnas.1314922110) define **effective information** (EI) as a measure of how deterministic a system's macro-level transition probabilities are. When EI(macro) > EI(micro) — causal emergence — the macro description has *more* causal information than the micro description. This identifies the scale at which coarse-graining reveals structure rather than destroying it.
+
+Causal emergence and computation-as-renormalization are complementary but not identical. Causal emergence tells you *where to look*: which scale has the most causal information. The renormalization definition tells you *what you find there*: which input-dependent DOF survived. A clock has high macro-EI (deterministic transitions) but low computation (no input-dependent DOF — it ticks regardless of input). A brain has both high macro-EI and high computation: the macro-determinism arises precisely because input-dependent synaptic weights are doing the determining.
+
+### Connection to Representational Efficiency
+
+The [Representational Efficiency principle](./05_ontology_and_open_questions.md) says the optimal representation $X^*$ minimizes predictive cost $C(X, \varepsilon)$. This is a consequence, not a presupposition, of the computation definition. The coarse-graining is chosen by scale (spatial, temporal, or information-theoretic resolution) — not by what maximizes computation. Once you fix the scale, you discover which DOF survive. The Representational Efficiency principle then identifies the *optimal* scale: the one where the surviving DOF are maximally predictive per bit. This breaks the apparent circularity: scale determines what survives; Representational Efficiency determines which scale is optimal.
+
+### What this adds to existing frameworks
+
+The renormalization criterion is not a replacement for existing theories of computation but adds a specific structural claim to each:
+
+- **Wolfram**: everything computes at micro-scale (rule application to states). The renormalization criterion adds: only some of that computation survives coarse-graining. The Ruliad contains all micro-computations; scale selects which ones matter.
+- **Turing**: the surviving DOF can be simulated by a Turing machine. The criterion adds: the TM simulates the *renormalized* dynamics, not the full micro-dynamics.
+- **Shannon**: the bits that survive coarse-graining are the bits of computation. The criterion connects Shannon information to scale via rate-distortion theory.
+- **Landauer**: each surviving input-dependent bit costs $k_B T \ln 2$ to maintain. Bits that average away cost energy at micro-scale but contribute nothing at macro-scale — thermodynamic waste.
+- **Friston**: free energy minimization is the process of updating the surviving DOF to track environmental states. The variational free energy *is* the prediction error of the renormalized description.
+- **Hoel**: causal emergence identifies the scale; the renormalization definition identifies the content. They are complementary tools, not synonyms.
+
+### Consistency with Epimechanics
+
+This definition integrates with the rest of the framework:
+- **Intelligence** $I$ ([Part 3](./03_intelligence_consciousness_agency.md)) = predictive accuracy — requires input-dependent DOF doing prediction
+- **Consciousness** $C$ = scope of internal model — the model IS those surviving, input-dependent DOF
+- **Agency** $A$ = steering capacity — steering requires input-dependent DOF that survive to macro-scale to select among futures
+- **Auto-causal density** $\rho_{\text{ac}}$ = self-sustaining loops — the loops ARE internal DOF that survive renormalization by maintaining themselves
+- **Representational Efficiency** = the optimal coarse-graining scale — where surviving DOF are maximally predictive per bit
 
 ---
 
