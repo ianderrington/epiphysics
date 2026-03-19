@@ -96,27 +96,33 @@ The deviation $\Delta V = \hat{V} - V$ — the gap between what the entity belie
 
 ---
 
-## Computation as State Evolution
+## Computation as Future-Selection
 
-A deeper point before we continue: **every state computes its own future.** A rock in a gravitational field "computes" its trajectory — the next state is determined by the current state plus the forces acting on it. The rock doesn't have a separate model of its future; its physical state IS the computation. The potential field of accessible futures is implicit in the current configuration plus the dynamics.
+Physics determines what happens to everything — rocks, bacteria, brains. But not everything *computes*. A rock's trajectory is determined by external forces; its internal structure doesn't participate in selecting among possible futures. A bacterium's trajectory depends on its internal state — chemical sensors steer it toward food. The bacterium's internal degrees of freedom select among futures that the rock's don't.
 
-This aligns with [Wolfram's](https://arxiv.org/abs/2004.08210) definition: computation is rule application to states. The Ruliad is the space of all possible computations. Every physical process computes.
+**Computation, in Epimechanics, is the number of internal degrees of freedom that participate in selecting among possible future states.** It is a continuous quantity, not a binary:
 
-What differs across entities is not WHETHER they compute but HOW:
-
-| Level | What computes | Belief field type | Agency |
+| Entity | Internal DOF selecting futures | Computation | Belief field |
 |---|---|---|---|
-| **Physical** | State evolves under dynamics | **Implicit** — the potential field IS the set of reachable future states, determined by physics | Zero — the trajectory is determined |
-| **Reactive** | State + stimulus → response | **Reflexive** — a lookup from current input to immediate action (thermostat, bacterium) | Minimal — one-bit steering |
-| **Predictive** | State + model → anticipated futures | **Explicit** — a separate internal model predicts beyond the immediate physical potential | Moderate — can select among modeled futures |
-| **Recursive** | State + model of model → strategic futures | **Self-referential** — the model includes itself and other models (theory of mind, meta-cognition) | High — can reason about its own predictions and revise its strategy |
+| Rock | ~0 — internal structure maintains shape but doesn't select trajectory | ~0 | None — physics determines trajectory |
+| Thermostat | 1 bit — above/below setpoint selects on/off | 1 bit | One-bit: "too hot" or "too cold" |
+| Bacterium | ~100 bits — chemotactic state biases random walk | ~100 bits | Low-dimensional gradient map |
+| Mouse | ~10⁸ — hippocampus, amygdala, reward circuits | ~10⁸ bits | Spatial map + threat + reward landscape |
+| Human brain | ~10¹⁵ — synaptic weights selecting among vast futures | ~10¹⁵ bits | High-dimensional, recursive, self-referential |
+| Transformer | ~10⁹-10¹² — parameters selecting next-token distributions | ~10⁹-10¹² bits | Context-conditioned probability field |
+| Institution | Aggregate of members' DOF + formalized processes | Variable | Strategic plans, budgets, risk models |
 
-A rock's belief field is implicit: the set of states it could reach given its current position and forces. It is "computed" by physics. A brain's belief field is explicit: a separate model that can represent states the entity has never visited, futures that may never occur, and counterfactuals that depend on choices not yet made. Both are computation. The brain's computation is *richer* — more dimensions, more futures, more steering capacity — but not different in kind.
+This definition is consistent with the rest of Epimechanics:
+- **Intelligence** $I$ ([Part 3](./03_intelligence_consciousness_agency.md)) = predictive accuracy — requires internal DOF doing prediction
+- **Consciousness** $C$ = scope of internal model — the model IS those internal DOF
+- **Agency** $A$ = steering capacity — steering requires internal DOF to select among futures
+- **Auto-causal density** $\rho_{\text{ac}}$ = self-sustaining loops — the loops ARE internal DOF participating in self-selection
+- **Representational Efficiency** = minimizing the computational cost of prediction — cost of maintaining the internal DOF that select futures
 
-**Computation in Epimechanics:** state evolution under dynamics. Every entity computes. What distinguishes entities is the dimensionality of their computed futures (how many trajectories they track), their agency (capacity to steer among those trajectories), and whether their belief field is implicit (determined by physics) or explicit (maintained as a separate model that can diverge from physical potential).
+It is compatible with [Wolfram's](https://arxiv.org/abs/2004.08210) framework without being identical: Wolfram says the Ruliad contains all possible computations (all possible rule applications to all possible states). Epimechanics adds structure on top — entities differ in how many internal DOF participate in selecting their futures. The Ruliad contains rocks (zero future-selecting DOF) and brains (vast future-selecting DOF). Both exist in the Ruliad; computation measures the difference between them.
 
 > [!sidenote]
-> *Compatibility.* This definition aligns with Wolfram (rule application), is compatible with Turing (TM simulates any dynamics), matches Friston (free energy minimization = belief-field update), and extends Shannon (information processing = uncertainty reduction about futures). It is broader than definitions requiring explicit symbol manipulation.
+> *Compatible with:* Turing (TM tape = internal DOF), Shannon (bits of information = bits of internal state), Landauer (each selecting bit costs $k_B T \ln 2$), Friston (free energy minimization = updating internal DOF to track reality), Deutsch (computation makes counterfactual difference through information). Narrower than Wolfram's "all dynamics compute" — requires internal DOF that select, not just external forces that push.
 
 ---
 
