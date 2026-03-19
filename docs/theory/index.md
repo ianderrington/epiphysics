@@ -120,7 +120,7 @@ The final part assembles the full formal ontology and states nine open questions
 | Part | Title | Core Claim |
 |------|-------|-----------|
 | [Part 0: Foundations](./epimechanics_00_prelude.md) | What Epimechanics is and isn't | X is a representation; entities are anything representable; Epimechanics = theory, Epiphysics = experiments; all representations have epimechanical structure |
-| [Part 0.5: The Atomic Problem](./epimechanics_00_atomic_structure.md) | What are entities made of? | Six candidate atoms (bond, strength, loop order, basin depth, entropy production, repair rate); auto-causality is emergent at the loop level |
+| [Part 0.5: Structural Primitives](./00_atomic_structure.md) | What are entities made of? | Six candidate atoms (bond, strength, loop order, basin depth, entropy production, repair rate); auto-causality is emergent at the loop level |
 | [Part 1: Generalized Mechanics](./epimechanics_01_generalized_mechanics.md) | X as universal state variable | Standard physics is the primary instantiation; Epimechanics abstracts the formal structure to cover other domains |
 | [Part 1b: Uncertainty, Coordinates, and Relativity](./epimechanics_01b_uncertainty_coordinates_relativity.md) | The limits and extensions of the clean framework | Measuring X changes X; different entities may have non-isomorphic state spaces; forces are reference-frame-relative |
 | [Part 2: Meta-Entities](./epimechanics_02_meta_entities.md) | When aggregates become entities | A religion, nation, or market earns entity status when its macro-level description has more causal information than its micro-level description |
@@ -140,6 +140,16 @@ Domain-specific documents testing whether Epimechanics' grammar generates real p
 |---|---|---|
 | [Efficiency Limits for Organizations](./applications/efficiency_limits.md) | Organizational science | Draft |
 | [Decision and Trajectory](./applications/decision_and_trajectory.md) | Decision theory | Draft |
+
+### Theory Notes
+
+Standalone documents extending specific topics from the main series.
+
+| Document | Extends | Topic |
+|---|---|---|
+| [Effective Mass](./effective_mass.md) | Part 0.5 | How the medium shapes an entity's resistance to state change; bare vs. effective mass |
+| [The Persistence Reversal](./persistence_reversal.md) | Part 0.5, Part 1c | When composites outlive their constituents; passive vs. active stability |
+| [Cross-Level Tracing](./cross_level_tracing.md) | Part 0.5, Part 1, Part 5 | What survives coarse-graining across scales; positioning against Simon, Rosen, sloppy models |
 
 ---
 
