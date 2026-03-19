@@ -77,6 +77,12 @@ The only interventions that work are:
 
 This is a structural prediction: representational systems have a maintenance cost, and neglecting that maintenance is thermodynamically equivalent to letting entropy accumulate in a physical structure. The structure degrades. Eventually it fails.
 
+### Testable Predictions
+
+> **Testable prediction (P-InfoAttack-1).** Attacks on an institution's informational repair substrate (corrupting training materials, distorting cultural norms, degrading documentation) produce longer recovery times than attacks on components (firing people, destroying equipment) of equivalent resource cost. Testable by comparing recovery timescales from resource destruction vs informational corruption in matched organizational contexts.
+
+> **Testable prediction (P-InfoAttack-2).** The energy cost to destabilize an actively-maintained entity through informational attack (corrupting repair substrate) is orders of magnitude lower than through direct structural attack (overwhelming the basin). Testable: compare resource expenditure for successful destabilization via direct vs informational channels across historical cases.
+
 tts:
   enabled: true
   provider: openai

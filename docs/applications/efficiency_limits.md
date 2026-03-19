@@ -207,6 +207,10 @@ When $\mathcal{T}$ and $S$ are both large and responsive to energy input (which 
 
 **Testable:** This predicts that organizations with high measured $\mathcal{T}$ (high undirected activity, high context-switching) should show weaker or negative returns to headcount increases, compared to low-$\mathcal{T}$ organizations. This could be tested with existing organizational data.
 
+**P-Org-5. Binding fraction predicts merger outcomes.** Post-merger, measure the rate of cross-unit communication, shared process development, and joint decision-making relative to within-unit activity. If cross-binding ($f_{\text{binding}}$) rises above a threshold, predict integration success. If it plateaus (each half maintains separate loops), predict fragmentation. Corporate mergers have ~70% failure rate — this offers a structural diagnostic measurable in the first 6-12 months.
+
+**P-Org-6. Automation shifts failure modes.** Technology-mediated repair has faster $\dot{R}$ but lower robustness to novel perturbations (brittle outside training distribution). Prediction: technology-heavy organizations show fewer gradual declines and more sudden catastrophic failures compared to human-heavy organizations. Testable with historical data on organizational failure modes before and after automation waves.
+
 ---
 
 ## 5. Limitations and Honest Assessment

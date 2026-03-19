@@ -325,6 +325,8 @@ Each level up requires more sophisticated information encoding — and is more f
 
 The institution's effective $\dot{R}_{\text{repair}}$ must cover ALL constituent types. The weakest link — the constituent type with the lowest $\dot{R}_{\text{repair}} / \dot{S}_{\text{int}}$ ratio — determines the institution's vulnerability. A company with excellent technology migration but no knowledge management will fail when key people leave. A church with strong ritual but crumbling buildings will lose its congregation. The persistence bottleneck is always the least-repaired substrate.
 
+> **Testable prediction (P-Persist-1).** An institution's failure mode is predictable from its repair-rate profile: measure $\dot{R}/\dot{S}$ for each constituent type; the type with the lowest ratio is where the institution will fail first. This is auditable before failure occurs.
+
 ### Connection to binding fraction
 
 Define the **binding fraction** $f_{\text{binding}}$ as the ratio of $\mathcal{M}$ attributable to the pattern (the relational structure, the loop topology) versus the parts (the individual constituents). A composite outlives its constituents when:
@@ -335,6 +337,8 @@ Define the **binding fraction** $f_{\text{binding}}$ as the ratio of $\mathcal{M
 - Auto-causal loops reproduce the *information* needed to replace components, not just the components themselves — the repair mechanism is self-sustaining
 
 When all four conditions hold, the composite is more persistent than any of its constituents. The entity becomes, in a precise sense, more real than its parts — not metaphysically, but operationally: it has greater durability, greater robustness, and greater causal influence on its environment.
+
+> **Testable prediction (P-Persist-2).** The transition from 'fragile collection' to 'robust entity' should exhibit a critical threshold $f_{\text{binding}}^*$ — analogous to a percolation threshold. Below: removing a key constituent cascades into dissolution. Above: removing any single constituent is absorbed. This threshold should be predictable from the entity's loop topology and testable by progressive constituent removal.
 
 ### Adversarial caveat
 
