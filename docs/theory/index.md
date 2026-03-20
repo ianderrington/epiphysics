@@ -25,18 +25,18 @@ categories:
   - Physics
   - Systems thinking
 tags:
-  - Metaphysics
+  - Epimechanics
   - Physics
   - Abstraction
   - Series
 bullets:
-  - Six parts covering generalized mechanics (entities as auto-causal loops, mass, force, energy, Lagrangian, thermodynamics, fluid dynamics), uncertainty/coordinates/relativity, meta-entities, intelligence/consciousness/agency, time and soul, and full ontology
+  - Six parts covering generalized mechanics (state, mass, force, energy, Lagrangian, thermodynamics, fluid dynamics), structural primitives, uncertainty/coordinates/relativity, meta-entities, intelligence/consciousness/agency, time and soul, and full ontology
   - Every concept defined in terms of physical primitives - states, derivatives, coupling, information
   - No supernatural machinery - every concept is a measurement problem
 shareBlurbs:
   twitter: >-
-    Epimechanics: metaphysics shares the same mathematical structure as physics, with X left abstract.
-    A six-part series: state, mass, force, energy, meta-entities, consciousness, soul. Series overview. #Philosophy #Physics
+    Epimechanics: the mathematical grammar of physics — state, mass, force, energy — applies to any representable system, with X left abstract.
+    A six-part series developing the framework and its predictions. #Epimechanics #Epiphysics
 tts:
   enabled: true
   provider: openai
@@ -52,7 +52,7 @@ A person "has energy." An institution "has inertia." A society "reaches a tippin
 
 Epimechanics proposes something stronger: that the mathematical structure of physics - state, rate of change, mass, force, energy, coupling, field - can be formally extended to cover non-physical domains, not by loose analogy but by leaving the state variable $X$ abstract. **Epimechanics** (Greek ἐπί, 'upon' + mechanics) is the theoretical framework developed here — the mechanics that sits upon domain-specific mechanics. This is a *structural claim*, not a metaphysical identity claim. Epimechanics does not assert that beliefs *are* physical objects or that institutions *are* made of matter. It proposes that the formal relationships between state, momentum, force, and energy - the grammar of how quantities change under influences - apply more broadly than the physical substrate in which they were discovered. At the fundamental level, this grammar is Lagrangian mechanics. At coarse-grained levels, the effective dynamics inherit the potential landscape and coupling structure but acquire dissipation and noise — a structural descendant of the Lagrangian, not an identical copy (see Part 0.5, Cross-Level Tracing). Whether this structural isomorphism reflects a deep identity (as [Tegmark's mathematical universe hypothesis (2014)](https://doi.org/10.7551/mitpress/10021.001.0001) or [Wolfram's Ruliad (2020)](https://writings.stephenwolfram.com/2021/11/the-concept-of-the-ruliad/) would suggest) or a useful formal analogy that captures real but limited structure is an open question Epimechanics addresses explicitly ([Part 5, Section 6](./05_ontology_and_open_questions.md)).
 
-This approach has antecedents. [Whitehead (*Process and Reality*, 1929)](https://doi.org/10.1017/CBO9781139644037) proposed a process ontology in which events, not substances, are fundamental - Epimechanics' auto-causal structure formalizes a version of this idea. [Bunge (*Treatise on Basic Philosophy*, 1974-1989)](https://doi.org/10.1007/978-94-010-9924-0) attempted to unify science under a single formal ontology. [Ladyman and Ross (*Every Thing Must Go*, 2007)](https://global.oup.com/academic/product/every-thing-must-go-9780199573097) argued for ontic structural realism - the view that structure, not objects, is fundamental. Epimechanics shares the structuralist intuition but takes a different route: rather than arguing for structural realism as a metaphysical thesis, it constructs a specific mathematical skeleton and asks whether it generates testable predictions across domains. Epimechanics is a *proposal* - to be judged by its empirical consequences, not by its philosophical pedigree.
+This approach has antecedents. [Whitehead (*Process and Reality*, 1929)](https://doi.org/10.1017/CBO9781139644037) proposed a process ontology in which events, not substances, are fundamental - Epimechanics formalizes a version of this idea — entities defined by their causal structure, not by substance. [Bunge (*Treatise on Basic Philosophy*, 1974-1989)](https://doi.org/10.1007/978-94-010-9924-0) attempted to unify science under a single formal ontology. [Ladyman and Ross (*Every Thing Must Go*, 2007)](https://global.oup.com/academic/product/every-thing-must-go-9780199573097) argued for ontic structural realism - the view that structure, not objects, is fundamental. Epimechanics shares the structuralist intuition but takes a different route: rather than arguing for structural realism as a metaphysical thesis, it constructs a specific mathematical skeleton and asks whether it generates testable predictions across domains. Epimechanics is a *proposal* - to be judged by its empirical consequences, not by its philosophical pedigree.
 
 The approach faces a known objection at the outset. Any sufficiently abstract mathematical framework can be "applied" to anything - as [Putnam's model-theoretic argument (1980)](https://doi.org/10.2307/2273415) and related triviality results show, formal structures can always be mapped onto arbitrary domains. If Epimechanics' equations are abstract enough to describe beliefs, markets, and particles, this may be because they are too abstract to say anything specific about any of them. The antidote to this triviality objection is empirical: Epimechanics must generate predictions that domain-specific theories alone do not make, and those predictions must be testable. [Part 5, Section 4](./05_ontology_and_open_questions.md) develops these predictions. If they hold, Epimechanics has empirical content. If they fail, the structural isomorphism is vacuous.
 
