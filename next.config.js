@@ -19,9 +19,6 @@ const nextConfig = {
 
   // Exclude docs directory - we use preprocessed content-data.json instead
   // Note: public/docs/ is NOT excluded so images can be served
-  outputFileTracingIncludes: {
-    '*': ['docs/site.config.yaml', 'docs/home/content.yaml', 'docs/.pages'],
-  },
   outputFileTracingExcludes: {
     '*': [
       'docs/**/*',

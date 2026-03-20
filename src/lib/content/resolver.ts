@@ -151,7 +151,9 @@ export const loadConfig = cache(() => {
     } else if (existsSync(siteConfigPath)) {
       configContent = readFileSync(siteConfigPath, 'utf8');
     } else {
-      throw new Error('No configuration file found');
+      // docs/ is excluded from Vercel serverless bundles — fall through to defaults
+      runtimeConfig = DEFAULT_SITE_CONFIG;
+      return runtimeConfig;
     }
     
     const loadedConfig = yaml.load(configContent) as Partial<SiteConfig>;
