@@ -53,12 +53,12 @@ feedback:
   - optimizer class,
   - width/depth vectors,
   - LR schedule and batch settings.
-- [ ] Emit dynamics observables from real training runs:
+- [x] Emit dynamics observables from real training run scaffold (`run_tp_bridge_toy_mlp_purepy.py`):
   - update norms per layer,
   - representation drift,
   - kernel/tangent drift,
-  - spectral diagnostics,
   - transfer regret.
+- [ ] Add spectral diagnostics from real training runs (currently optional; requires eigenspectrum source).
 
 ## Stage E — Falsification logic (next)
 

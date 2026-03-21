@@ -2,7 +2,18 @@
 
 Compute TP↔Epiphysics bridge metrics from a JSON trace.
 
-## Run
+## Run on real trace (pure Python toy training)
+
+```bash
+python3 experiments/src/run_tp_bridge_toy_mlp_purepy.py \
+  --output experiments/results/tp_bridge/toy_trace_real.json
+
+python3 experiments/src/tp_bridge_metrics.py \
+  experiments/results/tp_bridge/toy_trace_real.json \
+  -o experiments/results/tp_bridge/toy_metrics_real.json
+```
+
+## Run on synthetic fixture
 
 ```bash
 python3 experiments/src/tp_bridge_metrics.py \
