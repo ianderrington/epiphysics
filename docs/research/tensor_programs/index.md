@@ -33,3 +33,8 @@ feedback:
 | TP4b | 2308.01814 | Tensor Programs IVb: Adaptive Optimization in the Infinite-Width Limit | `docs/research/tensor_programs/sources/TP4b_2308.01814.pdf` | `docs/research/tensor_programs/sources/TP4b_2308.01814.txt` | `docs/research/tensor_programs/tp4b_2308_01814_full_extraction.md` |
 | TP5 | 2203.03466 | Tensor Programs V: Tuning Large Neural Networks via Zero-Shot Hyperparameter Transfer | `docs/research/tensor_programs/sources/TP5_2203.03466.pdf` | `docs/research/tensor_programs/sources/TP5_2203.03466.txt` | `docs/research/tensor_programs/tp5_2203_03466_full_extraction.md` |
 | TP6 | 2310.02244 | Tensor Programs VI: Feature Learning in Infinite-Depth Neural Networks | `docs/research/tensor_programs/sources/TP6_2310.02244.pdf` | `docs/research/tensor_programs/sources/TP6_2310.02244.txt` | `docs/research/tensor_programs/tp6_2310_02244_full_extraction.md` |
+
+## Working notes
+
+- `docs/research/tensor_programs/notes_needed_for_epiphysics.md`
+- `docs/research/tensor_programs/theorem_and_assumption_matrix.md`
