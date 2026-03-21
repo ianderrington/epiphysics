@@ -1,0 +1,3616 @@
+---
+title: "Tensor Programs IIb: Architectural Universality of Neural Tangent Kernel Training Dynamics (arXiv:2105.03703) — Full Text Extraction"
+description: >-
+  Raw full-text extraction of TP2b in the Tensor Programs series for reproducible computational analysis.
+date: 2026-03-21T00:00:00.000Z
+draft: true
+author:
+  name: "epiphysics-open-source"
+contentType: article
+series: "Tensor Programs Sources"
+coverImage:
+  url: ./images/tp2b_2105.03703.png
+  alt: "Mathematical derivations from Tensor Programs series paper TP2b"
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+  enableSpeed: true
+feedback:
+  enabled: true
+---
+
+> [!note]
+> Source PDF: `docs/research/tensor_programs/sources/TP2b_2105.03703.pdf`
+>
+> Extracted text: `docs/research/tensor_programs/sources/TP2b_2105.03703.txt`
+>
+> DOI: https://doi.org/10.48550/arXiv.2105.03703
+
+## Full extracted text
+
+```text
+Tensor Programs IIb:
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Greg Yang 1 * Etai Littwin 2 *
+
+arXiv:2105.03703v1 [cs.LG] 8 May 2021
+
+Abstract
+Yang (2020a) recently showed that the Neural Tangent Kernel (NTK) at initialization has an infinitewidth limit for a large class of architectures including modern staples such as ResNet and Transformers. However, their analysis does not apply to training. Here, we show the same neural
+networks (in the so-called NTK parametrization)
+during training follow a kernel gradient descent
+dynamics in function space, where the kernel is
+the infinite-width NTK. This completes the proof
+of the architectural universality of NTK behavior.
+To achieve this result, we apply the Tensor Programs technique: Write the entire SGD dynamics
+inside a Tensor Program and analyze it via the
+Master Theorem. To facilitate this proof, we develop a graphical notation for Tensor Programs.
+
+1. Introduction
+(Jacot et al., 2018)’s pioneering work showed that a multilayer perceptron (MLP) trained by gradient descent (GD)
+evolves like a linear model. This spurred a flurry of research
+papers using this insight to tackle the core questions in
+deep learning theory, from optimization to generalization in
+both finite and infinite width regimes. (Jacot et al., 2018)’s
+argument consists of two observations:
+NTK I NIT For the output of a network f (ξ; w) with parame-
+
+ters w given example ξ, (Jacot et al., 2018) identified
+¯ = h∇f (ξ; w), ∇f (ξ,
+¯ w)i, known as
+the kernel K(ξ, ξ)
+the Neural Tangent Kernel (NTK). They showed that if
+f is parametrized and initialized appropriately, then K
+converges to a deterministic kernel K̊ as the width of
+the network tends to infinity.
+NTK T RAIN As the infinitely wide network is trained by
+
+gradient descent, the NTK remains frozen in its initial
+state, and the network evolves as by kernel gradient
+descent with kernel K̊
+*
+
+Equal contribution 1 Microsoft Research 2 Apple Research. Correspondence to: Greg Yang <gregyang@microsoft.com>, Etai
+Littwin <elittwin@apple.com>.
+Proceedings of the 38 th International Conference on Machine
+Learning, PMLR 139, 2021. Copyright 2021 by the author(s).
+
+In (Yang, 2020a), the NTK I NIT property was proven to hold
+for standard architectures, meaning any composition of
+MLPs, recurrent neural networks (RNN), LSTMs (Hochreiter & Schmidhuber, 1997), gated recurrent unit (GRU)
+(Cho et al., 2014), convolutions (Fukushima, 1980; 1975;
+Lecun et al., 1998; 2000; Rumelhart et al., 1986), residual
+connections (He et al., 2016; Huang et al., 2017), batch
+normalization (Ioffe & Szegedy, 2015), graph neural networks (Bruna et al., 2014; Defferrard et al., 2016; Duvenaud
+et al., 2015; Henaff et al., 2015; Kipf & Welling, 2017)
+and attention (Bahdanau et al., 2015; Vaswani et al., 2017),
+along with arbitrary weight sharing between components.
+More generally, it holds for any architecture expressible
+in a so-called Tensor Program (Yang, 2019b;a; 2020a;b),
+of which the standard architectures are a subset. However,
+their reasoning is limited to initialization only.
+A statement is architecturally universal if it holds for any
+reasonable neural architecture. This is an informal property,
+but here we will formalize it by taking reasonable to be
+“expressable in Tensor Programs.” By the expressiveness
+of such programs (Yang, 2019a; 2020a), architectural universality is a fairly robust notion that covers present (and,
+we expect, future) architectures comprehensively. In this
+terminology, (Yang, 2020a) showed that NTK I NIT is architecturally universal.
+Our Contribution We show the architectural universality
+of the entire NTK theory by proving NTK T RAIN for the
+same architectures discussed above, including all standard
+architectures. In the process, we introduce a new graphical
+form of Tensor Programs that is both required in our proofs
+and useful for the pedagogy of Tensor Programs.
+The Tensor Program Series This paper follows (Yang,
+2019b;a; 2020a;b; Yang & Hu, 2020) in the series. While
+we number this paper “IIb” right after (Yang, 2020a), we
+actually need the complete theoretical foundation developed
+in III (Yang, 2020b). See Footnote 22 for more details.
+
+2. Background
+Let f (ξ; w) ∈ R denote the (scalar) output of a neural network parameterized by w, given example ξ. To understand
+how the output changes with a slight change in the network
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+parameters w0 − δw, we may naively expand the network
+function using the first order Taylor expansion around a base
+point w0 :
+f (ξ, w0 − δw) − f (ξ; w0 ) ≈ h∇w f (ξ, w0 ), δwi.
+
+(1)
+
+Under the SGD algorithm, the weight update δw is given by
+ˆ w f (ξ;
+ˆ w0 ) where χ(ξ)
+ˆ is the
+the gradient δw = −ηχ(ξ)∇
+ˆ
+loss derivative, ξ is a sample from the training set, and η is
+the learning rate. Plugging into Eq. (1), we get:
+f (ξ, w0 − δw) − f (ξ; w0 ) ≈ −ηχ( ˆ
+ξ)K(ξ, ˆ
+ξ).
+
+(2)
+
+where K(ξ, ˆ
+ξ) = h∇w f (ξ; w0 ), ∇w f ( ˆ
+ξ; w0 )i is the NTK.
+The NTK theory of infinitely wide neural networks as first
+proposed by (Jacot et al., 2018) boils down to the the following observations: When the width of f tend to infinity,
+the NTK K converges to a fixed kernel K̊ at random initialization, independent of the specific instantiation of the
+weights, and remains frozen during the optimization process. Eq. (2) then gives an accurate description of the output
+evolution with if we substitue K with K̊. The seemingly
+complex optimization trajectory of SGD therefore reduce
+to the convex trajectory of kernel gradient descent with a
+time-independent kernel K̊.
+Consider the output of the network f ∈ RD on the full
+training dataset. As shown in (Jacot et al., 2018), when the
+L2 loss is used the evolution of the output ft at time t under
+continuous time GD (i.e. gradient flow) takes a simple form:
+ft − f ? = e−ηK̊t (f0 − f ? ).
+where K̊ ∈ RD×D is the full NTK matrix evaluated on the
+training data, f ? is the label function, and f0 is the output
+at initialization. Hence, provided K̊ is full rank, as t → ∞
+we have that ft → f ? , and the network can fit the training
+data perfectly.
+Previous Approaches vs Ours A common theme in
+showing NTK T RAIN for MLP is to derive high-probability
+bounds on the deviation of the NTK K from its initial value
+after training (e.g. Allen-Zhu et al. (2018); Du et al. (2018);
+Zou et al. (2018)).1 Obtaining these bounds usually requires
+developing ad hoc methods on a per-architecture basis, hindering the scalability of the method to other settings. In the
+present work we take a more holistic approach, leveraging
+the recently developed Tensor Programs framework (Yang,
+2019b;a; 2020a;b). It consists of two layers of arguments:
+1) The bottom layer analyzes how the distribution of (pre)activations change throughout the course of training; this
+crucially leverages the mathematical machinery of the Tensor Programs Master Theorem.2 2) The top layer packages
+1
+In the original NTK paper (Jacot et al., 2018), the limit is taken
+as each layer width goes to infinity sequentially, which already
+doesn’t make sense for weight-tied architectures like RNNs.
+2
+In particular, we need to use the Master Theorem in (Yang,
+2020b), so (Yang, 2020a) could not have obtained NTK T RAIN at
+the same time as NTK I NIT.
+
+these insights systematically via the notion of paths so as to
+apply to any architecture expressible by a Tensor Program.
+We will illustrate 1) through examples in Section 3 and 2)
+through figures in Section 5.1.
+Setup and Notations In this paper, we will consider the
+architecture (including depth), data, and training time to be
+fixed as width n → ∞.3 We describe common notations
+used in the remainder of the paper. For simplicity, we will
+consider SGD with batch size 1 and learning rate η (often
+set to 1 WLOG).4 We use ξt to denote the input and Lt
+to denote the loss function (absorbing the label) at step t.
+More generally, subscript t on any symbol means time t.
+However, for brevity, we abuse notation and shorthand ft
+for ft (ξt ), and, for any (pre-)activation x, xt for xt (ξt ).5
+We will also write χt for the loss derivative L0t (ft ). For any
+def √
+vector x(ξ) we define δxt+1 (ξ) =
+n xt+1 (ξ) − xt (ξ)
+√
+(ξ)
+def
+and dx(ξ) =
+n ∂f
+.
+We
+will
+track
+the
+evolution of f on
+∂x(ξ)
+6
+˜
+an arbitrary input ξ. Similar to above, we shorthand x̃t , f˜t
+˜ ft (x̃).
+for xt (ξ),
+
+3. Motivating Examples
+The purpose of this section is to illustrate our key ideas via
+simple, intuitive examples without diving into the specifics
+of Tensor Programs. In the process, we will gain insight
+into how randomness from initialization propagates over the
+course of training. As these examples intend to provide the
+reader with the proper intuition, we use informal arguments
+alone and relegate all formal statements to the appendix.
+For brevity, we will gloss over minor details or routine
+calculations, but interested readers can see Appendix A for
+these omissions.
+Key Idea It turns out that the random initialization and the
+overparametrization of weights cause each (pre-)activation
+vector xt (ξ) ∈ Rn , its gradient dxt (ξ) ∈ Rn , and its
+(scaled) change δxt (ξ) ∈ Rn every time step t to have
+roughly iid coordinates, not just initially but throughout
+training.7 Then, as we shall demonstrate through the examples below, to track the evolution of the neural network
+function, it suffices to track the evolution of the coordinate
+distributions of x(ξ), dx(ξ), δx(ξ). We write Z x(ξ) , Z dx(ξ) ,
+Z δx(ξ) ∈ R for the random variables corresponding to such
+coordinate distributions.8
+3
+They will affect the rate of convergence to the infinite-width
+limit, but since we are only concerned with whether convergence
+occurs, they do not appear in our theorem statements here.
+4
+This generalizes readily to any batch size and learning rate.
+5
+We will not refer to the function xt : ξ → xt (ξ) (likewise for
+ft , χt ), so this abuse of notation should cause no confusion.
+6
+It might help to think of ξ˜ as some test sample, but it can also
+fall in the training set.
+7
+This is a consequence of the Tensor Program Master Theorem.
+8
+As we will explain below, different Zs may correlate, reflecting correlations between corresponding vectors.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Our goal is to derive, from these insights,
+˜ changes by
+Claim 3.1. In the large width limit, f˜t = ft (ξ)
+˜ ξt )
+lim f˜t+1 − f˜t = −χ̊t K̊(ξ,
+
+(3)
+
+n→∞
+
+at step t, where K̊ is the limiting NTK of the architecture
+and χ̊t = L0t (limn ft ) is the loss derivative.
+We start with an example derivation for 1-hidden-layer MLP,
+before moving on to 2-hidden-layers, where the mathematics quickly become much more involved.
+3.1. 1 Hidden Layer
+Consider a 1-hidden-layer network with nonlinearity φ:
+f = V > x, x = φ(h), h = U ξ
+where ξ ∈ Rd , U = √ud ∈ Rn×d , V = √vn ∈ Rn×1 , for
+trainable parameter tensor u, initialized iid from N (0, 1).
+In the interest of clarity we assume the output layer is not
+trained, and d = 1.
+For a vector v ∈ Rn , let v = Θ(na ) mean that “v has coordinates of order na when n is large”9 ; likewise for o(na ),
+etc. Recall the notations xt = xt (ξt ), x̃t = xt ( ˜
+ξ), δxt =
+√
+n(xt − xt−1 ) and likewise for ht , h̃t , δht . The key insights are as follows:
+turns out x̃t+1 − x̃t =
+Preliminary
+Calculations It √
+√
+Θ(1/ n) = o(1) so δ x̃t+1 = n(x̃t+1 − x̃t )) has Θ(1)
+coordinates. Likewise for δ h̃t+1 . Consequently, for any t
+and input ξ, by telescoping,
+ht (ξ) = h0 (ξ) + o(1).
+
+(4)
+
+Using ∇u f = √1n dht ξt> and dht = φ0 (ht )
+˜ 0 (ht )
+δ h̃t+1 = −χt ξt> ξφ
+
+v, we have:
+
+v.
+
+(5)
+
+
+√
+Also, δ x̃t+1 = n φ(h̃t + δh̃√t+1
+)−φ(h̃t ) . Since δ h̃t+1 =
+n
+Θ(1), by intuitive Taylor expansion, we have
+δ x̃t+1 ≈ φ0 (h̃t )
+
+coordinates of size Θ(1) as well.10 Let Z δx̃t , Z v denote
+the random variables encoding the corresponding coordinate distributions; likewise for the other vectors. Note that
+Z δx̃t , Z v will in general be correlated, reflecting the coordinatewise correlation between v and δ x̃t .
+Law of Large Numbers and Eqs. (5) and (7) imply,
+lim f˜t+1 − f˜t = E Z v Z δx̃t+1
+
+(8)
+
+= −χ̊t ξt> ξ˜ E φ0 (Z h̃t )φ0 (Z ht )(Z v )2 .
+
+(9)
+
+n→∞
+
+where χ̊t = L0t (limn ft ) as in Claim 3.1.
+Kernel Expression as Gaussian Expectation By Eq. (4),
+in the n → ∞ limit, Z h̃t = Z h0 (ξ̃) and Z ht = Z h0 (ξt ) .
+They are independent from Z v and jointly Gaussian with
+variances k ˜
+ξk2 , kξt k2 and covariance ξ˜> ξt . So (using the
+initialization of v to simplify E(Z v )2 = 1),
+lim f˜t+1 − f˜t = −χ̊t ξt> ξ˜ E φ0 (Z ht )φ0 (Z h̃ )
+
+n→∞
+
+(10)
+
+This can easily be seen to be Eq. (3) (recall we assumed for
+simplicity the output layer V is not trained).
+Summary Our strategy so far has been computing the
+form of Z δx̃t and plugging it into Eq. (8) to compute the
+dynamics of the output in the limit. Note that our approach
+differs from previous work which mainly focus on proving
+a bound on the change of the NTK post training. As the
+architecture gets more complex, bounding the NTK movement becomes quite complex, but our approach easily scales
+due to the automation provided by the Tensor Programs
+framework (see Section 4).
+In the previous example, the coordinate distribution Z x̃t
+took a fairly simple form, which allowed us to intuitively
+compute the expectation E Z x̃t Z v . Before introducing a
+method for computing coordinate distributions in a general
+architecture, we move on to a slightly more involved architecture, with the intention of highlighting the intuition
+behind the general case.
+3.2. 2 Hidden Layers
+In this example we consider a model of the form:
+
+δ h̃t+1 .
+
+(6)
+
+The change in the output on example ξ˜ from step t to step
+t + 1 is given by:
+f˜t+1 − f˜t = V > (x̃t+1 − x̃t ) = v > δ x̃t+1 /n
+
+(7)
+
+f = V > x, x = φ(h), h = W z
+z = φ(g), g = U ξ
+where U = √ud ∈ Rn×d , W = √wn ∈ Rn×n , V = √vn ∈
+Rn×1 , for trainable parameters u, w, initialized iid from a
+10
+
+IID Coordinates By definition v has iid coordinates. It
+turns out ht (ξ), δht (ξ) (likewise for x) all have approx. iid
+9
+More rigorously, we mean that kvk2 /n = Θ(n2a ). Note this
+is different from the common interpretation that kvk = Θ(na ).
+
+Technically, they have iid coordinates only after conditioning
+on the initial function (GP) f0 . Likewise, when we take expectation in this example (e.g. Eqs. (9) and (17)), it’s a conditional
+expectation of this kind. See Appendix D.1.1 for a rigorous treatment. However, to convey the main intuition, we gloss over this
+technicality here.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+normal distribution. As before we assume the last layer is
+not trained, and d = 1.
+Again, we want to establish Claim 3.1 for this model. As
+in the 1-hidden-layer example, the dynamics of the output
+in the limit is still given by Eq. (8). This time around,
+the second hidden layer adds nontrivial complexity when
+evaluating the expectation E Z v Z δx̃t+1 . As we shall see,
+this complexity arises from the dependency of x̃ on the
+n × n matrices w and w> , which will make it wrong to
+naively apply LLN arguments. Resolving this complexity
+will pave the way to a general strategy which we will then
+be able to apply in any arbitrary architecture. We now apply
+the same insights as in the 1-hidden-layer MLP. Namely:
+• Eq. (4) continues to hold with h replaced by any of
+{x, h, z, g}.
+• After some brief
+√calculations, with dht denoting the
+scaled gradient n∇ht f ,
+
+˜ 0 (gt )
+δg̃t+1 ≈ −χt ξt> ξφ
+W > dht
+(11)
+z > z̃t
+δ h̃t+1 ≈ W δz̃t+1 − χt t φ0 (ht )
+n
+
+Z W δz̃t+1 = G + Z dht E
+
+∂Z δz̃t+1
+,
+∂Z W > dht
+
+(17)
+
+where G is some Gaussian variable independent from Z v ,
+δ z̃t+1
+>
+def
+and ∂ZW > dht =
+Φ0 (Z W dht ).
+
+(12)
+
+• As in Eq. (7), by naive Taylor expansion we have:
+δg̃t+1 .
+
+(13)
+
+• Eqs. (6) and (7) in the 1-hidden-layer case continue
+to hold here. Then by Eq. (12) and Law of Large
+Numbers,
+lim f˜t+1 − f˜t = E Z v Z δx̃t+1
+
+(14)
+
+= −χ̊t ξt> ξ˜ E[Z zt Z z̃ ] E[φ0 (Z ht )φ0 (Z h̃ )]
+
+(15)
+
+− χ̊t ξt> ξ˜ E[φ0 (Z h̃t )Z W δz̃t+1 Z v ].
+
+(16)
+
+n→∞
+
+where χ̊t = L0t (limn ft ) as in Claim 3.1.
+In this expression, the first term (Eq. (15)) can easily be
+seen to correspond to the contribution from w to the NTK.
+It remains to show that the second (Eq. (16)) corresponds to
+the contribution from u.
+Challenge of Analyzing Eq. (16) To do this, we must
+reason about the coordinate distribution of W δz̃t+1 (encoded by random variable Z W δz̃t+1 ) and compute the expectation in Eq. (16). To understand why this represents a
+11
+
+Claim 3.2. Based on the above discussion and some easy
+calculations, δz̃t+1 can be written as Φ(W > dht ) for some
+Φ : R → R applied coordinatewise (which will depend on
+other vectors not of the form W > •). Then it turns out11
+
+∂Z
+
+v.
+
+• As in the 1-hidden-layer case, for all x ∈ {g, z, h, x},
+xt (ξ), δxt (ξ) have iid coordinates of size Θ(1), as does
+v by definition.11 Let Z δx̃t , Z v denote the (generally
+correlated) random variables encoding the corresponding coordinate distributions.
+
+δz̃t+1 ≈ φ0 (g̃t )
+
+greater challenge than it might first appear, note that from
+δz̃t+1 ≈ φ0 (g̃t ) δg̃t+1 (Eq. (13)), the term W δz̃t+1 hides
+within itself a dependency on W > dht through δg̃ (Eq. (11)).
+While at t = 0, we may assume W > be independent of
+W and obtain the correct results (Gradient Independent Assumption (Yang & Schoenholz, 2017; Yang, 2020a)), this
+is no longer the case for t > 0: Z W δz̃t+1 will be nontrivially correlated with φ0 (Z h̃t ) and Z v (which would be false
+if W > can be assumed independent of W ). We will give
+some intuition why later in Eq. (20). Now, what is this
+dependence exactly?
+
+Again, this is technically true only after conditioning on f0 ;
+see Footnote 10.
+
+Getting Claim 3.1
+lows that:
+
+Thus, from Eqs. (11) and (13), it fol>
+
+˜ 0 (Z g̃t )φ0 (Z gt )Z W dht
+Z δz̃t+1 = −χ̊t ξt> ξφ
+
+(18)
+
+δ z̃t+1
+
+E
+
+∂Z
+= −χ̊t ξt> ξ˜ E[φ0 (Z g̃t )φ0 (Z gt )].
+∂Z W > dht
+
+(19)
+
+Plugging into Eqs. (14) and (17), followed by some straightforward calculation, then yields Claim 3.1.
+Intuition behind Claim 3.2 Eq. (17) may appear cryptic
+at first, so let’s give some intuition using an example. Suppose Φ in Claim 3.2 is actually identity. For brevity, we set
+x = dht , y = δz̃t+1 ∈ Rn . Then, following straightforward calculation, W y = W W > x has coordinates
+(W y)α =
+
+X
+γ6=α
+
+xγ
+
+n
+X
+β=1
+
+Wαβ Wγβ +
+
+n
+X
+
+(Wαβ )2 xα (20)
+
+β=1
+
+Now, the second sum converges via LLN to xα as n → ∞.
+On the other hand, the first sum will converge via CLT to
+N (0, lim kxk2 /n). Thus, in terms of Zs, we have
+Z W y = G + Z x = G + Z x E Φ0
+
+(21)
+
+for some Gaussian G; this corresponds directly to Eq. (17).12
+For general Φ, a similar intuition applies after Taylor expansion of Φ.
+12
+This example was worked out in (Yang, 2020a;b) as well,
+though in different contexts. Readers needing more explanation
+may see those works.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+𝑏
+
+𝑊
+
+𝜙(⋅+⋅)
+
+𝑊
+
+𝜙(⋅+⋅)
+
+MLP
+
+𝜙(⋅+⋅)
+
+𝑊 𝜉
+
+𝑏
+
+𝑏
+
+Legend
+G-var
+
+Nonlin
+
+X-var
+
+MatMul
+
+𝑈𝜉
+
+𝑈𝜉
+
+𝑊
+
+𝜙(⋅+⋅+⋅)
+
+𝑊
+
+Definition 4.1. A N ETSOR> program is just a sequence of
+Rn vectors inductively generated via one of the following
+instructions from an initial set V of random Rn vectors and
+a set W of random n × n matrices
+
+𝑈𝜉
+
+𝜙(⋅+⋅+⋅)
+
+𝜙(⋅+⋅)
+
+RNN
+
+𝑏
+
+Figure 1: Graphical form of N ETSOR> programs for
+MLP and RNN. An empty node corresponds to a G-var (an
+initial vector or a vector created by M AT M UL), while a filled
+node corresponds to an X-var (a vector created by N ONLIN).
+Each dashed edge corresponds to matrix multiplication by
+the labeled matrix. Each gate (connected by solid edges)
+represents a N ONLIN application. The computation follows
+the direction of the gates (left-to-right here). Note we have
+W 1 ξ instead of ξ as an initial vector because we only allow
+Rn vectors; likewise for U ξ i . For the same reason, we don’t
+express the network output in this graph.
+
+Summary This 2-hidden-layer example proceeded much
+the same as the 1-hidden-layer case, with the main exception
+of analyzing the interaction of the n × n Gaussian matrix
+W and W > (Eq. (16)) that occurs after taking at least 1 step
+of SGD. This was absent in the 1-hidden-layer case because
+each weight matrix has at most one side tending to infinity.
+Such analysis is crucial to obtaining the right results, as
+assuming W > be independent from W would imply f does
+not move from initialization.13
+It turns out these two examples have essentially covered all
+of the core ideas needed to extend the analysis into arbitrary
+architectures. To formalize and scale up our calculations,
+we now turn to the Tensor Programs framework.
+
+4. Tensor Programs
+So far, our results have been obtained by unrolling the SGD
+updates on toy models with specific architectures, and using
+informal arguments. Obviously, these computations quickly
+become unmanageable when the architecture becomes more
+complex. The sheer amount of architectural innovations that
+have sprung up in recent years requires us to adopt a much
+more general formulation of our results. To that end, we
+adopt the Tensor Programs (TP) framework developed in
+13
+
+(Yang, 2019a; 2020a;b). In a nutshell, it provides a language
+for describing typical computations done in the context of
+neural networks, such as forward and backward propagation. It is simultaneously simple and expressive, covering
+all standard architectures (Yang, 2019a; 2020a). Here we
+review two basic forms of Tensor Programs, N ETSOR> and
+N ETSOR>+ .
+
+One can see this easily by modifying our calculations above.
+
+N ONLIN For x1 , . . . , xk ∈ Rn in the program and any
+ψ : Rk → R, we can generate ψ(x1 , . . . , xk ) ∈ Rn
+M AT M UL Given W ∈ Rn×n and x ∈ Rn , we can generate
+W x ∈ Rn or W > x ∈ Rn
+Graphical Form We propose to represent a N ETSOR>
+program as a computational graph, where each node in the
+graph represents vectors (initial or generated), each (dashed)
+edge represents a M AT M UL, and each gate represents a
+N ONLIN. For example, Fig. 1 shows the computation graphs
+expressing (the forward passes of) an MLP and an RNN. We
+can also express the backpropagation as well (see Fig. 6).
+Graphically, the initial vectors are the empty nodes with only
+one edge coming out, toward the direction of computation.
+The matrices correspond to (the labels of) the dashed edges.
+We can also define the output vectors to correspond to the
+nodes that have only one edge coming out, against the
+direction of computation.
+Neural Network Representation Each N ETSOR> program can be thought of as computing a function (Rn )V ×
+(Rn×n )W → RY taking an instantiation of the initial vectors V and matrices W and computing the values of all
+output vectors Y. We can say a program represents a network if it computes the body of it (without the input and
+output layers), as exemplified by Fig. 1. This is formalized
+below.
+Definition 4.2. Consider a neural network f : (Rd )k → R
+with input embedding matrices U 1 , . . . , U k ∈ Rn×d (not
+necessarily distinct) and readout matrix V ∈ Rn , so
+that f (ξ 1 , . . . , ξ k ) = V > Φ(U 1 ξ 1 , . . . , U k ξ k ; Θ) for some
+function Φ(x1 , . . . , xk ; Θ) with parameters Θ. We say a
+N ETSOR> program represents f if it computes Φ (under
+some correspondence of V ∪ W to {x1 , . . . , xk } ∪ Θ).14
+For example, the programs in Fig. 1 resp. represent a 3hidden-layer MLP and an RNN running for 3 steps. Note
+that the initial vectors correspond to a combination of input
+embeddings (e.g. W 1 ξ) and vector parameters (e.g. biases) and the matrices correspond to matrix parameters (e.g.
+weights).
+14
+We only consider f with scalar output for simplicity but generalization to multi-dimensional output is straightforward.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Intuition for a Program in the Large n Limit Typically,
+the vectors (resp. matrices) in a program will be sampled
+iid like N (0, 1) (resp. N (0, 1/n)), corresponding to the
+“standard” initialization of neural networks.15 In such cases,
+when n → ∞, a program behaves as follows, in a gist:
+IID Coordinates Any vector x ∈ Rn in the program has
+roughly iid coordinates. We write Z x for the random
+variable encoding this coordinate distribution. This Z x
+may be correlated with Z y for other vector y in the
+program, such that, for example, limn→∞ x> y/n =
+E Z xZ y .
+1
+
+k
+
+1
+
+k
+
+Nonlin Z ψ(x ,...,x ) = ψ(Z x , . . . , Z x ).
+MatMul, without (W, W > )-Interaction Consider a matrix
+W ∈ Rn×n in the program and any set of Rn vectors X not dependent on vectors of the form W > •.
+Then the set of random variables {Z W x : x ∈ X}
+are jointly Gaussian with mean zero and covariance
+Cov(Z W x , Z W x̃ ) = E Z x Z x̃ for any x, x̃ ∈ X. If
+W̄ 6= W is another matrix in the program and Y is a
+set of such vectors w.r.t. W̄ , then the set {Z W x : x ∈
+X} is independent from {Z W̃ y : y ∈ Y}.
+MatMul, with (W, W > )-Interaction For general x, Z W x
+decomposes into a sum of a Gaussian part, identical
+to Z W x in the above case, and a correction term. This
+decomposition is a generalization of Eq. (17).
+See Theorem B.4 for formal details.
+N ETSOR>+ Programs (Yang, 2019a; 2020a) showed
+that N ETSOR> suffices to express the forward and backward passes of most architectures such as ResNet (with
+Batchnorm), but Transformer and other standard architectures require adding to N ETSOR> a new “averaging”
+Pn instruction16 that returns the “empirical average” n1 α=1 xα
+of a vector x ∈ Rn . In the n → ∞ limit, this scalar converges to E Z x as would be expected from the intuitions
+above. This extension of N ETSOR> (called N ETSOR>+ )
+also allows us to express the network output and loss derivative (e.g. in contrast to Fig. 1), which will be a technical
+requirement for unrolling the entirety of SGD training inside a single program, a key step in the proof of our main
+result. See discussion of proof formalization in Section 5.
+We can say a N ETSOR>+ program represents a network f
+if it computes the body of f .
+
+5. Universality of Kernel Dynamics
+(Yang, 2019a; 2020a) showed that any neural network of
+15
+In the original definition of (Yang, 2019a; 2020a;b), the vectors can have correlations between them, but we can always rewrite
+these vectors as linear image of another set of uncorrelated vectors.
+16
+For readers familiar with Tensor Programs, this is equivalent
+in expressivity to M OMENT, which is a composition of a N ONLIN
+and this averaging instruction.
+
+standard architecture is represented by a N ETSOR>+ program. Moreover,
+Theorem 5.1 (Yang (2020a)). For a neural network as in
+Setup 5.2 below, its Neural Tangent Kernel at initialization
+has a well-defined infinite-width limit K̊.
+Setup 5.2 (Representable NN in NTK Parametrization).
+Suppose a neural network f is represented by a N ETSOR>+
+program (in the sense of Definition 4.2) whose N ONLIN all
+have polynomially bounded derivatives.17 Adopt the NTK
+parametrization: for every matrix parameter W ∈ Rn×n of
+f , we factor W = √1n w where w is the trainable parameter;
+likewise, for each input layer matrix U i ∈ Rn×d , we factor
+U i = √1d ui , and likewise the output matrix V = √1n v, such
+that ui , v are trainable. Finally, we randomly initialize all
+trainable parameters iid as N (0, 1).
+Our main result is to show that the SGD training of such
+a neural network described in Setup 5.2 reduces to kernel
+gradient descent with kernel K̊ in the infinite-width limit.
+Theorem 5.3 (NTK T RAIN is Architecturally Universal).
+Consider training a network f described in Setup 5.2 via
+SGD with batch-size 1 and (WLOG) learning rate 1. Let ξt
+be the input and Lt : R → R be the loss function (absorbing the label) at time t. Suppose Lt is continuous for all t.
+Then, for any ξ and t, ft (ξ) converges almost surely to a
+random variable f˚t (ξ) as width → ∞, such that
+f˚t+1 (ξ) − f˚t (ξ) = −K̊(ξ, ξt )L0t (f˚t (ξt ))
+
+(22)
+
+where K̊ is the infinite-width NTK (at initialization) of the
+neural network.
+The full proof of Theorem 5.3 is given Appendix D.
+Extension We briefly mention several ways our result
+can be easily extended. 0) Different batch sizes, learning
+rate schedules, and nonscalar outputs. 1) Variants of NTK
+parametrization. We can deal with any parametrization that
+scales the same way as NTK parametrization, e.g. weights
+are sampled like N (0, σ 2 ) for any σ, with the multipliers
+γ/f anin for any γ. 2) Variable width. In real networks,
+the width of different layers can often be different (e.g. in
+ResNet). Our result can be extended to the case where the
+widths tend to infinity at a fixed ratio, using the variablewidth version of Tensor Programs (Yang, 2020b). 3) Unsupervised and other learning settings can be covered because their training and testing computation can be written
+into Tensor Programs. 4) Weight decay, momentum, and
+other optimizer tricks can be covered as well as they can
+be straightforwardly written into Tensor Programs, but in
+general the kernel will change from step to step in contrast
+to Theorem 5.3.
+17
+More generally, we can allow any pseudo-Lipschitz function
+here, but for simplicity we go with the statement in the main text.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+5.1. Proof Sketch of Special Case
+To convey the main idea, we give a proof sketch of a simplified problem: we assume 1) the input, output layers and
+biases are not trained (the network has only Rn×n matrices as trainable parameters); 2) the forward pass does not
+contain both a weight matrix W and its transpose W > (but
+a single matrix W can still be used multiple times without being transposed); 3) input space is Rd (with k = 1),
+and f = V > x ∈ R; 4) the output vector x is a G-var;
+5) the network is represented by a N ETSOR> (instead of
+N ETSOR>+ ) program; 18 In the appendix, we prove the
+general case with these simplifications lifted.
+It turns out, every N ETSOR> can be simplified into a standard form of sorts, which greatly facilitates our proof.
+Definition 5.4. In a N ETSOR> program, a G-var19 is an
+initial vector or a vector created by M AT M UL, while an Xvar is a vector created by N ONLIN.20 We define a reduced
+N ETSOR> program as a program in which only G-vars are
+allowed as inputs to a N ONLIN, while only an X-var is
+allowed as input to a M AT M UL.
+Observe that any N ETSOR> program may be trivially expressed as a reduced N ETSOR> program by: 1) collapsing
+chains of non-linearities which appear consecutively, and
+2) insert a N ONLIN operation with ψ(x) = x in between
+consecutive G-vars. Hence, we may safely assume that f is
+representable by a reduced N ETSOR> program.
+Key Idea: Paths The examples of Sections 3.1 and 3.2 exposed several insights, such as the iid-coordinates intuition,
+important for proving Theorem 5.3. Now we discuss the one
+remaining key idea for scaling up to general architectures:
+Definition 5.5 (Paths). In a N ETSOR> program, a path
+p starts with an X-var and ends with a G-var, alternating
+between X- and G-vars along the path. We write p0 for the
+starting X-var, p1 for the following G-var, and so on, as
+well as p−1 for the ending G-var (see Fig. 2 for a graphical
+i
+illustration). For odd i, let W p denote the defining matrix
+of G-var pi . For two equal length paths p, q, we write p ∼
+=q
+i
+(path p is isomorphic to path q) if for all odd i, W p is
+i
+the same matrix as W q .21 In other words, we say path
+p is isomorphic to path q if their sequences of M AT M UL
+matrices are identical, (but the N ONLIN don’t have to be,
+see Fig. 3 for a graphical illustration). Let |p| denote the
+number of vectors in p (this is always an even number).
+The collection of paths p starting with an X-var p0 = x and
+18
+
+This is not common in deep learning, but appears in some
+weight-tied autoencoders (Li & Nguyen, 2019).
+19
+“G” because G-vars often are roughly Gaussian vectors
+20
+Var is short for variable, as the vectors are considered variables in the program. In previous works, H-var refers to any vector
+in the program; we will not use this terminology.
+21
+Here we are talking about equality of symbols rather than
+equality of values of those symbols.
+
+𝑊
+=𝑊
+MLP
+
+𝑝
+
+𝑊
+=𝑊
+𝑝
+
+𝑝
+
+and end with G-var
+
+Paths 𝑝 start with X-var
+
+𝑊
+=𝑊
+
+RNN
+𝑝
+
+𝑝
+
+𝑊
+=𝑊
+𝑝
+
+𝑝
+
+𝑝
+
+𝑏
+
+Figure 2: Paths. A graphical illustration of paths in an MLP
+and RNN. A path p always starts with an X-var and ends
+with a G-var. In these examples, path length |p| = 4.
+ending with a G-var h describes all possible pathways of
+backpropagating an error signal dh at h to an error signal dx
+at x. Simultaneously, it also describes all possible pathways
+of forward propagating a change in x to a change in h.
+Decomposing the Change in f to a Sum over Paths Ben×n
+cause the gradient ∇
+is the sum
+PW f of a weight W ∈ R
+of outer products h,x:h=W x dh ⊗ x, summing over all
+G-vars h and X-vars x in the program with h = W x (where
+dh denotes ∇h f ), we also have
+X X
+∇W f =
+J p ⊗ x.
+(23)
+h,x:h=W x p
+
+where
+(J p )> =
+
+∂f
+∂p−1
+∂p−2
+∂p2
+× −2 × −3 × ... ×
+−1
+∂p
+∂p
+∂p
+∂h
+
+(24)
+
+i.e, J p denotes the error signal at h from backpropagation
+through path p, and p ranges over all paths starting with
+p0 = x, p1 = h and ending with the output node of the
+underlying program. Recall W factors as √1n w where w is
+the trainable parameter, not W . By the discussion above,
+updating w with ∇w f = √1n ∇W f causes f to change by
+
+
+=
+
+1
+n
+
+
+1
+1
+√ ∇W f, √ ∇W f
+n
+n
+X
+X XX
+hJ p , J p̄ ihx, x̄i.
+h,x:h=W x h̄,x̄:h̄=W x̄ p
+
+(25)
+
+p̄
+
+When every parameter w is randomly initialized iid as
+N (0, 1), it turns out that hJ p , Jp̄ i will go to 0 as n → ∞
+unless p ∼
+= p̄ (Definition 5.5). If one think of J p as a product of random Gaussian matrices (interleaved with other
+matrices), then Q
+this is akin to the fact that, for a mixed mor
+def
+ment M =
+E i=1 Zγ(i) , γ : [r] → [k] of standard iid
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+𝑊
+=𝑊
+MLP
+
+𝑝
+
+𝑊
+=𝑊
+𝑝
+
+𝑝 ≇ 𝑞 because 𝑊
+
+𝑞
+
+≠𝑊
+
+𝑊
+=𝑊
+
+RNN
+𝑝
+
+𝑞
+
+𝑊
+=𝑊
+𝑝
+
+𝑞
+
+program.22 This is similar to the equations√
+in Sections 3.1
+and 3.2; the key here is to express δxt+1 = n(xt+1 − xt )
+as a vector in the program, for any (pre-)activation x. 2) We
+apply the N ETSOR>+ Master Theorem (Yang, 2020b) to
+this program. This yields the coordinate distribution of each
+vector. The core insights here are demonstrated by the calculation with the Z random variables in Sections 3.1 and 3.2.
+3) Finally, we need to show that (the rigorous version of)
+Eq. (26) indeed recovers the NTK and agrees with Eq. (22).
+This is done via an inductive (symbolic) computation, and
+the path concept in this section plays a key role here.
+
+𝑞
+
+6. Related Works
+𝑝 ≅ 𝑞 because 𝑊
+
+= 𝑊 , ∀𝑖
+
+Figure 3: Paths Isomorphism. A graphical illustration of
+path isomorphism for paths p, q with |p| = |q| = 2 in an
+MLP and RNN. In the MLP example, p is not isomorphic to
+q because the weights W 1 , W 2 defining the vectors p1 , q 1
+are not identical. For the RNN, p is isomorphic to path q
+because p1 and q 1 are defined with the same weight W .
+
+Gaussians Z1 , . . . , Zk , M is nonzero iff every Zi appears
+an even number of times in the product. This means we can
+replace
+the 4 nested sums in Eq. (25) with the single sum
+P
+and
+rewrite x = p0 , x̄ = p̄0 .
+∼
+p=p̄
+We have suppressed dependence on input in Eq. (25). Being
+more explicit about it and performing updates on all weights,
+we have
+ft+1 (ξ) − ft (ξ)
+X
+≈ −L0t (ft (ξt ))
+hJ p (ξ), J p̄ (ξt )ihp0 (ξ), p̄0 (ξt )i. (26)
+p∼
+=p̄
+
+after taking a gradient step on input ξt at initialization t = 0.
+(Here p0 (ξ) denotes the vector p0 as a function of ξ at
+initialization). However, Eq. (25) holds for general t as well:
+The key insight is similar to Eq. (4) in the 1-hidden-layer
+example, that vectors p0 (ξ), J p (ξ), etc change vanishingly
+from their initial values as n → ∞, after any number of
+SGD steps. Because our arguments above only depend on
+inner products between vectors, this means that the error
+in Eq. (26) for t > 0 vanishes as n → ∞. Finally, at
+least heuristically, it is straightforward to show the RHS of
+Eq. (26) is the NTK via a series of calculations exemplified
+by those in Sections 3.1 and 3.2, to get Eq. (22).
+Putting It All Together and Proof Formalization
+While the core ideas discussed above are intuitive, making them rigorous at face value would be quite challenging.
+Instead we use the machinery offered by the Tensor Programs framework. The mechanics of the proof then goes
+as follows: 1) First we unroll SGD of f into a N ETSOR>+
+
+The connection between kernel methods and neural networks has had a long history before its recent resurgence.
+The Gaussian Process (NNGP) view of wide neural networks, which characterizes the behaviour of training only
+the last layer of a wide neural network, has been studied in
+(Daniely et al., 2016; Hazan & Jaakkola, 2015; Roux & Bengio, 2007; Lee et al., 2018; Matthews et al., 2018; Hinton
+& Neal, 1995; Novak et al., 2019). Since the original NTK
+paper (Jacot et al., 2018), many works have informally derived the infinite-width NTK for various architectures such
+as CNNs (Arora et al., 2019), RNN (Alemohammad et al.,
+2020), attention (Hron et al., 2020), ensembles (Littwin
+et al., 2020b) and graph neural networks (Du et al., 2019),
+but none of them formally proved NTK I NIT or NTK T RAIN
+for those architectures. Finite width corrections to the NTK
+were derived for fully connected networks in (Hanin & Nica,
+2019; Littwin et al., 2020a). The validity of the NTK theory
+was empirically studied in (Lee et al., 2019) for a variety of
+architectures.
+The Tensor Program framework (Yang, 2019a; 2020a;b)
+was introduced in an attempt to unify and generalize the
+NNGP/NTK theory to a broad range of architectures, eliminating the need to re-develop the theory for each new architecture. For example, (Yang, 2019a) proved the architectural universality of NNGP correspondence, while (Yang,
+2020a) proved that of NTK I NIT. On the other hand, (Yang,
+2020b) developed the most general machinery for Tensor
+Programs and as a corollary constructed a comprehensive
+theory of nonlinear random matrix theory, that, for example, can calculate the singular value distribution of a wide
+neural network of any architecture. Our proofs depend on
+the machinery of (Yang, 2020b) crucially, as discussed in
+Section 5.
+22
+We note that this formalization crucially relies on N ETSOR>+
+and its Master Theorem from (Yang, 2020b) because the SGD
+unrolling cannot be done in N ETSOR>. The reason is that we need
+to express the output and loss derivatives of the network, which
+are scalars (or at least finite dimensional), and that cannot be done
+in a N ETSOR> program. Furthermore, the Master Theorem from
+(Yang, 2020a) only pertains to a specific type of programs that look
+like the first backpropagation after initialization. Thus, it cannot
+deal with the complete unrolling of SGD as we do here, which
+requires the more advanced Master Theorem from (Yang, 2020b).
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+7. Conclusion
+New theories of deep learning almost always start with
+MLPs, rightly so as they are the simplest case and can often
+reveal the key insights more clearly. Of course, as deep
+learning itself is an applied field, one should always ask
+whether insights on MLPs extend to more general architectures, i.e. whether there is an architecturally universal
+extension of a proposed theory of MLPs. This is not always
+easy to answer.
+In this paper, we showed that the NTK theory is architecturally universal, but more importantly, we showed that the
+Tensor Programs technique is a very powerful tool for answering the above question as a matter of routine. Looking
+forward, we hope to apply it to generate more novel and
+general insights.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+References
+Alemohammad, S., Wang, Z., Balestriero, R., and Baraniuk, R. The recurrent neural tangent kernel. ArXiv,
+abs/2006.10246, 2020.
+Allen-Zhu, Z., Li, Y., and Song, Z. A Convergence
+Theory for Deep Learning via Over-Parameterization.
+arXiv:1811.03962 [cs, math, stat], November 2018. URL
+http://arxiv.org/abs/1811.03962.
+Arora, S., Du, S., Hu, W., Li, Z., Salakhutdinov, R., and
+Wang, R. On exact computation with an infinitely wide
+neural net. In NeurIPS, 2019.
+Bahdanau, D., Cho, K., and Bengio, Y. Neural machine
+translation by jointly learning to align and translate.
+CoRR, abs/1409.0473, 2015.
+Bruna, J., Zaremba, W., Szlam, A., and LeCun, Y. Spectral networks and locally connected networks on graphs.
+CoRR, abs/1312.6203, 2014.
+Cho, K., Merrienboer, B. V., Çaglar Gülçehre, Bahdanau,
+D., Bougares, F., Schwenk, H., and Bengio, Y. Learning phrase representations using rnn encoder-decoder for
+statistical machine translation. ArXiv, abs/1406.1078,
+2014.
+
+Hanin, B. and Nica, M. Finite depth and width corrections to
+the neural tangent kernel. ArXiv, abs/1909.05989, 2019.
+Hazan, T. and Jaakkola, T. Steps toward deep kernel methods from infinite neural networks. ArXiv, abs/1508.05133,
+2015.
+He, K., Zhang, X., Ren, S., and Sun, J. Deep residual
+learning for image recognition. 2016 IEEE Conference
+on Computer Vision and Pattern Recognition (CVPR), pp.
+770–778, 2016.
+Henaff, M., Bruna, J., and LeCun, Y. Deep convolutional networks on graph-structured data. ArXiv,
+abs/1506.05163, 2015.
+Hinton, G. E. and Neal, R. Bayesian learning for neural
+networks. 1995.
+Hochreiter, S. and Schmidhuber, J. Long short-term memory.
+Neural Computation, 9:1735–1780, 1997.
+Hron, J., Bahri, Y., Sohl-Dickstein, J., and Novak, R. Infinite
+attention: Nngp and ntk for deep attention networks. In
+ICML, 2020.
+
+Daniely, A., Frostig, R., and Singer, Y. Toward deeper understanding of neural networks: The power of initialization
+and a dual view on expressivity. In NIPS, 2016.
+
+Huang, G., Liu, Z., and Weinberger, K. Q. Densely connected convolutional networks. 2017 IEEE Conference
+on Computer Vision and Pattern Recognition (CVPR), pp.
+2261–2269, 2017.
+
+Defferrard, M., Bresson, X., and Vandergheynst, P. Convolutional neural networks on graphs with fast localized
+spectral filtering. In NIPS, 2016.
+
+Ioffe, S. and Szegedy, C. Batch normalization: Accelerating
+deep network training by reducing internal covariate shift.
+ArXiv, abs/1502.03167, 2015.
+
+Du, S., Hou, K., Póczos, B., Salakhutdinov, R., Wang, R.,
+and Xu, K. Graph neural tangent kernel: Fusing graph
+neural networks with graph kernels. In NeurIPS, 2019.
+
+Jacot, A., Gabriel, F., and Hongler, C. Neural tangent kernel:
+Convergence and generalization in neural networks. In
+NeurIPS, 2018.
+
+Du, S. S., Zhai, X., Poczos, B., and Singh, A. Gradient
+Descent Provably Optimizes Over-parameterized Neural Networks. arXiv:1810.02054 [cs, math, stat], October 2018. URL http://arxiv.org/abs/1810.
+02054.
+Duvenaud, D., Maclaurin, D., Aguilera-Iparraguirre, J.,
+Gómez-Bombarelli, R., Hirzel, T., Aspuru-Guzik, A.,
+and Adams, R. Convolutional networks on graphs for
+learning molecular fingerprints. In NIPS, 2015.
+Fukushima, K. Cognitron: A self-organizing multilayered
+neural network. Biological Cybernetics, 20(3):121–136,
+1975. doi: 10.1007/BF00342633. URL https://doi.
+org/10.1007/BF00342633.
+Fukushima, K. Neocognitron: A self-organizing neural
+network model for a mechanism of pattern recognition
+unaffected by shift in position. Biological Cybernetics,
+36(4):193–202, 1980. doi: 10.1007/BF00344251. URL
+https://doi.org/10.1007/BF00344251.
+
+Kipf, T. and Welling, M. Semi-supervised classification with
+graph convolutional networks. ArXiv, abs/1609.02907,
+2017.
+Lecun, Y., Bottou, L., Bengio, Y., and Haffner, P. Gradientbased learning applied to document recognition. Proceedings of the IEEE, 86:2278–2324, 12 1998. doi:
+10.1109/5.726791.
+Lecun, Y., Haffner, P., and Bengio, Y. Object recognition
+with gradient-based learning. 08 2000.
+Lee, J., Bahri, Y., Novak, R., Schoenholz, S., Pennington, J.,
+and Sohl-Dickstein, J. Deep neural networks as gaussian
+processes. ArXiv, abs/1711.00165, 2018.
+Lee, J., Xiao, L., Schoenholz, S. S., Bahri, Y., SohlDickstein, J., and Pennington, J. Wide neural networks of
+any depth evolve as linear models under gradient descent.
+ArXiv, abs/1902.06720, 2019.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Li, P. and Nguyen, P.-M. On random deep weight-tied autoencoders: Exact asymptotic analysis, phase transitions,
+and implications to training. In ICLR, 2019.
+Littwin, E., Galanti, T., and Wolf, L. On random kernels of
+residual architectures. arXiv: Learning, 2020a.
+Littwin, E., Myara, B., Sabah, S., Susskind, J., Zhai, S., and
+Golan, O. Collegial ensembles. ArXiv, abs/2006.07678,
+2020b.
+Matthews, A., Rowland, M., Hron, J., Turner, R., and
+Ghahramani, Z. Gaussian process behaviour in wide
+deep neural networks. ArXiv, abs/1804.11271, 2018.
+Novak, R., Xiao, L., Bahri, Y., Lee, J., Yang, G., Hron,
+J., Abolafia, D., Pennington, J., and Sohl-Dickstein, J.
+Bayesian deep convolutional networks with many channels are gaussian processes. In ICLR, 2019.
+Roux, N. L. and Bengio, Y.
+Continuous neural
+networks.
+In Meila, M. and Shen, X. (eds.),
+Proceedings of the Eleventh International Conference on Artificial Intelligence and Statistics, volume 2 of Proceedings of Machine Learning Research,
+pp. 404–411, San Juan, Puerto Rico, 21–24 Mar
+2007. PMLR. URL http://proceedings.mlr.
+press/v2/leroux07a.html.
+Rumelhart, D., Hinton, G. E., and Williams, R. J. Learning
+internal representations by error propagation. 1986.
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones,
+L., Gomez, A. N., Kaiser, L., and Polosukhin, I. Attention
+is all you need. ArXiv, abs/1706.03762, 2017.
+Yang, G. Tensor programs i: Wide feedforward or recurrent neural networks of any architecture are gaussian
+processes. ArXiv, abs/1910.12478, 2019a.
+Yang, G. Scaling Limits of Wide Neural Networks with
+Weight Sharing: Gaussian Process Behavior, Gradient
+Independence, and Neural Tangent Kernel Derivation.
+arXiv:1902.04760 [cond-mat, physics:math-ph, stat],
+February 2019b.
+Yang, G. Tensor programs ii: Neural tangent kernel for any
+architecture. ArXiv, abs/2006.14548, 2020a.
+Yang, G. Tensor programs iii: Neural matrix laws. ArXiv,
+abs/2009.10685, 2020b.
+Yang, G. and Hu, E. J. Feature learning in infinite-width
+neural networks. ArXiv, abs/2011.14522, 2020.
+Yang, G. and Schoenholz, S. S. Mean Field Residual Network: On the Edge of Chaos. In Advances in neural
+information processing systems, 2017.
+
+Zou, D., Cao, Y., Zhou, D., and Gu, Q. Stochastic Gradient Descent Optimizes Over-parameterized Deep ReLU
+Networks. arXiv:1811.08888 [cs, math, stat], November 2018. URL http://arxiv.org/abs/1811.
+08888.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Appendix organization The appendix is organized as follows:
+In Appendix A we expands upon the examples given in Section 3, while adding some additional details.
+In Appendix B we introduce the formal version of the N ETSOR>,N ETSOR>+ programs.
+In Appendix C we introduce the graphical notation of N ETSOR>+ and demonstrate other examples of architectures or
+computations expressible in Tensor Programs.
+In Appendix D we prove our main result.
+Notations For the readers convenience we restate the notations described in Section 2, along with some additional
+ones which will be used throughout the appendix. We will consider SGD with batch size 1 and learning rate of 1
+(WLOG).We use ξt to denote the input and Lt to denote the loss function (absorbing the label) at step t. More generally,
+subscript t on any symbol means time t. However, for brevity, we abuse notation and shorthand ft for ft (ξt ), and, for
+any (pre-)activation x, xt for xt (ξt ). We will also write χt for the loss derivative L0t (ft ). For any vector x(ξ) we define
+
+def √
+def √ ∂f (ξ)
+˜ 23
+δxt+1 (ξ) =
+n xt+1 (ξ) − xt (ξ) and dx(ξ) =
+n ∂x(ξ) . We will track the evolution of f on an arbitrary input ξ.
+˜ ft (x̃). In general, omitting the time index t for any time dependent quantity
+Similar to above, we shorthand x̃t , f˜t for xt (ξ),
+implies its value at initialization. (i.e x(ξ) = x0 (ξ), f (ξ) = f0 (ξ)). Finally, we use , to imply equality of symbols (i.e
+W 1 , W 2 iff W 1 , W 2 represent the same variable, as opposed to equality in value).
+
+A. Additional Examples
+In this section we flesh out the examples given in Section 3 of the main text with the purpose of adding additional clarity,
+while maintaining the intuitive arguments as presented in each example to perform these calculations. The rigorous
+justification for these calculations will be given in the following section with the formal introduction of the Tensor Program
+framework.
+Recall that our objective is to derive Claim 3.1 by tracking the coordinate distribution of each (pre-)activations vector
+
+def √ ∂f (ξ)
+def √
+x(ξ), dx(ξ) =
+n ∂x(ξ) , δx(ξ) =
+n xt+1 (ξ) − xt (ξ) .
+˜ changes by
+Claim 3.1. In the large width limit, f˜t = ft (ξ)
+˜ ξt )
+lim f˜t+1 − f˜t = −χ̊t K̊(ξ,
+
+n→∞
+
+(3)
+
+at step t, where K̊ is the limiting NTK of the architecture and χ̊t = L0t (limn ft ) is the loss derivative.
+In our calculations we will rely on the following rules relating to the coordinates of any Rn (pre-)activation vector x(ξ) in
+the large width regime, which we will later formalize:
+• xt+1 (ξ) − xt (ξ) has Θ( √1n ) coordinates.
+• δxt+1 (ξ) has Θ(1) coordinates.
+• xt (ξ) = x(ξ) + o(1). Consequently Z xt (ξ) = Z x(ξ) .
+
+√
+(ξ)
+√
+• If x(ξ) = φ y(ξ) for some vector y(ξ) ∈ Rn , then by Taylor approximation δxt+1 (ξ) = n φ(yt (ξ) + δyt+1
+)−
+n
+
+
+0
+δxt+1 (ξ)
+0
+yt (ξ)
+δyt+1 (ξ)
+φ(yt (ξ)) ≈ φ yt (ξ)
+δyt+1 (ξ). Consequently Z
+= φ (Z
+)Z
+.
+Remark A.1. We write Z x to denote the limit coordinate distribution of x ∈ Rn conditioned on the output function f
+at initialization. Consequently we write E X x Z y to express a conditional expectation given the output function f . See
+Appendix B for the formal statement.
+A.1. 1 hidden layer
+Recall our model is of the form:
+f = V > x, x = φ(h), h = U ξ
+where ξ ∈ Rd , U = √ud ∈ Rn×d , V = √vn ∈ Rn×1 , for trainable parameter tensor u, initialized iid from N (0, 1), and
+d = 1.
+23
+
+It might help to think of ξ˜ as some test sample, but it can also fall in the training set.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Deriving The NTK
+
+The infinite width NTK of this architecture is given by:
+>
+˜
+˜ = h∇u f (ξ), ∇u f (ξ)i
+˜ = ξ > ξ˜dh(ξ) dh(ξ)
+K(ξ, ξ)
+n
+√
+∂f
+(ξ)
+def
+n
+dh(ξ) =
+= φ0 (h(ξ)) v.
+∂h(ξ)
+
+(27)
+(28)
+
+Therefore, by LLN it follows:24
+˜
+dh(ξ)> dh(ξ)
+= ξ > ξ˜ E φ0 (Z h(ξ̃) )φ0 (Z h(ξ) ).
+n→∞
+n
+
+K̊(ξ, ˜
+ξ) = ξ > ξ˜ lim
+
+(29)
+
+Getting Claim 3.1 To show that Claim 3.1 holds with the kernel in Eq. (29), we track the coordinate distribution Z δx̃t+1
+at each step of SGD. At step t, the update to the weights ut+1 − ut is given by the gradient of the loss with respect to ut :
+dht ξ >
+ut+1 − ut = −χt √ t , dht = φ0 (ht ) v
+n
+√
+√
+√
+Recall that δ h̃t+1 = n(h̃t+1 − h̃t ) = n(ut+1 ξ˜ − ut ˜
+ξ) and δ x̃t+1 = n(x̃t+1 − x̃t ). It therefore follows:
+δ h̃t+1 = −χt ξt> ˜
+ξφ0 (ht )
+
+v, δ x̃t+1 =
+
+√
+
+
+δ h̃t+1
+n φ(h̃t + √ ) − φ(h̃t ) .
+n
+
+(30)
+
+(31)
+
+Since ht = Θ(1) and δ h̃t+1 = Θ(1), for large n we may Taylor expand φ to first order around h̃t :
+δ x̃t+1 ≈
+
+√
+
+1
+n φ(h̃t ) + √ φ0 (h̃t )
+n
+
+= φ0 (h̃t )
+
+δ h̃t+1 − φ(h̃t )
+
+
+
+(32)
+
+δ h̃t+1
+
+= −χt ξt> ˜
+ξφ0 (h̃t )
+Again since δht (ξ) = Θ(1), it follows that ht (ξ) = h(ξ) +
+
+(33)
+0
+
+φ (ht )
+Pt
+
+s=1
+
+v.
+
+(34)
+
+δhs (ξ)
+√
+= h(ξ) + o(1). Hence, in the infinite width limit
+n
+ht (ξ)
+h(ξ)
+
+the coordinate distribution of ht (ξ) is identical to the coordinate distribution of h(ξ) (i.e Z
+the coordinate distribution of δ x̃t+1 is given by:
+˜ 0 (Z h̃t )φ0 (Z ht )Z v .
+Z δx̃t+1 = −χ̊t ξt> ξφ
+
+=Z
+
+). Using Eq. (34),
+(35)
+
+>
+
+In the large width limit, the change in the output is simply given by f˜t+1 − f˜t = v δnx̃t+1 = E Z δx̃t+1 Z v . Using Eq. (35)
+and the independence of Z v from the other random variables,25
+˜ 0 (Z h̃t )φ0 (Z ht )(Z v )2
+E Z δx̃t+1 Z v = − E χ̊t ξt> ξφ
+
+(36)
+
+= −χ̊t ξt> ξ˜ E φ0 (Z h̃t )φ0 (Z ht )
+
+(37)
+
+= −χ̊t K̊(ξt , ˜
+ξ).
+
+(38)
+
+A.2. 2 hidden layers
+Recall our model is of the form:
+f = V > x, x = φ(h), h = W z
+z = φ(g), g = U ξ
+where U = √ud ∈ Rn×d , W = √wn ∈ Rn×n , V = √vn ∈ Rn×1 , for trainable parameters u, w, initialized iid from a normal
+distribution. As before we assume the last layer is not trained, and d = 1.
+24
+
+While in Remark A.1, we said E denotes expectation conditioned on lim f0 , the NTK here does not actually depend on lim f0 .
+Again, as in Footnote 10, the expectations in Appendices A.1 and A.2 should more rigorously be interpreted as expectation conditional
+on the function values of lim f0 .
+25
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Deriving The NTK
+
+The infinite width NTK is given by:
+˜ = h∇u f (ξ), ∇u f (ξ)i
+˜ + h∇w f (ξ), ∇w f (ξ)i
+˜
+K(ξ, ξ)
+˜
+˜ dh(ξ)> dh(ξ)
+˜
+dg(ξ)> dg(ξ)
+z(ξ)> z(ξ)
+= ξ > ξ˜
++
+n
+n
+n
+
+√
+∂f
+(ξ)
+def
+dh(ξ) =
+n
+= φ0 h(ξ)
+v
+∂h(ξ)
+
+
+√ ∂f (ξ)
+def
+dg(ξ) =
+= φ0 g(ξ)
+W > dh(ξ) .
+n
+∂g(ξ)
+
+(39)
+(40)
+(41)
+(42)
+
+Naively using LLN on Eq. (39) (and Z v being independent from everything else) should result in:
+
+
+
+ 
+
+˜ = ξ > ξ˜ E Z dg(ξ) Z dg(ξ̃) + E Z z(ξ) Z z(ξ̃) E φ0 (Z h(ξ) )φ0 (Z h(ξ̃) ) .
+K(ξ, ξ)
+
+(43)
+
+Evaluating the term E Z dg(ξ) Z
+however presents a challenge since dh(ξ) depends on both W and W > . As it turns
+out, at initialization we may naively assume that W > , W are independent (formally known in the literature as gradient
+independence assumption, or GIA) 26 , we arrive using simple LLN arguments to:
+
+
+E Z dg(ξ) Z dg(ξ̃) = E[φ0 (Z g(ξ) )φ0 (Z g(ξ̃) )] E[φ0 (Z h(ξ) )φ0 (Z h(ξ̃) )].
+(44)
+
+
+
+dg(ξ̃)
+
+Plugging Eq. (44) into Eq. (43) we arrive at the correct expression for the infinite width NTK.
+Getting Claim 3.1 To show that Claim 3.1 holds at any step t (where we may not assume that GIA holds), we track the
+distributions of the vectors g(ξ), z(ξ), h(ξ), x(ξ) throughout training.
+At any step t the weights are updated according to:
+dgt ξ >
+dht zt>
+ut+1 − ut = −χt √ t , wt+1 − wt = −χt
+.
+n
+n
+def
+The update δg̃t+1 =
+
+√
+
+def
+n(g̃t+1 − g̃t ), δz̃t+1 =
+
+√
+
+(45)
+
+n(z̃t+1 − z̃t ) are given by:
+
+˜ δz̃t+1 =
+δg̃t+1 = −χt dgt ξt> ξ,
+
+√
+
+
+δg̃t+1
+n φ(g̃t + √ ) − φ(g̃t )) .
+n
+
+(46)
+
+As before, with large n we have that •t+1 (ξ) − •t (ξ) ∼ Θ( √1n ) and δ •t+1 (ξ) ∼ Θ(1) coordinates for • replaced by
+{g, z, h, x}. And so after Taylor expanding φ(g̃t + δg̃√t+1
+) around g̃t :
+n
+δz̃t+1 ≈ φ0 (g̃t )
+
+δg̃t+1 .
+
+(47)
+
+In a similar fashion, using Eqs. (41) and (46) the updates δz̃t+1 , δ x̃t+1 , δ x̃t+1 take the form:
+
+δz̃t+1 ≈ φ0 (gt ) δg̃t+1 = −χt ξt> ˜
+ξφ0 (gt ) φ0 (g̃t )
+W > dht
+z > z̃t
+δ h̃t+1 ≈ W δz̃t+1 − χt t φ0 (ht )
+n
+δ x̃t+1 ≈ φ0 (h̃t )
+
+(48)
+
+t
+
+1 X zs> δz̃t+1 0
+v− √
+χs
+φ (hs )
+n
+n s=0
+
+δ h̃t+1 .
+
+v
+
+(49)
+(50)
+
+where we used Eq. (45) and
+δ h̃t+1 = Wt+1 δz̃t+1 +
+= W δz̃t+1 +
+
+√
+
+n(Wt+1 − Wt )z̃t
+
+t
+X
+
+(Ws+1 − Ws )δz̃t+1 +
+
+s=0
+26
+
+For a rigorous justification of the GIA assumption see (Yang, 2020a)
+
+(51)
+√
+
+n(Wt+1 − Wt )z̃t
+
+(52)
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+to get Eq. (49). Based on Eqs. (41) and (48) to (50), the corresponding coordinate distributions take the form:
+Z dht = φ0 (Z ht )Z v
+Z
+
+δ z̃t+1
+
+(53)
+
+˜ 0 (Z gt )φ0 (Z g̃t )Z W > dht
+= −χ̊t ξt> ξφ
+
+(54)
+
+Z δh̃t+1 = Z W δz̃t+1 − χ̊t E[Z zt Z z̃ ]φ0 (Z ht )Z v
+Z
+
+δ x̃t+1
+
+0
+
+h̃t
+
+= φ (Z )Z
+
+δ h̃t+1
+
+.
+
+(55)
+(56)
+
+>
+
+As before, the functional update is given by limn→∞ f˜t+1 − f˜t = limn→∞ v δnx̃t+1 = E Z v Z δx̃t+1 . Plugging Eqs. (55)
+and (56):
+
+ 
+
+
+
+E Z v Z δx̃t+1 = −χ̊t E Z zt Z z̃ E φ0 (Z ht )φ0 (Z h̃t ) − E φ0 (Z ht )Z W δz̃t+1 Z v .
+(57)
+To compute the second term of the RHS of Eq. (57), we use Claim 3.2, reproduced below.
+Claim 3.2. Based on the above discussion and some easy calculations, δz̃t+1 can be written as Φ(W > dht ) for some
+Φ : R → R applied coordinatewise (which will depend on other vectors not of the form W > •). Then it turns out26
+Z W δz̃t+1 = G + Z dht E
+
+∂Z δz̃t+1
+,
+∂Z W > dht
+
+δ z̃t+1
+
+(17)
+>
+
+def
+where G is some Gaussian variable independent from Z v , and ∂ZW > dht =
+Φ0 (Z W dht ).
+
+∂Z
+
+Applying Claim 3.2 to get the expression for Z W δz̃t+1 :
+∂Z δz̃t+1
+(58)
+∂Z W > dht
+
+
+= G − φ0 (Z ht )Z v χ̊t ξt> ξ˜ E φ0 (Z gt )φ0 (Z g˜t )
+(59)
+Pt δhs (ξ)
+As before, for h ∈ {g, z, h, x} it holds that ht (ξ) = h(ξ) + s=1 √n = h(ξ) + o(1), and Z ht (ξ) = Z h(ξ) . Plugging
+Eq. (58) into Eq. (57) yields Claim 3.1.
+Z W δz̃t+1 = G + Z dht E
+
+B. Tensor Programs: the Formal Version
+We briefly review the formal definition of Tensor Programs below, but readers needing more explanation and intuition should
+see (Yang, 2020b). We will directly describe N ETSOR>+ programs, which generalizes N ETSOR>.
+Definition B.1. A N ETSOR>+ program is a sequence of Rn -vectors and R-scalars inductively generated via one of the
+following ways from an initial set C of random scalars, V of random Rn vectors, and a set W of random Rn×n matrices
+(which will be sampled with iid Gaussian entries in Setup B.2)
+M AT M UL same as M AT M UL in Definition 4.1.
+N ONLIN+ Given φ : Rk × Rl → R, previous scalars θ1 , . . . , θl ∈ R and vectors x1 , . . . , xk ∈ Rn , we can generate a new
+vector
+ψ(x1 , . . . , xk ; θ1 , . . . , θl ) ∈ Rn
+
+(60)
+
+where ψ(−; θ1 , . . . , θl ) applies coordinatewise to each “α-slice” (x1α , . . . , xkα ).
+M OMENT Given same setup as above, we can also generate a new scalar
+n
+
+1X
+ψ(x1α , . . . , xkα ; θ1 , . . . , θl ) ∈ R.
+n α=1
+
+(61)
+
+A N ETSOR> program is just a N ETSOR>+ program without scalars, without the usage of M OMENT, and without parameters
+θ1 , . . . , θl in N ONLIN+ .
+We will typically randomly sample the initial matrices, vectors, and scalars of the program as follows.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+2
+2
+Setup B.2. 1) For each initial W ∈ W, we sample iid Wαβ ∼ N (0, σW
+for some variance σW
+associated to W ,
+/n)
+0
+V
+h
+V
+independent of other W ∈ W; 2) for some multivariate Gaussian Z = Z : h ∈ V ∈ R , we sample the initial set
+a.s.
+of vectors V like {hα : h ∈ V} ∼ Z V iid for each α ∈ [n]. 3) For each initial scalar θ ∈ C, we require θ −−→ θ̊ for some
+deterministic θ̊ ∈ R.
+
+The following constructs a random variable Z h for every vector h and a deterministic scalar θ̊ for every scalar θ in the
+program. The interpretation is that h will have iid coordinates distributed like Z h , and θ will converge to θ̊ as n → ∞.
+Definition B.3 (Z h and θ̊). Given a N ETSOR>+ program, we recursively define Z h for each vector h and θ̊ for each scalar
+θ as follows.
+def
+def
+ZI NIT If h ∈ V, then Z h is defined as in Setup B.2. We also set Ẑ h =
+Z h and Ż h =
+0.
+
+ZN ONLIN+ Given ψ : Rk × Rl → R, previous scalars θ1 , . . . , θl ∈ R and vectors x1 , . . . , xk ∈ Rn , we have
+1
+
+k
+
+1
+
+k
+
+def
+Z ψ(x ,...,x ;θ1 ,...,θl ) =
+ψ(Z x , . . . , Z x ; θ̊1 , . . . , θ̊l ).
+
+ZM OMENT Given same setup as above and scalar θ = n1
+
+(62)
+
+Pn
+
+1
+k
+α=1 ψ(xα , . . . , xα ; θ1 , . . . , θl ), then
+
+1
+
+k
+
+def
+E ψ(Z x , . . . , Z x ; θ̊1 , . . . , θ̊l ).
+θ̊ =
+1
+
+(63)
+k
+
+Here θ̊1 , . . . , θ̊l are deterministic, so the expectation is taken over Z x , . . . , Z x .
+def
+2
+/n) entries) and vector x, where
+ZM AT M UL Z W x =
+Ẑ W x + Ż W x for every matrix W (with N (0, σW
+
+ZH AT Ẑ W x is a Gaussian variable with zero mean. Let VW denote the set of all vectors in the program of the form
+W y for some y. Then {Ẑ W y : W y ∈ VW } is defined to be jointly Gaussian with zero mean and covariance
+
+
+def 2
+Cov Ẑ W x , Ẑ W y =
+σW E Z x Z y , for any W x, W y ∈ VW .
+(64)
+Furthermore, {Ẑ W y : W y ∈ VW } is mutually independent from {Ẑ v : v ∈ V ∪
+over W ∪ {A> : A ∈ W}.
+
+S
+
+W̄ 6=W VW̄ }, where W̄ ranges
+
+> i
+
+i
+
+ZD OT We can always unwind Z x = Φ(· · · ), for some arguments (· · · ) = ({Ẑ W y }ki=1 , {Ẑ z }ji=1 ; {θ̊i }li=1 ), z i 6∈
+> i def
+VW > (where VW > is defined in ZH AT), and deterministic function Φ : Rk+j+l → R. Define ∂Z x /∂ Ẑ W y =
+∂i Φ(· · · ). Then we set
+k
+X
+i
+∂Z x
+def 2
+Ż W x =
+σW
+Zy E
+,
+(65)
+∂ Ẑ W > yi
+i=1
+There is some nuance in this definition, so see Remark B.5 and B.6.
+The following theorem ties the symbolic nature of the Zs to the analytic nature of a Tensor Program.
+Theorem B.4 (N ETSOR>+ Master Theorem, c.f. Theorem E.15 of (Yang, 2020b)). Fix a Tensor Program initialized
+accordingly to Setup B.2. Adopt Assumption B.8. Then
+1. For any fixed k and any pseudo-Lipschitz ψ : Rk → R, as n → ∞,
+n
+
+1
+k
+1X
+a.s.
+ψ(h1α , . . . , hkα ) −−→ E ψ(Z h , . . . , Z h ),
+n α=1
+i
+
+for any vectors h1 , . . . , hk in the program, where Z h are as defined in Definition B.3.
+2. Any scalar θ in the program tends to θ̊ almost surely, where θ̊ is as defined in Definition B.3.
+
+(66)
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Remark B.5 (Partial derivative). The partial derivative in ZD OT should be interpreted as follows. By a simple inductive
+1
+k
+argument, Z x for every vector x in the program is defined uniquely as a deterministic function ϕ(Ẑ x , . . . , Ẑ x ) of some
+x1 , . . . , xk in V or introduced by M AT M UL (notationally, we are suppressing the possible dependence on limit scalars
+θ̊1 , . . . , θ̊l ). For instance, if in a program we have A ∈ W, v ∈ V, y = Av, x = A> y, then Z x = Ẑ x + Ẑ v , so ϕ is given by
+ϕ(a, b) = a + b. Then
+i
+
+1
+
+k
+
+def
+∂Z x /∂ Ẑ x =
+∂i ϕ(Ẑ x , . . . , Ẑ x ),
+
+def
+and ∂Z x /∂ Ẑ z =
+0 for any z 6∈ {x1 , . . . , xk }.
+
+Note this definition depends on the precise way the program is written, not just on the underlying mathematics. For
+example, if y, z ∈ V and x = φ(W (y + z)), then Z x = φ(Ẑ W (y+z) ) so that ∂Z x /∂ Ẑ W y = ∂Z x /∂ Ẑ W z = 0. If
+instead, we have x = φ(W y + W z), then Z x = φ(Ẑ W y + Ẑ W z ) so that ∂Z x /∂ Ẑ W (x+y) = 0. However, in both cases,
+>
+Ż W x = (Z y + Z z ) E φ0 (Ẑ W (y+z) ).
+x
+
+>
+
+Remark B.6 (Partial derivative expectation). The quantity E ∂Z
+is well defined if Z x is differentiable in Ẑ W y .
+∂ Ẑ W > y
+>
+However, even if this is not the case, e.g. if x = θ(W y) where θ is the Heavyside step function, we can still define this
+expectation by leveraging Stein’s lemma:
+def
+In ZD OT, suppose {W > y i }ki=1 are all elements of VW > introduced before x. Define the matrix C ∈ Rk×k by Cij =
+def
+yi yj
+k
+W > yi x
++
++
+E Z Z and define the vector b ∈ R by bi = E Ẑ
+Z . If a = C b (where C denotes the pseudoinverse of C),
+then in ZD OT we may set
+∂Z x
+2
+= ai .
+(67)
+σW
+E
+∂ Ẑ W > yi
+This definition agrees with the partial derivative expectation by Stein’s lemma when the latter is well defined. Theorem B.4
+holds with this broader definition of partial derivative expectation.
+
+Pseudo-Lipschitz functions are, roughly speaking, functions whose weak derivatives are polynomially bounded.
+Definition B.7. A function f : Rk → R is called pseudo-Lipschitz of degree d if |f (x) − f (y)| ≤ Ckx − yk(1 +
+Pk
+d
+d
+i=1 |xi | + |yi | ) for some C. We say f is pseudo-Lipschitz if it is so for any degree.
+Here are some basic properties of pseudo-Lipschitz functions:
+• The norm k · k in Definition B.7 can be any norm equivalent to the `2 norm, e.g. `p , p ≥ 1, norms. Similarly,
+Pk
+d
+d
+d
+d
+i=1 |xi | + |yi | can be replaced by kxkp + kykp , for any p ≥ 1.
+• A pseudo-Lipschitz function is polynomially bounded.
+• A composition of pseudo-Lipschitz functions of degrees d1 and d2 is pseudo-Lipschitz of degree d1 + d2 .
+• A pseudo-Lipschitz function is Lipschitz on any compact set.
+We adopt the following assumption for the Master Theorem Theorem B.4.
+Assumption B.8. Suppose
+1. If a function φ(; −) : R0+l → R with only parameter arguments is used in M OMENT, then φ is continuous in those
+arguments.
+2. Any other function φ(−; −) : Rk+l → R with parameters (where k > 0) used in N ONLIN or M OMENT is pseudoLipschitz in all of its arguments (both inputs and parameters).
+Statement 1 in Assumption B.8 essentially says that if we have scalars θ1 , . . . , θl in the program, then we can produce a
+new scalar by applying a continuous function (a weaker restriction than a pseudo-Lipschitz function) to them. Indeed, if
+θ1 , . . . , θl converge almost surely, then this new scalar does too. In our setting, statement 1 is used to allow any loss function
+whose derivative is continuous.
+Other versions of the Master Theorem can be found in (Yang, 2020b), for example, versions where the we do not assume
+any smoothness condition at all on the nonlinearities beyond that they be polynomially bounded, in exchange for assuming
+what’s called a rank stability condition. This rank stability should be generically true, but checking it rigorously is subtle, so
+we are content with the pseudo-Lipschitz condition in this paper.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+query
+𝑞
+
+X-var
+
+MatMul
+
+Scalar
+
+Moment
+
+keys 𝐾
+
+softmax
+
+Nonlin
+
+⋅×⋅
+
+(𝑥 − 𝜇)2
+
+𝜎2
+
+G-var
+
+⋅×⋅
+
+𝜎2
+
+𝑥−𝜇
+
+𝐿𝑁(𝑥)
+
+linear combination
+
+𝑥
+
+𝑥
+
+⋅×⋅
+
+Legend
+
+𝜇
+
+attn
+weights
+
+attn
+logits
+
+Attention
+
+Layernorm
+
+values 𝑉
+
+Figure 4: Layernorm and attention can be implemented with N ETSOR>+ .
+Legend
+
+Conv weights
+composed of 3
+dense matrices
+𝑊1, 𝑊 2, 𝑊 3
+of size
+#𝑜𝑢𝑡𝑐ℎ𝑎𝑛𝑛𝑒𝑙𝑠 ×
+#𝑖𝑛𝑐ℎ𝑎𝑛𝑛𝑒𝑙𝑠
+
+G-var
+
+Nonlin
+
+X-var
+
+MatMul
+
++
+
+𝑊1
+
+𝑊2
+
++
+
++
+
+𝑊3
+
+1D conv with
+kernel size 3
+
+One activation vector (across channels) per pixel
+
+Figure 5: Convolution can be implemented with N ETSOR>.
+
+C. More Diagrams
+We can augment the graphical form of N ETSOR> to accomodate the M OMENT instruction in N ETSOR>+ . See Fig. 4 for
+an example for layernorm and attention. In short, we denote scalar variables with a square, in contrast to the circle for vector
+variables, and we use a “bar-gate” to denote the M OMENT, where the function in the gate corresponds to ψ in M OMENT.
+In addition, for more examples of the expressivity of N ETSOR>, Figs. 5 and 6 demonstrate convolution and MLP backpropagation in N ETSOR>.
+
+D. Proof of Main Result
+We dedicate the following section to prove Theorem 5.3. We will begin by proving a simplified version under the same
+assumptions as Section 5.1, as reproduced below:
+Setup D.1 (Representable NN in NTK Parametrization). Suppose a neural network f ∈ R is represented by a N ETSOR>
+program (in the sense of Definition 4.2) whose N ONLIN all have polynomially bounded derivatives.27 Adopt the NTK
+parametrization: for every matrix parameter W ∈ Rn×n of f , we factor W = √1n w where w is the trainable parameter;
+likewise, for each input layer matrix U i ∈ Rn×d , we factor U i = √1d ui , and likewise the output matrix V = √1n v. We
+randomly initialize all trainable parameters iid as N (0, 1). Furthermore, we assume the following:
+A1. Input and output layers {ui }, v, as well as biases are not trained (only Rn×n weight matrices are trained).
+A2. The forward pass does not use both a matrix and its transpose (in different M AT M ULs).
+27
+
+More generally, we can allow any pseudo-Lipschitz function here, but for simplicity we go with the statement in the main text.
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+Forward Propagation
+
+𝑔0
+
+𝑥1
+
+𝑔1
+
+𝑥2
+
+𝑔2
+
+𝑥3
+
+𝑑𝑔0
+
+𝑑𝑥1
+
+𝑑𝑔1
+
+𝑑𝑥2
+
+𝑑𝑔2
+
+𝑑𝑥3
+
+Backward Propagation
+
+Figure 6: Backpropagation (of an MLP f ) can be implemented in N ETSOR>. However, N ETSOR> cannot express the loss
+derivative, so we cannot unroll multiple steps of SGD in N ETSOR>, unlike N ETSOR>+ .
+A3. The output is a scalar f ∈ R.
+A4. We assume the last layer embedding is a G-var.
+Our main result is to show that the SGD training of such a neural network described in Setup 5.2 reduces to kernel gradient
+descent with kernel K̊ in the infinite-width limit.
+Theorem D.2 (NTK T RAIN is Architecturally Universal). Consider training a network f described in Setup D.1 via SGD
+with batch-size 1 and (WLOG) learning rate 1. Let ξt be the input and Lt : R → R be the loss function (absorbing the label)
+at time t. Suppose Lt is continuous for all t. Then, for any ξ and t, ft (ξ) converges almost surely to a random variable
+f˚t (ξ) as width → ∞, such that
+f˚t+1 (ξ) − f˚t (ξ) = −K̊(ξ, ξt )L0t (f˚t (ξt ))
+
+(68)
+
+where K̊ is the infinite-width NTK (at initialization) of the neural network.
+D.1. SGD as a N ETSOR>+ Program
+SGD is comprised of a sequence of forward and backward passes computed on some architecture. WLOG, let π0 denote the
+reduced program implementing the body of network f , and let x(ξ) denote the final embedding such that f (ξ) = V > x(ξ),
+we will now show how the SGD procedure on π0 can be implemented by a N ETSOR>+ program.
+D.1.1. F IRST F ORWARD PASS
+While π0 implements the embeddings x(ξ) by definition, the outputs f (ξ) cannot be implemented trivially in a pro>
+gram since that at initialization f (ξ) = v √x(ξ)
+is not deterministic, and converges non-trivially to a GP, violating the
+n
+requirements of a scalar type in a N ETSOR>+ program which require all scalar types to converge to a deterministic
+limit as n → ∞. Nevertheless, we can still easily express evolution of f conditioned on (i.e. fixing) the values of f
+at initialization. More formally, let f = [f (ξ0 ), f (ξ1 ), ..., f (ξD−1 )]> ∈ RD denote a fixed vector of outputs, and let
+>
+X = [x(ξ0 ), x(ξ1 ), ..., x(ξD−1 )]> ∈ Rn×D denote a fixed embedding matrix such that f = X√nv . The distribution of v
+when conditioned on f and X is given by (see e.g. (Yang, 2020b, Sec K.2))
+d
+
+v =f,X
+
+√
+
+nX + f + Πv
+
+(69)
+
+where X + is the pseudo-inverse of X, v is an independent copy of v and Π is the projection operator projecting unto the
+orthogonal complement of the space spanned by X. Namely:
+X+ =
+>
+
+1
+X >X +
+X(
+) ,
+n
+n
+
+Π = I − X +X >
+
+(70)
+
+>
+
+Denote Σ = X n X ∈ RD×D , µ = Xn v ∈ RD . Define
+Σ+ f
+def
+v̂ =
+X( √ ) + v − XΣ+ µ.
+n
+
+(71)
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Then we see via Eq. (69) that
+d
+
+v =f,X v̂.
+
+(72)
+
+Given v and (the columns of) X as vectors and f as scalars in a program, v̂ may be defined in the same program via
++
+N ONLIN, where Σ√nf and Σ+ µ (both finite-dimensional) provide coefficients for the linear combination over (columns
+of) X. Formally, to express the evolution of f conditioned on f0 = f at initialization, the program will calculate the first
+forward pass up to X, calculate the loss derivatives χ assuming f0 = f, and then proceed with the backward pass and later
+forward/backward passes with v replaced by v̂.
++
+
+a.s.
+
+a.s.
+
+However, since Σ√nf , µ −−→ 0 and Σ+ −−→ Σ̊+ (by rank stability, c.f. (Yang, 2020b, Lemma L.11)), these coefficients of
+v̂
+v
+the linear combination
+√ converge to 0, so that Z = Z . Intuitively, this means that the distribution of v conditioned on the
+>
+equality f = X v/ n is asymptotically the same as no conditioning as n → ∞. Thus, for the limit calculation of δft and
+other quantities, it ends up not mattering whether we use v̂ or v.
+(ξ))
+Computing The Loss Derivatives The loss derivative χ(ξ) = ∂L(f
+∂(f (ξ)) after the first forward pass given f (ξ) can be
+implemented with M OMENT instructions using ψ(; f (ξ)) = L0 (f (ξ)).
+
+D.1.2. I MPLEMENTING SGD
+Under SGD, the update at step t + 1 to any weight w ∈ Rn×n is given by:
+wt+1 − wt = −χt
+
+X
+g,h:g=W h
+
+dgt h>
+t
+.
+n
+
+(73)
+
+where the summation in Eq. (73) is over all pairs of vectors g, h in program π0 satisfying g = W h (there can be multiple
+such pairs since π0 may reuse the same matrix W ).
+def √ ∂ft
+To write the full unrolled SGD as a N ETSOR>+ program, we will need to implement the error signal dgt =
+n ∂gt for
+each G-var g at time t. To accomplish this, we recall the notion of paths in program π0 :
+Definition 5.5 (Paths). In a N ETSOR> program, a path p starts with an X-var and ends with a G-var, alternating between Xand G-vars along the path. We write p0 for the starting X-var, p1 for the following G-var, and so on, as well as p−1 for the
+i
+ending G-var (see Fig. 2 for a graphical illustration). For odd i, let W p denote the defining matrix of G-var pi . For two
+i
+i
+equal length paths p, q, we write p ∼
+= q (path p is isomorphic to path q) if for all odd i, W p is the same matrix as W q .28 In
+other words, we say path p is isomorphic to path q if their sequences of M AT M UL matrices are identical, (but the N ONLIN
+don’t have to be, see Fig. 3 for a graphical illustration). Let |p| denote the number of vectors in p (this is always an even
+number).
+Note that a path p represents a series of nodes independent of an input, and can be instantiated as p(ξ) by an input ξ, resulting
+in a series of instantiated G-vars and X-vars pi (ξ).
+For any G-var g = W h, we can write the error term dg as the summation of errors signals over paths p:
+X
+
+J p (ξ)
+
+(74)
+
+∂p2 > ∂p−2 > ∂p−1 >
+) ( −3 ) ...( −2 ) v
+∂p1
+∂p
+∂p
+
+(75)
+
+dg(ξ) =
+
+p:p−1 =x,p1 =g
+
+where J p = (
+
+(Here again, J p represents a symbolic computation that can be instantiated with an input J p (ξ)). Note that J p can be defined
+recursively:
+Jp = (
+28
+
+∂p2 > ∂p3 > p:3
+) ( 2) J
+∂p1
+∂p
+
+Here we are talking about equality of symbols rather than equality of values of those symbols.
+
+(76)
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+where Jp:k , k ≤ |p| is defined as:
+(
+J
+
+p:k def
+
+=
+
+−2
+
+k+1
+
+−1
+
+∂p
+∂p
+>
+>
+( ∂p∂pk )> ( ∂p
+−3 ) ...( ∂p−2 ) v
+v
+
+k < |p|
+k = |p|
+
+(77)
+3
+
+Recall that each path p starts with an X-var p0 , and alternates between G and X vars. Let W p denote the defining weight
+3
+matrix of G-var p3 (i.e p3 = W p p2 ), and let p2 = ψ(..., p1 , ...). Then we can re-write Eq. (76) as:
+J p = ψ 0 (..., p1 , ...)
+
+3
+
+J p:2 , J p:2 = (W p )> J p:3
+
+(78)
+
+Note that Eq. (78) can be written in N ETSOR> language using M AT M UL instructions using the transposed weights, and
+N ONLIN instructions using ψ 0 , which is pseudo-Lipschitz by Setup D.1.
+Recall that π0 is the program defining the network architecture. We now write the unrolled SGD of this network in a new
+program π. Below, recall that lack of time subscript means t = 0 (e.g. W means W0 , the initialized value). In addition, feel
+free to revisit the notations explained before Appendix A.
+• If g = W h ∈ π0 , then:
+δg̃t+1 =
+
+√
+
+n(Wt+1 h̃t+1 − Wt h̃t ) = W δ h̃t+1 +
+
+√
+
+n(Wt+1 − Wt )h̃t +
+
+t
+X
+
+(Ws+1 − Ws )δ h̃t+1 .
+
+(79)
+
+s=0
+
+where, using Eq. (73), we have
+√
+
+n(Wt+1 − Wt )h̃t = −χt
+
+X
+g,h:g=W h
+
+t
+t
+X
+X
+χ
+√s
+(Ws+1 − Ws )δ h̃t+1 = −
+n
+s=0
+s=0
+
+h> h̃t
+dgt t
+n
+X
+
+g,h:g=W h
+
+(80)
+
+h> δ h̃t
+dgs s
+n
+
+(81)
+
+Tensor Program implementation Eqs. (79) to (81) may be easily implemented using N ETSOR>+ instructions.
+For instance, Eq. (80) (assuming the sum sums over a single pair {h, g}) may be implemented using M OMENT and
+h> h̃
+
+N ONLIN+ instructions as follows: the term tn t may be implemented by a M OMENT instruction with ψ(h̃t , ht ) =
+P
+h>
+h>
+1
++
+t h̃t
+t h̃t
+α (h̃t )α (ht )α . The full term is then a N ONLIN instructions ψ(dgt ; χt , { n }h ) with scalars χt , { n }h and
+n
+vector dgt .
+• If g = ψ(h1 , ..., hk ) ∈ π0 , then
+δg̃t+1 =
+
+√
+
+!
+
+n
+
+δ h̃1
+δ h̃k
+ψ(h̃1t + √t+1 , ..., h̃kt + √t+1 ) − ψ(h̃1t , ..., h̃kt )
+n
+
+n
+
+.
+
+Tensor Program implementation Eq. (82) may be implemented as a N ONLIN+ instruction:
+
+
+1
+δg̃t+1 := ψ ? {h̃it }ki=1 ∪ {δ h̃it+1 }ki=1 ; √
+n
+
+(82)
+
+(83)
+
+for a set of vectors {h̃it }ki=1 , {δ h̃it+1 }ki=1 and a scalar √1n , where:
+( ψ(µ1 +θν 1 ,...,µk +θν k ) −ψ(µ1 ,...,µk )
+α
+
+ψ
+
+?
+
+def
+({µi }ki=1 ∪ {ν i }ki=1 ; θ)α =
+
+θ
+∂ψ(µ ,...,µ )α i
+να
+i=1
+∂µiα
+
+Pk
+
+1
+
+k
+
+α
+
+θ>0
+θ = 0.
+
+(84)
+
+Since ψ 0 is pseudo-Lipschitz by Setup D.1, ψ ? is pseudo-Lipschitz in all of its inputs as well.
+>
+
+• WLOG assume f (ξ) = v √x(ξ)
+, then:
+n
+v > δ x̃t+1
+f˜t+1 =
+, χt = ∇ft Lt .
+n
+
+(85)
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Tensor Program implementation the scalar type outputs ft (ξ) at t > 0 for any input ξ can be implemented using
+the M OMENT instruction.
+ The loss derivative χt , t > 0 given ft can be implemented with M OMENT instructions using
+ψ(−; f (ξ)) = L0 f (ξ) where f (ξ) is treated as a scalar type as in the first forward pass.
+• If g ∈ Rn ∈ π0 :
+t+1
+
+1 X
+gt+1 (ξ) = g(ξ) + √
+δgs (ξ)
+n s=1
+
+(86)
+
+Tensor Program implementation g̃t+1 is implemented using a N ONLIN+ instruction gt+1 (ξ) = ψ g(ξ) ∪
+
+P
+t+1
+√1
+{δgs (ξ)}t+1
+s=1 ; n with ψ(µ ∪ {νs }s=1 ; θ) = µ + θ
+s νs .
+• If g = W h ∈ π0 , then using Eq. (74):
+dg(ξ)t+1 =
+
+X
+
+p
+(ξ)
+Jt+1
+
+(87)
+
+p:p−1 =x,p1 =g
+p
+Jt+1
+= ψ 0 (..., p1t+1 , ...)
+
+3
+
+p
+p:3
+(Wt+1
+)> Jt+1
+
+
+
+(88)
+
+−1
+
+p
+p:−2
+p
+Using Eq. (76), Jt+1
+is implemented recursively starting from Jt+1
+= (Wt+1
+)> v. Plugging in the weights update at
+time t + 1 (Appendix D.1.2):
+
+p:−2
+Jt+1
+= (Wtp
+
+−1
+
+−1
+
+−1
+
+p
++ Wt+1
+− Wtp )> v = Jtp:−2 − χt
+
+X
+−1
+
+p
+g,h:g=Wt+1
+h
+
+δp1
+p
+Jt+1
+= ψ 0 (..., p1t + √t+1 , ...)
+n
+
+h dg>
+t v
+√t
+n n
+
+p:2
+Jt+1
+
+(89)
+
+(90)
+
+Tensor Program implementation dg(ξ)t+1 is implemented using M OMENT and N ONLIN+ instructions.
+For further illustration, we present in Algorithm 1 a program implementation of the first iteration of SGD on the two hidden
+layer MLP specified in Appendix A.2, but where only the middle layer w is trained; in Fig. 7 we have its graphical form.
+Naturally, the following SGD steps can be implemented in a similar fashion.
+Algorithm 1 N ETSOR>+ program π1 implementing the first update f˜1 − f˜. Note that in this example, ψ represents multiple
+functions, while φ is a fixed function representing the non-linearity of the MLP in Appendix A.2. Technically, we should
+have v̂ as defined in Appendix D.1.1 instead of v, but as explained there, this does not affect the limit.
+˜ C = {f = f0 (ξ0 ), f˜ = f0 (ξ)}
+˜
+Input: W = {w}, V = {v, g = g0 (ξ0 ), g̃ = g0 (ξ)},
+0
+M OMENT: χ := L (f )
+N ONLIN+ : z := φ(g)
+N ONLIN+ : z̃ := φ(g̃)
+M AT M UL: h := W g
+M AT M UL: h̃ := W g̃
+N ONLIN+ : z̃ := φ(g̃)
+>
+M OMENT: θ := ψ(z, z̃) = z n z̃
+N ONLIN: dh := ψ(v, h) = φ0 (h) v
+N ONLIN+ : δ h̃1 := ψ(dh; θ, χ) = −χθdh
+
+√
+N ONLIN+ : δ x̃ := ψ(h̃, δ h̃1 ; √1n ) = n φ(h̃ + δ√h̃n1 ) − φ(h̃)
+>
+M OMENT: f˜1 − f˜ = v nδx̃
+Output: f˜1 − f˜
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+First forward/backward pass on train example 𝜉
+
+Conditioning on 𝑓 = 𝑓(𝜉)
+so 𝑓 appears as input node
+
+𝑑ℎ
+
+𝑥
+
+𝑑𝑥 = 𝑣
+
+𝑛(𝜙 ℎ෨ + 𝛿 ෨ℎ/ 𝑛 − 𝜙( ෨ℎ))
+
+𝛿 ℎ෨
+
+𝜃
+
+ℎ෨
+
+𝑧ǁ
+
+Calculating how training
+affects test output
+
+𝛿 𝑥෤
+
+𝑥෤
+
+𝑣⊤𝛿 ෤
+𝑥/𝑛
+
+𝑔෤
+
+𝑑𝑧
+
+ℎ
+
+𝑧ǁ ⋅ 𝑧/𝑛
+
+𝑑𝑔
+
+𝑧
+
+−𝜒𝜃 𝑑ℎ
+
+𝑔
+
+𝜒
+
+ℒ′(𝑓)
+
+𝑓
+
+𝑓ሚ1 − 𝑓ሚ
+
+First forward pass on test example 𝜉ሚ
+
+Figure 7: Graphical form of N ETSOR>+ program (Algorithm 1) encoding the first training step and the effect on the test set
+on the two hidden layer MLP specified in Appendix A.2, but where only the middle layer w is trained. Technically, we
+should have v̂ as defined in Appendix D.1.1 instead of v, but as explained there, this does not affect the limit.
+SGD in the Infinite Width Limit According to the N ETSOR>+ rules as specified in Definition B.3, we have the following
+identities:
+• If g = W h, then using Eqs. (79) to (81): (Here Z dgt = Z dgt (ξt ) , Z ht = Z ht (ξt ) , and Z h̃ = Z ht (ξ̃) )
+X
+
+
+Z δg̃t+1 = Z W δh̃t+1 − χt
+Z dgt E Z ht Z h̃
+
+(91)
+
+g,h:g=W h
+
+where Z W δh̃t+1 = Ẑ W δh̃t+1 +
+
+X
+
+Z ỹ E
+
+y
+
+∂Z δh̃t+1
+∂ Ẑ W > ỹ
+
+.
+
+(92)
+
+√
+• If g = ψ(h1 , ..., hk ), then using Eqs. (82) and (84), taking the limit 1/ n → 0,
+Z δg̃t+1 =
+
+1
+k
+k
+X
+∂ψ(Z h̃ , ..., Z h̃ )
+
+∂Z h̃i
+
+i=1
+
+i
+
+Z δh̃t+1 .
+
+(93)
+
+• Using Eqs. (86), (87), (89) and (90) and taking √1n → 0, we have by ZN ONLIN+ :
+Z gt (ξ) = Z g0 (ξ) , Z dgt (ξ) = Z dg0 (ξ)
+
+for any vector g ∈ π0 at time t.
+
+(94)
+
+D.2. Deriving The NTK
+Instantiate paths p and q on two inputs ξ, ξ 0 by p = p(ξ), q = q(ξ 0 ) (abusing notation slightly). We define an inner product
+between them as follows:
+|p|−2
+
+ 0 0
+def
+p, q =
+E Zp Zq
+
+Y
+
+E
+
+ ∂Z p
+
+i=2,even
+
+i
+
+i
+
+∂Z q 
+.
+i−1
+p
+∂Z
+∂Z qi−1
+
+(95)
+
+where pi , q i are X-vars for all even i. Note that for even i, pi is always of the form pi = ψ(...., pi−1 , ...) for some ψ. So the
+pi
+
+partial derivatives in Eq. (95) are just ∂Z∂Z
+= ψ 0 (..., Z p
+pi−1 (ξ̃)
+Our goal in this section is to prove
+
+i−1
+
+, ...).
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Proposition D.3.
+X
+
+˜ =
+K̊(ξ, ξ)
+
+˜
+hp(ξ), q(ξ)i.
+
+(96)
+
+p,q:p−1 =q −1 =x,p∼
+
+=q
+
+For each weight W ∈ W, the gradient of the output with respect to w is given by:
+X
+
+∇w f (ξ) =
+
+g,h:g=W h
+
+dg(ξ) h(ξ)>
+n
+
+(97)
+
+Here, g, h represent nodes in program π0 that can be instantiated by an input ξ.
+The NTK of f can be expressed as:
+X
+˜ = lim
+˜
+K̊(ξ, ξ)
+∇w f (ξ), ∇w f (ξ)
+n→∞
+
+(98)
+
+W ∈W
+
+˜
+˜ h(ξ)> h(ξ)
+dg(ξ)> dg(ξ)
+n→∞
+n
+n
+W ∈W g,h:g=W h g,h:g=W h
+X
+X
+X
+
+ 
+
+=
+E Z dg(ξ) Z dg(ξ̃) E Z h(ξ) Z h(ξ̃) .
+= lim
+
+X
+
+X
+
+X
+
+(99)
+(100)
+
+W ∈W g,h:g=W h g,h:g=W h
+
+Using Eqs. (74) and (78), for any G-var g = W h, we can write the error term dg as the summation of errors signals over
+paths p:
+X
+
+3
+dg(ξ) =
+J p (ξ),
+J p = ψ 0 (..., p1 , ...)
+(W p )> J p:3
+(101)
+p:p−1 =x,p1 =g
+
+Hence we can write:
+ p
+
+q
+E Z J (ξ) Z J (ξ̃)
+
+X
+
+
+
+E Z dg(ξ) Z dg(ξ̃) =
+
+(102)
+
+p1 =g,p−1 =x,q 1 =g,q −1 =x
+p
+
+Z J = Z (W
+
+) J p:3 ∂Z
+
+p3 >
+
+p2
+
+(103)
+
+∂Z p1
+p3 >
+
+p:3
+
+where ψ 0 denotes the derivative w.r.t. p1 . By Simple GIA Check (Yang, 2020a), we have that Z (W ) J
+˜ p = p(ξ), q = q(ξ),
+˜ we have
+(see ZM AT M UL). Hence, with abuse of notation J p = J p (ξ), J q = J q (ξ),
+2
+
+= Ẑ (W
+
+p3 >
+
+2
+
+ p q
+p3 > p:3
+q 3 > q:3
+∂Z p ∂Z q
+E Z J Z J = E[Ẑ (W ) J Ẑ (W ) J ] E[ p1
+].
+∂Z ∂Z q1
+p3 >
+
+From the definition of ZH AT, the expectation E[Ẑ (W ) J
+3
+3
+symbolically the same (i.e W p , W q ). Then by ZH AT,
+3
+
+E[Ẑ
+
+(W p )> J p:3
+
+3
+
+Ẑ
+
+‘(W q )> J q:3
+
+p:3
+
+Ẑ (W
+
+q3 >
+
+) J q:3
+
+) J p:3
+
+(104)
+3
+
+3
+
+] vanishes if the weights W p and W q are not
+
+(
+p:3
+q:3
+3
+3
+E[Z J Z J ] if W p , W q
+]=
+0
+otherwise.
+
+(105)
+
+Applying this logic recursively, we have
+ p q
+E ZJ ZJ =
+
+(Q
+
+i
+
+i
+
+ ∂Z p ∂Z q 
+|p|−2
+i=2,even E ∂Z pi−1 ∂Z qi−1
+
+0
+
+Combining with Eqs. (74), (100) and (102) proves Proposition D.3.
+
+if p ∼
+=q
+otherwise.
+
+(106)
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+D.3. Getting Claim 3.1
+Notation For the remainder of the proof we abbreviate p = p( ˜
+ξ), q = q(ξt ), pi = pi ( ˜
+ξ), q i = q i (ξt ) (i.e path p is always
+evaluated on ˜
+ξ, while path q is always evaluated on ξt ).
+We prove Claim 3.1 by inducting on all G-vars in the network. We begin by proving the following induction hypothesis.
+Definition D.4. We write Z x ≡ Z y mod Ẑ W • to denote that Z x − Z y is a linear combination of Ẑ W u for various vectors
+u.
+Induction Hypothesis. At any time t and G-var g = W h, the following holds:
+X X
+−1
+Z δg̃t+1 ≡ −χt
+Z dq hp, qi mod Ẑ W •
+(107)
+=p
+p:p−1 =g q:q ∼
+
+Here, the sum is over all paths p with endpoint g and all paths q isomorphic to p. Recall that dq −1 is the (scaled) gradient dy
+where y = q −1 is the endpoint of q.
+D.3.1. BASE C ASE
+For initial G-vars g, δg̃t = 0 since we are not training the input layers (Assumption A1.). This proves the base case since the
+sum in Eq. (107) has no terms and thus is 0.
+D.3.2. I NDUCTIVE CASE
+Suppose g = W h, where h = ψ(h1 , ..., hk ), we then have using Eq. (91):
+X
+
+
+Z δg̃t+1 ≡ Ż W δh̃t+1 + χt
+Z dgt E Z ht Z h̃ mod Ẑ W •
+
+(108)
+
+g=W h
+
+where Ż W δh̃t+1 =
+
+X
+
+Zy E
+
+y
+
+∂Z δh̃t+1
+∂ Ẑ W > y
+
+.
+
+(109)
+
+
+
+P
+P
+P
+−1
+Z dq hp, qi. Therefore, it suffices to
+Note g=W h Z dgt E Z ht Z h̃ in Eq. (108) can be written as p:p−1 =g,|p|=2 q∼
+=p
+show that
+X
+X
+−1
+Ż W δh̃t+1 = −χt
+Z dq hp, qi.
+(110)
+=p
+p:p−1 =g,|p|≥4 q∼
+
+Showing Eq. (110)
+
+By Eq. (82):
+Z δh̃t+1 =
+
+1
+
+k
+X
+∂Z h̃
+i=1 ∂Z
+
+h̃i
+
+i
+
+Z δh̃t+1 .
+
+(111)
+
+>
+
+k
+
+Since Z h̃ , ..., Z h̃ do not depend on Z W y for any y (by the assumption that we don’t use both a matrix and its transpose
+in the forward pass), from Eq. (111) we have for any y:
+E
+
+ ∂Z δh̃t+1 
+∂ Ẑ W > y
+
+=
+
+i
+k
+X
+ ∂Z h̃ ∂Z δh̃t+1 
+E
+.
+∂Z h̃i ∂ Ẑ W > y
+i=1
+
+(112)
+
+Applying the induction hypothesis Eq. (107) to each G-var hi , we get
+i
+
+∂Z δh̃t+1
+∂ Ẑ W > y
+
+X
+
+= −χt
+
+X ∂Z dq−1
+
+=p
+p:p−1 =hi q:q ∼
+
+∂ Ẑ W > y
+
+hp, qi mod Ẑ W •
+
+(113)
+
+Plugging this back into Ż W δh̃t+1 (Eq. (109)), we get
+Ż
+
+W δ h̃t+1
+
+= −χt
+
+X
+y
+
+Z
+
+y
+
+k
+X
+
+X
+
+X
+
+i=1 p:p−1 =hi q:q ∼
+=p
+
+hp, qi E
+
+ ∂Z h̃ ∂Z dq
+
+−1
+
+∂Z h̃i ∂ Ẑ W > y
+
+
+.
+
+(114)
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+Note that for any path p with p−1 = hi , we may extend p by vectors g, h (recall g = W h and h = ψ(h1 , ..., hk )). Let p
+denote this extension. If q is a path such that
+q∼
+=p
+
+and
+
+∂Z dq
+
+−1
+
+∂ Ẑ W > y
+
+−2
+
+∂Z q
+,
+∂Z q−3
+
+(115)
+
+= hp, qi.
+
+(116)
+
+=
+
+then
+hp, qi E
+
+ ∂Z h̃ ∂Z dq
+
+−1
+
+
+
+∂Z h̃i ∂ Ẑ W > y
+
+Our goal now is to show q in Eq. (114) can be extended appropriately such that we may rewrite Eq. (114) as Eq. (110). This
+dq −1
+
+will be done through explicitly computing the term ∂ZW > y in Eq. (114).
+∂ Ẑ
+
+dq −1
+
+Computing ∂ZW > y Suppose {g 1 , ..., g r } are all G-vars in the program π0 that depend on q −1 i.e for all 1 ≤ j ≤ r, we
+∂ Ẑ
+have g j = W j z j where z j = ψj (..., q −1 , ...) and where W j can be same or different matrices for different j. Note that it
+follows that:
+dq −1 =
+
+r
+X
+
+
+ψj0 ..., q −1 , ...
+
+((W j )> dg j )
+
+(117)
+
+j=1
+
+Z dq
+
+−1
+
+j >
+
+j
+
+=
+
+j
+r
+X
+∂Z z
+
+∂Z q−1
+j=1
+j >
+
+j >
+
+Z (W ) dg
+
+j
+
+(118)
+
+j >
+
+j
+
+j >
+
+j
+
+j
+
+where Z (W ) dg = Ẑ (W ) dg + Ż (W ) dg = Ẑ (W ) dg .
+j >
+
+(119)
+
+j
+
+Note that Ż (W ) dg = 0 in Eq. (119) from the gradient independence assumption (GIA) because we pass the Simple
+P
+dg j
+j >
+j
+GIA Check. This may also be easily verified by explicitly computing Ż (W ) dg = y Z y E ∂Z
+, and noticing that the
+∂ Ẑ W y
+j
+
+j
+
+expectation vanishes from the dependency of Z dg on Z v (i.e Z dg = Z v Z µ for some vector µ which does not depend on
+dg j
+
+v). Since y does not depend on v and the last layer v is not trained, we have E ∂Z
+= E[Z v ] E[..] = 0.
+∂ Ẑ W y
+Since we assumed that the forward propagation does not contain both W, W > , it follows from differentiating Eq. (118) that
+∂Z dq
+
+−1
+
+∂ Ẑ W > y
+
+=
+
+j
+j >
+j
+r
+X
+∂Z z ∂ Ẑ (W ) dg
+
+j=1
+
+∂Z q−1
+
+∂ Ẑ W > y
+
+j
+
+=
+
+X
+j:W j ,W,dg j =y
+
+∂Z z
+.
+∂Z q−1
+
+(120)
+
+If this sum over j is nonempty, then there is a unique j such that W j , W and dg j = y. In such a case, we may extend the
+path q with g j , z j to form q satisfying Eq. (115). Plugging back into Eq. (114) we obtain Eq. (110) as desired.
+Hence, we have proven the induction hypothesis.
+D.3.3. P ROVING C LAIM 3.1 USING THE INDUCTION HYPOTHESIS
+WLOG assume f (ξ) = V > x(ξ) for some G-var x(ξ). Using the induction hypothesis and the Master Theorem (Theorem B.4), we have that:
+X X 
+−1 
+lim f˜t+1 − f˜t = E Z v Z δx̃t+1 = −χt
+E Z v Z dq hp, qi.
+(121)
+n→∞
+
+Note that Z dq
+
+−1
+
+=q
+p:p−1 =x q ∼
+
+= Z v for any path q : q −1 = x. Hence, with Eq. (96), we have
+X X
+˜
+lim f˜t+1 − f˜t = −χt
+hp, qi = −χt K̊(ξt , ξ)
+n→∞
+
+as desired.
+
+=p
+p:p−1 =x q ∼
+
+(122)
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+D.4. Relaxing Assumptions (A1.) to (A4.)
+We now briefly discuss the case where Assumptions (A1.) to (A4.) are relaxed, as well as the case where f is represented by
+a N ETSOR>+ program. As the proof of the general case follows roughly the same logic as in Setup D.1, we only discuss
+the meaningful differences in each case.
+D.4.1. T RAINING THE FIRST AND LAST LAYERS
+Recall the input and output layers are parameterized by {ui }, v which now depend on t. The output evolution is now given
+by:
+√
+t
+n(vt+1 − vt )> x̃t X (vs+1 − vs )> δ x̃t+1
+v > δ x̃t+1
+>
+f˜t+1 − f˜t = Vt+1
+x̃t+1 − Vt> x̃t =
++
++
+.
+(123)
+n
+n
+n
+s=0
+Plugging vt+1 − vt = −χt √1n xt into Eq. (123) and taking the limit (using N ETSOR>+ rules):
+
+
+
+
+lim f˜t+1 − f˜t = E Z v Z δx̃t+1 − χt E Z x(ξt ) Z x̃ .
+n→∞
+
+(124)
+
+
+
+Evaluating E Z v Z δx̃t+1 by induction requires altering the path definition so that each path p may start with an input ξ, and
+ends with a G-var (that is, a path either starts with an X-var or an input). Wereuse the definition of inner product between
+0
+0
+˜ The remainder of the
+p∼
+= q in Eq. (95), only when both start with inputs ξ, ξ˜ respectively then E Z p Z q implies ξ > ξ.
+proof follows the same logic as with Setup D.1. Note that the NTK in this case would yield:
+X
+
+
+˜ =
+K̊(ξt , ξ)
+hp, qi + E Z x(ξt ) Z x̃ .
+(125)
+q∼
+=q
+
+D.4.2. W, W > IN THE FORWARD PASS
+When both W, W > are allowed in the forward pass, the update equations for each wt take the form:
+X
+
+wt+1 − wt = −χt
+
+g,h:g=W h
+
+dgt h>
+t
+− χt
+n
+
+X
+g,h:g=W > h
+
+ht dgt>
+n
+
+(126)
+
+Some quick calculations using N ETSOR>+ rules show that for G-vars:
+• If g = W h:
+X
+
+Z δg̃t+1 = Z W δh̃t+1 − χt
+
+X
+
+
+
+Z dg(ξt ) E Z h(ξt ) Z h̃ ) − χt
+
+
+
+Z h(ξt ) E Z dg(ξt ) Z h̃ .
+
+(127)
+
+
+
+Z h(ξt ) E Z dg(ξt ) Z h̃ .
+
+(128)
+
+g,h:g=W > h
+
+g,h:g=W h
+
+• If g = W > h:
+>
+
+Z δg̃t+1 = Z W δh̃t+1 − χt
+
+X
+
+
+
+Z dg(ξt ) E Z h(ξt ) Z h̃ ) − χt
+
+g,h:g=W > h
+
+X
+g,h:g=W h
+
+
+
+It is straightforward to show using GIA (Yang, 2020a) that E Z dg(ξt ) Z h̃ = 0 in both cases, leaving us with a similar
+expression as with Setup D.1. The induction hypothesis for G-vars in this case takes one of two forms:
+• If g = W h then Eq. (107) holds.
+>
+
+• If g = W > h then Eq. (107) holds with mod Ẑ W • replacing mod Ẑ W • .
+Some additional complications need to be resolved. Specifically, with setup Setup D.1 we have used in two places the fact
+that no transpose is used in the forward pass to prove the induction hypothesis (see Eqs. (112) and (120)). To prove the
+induction, and assuming g = W h, we now have instead of Eq. (112) (using Eq. (111)):
+∂Z δh̃t+1
+E
+
+∂ Ẑ W > y
+
+=
+
+i
+k
+k
+X
+ ∂Z h̃ ∂Z δh̃t+1  X
+
+
+i
+∂ 2 Z h̃
+E
++
+E
+Z δh̃t+1 .
+i
+>y
+i
+>y
+h̃
+W
+h̃
+W
+∂Z ∂ Ẑ
+∂Z ∂ Ẑ
+i=1
+i=1
+
+(129)
+
+Architectural Universality of Neural Tangent Kernel Training Dynamics
+
+where {hi } are G-vars. To evaluate the additional term on the RHS of Eq. (129), we use the induction hypothesis to express
+i
+Z δh̃t+1 :
+E
+
+∂ 2 Z h̃
+
+
+
+h̃i
+
+∂Z ∂ Ẑ
+
+W >y
+
+
+i
+Z δh̃t+1 = −χt
+
+X
+
+X
+
+hp, qi E
+
+=p
+p:p−1 =hi q ∼
+
+∂ 2 Z h̃
+h̃i
+
+∂Z ∂ Ẑ
+
+W >y
+
+Z dq
+
+−1
+
+
+
+.
+
+(130)
+
+Using GIA (Yang, 2020a), it is straight forward to show that the expectation on the RHS of Eq. (130) vanishes, leaving
+us with the first term on the RHS of Eq. (129), as with Setup D.1. Note that the same logic may be applied in Eq. (120),
+concluding the proof.
+D.4.3. M ULTIPLE OUTPUTS AND ARBITRARY BATCHSIZE
+We have used a scalar output and a batchsize of 1 throughout this paper. However, extending to multiple (finite) outputs
+and an arbitrary batchsize requires no additional arguments besides some additional notations. For example, the definition
+of path should now be altered to express dependency on multiple samples (if batchnorm is used for example). The proof
+however follows roughly the same logic in Setup D.1.
+D.4.4. X- VAR EMBEDDING
+We assumed in our proof that x, which represents the final embedding of f is a G-var. However, extending the proof to the
+case where x is an X-var is straightforward. Let f (ξ) = V > x(ξ) where x = ψ(h1 , ..., hk ) and h1 , ..., hk are G-vars. Using
+the induction hypothesis, along with Eq. (93) yields:
+k
+X
+
+
+
+∂Z x̃ δh̃t+1 
+Z
+lim f˜t+1 − f˜t = −χt E Z v Z δx̃t+1 = −χt
+E Zv
+n→∞
+∂Z h̃i
+i=1
+
+= −χt
+
+= −χt
+
+k
+X
+
+
+
+∂Z x̃ X X dhi (ξt )
+Z
+hp, qi
+E Zv
+i
+h̃
+∂Z p:p−1 =hi q∼
+i=1
+=p
+
+k
+X
+
+X
+
+X
+
+i=1 p:p−1 =hi q ∼
+=p
+
+hp, qi E
+
+ ∂Z x̃ ∂Z x(ξt ) 
+i
+
+∂Z h̃i ∂Z h (ξt )
+
+˜
+= −χt K̊(ξt , ξ)
+
+(131)
+
+(132)
+
+(133)
+(134)
+
+˜ in Eq. (133) represents the NTK if this case.
+It is straightforward to show that the expression for K̊(ξt , ξ)
+D.4.5. N ETWORK SPECIFIED BY N ETSOR>+
+If the network is more generally represented by a N ETSOR>+ program instead of just a N ETSOR> program, then our proof
+can be very simply modified to accommodate
+Pn as follows: The new operation allowed in such a network is the production of
+a scalar through M OMENT, say a = n1 α=1 ψ(x1α , . . . , xkα ; θ1 , . . . , θl ). By a similar inductive argument as before, we will
+see that 1) xit = xi0 + o(1) for all i ∈ [k] and θtj = θ0j + o(1) for all j ∈ [l], so that at = a0 + o(1); 2) in the backward
+pass, any backpropagation through a will zero out: For example, if a is only used later in a N ONLIN z = ψ(y; a), then
+√1 ∇a f = hdz, ∂a ψ(y; a)i/n will converge to 0 because of GIA (as dz is linear in the final layer), and the error signal at xi
+n
+√
+times n is the constant vector with entries √1n ∇a f , which is o(1).
+Therefore, we can treat any scalar produced through M OMENT as a constant fixed at initialization, and the notion of path
+from before carries over here without change (by assuming all nonlinearities with scalar parameters to be parameterless
+nonlinearities where the parameters are fixed). Then the same reasoning follows.
+
+
+```
