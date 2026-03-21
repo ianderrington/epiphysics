@@ -1,0 +1,83 @@
+[
+  {
+    "lr": 0.02,
+    "small_width": 8,
+    "large_width": 16,
+    "rep_final_mean": 1.339883984952828,
+    "ntk_final_mean": 0.12208977443326467,
+    "transfer_regret_mean": -0.11206574411456005,
+    "classification": "feature-learning|good-transfer|high-rep-drift"
+  },
+  {
+    "lr": 0.02,
+    "small_width": 16,
+    "large_width": 32,
+    "rep_final_mean": 0.9237092538408002,
+    "ntk_final_mean": 0.06245593090840086,
+    "transfer_regret_mean": -0.11624124757912456,
+    "classification": "mixed|good-transfer|high-rep-drift"
+  },
+  {
+    "lr": 0.02,
+    "small_width": 32,
+    "large_width": 64,
+    "rep_final_mean": 0.40797283240467574,
+    "ntk_final_mean": 0.03679333298095093,
+    "transfer_regret_mean": -0.04901252791965129,
+    "classification": "mixed|good-transfer|low-rep-drift"
+  },
+  {
+    "lr": 0.05,
+    "small_width": 8,
+    "large_width": 16,
+    "rep_final_mean": 1.3166074437255342,
+    "ntk_final_mean": 0.34905761730085066,
+    "transfer_regret_mean": -0.04497379184869393,
+    "classification": "feature-learning|good-transfer|high-rep-drift"
+  },
+  {
+    "lr": 0.05,
+    "small_width": 16,
+    "large_width": 32,
+    "rep_final_mean": 0.8395917960719412,
+    "ntk_final_mean": 0.13692533305221666,
+    "transfer_regret_mean": -0.015280058018676254,
+    "classification": "feature-learning|good-transfer|high-rep-drift"
+  },
+  {
+    "lr": 0.05,
+    "small_width": 32,
+    "large_width": 64,
+    "rep_final_mean": 0.3916965543117528,
+    "ntk_final_mean": 0.04044339513565553,
+    "transfer_regret_mean": -0.0012254437864727145,
+    "classification": "mixed|good-transfer|low-rep-drift"
+  },
+  {
+    "lr": 0.1,
+    "small_width": 8,
+    "large_width": 16,
+    "rep_final_mean": 1.261173999708686,
+    "ntk_final_mean": 0.4388170798973985,
+    "transfer_regret_mean": -0.0032875492081532536,
+    "classification": "feature-learning|good-transfer|high-rep-drift"
+  },
+  {
+    "lr": 0.1,
+    "small_width": 16,
+    "large_width": 32,
+    "rep_final_mean": 0.8581789997306148,
+    "ntk_final_mean": 0.14342877995176717,
+    "transfer_regret_mean": -0.0010310170254993407,
+    "classification": "feature-learning|good-transfer|high-rep-drift"
+  },
+  {
+    "lr": 0.1,
+    "small_width": 32,
+    "large_width": 64,
+    "rep_final_mean": 0.41437700972773195,
+    "ntk_final_mean": 0.037377830776768046,
+    "transfer_regret_mean": -0.000579399868865231,
+    "classification": "mixed|good-transfer|low-rep-drift"
+  }
+]
