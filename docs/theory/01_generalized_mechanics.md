@@ -47,6 +47,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 The standard move when connecting physics to social or metaphysical ideas is analogy. *Society is like a physical system*. *Ideas behave like particles*. *Culture flows like a fluid*.
@@ -67,7 +68,7 @@ This is the full Epimechanics framework, one concept at a time.
 
 [Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://doi.org/10.1093/oso/9780393254693.001.0001) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces - the desktop icon does not resemble the magnetic patterns on the disk. $X$ has the same status. It is an interface through which we interact with reality, not a photograph of reality. Some interfaces track real structure well enough to make predictions; others are arbitrary or misleading. The framework's claim is not that $X$ accurately depicts reality - it is that when $X$ is chosen to track real causal structure, the mechanical relationships derived from $X$ (force, energy, coupling) predict how that structure changes over time.
 
-An *entity*, in Epimechanics, is anything we can represent with an $X$ - anything we can describe, name, or model. Auto-causal density $\rho_{\text{ac}}$ measures how strongly it sustains itself (formally defined in Section 1b immediately below).
+An *entity*, in Epimechanics, is anything with causal presence — anything that participates in causal relations. Auto-causal density $\rho_{\text{ac}}$ measures how strongly it sustains itself (formally defined in Section 1b immediately below).
 
 Here are a few concrete cases:
 
@@ -98,7 +99,7 @@ Epimechanics begins with $X$ - a state variable. But what *has* a state? The wor
 
 ### Auto-causal density: one concept, not three
 
-An **entity** is anything with a describable state - anything you can assign an $X$ to. What makes some entities more interesting than others is **auto-causal density** - the degree to which a structure's causal events produce the conditions for their own continuation.
+An **entity** is anything with causal presence — anything that participates in causal relations ($\rho_{\text{causal}} > 0$). What makes some entities more persistent than others is **auto-causal density** - the degree to which a structure's causal events produce the conditions for their own continuation.
 
 $$\rho_{\text{ac}}(x) = \text{density of causal events at } x \text{ that sustain the structure producing them}$$
 
@@ -106,13 +107,13 @@ $$\rho_{\text{ac}}(x) = \text{density of causal events at } x \text{ that sustai
 
 A flame's combustion maintains the heat that maintains combustion. An organism's metabolism maintains the cells that perform metabolism. An institution's processes maintain the institution that runs the processes. [Hofstadter (*I Am a Strange Loop*, 2007)](https://en.wikipedia.org/wiki/I_Am_a_Strange_Loop) explored a related concept - 'strange loops' - self-referential structures whose high-level patterns causally influence the low-level processes that produce them. Auto-causal density generalizes this: it includes non-representational self-sustaining structures (like flames) as well as the representational ones Hofstadter focused on.
 
-This is one concept, not several stitched together. Earlier formulations of Epimechanics split entity-hood into "causal density," "self-coupling," and "external coupling" as if these were independent properties. They are not. "Internal" presupposes a boundary; the boundary is where auto-causal density drops off; so "internal" is defined by auto-causal density, not the other way around. "Self-coupling" is what auto-causal density *measures* - the strength of the self-referential loop. These are different names for the same thing seen from different angles: the density of causal events that produce themselves.
+Auto-causal density is one concept, not several stitched together. Earlier formulations of Epimechanics split entity-hood into "causal density," "self-coupling," and "external coupling" as if these were independent properties. They are not. "Internal" presupposes a boundary; the boundary is where auto-causal density drops off; so "internal" is defined by auto-causal density, not the other way around. "Self-coupling" is what auto-causal density *measures* - the strength of the self-referential loop. These are different names for the same thing seen from different angles: the density of causal events that produce themselves.
 
-External coupling - whether the structure interacts with the rest of the state space - is the one genuinely separate property. But it is nearly always nonzero for anything that exists: a cloud that blocks sunlight is externally coupled whether or not anyone is looking at it. Auto-causal density is proposed as an objective property of the structure, not of an observer - though identifying and measuring it requires specifying a causal model, which introduces modeling choices.
+External coupling - whether the structure interacts with the rest of the state space - is the one genuinely separate property. But it is nearly always nonzero for anything that exists: a cloud that blocks sunlight is externally coupled whether or not anyone is looking at it. Auto-causal density is itself a representation — an $X$ assigned to an entity's self-sustaining structure, subject to the same representational commitments as any other state variable ([Part 0, Section 1](./00_prelude.md)). It is proposed to track an objective property of the structure, not of an observer — but identifying and measuring it requires specifying a causal model, which introduces modeling choices. Whether $\rho_{\text{ac}}$ is continuous, what measure $d\mu$ is appropriate, and which causal model underwrites the counting are empirical questions, not framework axioms.
 
 ### Entity-ness is continuous
 
-Entity-ness is a spectrum. The auto-causal density $\rho_{\text{ac}}$ varies continuously from zero (random noise, no self-referential structure) to very high (tightly organized, strongly self-maintaining):
+Entity-ness is a spectrum. As represented, auto-causal density $\rho_{\text{ac}}$ ranges from zero (random noise, no self-referential structure) to very high (tightly organized, strongly self-maintaining) — though the assumption of continuity is itself a representational choice that may not hold in all domains:
 
 | System | $\rho_{\text{ac}}$ | Duration | Character |
 |--------|---------------------|----------|-----------|

@@ -53,11 +53,12 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 [Part 1](./01_generalized_mechanics.md) established Epimechanics' foundations: state $X$, velocity $\dot{X}$, generalized mass $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$, force $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$, energy, coupling constants $\kappa$ and tensor $T^i{}_j$, fields $\Phi$, and - critically - the thermodynamic level: temperature $\mathcal{T}$, entropy $S_{\text{ent}}$, free energy $\mathcal{F}$, and phase transitions. [Part 1b](./01b_uncertainty_coordinates_relativity.md) added the complications: epistemic uncertainty, coordinate relativity, and reference-frame dependence.
 
-A question follows immediately from the thermodynamic level that Epimechanics has not yet addressed: **if entities are regions of high auto-causal density $\rho_{\text{ac}}$ maintained against entropic dissolution by continuous energy throughput, does Epimechanics predict that such entities will form?** Or does it merely describe them once they exist?
+A question follows immediately from the thermodynamic level that Epimechanics has not yet addressed: **if entities are represented as regions of high auto-causal density $\rho_{\text{ac}}$ maintained against entropic dissolution by continuous energy throughput, does Epimechanics predict that such regions will form?** Or does it merely describe them once they exist?
 
 The claim of this part: **life is a thermodynamic phase transition - expected above a critical threshold of energy gradient and molecular diversity - derivable from Epimechanics with no new postulates.** Every step uses concepts already defined in [Part 1](./01_generalized_mechanics.md). What is new is the derivation connecting them into a necessary chain, and the identification of what distinguishes living entities from non-living dissipative structures: informational coupling.
 

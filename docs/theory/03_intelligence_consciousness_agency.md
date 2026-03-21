@@ -48,9 +48,10 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
-Epimechanics now covers states, mass, momentum, forces, entities, and meta-entities. The mechanics are in place. [Part 1](./01_generalized_mechanics.md) established that an entity is anything with a describable state - anything you can assign an $X$ to - with auto-causal density $\rho_{\text{ac}}$ measuring how strongly it sustains itself, and generalized mass $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ (total causal density) and dynamics governed by $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$. But entities also *know* things, or at least behave as if they do. They have internal models of the state space $X$. They act on those models. This part asks: what does it mean, formally, for an entity to know something? To be conscious? To act with agency rather than to just happen?
+Epimechanics now covers states, mass, momentum, forces, entities, and meta-entities. The mechanics are in place. [Part 1](./01_generalized_mechanics.md) established that an entity is anything with causal presence — anything that participates in causal relations ($\rho_{\text{causal}} > 0$) — with auto-causal density $\rho_{\text{ac}}$ measuring how strongly it sustains itself, and generalized mass $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ (total causal density) and dynamics governed by $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$. But entities also *know* things, or at least behave as if they do. They have internal models of the state space $X$. They act on those models. This part asks: what does it mean, formally, for an entity to know something? To be conscious? To act with agency rather than to just happen?
 
 These are among the oldest questions in philosophy. They are also becoming urgently practical. The answers we give determine which systems we hold responsible, which we protect, and how we design the next generation of artificial minds.
 
@@ -89,6 +90,12 @@ Both intelligence and consciousness are properties of the entity's internal mode
 These are orthogonal dimensions. A chess engine has high $I$ over chess state trajectories - its model $M_E$ is highly accurate within its domain - but its coverage of $X$ is vanishingly narrow: it models nothing outside the chess board, and it models itself not at all. A conspiratorial thinker may have broad coverage of $X$ - modeling political, economic, social, and historical domains simultaneously, including a detailed self-model - while having low predictive accuracy in most of them: $I$ is low, $C$ is high in scope but poor in quality. The most capable entities, under Epimechanics, are those with both broad coverage and high accuracy: they model a large portion of $X$ including themselves, and they model it well.
 
 This means intelligence and consciousness can diverge arbitrarily. The dissociation is empirically documented - Baron-Cohen et al.'s Sally-Anne results show exactly this: children can have high $I$ over physical state trajectories and low coverage of others' mental states. The two concepts require separate definitions precisely because they are separate properties of the same underlying model $M_E$.
+
+### Both require computation
+
+Both intelligence and consciousness require an underlying process: the construction and maintenance of internal models $M_E$. [Part 0](./00_prelude.md) identifies representation as a computational act — one state's structure constraining another's trajectory. This occurs at every scale, not only in conscious entities: DNA encodes protein structure, crystal lattices encode phonon propagation, neural networks encode sensory predictions.
+
+Computation varies in depth: passive constraint (a lattice shaping phonon modes), active replication (DNA encoding its own copying), adaptive modeling (a network updating from prediction error), and self-referential modeling (a mind modeling its own modeling). Intelligence as defined in Section 1 requires at minimum adaptive encoding — prediction requires a model, though not necessarily one that learns (a lookup table with accurate predictions has high $I$ without updating). Consciousness as defined in Section 2 requires broad scope and may include self-referential encoding — but self-reference is a dimension of consciousness, not a prerequisite for it. An entity with broad, accurate allo-representation and zero auto-modeling still has nonzero $C$ under Section 2's definition. The depth spectrum connects Part 0's claim (representation is a computational act) to the definitions here, but does not replace them. See the [research note on computation](../research/computation.md) for the formal treatment.
 
 ---
 
@@ -280,6 +287,6 @@ That requires the concepts of local time, non-local time, and soul.
 
 ---
 
-For the formal definition of computation in Epimechanics — as internal degrees of freedom that survive coarse-graining and are input-dependent — see the [Belief Fields](./belief_field.md) theory document.
+For the formal definition of computation in Epimechanics — producing a representation, varying in depth from passive encoding to self-referential modeling — see the [research note on computation](../research/computation.md). For computation applied specifically to belief dynamics, see the [Belief Fields](./belief_field.md) theory document.
 
 [← Part 2: Meta-Entities](./02_meta_entities.md) | [→ Part 4: Local Time, Non-Local Time, and Soul](./04_time_and_soul.md)

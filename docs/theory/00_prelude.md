@@ -34,7 +34,7 @@ tags:
 bullets:
   - What Epimechanics claims and doesn't claim
   - X is a representation, not reality — Hoffman's Interface Theory
-  - Entities are anything representable — auto-causal density measures persistence, not entity-hood
+  - Entities are anything with causal presence (equivalently, anything representable) — auto-causal density represents persistence, not entity-hood
   - Epimechanics (theory) vs Epiphysics (empirical program)
   - All representations have epimechanical structure — good ones are predictively efficient
 tts:
@@ -42,18 +42,57 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## What This Document Does
 
-This is the foundation. Everything in the Epimechanics series — the mechanics, the entities, the coupling tensors, the thermodynamics, the applications — rests on a small number of conceptual commitments stated here. If you accept these commitments, the rest follows as mathematics. If you reject any of them, you know exactly where the framework breaks for you.
+Part 0 lays the foundation. Everything in the Epimechanics series — the mechanics, the entities, the coupling tensors, the thermodynamics, the applications — rests on a small number of conceptual commitments stated here. If you accept these commitments, the rest follows as mathematics. If you reject any of them, you know exactly where the framework breaks for you.
 
 The commitments are:
 1. $X$ is a representation, not reality
-2. Anything representable is an entity
-3. Causation (effective, interventionist) is the working primitive
+2. Causation (effective, interventionist) is the working primitive
+3. Anything with causal presence is an entity
 4. The mechanical structure (state, force, energy) is grammar — domain sciences supply vocabulary
-5. All representations have epimechanical structure; good ones are predictively efficient
+5. All representations have epimechanical structure; predictively effective ones are efficient
+
+### Core vocabulary
+
+Seven terms recur throughout the series. They organize into two co-primitive pairs, a bridge concept, and a derived pair:
+
+**First co-primitive pair:**
+
+- **Causation** — the relation by which one entity's state constrains another's. Operationally detected via intervention: if intervening on $X$ changes $Y$, $X$ causes $Y$ ([Woodward 2003](https://doi.org/10.1093/0195155270.001.0001), [Pearl 2000](https://doi.org/10.1017/CBO9780511803161)).
+- **Entity** — anything with causal presence; equivalently, anything representable ($\rho_{\text{causal}} > 0$). The two formulations converge: causal presence is detected through representation, and representation requires causal interaction. Causation is what connects entities; entities are what causation connects. Neither is prior to the other.
+
+**Bridge concept:**
+
+- **State** — what determines an entity's causal dispositions. The posited referent that representations approximate. Epimechanics assumes states exist but does not claim direct access to them.
+
+> [!sidenote]
+> Quantum mechanics provides independent evidence for this commitment. The [PBR theorem (2012)](https://doi.org/10.1038/nphys2309) shows quantum states are ontic (real, not merely bookkeeping), yet measurement disturbs the state (Heisenberg), unknown states cannot be copied (no-cloning), and different preparations can be statistically indistinguishable (density matrix degeneracy). States exist; direct access to them is fundamentally limited. Quantum mechanics and [Hoffman's Interface Theory](https://doi.org/10.1093/oso/9780393254693.001.0001) reach this conclusion from different directions — Epimechanics inherits from both.
+
+**Second co-primitive pair:**
+
+- **Computation** — producing a representation: discriminating, partitioning, compressing. Varies in depth from passive encoding to self-referential modeling. Happens at every scale.
+- **Representation** — the product of computation: an approximation of state. This is $X$. May be predictively effective or not.
+
+**Derived pair:**
+
+- **Information** — predictive information: the degree to which a representation's distinctions reduce uncertainty about future states, above background noise.
+- **Prediction** — reduction of uncertainty about future states given a representation's information content.
+
+The two co-primitive pairs require each other: computation and representation need entities and causation to be *about* something; entities and causation are only accessible *through* computation and representation. State is where they meet — derived from causal dispositions, targeted by representational approximation. Knowledge of a causal relation is itself a state, which is itself known only through representation. The definitions apply to themselves.
+
+> [!sidenote]
+> The first pair addresses what exists and how it relates; the second addresses how we approximate and what we produce. Philosophers will recognize these as the ontological and epistemological aspects of the framework. Epimechanics does not treat them as separate domains — each pair is inaccessible without the other.
+
+> [!sidenote]
+> The co-primitive structure parallels second quantization in quantum mechanics, where creation/annihilation operators and Fock states are co-defined via commutation relations ($[a, a^\dagger] = 1$). Entities are analogous to states; causation is analogous to operators. The intervention test plays the role of the commutation relation — it is the operational content from which everything else is built. The analogy is structural: both frameworks rest on co-defined pairs with an operational test substituting for independent definitions. The algebraic content of the analogy — whether causal composition obeys specific constraint equations analogous to $[a, a^\dagger] = 1$ — is open.
+
+The chain Entity → Computation → Representation → Information → Prediction is recursive, not linear: the computing entity is itself known only through representations computed by other entities or itself. The definitions are themselves representations — approximations, not perfect copies — and the framework predicts its own improvability: each iteration of self-application should refine the definitions toward an attractor, not reproduce them exactly. The [research note on computation](../research/computation.md) develops these definitions formally. When the seven definitions are quotiented by their equivalences, they [converge to a four-node graph](../research/definitional_convergence.md) whose spectral radius is the golden ratio $\varphi$ — a structural consequence of this definitional architecture and the postulate that causal presence is coextensive with representability.
+
+![Foundational architecture: two co-primitive pairs (Causation↔Entity, Computation↔Representation), State as bridge, Information↔Prediction as derived pair, with recursive chain](/docs/theory/images/foundational_architecture.svg)
 
 ---
 
@@ -63,14 +102,14 @@ $X$ is not the thing itself. It is a formal description of the thing's condition
 
 [Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://doi.org/10.1093/oso/9780393254693.001.0001) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces. The desktop icon does not resemble the magnetic patterns on the disk. It doesn't need to — it needs to be *useful*: to let you predict what happens when you double-click. $X$ has the same status. It is an interface through which we interact with reality, not a photograph of it.
 
-This means:
+The interface view entails three properties:
 - **$X$ can be wrong.** A representation may be inaccurate, incomplete, or misleading. "Calling a tree a car" assigns the tree a representation in a state space (vehicles) where the dynamics don't apply. The tree's measurable properties are unaffected. The mislabel is a coordinate error — it assigns the wrong $X$ to the wrong $S$.
 - **$X$ can be arbitrary.** Any labeling is a representational act. You could call your car a shoe. The label commits you to the existence of something being represented, however poorly.
 - **Some $X$'s are better than others.** Not because they are "more true" but because they track invariant structure, predict dynamics, and compress information more efficiently. Finding the right $X$ is the central empirical challenge.
 
 ### Observer-dependence is a spectrum, not a taxonomy
 
-Representations vary in how much they depend on the observer. This is not a set of bins but a continuous spectrum, and a state's position on it is established empirically — through repeated independent observation.
+Representations vary in how much they depend on the observer. Observer-dependence is not a set of bins but a continuous spectrum, and a state's position on it is established empirically — through repeated independent observation.
 
 At one end: a single observer assigns a label ("this tree is beautiful"). That representation is fully observer-dependent — another observer may disagree, and there is no way to adjudicate without importing a value system.
 
@@ -81,7 +120,7 @@ Between the extremes:
 - **A single measurement** — one observer, one method, one occasion. Maximally observer-dependent. Could be error, bias, or artifact.
 - **Repeated measurement by one observer** — establishes reliability but not independence. The observer's biases persist.
 - **Independent measurements by different observers** — reduces observer-dependence. Agreement across observers is evidence that the representation tracks something beyond any individual observer.
-- **Independent measurements by different methods** — the strongest evidence. If weighing, pushing, and annihilating a rock all give the same mass, the agreement is not a property of any method — it is a property of the rock. This is the equivalence principle: convergence across independent methods establishes that the representation tracks real structure.
+- **Independent measurements by different methods** — the strongest evidence. If weighing, pushing, and annihilating a rock all give the same mass, the agreement is not a property of any method — it is a property of the rock. The equivalence principle follows: convergence across independent methods establishes that the representation tracks real structure.
 
 The process of moving states along this spectrum — from single-observer assignment toward multi-observer, multi-method convergence — is the scientific method. Science does not discover "objective truth." It identifies representations that are increasingly observer-independent by testing them against independent observations. A state that survives this process is not guaranteed to be "real" — but it is the best representation available.
 
@@ -93,37 +132,47 @@ Some useful (but non-exclusive) landmarks on the spectrum:
 
 These are not types. A state can be observer-imposed in one context and observer-invariant in another. "Market price" is observer-accessible at any given moment, but the *existence* of a market is observer-invariant (it either has participants or doesn't). The spectrum is about how much the representation depends on who is doing the representing — and that degree is itself an empirical question answered by testing convergence across observers and methods.
 
-### Labeling is representational
+### Representation is a computational act
 
-**If you can label something, you have already assigned it a representation.** The act of naming a quantity — "trust," "morale," "market sentiment" — commits you to the existence of something being represented. The label is arbitrary (you could use any word), but the act of labeling is not: it places something in a space of possible values.
+**Building a representation is a computational act.** When a biologist tracks gene expression rather than individual molecular positions, that choice — what to measure, at what grain, in what coordinate system — constructs an $X$. A physicist tracking particle momentum has made different choices. Both have performed computation: selecting a state space, choosing coordinates, and encoding observations into a structured model. The label itself is arbitrary (you could use any word), but the act of labeling is not: it places something in a space of possible values.
+
+Representation is not unique to conscious observers. A DNA codon encodes an amino acid — the codon's structure constrains which protein is built. A crystal lattice encodes its own continuation — the bond geometry constrains the next layer's growth. A flame's temperature profile encodes its combustion dynamics — the heat distribution constrains fuel vaporization rates. In each case, one state's structure constrains another state's trajectory. No intent or consciousness is required. What varies is depth: a crystal encodes passively, DNA encodes and replicates, a neural network encodes and updates, a conscious mind encodes and models its own encoding. Conscious labeling — deliberately assigning an $X$ — is the self-referential case on a spectrum that extends to every scale.
 
 Epimechanics is itself an example. It was originally labeled "The Physics of Metaphysics" — a coordinate choice that placed it in a region of intellectual state space where the dynamics (empirical prediction, formal mechanics) did not apply well. Relabeling it "Epimechanics" was a coordinate transform: the content didn't change, but the representation now sits in a region where the dynamics are more applicable. A framework that emphasizes choosing the right $X$ should eventually apply that principle to its own name.
 
 ### What this commits us to
 
-We do not claim that reality is "made of" states. We claim that for any system, you can construct a representation $X$ such that the system's behavior may be described by a trajectory through a state space $S$. This is a methodological commitment, not a metaphysical one. Epimechanics requires that representations exist — not that they be unique, not that they be accurate, not that they be metaphysically fundamental. Like coordinates in physics, some choices reveal more structure than others — but the underlying reality exists regardless of how well or poorly we represent it.
+We do not claim that reality is "made of" states. We claim that for any system, you can construct a representation $X$ such that the system's behavior may be described by a trajectory through a state space $S$. The claim is a methodological commitment, not a metaphysical one. Epimechanics requires that representations exist — not that they be unique, not that they be accurate, not that they be metaphysically fundamental, and not that any particular coordinate choice be privileged over another. Like coordinates in physics, some choices of $X$ reveal more structure than others — but the underlying reality exists regardless of how well or poorly we represent it.
 
 ---
 
-## 2. Entities Are Anything Representable
-
-An **entity**, in Epimechanics, is anything you can represent with an $X$ — anything you can describe, name, or model. A proton is an entity. A fleeting thought is an entity. A nonsense idea that exists for two seconds before being forgotten is an entity. The word is deliberately broad.
-
-What distinguishes *interesting* entities from trivial ones is **auto-causal density** $\rho_{\text{ac}}$ — how densely self-sustaining causal events are packed within the structure of that entity. A flame actively maintains the conditions for its own continuation ($\rho_{\text{ac}}$ moderate). An organism does this intensely ($\rho_{\text{ac}}$ high). The average humidity over Kansas does not sustain itself at all ($\rho_{\text{ac}} \approx 0$).
-
-Entity-ness is a spectrum, not a binary. A proton, an organism, an institution, a meme, a cloud, a fleeting thought, a random fluctuation — all are entities. They differ in how strongly they sustain themselves. The framework's mechanical apparatus (mass, force, energy) applies to all of them; for very low $\rho_{\text{ac}}$ entities, the quantities are near-zero and uninteresting.
-
-[Part 0.5: Structural Primitives](./00_atomic_structure.md) develops what $\rho_{\text{ac}}$ is made of — the causal bonds, loop structures, and stability basins from which auto-causal density emerges.
-
----
-
-## 3. Causation Is the Working Primitive
+## 2. Causation Is the Working Primitive
 
 Every concept in Epimechanics — state, force, energy, entity, consciousness, soul — is defined in terms of causal relationships. If you accept that causes produce effects and that systems can be described by representations that evolve over time, the framework's definitions follow.
 
-This is a substantive commitment. [Neo-Humeans](https://plato.stanford.edu/entries/causation-regularity/) deny that causation is a mind-independent productive relation. [Russell (1913)](https://doi.org/10.1093/aristotelian/13.1.1) argued that the word "cause" is a relic. [Norton (2003)](https://doi.org/10.1086/392894) pressed related points about determinism.
+Taking causation as primitive is a substantive commitment. [Neo-Humeans](https://plato.stanford.edu/entries/causation-regularity/) deny that causation is a mind-independent productive relation. [Russell (1913)](https://doi.org/10.1093/aristotelian/13.1.1) argued that the word "cause" is a relic. [Norton (2003)](https://doi.org/10.1086/392894) pressed related points about determinism.
 
 Epimechanics takes **effective causation** as its working primitive, following the interventionist tradition: [Woodward (*Making Things Happen*, 2003)](https://doi.org/10.1093/0195155270.001.0001) and [Pearl (*Causality*, 2000)](https://doi.org/10.1017/CBO9780511803161) define causes operationally in terms of what happens when you intervene. At scales from molecular biology upward, interventions reliably produce effects, and this regularity is what "force" and "coupling" formalize. Whether effective causation is metaphysically fundamental or emerges from deeper structure is a question Epimechanics inherits but does not need to resolve.
+
+With causation established, a key observation follows: most causal chains run in one direction and stop. A ball rolls downhill and comes to rest. A sound echoes and fades. But some causal chains loop back on themselves — the output of the process feeds back to sustain the process itself. A flame maintains the heat that maintains the combustion. An organism's metabolism maintains the cells that perform metabolism. These self-sustaining causal loops are what distinguish entities that persist from entities that vanish — and formalizing that distinction requires the concept of an entity.
+
+---
+
+## 3. Entities Are Anything with Causal Presence
+
+An **entity**, in Epimechanics, is anything with causal presence ($\rho_{\text{causal}} > 0$) — equivalently, anything representable. A proton is an entity. A fleeting thought is an entity (it fires neurons, occupies cognitive resources). A cloud is an entity. The two formulations are equivalent: if something has causal presence, its effects can be detected and represented; if something can be represented, the act of representing it is a causal interaction. If something has zero causal interaction with anything, it cannot be represented and does not enter the framework's scope. The word is deliberately broad.
+
+Entity-ness is a spectrum, not a binary. Entities differ not in kind but in structure. Two properties matter:
+
+- **Causal density** $\rho_{\text{causal}}$ — how much causal activity is packed within the entity. A cloud has high causal density: enormous molecular interaction, turbulent flow, constant energy exchange. A rock has lower causal density: atomic bonds hold the lattice in a structurally repetitive pattern with less dynamic variation.
+
+- **Auto-causal density** $\rho_{\text{ac}}$ — how much of that causal activity sustains itself. A rock's lattice bonds are self-sustaining: each bond's presence maintains the conditions for neighboring bonds. A cloud's molecular interactions are intense but do not maintain the cloud's structure — wind, temperature gradients, and humidity do. The cloud has high $\rho_{\text{causal}}$ but low $\rho_{\text{ac}}$.
+
+Both quantities are representations — values we assign within a model, not properties we discover independent of a representational framework. Whether $\rho_{\text{ac}}$ is continuous, what measure $d\mu$ is appropriate (how we aggregate causal contributions), and which causal model underwrites the counting are empirical questions resolved domain by domain.
+
+The framework's mechanical apparatus (mass, force, energy) applies to all entities. For entities with very low $\rho_{\text{ac}}$, the quantities are near-zero and carry little predictive content. What makes some entities more persistent and more dynamically self-sustaining than others is the density and structure of their self-sustaining causal loops — and that difference is what the rest of the framework formalizes.
+
+[Part 0.5: Structural Primitives](./00_atomic_structure.md) develops what $\rho_{\text{ac}}$ is made of — the causal bonds, loop structures, and stability basins from which auto-causal density emerges.
 
 ---
 
@@ -137,7 +186,7 @@ The grammar earns its keep only if:
 1. The same structural form works across domains (transfer)
 2. It generates predictions that domain-specific theories alone do not make (novelty)
 
-If it merely relabels known concepts in mechanical notation, it adds nothing. The [applications](./applications/index.md) are where this test is applied, and each application section is tagged: **relabeling** (known concept, new label), **structural** (prediction from the grammar), or **novel** (prediction neither domain theory nor physics alone generates).
+If it merely relabels known concepts in mechanical notation, it adds nothing. The [applications](../applications/index.md) are where this test is applied, and each application section is tagged: **relabeling** (known concept, new label), **structural** (prediction from the grammar), or **novel** (prediction neither domain theory nor physics alone generates).
 
 ---
 
@@ -145,9 +194,9 @@ If it merely relabels known concepts in mechanical notation, it adds nothing. Th
 
 Two related but distinct things:
 
-**Epimechanics** is the *theoretical framework*. The mathematics: state spaces, Lagrangians, coupling tensors, thermodynamic quantities, the Representational Efficiency principle. It says: "when a system IS represented, these structural relationships hold — and as representations gain accuracy (greater observer-independence, better predictive compression), the relationships become more predictively useful." This is what [Parts 1–5](./index.md) develop.
+**Epimechanics** is the *theoretical framework*. The mathematics: state spaces, Lagrangians, coupling tensors, thermodynamic quantities, the Representational Efficiency principle. It says: "when a system IS represented, these structural relationships hold — and as representations gain accuracy (greater observer-independence, better predictive compression), the relationships become more predictively useful." [Parts 1–5](./index.md) develop the theoretical framework.
 
-**Epiphysics** is the *empirical program*. Testing whether Epimechanics' predictions hold in specific domains. Measuring generalized mass, calibrating coupling tensors, verifying phase transition signatures, checking ordinal equivalence across measurement approaches. It says: "do the predictions actually hold?" This is what the [applications](./applications/index.md) do.
+**Epiphysics** is the *empirical program*. Testing whether Epimechanics' predictions hold in specific domains. Measuring generalized mass, calibrating coupling tensors, verifying phase transition signatures, checking ordinal equivalence across measurement approaches. It says: "do the predictions actually hold?" The [applications](../applications/index.md) carry out the empirical program.
 
 The distinction mirrors physics itself:
 - **Classical mechanics** = the mathematical framework (Newton's laws, Lagrangian, Hamiltonian)
@@ -159,9 +208,9 @@ Epimechanics provides the equations. Epiphysics provides the measurements. The e
 
 ## 6. The Representational Efficiency Principle
 
-A foundational observation: **all representations have epimechanical structure.** This is a consequence of calculus. For any time-varying representation $X(t)$, you can compute $\dot{X}$, $\ddot{X}$, define $p = \mathcal{M}\dot{X}$, and write $F = dp/dt$. The mechanical formalism applies to every representation, including arbitrary or useless ones.
+A foundational observation: **all representations have epimechanical structure.** The observation follows from calculus. For any time-varying representation $X(t)$, you can compute $\dot{X}$, $\ddot{X}$, define $p = \mathcal{M}\dot{X}$, and write $F = dp/dt$. The mechanical formalism applies to every representation, including arbitrary or useless ones.
 
-What distinguishes a *good* representation from a bad one is not whether it has epimechanical structure (they all have EMech structure) but whether that structure is **predictive at minimal computational cost.** A well-chosen $X$ — one that tracks the system's actual causal structure — yields a Lagrangian with visible symmetries, a coupling tensor that is sparse, and equations of motion that compress the dynamics into few variables. A poorly chosen $X$ yields equations that require tracking everything to predict anything.
+What distinguishes a *well-chosen* representation from a poorly chosen one is not whether it has epimechanical structure (they all have EMech structure) but whether that structure is **predictive at minimal computational cost.** A well-chosen $X$ — one that tracks the system's actual causal structure — yields a Lagrangian with visible symmetries, a coupling tensor that is sparse, and equations of motion that compress the dynamics into few variables. A poorly chosen $X$ yields equations that require tracking everything to predict anything.
 
 The optimal representation minimizes predictive cost:
 
@@ -176,13 +225,13 @@ where $C(X, \varepsilon)$ is the computational complexity of predicting $X(t + \
 - [Kolmogorov complexity](https://doi.org/10.1007/978-0-387-49820-1): the shortest program producing the output defines the optimal representation. Its existence is proven; its computation is not (Chaitin's incompleteness).
 - [Solomonoff induction](https://doi.org/10.1016/S0019-9958(64)90131-7): the prior weighting hypotheses by complexity converges to the true distribution. **Theorem** (convergence guarantee).
 
-These are the same result stated in different mathematical languages. The optimal representation exists and is characterized by maximal compression at a given accuracy. This is not a conjecture — it is established mathematics.
+These are the same result stated in different mathematical languages. The optimal representation exists and is characterized by maximal compression at a given accuracy. The existence result is not a conjecture — it is established mathematics.
 
-**What IS a conjecture** is the connection to mechanical structure: that $X^*$ necessarily has maximal Lagrangian symmetry, sparse coupling tensor, and minimal state-space dimensionality. This is Epimechanics' specific claim — that the information-theoretically optimal representation is also the one with the simplest mechanical form. [Part 5](./05_ontology_and_open_questions.md) develops the formal statement and the sketch of why this might hold (symmetries reduce prediction cost, sparse coupling enables parallel prediction, low dimensionality shrinks the search space). But the connection between information-theoretic optimality and Lagrangian structure is not yet proven. It is the central open problem.
+**What IS a conjecture** is the connection to mechanical structure: that $X^*$ necessarily has maximal Lagrangian symmetry, sparse coupling tensor, and minimal state-space dimensionality. The connection is Epimechanics' specific claim — that the information-theoretically optimal representation is also the one with the simplest mechanical form. [Part 5](./05_ontology_and_open_questions.md) develops the formal statement and the sketch of why this might hold (symmetries reduce prediction cost, sparse coupling enables parallel prediction, low dimensionality shrinks the search space). But the connection between information-theoretic optimality and Lagrangian structure is not yet proven. It is the central open problem.
 
-The [renormalization group (Wilson, 1971)](https://doi.org/10.1103/PhysRevB.4.3174), [causal emergence (Hoel et al., 2013)](https://doi.org/10.1073/pnas.1314922110), and the [free energy principle (Friston, 2010)] jj(https://doi.org/10.1038/nrn2787) all provide evidence for this connection from different angles — each shows that the "right" level of description has specific structural properties that reduce predictive cost. But a unified proof connecting rate-distortion optimality to Lagrangian symmetry does not yet exist.
+The [renormalization group (Wilson, 1971)](https://doi.org/10.1103/PhysRevB.4.3174), [causal emergence (Hoel et al., 2013)](https://doi.org/10.1073/pnas.1314922110), and the [free energy principle (Friston, 2010)](https://doi.org/10.1038/nrn2787) all provide evidence for this connection from different angles — each shows that the "right" level of description has specific structural properties that reduce predictive cost. But a unified proof connecting rate-distortion optimality to Lagrangian symmetry does not yet exist.
 
-This reframes what Epimechanics claims. It does not claim that reality "has" mechanical structure. It observes that all representations have epimechanical structure (a mathematical triviality), and proposes — with the support of information-theoretic results but without a complete proof — that representations which track real causal structure have *simple* epimechanical structure. Whether reality is "mechanical" or merely "looks mechanical through good representations" is a question the framework does not need to answer. The empirical test — epiphysics — is whether the predictions hold.
+The Representational Efficiency Principle reframes what Epimechanics claims. Epimechanics does not claim that reality "has" mechanical structure. It observes that all representations have epimechanical structure (a mathematical triviality), and proposes — with the support of information-theoretic results but without a complete proof — that representations which track real causal structure have *simple* epimechanical structure. Whether reality is "mechanical" or merely "looks mechanical through well-chosen representations" is a question Epimechanics does not need to answer. The empirical test — epiphysics — is whether the predictions hold.
 
 [Part 5](./05_ontology_and_open_questions.md) develops the formal statement and open questions of this principle.
 
@@ -190,13 +239,13 @@ This reframes what Epimechanics claims. It does not claim that reality "has" mec
 
 ## 7. A Note on Vulnerability
 
-Because $X$ is a representation and fields are aggregates of representations, representational systems are vulnerable to deliberate distortion — propaganda, disinformation, information pollution. This is a structural consequence of the foundational commitments, not an application-specific concern. The full analysis — propaganda as field manipulation, information pollution as entropy injection, and the survival implications — is developed in the research note on [Representational Manipulation](./research_representational_manipulation.md) and connects to the [applications on efficiency limits](./applications/efficiency_limits.md) (where environmental noise $\mathcal{T}_{\text{env}}$ degrades the Carnot ceiling).
+Because $X$ is a representation and fields are aggregates of representations, representational systems are vulnerable to deliberate distortion — propaganda, disinformation, information pollution. The vulnerability is a structural consequence of the foundational commitments, not an application-specific concern. The full analysis — propaganda as field manipulation, information pollution as entropy injection, and the survival implications — is developed in the research note on [Representational Manipulation](../research/representational_manipulation.md) and connects to the [applications on efficiency limits](../applications/efficiency_limits.md) (where environmental noise $\mathcal{T}_{\text{env}}$ degrades the Carnot ceiling).
 
 ---
 
 ## 8. Antecedents
 
-Epimechanics emerges from a great number of quality antecedents including:
+Epimechanics emerges from a number of antecedents including:
 
 - [Whitehead (*Process and Reality*, 1929)](https://doi.org/10.1017/CBO9781139644037) — process ontology; events, not substances, are fundamental
 - [Maturana and Varela (*Autopoiesis and Cognition*, 1980)](https://doi.org/10.1007/978-94-009-8947-4) — autopoiesis; self-producing organization
@@ -217,7 +266,7 @@ Epimechanics shares the structuralist intuition with Ladyman/Ross, the process o
 
 Any sufficiently abstract mathematical framework can be "applied" to anything — as [Putnam's model-theoretic argument (1980)](https://doi.org/10.2307/2273415) shows, formal structures can always be mapped onto arbitrary domains. If Epimechanics' equations describe beliefs, markets, and particles, this may be because they are too abstract to say anything specific about any of them.
 
-The antidote is empirical: epiphysics. The framework must generate predictions that domain-specific theories alone do not make, and those predictions must be testable and falsifiable. [Part 5, Section 4](./05_ontology_and_open_questions.md) develops these predictions. The [applications](./applications/index.md) test them. If they hold, the framework has empirical content. If they fail, the structural isomorphism is vacuous. Self-consistency and mathematical elegance are necessary but not sufficient. The sufficient condition is: do the predictions hold?
+The antidote is empirical: epiphysics. The framework must generate predictions that domain-specific theories alone do not make, and those predictions must be testable and falsifiable. [Part 5, Section 4](./05_ontology_and_open_questions.md) develops these predictions. The [applications](../applications/index.md) test them. If they hold, the framework has empirical content. If they fail, the structural isomorphism is vacuous. Self-consistency and mathematical parsimony are necessary but not sufficient. The sufficient condition is: do the predictions hold?
 
 ---
 
@@ -229,7 +278,7 @@ With these foundations in place:
 - [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) — the full mechanical apparatus: state, velocity, mass, momentum, force, energy, Lagrangian, coupling, fields, thermodynamics, fluid dynamics.
 - [Part 1b: Uncertainty, Coordinates, and Relativity](./01b_uncertainty_coordinates_relativity.md) — how representations transform between coordinate systems; measurement changes the state.
 - [Parts 2–5](./index.md) — meta-entities, intelligence/consciousness/agency, time and soul, full ontology.
-- [Applications](./applications/index.md) — where epiphysics happens: testing predictions in specific domains.
+- [Applications](../applications/index.md) — where epiphysics happens: testing predictions in specific domains.
 
 ---
 

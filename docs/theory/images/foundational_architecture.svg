@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="500" viewBox="0 0 700 500">
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arr-gray" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto" fill="#9ca3af">
+      <polygon points="0 0, 7 2.5, 0 5"/>
+    </marker>
+    <marker id="arr-gray-rev" markerWidth="7" markerHeight="5" refX="0" refY="2.5" orient="auto" fill="#9ca3af">
+      <polygon points="7 0, 0 2.5, 7 5"/>
+    </marker>
+    <marker id="arr-teal" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto" fill="#14b8a6">
+      <polygon points="0 0, 7 2.5, 0 5"/>
+    </marker>
+    <marker id="arr-teal-rev" markerWidth="7" markerHeight="5" refX="0" refY="2.5" orient="auto" fill="#14b8a6">
+      <polygon points="7 0, 0 2.5, 7 5"/>
+    </marker>
+    <marker id="arr-amber" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto" fill="#f59e0b">
+      <polygon points="0 0, 7 2.5, 0 5"/>
+    </marker>
+    <marker id="arr-amber-rev" markerWidth="7" markerHeight="5" refX="0" refY="2.5" orient="auto" fill="#f59e0b">
+      <polygon points="7 0, 0 2.5, 7 5"/>
+    </marker>
+    <marker id="arr-purple" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto" fill="#a78bfa">
+      <polygon points="0 0, 7 2.5, 0 5"/>
+    </marker>
+    <marker id="arr-purple-rev" markerWidth="7" markerHeight="5" refX="0" refY="2.5" orient="auto" fill="#a78bfa">
+      <polygon points="7 0, 0 2.5, 7 5"/>
+    </marker>
+    <marker id="arr-chain" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto" fill="#6b7280">
+      <polygon points="0 0, 6 2, 0 4"/>
+    </marker>
+    <!-- Subtle glow for boxes -->
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="700" height="500" fill="#1a1a2e"/>
+
+  <!-- Title -->
+  <text x="350" y="30" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="16" fill="#ecf0f1" font-weight="bold" letter-spacing="1">Epimechanics — Foundational Architecture</text>
+
+  <!-- ======== LAYER 0 — Co-primitives ======== -->
+  <text x="28" y="72" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#6b7280" letter-spacing="0.5">LAYER 0 — co-primitives</text>
+
+  <!-- Pair 1: Causation ↔ Entity (teal) -->
+  <g filter="url(#glow)">
+    <rect x="60" y="85" width="130" height="46" rx="6" fill="none" stroke="#14b8a6" stroke-width="1.5"/>
+    <text x="125" y="113" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#14b8a6" font-weight="bold">Causation</text>
+  </g>
+  <g filter="url(#glow)">
+    <rect x="260" y="85" width="130" height="46" rx="6" fill="none" stroke="#14b8a6" stroke-width="1.5"/>
+    <text x="325" y="113" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#14b8a6" font-weight="bold">Entity</text>
+  </g>
+  <!-- Double arrow Causation ↔ Entity -->
+  <line x1="194" y1="108" x2="256" y2="108" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arr-teal)" marker-start="url(#arr-teal-rev)"/>
+  <text x="225" y="100" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#5eead4" opacity="0.8">co-define</text>
+
+  <!-- Pair 2: Computation ↔ Representation (amber) -->
+  <g filter="url(#glow)">
+    <rect x="60" y="150" width="130" height="46" rx="6" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="125" y="178" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#f59e0b" font-weight="bold">Computation</text>
+  </g>
+  <g filter="url(#glow)">
+    <rect x="260" y="150" width="130" height="46" rx="6" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="325" y="172" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#f59e0b" font-weight="bold">Representation</text>
+  </g>
+  <!-- Double arrow Computation ↔ Representation -->
+  <line x1="194" y1="173" x2="256" y2="173" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr-amber)" marker-start="url(#arr-amber-rev)"/>
+  <text x="225" y="165" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#fbbf24" opacity="0.8">co-define</text>
+
+  <!-- Cross-pair relationships (vertical connectors between pairs) -->
+  <!-- Causation → Computation: "requires" -->
+  <line x1="125" y1="131" x2="125" y2="150" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arr-gray)"/>
+  <text x="102" y="145" font-family="'Segoe UI', Arial, sans-serif" font-size="7.5" fill="#9ca3af">requires</text>
+
+  <!-- Entity → Representation: "accesses via" -->
+  <line x1="325" y1="131" x2="325" y2="150" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arr-gray)"/>
+  <text x="350" y="145" font-family="'Segoe UI', Arial, sans-serif" font-size="7.5" fill="#9ca3af">accesses via</text>
+
+  <!-- Note near Entity -->
+  <text x="395" y="102" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#5eead4" opacity="0.6" font-style="italic">causal presence</text>
+  <text x="395" y="113" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#5eead4" opacity="0.6" font-style="italic">= representable</text>
+
+  <!-- ======== LAYER 1 — Bridge ======== -->
+  <text x="28" y="228" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#6b7280" letter-spacing="0.5">LAYER 1 — bridge</text>
+
+  <!-- State box (white/silver, centered) -->
+  <g filter="url(#glow)">
+    <rect x="165" y="240" width="120" height="46" rx="6" fill="none" stroke="#d1d5db" stroke-width="1.8"/>
+    <text x="225" y="268" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#e5e7eb" font-weight="bold">State</text>
+  </g>
+
+  <!-- Lines from Layer 0 down to State -->
+  <!-- From Entity/Causation pair -->
+  <line x1="190" y1="196" x2="210" y2="240" stroke="#14b8a6" stroke-width="1" opacity="0.5" stroke-dasharray="4,2"/>
+  <text x="180" y="220" font-family="'Segoe UI', Arial, sans-serif" font-size="7.5" fill="#9ca3af">derived from</text>
+  <!-- From Computation/Representation pair -->
+  <line x1="260" y1="196" x2="240" y2="240" stroke="#f59e0b" stroke-width="1" opacity="0.5" stroke-dasharray="4,2"/>
+  <text x="252" y="220" font-family="'Segoe UI', Arial, sans-serif" font-size="7.5" fill="#9ca3af">approximated by</text>
+
+  <!-- ======== LAYER 2 — Derived pair ======== -->
+  <text x="28" y="320" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#6b7280" letter-spacing="0.5">LAYER 2 — derived</text>
+
+  <!-- Information ↔ Prediction (purple) -->
+  <g filter="url(#glow)">
+    <rect x="60" y="335" width="130" height="46" rx="6" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="125" y="363" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#a78bfa" font-weight="bold">Information</text>
+  </g>
+  <g filter="url(#glow)">
+    <rect x="260" y="335" width="130" height="46" rx="6" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="325" y="363" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#a78bfa" font-weight="bold">Prediction</text>
+  </g>
+  <!-- Double arrow Information ↔ Prediction -->
+  <line x1="194" y1="358" x2="256" y2="358" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arr-purple)" marker-start="url(#arr-purple-rev)"/>
+  <text x="225" y="350" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#c4b5fd" opacity="0.8">co-define</text>
+
+  <!-- Lines from State down to derived pair -->
+  <line x1="200" y1="286" x2="125" y2="335" stroke="#d1d5db" stroke-width="1" opacity="0.4" stroke-dasharray="4,2"/>
+  <line x1="250" y1="286" x2="325" y2="335" stroke="#d1d5db" stroke-width="1" opacity="0.4" stroke-dasharray="4,2"/>
+  <text x="225" y="308" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="7.5" fill="#9ca3af">State + Representation yields</text>
+
+  <!-- ======== RECURSIVE CHAIN (right side) ======== -->
+  <!-- Outer loop path: Entity → Computation → Representation → Information → Prediction → Entity -->
+  <!-- Using a rounded rectangular path on the right side -->
+
+  <text x="540" y="72" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#6b7280" letter-spacing="0.5">RECURSIVE CHAIN</text>
+
+  <!-- Chain nodes (small circles with labels) -->
+  <!-- Entity (top) -->
+  <circle cx="540" cy="100" r="16" fill="none" stroke="#14b8a6" stroke-width="1.2"/>
+  <text x="540" y="104" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#14b8a6" font-weight="bold">Entity</text>
+
+  <!-- Computation -->
+  <circle cx="620" cy="158" r="16" fill="none" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="620" y="155" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="7" fill="#f59e0b" font-weight="bold">Compu-</text>
+  <text x="620" y="164" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="7" fill="#f59e0b" font-weight="bold">tation</text>
+
+  <!-- Representation -->
+  <circle cx="620" cy="248" r="16" fill="none" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="620" y="245" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="7" fill="#f59e0b" font-weight="bold">Repre-</text>
+  <text x="620" y="254" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="7" fill="#f59e0b" font-weight="bold">sentation</text>
+
+  <!-- Information -->
+  <circle cx="620" cy="330" r="16" fill="none" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="620" y="327" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="7" fill="#a78bfa" font-weight="bold">Infor-</text>
+  <text x="620" y="336" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="7" fill="#a78bfa" font-weight="bold">mation</text>
+
+  <!-- Prediction -->
+  <circle cx="540" cy="390" r="16" fill="none" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="540" y="387" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="7" fill="#a78bfa" font-weight="bold">Predic-</text>
+  <text x="540" y="396" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="7" fill="#a78bfa" font-weight="bold">tion</text>
+
+  <!-- Chain arrows (dotted, cycling) -->
+  <!-- Entity → Computation -->
+  <line x1="554" y1="107" x2="606" y2="148" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arr-chain)"/>
+  <!-- Computation → Representation -->
+  <line x1="620" y1="174" x2="620" y2="232" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arr-chain)"/>
+  <!-- Representation → Information -->
+  <line x1="620" y1="264" x2="620" y2="314" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arr-chain)"/>
+  <!-- Information → Prediction -->
+  <line x1="606" y1="340" x2="556" y2="382" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arr-chain)"/>
+  <!-- Prediction → Entity (closing the loop — curved path on the left side of the chain) -->
+  <path d="M 524,384 C 470,360 470,130 524,106" fill="none" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arr-chain)"/>
+
+  <!-- Loop label -->
+  <text x="478" y="248" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="7.5" fill="#6b7280" font-style="italic" transform="rotate(-90, 478, 248)">prediction closes the loop</text>
+
+  <!-- ======== Bottom signature line ======== -->
+  <line x1="60" y1="465" x2="640" y2="465" stroke="#2d2d4a" stroke-width="0.5"/>
+  <text x="350" y="482" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#4b5563" letter-spacing="0.5">Epimechanics Ontological Foundation — epiphysics.xyz</text>
+</svg>

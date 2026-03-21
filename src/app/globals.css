@@ -336,6 +336,28 @@ html, body {
   line-height: 1.75;
 }
 
+@media (max-width: 768px) {
+  .post-content,
+  .prose,
+  .prose-base,
+  .prose-lg {
+    font-size: var(--content-font-size, 1.25rem) !important;
+    line-height: 1.8 !important;
+  }
+
+  .prose h1, .post-content h1 {
+    font-size: calc(var(--content-font-size, 1.25rem) * 1.45) !important;
+  }
+
+  .prose h2, .post-content h2 {
+    font-size: calc(var(--content-font-size, 1.25rem) * 1.2) !important;
+  }
+
+  .prose h3, .post-content h3 {
+    font-size: calc(var(--content-font-size, 1.25rem) * 1.05) !important;
+  }
+}
+
 /* Header and breadcrumb container */
 .header-and-breadcrumbs {
   position: fixed;
@@ -2574,9 +2596,9 @@ body {
 
 /* === SIDENOTE STYLES (Tufte-inspired margin notes) === */
 
-/* Anchor point — block container for floated margin notes */
+/* Anchor point — inline container so ref number sits inside preceding text */
 .sidenote-anchor {
-  display: block;
+  display: inline;
   overflow: visible;
   position: relative;
 }
@@ -3305,14 +3327,14 @@ article #hubspot-form {
 /* === TTS WIDGET STYLES === */
 /* Supernal TTS Widget - Subtle appearance, reveals on text hover */
 
-/* The TTS controls inside the widget - subtle by default */
+/* The TTS controls inside the widget - visible by default */
 .supernal-tts-widget [class*="tts-"],
 .supernal-tts-widget [class*="supernal-tts"],
 .supernal-tts-widget .tts-controls,
 .supernal-tts-widget .tts-player,
 .supernal-tts-widget > div[style*="position"] {
-  opacity: 0.35;
-  transform: scale(0.95);
+  opacity: 0.7;
+  transform: scale(1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -3355,7 +3377,7 @@ article #hubspot-form {
 /* Dark mode adjustments */
 .dark .supernal-tts-widget [class*="tts-"],
 .dark .supernal-tts-widget [class*="supernal-tts"] {
-  opacity: 0.3;
+  opacity: 0.7;
 }
 
 .dark .supernal-tts-widget:hover [class*="tts-"],
@@ -3485,10 +3507,8 @@ article #hubspot-form {
 .dark .sidenote-title { color: #9ca3af; }
 
 .sidenote-margin-body {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display: block;
+  overflow: visible;
 }
 
 /* Tooltip hint */

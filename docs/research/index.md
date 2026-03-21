@@ -9,13 +9,14 @@ author:
   name: "Epiphysics"
 contentType: article
 coverImage:
-  url: /images/default-projects.jpg
+  url: ./images/research_index-1-1.png
   alt: "Research papers and proofs in Epiphysics"
 tts:
   enabled: true
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 > **Status: Under active development.** These are draft papers and research notes, not peer-reviewed publications. The theorem is proven; the broader conjecture is open; the experimental protocols are designed but not yet run.
@@ -25,4 +26,8 @@ tts:
 - [Representational Efficiency Paper](./paper_representational_efficiency.md) — standalone academic paper with theorem, proof, and empirical testing program
 - [Rate-Distortion → Lagrangian Structure](./rate_distortion_lagrangian.md) — the central open problem: does information-theoretic optimality imply Lagrangian structure?
 - [Representational Manipulation](./representational_manipulation.md) — the thermodynamics of disinformation
+- [Computation, Representation, and Information](./computation.md) — defining computation within the framework as producing a representation, varying in depth from passive encoding to self-referential modeling
+- [Self-Multiplication as Generative Mechanism](./self_multiplication.md) — states acting on themselves via T(X)·X as the layer beneath auto-causal density and entity boundaries
+- [The Golden Ratio in Epimechanics' Definitional Structure](./definitional_convergence.md) — the seven definitions converge to a four-node graph with spectral radius φ; self-contained, for distribution
+- [Formal Structure of the Definitional Architecture](./definitional_structure.md) — graph theory, category theory, and self-reference analysis of the seven core definitions (working note)
 - [Experimental Protocol](./experimental_protocol.md) — planned empirical tests

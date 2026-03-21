@@ -108,8 +108,6 @@ export default function Sidenote({ id, number, children }: SidenoteProps) {
             className={`sidenote-margin sidenote-variant-${variant} ${highlighted ? 'sidenote-flash' : ''}`}
             role="note"
             aria-label={`Sidenote ${number}`}
-            onClick={() => setModalOpen(true)}
-            style={{ cursor: 'pointer' }}
           >
             <div className="sidenote-margin-header">
               <span className={`sidenote-number sidenote-number-${variant}`}>{number}</span>

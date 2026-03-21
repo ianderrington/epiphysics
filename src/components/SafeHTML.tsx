@@ -93,9 +93,20 @@ export default function SafeHTML({ html, className = '' }: SafeHTMLProps) {
       const id = element.getAttribute('data-sidenote-id') || `sn-${sidenoteNumber}`;
       const content = element.innerHTML;
 
-      const sidenoteContainer = document.createElement('div');
+      // Create an inline container for the sidenote
+      const sidenoteContainer = document.createElement('span');
       sidenoteContainer.className = 'sidenote-anchor';
-      element.replaceWith(sidenoteContainer);
+
+      // Try to append the sidenote inside the preceding paragraph so the
+      // reference number appears inline at the end of the text, not on its own line.
+      const prevSibling = element.previousElementSibling;
+      if (prevSibling && /^(P|LI|DIV|BLOCKQUOTE|TD|TH|SECTION|HEADER)$/i.test(prevSibling.tagName)) {
+        prevSibling.appendChild(sidenoteContainer);
+        element.remove();
+      } else {
+        // Fallback: replace in place
+        element.replaceWith(sidenoteContainer);
+      }
 
       const root = ReactDOM.createRoot(sidenoteContainer);
       root.render(
