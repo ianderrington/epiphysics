@@ -66,11 +66,21 @@ When logging TP-inspired experiments for Epiphysics, include:
 - **Structural analogy**: useful conceptual bridge, not formal identity.
 - **Hypothesis-level**: candidate mapping to test, not assume.
 
-## Recommended next step
+## Implementation status
 
-Build a small `experiments/src/tp_bridge_metrics.py` module that computes:
+Implemented baseline module:
+- `experiments/src/tp_bridge_metrics.py`
+
+Current outputs:
 - representation drift,
-- NTK drift (or adaptive analogue),
-- spectral diagnostics,
-- transfer-regret,
-so the crosswalk fields are emitted automatically per run.
+- layer update norms,
+- NTK drift,
+- spectral radius (from provided eigenspectra),
+- transfer regret.
+
+Fixture + sample output:
+- `experiments/src/tp_bridge_example_trace.json`
+- `experiments/results/tp_bridge/example_metrics.json`
+
+Next increment:
+- connect this script to real experiment traces (instead of synthetic fixture).

@@ -43,14 +43,17 @@ feedback:
 - [ ] Pre-register measurable hypotheses per task.
 - [ ] For each task, include at least one disconfirming criterion.
 
-## Stage D — Instrumentation schema (next)
+## Stage D — Instrumentation schema (in progress)
 
+- [x] Implemented baseline metrics script: `experiments/src/tp_bridge_metrics.py`
+- [x] Added synthetic trace fixture: `experiments/src/tp_bridge_example_trace.json`
+- [x] Produced example output: `experiments/results/tp_bridge/example_metrics.json`
 - [ ] Emit run metadata:
   - parametrization class,
   - optimizer class,
   - width/depth vectors,
   - LR schedule and batch settings.
-- [ ] Emit dynamics observables:
+- [ ] Emit dynamics observables from real training runs:
   - update norms per layer,
   - representation drift,
   - kernel/tangent drift,

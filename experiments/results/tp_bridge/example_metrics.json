@@ -1,0 +1,56 @@
+{
+  "summary": {
+    "representation_drift_mean": 0.2406474890508977,
+    "representation_drift_final": 0.5257647491293933,
+    "layer_update_norm_mean": 0.0236602540378444,
+    "layer_update_norm_max": 0.030000000000000027,
+    "ntk_drift_mean": 0.0499697128229726,
+    "ntk_drift_final": 0.10651832633935873,
+    "spectral_radius_mean": 1.5499999999999998,
+    "spectral_radius_max": 1.9,
+    "transfer_regret": 0.1399999999999999
+  },
+  "per_step": {
+    "representation_drift": [
+      0.0,
+      0.1309307341412456,
+      0.3058944729329519,
+      0.5257647491293933
+    ],
+    "layer_update_norms": [
+      [
+        0.017320508075688763,
+        0.01732050807568879
+      ],
+      [
+        0.030000000000000016,
+        0.030000000000000027
+      ]
+    ],
+    "ntk_drift": [
+      0.0,
+      0.026854307776460123,
+      0.06650621717607155,
+      0.10651832633935873
+    ],
+    "spectral_radius": [
+      1.2,
+      1.4,
+      1.7,
+      1.9
+    ]
+  },
+  "metadata": {
+    "parametrization_class": "muP",
+    "optimizer_family": "Adam",
+    "width_vector": [
+      256,
+      512,
+      1024
+    ],
+    "depth_vector": [
+      12
+    ],
+    "note": "synthetic example trace"
+  }
+}
