@@ -31,3 +31,4 @@ tts:
 - [The Golden Ratio in Epimechanics' Definitional Structure](./definitional_convergence.md) — the seven definitions converge to a four-node graph with spectral radius φ; self-contained, for distribution
 - [Formal Structure of the Definitional Architecture](./definitional_structure.md) — graph theory, category theory, and self-reference analysis of the seven core definitions (working note)
 - [Experimental Protocol](./experimental_protocol.md) — planned empirical tests
+- [TP Bridge Experiments — Plain English Explainer](./tp_bridge_explainer_plain_english.md) — what the current TP bridge experiments are testing, what charts mean, and how this maps to Epimechanics
