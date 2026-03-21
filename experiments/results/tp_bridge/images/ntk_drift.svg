@@ -1,11 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
   <rect width="100%" height="100%" fill="#ffffff"/>
-  <text x="60" y="32" font-size="24" font-family="Arial" fill="#111827">NTK Drift</text>
-  <line x1="60" y1="440" x2="940" y2="440" stroke="#9ca3af" stroke-width="2"/>
-  <line x1="60" y1="60" x2="60" y2="440" stroke="#9ca3af" stroke-width="2"/>
-  <text x="60" y="470" font-size="14" font-family="Arial" fill="#374151">t=0</text>
-  <text x="900" y="470" font-size="14" font-family="Arial" fill="#374151">t=end</text>
-  <text x="50" y="445" text-anchor="end" font-size="12" font-family="Arial" fill="#6b7280">0.0000</text>
-  <text x="50" y="65" text-anchor="end" font-size="12" font-family="Arial" fill="#6b7280">0.1307</text>
-  <path d="M 60.00 440.00 L 82.00 420.94 L 104.00 412.31 L 126.00 411.78 L 148.00 417.42 L 170.00 427.21 L 192.00 432.42 L 214.00 418.62 L 236.00 400.52 L 258.00 381.01 L 280.00 360.85 L 302.00 340.51 L 324.00 320.34 L 346.00 300.62 L 368.00 281.54 L 390.00 263.23 L 412.00 245.80 L 434.00 229.32 L 456.00 213.80 L 478.00 199.27 L 500.00 185.71 L 522.00 173.11 L 544.00 161.44 L 566.00 150.65 L 588.00 140.71 L 610.00 131.56 L 632.00 123.17 L 654.00 115.48 L 676.00 108.44 L 698.00 102.01 L 720.00 96.14 L 742.00 90.80 L 764.00 85.92 L 786.00 81.49 L 808.00 77.46 L 830.00 73.80 L 852.00 70.48 L 874.00 67.46 L 896.00 64.73 L 918.00 62.25 L 940.00 60.00" fill="none" stroke="#7c3aed" stroke-width="3"/>
+  <text x="80" y="34" font-size="26" font-family="Arial" fill="#111827">NTK Drift</text>
+  <line x1="80" y1="440" x2="920" y2="440" stroke="#9ca3af" stroke-width="2"/>
+  <line x1="80" y1="80" x2="80" y2="440" stroke="#9ca3af" stroke-width="2"/>
+  <text x="500" y="482" text-anchor="middle" font-size="15" font-family="Arial" fill="#374151">Training step (t)</text>
+  <text x="24" y="260" text-anchor="middle" transform="rotate(-90 24 260)" font-size="15" font-family="Arial" fill="#374151">Relative Frobenius drift from t=0</text>
+  <text x="80" y="462" font-size="13" font-family="Arial" fill="#374151">t=0</text>
+  <text x="875" y="462" font-size="13" font-family="Arial" fill="#374151">t=end</text>
+  <text x="68" y="445" text-anchor="end" font-size="12" font-family="Arial" fill="#6b7280">0.0000</text>
+  <text x="68" y="85" text-anchor="end" font-size="12" font-family="Arial" fill="#6b7280">0.1307</text>
+  <path d="M 80.00 440.00 L 101.00 421.95 L 122.00 413.77 L 143.00 413.27 L 164.00 418.61 L 185.00 427.88 L 206.00 432.82 L 227.00 419.75 L 248.00 402.60 L 269.00 384.12 L 290.00 365.01 L 311.00 345.74 L 332.00 326.64 L 353.00 307.96 L 374.00 289.88 L 395.00 272.53 L 416.00 256.02 L 437.00 240.40 L 458.00 225.71 L 479.00 211.94 L 500.00 199.10 L 521.00 187.16 L 542.00 176.10 L 563.00 165.88 L 584.00 156.46 L 605.00 147.80 L 626.00 139.84 L 647.00 132.56 L 668.00 125.89 L 689.00 119.80 L 710.00 114.24 L 731.00 109.17 L 752.00 104.56 L 773.00 100.36 L 794.00 96.55 L 815.00 93.08 L 836.00 89.93 L 857.00 87.07 L 878.00 84.48 L 899.00 82.13 L 920.00 80.00" fill="none" stroke="#7c3aed" stroke-width="3"/>
 </svg>
