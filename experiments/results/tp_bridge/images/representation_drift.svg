@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text x="60" y="32" font-size="24" font-family="Arial" fill="#111827">Representation Drift</text>
+  <line x1="60" y1="440" x2="940" y2="440" stroke="#9ca3af" stroke-width="2"/>
+  <line x1="60" y1="60" x2="60" y2="440" stroke="#9ca3af" stroke-width="2"/>
+  <text x="60" y="470" font-size="14" font-family="Arial" fill="#374151">t=0</text>
+  <text x="900" y="470" font-size="14" font-family="Arial" fill="#374151">t=end</text>
+  <text x="50" y="445" text-anchor="end" font-size="12" font-family="Arial" fill="#6b7280">0.0000</text>
+  <text x="50" y="65" text-anchor="end" font-size="12" font-family="Arial" fill="#6b7280">1.2599</text>
+  <path d="M 60.00 440.00 L 82.00 385.79 L 104.00 340.15 L 126.00 301.59 L 148.00 268.94 L 170.00 241.23 L 192.00 217.67 L 214.00 197.59 L 236.00 180.46 L 258.00 165.81 L 280.00 153.25 L 302.00 142.46 L 324.00 133.17 L 346.00 125.13 L 368.00 118.17 L 390.00 112.11 L 412.00 106.81 L 434.00 102.16 L 456.00 98.07 L 478.00 94.44 L 500.00 91.20 L 522.00 88.31 L 544.00 85.71 L 566.00 83.35 L 588.00 81.21 L 610.00 79.24 L 632.00 77.44 L 654.00 75.76 L 676.00 74.20 L 698.00 72.73 L 720.00 71.35 L 742.00 70.04 L 764.00 68.79 L 786.00 67.59 L 808.00 66.43 L 830.00 65.31 L 852.00 64.21 L 874.00 63.14 L 896.00 62.08 L 918.00 61.04 L 940.00 60.00" fill="none" stroke="#2563eb" stroke-width="3"/>
+</svg>
