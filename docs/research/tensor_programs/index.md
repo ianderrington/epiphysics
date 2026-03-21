@@ -38,3 +38,5 @@ feedback:
 
 - `docs/research/tensor_programs/notes_needed_for_epiphysics.md`
 - `docs/research/tensor_programs/theorem_and_assumption_matrix.md`
+- `docs/research/tensor_programs/notation_crosswalk_tp_to_epimechanics.md`
+- `docs/research/tensor_programs/computational_program_checklist.md`
