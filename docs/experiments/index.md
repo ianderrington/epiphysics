@@ -37,3 +37,7 @@ From the best-fit Lagrangian, compute symmetries, derive Noether conservation la
 For irreversible systems, extract the linear correction aᵢ and check whether it aligns with known irreversibility indicators.
 
 See the [full experimental protocol](./README.md) and the [research note on rate-distortion](../research/rate_distortion_lagrangian.md) for details.
+
+## Instrumentation Reports
+
+- [TP Bridge Report: Instrumentation, Results, and Readiness](./tp_bridge_report.md) — visual report of the current TP-bridge measurement stack, outputs, and next-step readiness.
