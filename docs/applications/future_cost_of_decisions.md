@@ -38,7 +38,7 @@ tts:
 
 ## 0. What This Document Is
 
-This is an **application** of the [Epimechanics framework](../index.md) to decision-making. The central claim: every significant decision creates an entity — a commitment — that has its own generalized mass $\mathcal{M}$, entropy production rate $\dot{S}_{\text{int}}$, stability basin $\Delta V$, and coupling to other entities via the tensor $T^i{}_j$. Sections are tagged: **relabeling** (renaming known concepts), **structural** (predictions from the grammar), or **novel** (predictions that neither decision theory nor physics alone would generate).
+This is an **application** of the [Epimechanics framework](../theory/index.md) to decision-making. The central claim: every significant decision creates an entity — a commitment — that has its own generalized mass $\mathcal{M}$, entropy production rate $\dot{S}_{\text{int}}$, stability basin $\Delta V$, and coupling to other entities via the tensor $T^i{}_j$. Sections are tagged: **relabeling** (renaming known concepts), **structural** (predictions from the grammar), or **novel** (predictions that neither decision theory nor physics alone would generate).
 
 ---
 
@@ -262,15 +262,15 @@ This application imports from the Epimechanics series:
 
 It connects to:
 
-- [The Cost of Being Moral](../../../the_cost_of_being_moral.md) — moral commitments as high-$\Delta V$, high-coupling entities
+- [The Cost of Being Moral](https://www.ian.ceo/musings/the_cost_of_being_moral) — moral commitments as high-$\Delta V$, high-coupling entities
 - [Entropy in the Household](./entropy_in_the_household.md) — the specific case of household entropy production
 - [Robustness Metric](./robustness_metric.md) — robustness of commitments as $E_{\text{disassembly}} / E_{\text{assembly}}$
-- [Time Destroyers](../../physics_of_common_sense/time_destroyers.md) — commitments that consume time through maintenance burden
+- [Time Destroyers](https://www.ian.ceo/musings/existence_physics_and_life/physics_of_common_sense/time_destroyers) — commitments that consume time through maintenance burden
 - [Efficiency Limits](./efficiency_limits.md) — the organizational version of commitment-portfolio coupling
 
 ---
 
-*This document is an application of the [Epimechanics framework](../index.md). The true cost formula is testable: compare predicted total cost (assembly + maintenance integral + coupling) to actual reported cost for homeownership, childrearing, and career tenure. If the coupling terms account for the systematic cost underestimation documented in behavioral economics, the framework has explanatory power beyond relabeling.*
+*This document is an application of the [Epimechanics framework](../theory/index.md). The true cost formula is testable: compare predicted total cost (assembly + maintenance integral + coupling) to actual reported cost for homeownership, childrearing, and career tenure. If the coupling terms account for the systematic cost underestimation documented in behavioral economics, the framework has explanatory power beyond relabeling.*
 
 ---
 

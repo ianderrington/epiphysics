@@ -33,4 +33,7 @@ tts:
 - [Experimental Protocol](./experimental_protocol.md) — planned empirical tests
 - [TP Bridge Experiments — Plain English Explainer](./tp_bridge_explainer_plain_english.md) — what the current TP bridge experiments are testing, what charts mean, and how this maps to Epimechanics
 - [TP Bridge — Architecture-Realistic Trace Update](./tp_bridge_architecture_trace_update.md) — extension from toy runs to architecture-like trace experiments with preserved metric contract
-- [TP Bridge — Architecture-Realistic Trace Update](./tp_bridge_architecture_trace_update.md) — continuation from toy runs to residual architecture traces with the same metric contract
+
+## Source Registry (for citation)
+
+- [Research Sources & Citation Registry](./sources/index.md) — canonical source artifacts (PDF/text/versioned archives) backing research notes

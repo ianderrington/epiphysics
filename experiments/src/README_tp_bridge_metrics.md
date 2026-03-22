@@ -2,7 +2,7 @@
 
 Compute TP↔Epiphysics bridge metrics from a JSON trace.
 
-## Run on real trace (pure Python toy training)
+## Run on real trace (baseline pure Python toy training)
 
 ```bash
 python3 experiments/src/run_tp_bridge_toy_mlp_purepy.py \
@@ -11,6 +11,22 @@ python3 experiments/src/run_tp_bridge_toy_mlp_purepy.py \
 python3 experiments/src/tp_bridge_metrics.py \
   experiments/results/tp_bridge/toy_trace_real.json \
   -o experiments/results/tp_bridge/toy_metrics_real.json
+```
+
+## Run architecture-realistic traces (schema-preserving)
+
+```bash
+python3 experiments/src/run_tp_bridge_residual_mlp_trace.py \
+  --output experiments/results/tp_bridge/arch_residual_trace_real.json
+python3 experiments/src/tp_bridge_metrics.py \
+  experiments/results/tp_bridge/arch_residual_trace_real.json \
+  -o experiments/results/tp_bridge/arch_residual_metrics_real.json
+
+python3 experiments/src/run_tp_bridge_seq_mixer_trace.py \
+  --output experiments/results/tp_bridge/seq_mixer_trace_real.json
+python3 experiments/src/tp_bridge_metrics.py \
+  experiments/results/tp_bridge/seq_mixer_trace_real.json \
+  -o experiments/results/tp_bridge/seq_mixer_metrics_real.json
 ```
 
 ## Run on synthetic fixture

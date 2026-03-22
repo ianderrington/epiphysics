@@ -70,7 +70,7 @@ Seven terms recur throughout the series. They organize into two co-primitive pai
 - **State** — what determines an entity's causal dispositions. The posited referent that representations approximate. Epimechanics assumes states exist but does not claim direct access to them.
 
 > [!sidenote]
-> Quantum mechanics provides independent evidence for this commitment. The [PBR theorem (2012)](https://doi.org/10.1038/nphys2309) shows quantum states are ontic (real, not merely bookkeeping), yet measurement disturbs the state (Heisenberg), unknown states cannot be copied (no-cloning), and different preparations can be statistically indistinguishable (density matrix degeneracy). States exist; direct access to them is fundamentally limited. Quantum mechanics and [Hoffman's Interface Theory](https://doi.org/10.1093/oso/9780393254693.001.0001) reach this conclusion from different directions — Epimechanics inherits from both.
+> Quantum mechanics provides independent evidence for this commitment. The [PBR theorem (2012)](https://doi.org/10.1038/nphys2309) shows quantum states are ontic (real, not merely bookkeeping), yet measurement disturbs the state (Heisenberg), unknown states cannot be copied (no-cloning), and different preparations can be statistically indistinguishable (density matrix degeneracy). States exist; direct access to them is fundamentally limited. Quantum mechanics and [Hoffman's Interface Theory](https://wwnorton.com/books/9780393254693) reach this conclusion from different directions — Epimechanics inherits from both.
 
 **Second co-primitive pair:**
 
@@ -92,7 +92,7 @@ The two co-primitive pairs require each other: computation and representation ne
 
 The chain Entity → Computation → Representation → Information → Prediction is recursive, not linear: the computing entity is itself known only through representations computed by other entities or itself. The definitions are themselves representations — approximations, not perfect copies — and the framework predicts its own improvability: each iteration of self-application should refine the definitions toward an attractor, not reproduce them exactly. The [research note on computation](../research/computation.md) develops these definitions formally. When the seven definitions are quotiented by their equivalences, they [converge to a four-node graph](../research/definitional_convergence.md) whose spectral radius is the golden ratio $\varphi$ — a structural consequence of this definitional architecture and the postulate that causal presence is coextensive with representability.
 
-![Foundational architecture: two co-primitive pairs (Causation↔Entity, Computation↔Representation), State as bridge, Information↔Prediction as derived pair, with recursive chain](/docs/theory/images/foundational_architecture.svg)
+![Foundational architecture: two co-primitive pairs (Causation↔Entity, Computation↔Representation), State as bridge, Information↔Prediction as derived pair, with recursive chain](./images/foundational_architecture.svg)
 
 ---
 
@@ -100,7 +100,7 @@ The chain Entity → Computation → Representation → Information → Predicti
 
 $X$ is not the thing itself. It is a formal description of the thing's condition — the way a map describes territory. The territory exists independently; $X$ is our model of it.
 
-[Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://doi.org/10.1093/oso/9780393254693.001.0001) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces. The desktop icon does not resemble the magnetic patterns on the disk. It doesn't need to — it needs to be *useful*: to let you predict what happens when you double-click. $X$ has the same status. It is an interface through which we interact with reality, not a photograph of it.
+[Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces. The desktop icon does not resemble the magnetic patterns on the disk. It doesn't need to — it needs to be *useful*: to let you predict what happens when you double-click. $X$ has the same status. It is an interface through which we interact with reality, not a photograph of it.
 
 The interface view entails three properties:
 - **$X$ can be wrong.** A representation may be inaccurate, incomplete, or misleading. "Calling a tree a car" assigns the tree a representation in a state space (vehicles) where the dynamics don't apply. The tree's measurable properties are unaffected. The mislabel is a coordinate error — it assigns the wrong $X$ to the wrong $S$.
@@ -220,10 +220,10 @@ where $C(X, \varepsilon)$ is the computational complexity of predicting $X(t + \
 
 **The existence of $X^*$ is already proven** — not by Epimechanics, but by multiple independent results in information theory:
 
-- [Rate-distortion theory (Shannon, 1959)](https://doi.org/10.1109/TIT.1959.1055721): for any source and distortion level $\varepsilon$, there exists an optimal encoding that minimizes information cost. **Theorem.**
+- [Rate-distortion theory (Shannon, 1959)](https://ieeexplore.ieee.org/document/5311476): for any source and distortion level $\varepsilon$, there exists an optimal encoding that minimizes information cost. **Theorem.**
 - [Minimum Description Length (Rissanen, 1978)](https://doi.org/10.1214/aos/1176344611): the best model minimizes the sum of model complexity and data misfit, equivalent to Bayesian model selection with a universal prior. **Theorem.**
 - [Kolmogorov complexity](https://doi.org/10.1007/978-0-387-49820-1): the shortest program producing the output defines the optimal representation. Its existence is proven; its computation is not (Chaitin's incompleteness).
-- [Solomonoff induction](https://doi.org/10.1016/S0019-9958(64)90131-7): the prior weighting hypotheses by complexity converges to the true distribution. **Theorem** (convergence guarantee).
+- [Solomonoff induction](https://doi.org/10.1016/S0019-9958%2864%2990223-2): the prior weighting hypotheses by complexity converges to the true distribution. **Theorem** (convergence guarantee).
 
 These are the same result stated in different mathematical languages. The optimal representation exists and is characterized by maximal compression at a given accuracy. The existence result is not a conjecture — it is established mathematics.
 
@@ -251,7 +251,7 @@ Epimechanics emerges from a number of antecedents including:
 - [Maturana and Varela (*Autopoiesis and Cognition*, 1980)](https://doi.org/10.1007/978-94-009-8947-4) — autopoiesis; self-producing organization
 - [Kauffman (*The Origins of Order*, 1993)](https://doi.org/10.1093/oso/9780195079517.001.0001) — autocatalytic sets; collective self-catalysis
 - [Ladyman and Ross (*Every Thing Must Go*, 2007)](https://global.oup.com/academic/product/every-thing-must-go-9780199573097) — ontic structural realism; structure is fundamental
-- [Hoffman (*The Case Against Reality*, 2019)](https://doi.org/10.1093/oso/9780393254693.001.0001) — interface theory of perception; representations are fitness-tuned, not accurate
+- [Hoffman (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) — interface theory of perception; representations are fitness-tuned, not accurate
 - [Woodward (*Making Things Happen*, 2003)](https://doi.org/10.1093/0195155270.001.0001) — interventionist causation
 - [Pearl (*Causality*, 2000)](https://doi.org/10.1017/CBO9780511803161) — causal calculus; counterfactuals
 - [Hoel et al. (2013)](https://doi.org/10.1073/pnas.1314922110) — causal emergence; when macro beats micro

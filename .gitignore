@@ -56,6 +56,15 @@ bun.lockb
 
 # Supernal local runtime (caches, logs, CLI state)
 .supernal-local/
+.openclaw/
+messages/
+misc/
+**/__pycache__/
+AGENTS.bespoke.md
+HEARTBEAT.md
+SOUL.md
+TOOLS.md
+USER.md
 
 # Git worktrees (multi-agent development)
 .worktrees/

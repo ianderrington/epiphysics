@@ -1,0 +1,58 @@
+# repotype.yaml — Epiphysics repository contract
+version: "1"
+
+defaults:
+  inheritance: merge
+  strictness: balanced
+  unmatchedFiles: deny
+
+ignore:
+  - ".git/**"
+  - ".next/**"
+  - "node_modules/**"
+  - ".supernal-local/**"
+  - "dist/**"
+  - "build/**"
+  - "coverage/**"
+
+folders:
+  - id: repo-root
+    path: .
+    allowedFolders:
+      - .git
+      - .husky
+      - .next
+      - .supernal
+      - .supernal-local
+      - docs
+      - experiments
+      - public
+      - scripts
+      - src
+      - types
+      - tests
+
+files:
+  - id: root-docs
+    glob: "{README,CONTRIBUTING,LICENSE,TODO,DAILY_LOOP,USE_SUPERNAL_CODING,CLAUDE}.md"
+
+  - id: root-config
+    glob: "{package.json,package-lock.json,tsconfig.json,next.config.js,next.config.mjs,tailwind.config.js,tailwind.config.ts,postcss.config.mjs,jest.config.js,jest.setup.js,mdx.config.js,turbo.json,vercel.json,supernal.yaml,.gitignore,.env.example,repotype.yaml,next-env.d.ts}"
+
+  - id: source-tree
+    glob: "src/**/*"
+
+  - id: docs-tree
+    glob: "docs/**/*"
+
+  - id: public-tree
+    glob: "public/**/*"
+
+  - id: scripts-tree
+    glob: "scripts/**/*.{js,ts,mjs,py,sh}"
+
+  - id: experiments-tree
+    glob: "experiments/**/*"
+
+  - id: types-tree
+    glob: "types/**/*"

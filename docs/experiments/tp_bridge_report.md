@@ -38,9 +38,11 @@ This is a **readiness + instrumentation report** for TP bridge experiments. It i
 
 ## What was implemented
 
-- Trace generation (real training run, pure Python):
-  - `experiments/src/run_tp_bridge_toy_mlp_purepy.py`
-- Metrics computation:
+- Trace generation (real training runs):
+  - `experiments/src/run_tp_bridge_toy_mlp_purepy.py` (baseline)
+  - `experiments/src/run_tp_bridge_residual_mlp_trace.py` (residual 2-block MLP)
+  - `experiments/src/run_tp_bridge_seq_mixer_trace.py` (residual token/channel mixer)
+- Metrics computation (schema-preserving):
   - `experiments/src/tp_bridge_metrics.py`
 - Width/LR sweep:
   - `experiments/src/run_tp_bridge_width_sweep_purepy.py`
@@ -49,16 +51,34 @@ This is a **readiness + instrumentation report** for TP bridge experiments. It i
 
 ## Key outputs
 
-- Real trace: `experiments/results/tp_bridge/toy_trace_real.json`
-- Real metrics: `experiments/results/tp_bridge/toy_metrics_real.json`
+- Baseline trace/metrics:
+  - `experiments/results/tp_bridge/toy_trace_real.json`
+  - `experiments/results/tp_bridge/toy_metrics_real.json`
+- Architecture-realistic traces/metrics:
+  - `experiments/results/tp_bridge/arch_residual_trace_real.json`
+  - `experiments/results/tp_bridge/arch_residual_metrics_real.json`
+  - `experiments/results/tp_bridge/seq_mixer_trace_real.json`
+  - `experiments/results/tp_bridge/seq_mixer_metrics_real.json`
+- Architecture image bundles:
+  - `experiments/results/tp_bridge/arch_residual_images/`
+  - `experiments/results/tp_bridge/seq_mixer_images/`
 - Sweep table: `experiments/results/tp_bridge/sweep/sweep_results.md`
-- Images: `experiments/results/tp_bridge/images/`
 
 ## Initial interpretation
 
-- Small widths trend more feature-learning-like (higher drift).
-- Larger width pair (32→64 in current sweep) trends toward mixed/lower drift regime.
-- Transfer regret in the toy sweep is mostly favorable (no clear degradation under transfer).
+- **Residual MLP (architecture-realistic):** high NTK drift final (`0.6203`) with substantial representation drift (`0.2745`) and favorable transfer regret (`-0.4817`) indicates strong feature-learning dynamics with good small→large transfer in this run.
+- **Sequence mixer (architecture-realistic):** lower representation/NTK drift (`0.0644` / `0.2914`) plus small positive transfer regret (`+0.0279`) suggests a more stable but slightly less transfer-friendly regime.
+- Across both architecture runs, **layer update norms remain nontrivial** (not frozen), so the bridge captures genuine parameter motion beyond toy behavior.
+
+## Schema compatibility (preserved)
+
+All new runners keep the same `tp_bridge_metrics` contract and summary keys:
+- `representation_drift_*`
+- `ntk_drift_*`
+- `layer_update_norm_*`
+- `transfer_regret`
+
+No schema drift was introduced in metrics JSON.
 
 ## How this fits Epimechanics
 

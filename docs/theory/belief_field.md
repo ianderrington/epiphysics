@@ -43,7 +43,7 @@ Every entity that can predict — every entity with nonzero intelligence $I$ ([P
 
 2. **The belief field** $\hat{V}(X, t)$ — the entity's probabilistic model of that landscape. What the entity *thinks* the potential field looks like, based on its past experience, its current observations, and its capacity to predict. This is the map.
 
-The entity acts on $\hat{V}$, not on $V$. It navigates by its belief field, not by reality — because it cannot access reality directly ([Hoffman's Interface Theory](https://doi.org/10.1093/oso/9780393254693.001.0001); [Part 0](./00_prelude.md)). Every decision, every action, every preparation is based on $\hat{V}$. The quality of those decisions depends on how well $\hat{V}$ tracks $V$.
+The entity acts on $\hat{V}$, not on $V$. It navigates by its belief field, not by reality — because it cannot access reality directly ([Hoffman's Interface Theory](https://wwnorton.com/books/9780393254693); [Part 0](./00_prelude.md)). Every decision, every action, every preparation is based on $\hat{V}$. The quality of those decisions depends on how well $\hat{V}$ tracks $V$.
 
 ---
 
@@ -113,7 +113,7 @@ This is not a binary. A rock's crystal defects and fault lines do affect its mac
 
 ### What "coarse-graining" means outside physics
 
-In physics, coarse-graining has a precise meaning via the renormalization group: integrate out short-wavelength modes, ask what effective theory governs the remaining long-wavelength modes. For non-physical systems — beliefs, institutions, economies — there is no spatial wavelength to integrate out. The generalization is **lossy compression of the state description**: given a full micro-description of the system, compress it to a macro-description at some resolution, and ask which micro-DOF must be retained for the macro-description to remain predictive. The formal backbone is [rate-distortion theory (Shannon, 1959)](https://doi.org/10.1109/TIT.1959.1055721): for any source and distortion level, there exists an optimal lossy encoding. The DOF that appear in that encoding are the ones that survived compression. This is well-defined for any system with a state description — not only systems with a spatial metric.
+In physics, coarse-graining has a precise meaning via the renormalization group: integrate out short-wavelength modes, ask what effective theory governs the remaining long-wavelength modes. For non-physical systems — beliefs, institutions, economies — there is no spatial wavelength to integrate out. The generalization is **lossy compression of the state description**: given a full micro-description of the system, compress it to a macro-description at some resolution, and ask which micro-DOF must be retained for the macro-description to remain predictive. The formal backbone is [rate-distortion theory (Shannon, 1959)](https://ieeexplore.ieee.org/document/5311476): for any source and distortion level, there exists an optimal lossy encoding. The DOF that appear in that encoding are the ones that survived compression. This is well-defined for any system with a state description — not only systems with a spatial metric.
 
 > [!caveat]
 > *Scale-relativity.* Because computation-as-renormalization is relative to a coarse-graining scale, the question "does X compute?" always requires specifying "at what scale?" A rock computes at the atomic scale (Wolfram) and barely computes at the center-of-mass scale. This is a feature, not a bug — it is the same scale-relativity that makes renormalization powerful in physics. But it means computation is a property of *system-at-scale*, not of system alone.
@@ -217,7 +217,7 @@ When many entities share representations — through language, culture, institut
 
 $$\hat{V}_{\text{collective}}(X) = \sum_j w_j \hat{V}_j(X)$$
 
-This is the social analogue of the mean-field construction. The collective belief field is a reputation field ([applications plan](../applications-plan.md)) applied to the future: the aggregate of what everyone thinks will happen.
+This is the social analogue of the mean-field construction. The collective belief field is a reputation field ([applications plan](../applications/index.md)) applied to the future: the aggregate of what everyone thinks will happen.
 
 Collective belief fields have properties that individual ones don't:
 

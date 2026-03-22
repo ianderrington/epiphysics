@@ -3,14 +3,14 @@ project:
   description: Project managed with Supernal Coding
   version: 1.0.0
 docs:
-  root: /Users/ianderrington/git/ianderrington/epiphysics/docs
-  features: /Users/ianderrington/git/ianderrington/epiphysics/docs/features
-  requirements: /Users/ianderrington/git/ianderrington/epiphysics/docs/requirements
-  architecture: /Users/ianderrington/git/ianderrington/epiphysics/docs/architecture
-  planning: /Users/ianderrington/git/ianderrington/epiphysics/docs/planning
-  guides: /Users/ianderrington/git/ianderrington/epiphysics/docs/guides
-  compliance: /Users/ianderrington/git/ianderrington/epiphysics/docs/compliance
-  handoffs: /Users/ianderrington/git/ianderrington/epiphysics/docs/handoffs
+  root: ./docs
+  features: ./docs/features
+  requirements: ./docs/requirements
+  architecture: ./docs/architecture
+  planning: ./docs/planning
+  guides: ./docs/guides
+  compliance: ./docs/compliance
+  handoffs: ./docs/handoffs
 git:
   signing:
     enabled: false
@@ -21,7 +21,7 @@ git:
       require_signature: false
     agent_registry: .supernal/config/agents.yaml
 requirements:
-  path: /Users/ianderrington/git/ianderrington/epiphysics/docs/requirements
+  path: ./docs/requirements
   format: gherkin
   id_prefix: REQ
   categories:
@@ -30,7 +30,7 @@ requirements:
     - workflow
     - compliance
 features:
-  path: /Users/ianderrington/git/ianderrington/epiphysics/docs/features
+  path: ./docs/features
   domains:
     - ai-workflow-system
     - compliance-framework
@@ -40,7 +40,7 @@ features:
 compliance:
   enabled: false
   framework: null
-  evidence_path: /Users/ianderrington/git/ianderrington/epiphysics/docs/compliance/evidence
+  evidence_path: ./docs/compliance/evidence
 cli:
   verbose: false
   colors: true

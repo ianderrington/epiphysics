@@ -37,7 +37,7 @@ tts:
 
 ## 0. What This Document Is
 
-This is an **application** of the [Epimechanics framework](../index.md) to the simplest possible domain: your house, your desk, your inbox, your garden. It imports the framework's thermodynamic grammar — entropy $S$, free energy $\mathcal{F}$, entropy production rate $\dot{S}_{\text{int}}$, and repair rate $\dot{R}_{\text{repair}}$ — and fills it with the vocabulary of daily life. Its value depends on whether it generates predictions that common sense alone does not make. Sections are tagged: **relabeling** (renaming known concepts), **structural** (predictions from the grammar), or **novel** (predictions that neither common sense nor physics alone would generate).
+This is an **application** of the [Epimechanics framework](../theory/index.md) to the simplest possible domain: your house, your desk, your inbox, your garden. It imports the framework's thermodynamic grammar — entropy $S$, free energy $\mathcal{F}$, entropy production rate $\dot{S}_{\text{int}}$, and repair rate $\dot{R}_{\text{repair}}$ — and fills it with the vocabulary of daily life. Its value depends on whether it generates predictions that common sense alone does not make. Sections are tagged: **relabeling** (renaming known concepts), **structural** (predictions from the grammar), or **novel** (predictions that neither common sense nor physics alone would generate).
 
 ---
 
@@ -143,7 +143,7 @@ The first sum is manageable — it grows linearly with the number of maintained 
 
 **The structural prediction:** There is a critical number of maintained entities $N_{\text{crit}}$ beyond which the coupling terms dominate and the maintenance burden grows faster than linearly. Below $N_{\text{crit}}$, owning more things is manageable. Above $N_{\text{crit}}$, each additional thing increases the maintenance burden by more than its own individual $\dot{S}_i$ — because it introduces new coupling terms.
 
-This connects directly to the [Physics of Common Sense](../../physics_of_common_sense/daily_entropy.md) observation that clutter feels disproportionately burdensome. It IS disproportionate — the coupling terms make the maintenance cost superlinear in the number of objects.
+This connects directly to the [Physics of Common Sense](https://www.ian.ceo/musings/existence_physics_and_life/physics_of_common_sense/daily_entropy) observation that clutter feels disproportionately burdensome. It IS disproportionate — the coupling terms make the maintenance cost superlinear in the number of objects.
 
 ---
 
@@ -179,9 +179,9 @@ This application imports from the Epimechanics series:
 
 It connects to:
 
-- [Daily Entropy](../../physics_of_common_sense/daily_entropy.md) — the observation that entropy governs everyday life
-- [Daily Physics](../../physics_of_common_sense/daily_physics.md) — physics applied to common experience
-- [Time Destroyers](../../physics_of_common_sense/time_destroyers.md) — commitments that consume time through maintenance burden
+- [Daily Entropy](https://www.ian.ceo/musings/existence_physics_and_life/physics_of_common_sense/daily_entropy) — the observation that entropy governs everyday life
+- [Daily Physics](https://www.ian.ceo/musings/existence_physics_and_life/physics_of_common_sense/daily_physics) — physics applied to common experience
+- [Time Destroyers](https://www.ian.ceo/musings/existence_physics_and_life/physics_of_common_sense/time_destroyers) — commitments that consume time through maintenance burden
 - [Robustness Metric](./robustness_metric.md) — the ratio $E_{\text{disassembly}} / E_{\text{assembly}}$ as a complementary measure
 - [Future Cost of Decisions](./future_cost_of_decisions.md) — every decision creates an entity with ongoing entropy production
 
@@ -199,7 +199,7 @@ It connects to:
 
 ---
 
-*This document is an application of the [Epimechanics framework](../index.md). It provides grammar; everyday experience provides vocabulary. The minimum maintenance threshold is a testable prediction. If it holds — if there is a measurable tipping point below which household degradation accelerates — the framework has empirical content beyond relabeling.*
+*This document is an application of the [Epimechanics framework](../theory/index.md). It provides grammar; everyday experience provides vocabulary. The minimum maintenance threshold is a testable prediction. If it holds — if there is a measurable tipping point below which household degradation accelerates — the framework has empirical content beyond relabeling.*
 
 ---
 

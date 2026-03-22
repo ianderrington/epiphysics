@@ -29,7 +29,7 @@ tts:
 
 If $X$ is a representation ([Part 0]../theory/00_prelude.md)) and fields are aggregates of representations ([Part 1, Section 6]../theory/01_generalized_mechanics.md)), then a fundamental vulnerability follows: **deliberately injecting false representations distorts the fields that other entities navigate by.**
 
-This is not a political observation. It is a structural consequence of any system where entities couple to representational fields rather than to reality directly ([Hoffman's Interface Theory](https://doi.org/10.1093/oso/9780393254693.001.0001)).
+This is not a political observation. It is a structural consequence of any system where entities couple to representational fields rather than to reality directly ([Hoffman's Interface Theory](https://wwnorton.com/books/9780393254693)).
 
 tts:
   enabled: true
@@ -55,9 +55,9 @@ tts:
 
 ## Information Pollution as Entropy Injection
 
-[Recursive AI training on AI-generated content](../../the_future/information_pollution_and_recursive_training.md) is a specific case: each generation of AI output slightly degrades the representational fidelity, accumulating errors that compound across training cycles. In Epimechanics' terms, this is **entropy injection into the representational substrate** — each cycle increases $\dot{S}_{\text{int}}$ of the information ecosystem without a corresponding increase in $\dot{R}_{\text{repair}}$. The representations degrade. The fields they generate become noisier. Entities navigating by those fields make worse decisions.
+[Recursive AI training on AI-generated content](https://www.ian.ceo/musings/the_future) is a specific case: each generation of AI output slightly degrades the representational fidelity, accumulating errors that compound across training cycles. In Epimechanics' terms, this is **entropy injection into the representational substrate** — each cycle increases $\dot{S}_{\text{int}}$ of the information ecosystem without a corresponding increase in $\dot{R}_{\text{repair}}$. The representations degrade. The fields they generate become noisier. Entities navigating by those fields make worse decisions.
 
-[Disinformation campaigns](../../the_future/governance/shadow_disinformation.md) operate by the same mechanism at the social level: flooding the representational environment with false or misleading $X$'s increases the effective $\mathcal{T}_{\text{env}}$ (environmental noise temperature). This lowers the Carnot ceiling ([efficiency limits](./applications/efficiency_limits.md)) for every entity operating in that environment — collective capacity for directed action drops, even if individual entities are unaffected, because the shared field they navigate by has been degraded.
+[Disinformation campaigns](https://www.ian.ceo/musings/the_future/governance/shadow-disinformation) operate by the same mechanism at the social level: flooding the representational environment with false or misleading $X$'s increases the effective $\mathcal{T}_{\text{env}}$ (environmental noise temperature). This lowers the Carnot ceiling ([efficiency limits](../applications/efficiency_limits.md)) for every entity operating in that environment — collective capacity for directed action drops, even if individual entities are unaffected, because the shared field they navigate by has been degraded.
 
 tts:
   enabled: true
@@ -98,8 +98,8 @@ tts:
 
 ## Connected Posts
 
-- [Shadow Misunderstanding](../../the_future/governance/shadow_disinformation.md) — subtle AI information manipulation
-- [Information Pollution and Recursive Training](../../the_future/information_pollution_and_recursive_training.md) — model collapse through entropy accumulation
-- [The Frequency Bias Effect](../../building_code/semantic_marginalization.md) — repeated presentation makes ideas seem true
-- [Moloch Series](../../../moloch/index.md) — coordination failures as the attractor when fields degrade
-- [Efficiency Limits](./applications/efficiency_limits.md) — where $\mathcal{T}_{\text{env}}$ enters the Carnot ceiling
+- [Shadow Misunderstanding](https://www.ian.ceo/musings/the_future/governance/shadow-disinformation) — subtle AI information manipulation
+- [Information Pollution and Recursive Training](https://www.ian.ceo/musings/the_future) — model collapse through entropy accumulation
+- [The Frequency Bias Effect](https://www.ian.ceo/musings/building_code/semantic_marginalization) — repeated presentation makes ideas seem true
+- [Moloch Series](https://www.ian.ceo/musings/moloch/molochian_ai) — coordination failures as the attractor when fields degrade
+- [Efficiency Limits](../applications/efficiency_limits.md) — where $\mathcal{T}_{\text{env}}$ enters the Carnot ceiling

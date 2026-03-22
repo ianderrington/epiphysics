@@ -66,7 +66,7 @@ This is the full Epimechanics framework, one concept at a time.
 
 **Generalized**: Let X be a *representation* of any measurable or definable aspect of any system. $X$ is not the thing itself - it is a formal description of the thing's condition, the way a map is a description of territory. The territory exists independently; $X$ is our model of it. Physical position is one instance of X. But X can equally represent a person's level of trust in an institution, a market's current price level, a culture's ideological center of mass, or a neural network's complete weight configuration. $X$ lives in some space of possible values - a **state space** $S$ - and it changes over time at some rate $\dot{X} = dX/dt$.
 
-[Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://doi.org/10.1093/oso/9780393254693.001.0001) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces - the desktop icon does not resemble the magnetic patterns on the disk. $X$ has the same status. It is an interface through which we interact with reality, not a photograph of reality. Some interfaces track real structure well enough to make predictions; others are arbitrary or misleading. The framework's claim is not that $X$ accurately depicts reality - it is that when $X$ is chosen to track real causal structure, the mechanical relationships derived from $X$ (force, energy, coupling) predict how that structure changes over time.
+[Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces - the desktop icon does not resemble the magnetic patterns on the disk. $X$ has the same status. It is an interface through which we interact with reality, not a photograph of reality. Some interfaces track real structure well enough to make predictions; others are arbitrary or misleading. The framework's claim is not that $X$ accurately depicts reality - it is that when $X$ is chosen to track real causal structure, the mechanical relationships derived from $X$ (force, energy, coupling) predict how that structure changes over time.
 
 An *entity*, in Epimechanics, is anything with causal presence — anything that participates in causal relations. Auto-causal density $\rho_{\text{ac}}$ measures how strongly it sustains itself (formally defined in Section 1b immediately below).
 
@@ -86,7 +86,7 @@ The choice of $X$ is a representational act - labeling something places it in a 
 
 **Form**: $X \in S$, where S is the state space of the system.
 
-![A curved manifold representing state space S, with a point X on its surface, a tangent plane T_X S, and a trajectory showing the entity's path through state space](/docs/theory/images/state_space_manifold.svg)
+![A curved manifold representing state space S, with a point X on its surface, a tangent plane T_X S, and a trajectory showing the entity's path through state space](./images/state_space_manifold.svg)
 
 > [!sidenote]
 > *Note on smoothness*: The calculus assumes $X(t)$ is differentiable. In practice, $X$ is a coarse-grained average; stochastic extensions ([Fokker-Planck](https://en.wikipedia.org/wiki/Fokker%E2%80%93Planck_equation), [Langevin](https://en.wikipedia.org/wiki/Langevin_equation)) handle noise.
@@ -155,7 +155,7 @@ The boundary is:
 
 [Bateson (*Steps to an Ecology of Mind*, 1972)](https://press.uchicago.edu/ucp/books/book/chicago/S/bo3620295.html) anticipated this: "The boundary of the self is where information ceases to flow."
 
-![An entity as a bounded region in state space: dense internal causal network (generalized mass), self-coupling maintaining coherence, external coupling to forces and fields](/docs/theory/images/entity_structure.svg)
+![An entity as a bounded region in state space: dense internal causal network (generalized mass), self-coupling maintaining coherence, external coupling to forces and fields](./images/entity_structure.svg)
 
 ### From entities to meta-entities
 
@@ -264,7 +264,7 @@ This connection extends beyond chemistry. The **social assembly index** of an in
 
 Assembly theory also introduces a hierarchy of state spaces that maps onto Epimechanics' Lagrangian formulation. Cronin and Walker define nested **assembly spaces**: the *assembly universe* (all possible combinations), the *assembly possible* (what physical laws permit), the *assembly contingent* (what actual pathways can reach), and the *assembly observed* (what actually exists). This is the state-space funnel $S \supset S_{\text{possible}} \supset S_{\text{contingent}} \supset S_{\text{observed}}$, where each level is a constraint. The action principle $\delta \int L \, dt = 0$ is precisely what selects $S_{\text{contingent}}$ from $S_{\text{possible}}$: only trajectories that extremize the action are realized. Cronin and Walker's claim that "information is in the path, not the initial conditions" is the action principle stated in different language.
 
-![Assembly space funnel: all possible configurations narrow through physical law constraints and action principle selection to the actually observed state](/docs/theory/images/assembly_funnel.svg)
+![Assembly space funnel: all possible configurations narrow through physical law constraints and action principle selection to the actually observed state](./images/assembly_funnel.svg)
 
 > [!sidenote]
 > *Note on status*: Assembly theory has been [criticized as equivalent to Lempel-Ziv compression](https://arxiv.org/abs/2403.06629) ([Jaeger 2024](https://doi.org/10.1007/s00239-024-10163-2)). Epimechanics uses its measurable quantities as operationalizations, not as foundational theory.
@@ -292,7 +292,7 @@ $$F = \frac{dp}{dt}$$
 
 where $p = \mathcal{M} \cdot \dot{X}$ is the generalized momentum.
 
-![Force deflects a trajectory through state space: momentum p along the tangent, force F at an angle, the actual path curving away from the undeflected trajectory](/docs/theory/images/force_and_momentum.svg)
+![Force deflects a trajectory through state space: momentum p along the tangent, force F at an angle, the actual path curving away from the undeflected trajectory](./images/force_and_momentum.svg)
 
 *The full expansion*: Because $\mathcal{M}$ is not generally constant - entities gain and lose internal structure over time - the force equation expands via the product rule:
 
@@ -304,7 +304,7 @@ The first term, $\mathcal{M}\ddot{X}$, is the familiar $F = ma$ - force equals m
 
 The second term, $\dot{\mathcal{M}}\dot{X}$, is the variable-mass contribution - well known in physics from [Tsiolkovsky's rocket equation](https://en.wikipedia.org/wiki/Tsiolkovsky_rocket_equation), where a rocket accelerates by expelling mass ($\dot{m} < 0$), and from any system where mass is gained or lost during motion. In the generalized case this term is the norm: entities routinely gain and lose internal causal structure while moving through state space. Losing internal structure while in motion ($\dot{\mathcal{M}} < 0$, $\dot{X} \neq 0$) is rocket-like - the entity accelerates even without additional external force. Gaining internal structure while in motion ($\dot{\mathcal{M}} > 0$, $\dot{X} \neq 0$) is the opposite - the entity decelerates as it accumulates causal density, like a snowball gathering mass on a slope.
 
-![Three trajectories diverging from the same initial state under the same force: constant mass (steady), gaining mass (decelerating), and losing mass (accelerating/unraveling)](/docs/theory/images/variable_mass_trajectories.svg)
+![Three trajectories diverging from the same initial state under the same force: constant mass (steady), gaining mass (decelerating), and losing mass (accelerating/unraveling)](./images/variable_mass_trajectories.svg)
 
 This term captures real phenomena:
 - A person in crisis ($\dot{X}$ large) who is simultaneously losing support structures ($\dot{\mathcal{M}} < 0$) accelerates through state space faster than external forces alone would predict. The "unraveling" effect - where losing structure causes faster change which causes further structure loss - is a positive feedback loop between $\dot{\mathcal{M}}$ and $\ddot{X}$.
@@ -344,7 +344,7 @@ $$W = \int F \cdot dX$$
 
 (the generalized work integral over state trajectory)
 
-![Energy landscape: potential V(X) with basins of attraction, an entity trajectory, and the decomposition into kinetic T, potential V, and internal energy](/docs/theory/images/energy_landscape.svg)
+![Energy landscape: potential V(X) with basins of attraction, an entity trajectory, and the decomposition into kinetic T, potential V, and internal energy](./images/energy_landscape.svg)
 
 *Kinetic and potential energy*: With generalized mass $\mathcal{M}$ defined, the two forms of energy separate cleanly:
 
@@ -502,7 +502,7 @@ Two entities with identical diagonal terms (same within-dimension sensitivity to
 
 This distinction is not captured by any scalar description. It is the tensor T that encodes the structure of vulnerability.
 
-![Coupling comparison: compartmentalized entity confines economic shock to one domain, while integrated entity cascades across domains](/docs/theory/images/coupling_comparison.svg)
+![Coupling comparison: compartmentalized entity confines economic shock to one domain, while integrated entity cascades across domains](./images/coupling_comparison.svg)
 
 Epimechanics immediately suggests measurable predictions: entities with high off-diagonal T in particular coupling channels should show correlated state changes across domains; interventions that reduce off-diagonal coupling (therapeutic compartmentalization, resilience training, social support networks) should reduce the cascade amplitude.
 
@@ -510,7 +510,7 @@ Epimechanics immediately suggests measurable predictions: entities with high off
 
 $$T: T_X^* S \to T_X S$$
 
-![The coupling tensor as a coordinate-free bilinear map: force covector input, tensor T maps it to response vector output; domain labels are a coordinate representation](/docs/theory/images/coupling_tensor_map.svg)
+![The coupling tensor as a coordinate-free bilinear map: force covector input, tensor T maps it to response vector output; domain labels are a coordinate representation](./images/coupling_tensor_map.svg)
 
 mapping force covectors (elements of the cotangent space - the direction and magnitude of an applied influence) to response vectors (elements of the tangent space - the direction and magnitude of the entity's state change). This is a tensor by definition - no approximation, no hedging. It is a $(1,1)$-tensor on $S$.
 
@@ -553,7 +553,7 @@ An economic incentive field is generated by the aggregate of all agents' supply,
 
 This mean-field construction explains why fields feel "given" from the perspective of any individual entity: each entity is one source among many, so the field it experiences is dominated by the contributions of all the others. The field changes slowly relative to any individual's actions - just as a single molecule in a gas does not noticeably change the pressure. This is the regime where the field description is valid. When individual entities are large enough to significantly alter the field (a monopolist in a market, a charismatic leader in a social movement), the mean-field approximation breaks down and the full many-body dynamics must be tracked.
 
-![Mean-field construction: entities generating the field they sit in - each radiates influence, the aggregate creates the potential landscape V(X)](/docs/theory/images/mean_field.svg)
+![Mean-field construction: entities generating the field they sit in - each radiates influence, the aggregate creates the potential landscape V(X)](./images/mean_field.svg)
 
 The field is real; entities in it are subject to forces whether or not they are aware of them. A fish in water is in a field. A person in a culture is in a field. The forces act regardless of the entity's model of them.
 
@@ -610,7 +610,7 @@ $$S_{\text{ent}} = -\int \rho(X) \ln \rho(X) \, dX$$
 
 **Phase transitions**: At critical parameter values, the macro-state changes qualitatively. Consensus → polarization. Stable market → crash. Peace → revolution. Liquid → gas. The sociophysics literature has documented these rigorously: [Galam, Gefen & Shapir (1982)](https://doi.org/10.1007/BF01012507) showed that opinion dynamics exhibit the same phase transition behavior as magnetic spin systems, with critical exponents, order parameters, and universality classes. [Castellano, Fortunato & Loreto (*Reviews of Modern Physics*, 2009)](https://doi.org/10.1103/RevModPhys.81.591) survey the field fully. Phase transitions in social state spaces are the same mathematical phenomenon (spontaneous symmetry breaking in a many-body system) occurring in a different state space.
 
-![Phase transition: order parameter (consensus) vs temperature (volatility), with early-warning signals diverging near the critical point](/docs/theory/images/phase_transition.svg)
+![Phase transition: order parameter (consensus) vs temperature (volatility), with early-warning signals diverging near the critical point](./images/phase_transition.svg)
 
 **Equation of state**: The relationship between $P$, $\mathcal{T}$, and $\rho$ constrains which macro-states are accessible. In an ideal gas, $PV = Nk_BT$. In a social system, the analogous equation of state relates the pressure of conformity to the temperature of behavioral volatility and the density of agents in state space. Deriving domain-specific equations of state is an open empirical challenge - but the structural prediction is that such relationships exist and are measurable.
 
@@ -642,7 +642,7 @@ This is the [Navier-Stokes equation](https://en.wikipedia.org/wiki/Navier%E2%80%
 
 The transition from laminar to turbulent flow at a critical Reynolds number is a universal phenomenon - it occurs in every fluid system, physical or abstract, that satisfies the Navier-Stokes structure. The prediction for social systems: there exists a measurable critical $Re$ above which orderly collective state change becomes turbulent. [Lorenz-Spreen et al. (*Nature Communications*, 2019)](https://doi.org/10.1038/s41467-019-09311-w), already cited in Part 4, documented that the attention dynamics of cultural content have been accelerating - which, in the fluid framework, corresponds to increasing the characteristic velocity $v$, which increases $Re$, which drives the system toward turbulence. The increasing unpredictability of cultural dynamics is, in Epimechanics, a Reynolds number effect.
 
-![Laminar vs turbulent flow through state space: orderly parallel streamlines at low Reynolds number vs chaotic crossing trajectories at high Reynolds number](/docs/theory/images/laminar_vs_turbulent.svg)
+![Laminar vs turbulent flow through state space: orderly parallel streamlines at low Reynolds number vs chaotic crossing trajectories at high Reynolds number](./images/laminar_vs_turbulent.svg)
 
 > [!sidenote]
 > *Note on the status of these equations*: The NS equations are derived from microscopic dynamics via Chapman-Enskog expansion. Whether local equilibrium holds in social/cognitive domains is an empirical question.
@@ -681,7 +681,7 @@ The transition from laminar to turbulent flow at a critical Reynolds number is a
 
 ### Concept Dependency
 
-![Concept dependency graph showing how every quantity in Epimechanics derives from the state variable X and generalized mass M, through the Lagrangian and action principle, to thermodynamics and fluid dynamics](/docs/theory/images/concept_dependency.svg)
+![Concept dependency graph showing how every quantity in Epimechanics derives from the state variable X and generalized mass M, through the Lagrangian and action principle, to thermodynamics and fluid dynamics](./images/concept_dependency.svg)
 
 Physics, understood abstractly, is the skeleton of metaphysics.
 

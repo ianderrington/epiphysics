@@ -17,10 +17,10 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 interface PageProps {
-  params: {
+  params: Promise<{
     section: string;
     slug: string[];
-  };
+  }>;
 }
 
 // Static params removed - using force-dynamic to avoid SSR issues with client components

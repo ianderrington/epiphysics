@@ -37,7 +37,7 @@ tts:
 
 ## 0. What This Document Is
 
-This is an **application** of the [Epimechanics framework](../index.md) to a single concept: robustness. It proposes that the ratio $E_{\text{disassembly}} / E_{\text{assembly}}$ — how hard something is to destroy relative to how hard it was to build — is a universal, domain-independent metric. Sections are tagged: **relabeling** (renaming known concepts), **structural** (predictions from the grammar), or **novel** (predictions that neither domain theory nor physics alone would generate).
+This is an **application** of the [Epimechanics framework](../theory/index.md) to a single concept: robustness. It proposes that the ratio $E_{\text{disassembly}} / E_{\text{assembly}}$ — how hard something is to destroy relative to how hard it was to build — is a universal, domain-independent metric. Sections are tagged: **relabeling** (renaming known concepts), **structural** (predictions from the grammar), or **novel** (predictions that neither domain theory nor physics alone would generate).
 
 ---
 
@@ -119,7 +119,7 @@ The robustness ratio $R$ is distinct from several related concepts:
 
 **Tag: structural, partially novel.**
 
-[Taleb (2012)](https://en.wikipedia.org/wiki/Antifragile_(book)) introduced antifragility as the property of systems that get stronger from stress. In the Epimechanics framework, this has a precise definition:
+[Taleb (2012)](https://en.wikipedia.org/wiki/Antifragile_%28book%29) introduced antifragility as the property of systems that get stronger from stress. In the Epimechanics framework, this has a precise definition:
 
 **Definition.** An entity is **antifragile** if:
 
@@ -236,14 +236,14 @@ This application imports from the Epimechanics series:
 
 It connects to:
 
-- [Assembly vs Growth](../../assembly-vs-growth.md) — construction as a process with measurable energy
+- [Assembly vs Growth](https://www.ian.ceo/musings/existence_physics_and_life/assembly-vs-growth) — construction as a process with measurable energy
 - [Entropy in the Household](./entropy_in_the_household.md) — the complementary maintenance perspective
 - [Future Cost of Decisions](./future_cost_of_decisions.md) — robustness of commitments
 - [Efficiency Limits](./efficiency_limits.md) — the Carnot ceiling as an analogous structural bound
 
 ---
 
-*This document is an application of the [Epimechanics framework](../index.md). The robustness ratio $R = E_{\text{disassembly}} / E_{\text{assembly}}$ is a testable metric. If pre-build $R$ estimates correlate with post-build resilience measurements, the framework has predictive content. If the fragile-at-scale prediction holds — if systems with $\partial R / \partial L < 0$ reliably fail at predictable scales — it has engineering value beyond relabeling.*
+*This document is an application of the [Epimechanics framework](../theory/index.md). The robustness ratio $R = E_{\text{disassembly}} / E_{\text{assembly}}$ is a testable metric. If pre-build $R$ estimates correlate with post-build resilience measurements, the framework has predictive content. If the fragile-at-scale prediction holds — if systems with $\partial R / \partial L < 0$ reliably fail at predictable scales — it has engineering value beyond relabeling.*
 
 ---
 

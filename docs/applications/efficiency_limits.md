@@ -41,7 +41,7 @@ tts:
 
 ## 0. What This Document Is
 
-This is an **application** of the [Epimechanics framework](../index.md) to a specific domain: organizational efficiency. It imports the framework's grammar - state, mass, force, energy, temperature, entropy, free energy, viscosity, Reynolds number - and fills it with organizational vocabulary. Its value depends entirely on whether it generates predictions that domain-specific management theory alone does not make. Sections are tagged: **relabeling** (renaming known concepts in thermodynamic language), **structural** (predictions that follow from the framework's grammar), or **novel** (predictions that neither management theory nor physics alone would generate).
+This is an **application** of the [Epimechanics framework](../theory/index.md) to a specific domain: organizational efficiency. It imports the framework's grammar - state, mass, force, energy, temperature, entropy, free energy, viscosity, Reynolds number - and fills it with organizational vocabulary. Its value depends entirely on whether it generates predictions that domain-specific management theory alone does not make. Sections are tagged: **relabeling** (renaming known concepts in thermodynamic language), **structural** (predictions that follow from the framework's grammar), or **novel** (predictions that neither management theory nor physics alone would generate).
 
 ---
 
@@ -71,7 +71,7 @@ where $\mathcal{T}_{\text{input}}$ characterizes the degree of order (low entrop
 
 ## 2. Waste Taxonomy: What Kind of Inefficiency?
 
-Management theory identifies many forms of organizational waste. Lean manufacturing lists seven ([Ohno, 1988](https://en.wikipedia.org/wiki/Muda_(Japanese_term))). The Epimechanics contribution, if it has one, is in *classifying* waste by thermodynamic type - because different thermodynamic quantities respond to different interventions.
+Management theory identifies many forms of organizational waste. Lean manufacturing lists seven ([Ohno, 1988](https://en.wikipedia.org/wiki/Muda_%28Japanese_term%29)). The Epimechanics contribution, if it has one, is in *classifying* waste by thermodynamic type - because different thermodynamic quantities respond to different interventions.
 
 ### 2.1 Unshared Knowledge = Unrecovered Heat
 
@@ -79,7 +79,7 @@ Management theory identifies many forms of organizational waste. Lean manufactur
 
 Knowledge that exists within an organization but is not accessible to those who need it is analogous to heat that has been generated but not recovered. The work was done; the energy was spent; the output (knowledge) exists - but it dissipates without doing useful work because it never reaches the point of application.
 
-This is the organizational version of [a light bulb in an empty closet](../../../lightbulb_in_a_closet.md): brilliance that lights nothing. The home cook who perfects a recipe but never shares it; the engineer who solves a problem but never documents the solution; the team that discovers a critical insight but has no channel to propagate it. The light is on. No one is in the room.
+This is the organizational version of [a light bulb in an empty closet](https://www.ian.ceo/musings/lightbulb_in_a_closet): brilliance that lights nothing. The home cook who perfects a recipe but never shares it; the engineer who solves a problem but never documents the solution; the team that discovers a critical insight but has no channel to propagate it. The light is on. No one is in the room.
 
 **Thermodynamic mapping:** Unshared knowledge is thermal energy at a temperature below the recovery threshold. A heat recovery system (knowledge management, documentation, cross-team communication) can recapture some of it - but only if the "temperature" of the unshared knowledge exceeds the "temperature" of the retrieval system's noise floor. Poorly organized wikis and overloaded Slack channels have high $\mathcal{T}_{\text{env}}$; the signal drowns in noise and recovery fails.
 
@@ -120,7 +120,7 @@ When $Re$ is low - small team, slow pace, high coordination - flow is laminar: p
 
 An organization or individual that accumulates knowledge, plans, prototypes, and designs but never ships is storing potential energy $V(X)$ without converting it to kinetic energy $K = \frac{1}{2}\mathcal{M}|\dot{X}|^2$. The energy is real - the work of preparation has been done - but no state change in the external world results.
 
-**Thermodynamic mapping:** The system sits in a potential well. The barrier to release (perfectionism, fear of criticism, approval bottlenecks) acts as an activation energy. Below the activation threshold, the stored energy decays thermally - the knowledge becomes stale, the market window closes, the prototype is obsoleted. This connects directly to the lightbulb problem: the [light is on in the closet](../../../lightbulb_in_a_closet.md), burning energy, and will eventually burn out.
+**Thermodynamic mapping:** The system sits in a potential well. The barrier to release (perfectionism, fear of criticism, approval bottlenecks) acts as an activation energy. Below the activation threshold, the stored energy decays thermally - the knowledge becomes stale, the market window closes, the prototype is obsoleted. This connects directly to the lightbulb problem: the [light is on in the closet](https://www.ian.ceo/musings/lightbulb_in_a_closet), burning energy, and will eventually burn out.
 
 ---
 
@@ -162,7 +162,7 @@ $$\mathcal{F} = E_{\text{total}} - \mathcal{T}_{\text{org}} \cdot S_{\text{org}}
 
 ## 4. Novel Predictions
 
-The litmus test from the [applications plan](../applications-plan.md): does the framework generate a prediction that domain-specific management theory alone does NOT make? If not, it is relabeling. The following are candidates for genuinely novel predictions.
+The litmus test from the [applications plan](./index.md): does the framework generate a prediction that domain-specific management theory alone does NOT make? If not, it is relabeling. The following are candidates for genuinely novel predictions.
 
 ### 4.1 Prediction: Structural Efficiency Ceiling
 
@@ -255,8 +255,8 @@ This application imports from the Epimechanics series:
 
 It connects to:
 
-- [A Light Bulb in an Empty Closet](../../../lightbulb_in_a_closet.md) - the problem of unshared knowledge as wasted energy, the original motivation for the "unrecovered heat" mapping
-- The [AI scaling application](../applications-plan.md) (planned) - which faces the same measurement problem (what is temperature for a neural network?) and the same relabeling risk
+- [A Light Bulb in an Empty Closet](https://www.ian.ceo/musings/lightbulb_in_a_closet) - the problem of unshared knowledge as wasted energy, the original motivation for the "unrecovered heat" mapping
+- The [AI scaling application](./index.md) (planned) - which faces the same measurement problem (what is temperature for a neural network?) and the same relabeling risk
 
 ---
 
@@ -274,4 +274,4 @@ The weakest link is measurement: until generalized temperature, entropy, and fre
 
 ---
 
-*This document is an application of the [Epimechanics framework](../index.md). It provides grammar; organizational science provides vocabulary. Its predictions are testable. If they hold, the thermodynamic formalization has empirical content. If they fail, it is relabeling.*
+*This document is an application of the [Epimechanics framework](../theory/index.md). It provides grammar; organizational science provides vocabulary. Its predictions are testable. If they hold, the thermodynamic formalization has empirical content. If they fail, it is relabeling.*

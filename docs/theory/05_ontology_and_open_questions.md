@@ -62,7 +62,7 @@ What follows is a full definitional glossary. Every concept in the series is res
 
 ### Ontology Map
 
-![Full ontology map across all six parts: Mechanics, Many-Entity, Entities, and Time and Soul, showing concept dependencies between groups](/docs/theory/images/ontology_map.svg)
+![Full ontology map across all six parts: Mechanics, Many-Entity, Entities, and Time and Soul, showing concept dependencies between groups](./images/ontology_map.svg)
 
 ---
 
@@ -244,7 +244,7 @@ What distinguishes a *good* representation from a bad one is not whether it has 
 This connects to established results from multiple fields:
 
 - [Minimum Description Length (Rissanen, 1978)](https://doi.org/10.1214/aos/1176344611): the best model compresses data most efficiently
-- [Rate-distortion theory (Shannon, 1959)](https://doi.org/10.1109/TIT.1959.1055721): the optimal tradeoff between compression and accuracy
+- [Rate-distortion theory (Shannon, 1959)](https://ieeexplore.ieee.org/document/5311476): the optimal tradeoff between compression and accuracy
 - [Renormalization group (Wilson, 1971)](https://doi.org/10.1103/PhysRevB.4.3174): finding the relevant degrees of freedom at each scale
 - [Causal emergence (Hoel et al., 2013)](https://doi.org/10.1073/pnas.1314922110): the macro description that maximizes effective information
 - [Free Energy Principle (Friston, 2010)](https://doi.org/10.1038/nrn2787): organisms minimize a bound on surprise - a compression objective
@@ -526,7 +526,7 @@ Track $Re$ over time for multiple communities. Predict that above a threshold $R
 
 ### 4.3 Governance and Policy Utility
 
-![Early warning dashboard: measurable thermodynamic quantities feed risk assessment, which informs intervention strategies - cooling, pressure release, viscosity adjustment, and institutional reinforcement](/docs/theory/images/early_warning_dashboard.svg)
+![Early warning dashboard: measurable thermodynamic quantities feed risk assessment, which informs intervention strategies - cooling, pressure release, viscosity adjustment, and institutional reinforcement](./images/early_warning_dashboard.svg)
 
 **P10. Landscape vs. force interventions.** The Lagrangian framework implies two fundamentally different intervention strategies: applying force $F$ (direct persuasion, mandates, incentives, enforcement) vs. reshaping the potential landscape $V(X)$ (institutional redesign, norm engineering, information environment restructuring). Epimechanics predicts that landscape interventions are more efficient for lasting change - they move the attractor, so entities naturally flow toward the new equilibrium - while force interventions require continuous application and produce reversion when removed.
 
