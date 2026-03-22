@@ -26,11 +26,13 @@ bullets:
   - Diamond (very high ratio), sandcastle (very low ratio), well-designed bridge (moderate), badly designed bridge (low despite high assembly cost)
   - "Antifragility = ratio increases under stress — the entity gets stronger from perturbation"
   - "Novel predictions: pre-build robustness estimation, fragile-at-scale detection"
+coverImage: ./images/robustness_metric-1-1.png
 tts:
   enabled: true
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## 0. What This Document Is

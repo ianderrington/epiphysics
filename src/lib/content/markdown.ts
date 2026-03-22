@@ -128,6 +128,7 @@ export interface PostMetadata {
     voice?: string;
     voices?: string[]; // Array of voices to show in dropdown
     speed?: number;
+    instructions?: string; // Voice tone/style instructions (uses gpt-4o-mini-tts)
     enableSpeed?: boolean; // Show speed control
     enableProgress?: boolean; // Show progress bar
     apiUrl?: string;

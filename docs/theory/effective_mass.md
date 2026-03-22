@@ -21,11 +21,13 @@ tags:
   - Foundations
   - Effective mass
   - Causal structure
+coverImage: ./images/effective_mass-1-1.png
 tts:
   enabled: true
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 > **Context.** This document extends the [Structural Primitives](./00_atomic_structure.md) (Part 0.5) by showing how the medium modifies an entity's measured inertia. For the general mechanical framework, see [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).

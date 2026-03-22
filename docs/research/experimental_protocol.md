@@ -8,13 +8,14 @@ author:
   name: "Epiphysics"
 contentType: article
 coverImage:
-  url: /images/default-projects.jpg
+  url: ./images/experimental_protocol-1-1.png
   alt: "Experimental protocols"
 tts:
   enabled: true
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 # Experimental Protocol

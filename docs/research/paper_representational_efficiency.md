@@ -18,11 +18,13 @@ tags:
   - Lagrangian mechanics
   - Rate-distortion
   - Representational efficiency
+coverImage: ./images/paper_representational_efficiency-1-1.png
 tts:
   enabled: true
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 # Representational Efficiency: Why Optimal Description Has Lagrangian Structure
@@ -34,6 +36,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## Abstract
@@ -45,6 +48,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## 1. Introduction
@@ -64,6 +68,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## 2. Definitions
@@ -111,6 +116,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## 3. Theorem: Minimum-Complexity Kinetic Energy
@@ -194,6 +200,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## 4. The Lagrangian Compression Argument
@@ -236,6 +243,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## 5. The Perturbative Hierarchy
@@ -286,6 +294,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## 6. The Irreversible Case
@@ -325,6 +334,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## 7. Empirical Testing Program
@@ -403,6 +413,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## 8. Discussion
@@ -457,6 +468,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## References

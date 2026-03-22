@@ -15,6 +15,7 @@ import { PersonSchema, WebSiteSchema } from '@/components/seo';
 // AIChat disabled - no LLM budget allocated for supernal interface chat
 // import { AIChat } from '@/components/chat/AIChat';
 import TTSInit from '@/components/TTSInitializer';
+import FontSizeControl from '@/components/FontSizeControl';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -72,6 +73,7 @@ export default async function RootLayout({
           </Providers>
         </div>
         <TTSInit />
+        <FontSizeControl />
       </body>
     </html>
   );

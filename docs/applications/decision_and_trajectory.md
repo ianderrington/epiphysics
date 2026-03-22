@@ -15,7 +15,7 @@ mediaTypes:
 series: "Epimechanics"
 series_order: 6
 coverImage:
-  url: ../images/physics_as_metaphysics_06_decision_and_trajectory-1-1.png
+  url: ./images/decision_and_trajectory-1-1.png
   alt: >-
     An entity at a branching point in state space, with probabilistic trajectories fanning outward
     as translucent paths of varying brightness. A partial fog obscures distant regions of the landscape -
@@ -50,6 +50,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 [Parts 1](../theory/01_generalized_mechanics.md) through [5](../theory/05_ontology_and_open_questions.md) built Epimechanics: entities, forces, intelligence, consciousness, agency, and soul. But Epimechanics, as stated, is primarily *descriptive* - it characterizes what entities are, how they couple to fields, and what they leave behind. It does not yet formalize how entities *choose*. An entity with nonzero agency ($A > 0$) selects actions, rather than passively responding to forces. The selection process is not captured by the force equation $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$ alone, because that equation describes the *result* of forces on state trajectories, not the *generation* of forces by agents operating under uncertainty.

@@ -17,11 +17,13 @@ tags:
   - Lagrangian mechanics
   - Rate-distortion
   - Proofs
+coverImage: ./images/rate_distortion_lagrangian-1-1.png
 tts:
   enabled: true
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## The Problem
@@ -39,6 +41,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## Definition: Predictive Cost $C$
@@ -64,6 +67,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## The Six-Step Argument
@@ -95,6 +99,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## Theorem (Minimum-Complexity Kinetic Energy)
@@ -195,6 +200,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## Perturbative Analysis: What Higher-Order Terms Do
@@ -245,6 +251,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## The Irreversible Case: The Remaining Open Problem
@@ -290,6 +297,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## Completing the Five-Step Argument
@@ -316,6 +324,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## Empirical Testing Program (Epiphysics)
@@ -412,6 +421,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ### Summary: What Would Constitute Proof or Disproof
@@ -433,6 +443,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## Significance

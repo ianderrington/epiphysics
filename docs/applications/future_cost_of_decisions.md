@@ -27,11 +27,13 @@ bullets:
   - "True cost = assembly cost + integral of maintenance cost over expected duration"
   - "Buying a house, having a child, taking a job: each analyzed as entity creation with distinct thermodynamic signatures"
   - "The coupling tensor T^i_j explains how stress in one commitment propagates into others"
+coverImage: ./images/future_cost_of_decisions-1-1.png
 tts:
   enabled: true
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## 0. What This Document Is

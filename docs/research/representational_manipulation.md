@@ -16,11 +16,13 @@ tags:
   - Information theory
   - Representational fields
   - Survival
+coverImage: ./images/representational_manipulation-1-1.png
 tts:
   enabled: true
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## The Structural Vulnerability
@@ -34,6 +36,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## Propaganda as Field Manipulation
@@ -47,6 +50,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## Information Pollution as Entropy Injection
@@ -60,6 +64,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## Why This Matters for Survival
@@ -88,6 +93,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## Connected Posts

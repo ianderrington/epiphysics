@@ -45,6 +45,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 [Part 1](./01_generalized_mechanics.md) established the skeleton: an entity is anything with a describable state - anything you can assign an $X$ to - and auto-causal density $\rho_{\text{ac}}$ measures how strongly it sustains itself. A *strong* entity is a structure with high auto-causal density $\rho_{\text{ac}}$. Its generalized mass $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ measures total causal content, its momentum is $p = \mathcal{M}\dot{X}$, and it is subject to forces $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$. Entities differ in how strongly they couple to various domains - captured by a scalar $\kappa$ or a coupling tensor $T^i{}_j$. Fields $\Phi(x)$ assign force values across domains; entities at different positions experience different forces even with identical coupling structure.

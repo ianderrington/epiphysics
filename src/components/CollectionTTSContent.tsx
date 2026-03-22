@@ -18,6 +18,7 @@ interface CollectionTTSContentProps {
     voices?: string[];
     provider?: string;
     speed?: number;
+    instructions?: string;
     enableSpeed?: boolean;
     enableProgress?: boolean;
   };
@@ -70,6 +71,7 @@ export default function CollectionTTSContent({
       data-voices={tts?.voices?.join(',')}
       data-provider={tts?.provider}
       data-speed={tts?.speed}
+      data-instructions={tts?.instructions}
       data-enable-speed={tts?.enableSpeed ? 'true' : undefined}
       data-enable-progress={tts?.enableProgress ? 'true' : undefined}
     >
