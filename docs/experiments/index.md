@@ -42,3 +42,7 @@ See the [full experimental protocol](./README.md) and the [research note on rate
 
 - [TP Bridge Report: Instrumentation, Results, and Readiness](./tp_bridge_report.md) — visual report of the current TP-bridge measurement stack, outputs, and next-step readiness.
 - [Public Validation Report: TP Bridge Experimental Progress](./tp_bridge_public_validation_report.md) — consolidated progress/results report for public demonstration of corrected computational regimes.
+
+## Near-Daily Experiment Stream
+
+- [Daily Optimization Log (Karpathy Loop)](./blog/index.md) — near-daily hypothesis-test-interpret-next-step entries to compound optimization understanding.
