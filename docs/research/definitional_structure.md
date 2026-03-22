@@ -10,6 +10,11 @@ author:
   name: "Ian Derrington"
 contentType: article
 series: "Epimechanics"
+coverImage:
+  url: ./images/definitional_structure.png
+  alt: >-
+    Formal dependency architecture of the seven core definitions with graph and
+    categorical motifs in blueprint style.
 tags:
   - Epimechanics
   - Foundations

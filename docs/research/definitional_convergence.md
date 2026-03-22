@@ -10,6 +10,11 @@ author:
   name: "Ian Derrington"
 contentType: article
 series: "Epimechanics"
+coverImage:
+  url: ./images/definitional_convergence.png
+  alt: >-
+    Directed graph of Epimechanics definitions collapsing to a golden-ratio fixed point,
+    rendered as a luminous network over a dark technical background.
 tags:
   - Epimechanics
   - Foundations

@@ -10,6 +10,11 @@ author:
   name: "Ian Derrington"
 contentType: article
 series: "Epimechanics"
+coverImage:
+  url: ./images/self_multiplication.png
+  alt: >-
+    State acting on itself through recursive tensor operators, visualized as
+    nested feedback loops and transformation fields.
 tags:
   - Epimechanics
   - Self-multiplication

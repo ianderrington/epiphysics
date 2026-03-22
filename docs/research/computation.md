@@ -12,6 +12,11 @@ author:
   name: "Ian Derrington"
 contentType: article
 series: "Epimechanics"
+coverImage:
+  url: ./images/computation.png
+  alt: >-
+    Conceptual map of computation to representation to information to prediction,
+    shown as layered causal loops in a dark blueprint style.
 tags:
   - Epimechanics
   - Computation
@@ -85,7 +90,7 @@ Computation has thermodynamic cost because real-world representing involves irre
 
 ### Constructor Theory
 
-[Deutsch & Marletto (2013, 2015)](https://doi.org/10.1007/s10701-014-9848-2) define computation through constructors: systems that perform a task and retain the ability to perform it again. Constructors are high-$\rho_{\text{ac}}$ entities whose computation is reliable and repeatable.
+[Deutsch & Marletto (2013, 2015)](https://royalsocietypublishing.org/doi/10.1098/rspa.2014.0540) define computation through constructors: systems that perform a task and retain the ability to perform it again. Constructors are high-$\rho_{\text{ac}}$ entities whose computation is reliable and repeatable.
 
 Constructor Theory defines computation counterfactually (what transformations are possible); Epimechanics defines it dynamically (what happens). These are complementary perspectives.
 
@@ -99,7 +104,7 @@ The Church-Turing thesis concerns universal computation — the class of functio
 
 ### Kolmogorov Complexity
 
-Good representations compress the data-generating process into fewer variables — short descriptions. [Kolmogorov complexity](https://doi.org/10.1016/S0019-9958(65)90362-8) formalizes minimal description length. Representations that compress well are precisely those that track causal structure, aligning Kolmogorov compression with high predictive information.
+Good representations compress the data-generating process into fewer variables — short descriptions. [Kolmogorov complexity](https://doi.org/10.1016/S0019-9958%2864%2990223-2) formalizes minimal description length. Representations that compress well are precisely those that track causal structure, aligning Kolmogorov compression with high predictive information.
 
 ### Autopoiesis
 
