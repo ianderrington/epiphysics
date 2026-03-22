@@ -21,11 +21,28 @@ feedback:
   enabled: true
 ---
 
-## Hypothesis (today)
+## Daily Decision Stack
 
-If we preserve a fixed metric contract while increasing experiment complexity, we can detect meaningful optimization-regime transitions early and reproducibly.
+### 1) Priority
 
-## Setup
+1. Preserve metric contract while increasing experiment complexity.
+2. Verify that regime signals remain interpretable across architectures.
+3. Publish results in report-ready format (images + plain English).
+
+### 2) Evaluation
+
+- Hypothesis: if metric contract is preserved across complexity steps, we can detect regime transitions reproducibly.
+- Success criteria:
+  - all four metrics reported in each run,
+  - at least one interpretable regime shift,
+  - public-facing report artifact produced.
+- Failure criteria:
+  - missing metrics,
+  - contradictory/unstable signals with no interpretable cause,
+  - no publishable artifact.
+
+### 3) Action
+
 
 Progression executed today:
 
@@ -48,13 +65,21 @@ Core metric contract was preserved in all runs:
 | Residual architecture run | 0.2745 | 0.6203 | 0.0147 | -0.4817 |
 | Seq-mixer architecture run | 0.0644 | 0.2914 | 0.0036 | +0.0279 |
 
-## Result
+### 4) Result
 
 **Mixed (productive).**
 
 - Positive: instrumentation stayed consistent while model complexity increased.
 - Positive: non-frozen dynamics are detectable across settings.
 - Caution: transfer quality is not uniformly positive once architecture changes.
+- Decision: **promote** instrumentation pipeline, **iterate** on architecture-realistic validation.
+
+## PR / publication tracking
+
+- Commits: `d62ad21`, `193afab`, `92a872c`, `31dbd99`, `f95abd9`
+- Report pages:
+  - `docs/experiments/tp_bridge_report.md`
+  - `docs/experiments/tp_bridge_public_validation_report.md`
 
 ## What this means (plain English)
 

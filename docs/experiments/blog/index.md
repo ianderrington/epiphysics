@@ -42,6 +42,18 @@ Each entry includes:
 - What this means
 - Next experiment (one actionable step)
 
+## Operating format (daily)
+
+Every day uses this stack:
+
+1. **Priority** (ranked options)
+2. **Evaluation** (hypothesis + pass/fail criteria)
+3. **Action** (runs/changes executed)
+4. **Result** (metrics + plain-English interpretation + decision)
+
+Template:
+- [Daily Loop Template](./DAILY_LOOP_TEMPLATE.md)
+
 ## Entries
 
 - [2026-03-21 — Bootstrapping the TP Bridge Validation Loop](./2026-03-21_tp-bridge-bootstrap.md)
