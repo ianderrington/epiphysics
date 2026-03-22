@@ -26,11 +26,13 @@ bullets:
   - "Free energy F = E - TS: how much of your effort actually accomplishes something vs. fights entropy"
   - A minimum maintenance energy threshold below which entropy wins unconditionally
   - Cheap materials and shallow stability basins raise the entropy production rate and lower the threshold
+coverImage: ./images/entropy_in_the_household-1-1.png
 tts:
   enabled: true
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 ## 0. What This Document Is

@@ -449,6 +449,7 @@ export default function PostComponent({ post }: PostComponentProps) {
           data-voices={post.metadata.tts?.voices?.join(',')}
           data-provider={post.metadata.tts?.provider}
           data-speed={post.metadata.tts?.speed}
+          data-instructions={post.metadata.tts?.instructions}
           data-enable-speed={post.metadata.tts?.enableSpeed ? 'true' : undefined}
           data-enable-progress={post.metadata.tts?.enableProgress ? 'true' : undefined}
         >

@@ -24,6 +24,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 > **Status: Draft.** These applications are written but not empirically validated. Each needs domain-specific data to test its predictions.

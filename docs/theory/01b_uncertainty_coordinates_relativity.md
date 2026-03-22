@@ -48,6 +48,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 [Part 1](./01_generalized_mechanics.md) established the skeleton: $X \in S$, $\dot{X}$, $\mathcal{M}$, $p = \mathcal{M}\dot{X}$, $F$, $W$, $\kappa$, $T^i{}_j$, $\Phi$. It presented this in its clean, deterministic form - the mean-field limit, as physicists call it. But three structural complications arise immediately when Epimechanics is applied to social, psychological, and informational domains. Each of these complications has a precise analogue in fundamental physics. And in each case, the physics analogy suggests the correct formal treatment.

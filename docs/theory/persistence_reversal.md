@@ -22,11 +22,13 @@ tags:
   - Persistence
   - Life transition
   - Causal structure
+coverImage: ./images/persistence_reversal-1-1.png
 tts:
   enabled: true
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 > **Context.** This document extends the [Structural Primitives](./00_atomic_structure.md) (Part 0.5). For the thermodynamic emergence of life, see [Part 1c](./01c_thermodynamic_emergence_of_life.md). For meta-entities and when aggregates earn entity status, see [Part 2](./02_meta_entities.md). For representational manipulation as an attack on repair mechanisms, see the [Representational Manipulation](../research/representational_manipulation.md) research note.

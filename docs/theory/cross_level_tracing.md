@@ -22,11 +22,13 @@ tags:
   - Coarse-graining
   - Multi-scale
   - Causal structure
+coverImage: ./images/cross_level_tracing-1-1.png
 tts:
   enabled: true
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 > **Context.** This document extends the [Structural Primitives](./00_atomic_structure.md) (Part 0.5). For the mechanical grammar, see [Part 1: Generalized Mechanics](./01_generalized_mechanics.md). For the Representational Efficiency principle, see [Part 5](./05_ontology_and_open_questions.md).

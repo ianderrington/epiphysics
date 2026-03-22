@@ -48,6 +48,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 We have mechanics, entity-criteria, and behavioral properties. We know how to identify an entity in state space $X$, how it exerts forces on other entities, how intelligence and consciousness and agency characterize its inner life. The final question about any entity is not what it does or knows, but what it *is* across time - and what it *leaves*.

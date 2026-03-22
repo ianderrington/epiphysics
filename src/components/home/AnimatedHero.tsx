@@ -255,7 +255,7 @@ const AnimatedHero = ({
   return (
     <div className="relative w-full overflow-hidden m-0 p-0">
       {/* Hero Section */}
-      <div className="relative h-auto min-h-screen w-full overflow-hidden m-0 p-0">
+      <div className="relative min-h-screen w-full overflow-hidden m-0 p-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40 z-[1]" />
         
         {/* Dynamic background based on style */}
@@ -287,7 +287,7 @@ const AnimatedHero = ({
         )}
 
         {/* Hero Content */}
-        <div className="absolute inset-0 z-[2] flex items-center justify-center py-8" style={{ paddingTop: '4rem' }}>
+        <div className="relative sm:absolute sm:inset-0 z-[2] flex items-start sm:items-center justify-center pt-4 pb-10 sm:pb-8 sm:pt-16">
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:-mt-48">
             <div className="text-center welcome-text">
               {title && (
@@ -307,7 +307,7 @@ const AnimatedHero = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-                className="mt-6 text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 font-medium max-w-4xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
+                className="mt-3 sm:mt-6 text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 font-medium max-w-4xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
               >
                 {description}
               </motion.p>
@@ -318,7 +318,7 @@ const AnimatedHero = ({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-                  className="mt-6 sm:mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto px-3 w-full"
+                  className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-4 gap-3 sm:gap-6 max-w-md sm:max-w-6xl mx-auto px-1 sm:px-3 w-full"
                 >
                   {quick_links.map((link, index) => {
                     // Define background images for each section
@@ -346,7 +346,7 @@ const AnimatedHero = ({
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                        className="aspect-square w-full"
+                        className="h-44 sm:h-auto sm:aspect-square w-full"
                       >
                         <Link
                           href={link.link}
@@ -366,18 +366,18 @@ const AnimatedHero = ({
                           </div>
 
                           {/* Watermark Icon */}
-                          <div className="absolute top-3 right-3 text-white text-xl font-bold bg-black/40 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm">
+                          <div className="absolute top-2 right-2 sm:top-3 sm:right-3 text-white text-base sm:text-xl font-bold bg-black/40 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center backdrop-blur-sm">
                             {getWatermarkIcon(link.type)}
                           </div>
 
                           {/* Content */}
-                          <div className="relative h-full flex items-center justify-center p-4 sm:p-5 text-white">
+                          <div className="relative h-full flex items-center justify-center p-3 sm:p-5 text-white">
                             <div className="text-center">
-                              <div className="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight text-white drop-shadow-lg">
+                              <div className="text-2xl sm:text-2xl lg:text-3xl font-bold leading-tight text-white drop-shadow-lg">
                                 {link.title}
                               </div>
                               {link.description && (
-                                <div className="text-xs sm:text-sm text-white/70 mt-2 drop-shadow">
+                                <div className="text-base sm:text-sm text-white/70 mt-1 sm:mt-2 drop-shadow leading-snug">
                                   {link.description}
                                 </div>
                               )}

@@ -47,6 +47,7 @@ tts:
   provider: openai
   voice: onyx
   enableSpeed: true
+  enableProgress: true
 ---
 
 [Parts 1](./01_generalized_mechanics.md) through [4](./04_time_and_soul.md) (including [Part 1b](./01b_uncertainty_coordinates_relativity.md)) introduced the machinery piece by piece: generalized mechanics and its structural complications, meta-entities, intelligence and consciousness and agency, local and non-local time, and soul. Each piece was developed in isolation so its logic could be examined on its own terms. The purpose of this final part is to assemble them into a single formal system, state the complete ontology in one place, and then be honest about what remains open.
