@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { BlogContext } from '@/app/providers';
@@ -31,6 +31,10 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
   const pathname = usePathname();
   const [currentUrl, setCurrentUrl] = useState('');
   const [isMounted, setIsMounted] = useState(false);
+  const [subNavItems, setSubNavItems] = useState<Array<{ href: string; title: string }>>([]);
+  const [showSubNav, setShowSubNav] = useState(true);
+  const lastScrollYRef = useRef(0);
+  const upScrollCountRef = useRef(0);
   const { isOpen, toggleMenu, closeMenu, isMobile } = useMobileMenu();
 
   // Set mounted state for portal rendering
@@ -48,6 +52,87 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
     }
   }, [pathname]);
 
+  // Build subsection nav (auto-generated from posts API)
+  useEffect(() => {
+    const run = async () => {
+      if (!currentSection || !isMounted) {
+        setSubNavItems([]);
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/posts');
+        if (!res.ok) return;
+        const posts: Array<{ slug: string; title: string }> = await res.json();
+
+        const inSection = posts.filter((p) => p.slug.startsWith(`${currentSection}/`));
+        const directDocs = inSection.filter((p) => {
+          const rel = p.slug.slice(currentSection.length + 1);
+          return rel && !rel.includes('/') && rel !== 'index';
+        });
+
+        const folderNames = new Set<string>();
+        inSection.forEach((p) => {
+          const rel = p.slug.slice(currentSection.length + 1);
+          if (!rel || rel === 'index') return;
+          const first = rel.split('/')[0];
+          if (first && first !== 'index') folderNames.add(first);
+        });
+
+        const folderItems = Array.from(folderNames)
+          .filter((name) => !directDocs.find((d) => d.slug === `${currentSection}/${name}`))
+          .map((name) => {
+            const exact = inSection.find((p) => p.slug === `${currentSection}/${name}`);
+            const indexLike = inSection.find((p) => p.slug === `${currentSection}/${name}/index`);
+            return {
+              href: `/${currentSection}/${name}`,
+              title: exact?.title || indexLike?.title || name.replace(/[-_]/g, ' '),
+            };
+          });
+
+        const docItems = directDocs.map((d) => ({
+          href: `/${d.slug}`,
+          title: d.title,
+        }));
+
+        const merged = [...docItems, ...folderItems]
+          .filter((item) => item.href !== `/${currentSection}`)
+          .sort((a, b) => a.title.localeCompare(b.title));
+
+        setSubNavItems(merged);
+      } catch {
+        // silent fallback
+      }
+    };
+
+    run();
+  }, [currentSection, isMounted]);
+
+  // Mobile: hide subsection row on downward scroll; show after two upward scroll intents
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastScrollYRef.current;
+
+      if (delta > 6) {
+        upScrollCountRef.current = 0;
+        setShowSubNav(false);
+      } else if (delta < -6) {
+        upScrollCountRef.current += 1;
+        if (upScrollCountRef.current >= 2) {
+          setShowSubNav(true);
+        }
+      }
+
+      lastScrollYRef.current = y;
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [isMobile]);
+
   // Close modals when route changes and notify parent
   React.useEffect(() => {
     setShowQRCode(false);
@@ -59,6 +144,12 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
   useEffect(() => {
     onMenuToggle?.(isOpen);
   }, [isOpen, onMenuToggle]);
+
+  // Reset subsection row visibility on navigation
+  useEffect(() => {
+    setShowSubNav(true);
+    upScrollCountRef.current = 0;
+  }, [pathname]);
 
   // Add keyboard event handler for ESC key
   React.useEffect(() => {
@@ -315,6 +406,44 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
             })}
           </nav>
         </div>
+
+        {/* Mobile subsection switcher (auto-generated from current section content) */}
+        {currentSection && subNavItems.length > 0 && (
+          <div
+            className={`md:hidden border-t border-gray-200 dark:border-gray-800 px-2 py-2 overflow-x-auto transition-all duration-200 ${
+              showSubNav ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0 py-0 border-t-0'
+            }`}
+          >
+            <nav className="flex items-center gap-2 min-w-max" aria-label="Subsection navigation">
+              <Link
+                href={`/${currentSection}`}
+                className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                  pathname === `/${currentSection}`
+                    ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300'
+                    : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
+                }`}
+              >
+                Overview
+              </Link>
+              {subNavItems.map((item) => {
+                const isActive = pathname === item.href || pathname?.startsWith(`${item.href}/`);
+                return (
+                  <Link
+                    key={`sub-${item.href}`}
+                    href={item.href}
+                    className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                      isActive
+                        ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300'
+                        : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
+                    }`}
+                  >
+                    {item.title}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Render modals via portal to avoid DOM nesting issues */}
