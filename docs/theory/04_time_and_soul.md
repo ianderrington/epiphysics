@@ -97,6 +97,44 @@ Consider a religion. Its substrates include: practicing communities, texts, inst
 
 The eigenvalue formulation captures the essential insight: a meta-entity persists as long as its *weakest coupling link* remains above the decoupling threshold. The minimum eigenvalue measures the most fragile connection in the network of substrates. When that fails, the entity dissolves - even if other, stronger couplings remain.
 
+### (d) Causal Action: The Temporal Integral of Self-Sustaining Structure
+
+$T_{\text{local}}$ measures *duration* — how long the auto-causal loop persists. But duration alone doesn't capture total causal presence. An entity with high auto-causal mass $\mathcal{M}_{\text{ac}}$ persisting for a short time may have more total causal presence than an entity with low $\mathcal{M}_{\text{ac}}$ persisting longer.
+
+**Causal action** is the temporal integral:
+
+$$A_{\text{causal}}(E) = \int_0^{T_{\text{local}}} \mathcal{M}_{\text{ac}}(E, t) \, dt$$
+
+This has units of **J·s** — energy × time — the same units as physical action $S = \int L \, dt$ and Planck's constant ℏ. The dimensional correspondence is structural: the principle of least action ($\delta S = 0$) selects which *trajectories* through state space are realized; causal action measures which *entities* accumulate the most self-sustaining presence over their lifetimes.
+
+**Why this matters: Fitness versus Fitness×Truth.**
+
+[Hoffman (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) demonstrated that evolutionary selection favors fitness-tuned interfaces over truth-tracking ones. Organisms perceive what's useful for survival, not what's objectively real. The desktop icon doesn't resemble the magnetic patterns on the disk — it doesn't need to.
+
+But fitness *alone* produces bounded $T_{\text{local}}$. A strategy that achieves high instantaneous $\mathcal{M}_{\text{ac}}$ by exploiting a resource without tracking its causal structure will eventually collide with reality's constraints.
+
+**Example: Nitrogen and the Haber Process.**
+
+Before 1909, agricultural productivity was limited by nitrogen availability. Guano mining and Chilean nitrate deposits enabled population growth — high instantaneous $\mathcal{M}_{\text{ac}}$ for the civilizations that exploited them. But these were finite resources. The fitness-only strategy was decoupled from the causal reality of nitrogen's atmospheric abundance. $T_{\text{local}}$ was bounded by resource exhaustion; a Malthusian crisis loomed.
+
+The Haber-Bosch process changed this. By synthesizing ammonia from atmospheric nitrogen ($\text{N}_2 + 3\text{H}_2 \to 2\text{NH}_3$), Fritz Haber coupled fitness to truth — the atmosphere is 78% nitrogen, effectively unlimited. This extended $T_{\text{local}}$ dramatically. The same population ($\mathcal{M}_{\text{ac}}$) could now be sustained indefinitely, yielding vastly higher $A_{\text{causal}}$.
+
+**The general principle:**
+
+$$A_{\text{causal}}^{\text{fitness} \times \text{truth}} \gg A_{\text{causal}}^{\text{fitness alone}}$$
+
+Strategies that achieve high $\mathcal{M}_{\text{ac}}$ by decoupling from causal structure have bounded $T_{\text{local}}$. Strategies that couple fitness to truth — that work *with* causal structure rather than against it — sustain $\mathcal{M}_{\text{ac}}$ longer.
+
+Over sufficiently long timescales, selection favors high $A_{\text{causal}}$, which means selection favors fitness×truth. This resolves an apparent paradox: if fitness beats truth in short-term competition, why does science (a truth-tracking enterprise) persist? Because science is a meta-strategy that couples fitness to truth at the civilizational level. Civilizations that adopt scientific epistemology extend their $T_{\text{local}}$ by avoiding collisions with causal reality. Over millennia, fitness×truth dominates.
+
+| Strategy | $\mathcal{M}_{\text{ac}}$ | $T_{\text{local}}$ | $A_{\text{causal}}$ | Example |
+|---|---|---|---|---|
+| Fitness alone | High | Bounded | Moderate | Guano-dependent agriculture |
+| Fitness×truth | High | Extended | High | Haber-enabled agriculture |
+| Truth alone | Low | Unbounded | Low | Pure mathematics with no applications |
+
+The sweet spot is fitness×truth: strategies that are both effective (high $\mathcal{M}_{\text{ac}}$) and sustainable (long $T_{\text{local}}$).
+
 ---
 
 ## Section 2: Non-Local Time and the Representational Footprint $R(E,t)$

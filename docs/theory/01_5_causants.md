@@ -300,6 +300,7 @@ The six causants combine to produce the framework's higher-level concepts:
 | Derived Quantity | Causant Composition | What It Means |
 |---|---|---|
 | **Causal power** $\mathcal{P}$ | $\mathbf{F} \cdot \mathbf{v}$ (force × velocity) | Rate of work on state trajectories; normalized by mass gives Chaisson's $\dot{\varepsilon}_m$ |
+| **Causal action** $A_{\text{causal}}$ | $\int_0^{T_{\text{local}}} \mathcal{M}_{\text{ac}}(t) \, dt$ | Total self-sustaining structure over lifetime; units of J·s (same as physical action $S$) |
 | **Generalized mass** $\mathcal{M}$ | $\sum_{\text{bonds}} \sigma_b$ | Total causal content — sum of bond strengths; determines resistance to state change |
 | **Auto-causal density** $\rho_{\text{ac}}$ | **Emergent** from closed loops | Self-sustaining fraction of causal structure (loop-level, not bond-level) |
 | **Maintenance cost** $C_{\text{maint}}$ | $\dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$ | Net entropy accumulation rate — NOT proportional to $\mathcal{M}$ |
@@ -310,6 +311,34 @@ The six causants combine to produce the framework's higher-level concepts:
 | **Antifragility** | $\partial \Delta V / \partial \text{stress} > 0$ | Basin depth *increases* under perturbation (stronger from stress) |
 
 **Note:** $\mathcal{M} = \sum \sigma_b$ is the isotropic (scalar) approximation. When bond strengths vary by direction, $\mathcal{M}$ becomes a tensor $\mathcal{M}_{ij}$ whose eigenvalues give directional resistance. See [Part 1, Section 2b](./01_generalized_mechanics.md).
+
+### Causal Action: Why Persistence Matters
+
+**Causal action** is the temporal integral of auto-causal mass:
+
+$$A_{\text{causal}}(E) = \int_0^{T_{\text{local}}} \mathcal{M}_{\text{ac}}(E, t) \, dt$$
+
+This has units of **J·s** — the same as physical action $S = \int L \, dt$ and Planck's constant ℏ. The dimensional match is not coincidental: the principle of least action ($\delta S = 0$) selects which *trajectories* are realized; causal action measures which *entities* persist.
+
+**High instantaneous density is not enough.** An entity can have very high $\mathcal{M}_{\text{ac}}$ for a short time and then collapse — a flash fire, a viral meme, a speculative bubble, a population boom enabled by unsustainable technology. The product $\mathcal{M}_{\text{ac}} \times T_{\text{local}}$ is what matters for long-term causal presence.
+
+| Entity | $\mathcal{M}_{\text{ac}}$ | $T_{\text{local}}$ | $A_{\text{causal}}$ |
+|---|---|---|---|
+| Flash fire | Very high | Seconds | Low |
+| Viral meme | High | Days–weeks | Low–moderate |
+| Speculative bubble | High | Months–years | Moderate |
+| Stone wall | Low | Centuries | High |
+| Ancient institution | Moderate | Millennia | Very high |
+
+**The fitness×truth connection.** [Hoffman (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) showed that evolutionary selection favors fitness-tuned interfaces over truth-tracking ones — organisms perceive what's useful, not what's real. But fitness *alone* is temporally bounded: a strategy that exploits a resource without tracking the underlying causal structure will eventually hit reality's constraints.
+
+Consider nitrogen fertilizers before the Haber process:
+- **Fitness alone:** Mining guano and nitrates enabled a population boom (high $\mathcal{M}_{\text{ac}}$) — but the resource was finite. The strategy was decoupled from the causal reality of nitrogen availability. $T_{\text{local}}$ was bounded by resource exhaustion.
+- **Fitness×truth:** The Haber-Bosch process (1909) coupled fitness to truth — atmospheric nitrogen is effectively unlimited. This extended $T_{\text{local}}$ dramatically, yielding higher $A_{\text{causal}}$.
+
+**The general principle:** Strategies that achieve high $\mathcal{M}_{\text{ac}}$ by decoupling from causal reality have bounded $T_{\text{local}}$. Strategies that couple fitness to truth — that work *with* causal structure rather than against it — sustain $\mathcal{M}_{\text{ac}}$ longer. Selection over long timescales favors high $A_{\text{causal}}$, which means selection favors fitness×truth over fitness alone.
+
+This resolves an apparent paradox in Hoffman's framework: if fitness beats truth, why does science work? Because science is a meta-strategy that couples fitness to truth — it selects for representations that track causal structure, which extends $T_{\text{local}}$ for the entities (individuals, institutions, civilizations) that adopt it. Over sufficiently long timescales, fitness×truth dominates. See [Part 4](./04_time_and_soul.md) for full treatment.
 
 ### Visual: Maintenance balance
 

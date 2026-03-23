@@ -454,6 +454,12 @@ The Lagrangian $L = \frac{1}{2}\mathcal{M}\lvert\dot{X}\rvert^2 - V(X)$ and the 
 
 What is *not* open is the structural claim: if a system admits a Lagrangian description at all, then conservation laws follow from symmetries, the force equation is derived rather than postulated, and trajectories are optimal rather than arbitrary. The question for each domain of application is whether the Lagrangian description applies - and if so, what symmetries the domain possesses and what conservation laws they produce.
 
+**Connection to causal action.** The action $S = \int L \, dt$ has units of J·s (energy × time) — the same units as Planck's constant ℏ. The principle of stationary action selects which *trajectories* are realized. A parallel quantity — **causal action** — measures which *entities* persist:
+
+$$A_{\text{causal}}(E) = \int_0^{T_{\text{local}}} \mathcal{M}_{\text{ac}}(E, t) \, dt$$
+
+where $\mathcal{M}_{\text{ac}}$ is the auto-causal component of generalized mass (the self-sustaining fraction) and $T_{\text{local}}$ is the entity's local time ([Part 4](./04_time_and_soul.md)). The dimensional match to physical action is structural: both measure energy-weighted duration. Physical action selects trajectories; causal action measures total self-sustaining presence. [Part 1.5](./01_5_causants.md) introduces causal action and its connection to fitness×truth selection; [Part 4](./04_time_and_soul.md) develops the full treatment.
+
 ---
 
 ## 5a. Coupling Constant κ
