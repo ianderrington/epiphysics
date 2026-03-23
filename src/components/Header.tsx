@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { BlogContext } from '@/app/providers';
 import SearchBar from './SearchBar';
@@ -304,10 +305,13 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
               <Link href="/" className="site-title flex items-center h-full">
                 {/* Mobile: Show logo only */}
                 <div className="md:hidden flex items-center">
-                  <img
+                  <Image
                     src="/epiphysics_logo.svg"
                     alt="Epiphysics"
+                    width={32}
+                    height={32}
                     className="h-8 w-8"
+                    priority
                   />
                 </div>
                 {/* Desktop: Show full text */}
