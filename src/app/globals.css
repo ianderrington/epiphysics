@@ -409,6 +409,14 @@ abbr[title] {
   opacity: 0;
 }
 
+/* Keep header reachable on mobile so section switching doesn't require long scrolls */
+@media (max-width: 767px) {
+  .header-wrapper.slide-up {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* Header styles */
 header {
   position: relative;

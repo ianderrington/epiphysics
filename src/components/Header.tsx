@@ -283,6 +283,38 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
             </div>
           </div>
         </div>
+
+        {/* Mobile quick section switcher (auto-generated from configured sections) */}
+        <div className="md:hidden border-t border-gray-200 dark:border-gray-800 px-2 py-2 overflow-x-auto">
+          <nav className="flex items-center gap-2 min-w-max" aria-label="Quick section navigation">
+            <Link
+              href="/"
+              className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                pathname === '/'
+                  ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300'
+                  : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
+              }`}
+            >
+              Home
+            </Link>
+            {sections.map((section) => {
+              const isActive = section.id === currentSection;
+              return (
+                <Link
+                  key={`quick-${section.id}`}
+                  href={`/${section.id}`}
+                  className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                    isActive
+                      ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300'
+                      : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
+                  }`}
+                >
+                  {section.title}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
       </header>
 
       {/* Render modals via portal to avoid DOM nesting issues */}
