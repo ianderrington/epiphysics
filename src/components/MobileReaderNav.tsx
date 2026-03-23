@@ -27,6 +27,7 @@ export default function MobileReaderNav({
 }: MobileReaderNavProps) {
   const [tocOpen, setTocOpen] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [showTopNavStage, setShowTopNavStage] = useState(false);
   const lastYRef = useRef(0);
   const upCountRef = useRef(0);
 
@@ -34,10 +35,11 @@ export default function MobileReaderNav({
     window.dispatchEvent(new CustomEvent('mobile-reader-active', { detail: { active: true } }));
 
     const emitStage = (showTopNav: boolean) => {
+      setShowTopNavStage(showTopNav);
       window.dispatchEvent(new CustomEvent('mobile-reader-nav-stage', { detail: { showTopNav } }));
     };
 
-    // Reader-first default: top quick nav hidden until second upward scroll
+    // Reader-first default: keep top nav hidden while actively reading.
     emitStage(false);
 
     const onScroll = () => {
@@ -75,12 +77,15 @@ export default function MobileReaderNav({
 
   return (
     <>
-      <div className={`md:hidden sticky top-16 z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-transform duration-200 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
+      <div
+        className={`md:hidden sticky ${showTopNavStage ? 'top-16' : 'top-0'} z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-transform duration-200 ${visible ? 'translate-y-0' : '-translate-y-full'}`}
+      >
         <div className="h-12 px-2 grid grid-cols-[40px_40px_1fr_40px] items-center gap-1">
           {leftTarget ? (
             <Link
               href={leftTarget.href}
               className="h-8 w-8 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+              aria-label="Go to previous or parent"
             >
               <ChevronLeft size={18} />
             </Link>
@@ -92,12 +97,12 @@ export default function MobileReaderNav({
             type="button"
             onClick={() => setTocOpen(true)}
             className="h-8 w-8 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-            aria-label="Open chapter drawer"
+            aria-label="Open table of contents"
           >
             <List size={18} />
           </button>
 
-          <div className="min-w-0 px-1 text-[13px] font-medium text-gray-800 dark:text-gray-100 truncate">
+          <div className="min-w-0 px-1 text-[13px] font-medium text-gray-800 dark:text-gray-100 truncate" title={currentTitle}>
             {currentTitle}
           </div>
 
@@ -105,6 +110,7 @@ export default function MobileReaderNav({
             <Link
               href={next.href}
               className="h-8 w-8 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 justify-self-end hover:bg-gray-100 dark:hover:bg-gray-800"
+              aria-label="Go to next"
             >
               <ChevronRight size={18} />
             </Link>
