@@ -27,40 +27,17 @@ export default function MobileReaderNav({
 }: MobileReaderNavProps) {
   const [tocOpen, setTocOpen] = useState(false);
   const [visible, setVisible] = useState(true);
-  const [showTopNavStage, setShowTopNavStage] = useState(false);
   const lastYRef = useRef(0);
-  const upCountRef = useRef(0);
 
   useEffect(() => {
     window.dispatchEvent(new CustomEvent('mobile-reader-active', { detail: { active: true } }));
-
-    const emitStage = (showTopNav: boolean) => {
-      setShowTopNavStage(showTopNav);
-      window.dispatchEvent(new CustomEvent('mobile-reader-nav-stage', { detail: { showTopNav } }));
-    };
-
-    // Reader-first default: keep top nav hidden while actively reading.
-    emitStage(false);
 
     const onScroll = () => {
       const y = window.scrollY;
       const delta = y - lastYRef.current;
 
-      if (delta > 6) {
-        setVisible(false);
-        upCountRef.current = 0;
-        emitStage(false);
-      } else if (delta < -6) {
-        if (upCountRef.current === 0) {
-          setVisible(true);
-          emitStage(false);
-          upCountRef.current = 1;
-        } else {
-          setVisible(true);
-          emitStage(true);
-          upCountRef.current = 2;
-        }
-      }
+      if (delta > 6) setVisible(false);
+      if (delta < -6) setVisible(true);
 
       lastYRef.current = y;
     };
@@ -69,7 +46,6 @@ export default function MobileReaderNav({
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.dispatchEvent(new CustomEvent('mobile-reader-active', { detail: { active: false } }));
-      window.dispatchEvent(new CustomEvent('mobile-reader-nav-stage', { detail: { showTopNav: true } }));
     };
   }, []);
 
@@ -77,9 +53,7 @@ export default function MobileReaderNav({
 
   return (
     <>
-      <div
-        className={`md:hidden sticky ${showTopNavStage ? 'top-16' : 'top-0'} z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-transform duration-200 ${visible ? 'translate-y-0' : '-translate-y-full'}`}
-      >
+      <div className={`md:hidden sticky top-0 z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-transform duration-200 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="h-12 px-2 grid grid-cols-[40px_40px_1fr_40px] items-center gap-1">
           {leftTarget ? (
             <Link

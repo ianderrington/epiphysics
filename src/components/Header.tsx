@@ -149,18 +149,19 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
   // Reset subsection row visibility on navigation
   useEffect(() => {
     setShowSubNav(true);
-    setShowMobileTopNav(true);
     upScrollCountRef.current = 0;
   }, [pathname]);
 
-  // Listen for staged reveal signals from mobile reader nav
+  // Reader mode signal from mobile reader nav
   useEffect(() => {
-    const handler = (event: Event) => {
-      const e = event as CustomEvent<{ showTopNav?: boolean }>;
-      setShowMobileTopNav(!!e.detail?.showTopNav);
+    const activeHandler = (event: Event) => {
+      const e = event as CustomEvent<{ active?: boolean }>;
+      const active = !!e.detail?.active;
+      setMobileReaderActive(active);
+      setShowMobileTopNav(!active);
     };
-    window.addEventListener('mobile-reader-nav-stage', handler as EventListener);
-    return () => window.removeEventListener('mobile-reader-nav-stage', handler as EventListener);
+    window.addEventListener('mobile-reader-active', activeHandler as EventListener);
+    return () => window.removeEventListener('mobile-reader-active', activeHandler as EventListener);
   }, []);
 
   // Add keyboard event handler for ESC key
