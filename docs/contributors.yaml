@@ -1,0 +1,21 @@
+contributors:
+  - id: ian_derrington
+    type: human
+    name: Ian Derrington
+    title: Author
+    url: https://ian.ceo
+
+  - id: codex_5_3
+    type: ai
+    name: Codex 5.3
+    title: AI Co-Author
+
+  - id: opus_4_6
+    type: ai
+    name: Opus 4.6
+    title: AI Co-Author
+
+  - id: sonnet_4_6
+    type: ai
+    name: Sonnet 4.6
+    title: AI Co-Author

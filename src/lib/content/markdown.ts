@@ -85,6 +85,8 @@ export interface PostMetadata {
   authorUrl?: string;
   authorImage?: string;
   authorBio?: string;
+  author_id?: string;
+  ai_author_ids?: string[];
   ai_authors?: AIAuthor[];
   coverImage?: {
     url: string;

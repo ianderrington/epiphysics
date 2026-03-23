@@ -12,6 +12,7 @@ import { prepareCollectionRenderData } from '@/lib/content/collectionRenderer';
 import { ArticleSchema, BreadcrumbSchema } from '@/components/seo';
 import FeedbackAnnotator from '@/components/FeedbackAnnotator';
 import ContributeSection from '@/components/ContributeSection';
+import { applyContributorMetadata } from '@/lib/contributors';
 
 // Force dynamic rendering to avoid SSR issues with client components
 export const dynamic = 'force-dynamic';
@@ -107,6 +108,8 @@ export default async function Page({ params }: PageProps) {
   if (!renderData.indexPost) {
     notFound();
   }
+
+  renderData.indexPost.metadata = await applyContributorMetadata(renderData.indexPost.metadata);
 
   // Get view configuration from index post frontmatter
   const defaultViewType = renderData.indexPost?.metadata?.defaultViewType || 'cards';
