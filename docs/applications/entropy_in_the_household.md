@@ -81,7 +81,7 @@ This decomposition is genuinely useful because it separates two distinct failure
 
 **Tag: structural.**
 
-The [atomic decomposition](../theory/00_atomic_structure.md) introduces entropy production rate $\dot{S}_{\text{int}}$ — the rate at which a structure generates internal disorder. For a household, this depends on:
+The [atomic decomposition](../theory/01_5_causants.md) introduces entropy production rate $\dot{S}_{\text{int}}$ — the rate at which a structure generates internal disorder. For a household, this depends on:
 
 - **Material quality.** Cheap materials degrade faster: paint peels, joints loosen, seals crack, surfaces stain. Each degradation is a micro-increase in entropy. A house built with quality materials has lower $\dot{S}_{\text{int}}$ than a house built cheaply, even if both start in the same state.
 
@@ -173,8 +173,8 @@ The most effective interventions target $\dot{S}_{\text{int}}$ directly — redu
 This application imports from the Epimechanics series:
 
 - **Entropy and free energy** $S$, $\mathcal{F} = E - \mathcal{T}S$ ([Part 1, Sections 12-13](../theory/01_generalized_mechanics.md))
-- **Entropy production rate** $\dot{S}_{\text{int}}$ and **repair rate** $\dot{R}_{\text{repair}}$ ([Atomic Decomposition](../theory/00_atomic_structure.md))
-- **Stability basin depth** $\Delta V$ ([Atomic Decomposition](../theory/00_atomic_structure.md))
+- **Entropy production rate** $\dot{S}_{\text{int}}$ and **repair rate** $\dot{R}_{\text{repair}}$ ([Atomic Decomposition](../theory/01_5_causants.md))
+- **Stability basin depth** $\Delta V$ ([Atomic Decomposition](../theory/01_5_causants.md))
 - **Coupling tensor** $T^i{}_j$ for cross-domain entropy propagation ([Part 1](../theory/01_generalized_mechanics.md))
 
 It connects to:

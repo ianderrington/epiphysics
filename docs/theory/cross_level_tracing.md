@@ -31,7 +31,7 @@ tts:
   enableProgress: true
 ---
 
-> **Context.** This document extends the [Causants](./00_atomic_structure.md) (Part 1.5). For the mechanical grammar, see [Part 1: Generalized Mechanics](./01_generalized_mechanics.md). For the Representational Efficiency principle, see [Part 5](./05_ontology_and_open_questions.md).
+> **Context.** This document extends the [Causants](./01_5_causants.md) (Part 1.5). For the mechanical grammar, see [Part 1: Generalized Mechanics](./01_generalized_mechanics.md). For the Representational Efficiency principle, see [Part 5](./05_ontology_and_open_questions.md).
 
 ---
 
@@ -118,4 +118,4 @@ Whether these are substantive contributions or relabeling depends on empirical t
 
 ---
 
-> **See also:** [Causants](./00_atomic_structure.md) (Part 1.5) for the six atomic quantities. [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) for the Lagrangian framework and Rayleigh dissipation. [Part 5](./05_ontology_and_open_questions.md) for the Representational Efficiency principle.
+> **See also:** [Causants](./01_5_causants.md) (Part 1.5) for the six atomic quantities. [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) for the Lagrangian framework and Rayleigh dissipation. [Part 5](./05_ontology_and_open_questions.md) for the Representational Efficiency principle.

@@ -123,7 +123,7 @@ The final part assembles the full formal ontology and states nine open questions
 | Part | Title | Core Claim |
 |------|-------|-----------|
 | [Part 0: Foundations](./00_prelude.md) | What Epimechanics is and isn't | Causation and entity are co-primitive; computation and representation are co-primitive; state bridges them; information is predictive content; X is a representation; entities are anything with causal presence (equivalently, anything representable) |
-| [Part 1.5: Causants](./00_atomic_structure.md) | What are entities made of? | Six candidate causants (bond, strength, loop order, basin depth, entropy production, repair rate); auto-causality is emergent at the loop level |
+| [Part 1.5: Causants](./01_5_causants.md) | What are entities made of? | Six candidate causants (bond, strength, loop order, basin depth, entropy production, repair rate); auto-causality is emergent at the loop level |
 | [Glossary](./glossary.md) | Canonical terms | Definitions for core Epimechanics terms (including causant) |
 | [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | X as universal state variable | Standard physics is the primary instantiation; Epimechanics abstracts the formal structure to cover other domains |
 | [Part 1b: Uncertainty, Coordinates, and Relativity](./01b_uncertainty_coordinates_relativity.md) | The limits and extensions of the clean framework | Measuring X changes X; different entities may have non-isomorphic state spaces; forces are reference-frame-relative |

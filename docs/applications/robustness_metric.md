@@ -45,7 +45,7 @@ This is an **application** of the [Epimechanics framework](../theory/index.md) t
 
 **Tag: structural.**
 
-Consider two quantities from the [atomic decomposition](../theory/00_atomic_structure.md):
+Consider two quantities from the [atomic decomposition](../theory/01_5_causants.md):
 
 - $E_{\text{assembly}}$: the total energy required to construct an entity from its components. This is related to the assembly index (AI) from [Cronin & Walker (2023)](https://doi.org/10.1038/s41586-023-06600-9) but measured in energy rather than operation count.
 
@@ -230,8 +230,8 @@ $E_{\text{assembly}}$ and $E_{\text{disassembly}}$ are straightforward for physi
 
 This application imports from the Epimechanics series:
 
-- **Stability basin depth** $\Delta V$ and **bond strength** $\sigma_b$ ([Atomic Decomposition](../theory/00_atomic_structure.md))
-- **Assembly index** connection ([Atomic Decomposition, Section on Assembly Theory](../theory/00_atomic_structure.md))
+- **Stability basin depth** $\Delta V$ and **bond strength** $\sigma_b$ ([Atomic Decomposition](../theory/01_5_causants.md))
+- **Assembly index** connection ([Atomic Decomposition, Section on Assembly Theory](../theory/01_5_causants.md))
 - **Coupling tensor** $T^i{}_j$ for cross-domain coupling at scale ([Part 1](../theory/01_generalized_mechanics.md))
 
 It connects to:

@@ -26,5 +26,5 @@ Prioritized list of what needs to be done. Check this file when looking for work
 
 - [ ] **Step 4b: Irreversible case** — does quadratic KE minimize cost without time-reversibility? Three possibilities identified. See `docs/research/rate_distortion_lagrangian.md`.
 - [ ] **Step 5: Lagrangian class optimality** — structural argument but not formal proof. Can a non-Lagrangian representation beat Lagrangian at matched complexity for systems with zero symmetries?
-- [ ] **Derive the Lagrangian from bond network structure** — if $\mathcal{M}$ is composed of bonds with known strengths and $V(X)$ is determined by basin structure, can $L$ be derived rather than postulated? See `docs/theory/00_atomic_structure.md`, Open Question Q5.
+- [ ] **Derive the Lagrangian from bond network structure** — if $\mathcal{M}$ is composed of bonds with known strengths and $V(X)$ is determined by basin structure, can $L$ be derived rather than postulated? See `docs/theory/01_5_causants.md`, Open Question Q5.
 - [ ] **Prove or disprove: rate-distortion optimality implies Lagrangian symmetry** — the central open problem. See `docs/research/rate_distortion_lagrangian.md`.
