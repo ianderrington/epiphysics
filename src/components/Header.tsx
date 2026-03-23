@@ -52,61 +52,60 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
     }
   }, [pathname]);
 
-  // Build subsection nav (auto-generated from posts API)
+  // Build subsection nav (auto-generated from loaded content context)
   useEffect(() => {
-    const run = async () => {
-      if (!currentSection || !isMounted) {
-        setSubNavItems([]);
-        return;
-      }
+    if (!currentSection || !isMounted || !posts?.length) {
+      setSubNavItems([]);
+      return;
+    }
 
-      try {
-        const res = await fetch('/api/posts');
-        if (!res.ok) return;
-        const posts: Array<{ slug: string; title: string }> = await res.json();
+    try {
+      const normalized = posts
+        .map((p: any) => ({
+          slug: p?.slug as string | undefined,
+          title: (p?.metadata?.title || p?.title || '') as string,
+        }))
+        .filter((p: any) => typeof p.slug === 'string' && p.slug.length > 0) as Array<{ slug: string; title: string }>;
 
-        const inSection = posts.filter((p) => p.slug.startsWith(`${currentSection}/`));
-        const directDocs = inSection.filter((p) => {
-          const rel = p.slug.slice(currentSection.length + 1);
-          return rel && !rel.includes('/') && rel !== 'index';
+      const inSection = normalized.filter((p) => p.slug.startsWith(`${currentSection}/`));
+      const directDocs = inSection.filter((p) => {
+        const rel = p.slug.slice(currentSection.length + 1);
+        return rel && !rel.includes('/') && rel !== 'index';
+      });
+
+      const folderNames = new Set<string>();
+      inSection.forEach((p) => {
+        const rel = p.slug.slice(currentSection.length + 1);
+        if (!rel || rel === 'index') return;
+        const first = rel.split('/')[0];
+        if (first && first !== 'index') folderNames.add(first);
+      });
+
+      const folderItems = Array.from(folderNames)
+        .filter((name) => !directDocs.find((d) => d.slug === `${currentSection}/${name}`))
+        .map((name) => {
+          const exact = inSection.find((p) => p.slug === `${currentSection}/${name}`);
+          const indexLike = inSection.find((p) => p.slug === `${currentSection}/${name}/index`);
+          return {
+            href: `/${currentSection}/${name}`,
+            title: exact?.title || indexLike?.title || name.replace(/[-_]/g, ' '),
+          };
         });
 
-        const folderNames = new Set<string>();
-        inSection.forEach((p) => {
-          const rel = p.slug.slice(currentSection.length + 1);
-          if (!rel || rel === 'index') return;
-          const first = rel.split('/')[0];
-          if (first && first !== 'index') folderNames.add(first);
-        });
+      const docItems = directDocs.map((d) => ({
+        href: `/${d.slug}`,
+        title: d.title,
+      }));
 
-        const folderItems = Array.from(folderNames)
-          .filter((name) => !directDocs.find((d) => d.slug === `${currentSection}/${name}`))
-          .map((name) => {
-            const exact = inSection.find((p) => p.slug === `${currentSection}/${name}`);
-            const indexLike = inSection.find((p) => p.slug === `${currentSection}/${name}/index`);
-            return {
-              href: `/${currentSection}/${name}`,
-              title: exact?.title || indexLike?.title || name.replace(/[-_]/g, ' '),
-            };
-          });
+      const merged = [...docItems, ...folderItems]
+        .filter((item) => item.href !== `/${currentSection}`)
+        .sort((a, b) => a.title.localeCompare(b.title));
 
-        const docItems = directDocs.map((d) => ({
-          href: `/${d.slug}`,
-          title: d.title,
-        }));
-
-        const merged = [...docItems, ...folderItems]
-          .filter((item) => item.href !== `/${currentSection}`)
-          .sort((a, b) => a.title.localeCompare(b.title));
-
-        setSubNavItems(merged);
-      } catch {
-        // silent fallback
-      }
-    };
-
-    run();
-  }, [currentSection, isMounted]);
+      setSubNavItems(merged);
+    } catch {
+      setSubNavItems([]);
+    }
+  }, [currentSection, isMounted, posts]);
 
   // Mobile: hide subsection row on downward scroll; show after two upward scroll intents
   useEffect(() => {
