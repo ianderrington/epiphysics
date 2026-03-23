@@ -42,17 +42,29 @@ tts:
   enableProgress: true
 ---
 
-## The Problem
+## Where We Are
 
-[Epimechanics](./index.md) provides a mechanics — state, force, energy, coupling, thermodynamics — that applies to any representation of any system. [Part 1](./01_generalized_mechanics.md) defines the grammar. [Part 5](./05_ontology_and_open_questions.md) assembles the full ontology and states the Representational Efficiency principle: all representations have epimechanical structure; good ones are predictively efficient at minimal computational cost.
+[Part 1](./01_generalized_mechanics.md) defined the grammar of Epimechanics — how state $X$, force $F$, energy $W$, and coupling $T^i{}_j$ relate to each other. Two key quantities emerged:
 
-But the grammar has a gap. It defines $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ without specifying what $\rho_{\text{causal}}$ is *made of*. It defines auto-causal density $\rho_{\text{ac}}$ without decomposing it into components. It treats $\mathcal{M}$ as if it were a single quantity — but as a simple example shows, it cannot be.
+**Generalized mass** $\mathcal{M} = \int \rho_{\text{causal}} \, d\mu$ — the total causal density of an entity. This determines resistance to state change: high $\mathcal{M}$ means more force is needed to alter the entity's trajectory. An institution with dense internal processes has high $\mathcal{M}$; a new startup has low $\mathcal{M}$.
 
-**The house problem.** A well-built house has high $\mathcal{M}$ — dense structural connections (foundation, framing, plumbing, electrical, insulation, all tightly integrated). It sits in a deep energy minimum. Its entropy production rate is low (a well-sealed structure degrades slowly). Its maintenance cost is near-zero for years. A poorly built house might have *lower* $\mathcal{M}$ (fewer connections, cheaper materials, less integration) but *higher* maintenance cost — because its stability basin is shallow and its entropy production rate is high. Rain gets in, joints loosen, pipes corrode.
+**Auto-causal density** $\rho_{\text{ac}}$ — the fraction of causal activity that sustains the entity's own existence. A flame has high $\rho_{\text{ac}}$ (combustion maintains the heat that maintains combustion). A rock has near-zero $\rho_{\text{ac}}$ (nothing about the rock actively maintains itself).
 
-**The implication:** $\mathcal{M}$ (total causal density) and maintenance cost are *different quantities*. They are built from different combinations of more fundamental components. Saying "maintenance cost is proportional to causal density" is like saying "weight is proportional to volume" — true for uniform density, false in general.
+Part 1 showed how these quantities *relate* — force equals mass times acceleration, energy is capacity for state change, coupling determines how strongly entities interact. But it left a question open: what are these quantities *made of*?
 
-This is the periodic table problem. Physics had $F = ma$ for two centuries before understanding what mass is *made of*. Chemistry had reaction equations before knowing what substances are made of. Epimechanics has $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$ (scalar approximation; see [Part 1](./01_generalized_mechanics.md) for the general tensorial form) — and now needs to understand what $\mathcal{M}$ is made of, in a way that distinguishes diamonds from sandcastles.
+---
+
+## The Periodic Table Problem
+
+Physics had $F = ma$ for two centuries before understanding what mass is made of. The equation worked — you could predict trajectories, design bridges, launch projectiles — but mass was a black box. Then came atoms, then subatomic particles, then the Standard Model. Now we know: mass comes from the Higgs field coupling and from binding energy in composite particles.
+
+Epimechanics is at the earlier stage. We have the grammar:
+
+$$F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$$
+
+This works — you can describe institutional inertia, belief persistence, market momentum. But $\mathcal{M}$ is still a black box. What is it made of? What determines whether an entity has high or low $\mathcal{M}$? Why do some high-$\mathcal{M}$ entities require constant maintenance while others persist for millennia?
+
+This is the periodic table problem. Chemistry needed a periodic table — a finite set of elements that combine to produce all substances. Epimechanics needs the same: a finite set of **causants** that combine to produce all the quantities the grammar uses.
 
 ---
 
@@ -154,6 +166,34 @@ $$C_{\text{maintenance}} = \dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$$
 - When $\dot{R}_{\text{repair}} \approx \dot{S}_{\text{int}}$: marginal. The entity persists but is fragile. (A machine that requires regular servicing.)
 - When $\dot{R}_{\text{repair}} < \dot{S}_{\text{int}}$: the entity decays. External maintenance is required to persist. (A building, a road, a garden.)
 - When $\dot{R}_{\text{repair}} = 0$: no self-repair. All maintenance is external. (A rock — but rocks have very low $\dot{S}_{\text{int}}$ too, so they persist.)
+
+---
+
+## Why This Matters: The House Problem
+
+With the six causants defined, we can now resolve a puzzle that Part 1's grammar cannot handle.
+
+**The house problem.** A well-built house has high $\mathcal{M}$ — dense structural connections (foundation, framing, plumbing, electrical, insulation, all tightly integrated). A poorly built house has lower $\mathcal{M}$ — fewer connections, cheaper materials, less integration. If $\mathcal{M}$ were the only relevant quantity, we'd expect the well-built house to require *more* maintenance (more stuff to maintain). But the opposite is true: the well-built house requires *less* maintenance.
+
+**The causant resolution.** $\mathcal{M}$ and maintenance cost are different combinations of the same causants:
+
+| Entity | $\mathcal{M}$ (bond sum) | $\Delta V$ (basin depth) | $\dot{S}_{\text{int}}$ | $\dot{R}_{\text{repair}}$ | $C_{\text{maint}}$ |
+|---|---|---|---|---|---|
+| Well-built house | High | Deep | Low | 0 | Low |
+| Cheap house | Medium | Shallow | High | 0 | High |
+| Diamond | Very high | Very deep | Near-zero | 0 | Near-zero |
+| Sandcastle | Low | Very shallow | Medium | 0 | Very high |
+| Living organism | Very high | Moderate | High | High | Low (while alive) |
+| Startup | Low | Shallow | High | Moderate | Moderate |
+| Ancient institution | High | Deep | Moderate | Moderate | Low |
+
+**$\mathcal{M}$ is about total bond strength** — how much force is needed to change the entity's state.
+
+**$C_{\text{maint}}$ is about net entropy accumulation** — how fast the entity degrades minus how fast it repairs itself.
+
+These are independent. A system can be massive and cheap to maintain (diamond: high $\mathcal{M}$, deep $\Delta V$, near-zero $\dot{S}_{\text{int}}$). Or light and expensive to maintain (sandcastle: low $\mathcal{M}$, shallow $\Delta V$, positive $\dot{S}_{\text{int}}$, zero repair).
+
+The well-built house has high $\mathcal{M}$ *and* deep $\Delta V$ *and* low $\dot{S}_{\text{int}}$. The cheap house has medium $\mathcal{M}$ but shallow $\Delta V$ and high $\dot{S}_{\text{int}}$. The grammar alone ($F = \mathcal{M}\ddot{X}$) couldn't distinguish these cases. The causant decomposition can.
 
 ---
 
@@ -270,22 +310,6 @@ The six causants combine to produce the framework's higher-level concepts:
 | **Antifragility** | $\partial \Delta V / \partial \text{stress} > 0$ | Basin depth *increases* under perturbation (stronger from stress) |
 
 **Note:** $\mathcal{M} = \sum \sigma_b$ is the isotropic (scalar) approximation. When bond strengths vary by direction, $\mathcal{M}$ becomes a tensor $\mathcal{M}_{ij}$ whose eigenvalues give directional resistance. See [Part 1, Section 2b](./01_generalized_mechanics.md).
-
-### Why $\mathcal{M}$ and maintenance cost diverge
-
-The house example is now resolved:
-
-| Entity | $\mathcal{M}$ (bond sum) | $\Delta V$ (basin depth) | $\dot{S}_{\text{int}}$ | $\dot{R}_{\text{repair}}$ | $C_{\text{maint}}$ |
-|---|---|---|---|---|---|
-| Well-built house | High | Deep | Low | 0 | Low |
-| Cheap house | Medium | Shallow | High | 0 | High |
-| Diamond | Very high | Very deep | Near-zero | 0 | Near-zero |
-| Sandcastle | Low | Very shallow | Medium | 0 | Very high |
-| Living organism | Very high | Moderate | High | High | Low (while alive) |
-| Startup | Low | Shallow | High | Moderate | Moderate |
-| Ancient institution | High | Deep | Moderate | Moderate | Low |
-
-$\mathcal{M}$ and $C_{\text{maint}}$ are *independent*. $\mathcal{M}$ is about *total bond strength*. $C_{\text{maint}}$ is about *net entropy accumulation*. A system can be massive and cheap to maintain (diamond) or light and expensive to maintain (sandcastle).
 
 ### Visual: Maintenance balance
 
