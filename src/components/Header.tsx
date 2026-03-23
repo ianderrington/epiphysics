@@ -34,7 +34,6 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
   const [isMounted, setIsMounted] = useState(false);
   const [subNavItems, setSubNavItems] = useState<Array<{ href: string; title: string }>>([]);
   const [showSubNav, setShowSubNav] = useState(true);
-  const [showMobileTopNav, setShowMobileTopNav] = useState(true);
   const [mobileReaderActive, setMobileReaderActive] = useState(false);
   const lastScrollYRef = useRef(0);
   const upScrollCountRef = useRef(0);
@@ -298,7 +297,7 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
   return (
     <>
       <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 m-0 p-0">
-        <div className={`w-full px-4 sm:px-6 lg:px-8 py-0 transition-all duration-200 ${mobileReaderActive && !showMobileTopNav ? 'max-h-0 opacity-0 overflow-hidden' : 'max-h-20 opacity-100'} md:max-h-none md:opacity-100`}>
+        <div className={`w-full px-4 sm:px-6 lg:px-8 py-0 transition-all duration-200 ${mobileReaderActive ? 'max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100' : 'max-h-20 opacity-100'}`}>
           <div className="flex justify-between items-center h-16">
             {/* Logo/Home link */}
             <div className="flex items-center h-full">
@@ -393,7 +392,8 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
         </div>
 
         {/* Mobile quick section switcher (auto-generated from configured sections) */}
-        <div className={`md:hidden border-t border-gray-200 dark:border-gray-800 px-2 overflow-x-auto transition-all duration-200 ${showMobileTopNav ? 'max-h-20 opacity-100 py-2' : 'max-h-0 opacity-0 py-0 border-t-0'}`}>
+        {!mobileReaderActive && (
+          <div className="md:hidden border-t border-gray-200 dark:border-gray-800 px-2 overflow-x-auto transition-all duration-200 max-h-20 opacity-100 py-2">
           <nav className="flex items-center gap-2 min-w-max" aria-label="Quick section navigation">
             <Link
               href="/"
@@ -422,13 +422,14 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
               );
             })}
           </nav>
-        </div>
+          </div>
+        )}
 
         {/* Mobile subsection switcher (auto-generated from current section content) */}
         {!mobileReaderActive && currentSection && subNavItems.length > 0 && (
           <div
             className={`md:hidden border-t border-gray-200 dark:border-gray-800 px-2 py-2 overflow-x-auto transition-all duration-200 ${
-              showSubNav && showMobileTopNav ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0 py-0 border-t-0'
+              showSubNav ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0 py-0 border-t-0'
             }`}
           >
             <nav className="flex items-center gap-2 min-w-max" aria-label="Subsection navigation">

@@ -82,7 +82,7 @@ export default function MobileReaderNav({
       <div
         className={`md:hidden sticky top-0 z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-transform duration-200 ${visible ? 'translate-y-0' : '-translate-y-full'}`}
       >
-        <div className="h-12 px-2.5 grid grid-cols-[40px_40px_40px_1fr_40px_40px] items-center gap-1.5">
+        <div className="h-12 px-2.5 grid grid-cols-[40px_40px_1fr_40px_40px] items-center gap-1">
           {parent ? (
             <Link
               href={parent.href}
@@ -140,16 +140,7 @@ export default function MobileReaderNav({
             <div className="h-10 w-10" />
           )}
 
-          <button
-            type="button"
-            onClick={handlePlay}
-            disabled={!ttsEnabled}
-            className="h-10 w-10 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-[0.98] disabled:opacity-30"
-            aria-label="Play audio"
-            title={ttsEnabled ? 'Play audio' : 'Audio unavailable'}
-          >
-            <Play size={16} />
-          </button>
+
         </div>
       </div>
 
@@ -161,12 +152,24 @@ export default function MobileReaderNav({
           >
             <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
               <span className="font-semibold text-gray-900 dark:text-gray-100">TOC</span>
-              <button
-                className="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
-                onClick={() => setTocOpen(false)}
-              >
-                Close
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handlePlay}
+                  disabled={!ttsEnabled}
+                  className="h-8 w-8 rounded-md flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30"
+                  aria-label="Play audio"
+                  title={ttsEnabled ? 'Play audio' : 'Audio unavailable'}
+                >
+                  <Play size={15} />
+                </button>
+                <button
+                  className="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                  onClick={() => setTocOpen(false)}
+                >
+                  Close
+                </button>
+              </div>
             </div>
             <div className="p-4">
               {tocContentHtml ? (
