@@ -176,6 +176,7 @@ export default async function Page({ params }: PageProps) {
         prev={mobileNav.prev}
         next={mobileNav.next}
         tocContentHtml={renderData.indexPost.html || ''}
+        ttsEnabled={!!renderData.indexPost.metadata.tts?.enabled}
       />
 
       {renderData.isCollection ? (
