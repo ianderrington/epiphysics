@@ -271,6 +271,35 @@ flowchart LR
   class L,RAC macro;
 ```
 
+### Auto-causal does not mean systemically valuable
+
+A second clarification: **auto-causal does not mean the loop contributes to its containing system.**
+
+A loop can sustain itself ($\rho_{\text{ac}} > 0$) while:
+- Contributing nothing to the containing system's $\rho_{\text{ac}}$ (vacuous)
+- Actively draining from the containing system (parasitic)
+- Producing entropy without useful work (dissipative)
+
+**Examples:**
+- An idling engine: combustion sustains combustion, but $\mathcal{P}_{\text{useful}} = 0$ — no work done on anything external
+- A bureaucratic process that perpetuates itself but doesn't serve the organization's mission
+- A tumor: high local $\rho_{\text{ac}}$, but $\kappa_{\text{sys}} < 0$ — it drains the organism
+
+Define **systemic coupling** $\kappa_{\text{sys}}$ as the derivative of containing-system auto-causality with respect to loop auto-causality:
+
+$$\kappa_{\text{sys}} = \frac{\partial \rho_{\text{ac}}^{\text{containing}}}{\partial \rho_{\text{ac}}^{\text{loop}}}$$
+
+When $\kappa_{\text{sys}} > 0$, the loop contributes to the whole. When $\kappa_{\text{sys}} < 0$, it's parasitic. When $\kappa_{\text{sys}} = 0$, it's vacuous — self-sustaining but systemically inert.
+
+**But instantaneous $\kappa_{\text{sys}}$ isn't the full story.** The temporal trajectory matters:
+- A loop with $\kappa_{\text{sys}}(t) < 0$ but $d\kappa_{\text{sys}}/dt > 0$ is an *investment* — borrowing now to contribute later
+- R&D departments initially drain resources before producing value
+- Mitochondria were originally parasitic bacteria; now they're essential
+- Some organs may have evolved from initially parasitic growths
+- Venture capital logic: fund negative-$\kappa_{\text{sys}}$ loops with high expected future integration
+
+This complicates simple judgments about "waste." A currently parasitic loop may be the seed of future systemic value. The relevant quantity is expected future contribution: $\int_t^{\infty} \kappa_{\text{sys}}(t') \, dt'$. See [Part 2](./02_meta_entities.md) for full treatment of part-whole causal relationships.
+
 ---
 
 ## Causal Power

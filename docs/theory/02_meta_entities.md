@@ -140,6 +140,57 @@ A meta-entity with high density in all three substrates and strong cross-substra
 
 The causal power of a meta-entity comes from the degree to which practitioners, texts, and mimetic patterns reinforce, regenerate, and amplify each other - the coupling among substrates, rather than any single substrate.
 
+### 2.5 Systemic Coupling and Part-Whole Efficiency
+
+Not all auto-causal sub-loops contribute to the containing system's $\rho_{\text{ac}}$. A sub-entity can sustain itself while:
+- Contributing nothing to the meta-entity (vacuous)
+- Draining the meta-entity's resources (parasitic)
+- Producing entropy without useful causal work (dissipative)
+
+**Systemic coupling** $\kappa_{\text{sys}}$ measures this:
+
+$$\kappa_{\text{sys}} = \frac{\partial \rho_{\text{ac}}^{\text{meta}}}{\partial \rho_{\text{ac}}^{\text{sub}}}$$
+
+When $\kappa_{\text{sys}} > 0$, the sub-entity contributes to the whole. When $\kappa_{\text{sys}} < 0$, it's parasitic — it sustains itself at the meta-entity's expense. When $\kappa_{\text{sys}} = 0$, it's vacuous — self-sustaining but systemically inert.
+
+**Examples across substrate types:**
+
+| Substrate | Positive $\kappa_{\text{sys}}$ | Negative $\kappa_{\text{sys}}$ | Zero $\kappa_{\text{sys}}$ |
+|-----------|-------------------------------|--------------------------------|---------------------------|
+| **Physical** | Organ serving organism | Tumor | Vestigial structure with no metabolic cost |
+| **Informational** | Standard that improves coordination | Legacy system blocking migration | Archived protocol no one references |
+| **Mimetic** | Practice that strengthens culture | Rumor that divides practitioners | In-group joke with no external effect |
+
+**Causal efficiency** $\eta$ is the fraction of sub-entity causal power that contributes to the meta-entity:
+
+$$\eta = \frac{\mathcal{P}_{\text{systemic}}}{\mathcal{P}_{\text{total}}} = \frac{\text{causal power contributing to meta-entity}}{\text{total causal power of sub-entity}}$$
+
+An idling engine ($\eta \approx 0$) sustains itself (combustion maintains combustion) but does no useful work. A well-integrated department ($\eta$ high) converts most of its activity into meta-entity value.
+
+**The temporal complication: parasites can become organs.**
+
+Instantaneous $\kappa_{\text{sys}}(t)$ is not the full picture. A sub-entity with $\kappa_{\text{sys}}(t) < 0$ today but $d\kappa_{\text{sys}}/dt > 0$ is an *investment* — it borrows from the system now to potentially contribute later.
+
+Historical examples:
+- **Mitochondria**: Originally parasitic bacteria that invaded host cells; now essential for eukaryotic energy metabolism. Initial $\kappa_{\text{sys}} < 0$ became $\kappa_{\text{sys}} \gg 0$ over evolutionary time.
+- **R&D departments**: Initially pure cost centers draining organizational resources; later the source of competitive advantage.
+- **Immune system development**: Costly to maintain, initially net-negative for organism survival (resource drain, risk of autoimmunity); later essential for long-term persistence.
+- **Venture investment logic**: Fund sub-entities with negative current $\kappa_{\text{sys}}$ but high expected future integration.
+
+The relevant quantity for evaluation is not instantaneous systemic coupling but *expected future contribution*:
+
+$$\mathbb{E}\left[\int_t^{\infty} \kappa_{\text{sys}}(t') \cdot \rho_{\text{ac}}^{\text{sub}}(t') \, dt'\right]$$
+
+This complicates simple judgments about "waste" or "parasitism." A currently negative-$\kappa_{\text{sys}}$ loop may be the seed of future systemic value. The question is not "is this parasitic now?" but "what is the trajectory of integration?"
+
+**Failure modes:**
+
+1. **Premature optimization**: Eliminating all negative-$\kappa_{\text{sys}}$ sub-entities kills the source of future innovation.
+2. **Parasitic capture**: Tolerating negative-$\kappa_{\text{sys}}$ loops too long allows them to grow powerful enough to resist integration or removal.
+3. **Vacuous persistence**: Zero-$\kappa_{\text{sys}}$ structures that consume no resources but occupy niches, blocking potential positive-$\kappa_{\text{sys}}$ alternatives.
+
+The meta-entity governance problem is: maintain a portfolio of sub-entities with varying $\kappa_{\text{sys}}(t)$, tolerating temporary parasitism where integration trajectory is positive, eliminating parasitism where it's not, and avoiding vacuous lock-in.
+
 ---
 
 ## 3. Case Studies
