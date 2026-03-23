@@ -165,6 +165,79 @@ This definition integrates with the rest of the framework:
 
 ---
 
+## Local Optimality: Every Entity Acts Rationally Given Its State
+
+Traditional economics posits *homo economicus* — the rational actor who maximizes utility given perfect information. Behavioral economics demolished this: real agents exhibit cognitive biases, bounded rationality, addiction, and systematic deviation from "optimal" behavior. The standard conclusion: humans are irrational.
+
+Epimechanics offers a different framing: **every entity acts optimally at an infinitesimally narrow timescale, given its actual state vector** — including its belief field $\hat{V}$, its internal constraints, and its coupling structure. What looks irrational from outside is rational from inside. The entity navigates by its map, not by the territory.
+
+### The state vector includes everything
+
+The entity's state $X$ is not just "position in decision space." It includes:
+- **Belief field** $\hat{V}$ — what the entity thinks will happen
+- **Internal constraints** — addiction, fatigue, cognitive load, emotional state
+- **Coupling tensor** $T^i{}_j$ — how strongly the entity is coupled to various fields
+- **Available actions** — what the entity can actually do given its current configuration
+
+An addict who uses despite knowing the consequences is not acting irrationally. They are acting optimally given a state vector that includes:
+- Withdrawal aversion (strong negative gradient in $\hat{V}$ for "don't use")
+- Discounting structure (high coupling to immediate states, low coupling to future states)
+- Belief field that may include "I can quit later" (inaccurate $\hat{V}$)
+- Physiological constraints that make "just stop" not an available action
+
+The behavior follows inevitably from the state. The problem is not irrationality — it's that the state vector is compromised.
+
+### Instantaneous optimality, trajectory suboptimality
+
+At any instant $t$, the entity follows the path of steepest descent in its belief-field-weighted potential:
+
+$$\dot{X} = -\nabla_X \hat{V}(X, t)$$
+
+This is locally optimal. The entity moves toward what it believes are better states.
+
+But the belief field can be wrong ($\hat{V} \neq V$), and the state vector can be constrained. Over time, locally optimal moves can sum to globally suboptimal trajectories:
+
+| Timescale | Optimality | What determines it |
+|---|---|---|
+| Instantaneous ($dt \to 0$) | **Always optimal** given state | The physics of decision: gradient descent on $\hat{V}$ |
+| Short-term | Often optimal if $\hat{V} \approx V$ | Belief field accuracy |
+| Long-term | Often suboptimal | Belief field errors compound; state constraints accumulate |
+
+This resolves the economics debate. *Homo economicus* is correct at the instantaneous limit — every agent maximizes given their state. Behavioral economics is correct at longer timescales — belief field errors and state constraints produce systematic deviation from "rational" behavior (where "rational" means "what an agent with accurate $\hat{V}$ and unconstrained state would do").
+
+### "Irrational" behavior is diagnostic
+
+If an entity's behavior looks irrational, one of these is true:
+1. **You don't see their $\hat{V}$** — they have beliefs you don't know about
+2. **You don't see their constraints** — they have internal states (addiction, trauma, cognitive load) that restrict their action space
+3. **You're evaluating at the wrong timescale** — instantaneously optimal, trajectory suboptimal
+
+This has practical implications:
+- **Therapy**: change the state vector (beliefs, constraints), not the decision process
+- **Policy**: change the potential field $V$ (incentives, environment), not just information
+- **AI alignment**: the AI acts optimally given its state; misalignment means the state (training, reward signal, constraints) produces bad trajectories
+
+### Connection to fitness×truth
+
+[The causal action principle](./01_5_causants.md) says fitness×truth strategies have higher $A_{\text{causal}}$ than fitness-alone strategies. Translating to belief fields:
+
+- **Fitness alone**: $\hat{V}$ optimized for immediate reward, decoupled from $V$
+- **Fitness×truth**: $\hat{V}$ coupled to $V$, accepting short-term costs for long-term accuracy
+
+An entity that updates $\hat{V}$ toward $V$ — that invests in truth-tracking — pays a computational cost now but extends its $T_{\text{local}}$ by avoiding collisions with reality. The addict's $\hat{V}$ is fitness-optimized (avoid withdrawal now) but truth-decoupled (ignores long-term health trajectory). Recovery is partly a process of recoupling $\hat{V}$ to $V$.
+
+### What this means for "fate"
+
+If every entity acts optimally given its state, and states evolve according to the force equation $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$, then trajectories are determined by initial conditions plus the potential landscape. This sounds like determinism — fate.
+
+But the belief field introduces a wrinkle: $\hat{V}$ is part of the state, and $\hat{V}$ can be updated by the entity's own cognition. An entity that models its own state — that has nonzero consciousness $C$ ([Part 3](./03_intelligence_consciousness_agency.md)) — can update $\hat{V}$ based on reflection. This is a form of self-intervention: the entity changes its own state by thinking about it.
+
+**Fate is the trajectory implied by current state. Agency is the capacity to modify state through self-modeling.** An entity with $C = 0$ follows its state-determined trajectory (fate). An entity with $C > 0$ can intervene on its own belief field, changing its trajectory — not by violating physics, but by using cognition to modify the state vector that physics then propagates.
+
+This is not libertarian free will (uncaused causation). It is **recursive causation**: the entity's state includes its model of its state, and updating that model changes the state it models. The loop doesn't escape physics; it adds a reflexive layer that makes prediction harder from outside but doesn't make the system non-deterministic.
+
+---
+
 ## Instinct vs Cognition: Two Sources of $\hat{V}$
 
 The belief field has (at least) two sources, operating at different timescales:
