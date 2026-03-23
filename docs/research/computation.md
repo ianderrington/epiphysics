@@ -7,7 +7,7 @@ description: >-
   self-referential modeling. Connections to Shannon, Landauer, Constructor
   Theory, Church-Turing, Kolmogorov, and autopoiesis.
 date: 2026-03-21T00:00:00.000Z
-draft: true
+draft: false
 author:
   name: "Ian Derrington"
 contentType: article
