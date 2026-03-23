@@ -33,6 +33,7 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
   const [isMounted, setIsMounted] = useState(false);
   const [subNavItems, setSubNavItems] = useState<Array<{ href: string; title: string }>>([]);
   const [showSubNav, setShowSubNav] = useState(true);
+  const [showMobileTopNav, setShowMobileTopNav] = useState(true);
   const lastScrollYRef = useRef(0);
   const upScrollCountRef = useRef(0);
   const { isOpen, toggleMenu, closeMenu, isMobile } = useMobileMenu();
@@ -147,8 +148,19 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
   // Reset subsection row visibility on navigation
   useEffect(() => {
     setShowSubNav(true);
+    setShowMobileTopNav(true);
     upScrollCountRef.current = 0;
   }, [pathname]);
+
+  // Listen for staged reveal signals from mobile reader nav
+  useEffect(() => {
+    const handler = (event: Event) => {
+      const e = event as CustomEvent<{ showTopNav?: boolean }>;
+      setShowMobileTopNav(!!e.detail?.showTopNav);
+    };
+    window.addEventListener('mobile-reader-nav-stage', handler as EventListener);
+    return () => window.removeEventListener('mobile-reader-nav-stage', handler as EventListener);
+  }, []);
 
   // Add keyboard event handler for ESC key
   React.useEffect(() => {
@@ -375,7 +387,7 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
         </div>
 
         {/* Mobile quick section switcher (auto-generated from configured sections) */}
-        <div className="md:hidden border-t border-gray-200 dark:border-gray-800 px-2 py-2 overflow-x-auto">
+        <div className={`md:hidden border-t border-gray-200 dark:border-gray-800 px-2 overflow-x-auto transition-all duration-200 ${showMobileTopNav ? 'max-h-20 opacity-100 py-2' : 'max-h-0 opacity-0 py-0 border-t-0'}`}>
           <nav className="flex items-center gap-2 min-w-max" aria-label="Quick section navigation">
             <Link
               href="/"
@@ -410,7 +422,7 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
         {currentSection && subNavItems.length > 0 && (
           <div
             className={`md:hidden border-t border-gray-200 dark:border-gray-800 px-2 py-2 overflow-x-auto transition-all duration-200 ${
-              showSubNav ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0 py-0 border-t-0'
+              showSubNav && showMobileTopNav ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0 py-0 border-t-0'
             }`}
           >
             <nav className="flex items-center gap-2 min-w-max" aria-label="Subsection navigation">

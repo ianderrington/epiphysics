@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, List } from 'lucide-react';
 import TableOfContents from '@/components/TableOfContents';
@@ -26,12 +26,47 @@ export default function MobileReaderNav({
   tocContentHtml,
 }: MobileReaderNavProps) {
   const [tocOpen, setTocOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastYRef = useRef(0);
+  const upCountRef = useRef(0);
+
+  useEffect(() => {
+    const emitStage = (showTopNav: boolean) => {
+      window.dispatchEvent(new CustomEvent('mobile-reader-nav-stage', { detail: { showTopNav } }));
+    };
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastYRef.current;
+
+      if (delta > 6) {
+        setVisible(false);
+        upCountRef.current = 0;
+        emitStage(false);
+      } else if (delta < -6) {
+        if (upCountRef.current === 0) {
+          setVisible(true);
+          emitStage(false);
+          upCountRef.current = 1;
+        } else {
+          setVisible(true);
+          emitStage(true);
+          upCountRef.current = 2;
+        }
+      }
+
+      lastYRef.current = y;
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const leftTarget = prev || parent || null;
 
   return (
     <>
-      <div className="md:hidden sticky top-16 z-30 bg-white/95 dark:bg-gray-900/95 backdrop-blur border-b border-gray-200 dark:border-gray-700">
+      <div className={`md:hidden sticky top-16 z-30 bg-white/95 dark:bg-gray-900/95 backdrop-blur border-b border-gray-200 dark:border-gray-700 transition-transform duration-200 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="px-2 py-1.5 grid grid-cols-[44px_44px_1fr_44px] items-center gap-1">
           {leftTarget ? (
             <Link href={leftTarget.href} className="h-10 w-10 rounded-lg flex items-center justify-center text-gray-700 dark:text-gray-200">

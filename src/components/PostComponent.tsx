@@ -353,11 +353,11 @@ export default function PostComponent({ post }: PostComponentProps) {
 
   return (
     <div className="post-container">
-      {/* Navigation Component for TOC */}
+      {/* Navigation Component for TOC (desktop only; mobile uses top reader bar drawer) */}
       {shouldShowToc && (
         <div 
           ref={tocRef}
-          className={`${styles.floatingNav} transition-opacity duration-300`}
+          className={`hidden md:block ${styles.floatingNav} transition-opacity duration-300`}
         >
           <Navigation
             type="toc"
