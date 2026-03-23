@@ -92,13 +92,23 @@ The framework commits to the following: **a causal event is an energy exchange, 
 | Mass-equivalent | $\mathcal{M} / c_D^2$ | kg |
 | $E_{\text{int}} = \mathcal{M} \, c_D^2$ | Internal energy (tautology at physical level) | J |
 
-**Causal power** is the rate at which an entity does work on state trajectories. Formally (see [Part 3](./03_intelligence_consciousness_agency.md)):
+### Causal power
+
+**Causal power** is the rate at which an entity does work on state trajectories — the dynamic counterpart to the static quantities in the table above. Formally (see [Part 3](./03_intelligence_consciousness_agency.md) for full treatment):
 
 $$\mathcal{P}_{E \to j} = \mathbf{F}_{E \to j} \cdot \mathbf{v}_{X_j}$$
 
-where $\mathbf{F}_{E \to j}$ is the force entity $E$ exerts on entity $j$'s state, and $\mathbf{v}_{X_j}$ is $j$'s state velocity. This has units of energy per time — it is power in the literal mechanical sense, extended to abstract state spaces.
+where $\mathbf{F}_{E \to j}$ is the force entity $E$ exerts on entity $j$'s state, and $\mathbf{v}_{X_j} = dX_j/dt$ is $j$'s state velocity. This has units of energy per time — it is power in the literal mechanical sense, extended to abstract state spaces.
 
-This connects directly to [Chaisson's energy rate density](https://onlinelibrary.wiley.com/doi/abs/10.1002/cplx.20323) $\dot{\varepsilon}_m = \text{power} / \text{mass}$ (W/kg), which he measured across cosmic evolution from galaxies to brains. In Epimechanics terms: $\dot{\varepsilon}_m = \mathcal{P} / (\mathcal{M}/c_D^2)$ — causal power normalized by mass-equivalent. Higher $\dot{\varepsilon}_m$ means more causal work per unit structure. Chaisson's empirical finding that $\dot{\varepsilon}_m$ increases through cosmic evolution (galaxies → stars → planets → life → brains → civilization) is a claim about causal power density increasing with complexity.
+**How causal power relates to the causants:** An entity's capacity for sustained causal power depends on its bond structure. High $\mathcal{M}$ (dense, strong bonds) provides a larger energy reservoir from which to do work. The coupling tensor $T^i{}_j$ determines how efficiently that reservoir translates into force on other entities' states. Causal power is not a seventh causant — it is a *derived quantity* that emerges from bond strengths, coupling structure, and state velocities.
+
+**Connection to Chaisson's energy rate density.** [Chaisson (*Complexity*, 2011)](https://onlinelibrary.wiley.com/doi/abs/10.1002/cplx.20323) measured $\dot{\varepsilon}_m = \text{power} / \text{mass}$ (W/kg) across cosmic evolution — from galaxies to stars to planets to life to brains to civilization — and found it increases with complexity. In Epimechanics terms:
+
+$$\dot{\varepsilon}_m = \frac{\mathcal{P}}{\mathcal{M}/c_D^2}$$
+
+This is causal power normalized by mass-equivalent. Higher $\dot{\varepsilon}_m$ means more causal work per unit structure. Chaisson's empirical finding is a claim about *causal power density* increasing with complexity — more complex entities do more work on their environment per unit of their own causal mass.
+
+### Domain-specific measurement
 
 **For abstract state spaces**, the measure $d\mu$ has domain-specific units (e.g., per-agent, per-belief, per-organizational-unit), and "energy" must be operationalized domain by domain. Bond strength $\sigma_b$ at the institutional level might be measured in dollars-to-sever, hours-of-disruption, or bits-of-information-lost — all legitimate energy-equivalents within their domain.
 
@@ -114,11 +124,13 @@ A single directed causal connection between two state variables: a change in $X_
 
 A causal bond has:
 - **Direction**: $i \to j$ (asymmetric in general)
-- **Strength** $\sigma_b$: how much change in $X_j$ is produced per unit change in $X_i$
+- **Strength** $\sigma_b$: how much energy is required to sever the bond (see Section 2 below)
 - **Latency** $\tau_b$: the time delay between cause and effect
 - **Reliability** $r_b \in [0,1]$: the probability that the causal connection fires when activated
 
 ### 2. Bond Strength ($\sigma_b$)
+
+Bond strength is called out as its own causant because it is the primary contributor to generalized mass $\mathcal{M}$: mass is the sum of bond strengths.
 
 The energy required to sever a single causal bond (Joules at the physical level; domain-specific energy-equivalent at higher levels — e.g., dollars, disruption-hours, bits lost). Analogous to bond dissociation energy in chemistry.
 
@@ -261,8 +273,9 @@ flowchart LR
 
 The six causants combine to produce the framework's higher-level concepts:
 
-| Derived Quantity | Atomic Composition | What It Means |
+| Derived Quantity | Causant Composition | What It Means |
 |---|---|---|
+| **Causal power** $\mathcal{P}$ | $\mathbf{F} \cdot \mathbf{v}$ (force × velocity) | Rate of work on state trajectories; normalized by mass gives Chaisson's $\dot{\varepsilon}_m$ |
 | **Generalized mass** $\mathcal{M}$ | $\sum_{\text{bonds}} \sigma_b$ | Total causal content — sum of bond strengths; determines resistance to state change |
 | **Auto-causal density** $\rho_{\text{ac}}$ | **Emergent** - density of *closed loops*, not individual bonds; individual steps may have $\rho_{\text{ac}} = 0$ while the loop has $\rho_{\text{ac}} > 0$ | Self-sustaining fraction of causal structure (a loop-level property) |
 | **Maintenance cost** $C_{\text{maint}}$ | $\dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$ | Net entropy accumulation rate - NOT proportional to $\mathcal{M}$ |
