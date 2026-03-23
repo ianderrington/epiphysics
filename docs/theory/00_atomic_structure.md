@@ -1,5 +1,5 @@
 ---
-title: "Epimechanics — Part 1.5: Causal Constituents"
+title: "Epimechanics — Part 1.5: Causants"
 description: >-
   Epimechanics provides the grammar - state, force, energy, coupling. But what are the fundamental
   building blocks from which generalized mass, auto-causal density, maintenance cost, and robustness
@@ -31,8 +31,8 @@ coverImage:
     aesthetic crossed with network topology.
 bullets:
   - Epimechanics has the grammar but not the periodic table - what are entities made of?
-  - Six candidate causal constituents - causal bond, bond strength, loop order, basin depth, entropy production rate, repair rate
-  - Mass and maintenance cost are different quantities built from different combinations of the same constituents
+  - Six candidate causants - causal bond, bond strength, loop order, basin depth, entropy production rate, repair rate
+  - Mass and maintenance cost are different quantities built from different combinations of the same causants
   - Connection to assembly theory, information geometry, and the Representational Efficiency principle
 tts:
   enabled: true
@@ -56,9 +56,11 @@ This is the periodic table problem. Physics had $F = ma$ for two centuries befor
 
 ---
 
-## Candidate Atomic Quantities
+## Candidate Causants
 
-The following are proposed as domain-independent primitives - the causal constituents from which $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, robustness, and other derived quantities are composed.
+<abbr title="Causant: a minimal causally operative constituent that composes higher-order structures and dynamics.">Causant</abbr> is the core term in this chapter (see [Glossary](./glossary.md)).
+
+The following are proposed as domain-independent causants from which $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, robustness, and other derived quantities are composed.
 
 ### Units and dimensional analysis
 
@@ -83,7 +85,7 @@ The hierarchical tensor summation of bond strengths (each in domain-appropriate 
 
 ### 1. Causal Bond ($b$)
 
-A single directed causal connection between two state variables: a change in $X_i$ produces a change in $X_j$. This is the atomic unit of causal structure (dimensionless — it is a structural element, not a measured quantity). In [Pearl's framework](https://doi.org/10.1017/CBO9780511803161), it corresponds to a single edge in a causal DAG. In physical systems: an intermolecular force (covalent, ionic, van der Waals). In institutions: a reporting line, a contractual obligation, a regular meeting. In cognition: a belief supporting another belief, a memory triggering an emotion.
+A single directed causal connection between two state variables: a change in $X_i$ produces a change in $X_j$. This is a minimal causal unit of structure (dimensionless — it is a structural element, not a measured quantity). In [Pearl's framework](https://doi.org/10.1017/CBO9780511803161), it corresponds to a single edge in a causal DAG. In physical systems: an intermolecular force (covalent, ionic, van der Waals). In institutions: a reporting line, a contractual obligation, a regular meeting. In cognition: a belief supporting another belief, a memory triggering an emotion.
 
 A causal bond has:
 - **Direction**: $i \to j$ (asymmetric in general)
@@ -119,11 +121,11 @@ This is exactly [Kauffman's autocatalytic set](https://doi.org/10.1093/oso/97801
 - **Social reciprocity**: A trusts B, B cooperates with C, C supports A - no individual trust relationship sustains itself; the triangle does
 - **Neural assemblies**: individual neurons don't fire themselves; recurrent circuits do
 
-**Implication for the constituent framework:** $\rho_{\text{ac}}$ is NOT a bond-level property. It is a **loop-level emergent property** - the first level at which auto-causality appears. Bonds are the constituents; loops are the "molecules." You cannot measure $\rho_{\text{ac}}$ by examining individual bonds any more than you can measure wetness by examining individual water molecules.
+**Implication for the causant framework:** $\rho_{\text{ac}}$ is NOT a bond-level property. It is a **loop-level emergent property** - the first level at which auto-causality appears. Bonds are the constituents; loops are the "molecules." You cannot measure $\rho_{\text{ac}}$ by examining individual bonds any more than you can measure wetness by examining individual water molecules.
 
 This connects directly to [Hoel et al.'s causal emergence](https://doi.org/10.1073/pnas.1314922110): the loop-level description has more causal information than the bond-level description ($EI(\text{macro}) > EI(\text{micro})$). The loop IS the entity at its most fundamental level - the smallest unit of self-sustaining causal structure.
 
-The six causal constituents should therefore be understood at two levels:
+The six causants should therefore be understood at two levels:
 - **Bond level**: causal bond $b$, bond strength $\sigma_b$, latency $\tau_b$, reliability $r_b$ - these are properties of individual causal connections
 - **Loop level**: loop order $\ell$, $\rho_{\text{ac}}$, basin depth $\Delta V$, entropy production $\dot{S}_{\text{int}}$, repair rate $\dot{R}_{\text{repair}}$ - these are emergent properties of configurations of bonds
 
@@ -175,7 +177,7 @@ $$C_{\text{maintenance}} = \dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$$
 
 ## Building Higher Quantities from Atoms
 
-The six causal constituents combine to produce the framework's higher-level concepts:
+The six causants combine to produce the framework's higher-level concepts:
 
 | Derived Quantity | Atomic Composition | What It Means |
 |---|---|---|
@@ -204,7 +206,7 @@ The house example is now resolved:
 | Startup | Low | Shallow | High | Moderate (adaptive) | Moderate (but fragile) |
 | Ancient institution | High | Deep | Moderate | Moderate (self-maintaining processes) | Low (deep basin + self-repair) |
 
-The table shows that $\mathcal{M}$ and $C_{\text{maint}}$ are *independent*. They share some atomic components (both depend on bond structure) but combine them differently. $\mathcal{M}$ is about *total bond strength*. $C_{\text{maint}}$ is about *net entropy accumulation*. A system can be massive and cheap to maintain (diamond) or light and expensive to maintain (sandcastle).
+The table shows that $\mathcal{M}$ and $C_{\text{maint}}$ are *independent*. They share some causant-level components (both depend on bond structure) but combine them differently. $\mathcal{M}$ is about *total bond strength*. $C_{\text{maint}}$ is about *net entropy accumulation*. A system can be massive and cheap to maintain (diamond) or light and expensive to maintain (sandcastle).
 
 For how the medium modifies effective mass, see [Effective Mass](./effective_mass.md).
 
@@ -214,11 +216,11 @@ For how the medium modifies effective mass, see [Effective Mass](./effective_mas
 
 [Assembly theory (Cronin & Walker, 2023)](https://doi.org/10.1038/s41586-023-06600-9) measures one of these constituents: the minimum number of bond-formation operations to construct an object. The assembly index AI is a static, constructive measure - it counts how many steps to *build* the structure.
 
-The constituent framework here extends assembly theory in two directions:
+The causant framework here extends assembly theory in two directions:
 
 1. **From construction to maintenance.** AI tells you how hard the entity was to build. $C_{\text{maint}} = \dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$ tells you how hard it is to *keep*. These are different: a complex molecule (high AI) in a stable configuration (deep $\Delta V$) is hard to build and easy to keep. A complex molecule in an unstable configuration (shallow $\Delta V$) is hard to build and hard to keep.
 
-2. **From counting to dynamics.** AI counts construction steps. The constituent framework adds *dynamics*: how do the bonds evolve over time? Which degrade? How fast? What repair mechanisms exist? This is the difference between a blueprint (AI) and a maintenance manual ($\dot{S}_{\text{int}}$, $\dot{R}_{\text{repair}}$, $\Delta V$).
+2. **From counting to dynamics.** AI counts construction steps. The causant framework adds *dynamics*: how do the bonds evolve over time? Which degrade? How fast? What repair mechanisms exist? This is the difference between a blueprint (AI) and a maintenance manual ($\dot{S}_{\text{int}}$, $\dot{R}_{\text{repair}}$, $\Delta V$).
 
 The prediction: **AI and durability should be correlated but not identical.** High-AI entities tend to have deeper stability basins (complex structures tend to have more pathways to self-stabilize) - but the correlation is imperfect. Fragile complexity exists (a complex but poorly designed bridge). Durable simplicity exists (a stone wall).
 
@@ -236,7 +238,7 @@ The Representational Efficiency principle ([Part 5](./05_ontology_and_open_quest
 
 ### Q1: Are these the right atoms?
 
-The six quantities proposed here (bond, strength, loop order, basin depth, entropy production, repair rate) are candidates, not conclusions. The test: can they be measured independently in at least one domain, and do the derived quantities ($\mathcal{M}$, $C_{\text{maint}}$, robustness, etc.) computed from them match independent measurements of those derived quantities? This is the atomic-level version of the equivalence principle test from [Part 1, Section 2b](./01_generalized_mechanics.md).
+The six quantities proposed here (bond, strength, loop order, basin depth, entropy production, repair rate) are candidates, not conclusions. The test: can they be measured independently in at least one domain, and do the derived quantities ($\mathcal{M}$, $C_{\text{maint}}$, robustness, etc.) computed from them match independent measurements of those derived quantities? This is the causant-level version of the equivalence principle test from [Part 1, Section 2b](./01_generalized_mechanics.md).
 
 ### Q2: Are the atoms domain-independent?
 
@@ -244,13 +246,13 @@ The examples above suggest they are - "causal bond" maps naturally to chemical b
 
 ### Q3: How do constituents compose into tensors?
 
-The coupling tensor $T^i{}_j$ describes cross-domain propagation. In atomic terms: a force applied in domain $j$ propagates through bonds that cross domain boundaries to produce a response in domain $i$. The off-diagonal elements of $T$ are determined by the number, strength, and loop structure of cross-domain bonds. Can the tensor structure be *derived* from the bond network, rather than measured as a separate quantity?
+The coupling tensor $T^i{}_j$ describes cross-domain propagation. In causant terms: a force applied in domain $j$ propagates through bonds that cross domain boundaries to produce a response in domain $i$. The off-diagonal elements of $T$ are determined by the number, strength, and loop structure of cross-domain bonds. Can the tensor structure be *derived* from the bond network, rather than measured as a separate quantity?
 
 ### Q4: What is the relationship between assembly index and stability?
 
-Assembly theory predicts that high-AI objects require selection (they don't arise by chance). The atomic framework adds that high-AI objects *may* have deep stability basins - but need not. Is there a formal relationship between construction complexity and thermodynamic stability? If so, it would connect assembly theory to the Representational Efficiency principle: complex structures that persist (high AI, deep basin) are the ones that correspond to efficient representations.
+Assembly theory predicts that high-AI objects require selection (they don't arise by chance). The causant framework adds that high-AI objects *may* have deep stability basins - but need not. Is there a formal relationship between construction complexity and thermodynamic stability? If so, it would connect assembly theory to the Representational Efficiency principle: complex structures that persist (high AI, deep basin) are the ones that correspond to efficient representations.
 
-### Q5: Can we derive the Lagrangian from the atomic structure?
+### Q5: Can we derive the Lagrangian from the causant structure?
 
 The Lagrangian $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V(X)$ (scalar approximation; general: $L = \frac{1}{2}\mathcal{M}_{ij}\dot{X}^i\dot{X}^j - V(X)$) is currently a structural postulate. If $\mathcal{M}$ is composed of bonds with known strengths, and $V(X)$ is determined by the basin structure, can the Lagrangian be *derived* from the bond network? This would move the quadratic kinetic energy from postulate to consequence - the strongest possible grounding of the framework.
 
@@ -258,19 +260,25 @@ The Lagrangian $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V(X)$ (scalar approximat
 
 ## Relationship to the Series
 
-This document sits between the [series overview](./index.md) and [Part 1](./01_generalized_mechanics.md). It addresses the question that Part 1's grammar leaves open: what is the grammar *about*? The grammar describes how $\mathcal{M}$, $F$, $V$, $T^i{}_j$ relate to each other. This document asks what these quantities are *made of* - and proposes that the answer, like chemistry's periodic table, is a small set of causal constituents that combine differently in different domains to produce the observed diversity of entities.
+This document sits between the [series overview](./index.md) and [Part 1](./01_generalized_mechanics.md). It addresses the question that Part 1's grammar leaves open: what is the grammar *about*? The grammar describes how $\mathcal{M}$, $F$, $V$, $T^i{}_j$ relate to each other. This document asks what these quantities are *made of* - and proposes that the answer, like chemistry's periodic table, is a small set of causants that combine differently in different domains to produce the observed diversity of entities.
 
-The grammar works regardless of whether the constituent decomposition is correct - $F = \mathcal{M}\ddot{X}$ (or more generally $F_i = \mathcal{M}_{ij}\ddot{X}^j$) holds whether or not we know what $\mathcal{M}$ is made of, just as $F = ma$ held before the discovery of atoms. But the constituent decomposition, if correct, would:
+The grammar works regardless of whether the causant decomposition is correct - $F = \mathcal{M}\ddot{X}$ (or more generally $F_i = \mathcal{M}_{ij}\ddot{X}^j$) holds whether or not we know what $\mathcal{M}$ is made of, just as $F = ma$ held before the discovery of atoms. But the causant decomposition, if correct, would:
 
 1. **Resolve the house problem** - explain why $\mathcal{M}$ and maintenance cost diverge
-2. **Ground the equivalence principle** - provide a micro-level explanation for why different measurement approaches to $\mathcal{M}$ agree (they're measuring different aggregates of the same constituents)
-3. **Enable the applications** - the Tier 1 applications (cost of ownership, robustness metrics, future cost of decisions) all require distinguishing $\mathcal{M}$ from maintenance cost, which requires the atomic decomposition
+2. **Ground the equivalence principle** - provide a micro-level explanation for why different measurement approaches to $\mathcal{M}$ agree (they're measuring different aggregates of the same causants)
+3. **Enable the applications** - the Tier 1 applications (cost of ownership, robustness metrics, future cost of decisions) all require distinguishing $\mathcal{M}$ from maintenance cost, which requires the causant decomposition
 4. **Connect to the Representational Efficiency principle** - explain *why* optimal representations have simple Lagrangian structure (because they correspond to natural bond clusters)
 5. **Potentially derive the Lagrangian** - moving the framework's strongest postulate from assumption to consequence
 
 ---
 
 [→ Part 1: The Generalized Mechanics](./01_generalized_mechanics.md)
+postulate from assumption to consequence
+
+---
+
+[→ Part 1: The Generalized Mechanics](./01_generalized_mechanics.md)
+eralized_mechanics.md)
 postulate from assumption to consequence
 
 ---

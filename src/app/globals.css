@@ -17,6 +17,15 @@ html, body {
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* Glossary hover terms */
+.prose abbr[title],
+abbr[title] {
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+  cursor: help;
+  text-decoration-color: rgba(59, 130, 246, 0.65);
+}
+
 /* === CSS VARIABLES === */
 :root {
   --header-height: 4rem;
