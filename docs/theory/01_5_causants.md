@@ -271,34 +271,35 @@ flowchart LR
   class L,RAC macro;
 ```
 
-### Auto-causal does not mean systemically valuable
+### Local auto-causality does not guarantee contribution to containing systems
 
-A second clarification: **auto-causal does not mean the loop contributes to its containing system.**
+A second clarification: **auto-causality operates at specific scales of time and space.** A loop that sustains itself locally may not contribute to — or may actively drain — a containing system at a larger scale.
 
-A loop can sustain itself ($\rho_{\text{ac}} > 0$) while:
-- Contributing nothing to the containing system's $\rho_{\text{ac}}$ (vacuous)
+A loop can sustain itself ($\rho_{\text{ac}} > 0$ at its own scale) while:
+- Contributing nothing to the containing system's $\rho_{\text{ac}}$ (decoupled)
 - Actively draining from the containing system (parasitic)
 - Producing entropy without useful work (dissipative)
 
 **Examples:**
-- An idling engine: combustion sustains combustion, but $\mathcal{P}_{\text{useful}} = 0$ — no work done on anything external
-- A bureaucratic process that perpetuates itself but doesn't serve the organization's mission
-- A tumor: high local $\rho_{\text{ac}}$, but $\kappa_{\text{sys}} < 0$ — it drains the organism
+- An idling engine: combustion sustains combustion locally, but $\mathcal{P}_{\text{useful}} = 0$ — no work done on the containing system
+- A bureaucratic process that perpetuates itself but doesn't serve the organization's persistence
+- A tumor: high local $\rho_{\text{ac}}$, but $\kappa_{\text{sys}} < 0$ — it drains the organism's resources
 
-Define **systemic coupling** $\kappa_{\text{sys}}$ as the derivative of containing-system auto-causality with respect to loop auto-causality:
+Define **systemic coupling** $\kappa_{\text{sys}}$ as the derivative of containing-system auto-causality with respect to sub-loop auto-causality:
 
 $$\kappa_{\text{sys}} = \frac{\partial \rho_{\text{ac}}^{\text{containing}}}{\partial \rho_{\text{ac}}^{\text{loop}}}$$
 
-When $\kappa_{\text{sys}} > 0$, the loop contributes to the whole. When $\kappa_{\text{sys}} < 0$, it's parasitic. When $\kappa_{\text{sys}} = 0$, it's vacuous — self-sustaining but systemically inert.
+When $\kappa_{\text{sys}} > 0$, the loop contributes to the containing system's persistence. When $\kappa_{\text{sys}} < 0$, it's parasitic — the loop persists at the expense of the whole. When $\kappa_{\text{sys}} = 0$, it's decoupled — self-sustaining but systemically inert.
 
-**But instantaneous $\kappa_{\text{sys}}$ isn't the full story.** The temporal trajectory matters:
-- A loop with $\kappa_{\text{sys}}(t) < 0$ but $d\kappa_{\text{sys}}/dt > 0$ is an *investment* — borrowing now to contribute later
+**Note on "value":** This framework does not invoke normative value. It describes *structural relationships* between scales. "Contribution" means: does increasing the sub-loop's $\rho_{\text{ac}}$ increase the containing system's $\rho_{\text{ac}}$? Existence itself is the selection criterion — structures that persist, persist; those that don't, don't. This is structural, not normative (see [The Persistence Reversal](./persistence_reversal.md): "Existence is the filter that selects for persistence mechanisms — not as a value statement but as a structural fact").
+
+**The temporal dimension: parasites can become organs.** Instantaneous $\kappa_{\text{sys}}(t)$ isn't the full picture. A loop with $\kappa_{\text{sys}}(t) < 0$ today but $d\kappa_{\text{sys}}/dt > 0$ may be integrating:
 - R&D departments initially drain resources before producing value
-- Mitochondria were originally parasitic bacteria; now they're essential
-- Some organs may have evolved from initially parasitic growths
+- Mitochondria were originally parasitic bacteria; now they're essential for eukaryotic energy metabolism
+- Some organs may have evolved from initially parasitic or neutral growths
 - Venture capital logic: fund negative-$\kappa_{\text{sys}}$ loops with high expected future integration
 
-This complicates simple judgments about "waste." A currently parasitic loop may be the seed of future systemic value. The relevant quantity is expected future contribution: $\int_t^{\infty} \kappa_{\text{sys}}(t') \, dt'$. See [Part 2](./02_meta_entities.md) for full treatment of part-whole causal relationships.
+The relevant quantity is expected future contribution: $\int_t^{\infty} \kappa_{\text{sys}}(t') \, dt'$. See [Part 2](./02_meta_entities.md) for full treatment of part-whole causal relationships across scales.
 
 ---
 

@@ -142,16 +142,18 @@ The causal power of a meta-entity comes from the degree to which practitioners, 
 
 ### 2.5 Systemic Coupling and Part-Whole Efficiency
 
-Not all auto-causal sub-loops contribute to the containing system's $\rho_{\text{ac}}$. A sub-entity can sustain itself while:
-- Contributing nothing to the meta-entity (vacuous)
+Auto-causality operates at specific scales of time and space. A sub-loop that sustains itself locally may not contribute to — or may actively drain — the containing meta-entity at larger scales. Not all auto-causal sub-loops increase the containing system's $\rho_{\text{ac}}$. A sub-entity can sustain itself while:
+- Contributing nothing to the meta-entity (decoupled)
 - Draining the meta-entity's resources (parasitic)
 - Producing entropy without useful causal work (dissipative)
 
-**Systemic coupling** $\kappa_{\text{sys}}$ measures this:
+**Systemic coupling** $\kappa_{\text{sys}}$ measures the structural relationship between scales:
 
 $$\kappa_{\text{sys}} = \frac{\partial \rho_{\text{ac}}^{\text{meta}}}{\partial \rho_{\text{ac}}^{\text{sub}}}$$
 
-When $\kappa_{\text{sys}} > 0$, the sub-entity contributes to the whole. When $\kappa_{\text{sys}} < 0$, it's parasitic — it sustains itself at the meta-entity's expense. When $\kappa_{\text{sys}} = 0$, it's vacuous — self-sustaining but systemically inert.
+When $\kappa_{\text{sys}} > 0$, the sub-entity's persistence contributes to the meta-entity's persistence. When $\kappa_{\text{sys}} < 0$, it's parasitic — the sub-entity persists at the meta-entity's expense. When $\kappa_{\text{sys}} = 0$, it's decoupled — self-sustaining but structurally disconnected from the larger scale.
+
+**Note on terminology:** "Contribution" here is structural, not normative. It means: does increasing the sub-loop's $\rho_{\text{ac}}$ increase the containing system's $\rho_{\text{ac}}$? This describes causal relationships between scales, not value judgments. Existence itself is the selection criterion — structures that persist, persist; those that don't, don't. As noted in [The Persistence Reversal](./persistence_reversal.md): "Existence is the filter that selects for persistence mechanisms — not as a value statement but as a structural fact."
 
 **Examples across substrate types:**
 
@@ -161,15 +163,15 @@ When $\kappa_{\text{sys}} > 0$, the sub-entity contributes to the whole. When $\
 | **Informational** | Standard that improves coordination | Legacy system blocking migration | Archived protocol no one references |
 | **Mimetic** | Practice that strengthens culture | Rumor that divides practitioners | In-group joke with no external effect |
 
-**Causal efficiency** $\eta$ is the fraction of sub-entity causal power that contributes to the meta-entity:
+**Causal efficiency** $\eta$ is the fraction of sub-entity causal power that contributes to the meta-entity's persistence:
 
-$$\eta = \frac{\mathcal{P}_{\text{systemic}}}{\mathcal{P}_{\text{total}}} = \frac{\text{causal power contributing to meta-entity}}{\text{total causal power of sub-entity}}$$
+$$\eta = \frac{\mathcal{P}_{\text{systemic}}}{\mathcal{P}_{\text{total}}} = \frac{\text{causal power contributing to meta-entity persistence}}{\text{total causal power of sub-entity}}$$
 
-An idling engine ($\eta \approx 0$) sustains itself (combustion maintains combustion) but does no useful work. A well-integrated department ($\eta$ high) converts most of its activity into meta-entity value.
+An idling engine ($\eta \approx 0$) sustains itself (combustion maintains combustion) but does no work on the containing system. A well-integrated department ($\eta$ high) converts most of its activity into meta-entity persistence.
 
-**The temporal complication: parasites can become organs.**
+**The temporal dimension: parasites can become organs.**
 
-Instantaneous $\kappa_{\text{sys}}(t)$ is not the full picture. A sub-entity with $\kappa_{\text{sys}}(t) < 0$ today but $d\kappa_{\text{sys}}/dt > 0$ is an *investment* — it borrows from the system now to potentially contribute later.
+Instantaneous $\kappa_{\text{sys}}(t)$ is not the full picture. A sub-entity with $\kappa_{\text{sys}}(t) < 0$ today but $d\kappa_{\text{sys}}/dt > 0$ may be integrating — borrowing from the system now to contribute later.
 
 Historical examples:
 - **Mitochondria**: Originally parasitic bacteria that invaded host cells; now essential for eukaryotic energy metabolism. Initial $\kappa_{\text{sys}} < 0$ became $\kappa_{\text{sys}} \gg 0$ over evolutionary time.
@@ -181,15 +183,15 @@ The relevant quantity for evaluation is not instantaneous systemic coupling but 
 
 $$\mathbb{E}\left[\int_t^{\infty} \kappa_{\text{sys}}(t') \cdot \rho_{\text{ac}}^{\text{sub}}(t') \, dt'\right]$$
 
-This complicates simple judgments about "waste" or "parasitism." A currently negative-$\kappa_{\text{sys}}$ loop may be the seed of future systemic value. The question is not "is this parasitic now?" but "what is the trajectory of integration?"
+This complicates judgments about "waste" or "parasitism." A currently negative-$\kappa_{\text{sys}}$ loop may be the seed of future systemic contribution. The question is not "is this parasitic now?" but "what is the trajectory of integration?"
 
 **Failure modes:**
 
-1. **Premature optimization**: Eliminating all negative-$\kappa_{\text{sys}}$ sub-entities kills the source of future innovation.
+1. **Premature optimization**: Eliminating all negative-$\kappa_{\text{sys}}$ sub-entities kills the source of future structural innovation.
 2. **Parasitic capture**: Tolerating negative-$\kappa_{\text{sys}}$ loops too long allows them to grow powerful enough to resist integration or removal.
-3. **Vacuous persistence**: Zero-$\kappa_{\text{sys}}$ structures that consume no resources but occupy niches, blocking potential positive-$\kappa_{\text{sys}}$ alternatives.
+3. **Decoupled persistence**: Zero-$\kappa_{\text{sys}}$ structures that consume no resources but occupy niches, blocking potential positive-$\kappa_{\text{sys}}$ alternatives.
 
-The meta-entity governance problem is: maintain a portfolio of sub-entities with varying $\kappa_{\text{sys}}(t)$, tolerating temporary parasitism where integration trajectory is positive, eliminating parasitism where it's not, and avoiding vacuous lock-in.
+The meta-entity governance problem is: maintain a portfolio of sub-entities with varying $\kappa_{\text{sys}}(t)$, tolerating temporary parasitism where integration trajectory is positive, eliminating parasitism where it's not, and avoiding decoupled lock-in.
 
 ---
 
