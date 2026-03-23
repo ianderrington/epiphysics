@@ -171,7 +171,14 @@ Traditional economics posits *homo economicus* — the rational actor who maximi
 
 Behavioral economics challenged this foundation. [Kahneman & Tversky's prospect theory (1979)](https://doi.org/10.2307/1914185) demonstrated systematic deviations from expected utility: loss aversion, reference dependence, probability weighting. [Simon's bounded rationality (1955)](https://doi.org/10.2307/1884852) showed that cognitive constraints force "satisficing" rather than optimizing. [Thaler's mental accounting (1985)](https://doi.org/10.1287/mksc.4.3.199) revealed that money is not fungible in practice. [Ariely (*Predictably Irrational*, 2008)](https://www.harpercollins.com/products/predictably-irrational-dan-ariely) catalogued dozens of systematic biases. The standard conclusion: humans are irrational.
 
-Epimechanics offers a different framing: **every entity acts optimally at an infinitesimally narrow timescale, given its actual state vector** — including its belief field $\hat{V}$, its internal constraints, and its coupling structure. What looks irrational from outside is rational from inside. The entity navigates by its map, not by the territory. This connects to [Gerd Gigerenzer's ecological rationality (1999)](https://doi.org/10.1093/acprof:oso/9780195315448.001.0001): heuristics that look like biases are often well-adapted to real environments with incomplete information and computational constraints.
+Epimechanics offers a different framing:
+
+> **Hypothesis (Local Optimality):** Every entity acts optimally at an infinitesimally narrow timescale, given its actual state vector — including its belief field $\hat{V}$, its internal constraints, and its coupling structure.
+
+If this hypothesis holds, then what looks irrational from outside is rational from inside. The entity navigates by its map, not by the territory. This connects to [Gerd Gigerenzer's ecological rationality (1999)](https://doi.org/10.1093/acprof:oso/9780195315448.001.0001): heuristics that look like biases are often well-adapted to real environments with incomplete information and computational constraints.
+
+> [!caveat]
+> **Epistemic status:** This is a *hypothesis*, not a proven result. It is unfalsifiable in a strict sense — any apparently suboptimal behavior can be explained by positing unobserved state variables. This is both a strength (it provides a consistent framework) and a weakness (it risks being tautological). The hypothesis is useful if it generates testable predictions about *which* state variables matter and *how* they constrain behavior — predictions that could be wrong. If every anomaly is explained by adding state variables post hoc, the hypothesis has no empirical content.
 
 ### The state vector includes everything
 
@@ -243,15 +250,25 @@ Aggregate $\hat{V}_{\text{market}}$ can diverge from $V$ when:
 
 An entity that updates $\hat{V}$ toward $V$ — that invests in truth-tracking — pays a computational cost now but extends its $T_{\text{local}}$ by avoiding collisions with reality. The addict's $\hat{V}$ is fitness-optimized (avoid withdrawal now) but truth-decoupled (ignores long-term health trajectory). Recovery is partly a process of recoupling $\hat{V}$ to $V$.
 
-### What this means for "fate"
+### What this means for "fate" — a conjecture
 
-If every entity acts optimally given its state, and states evolve according to the force equation $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$, then trajectories are determined by initial conditions plus the potential landscape. This sounds like determinism — fate.
+> [!caveat]
+> **Epistemic status:** The following is *speculative* — a conceptual exploration of what the Local Optimality hypothesis might imply for questions of determinism and agency. These are ancient philosophical questions that Epimechanics does not resolve. The framework offers a *language* for discussing them, not answers.
+
+If the Local Optimality hypothesis holds, and states evolve according to the force equation $F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$, then trajectories are determined by initial conditions plus the potential landscape. This sounds like determinism — fate.
 
 But the belief field introduces a wrinkle: $\hat{V}$ is part of the state, and $\hat{V}$ can be updated by the entity's own cognition. An entity that models its own state — that has nonzero consciousness $C$ ([Part 3](./03_intelligence_consciousness_agency.md)) — can update $\hat{V}$ based on reflection. This is a form of self-intervention: the entity changes its own state by thinking about it.
 
-**Fate is the trajectory implied by current state. Agency is the capacity to modify state through self-modeling.** An entity with $C = 0$ follows its state-determined trajectory (fate). An entity with $C > 0$ can intervene on its own belief field, changing its trajectory — not by violating physics, but by using cognition to modify the state vector that physics then propagates.
+One way to frame this (not the only way):
+- **Fate** = the trajectory implied by current state, propagated forward by the dynamics
+- **Agency** = the capacity to modify state through self-modeling
 
-This is not libertarian free will (uncaused causation). It is **recursive causation**: the entity's state includes its model of its state, and updating that model changes the state it models. The loop doesn't escape physics; it adds a reflexive layer that makes prediction harder from outside but doesn't make the system non-deterministic.
+Under this framing, an entity with $C = 0$ follows its state-determined trajectory. An entity with $C > 0$ can intervene on its own belief field, changing its trajectory — not by violating physics, but by using cognition to modify the state vector that physics then propagates.
+
+This is not libertarian free will (uncaused causation). It is **recursive causation**: the entity's state includes its model of its state, and updating that model changes the state it models. The loop doesn't escape determinism; it adds a reflexive layer that makes prediction harder from outside but doesn't make the system non-deterministic.
+
+> [!caveat]
+> **This framing does not resolve the free will debate.** A determinist can say: "The self-modeling is itself determined by prior state." A compatibilist can say: "The recursive loop is what we *mean* by agency." A libertarian can say: "This misses the point — the question is whether the loop is causally open." Epimechanics provides vocabulary, not verdicts. The question of whether recursive self-modeling constitutes "genuine" agency remains open — and may not be an empirical question at all.
 
 ---
 
