@@ -353,7 +353,6 @@ export default function PostComponent({ post }: PostComponentProps) {
 
   return (
     <div className="post-container">
-      <ReadingMemory slug={post.slug} />
       {/* Navigation Component for TOC */}
       {shouldShowToc && (
         <div 
@@ -377,6 +376,9 @@ export default function PostComponent({ post }: PostComponentProps) {
                   content={post.html} 
                   onLinkClick={handleTocLinkClick}
                 />
+                <div className="mt-3">
+                  <ReadingMemory slug={post.slug} contentHash={`${post.metadata.date || ''}:${post.html.length}`} />
+                </div>
               </div>
             </div>
           </Navigation>

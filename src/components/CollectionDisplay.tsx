@@ -11,6 +11,7 @@ import Media from './media/Media';
 import { DEFAULT_IMAGES } from '@/lib/constants';
 import { MediaResolver } from '@/lib/utils/mediaResolver';
 import { MediaProps, MediaType } from '@/lib/types/media';
+import CollectionFloatingTools from './CollectionFloatingTools';
 
 // Define the structure for breadcrumb items if not already globally available
 interface BreadcrumbItem {
@@ -145,6 +146,18 @@ const CollectionDisplay: React.FC<CollectionDisplayProps> = ({
             )
           )}
         </div>
+      )}
+
+      {/* Restore per-page tools (TOC + Share) for collection index pages */}
+      {hasIndexContent && indexPost && (
+        <CollectionFloatingTools
+          slug={indexPost.slug}
+          title={indexPost.metadata.title || ''}
+          html={indexPost.html}
+          content={indexPost.content}
+          description={indexPost.metadata.description}
+          tags={indexPost.metadata.tags || []}
+        />
       )}
 
       {/* Render Optional Index Post Content */}

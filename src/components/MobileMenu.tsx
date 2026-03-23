@@ -53,9 +53,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] })
   const { posts } = React.useContext(BlogContext);
   const [expandedSections, setExpandedSections] = React.useState<Record<string, boolean>>({});
   const [fontIdx, setFontIdx] = useState(1);
+  const [readProgress, setReadProgress] = useState(0);
 
   // Get current section from pathname
   const currentSection = pathname?.split('/')[1];
+  const currentReadKey = pathname ? `ep-read-memory:${pathname.replace(/^\//, '')}` : null;
 
   // Auto-expand current section for quicker subsection access
   useEffect(() => {
@@ -119,6 +121,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] })
     setFontIdx(idx);
     applyFontSize(idx);
   }, [isMobile]);
+
+  useEffect(() => {
+    if (!currentReadKey) return;
+    try {
+      const raw = localStorage.getItem(currentReadKey);
+      if (!raw) {
+        setReadProgress(0);
+        return;
+      }
+      const parsed = JSON.parse(raw) as { lastProgress?: number };
+      setReadProgress(Math.max(0, Math.min(100, Math.round(parsed.lastProgress ?? 0))));
+    } catch {
+      setReadProgress(0);
+    }
+  }, [currentReadKey, isOpen]);
 
   // Close menu on route change
   useEffect(() => {
@@ -322,6 +339,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] })
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm text-gray-600 dark:text-gray-400">Theme</span>
             <ThemeToggle />
+          </div>
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm text-gray-600 dark:text-gray-400">Reading</span>
+            <span className="text-sm text-gray-700 dark:text-gray-200">{readProgress}/100%</span>
+          </div>
+          <div className="h-1.5 bg-gray-200 dark:bg-gray-700 rounded overflow-hidden mb-3">
+            <div className="h-full bg-blue-500/70" style={{ width: `${readProgress}%` }} />
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600 dark:text-gray-400">Text size</span>

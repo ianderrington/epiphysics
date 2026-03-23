@@ -4,6 +4,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 interface ReadingMemoryProps {
   slug: string;
+  contentHash?: string;
+  compact?: boolean;
 }
 
 type ReadingStats = {
@@ -12,6 +14,8 @@ type ReadingStats = {
   lastScrollY: number;
   lastProgress: number;
   lastSeenAt: number;
+  contentHash?: string;
+  updated?: boolean;
 };
 
 const KEY_PREFIX = 'ep-read-memory:';
@@ -29,6 +33,8 @@ function loadStats(slug: string): ReadingStats {
       lastScrollY: parsed.lastScrollY ?? 0,
       lastProgress: parsed.lastProgress ?? 0,
       lastSeenAt: parsed.lastSeenAt ?? Date.now(),
+      contentHash: parsed.contentHash,
+      updated: parsed.updated ?? false,
     };
   } catch {
     return { visits: 0, totalReadMs: 0, lastScrollY: 0, lastProgress: 0, lastSeenAt: Date.now() };
@@ -36,9 +42,7 @@ function loadStats(slug: string): ReadingStats {
 }
 
 function saveStats(slug: string, stats: ReadingStats) {
-  try {
-    localStorage.setItem(`${KEY_PREFIX}${slug}`, JSON.stringify(stats));
-  } catch {}
+  try { localStorage.setItem(`${KEY_PREFIX}${slug}`, JSON.stringify(stats)); } catch {}
 }
 
 function getProgressPercent(): number {
@@ -48,22 +52,27 @@ function getProgressPercent(): number {
   return Math.max(0, Math.min(100, (window.scrollY / max) * 100));
 }
 
-export default function ReadingMemory({ slug }: ReadingMemoryProps) {
+export default function ReadingMemory({ slug, contentHash, compact = true }: ReadingMemoryProps) {
   const [stats, setStats] = useState<ReadingStats | null>(null);
-  const [collapsed, setCollapsed] = useState(false);
-  const readingStartRef = useRef<number>(Date.now());
   const lastTickRef = useRef<number>(Date.now());
 
   useEffect(() => {
     const current = loadStats(slug);
-    current.visits += 1;
-    current.lastSeenAt = Date.now();
-    saveStats(slug, current);
-    setStats(current);
+    const changed = !!contentHash && !!current.contentHash && current.contentHash !== contentHash;
 
-    const autoCollapse = window.setTimeout(() => setCollapsed(true), 5000);
-    return () => window.clearTimeout(autoCollapse);
-  }, [slug]);
+    const next: ReadingStats = {
+      ...current,
+      visits: current.visits + 1,
+      lastSeenAt: Date.now(),
+      updated: changed,
+      contentHash: contentHash ?? current.contentHash,
+      // If content changed, reset progress markers to avoid false resume positions
+      ...(changed ? { lastScrollY: 0, lastProgress: 0 } : {}),
+    };
+
+    saveStats(slug, next);
+    setStats(next);
+  }, [slug, contentHash]);
 
   useEffect(() => {
     if (!stats) return;
@@ -72,12 +81,7 @@ export default function ReadingMemory({ slug }: ReadingMemoryProps) {
       const progress = getProgressPercent();
       setStats(prev => {
         if (!prev) return prev;
-        const next = {
-          ...prev,
-          lastScrollY: window.scrollY,
-          lastProgress: progress,
-          lastSeenAt: Date.now(),
-        };
+        const next = { ...prev, lastScrollY: window.scrollY, lastProgress: progress, lastSeenAt: Date.now() };
         saveStats(slug, next);
         return next;
       });
@@ -88,14 +92,9 @@ export default function ReadingMemory({ slug }: ReadingMemoryProps) {
       const now = Date.now();
       const delta = now - lastTickRef.current;
       lastTickRef.current = now;
-
       setStats(prev => {
         if (!prev) return prev;
-        const next = {
-          ...prev,
-          totalReadMs: prev.totalReadMs + Math.max(0, Math.min(delta, 15000)),
-          lastSeenAt: now,
-        };
+        const next = { ...prev, totalReadMs: prev.totalReadMs + Math.max(0, Math.min(delta, 15000)), lastSeenAt: now };
         saveStats(slug, next);
         return next;
       });
@@ -115,49 +114,30 @@ export default function ReadingMemory({ slug }: ReadingMemoryProps) {
 
   if (!stats) return null;
 
-  const resume = () => {
-    window.scrollTo({ top: stats.lastScrollY || 0, behavior: 'smooth' });
-  };
-
+  const resume = () => window.scrollTo({ top: stats.lastScrollY || 0, behavior: 'smooth' });
   const restart = () => {
-    const next = { ...stats, lastScrollY: 0, lastProgress: 0, lastSeenAt: Date.now() };
+    const next = { ...stats, lastScrollY: 0, lastProgress: 0, updated: false, lastSeenAt: Date.now() };
     setStats(next);
     saveStats(slug, next);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  if (collapsed) {
-    return (
-      <button
-        onClick={() => setCollapsed(false)}
-        className="fixed bottom-4 left-4 z-40 rounded-full bg-white/90 dark:bg-gray-800/90 border border-gray-300 dark:border-gray-600 px-3 py-2 text-xs text-gray-700 dark:text-gray-200 shadow"
-        aria-label="Show reading memory"
-      >
-        {Math.round(stats.lastProgress)}% read
-      </button>
-    );
-  }
-
   return (
-    <div className="fixed bottom-4 left-4 z-40 w-64 rounded-lg bg-white/95 dark:bg-gray-800/95 border border-gray-300 dark:border-gray-600 shadow p-3 text-xs">
-      <div className="flex items-center justify-between mb-2">
-        <span className="font-semibold text-gray-800 dark:text-gray-100">Reading memory</span>
-        <button onClick={() => setCollapsed(true)} className="text-gray-500">✕</button>
+    <div className={`rounded-md border border-gray-200 dark:border-gray-700 bg-gray-50/65 dark:bg-gray-800/35 ${compact ? 'p-2 text-[11px]' : 'p-3 text-xs'}`}>
+      <div className="flex items-center justify-between text-gray-700 dark:text-gray-300">
+        <span>Read {Math.round(stats.lastProgress)}/100%</span>
+        <span>{stats.visits} visits</span>
       </div>
-
-      <div className="text-gray-700 dark:text-gray-200 mb-2">
-        <div>Progress: <strong>{Math.round(stats.lastProgress)}%</strong></div>
-        <div>Visits: <strong>{stats.visits}</strong></div>
-        <div>Read time: <strong>{readMinutes} min</strong></div>
+      <div className="mt-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded overflow-hidden">
+        <div className="h-full bg-blue-500/75" style={{ width: `${Math.round(stats.lastProgress)}%` }} />
       </div>
-
-      <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded mb-2 overflow-hidden">
-        <div className="h-full bg-blue-500" style={{ width: `${Math.round(stats.lastProgress)}%` }} />
+      <div className="mt-1 flex items-center justify-between text-gray-500 dark:text-gray-400">
+        <span>{readMinutes} min read</span>
+        {stats.updated ? <span className="text-amber-600 dark:text-amber-400">updated</span> : <span>saved</span>}
       </div>
-
-      <div className="flex gap-2">
-        <button onClick={resume} className="flex-1 px-2 py-1 rounded bg-blue-600 text-white">Resume</button>
-        <button onClick={restart} className="flex-1 px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100">Restart</button>
+      <div className="mt-2 flex gap-1.5">
+        <button onClick={resume} className="flex-1 rounded bg-white/80 dark:bg-gray-700/70 border border-gray-200 dark:border-gray-600 px-2 py-1">Resume</button>
+        <button onClick={restart} className="flex-1 rounded bg-white/80 dark:bg-gray-700/70 border border-gray-200 dark:border-gray-600 px-2 py-1">Restart</button>
       </div>
     </div>
   );
