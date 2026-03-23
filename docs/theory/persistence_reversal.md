@@ -31,7 +31,7 @@ tts:
   enableProgress: true
 ---
 
-> **Context.** This document extends the [Structural Primitives](./00_atomic_structure.md) (Part 1.5). For the thermodynamic emergence of life, see [Part 1c](./01c_thermodynamic_emergence_of_life.md). For meta-entities and when aggregates earn entity status, see [Part 2](./02_meta_entities.md). For representational manipulation as an attack on repair mechanisms, see the [Representational Manipulation](../research/representational_manipulation.md) research note.
+> **Context.** This document extends the [Causal Constituents](./00_atomic_structure.md) (Part 1.5). For the thermodynamic emergence of life, see [Part 1c](./01c_thermodynamic_emergence_of_life.md). For meta-entities and when aggregates earn entity status, see [Part 2](./02_meta_entities.md). For representational manipulation as an attack on repair mechanisms, see the [Representational Manipulation](../research/representational_manipulation.md) research note.
 
 ---
 
@@ -55,7 +55,7 @@ Somewhere a crossover occurs. In actively maintained systems, the composite outl
 
 ### What causes the reversal
 
-In the atomic framework's terms, the crossover happens where $\dot{R}_{\text{repair}} > 0$ — where entities actively replace degraded components rather than relying on passive stability alone.
+In the constituent framework's terms, the crossover happens where $\dot{R}_{\text{repair}} > 0$ — where entities actively replace degraded components rather than relying on passive stability alone.
 
 Below the crossover: **passive stability**. Persistence comes from deep basins ($\Delta V \gg$ perturbation) and strong bonds ($\sigma_b$ high). No information directs repair because no repair occurs. Constituents are more stable than composites because composites depend on bonds between constituents, and bonds are weaker than the constituents they connect.
 
@@ -65,7 +65,7 @@ Above the crossover: **active stability**. Persistence comes from repair rate ex
 
 Most composites are ephemeral. Most molecules break. Most organizations dissolve. Most religions are forgotten. We observe the survivors because only survivors exist to be observed. This is not purposive selection — it is a structural filter. Things that persist, persist. Things that don't, don't.
 
-The atomic framework predicts *what* makes some survive: binding fraction $f_{\text{binding}}$ (how much of the entity's $\mathcal{M}$ is in the pattern vs. in the parts), repair coverage (does $\dot{R}_{\text{repair}}$ cover all constituent types?), basin depth $\Delta V$, and informational encoding quality. Existence is the filter that selects for persistence mechanisms — not as a value statement but as a structural fact.
+The constituent framework predicts *what* makes some survive: binding fraction $f_{\text{binding}}$ (how much of the entity's $\mathcal{M}$ is in the pattern vs. in the parts), repair coverage (does $\dot{R}_{\text{repair}}$ cover all constituent types?), basin depth $\Delta V$, and informational encoding quality. Existence is the filter that selects for persistence mechanisms — not as a value statement but as a structural fact.
 
 ### The information requirement
 
@@ -119,4 +119,4 @@ This analysis is structural and qualitative. $f_{\text{binding}}$ and $\dot{R}_{
 
 ---
 
-> **See also:** [Structural Primitives](./00_atomic_structure.md) (Part 1.5) for the atomic quantities underlying persistence. [Part 1c](./01c_thermodynamic_emergence_of_life.md) for the thermodynamic emergence of life. [Part 2: Meta-Entities](./02_meta_entities.md) for when aggregates earn entity status. [Part 5](./05_ontology_and_open_questions.md) for the Representational Efficiency principle.
+> **See also:** [Causal Constituents](./00_atomic_structure.md) (Part 1.5) for the atomic quantities underlying persistence. [Part 1c](./01c_thermodynamic_emergence_of_life.md) for the thermodynamic emergence of life. [Part 2: Meta-Entities](./02_meta_entities.md) for when aggregates earn entity status. [Part 5](./05_ontology_and_open_questions.md) for the Representational Efficiency principle.

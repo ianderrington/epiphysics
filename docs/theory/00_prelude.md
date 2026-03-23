@@ -172,7 +172,7 @@ Both quantities are representations — values we assign within a model, not pro
 
 The framework's mechanical apparatus (mass, force, energy) applies to all entities. For entities with very low $\rho_{\text{ac}}$, the quantities are near-zero and carry little predictive content. What makes some entities more persistent and more dynamically self-sustaining than others is the density and structure of their self-sustaining causal loops — and that difference is what the rest of the framework formalizes.
 
-[Part 1.5: Structural Primitives](./00_atomic_structure.md) develops what $\rho_{\text{ac}}$ is made of — the causal bonds, loop structures, and stability basins from which auto-causal density emerges.
+[Part 1.5: Causal Constituents](./00_atomic_structure.md) develops what $\rho_{\text{ac}}$ is made of — the causal bonds, loop structures, and stability basins from which auto-causal density emerges.
 
 ---
 
@@ -270,10 +270,10 @@ With these foundations in place:
 
 - [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) — the full mechanical apparatus: state, velocity, mass, momentum, force, energy, Lagrangian, coupling, fields, thermodynamics, fluid dynamics.
 - [Part 1b: Uncertainty, Coordinates, and Relativity](./01b_uncertainty_coordinates_relativity.md) — how representations transform between coordinate systems; measurement changes the state.
-- [Part 1.5: Structural Primitives](./00_atomic_structure.md) — what are entities *made of*? The six candidate atomic quantities.
+- [Part 1.5: Causal Constituents](./00_atomic_structure.md) — what are entities *made of*? The six candidate causal constituents.
 - [Parts 2–5](./index.md) — meta-entities, intelligence/consciousness/agency, time and soul, full ontology.
 - [Applications](../applications/index.md) — where epiphysics happens: testing predictions in specific domains.
 
 ---
 
-[→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 1.5: Structural Primitives](./00_atomic_structure.md)
+[→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 1.5: Causal Constituents](./00_atomic_structure.md)

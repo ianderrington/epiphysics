@@ -1,5 +1,5 @@
 ---
-title: "Epimechanics — Part 1.5: Structural Primitives"
+title: "Epimechanics — Part 1.5: Causal Constituents"
 description: >-
   Epimechanics provides the grammar - state, force, energy, coupling. But what are the fundamental
   building blocks from which generalized mass, auto-causal density, maintenance cost, and robustness
@@ -31,8 +31,8 @@ coverImage:
     aesthetic crossed with network topology.
 bullets:
   - Epimechanics has the grammar but not the periodic table - what are entities made of?
-  - Six candidate atomic quantities - causal bond, bond strength, loop order, basin depth, entropy production rate, repair rate
-  - Mass and maintenance cost are different quantities built from different combinations of the same atoms
+  - Six candidate causal constituents - causal bond, bond strength, loop order, basin depth, entropy production rate, repair rate
+  - Mass and maintenance cost are different quantities built from different combinations of the same constituents
   - Connection to assembly theory, information geometry, and the Representational Efficiency principle
 tts:
   enabled: true
@@ -58,7 +58,7 @@ This is the periodic table problem. Physics had $F = ma$ for two centuries befor
 
 ## Candidate Atomic Quantities
 
-The following are proposed as domain-independent primitives - the "atoms" from which $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, robustness, and other derived quantities are composed.
+The following are proposed as domain-independent primitives - the causal constituents from which $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, robustness, and other derived quantities are composed.
 
 ### Units and dimensional analysis
 
@@ -119,15 +119,15 @@ This is exactly [Kauffman's autocatalytic set](https://doi.org/10.1093/oso/97801
 - **Social reciprocity**: A trusts B, B cooperates with C, C supports A - no individual trust relationship sustains itself; the triangle does
 - **Neural assemblies**: individual neurons don't fire themselves; recurrent circuits do
 
-**Implication for the atomic framework:** $\rho_{\text{ac}}$ is NOT a bond-level property. It is a **loop-level emergent property** - the first level at which auto-causality appears. Bonds are the atoms; loops are the "molecules." You cannot measure $\rho_{\text{ac}}$ by examining individual bonds any more than you can measure wetness by examining individual water molecules.
+**Implication for the constituent framework:** $\rho_{\text{ac}}$ is NOT a bond-level property. It is a **loop-level emergent property** - the first level at which auto-causality appears. Bonds are the constituents; loops are the "molecules." You cannot measure $\rho_{\text{ac}}$ by examining individual bonds any more than you can measure wetness by examining individual water molecules.
 
 This connects directly to [Hoel et al.'s causal emergence](https://doi.org/10.1073/pnas.1314922110): the loop-level description has more causal information than the bond-level description ($EI(\text{macro}) > EI(\text{micro})$). The loop IS the entity at its most fundamental level - the smallest unit of self-sustaining causal structure.
 
-The six atomic quantities should therefore be understood at two levels:
+The six causal constituents should therefore be understood at two levels:
 - **Bond level**: causal bond $b$, bond strength $\sigma_b$, latency $\tau_b$, reliability $r_b$ - these are properties of individual causal connections
 - **Loop level**: loop order $\ell$, $\rho_{\text{ac}}$, basin depth $\Delta V$, entropy production $\dot{S}_{\text{int}}$, repair rate $\dot{R}_{\text{repair}}$ - these are emergent properties of configurations of bonds
 
-Bonds are to loops as atoms are to molecules. The interesting chemistry happens at the molecular level.
+Bonds are to loops as constituents are to molecular-scale composites. The interesting chemistry happens at the molecular level.
 
 ### 4. Stability Basin Depth ($\Delta V$)
 
@@ -175,7 +175,7 @@ $$C_{\text{maintenance}} = \dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$$
 
 ## Building Higher Quantities from Atoms
 
-The six atomic quantities combine to produce the framework's higher-level concepts:
+The six causal constituents combine to produce the framework's higher-level concepts:
 
 | Derived Quantity | Atomic Composition | What It Means |
 |---|---|---|
@@ -212,13 +212,13 @@ For how the medium modifies effective mass, see [Effective Mass](./effective_mas
 
 ## Connection to Assembly Theory
 
-[Assembly theory (Cronin & Walker, 2023)](https://doi.org/10.1038/s41586-023-06600-9) measures one of these atoms: the minimum number of bond-formation operations to construct an object. The assembly index AI is a static, constructive measure - it counts how many steps to *build* the structure.
+[Assembly theory (Cronin & Walker, 2023)](https://doi.org/10.1038/s41586-023-06600-9) measures one of these constituents: the minimum number of bond-formation operations to construct an object. The assembly index AI is a static, constructive measure - it counts how many steps to *build* the structure.
 
-The atomic framework here extends assembly theory in two directions:
+The constituent framework here extends assembly theory in two directions:
 
 1. **From construction to maintenance.** AI tells you how hard the entity was to build. $C_{\text{maint}} = \dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$ tells you how hard it is to *keep*. These are different: a complex molecule (high AI) in a stable configuration (deep $\Delta V$) is hard to build and easy to keep. A complex molecule in an unstable configuration (shallow $\Delta V$) is hard to build and hard to keep.
 
-2. **From counting to dynamics.** AI counts construction steps. The atomic framework adds *dynamics*: how do the bonds evolve over time? Which degrade? How fast? What repair mechanisms exist? This is the difference between a blueprint (AI) and a maintenance manual ($\dot{S}_{\text{int}}$, $\dot{R}_{\text{repair}}$, $\Delta V$).
+2. **From counting to dynamics.** AI counts construction steps. The constituent framework adds *dynamics*: how do the bonds evolve over time? Which degrade? How fast? What repair mechanisms exist? This is the difference between a blueprint (AI) and a maintenance manual ($\dot{S}_{\text{int}}$, $\dot{R}_{\text{repair}}$, $\Delta V$).
 
 The prediction: **AI and durability should be correlated but not identical.** High-AI entities tend to have deeper stability basins (complex structures tend to have more pathways to self-stabilize) - but the correlation is imperfect. Fragile complexity exists (a complex but poorly designed bridge). Durable simplicity exists (a stone wall).
 
@@ -240,9 +240,9 @@ The six quantities proposed here (bond, strength, loop order, basin depth, entro
 
 ### Q2: Are the atoms domain-independent?
 
-The examples above suggest they are - "causal bond" maps naturally to chemical bonds, institutional interactions, and cognitive connections. But the *measure* on each (what units, what grain) is domain-specific. Can we define a domain-independent formalism for these atoms, the way physics defines "bond" abstractly through quantum mechanics regardless of which atoms are bonding?
+The examples above suggest they are - "causal bond" maps naturally to chemical bonds, institutional interactions, and cognitive connections. But the *measure* on each (what units, what grain) is domain-specific. Can we define a domain-independent formalism for these constituents, the way physics defines "bond" abstractly through quantum mechanics regardless of which atoms are bonding?
 
-### Q3: How do atoms compose into tensors?
+### Q3: How do constituents compose into tensors?
 
 The coupling tensor $T^i{}_j$ describes cross-domain propagation. In atomic terms: a force applied in domain $j$ propagates through bonds that cross domain boundaries to produce a response in domain $i$. The off-diagonal elements of $T$ are determined by the number, strength, and loop structure of cross-domain bonds. Can the tensor structure be *derived* from the bond network, rather than measured as a separate quantity?
 
@@ -258,12 +258,12 @@ The Lagrangian $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V(X)$ (scalar approximat
 
 ## Relationship to the Series
 
-This document sits between the [series overview](./index.md) and [Part 1](./01_generalized_mechanics.md). It addresses the question that Part 1's grammar leaves open: what is the grammar *about*? The grammar describes how $\mathcal{M}$, $F$, $V$, $T^i{}_j$ relate to each other. This document asks what these quantities are *made of* - and proposes that the answer, like chemistry's periodic table, is a small set of atomic quantities that combine differently in different domains to produce the observed diversity of entities.
+This document sits between the [series overview](./index.md) and [Part 1](./01_generalized_mechanics.md). It addresses the question that Part 1's grammar leaves open: what is the grammar *about*? The grammar describes how $\mathcal{M}$, $F$, $V$, $T^i{}_j$ relate to each other. This document asks what these quantities are *made of* - and proposes that the answer, like chemistry's periodic table, is a small set of causal constituents that combine differently in different domains to produce the observed diversity of entities.
 
-The grammar works regardless of whether the atomic decomposition is correct - $F = \mathcal{M}\ddot{X}$ (or more generally $F_i = \mathcal{M}_{ij}\ddot{X}^j$) holds whether or not we know what $\mathcal{M}$ is made of, just as $F = ma$ held before the discovery of atoms. But the atomic decomposition, if correct, would:
+The grammar works regardless of whether the constituent decomposition is correct - $F = \mathcal{M}\ddot{X}$ (or more generally $F_i = \mathcal{M}_{ij}\ddot{X}^j$) holds whether or not we know what $\mathcal{M}$ is made of, just as $F = ma$ held before the discovery of atoms. But the constituent decomposition, if correct, would:
 
 1. **Resolve the house problem** - explain why $\mathcal{M}$ and maintenance cost diverge
-2. **Ground the equivalence principle** - provide a micro-level explanation for why different measurement approaches to $\mathcal{M}$ agree (they're measuring different aggregates of the same atoms)
+2. **Ground the equivalence principle** - provide a micro-level explanation for why different measurement approaches to $\mathcal{M}$ agree (they're measuring different aggregates of the same constituents)
 3. **Enable the applications** - the Tier 1 applications (cost of ownership, robustness metrics, future cost of decisions) all require distinguishing $\mathcal{M}$ from maintenance cost, which requires the atomic decomposition
 4. **Connect to the Representational Efficiency principle** - explain *why* optimal representations have simple Lagrangian structure (because they correspond to natural bond clusters)
 5. **Potentially derive the Lagrangian** - moving the framework's strongest postulate from assumption to consequence
