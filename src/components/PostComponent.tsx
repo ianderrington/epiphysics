@@ -15,6 +15,7 @@ import { MediaResolver } from '@/lib/utils/mediaResolver';
 import Media from '@/components/media/Media';
 import { MediaProps, MediaType } from '@/lib/types/media';
 import { CoverMedia } from '@/lib/mediaUtils';
+import ReadingMemory from '@/components/ReadingMemory';
 
 interface Author {
   name: string;
@@ -352,6 +353,7 @@ export default function PostComponent({ post }: PostComponentProps) {
 
   return (
     <div className="post-container">
+      <ReadingMemory slug={post.slug} />
       {/* Navigation Component for TOC */}
       {shouldShowToc && (
         <div 

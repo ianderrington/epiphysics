@@ -65,7 +65,7 @@ The following are proposed as domain-independent causants from which $\mathcal{M
 ### Visual: Causant interaction graph
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#DBEAFE', 'primaryTextColor': '#0F172A', 'primaryBorderColor': '#2563EB', 'lineColor': '#334155', 'fontSize': '14px'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#EAF2FF', 'primaryTextColor': '#0F172A', 'primaryBorderColor': '#7AA2E3', 'lineColor': '#334155', 'fontSize': '14px'}}}%%
 flowchart LR
   A[Signal Source] -->|σ=0.80 · τ=1 · r=0.90| B[Integrator]
   B -->|σ=0.62 · τ=2 · r=0.82| C[Action Layer]
@@ -74,8 +74,8 @@ flowchart LR
   D[Environment] -->|perturbation| B
   C -->|state update| E[Observed Output]
 
-  classDef core fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#0F172A;
-  classDef ext fill:#E2E8F0,stroke:#64748B,stroke-width:1.5px,color:#0F172A;
+  classDef core fill:#EAF2FF,stroke:#7AA2E3,stroke-width:2px,color:#0F172A;
+  classDef ext fill:#EEF2F7,stroke:#8A99AD,stroke-width:1.5px,color:#0F172A;
 
   class A,B,C core;
   class D,E ext;
@@ -163,9 +163,9 @@ flowchart LR
 
   Micro -->|coarse-grain| Macro
 
-  classDef micro fill:#FEF3C7,stroke:#D97706,stroke-width:1.5px,color:#111827;
-  classDef macro fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#052E16;
-  classDef note fill:#F1F5F9,stroke:#64748B,stroke-width:1px,color:#0F172A;
+  classDef micro fill:#FFF7E6,stroke:#E1A957,stroke-width:1.5px,color:#111827;
+  classDef macro fill:#ECFDF3,stroke:#61B08C,stroke-width:2px,color:#052E16;
+  classDef note fill:#F1F5F9,stroke:#8A99AD,stroke-width:1px,color:#0F172A;
 
   class A1,B1,C1 micro;
   class L,RAC macro;
@@ -233,10 +233,10 @@ flowchart LR
   Eq["C_maint = Ṡ_int - Ṙ_repair"]
   Net --> Eq
 
-  classDef driver fill:#FEE2E2,stroke:#DC2626,stroke-width:1.5px,color:#450A0A;
-  classDef repair fill:#DCFCE7,stroke:#16A34A,stroke-width:1.5px,color:#052E16;
-  classDef core fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#0F172A;
-  classDef regime fill:#F8FAFC,stroke:#64748B,stroke-width:1px,color:#0F172A;
+  classDef driver fill:#FFF1F2,stroke:#E58C98,stroke-width:1.5px,color:#450A0A;
+  classDef repair fill:#ECFDF3,stroke:#61B08C,stroke-width:1.5px,color:#052E16;
+  classDef core fill:#EAF2FF,stroke:#7AA2E3,stroke-width:2px,color:#0F172A;
+  classDef regime fill:#F7F9FC,stroke:#8A99AD,stroke-width:1px,color:#0F172A;
 
   class Sint driver;
   class Rrep repair;
