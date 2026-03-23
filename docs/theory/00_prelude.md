@@ -237,13 +237,7 @@ The Representational Efficiency Principle reframes what Epimechanics claims. Epi
 
 ---
 
-## 7. A Note on Vulnerability
-
-Because $X$ is a representation and fields are aggregates of representations, representational systems are vulnerable to deliberate distortion — propaganda, disinformation, information pollution. The vulnerability is a structural consequence of the foundational commitments, not an application-specific concern. The full analysis — propaganda as field manipulation, information pollution as entropy injection, and the survival implications — is developed in the research note on [Representational Manipulation](../research/representational_manipulation.md) and connects to the [applications on efficiency limits](../applications/efficiency_limits.md) (where environmental noise $\mathcal{T}_{\text{env}}$ degrades the Carnot ceiling).
-
----
-
-## 8. Antecedents
+## 7. Antecedents
 
 Epimechanics emerges from a number of antecedents including:
 
@@ -262,7 +256,7 @@ Epimechanics shares the structuralist intuition with Ladyman/Ross, the process o
 
 ---
 
-## 9. The Triviality Objection
+## 8. The Triviality Objection
 
 Any sufficiently abstract mathematical framework can be "applied" to anything — as [Putnam's model-theoretic argument (1980)](https://doi.org/10.2307/2273415) shows, formal structures can always be mapped onto arbitrary domains. If Epimechanics' equations describe beliefs, markets, and particles, this may be because they are too abstract to say anything specific about any of them.
 
@@ -270,7 +264,7 @@ The antidote is empirical: epiphysics. The framework must generate predictions t
 
 ---
 
-## 10. What Comes Next
+## 9. What Comes Next
 
 With these foundations in place:
 
