@@ -167,9 +167,11 @@ This definition integrates with the rest of the framework:
 
 ## Local Optimality: Every Entity Acts Rationally Given Its State
 
-Traditional economics posits *homo economicus* — the rational actor who maximizes utility given perfect information. Behavioral economics demolished this: real agents exhibit cognitive biases, bounded rationality, addiction, and systematic deviation from "optimal" behavior. The standard conclusion: humans are irrational.
+Traditional economics posits *homo economicus* — the rational actor who maximizes expected utility given perfect information and stable preferences. This model, formalized by [von Neumann & Morgenstern (*Theory of Games and Economic Behavior*, 1944)](https://press.princeton.edu/books/paperback/9780691130613/theory-of-games-and-economic-behavior) and [Arrow & Debreu (1954)](https://doi.org/10.2307/1907353), became the foundation of neoclassical economics and general equilibrium theory.
 
-Epimechanics offers a different framing: **every entity acts optimally at an infinitesimally narrow timescale, given its actual state vector** — including its belief field $\hat{V}$, its internal constraints, and its coupling structure. What looks irrational from outside is rational from inside. The entity navigates by its map, not by the territory.
+Behavioral economics challenged this foundation. [Kahneman & Tversky's prospect theory (1979)](https://doi.org/10.2307/1914185) demonstrated systematic deviations from expected utility: loss aversion, reference dependence, probability weighting. [Simon's bounded rationality (1955)](https://doi.org/10.2307/1884852) showed that cognitive constraints force "satisficing" rather than optimizing. [Thaler's mental accounting (1985)](https://doi.org/10.1287/mksc.4.3.199) revealed that money is not fungible in practice. [Ariely (*Predictably Irrational*, 2008)](https://www.harpercollins.com/products/predictably-irrational-dan-ariely) catalogued dozens of systematic biases. The standard conclusion: humans are irrational.
+
+Epimechanics offers a different framing: **every entity acts optimally at an infinitesimally narrow timescale, given its actual state vector** — including its belief field $\hat{V}$, its internal constraints, and its coupling structure. What looks irrational from outside is rational from inside. The entity navigates by its map, not by the territory. This connects to [Gerd Gigerenzer's ecological rationality (1999)](https://doi.org/10.1093/acprof:oso/9780195315448.001.0001): heuristics that look like biases are often well-adapted to real environments with incomplete information and computational constraints.
 
 ### The state vector includes everything
 
@@ -205,6 +207,8 @@ But the belief field can be wrong ($\hat{V} \neq V$), and the state vector can b
 
 This resolves the economics debate. *Homo economicus* is correct at the instantaneous limit — every agent maximizes given their state. Behavioral economics is correct at longer timescales — belief field errors and state constraints produce systematic deviation from "rational" behavior (where "rational" means "what an agent with accurate $\hat{V}$ and unconstrained state would do").
 
+This framing connects to [Gary Becker's rational addiction model (1988)](https://doi.org/10.1086/261558), which showed that addictive behavior can be modeled as rational utility maximization with high discount rates and adjacent complementarities. Epimechanics extends this: the high discount rate IS a property of the state vector (coupling structure biased toward immediate states), not a preference parameter. [Laibson's quasi-hyperbolic discounting (1997)](https://doi.org/10.1162/003355397555253) captures the same phenomenon with a different parameterization — time-inconsistent preferences that produce behavior optimal at each instant but suboptimal over trajectories.
+
 ### "Irrational" behavior is diagnostic
 
 If an entity's behavior looks irrational, one of these is true:
@@ -213,9 +217,20 @@ If an entity's behavior looks irrational, one of these is true:
 3. **You're evaluating at the wrong timescale** — instantaneously optimal, trajectory suboptimal
 
 This has practical implications:
-- **Therapy**: change the state vector (beliefs, constraints), not the decision process
-- **Policy**: change the potential field $V$ (incentives, environment), not just information
-- **AI alignment**: the AI acts optimally given its state; misalignment means the state (training, reward signal, constraints) produces bad trajectories
+- **Therapy**: change the state vector (beliefs, constraints), not the decision process. This is the core insight of [cognitive-behavioral therapy (Beck, 1979)](https://www.guilford.com/books/Cognitive-Therapy-of-Depression/Beck-Rush-Shaw-Emery/9780898629194) — restructure $\hat{V}$, and behavior follows.
+- **Policy**: change the potential field $V$ (incentives, environment), not just information. [Thaler & Sunstein's nudge theory (2008)](https://yalebooks.yale.edu/book/9780300122237/nudge/) operationalizes this: choice architecture modifies $V$ to make $\hat{V}$-optimal paths align with $V$-optimal paths.
+- **AI alignment**: the AI acts optimally given its state; misalignment means the state (training, reward signal, constraints) produces bad trajectories. This connects to [Goodhart's Law](https://doi.org/10.1080/00346760802502991) and [reward hacking](https://arxiv.org/abs/1606.06565): the AI optimizes its $\hat{V}$ perfectly — the problem is that $\hat{V}$ (learned from the reward signal) diverges from the intended $V$.
+
+### Implications for market efficiency
+
+The [Efficient Market Hypothesis (Fama, 1970)](https://doi.org/10.2307/2325486) claims prices reflect all available information. In belief-field terms: the collective belief field $\hat{V}_{\text{market}}$ equals the true potential $V$. Behavioral finance challenges this: [Shiller's excess volatility (1981)](https://doi.org/10.2307/1802789) showed prices move more than fundamentals justify; [De Bondt & Thaler (1985)](https://doi.org/10.1111/j.1540-6261.1985.tb05004.x) documented overreaction; [Shleifer & Vishny (1997)](https://doi.org/10.1111/j.1540-6261.1997.tb03807.x) showed arbitrage has limits.
+
+Epimechanics' contribution: markets are instantaneously efficient — every trade is optimal given traders' state vectors. But aggregate $\hat{V}_{\text{market}}$ can diverge from $V$ when:
+- Many traders share the same $\hat{V}$ error (herding, bubbles)
+- State constraints (margin calls, redemption pressure) force locally optimal but globally suboptimal actions
+- Information cascades make $\hat{V}$ self-referential: traders update $\hat{V}$ based on other traders' actions, not on $V$ directly
+
+[Soros's reflexivity (1987)](https://www.publicaffairsbooks.com/titles/george-soros/the-alchemy-of-finance/9781586489120) captures this: market participants' beliefs affect the fundamentals they're trying to predict. In Epimechanics terms: $\hat{V}_{\text{collective}}$ modifies $V$, creating feedback loops where the map changes the territory.
 
 ### Connection to fitness×truth
 
