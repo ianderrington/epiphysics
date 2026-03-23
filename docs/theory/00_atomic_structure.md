@@ -1,5 +1,5 @@
 ---
-title: "Epimechanics — Part 0.5: Structural Primitives"
+title: "Epimechanics — Part 1.5: Structural Primitives"
 description: >-
   Epimechanics provides the grammar - state, force, energy, coupling. But what are the fundamental
   building blocks from which generalized mass, auto-causal density, maintenance cost, and robustness
@@ -267,6 +267,11 @@ The grammar works regardless of whether the atomic decomposition is correct - $F
 3. **Enable the applications** - the Tier 1 applications (cost of ownership, robustness metrics, future cost of decisions) all require distinguishing $\mathcal{M}$ from maintenance cost, which requires the atomic decomposition
 4. **Connect to the Representational Efficiency principle** - explain *why* optimal representations have simple Lagrangian structure (because they correspond to natural bond clusters)
 5. **Potentially derive the Lagrangian** - moving the framework's strongest postulate from assumption to consequence
+
+---
+
+[→ Part 1: The Generalized Mechanics](./01_generalized_mechanics.md)
+postulate from assumption to consequence
 
 ---
 
