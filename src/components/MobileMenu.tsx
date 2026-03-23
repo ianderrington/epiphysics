@@ -3,9 +3,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { X } from 'lucide-react';
+import { ChevronDown, ChevronRight, X } from 'lucide-react';
 import { useMobileMenu } from '@/contexts/MobileMenuContext';
 import ThemeToggle from './ThemeToggle';
+import { BlogContext } from '@/app/providers';
 
 interface MobileMenuProps {
   sections: Array<{
@@ -49,10 +50,68 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] })
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const { posts } = React.useContext(BlogContext);
+  const [expandedSections, setExpandedSections] = React.useState<Record<string, boolean>>({});
   const [fontIdx, setFontIdx] = useState(1);
 
   // Get current section from pathname
   const currentSection = pathname?.split('/')[1];
+
+  // Auto-expand current section for quicker subsection access
+  useEffect(() => {
+    if (!currentSection) return;
+    setExpandedSections(prev => ({ ...prev, [currentSection]: true }));
+  }, [currentSection]);
+
+  const toggleSection = (sectionId: string) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [sectionId]: !prev[sectionId]
+    }));
+  };
+
+  const getSectionChildren = (sectionId: string): Array<{ href: string; title: string }> => {
+    if (!posts?.length) return [];
+
+    const normalized = posts
+      .map((p: any) => ({
+        slug: p?.slug as string | undefined,
+        title: (p?.metadata?.title || p?.title || '') as string,
+      }))
+      .filter((p: any) => typeof p.slug === 'string' && p.slug.length > 0) as Array<{ slug: string; title: string }>;
+
+    const inSection = normalized.filter((p) => p.slug.startsWith(`${sectionId}/`));
+
+    const directDocs = inSection
+      .filter((p) => {
+        const rel = p.slug.slice(sectionId.length + 1);
+        return rel && !rel.includes('/') && rel !== 'index';
+      })
+      .map((p) => ({ href: `/${p.slug}`, title: p.title }));
+
+    const folderNames = new Set<string>();
+    inSection.forEach((p) => {
+      const rel = p.slug.slice(sectionId.length + 1);
+      if (!rel || rel === 'index') return;
+      const first = rel.split('/')[0];
+      if (first && first !== 'index') folderNames.add(first);
+    });
+
+    const folderItems = Array.from(folderNames)
+      .filter((name) => !directDocs.find((d) => d.href === `/${sectionId}/${name}`))
+      .map((name) => {
+        const exact = inSection.find((p) => p.slug === `${sectionId}/${name}`);
+        const indexLike = inSection.find((p) => p.slug === `${sectionId}/${name}/index`);
+        return {
+          href: `/${sectionId}/${name}`,
+          title: exact?.title || indexLike?.title || name.replace(/[-_]/g, ' '),
+        };
+      });
+
+    return [...directDocs, ...folderItems]
+      .filter((item) => item.href !== `/${sectionId}`)
+      .sort((a, b) => a.title.localeCompare(b.title));
+  };
 
   useEffect(() => {
     if (!isMobile) return;
@@ -183,23 +242,66 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] })
         {/* Navigation Links */}
         <nav className="flex-1 overflow-y-auto py-4">
           <div className="px-4 space-y-2">
-            {sections.map((section) => (
-              <Link
-                key={section.id}
-                href={`/${section.id}`}
-                className={`
-                  block px-4 py-3 rounded-lg text-base font-medium
-                  transition-colors duration-200
-                  ${currentSection === section.id
-                    ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white'
-                  }
-                `}
-                onClick={closeMenu}
-              >
-                {section.title}
-              </Link>
-            ))}
+            {sections.map((section) => {
+              const isActive = currentSection === section.id;
+              const children = getSectionChildren(section.id);
+              const isExpanded = !!expandedSections[section.id];
+
+              return (
+                <div key={section.id} className="rounded-lg">
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href={`/${section.id}`}
+                      className={`
+                        flex-1 px-4 py-3 rounded-lg text-base font-medium
+                        transition-colors duration-200
+                        ${isActive
+                          ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400'
+                          : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white'
+                        }
+                      `}
+                      onClick={closeMenu}
+                    >
+                      {section.title}
+                    </Link>
+
+                    {children.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => toggleSection(section.id)}
+                        className="px-3 py-3 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                        aria-label={isExpanded ? `Collapse ${section.title}` : `Expand ${section.title}`}
+                        aria-expanded={isExpanded}
+                      >
+                        {isExpanded ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
+                      </button>
+                    )}
+                  </div>
+
+                  {children.length > 0 && isExpanded && (
+                    <div className="ml-3 mt-1 mb-2 space-y-1 border-l border-gray-200 dark:border-gray-700 pl-3">
+                      {children.map((child) => {
+                        const childActive = pathname === child.href || pathname?.startsWith(`${child.href}/`);
+                        return (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={closeMenu}
+                            className={`block px-3 py-2 rounded-md text-sm transition-colors ${
+                              childActive
+                                ? 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-300'
+                                : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+                            }`}
+                          >
+                            • {child.title}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
             {externalLinks.map((link) => (
               <a
                 key={link.href}
