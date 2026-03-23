@@ -154,7 +154,6 @@ Standalone documents extending specific topics from the main series.
 | [Effective Mass](./effective_mass.md) | Part 1.5 | How the medium shapes an entity's resistance to state change; bare vs. effective mass |
 | [The Persistence Reversal](./persistence_reversal.md) | Part 1.5, Part 1c | When composites outlive their constituents; passive vs. active stability |
 | [Cross-Level Tracing](./cross_level_tracing.md) | Part 1.5, Part 1, Part 5 | What survives coarse-graining across scales; positioning against Simon, Rosen, sloppy models |
-| [Diagram Style Guide](./diagram_style_guide.md) | Visual standard | Mermaid-first notation for reusable causant diagrams across theory/research/reports |
 
 ---
 

@@ -4,7 +4,7 @@ description: >-
   Minimal, reusable visual standard for Epimechanics diagrams using Mermaid-first
   notation so diagrams can be embedded at all report levels.
 date: 2026-03-22T00:00:00.000Z
-draft: false
+draft: true
 author:
   name: "Ian Derrington"
 contentType: article
