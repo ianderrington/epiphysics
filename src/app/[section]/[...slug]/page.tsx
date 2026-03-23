@@ -7,6 +7,7 @@ import FloatingShareButton from '@/components/FloatingShareButton';
 import Breadcrumb from '@/components/Breadcrumb';
 import { resolveImagePath } from '@/lib/imageUtils';
 import CollectionDisplay from '@/components/CollectionDisplay';
+import MobileReaderNav from '@/components/MobileReaderNav';
 import { prepareCollectionRenderData } from '@/lib/content/collectionRenderer';
 import { ArticleSchema, BreadcrumbSchema } from '@/components/seo';
 import FeedbackAnnotator from '@/components/FeedbackAnnotator';
@@ -21,6 +22,77 @@ interface PageProps {
     section: string;
     slug: string[];
   }>;
+}
+
+interface NavNode {
+  href: string;
+  title: string;
+}
+
+function hrefFromSlug(slug: string): string {
+  return `/${slug.replace(/^\//, '').replace(/\/index$/, '')}`;
+}
+
+async function resolveMobileNav(
+  section: string,
+  slugSegments: string[],
+  currentSlug: string,
+  isCollection: boolean,
+  currentTitle: string
+): Promise<{ parent: NavNode | null; prev: NavNode | null; next: NavNode | null }> {
+  const currentNodeSlug = currentSlug.replace(/\/index$/, '');
+  const parentSlug = slugSegments.length > 1 ? [section, ...slugSegments.slice(0, -1)].join('/') : section;
+
+  const parent: NavNode | null = parentSlug && parentSlug !== currentNodeSlug
+    ? { href: hrefFromSlug(parentSlug), title: 'Parent' }
+    : null;
+
+  const { getCachedSectionContent, getCachedPostBySlug, getCachedChildPosts } = await import('@/lib/content');
+
+  let siblingNodes: NavNode[] = [];
+
+  if (parentSlug === section) {
+    const allPosts = await getCachedSectionContent(section);
+    const items = await prepareCollectionRenderData(section, []).then(d => d.items);
+    siblingNodes = items.map((item: any) => {
+      if ('posts' in item) {
+        const slug = item.fullSlug;
+        const title = item.indexPost?.metadata?.title || item.slug;
+        return { href: hrefFromSlug(slug), title };
+      }
+      return { href: hrefFromSlug(item.slug), title: item.metadata?.title || item.slug.split('/').pop() || item.slug };
+    });
+    // keep linter happy with allPosts usage in dynamic import context
+    if (!allPosts) siblingNodes = siblingNodes;
+  } else {
+    const parentPost = await getCachedPostBySlug(parentSlug);
+    if (parentPost) {
+      const childPosts = await getCachedChildPosts(parentPost.slug);
+      const scopeSlug = parentPost.slug.replace(/\/index$/, '');
+      const items = await prepareCollectionRenderData(section, scopeSlug.split('/').slice(1)).then(d => d.items);
+      siblingNodes = items.map((item: any) => {
+        if ('posts' in item) {
+          const slug = item.fullSlug;
+          const title = item.indexPost?.metadata?.title || item.slug;
+          return { href: hrefFromSlug(slug), title };
+        }
+        return { href: hrefFromSlug(item.slug), title: item.metadata?.title || item.slug.split('/').pop() || item.slug };
+      });
+      if (!childPosts) siblingNodes = siblingNodes;
+    }
+  }
+
+  // include current if absent (edge cases)
+  if (!siblingNodes.some(n => n.href === hrefFromSlug(currentNodeSlug))) {
+    siblingNodes.push({ href: hrefFromSlug(currentNodeSlug), title: currentTitle });
+  }
+
+  const idx = siblingNodes.findIndex(n => n.href === hrefFromSlug(currentNodeSlug));
+  return {
+    parent,
+    prev: idx > 0 ? siblingNodes[idx - 1] : null,
+    next: idx >= 0 && idx < siblingNodes.length - 1 ? siblingNodes[idx + 1] : null,
+  };
 }
 
 // Static params removed - using force-dynamic to avoid SSR issues with client components
@@ -47,6 +119,14 @@ export default async function Page({ params }: PageProps) {
   const config = loadConfig();
   const baseUrl = config.site.url;
   const fullUrl = `${baseUrl}/${section}/${slug.join('/')}`;
+
+  const mobileNav = await resolveMobileNav(
+    section,
+    slug,
+    renderData.indexPost.slug,
+    renderData.isCollection,
+    renderData.indexPost.metadata.title
+  );
 
   // Prepare breadcrumb items for schema
   const breadcrumbItems = [
@@ -86,6 +166,14 @@ export default async function Page({ params }: PageProps) {
           <BreadcrumbSchema items={breadcrumbItems} />
         </>
       )}
+
+      <MobileReaderNav
+        currentTitle={renderData.indexPost.metadata.title}
+        parent={mobileNav.parent}
+        prev={mobileNav.prev}
+        next={mobileNav.next}
+        tocContentHtml={renderData.indexPost.html || ''}
+      />
 
       {renderData.isCollection ? (
         <CollectionDisplay
