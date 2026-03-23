@@ -40,7 +40,7 @@ const CollectionViewWrapper: React.FC<CollectionViewWrapperProps> = ({
     storageKey: `collection-view-${section}`
   });
 
-  // Separate folders from individual posts
+  // Keep original mixed ordering from server (important for `.pages nav` ordering)
   const folders = items.filter((item): item is FolderItem => 'posts' in item);
   const posts = items.filter(item => !('posts' in item));
 
@@ -73,10 +73,22 @@ const CollectionViewWrapper: React.FC<CollectionViewWrapperProps> = ({
 
       {/* Render Content Based on View Type */}
       <div className="space-y-8">
-        {/* Render Folders Based on Selected View */}
-        {folders.length > 0 && (
+        {/* Cards view preserves full mixed ordering from `.pages` */}
+        {(isLoading || viewType === 'cards') && (
+          <div className={`flex justify-center ${items.length === 1 ? 'max-w-[300px] mx-auto' : ''}`}>
+            <CardGrid
+              items={items}
+              section={section}
+              getImagePath={getImagePath}
+              defaultImage={defaultImage}
+            />
+          </div>
+        )}
+
+        {/* List/icons currently render grouped by type */}
+        {!isLoading && viewType !== 'cards' && folders.length > 0 && (
           <div>
-            {!isLoading && viewType === 'list' && (
+            {viewType === 'list' && (
               <FolderListView
                 items={folders}
                 section={section}
@@ -84,7 +96,7 @@ const CollectionViewWrapper: React.FC<CollectionViewWrapperProps> = ({
                 defaultImage={defaultImage}
               />
             )}
-            {!isLoading && viewType === 'icons' && (
+            {viewType === 'icons' && (
               <FolderIconView
                 items={folders}
                 section={section}
@@ -92,27 +104,15 @@ const CollectionViewWrapper: React.FC<CollectionViewWrapperProps> = ({
                 defaultImage={defaultImage}
               />
             )}
-            {(isLoading || viewType === 'cards') && (
-              <div className={`flex justify-center ${folders.length === 1 ? 'max-w-[300px] mx-auto' : ''}`}>
-                <CardGrid
-                  items={folders}
-                  section={section}
-                  getImagePath={getImagePath}
-                  defaultImage={defaultImage}
-                />
-              </div>
-            )}
           </div>
         )}
 
-        {/* Render Individual Posts (respecting view type) */}
-        {posts.length > 0 && (
+        {!isLoading && viewType !== 'cards' && posts.length > 0 && (
           <div>
             {folders.length > 0 && (
               <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Posts</h2>
             )}
-            
-            {!isLoading && viewType === 'list' && (
+            {viewType === 'list' && (
               <PostListView
                 items={posts}
                 section={section}
@@ -120,23 +120,13 @@ const CollectionViewWrapper: React.FC<CollectionViewWrapperProps> = ({
                 defaultImage={defaultImage}
               />
             )}
-            {!isLoading && viewType === 'icons' && (
+            {viewType === 'icons' && (
               <PostIconView
                 items={posts}
                 section={section}
                 getImagePath={getImagePath}
                 defaultImage={defaultImage}
               />
-            )}
-            {(isLoading || viewType === 'cards') && (
-              <div className={`flex justify-center ${posts.length === 1 ? 'max-w-[300px] mx-auto' : ''}`}>
-                <CardGrid
-                  items={posts}
-                  section={section}
-                  getImagePath={getImagePath}
-                  defaultImage={defaultImage}
-                />
-              </div>
             )}
           </div>
         )}

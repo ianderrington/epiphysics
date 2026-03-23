@@ -109,10 +109,9 @@ export async function prepareGridItems(
       }
     });
 
-  // 4. Sort direct children and folder items based on .pages config
+  // 4. Read .pages config for this scope
   const scopePath = path.join(getContentDirectory(), cleanScopeSlug);
   const pagesConfig = await readPagesConfig(scopePath);
-  const sortedDirectChildPosts = sortByPagesConfig(directChildPosts, pagesConfig);
 
   // 5. Prepare folder items structure, including index-only folders
   let folderItems: FolderItem[] = Object.keys(postsByFolder).map(folderSlug => {
@@ -148,9 +147,8 @@ export async function prepareGridItems(
     });
   });
 
-  // 6. Sort the combined folder items
-  const sortedFolderItems = sortByPagesConfig(folderItems, pagesConfig);
-
-  // 7. Combine sorted folders and sorted direct posts
-  return [...sortedFolderItems, ...sortedDirectChildPosts];
+  // 6. Sort ALL items together so `.pages nav` can control cross-type ordering
+  // (folders + direct child posts in one ordered stream)
+  const combinedItems: CombinedItem[] = [...folderItems, ...directChildPosts];
+  return sortByPagesConfig(combinedItems, pagesConfig);
 } 
