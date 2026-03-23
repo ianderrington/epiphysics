@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { RotateCcw } from 'lucide-react';
 
 interface ReadingMemoryProps {
   slug: string;
@@ -19,6 +20,14 @@ type ReadingStats = {
 };
 
 const KEY_PREFIX = 'ep-read-memory:';
+const PATH_COOKIE = 'ep_last_path';
+const SCROLL_COOKIE = 'ep_last_scroll';
+
+function getCookie(name: string): string | null {
+  if (typeof document === 'undefined') return null;
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : null;
+}
 
 function loadStats(slug: string): ReadingStats {
   try {
@@ -55,6 +64,7 @@ function getProgressPercent(): number {
 export default function ReadingMemory({ slug, contentHash, compact = true }: ReadingMemoryProps) {
   const [stats, setStats] = useState<ReadingStats | null>(null);
   const lastTickRef = useRef<number>(Date.now());
+  const didAutoResumeRef = useRef(false);
 
   useEffect(() => {
     const current = loadStats(slug);
@@ -66,13 +76,26 @@ export default function ReadingMemory({ slug, contentHash, compact = true }: Rea
       lastSeenAt: Date.now(),
       updated: changed,
       contentHash: contentHash ?? current.contentHash,
-      // If content changed, reset progress markers to avoid false resume positions
       ...(changed ? { lastScrollY: 0, lastProgress: 0 } : {}),
     };
 
     saveStats(slug, next);
     setStats(next);
   }, [slug, contentHash]);
+
+  useEffect(() => {
+    if (!stats || didAutoResumeRef.current) return;
+    const lastPath = getCookie(PATH_COOKIE);
+    const lastScroll = Number(getCookie(SCROLL_COOKIE) || '0');
+    const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
+
+    if (lastPath === currentPath && lastScroll > 100) {
+      didAutoResumeRef.current = true;
+      window.setTimeout(() => {
+        window.scrollTo({ top: lastScroll, behavior: 'smooth' });
+      }, 180);
+    }
+  }, [stats]);
 
   useEffect(() => {
     if (!stats) return;
@@ -135,9 +158,16 @@ export default function ReadingMemory({ slug, contentHash, compact = true }: Rea
         <span>{readMinutes} min read</span>
         {stats.updated ? <span className="text-amber-600 dark:text-amber-400">updated</span> : <span>saved</span>}
       </div>
-      <div className="mt-2 flex gap-1.5">
+      <div className="mt-2 flex gap-1.5 items-center">
         <button onClick={resume} className="flex-1 rounded bg-white/80 dark:bg-gray-700/70 border border-gray-200 dark:border-gray-600 px-2 py-1">Resume</button>
-        <button onClick={restart} className="flex-1 rounded bg-white/80 dark:bg-gray-700/70 border border-gray-200 dark:border-gray-600 px-2 py-1">Restart</button>
+        <button
+          onClick={restart}
+          className="rounded bg-white/80 dark:bg-gray-700/70 border border-gray-200 dark:border-gray-600 p-1.5"
+          aria-label="Restart from top"
+          title="Restart"
+        >
+          <RotateCcw size={14} />
+        </button>
       </div>
     </div>
   );

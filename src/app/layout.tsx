@@ -7,15 +7,11 @@ import { getCachedSections } from '@/lib/content';
 import { getRootPagesConfig } from '@/lib/content/pages-config';
 import PageLayout from '@/components/PageLayout';
 import { Metadata } from 'next';
-import { siteConfig } from '@/config/site';
 import { Analytics } from '@/components/Analytics';
 import { loadSiteConfig } from '@/lib/server/config';
-import ErrorBoundary from '@/components/ErrorBoundary';
 import { PersonSchema, WebSiteSchema } from '@/components/seo';
-// AIChat disabled - no LLM budget allocated for supernal interface chat
-// import { AIChat } from '@/components/chat/AIChat';
 import TTSInit from '@/components/TTSInitializer';
-import FontSizeControl from '@/components/FontSizeControl';
+import SiteResume from '@/components/SiteResume';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -37,25 +33,18 @@ export default async function RootLayout({
   const sections = await getCachedSections();
   const pagesConfig = await getRootPagesConfig();
   const config = loadSiteConfig();
-  
-  // Transform sections to match PageLayout props
+
   const formattedSections = sections.map(section => ({
     id: section.id,
     title: section.name
   }));
 
-  // Create ordered sections based on .pages config
   const orderedSections = pagesConfig?.nav
-    ? pagesConfig.nav.map(navItem => {
-        const section = formattedSections.find(s => 
-          s.id === navItem || 
-          s.id === `${navItem}.md` || 
-          s.id.replace(/\.md$/, '') === navItem
-        );
-        return section;
-      }).filter((s): s is NonNullable<typeof s> => s !== undefined)
+    ? pagesConfig.nav
+        .map(navItem => formattedSections.find(s => s.id === navItem || s.id === `${navItem}.md` || s.id.replace(/\.md$/, '') === navItem))
+        .filter((s): s is NonNullable<typeof s> => s !== undefined)
     : formattedSections;
-  
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -73,7 +62,8 @@ export default async function RootLayout({
           </Providers>
         </div>
         <TTSInit />
+        <SiteResume />
       </body>
     </html>
   );
-} 
+}
