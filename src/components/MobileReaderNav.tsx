@@ -37,6 +37,9 @@ export default function MobileReaderNav({
       window.dispatchEvent(new CustomEvent('mobile-reader-nav-stage', { detail: { showTopNav } }));
     };
 
+    // Reader-first default: top quick nav hidden until second upward scroll
+    emitStage(false);
+
     const onScroll = () => {
       const y = window.scrollY;
       const delta = y - lastYRef.current;
@@ -72,35 +75,41 @@ export default function MobileReaderNav({
 
   return (
     <>
-      <div className={`md:hidden sticky top-16 z-30 px-2 pt-2 transition-transform duration-200 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
-        <div className="bg-white/92 dark:bg-gray-900/92 backdrop-blur border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm px-1 py-1 grid grid-cols-[42px_42px_1fr_42px] items-center gap-1">
+      <div className={`md:hidden sticky top-16 z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-transform duration-200 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
+        <div className="h-12 px-2 grid grid-cols-[40px_40px_1fr_40px] items-center gap-1">
           {leftTarget ? (
-            <Link href={leftTarget.href} className="h-9 w-9 rounded-lg flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-              <ChevronLeft size={20} />
+            <Link
+              href={leftTarget.href}
+              className="h-8 w-8 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              <ChevronLeft size={18} />
             </Link>
           ) : (
-            <div className="h-9 w-9" />
+            <div className="h-8 w-8" />
           )}
 
           <button
             type="button"
             onClick={() => setTocOpen(true)}
-            className="h-9 w-9 rounded-lg flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="h-8 w-8 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
             aria-label="Open chapter drawer"
           >
-            <List size={20} />
+            <List size={18} />
           </button>
 
-          <div className="min-w-0 px-1 text-sm font-medium text-gray-800 dark:text-gray-100 truncate">
+          <div className="min-w-0 px-1 text-[13px] font-medium text-gray-800 dark:text-gray-100 truncate">
             {currentTitle}
           </div>
 
           {next ? (
-            <Link href={next.href} className="h-9 w-9 rounded-lg flex items-center justify-center text-gray-700 dark:text-gray-200 justify-self-end hover:bg-gray-100 dark:hover:bg-gray-800">
-              <ChevronRight size={20} />
+            <Link
+              href={next.href}
+              className="h-8 w-8 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 justify-self-end hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              <ChevronRight size={18} />
             </Link>
           ) : (
-            <div className="h-9 w-9 justify-self-end" />
+            <div className="h-8 w-8 justify-self-end" />
           )}
         </div>
       </div>
@@ -113,7 +122,12 @@ export default function MobileReaderNav({
           >
             <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
               <span className="font-semibold text-gray-900 dark:text-gray-100">TOC</span>
-              <button className="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" onClick={() => setTocOpen(false)}>Close</button>
+              <button
+                className="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                onClick={() => setTocOpen(false)}
+              >
+                Close
+              </button>
             </div>
             <div className="p-4">
               {tocContentHtml ? (
