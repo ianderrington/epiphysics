@@ -65,10 +65,20 @@ The following are proposed as domain-independent causants from which $\mathcal{M
 ### Visual: Causant interaction graph
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#DBEAFE', 'primaryTextColor': '#0F172A', 'primaryBorderColor': '#2563EB', 'lineColor': '#334155', 'fontSize': '14px'}}}%%
 flowchart LR
-  A[Subsystem A] -->|σ=0.8, τ=1, r=0.9| B[Subsystem B]
-  B -->|σ=0.6, τ=2, r=0.8| C[Subsystem C]
-  C -->|σ=0.7, τ=1, r=0.85| A
+  A[Signal Source] -->|σ=0.80 · τ=1 · r=0.90| B[Integrator]
+  B -->|σ=0.62 · τ=2 · r=0.82| C[Action Layer]
+  C -->|σ=0.74 · τ=1 · r=0.86| A
+
+  D[Environment] -->|perturbation| B
+  C -->|state update| E[Observed Output]
+
+  classDef core fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#0F172A;
+  classDef ext fill:#E2E8F0,stroke:#64748B,stroke-width:1.5px,color:#0F172A;
+
+  class A,B,C core;
+  class D,E ext;
 ```
 
 ### Units and dimensional analysis
@@ -133,20 +143,33 @@ This is exactly [Kauffman's autocatalytic set](https://doi.org/10.1093/oso/97801
 ### Visual: loop emergence
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#0F172A', 'lineColor': '#334155', 'fontSize': '14px'}}}%%
 flowchart LR
   subgraph Micro[Bond-level view]
-    A1[A] --> B1[B]
-    B1 --> C1[C]
-    C1 --> A1
+    A1[A]
+    B1[B]
+    C1[C]
+    A1 -->|local causant| B1
+    B1 -->|local causant| C1
+    C1 -->|local causant| A1
+    Z1["Single edge: ρ_ac = 0"]
   end
 
-  subgraph Macro[Loop-level view]
-    L((Closed loop))
-    RAC[ρ_ac > 0]
+  subgraph Macro[Loop-level emergence]
+    L((Closed causal loop))
+    RAC["Emergent auto-causality\nρ_ac > 0"]
     L --> RAC
   end
 
-  Micro --> Macro
+  Micro -->|coarse-grain| Macro
+
+  classDef micro fill:#FEF3C7,stroke:#D97706,stroke-width:1.5px,color:#111827;
+  classDef macro fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#052E16;
+  classDef note fill:#F1F5F9,stroke:#64748B,stroke-width:1px,color:#0F172A;
+
+  class A1,B1,C1 micro;
+  class L,RAC macro;
+  class Z1 note;
 ```
 
 **Implication for the causant framework:** $\rho_{\text{ac}}$ is NOT a bond-level property. It is a **loop-level emergent property** - the first level at which auto-causality appears. Bonds are the constituents; loops are the "molecules." You cannot measure $\rho_{\text{ac}}$ by examining individual bonds any more than you can measure wetness by examining individual water molecules.
@@ -199,11 +222,26 @@ $$C_{\text{maintenance}} = \dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$$
 ### Visual: maintenance balance
 
 ```mermaid
-flowchart TD
-  Sint[Ṡ_int: entropy production] --> Net[C_maint]
-  Rrep[Ṙ_repair: repair rate] --> Net
-  Net[Net maintenance pressure
-C_maint = Ṡ_int - Ṙ_repair]
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#0F172A', 'lineColor': '#334155', 'fontSize': '14px'}}}%%
+flowchart LR
+  Sint["Ṡ_int\nInternal entropy production"] -->|increases| Net["C_maint\nNet maintenance pressure"]
+  Rrep["Ṙ_repair\nRepair rate"] -->|reduces| Net
+
+  Good["Regime A\nṘ_repair > Ṡ_int\nSelf-maintaining"] --> Net
+  Risk["Regime B\nṘ_repair < Ṡ_int\nDecay pressure"] --> Net
+
+  Eq["C_maint = Ṡ_int - Ṙ_repair"]
+  Net --> Eq
+
+  classDef driver fill:#FEE2E2,stroke:#DC2626,stroke-width:1.5px,color:#450A0A;
+  classDef repair fill:#DCFCE7,stroke:#16A34A,stroke-width:1.5px,color:#052E16;
+  classDef core fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#0F172A;
+  classDef regime fill:#F8FAFC,stroke:#64748B,stroke-width:1px,color:#0F172A;
+
+  class Sint driver;
+  class Rrep repair;
+  class Net,Eq core;
+  class Good,Risk regime;
 ```
 
 - When $\dot{R}_{\text{repair}} > \dot{S}_{\text{int}}$: the entity is *self-maintaining*. No external maintenance needed. (A living organism in favorable conditions.)
