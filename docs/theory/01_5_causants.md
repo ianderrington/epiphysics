@@ -92,7 +92,13 @@ The framework commits to the following: **a causal event is an energy exchange, 
 | Mass-equivalent | $\mathcal{M} / c_D^2$ | kg |
 | $E_{\text{int}} = \mathcal{M} \, c_D^2$ | Internal energy (tautology at physical level) | J |
 
-This is dimensionally consistent with Chaisson's energy rate density: $\dot{\varepsilon}_m = \text{power} / \text{mass} = (\text{d}\mathcal{M}/\text{d}t) / (\mathcal{M}/c_D^2) = \text{W/kg}$, which is exactly his measured quantity.
+**Causal power** is the rate at which an entity does work on state trajectories. Formally (see [Part 3](./03_intelligence_consciousness_agency.md)):
+
+$$\mathcal{P}_{E \to j} = \mathbf{F}_{E \to j} \cdot \mathbf{v}_{X_j}$$
+
+where $\mathbf{F}_{E \to j}$ is the force entity $E$ exerts on entity $j$'s state, and $\mathbf{v}_{X_j}$ is $j$'s state velocity. This has units of energy per time — it is power in the literal mechanical sense, extended to abstract state spaces.
+
+This connects directly to [Chaisson's energy rate density](https://onlinelibrary.wiley.com/doi/abs/10.1002/cplx.20323) $\dot{\varepsilon}_m = \text{power} / \text{mass}$ (W/kg), which he measured across cosmic evolution from galaxies to brains. In Epimechanics terms: $\dot{\varepsilon}_m = \mathcal{P} / (\mathcal{M}/c_D^2)$ — causal power normalized by mass-equivalent. Higher $\dot{\varepsilon}_m$ means more causal work per unit structure. Chaisson's empirical finding that $\dot{\varepsilon}_m$ increases through cosmic evolution (galaxies → stars → planets → life → brains → civilization) is a claim about causal power density increasing with complexity.
 
 **For abstract state spaces**, the measure $d\mu$ has domain-specific units (e.g., per-agent, per-belief, per-organizational-unit), and "energy" must be operationalized domain by domain. Bond strength $\sigma_b$ at the institutional level might be measured in dollars-to-sever, hours-of-disruption, or bits-of-information-lost — all legitimate energy-equivalents within their domain.
 
@@ -251,7 +257,7 @@ flowchart LR
 
 ---
 
-## Building Higher Quantities from Atoms
+## Building Higher Quantities from Causants
 
 The six causants combine to produce the framework's higher-level concepts:
 
@@ -306,19 +312,19 @@ For how composites can outlive their constituents, see [The Persistence Reversal
 
 ## Connection to the Representational Efficiency Principle
 
-The Representational Efficiency principle ([Part 5](./05_ontology_and_open_questions.md)) connects these primitives to optimal representation: the "right" description is the one whose state variables correspond to natural clusters of bonds — the mesoscale structures that have their own dynamics. This is exactly what coarse-graining does in physics: identify the collective degrees of freedom (phonons, quasiparticles) that capture the system's behavior more efficiently than tracking individual atoms.
+The Representational Efficiency principle ([Part 5](./05_ontology_and_open_questions.md)) connects these primitives to optimal representation: the "right" description is the one whose state variables correspond to natural clusters of bonds — the mesoscale structures that have their own dynamics. This is exactly what coarse-graining does in physics: identify the collective degrees of freedom (phonons, quasiparticles) that capture the system's behavior more efficiently than tracking individual particles.
 
 ---
 
 ## Open Questions
 
-### Q1: Are these the right atoms?
+### Q1: Are these the right causants?
 
 The six quantities proposed here (bond, strength, loop order, basin depth, entropy production, repair rate) are candidates, not conclusions. The test: can they be measured independently in at least one domain, and do the derived quantities ($\mathcal{M}$, $C_{\text{maint}}$, robustness, etc.) computed from them match independent measurements of those derived quantities? This is the causant-level version of the equivalence principle test from [Part 1, Section 2b](./01_generalized_mechanics.md).
 
-### Q2: Are the atoms domain-independent?
+### Q2: Are the causants domain-independent?
 
-The examples above suggest they are - "causal bond" maps naturally to chemical bonds, institutional interactions, and cognitive connections. But the *measure* on each (what units, what grain) is domain-specific. Can we define a domain-independent formalism for these constituents, the way physics defines "bond" abstractly through quantum mechanics regardless of which atoms are bonding?
+The examples above suggest they are — "causal bond" maps naturally to chemical bonds, institutional connections, and cognitive associations. But the *measure* on each (what units, what grain) is domain-specific. Can we define a domain-independent formalism for these causants, the way physics defines "bond" abstractly through quantum mechanics regardless of which elements are bonding?
 
 ### Q3: How do constituents compose into tensors?
 
@@ -338,24 +344,13 @@ The Lagrangian $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V(X)$ (scalar approximat
 
 This document sits between the [series overview](./index.md) and [Part 1](./01_generalized_mechanics.md). It addresses the question that Part 1's grammar leaves open: what is the grammar *about*? The grammar describes how $\mathcal{M}$, $F$, $V$, $T^i{}_j$ relate to each other. This document asks what these quantities are *made of* - and proposes that the answer, like chemistry's periodic table, is a small set of causants that combine differently in different domains to produce the observed diversity of entities.
 
-The grammar works regardless of whether the causant decomposition is correct - $F = \mathcal{M}\ddot{X}$ (or more generally $F_i = \mathcal{M}_{ij}\ddot{X}^j$) holds whether or not we know what $\mathcal{M}$ is made of, just as $F = ma$ held before the discovery of atoms. But the causant decomposition, if correct, would:
+The grammar works regardless of whether the causant decomposition is correct — $F = \mathcal{M}\ddot{X}$ (or more generally $F_i = \mathcal{M}_{ij}\ddot{X}^j$) holds whether or not we know what $\mathcal{M}$ is made of, just as $F = ma$ held before understanding the substructure of mass. But the causant decomposition, if correct, would:
 
 1. **Resolve the house problem** - explain why $\mathcal{M}$ and maintenance cost diverge
 2. **Ground the equivalence principle** - provide a micro-level explanation for why different measurement approaches to $\mathcal{M}$ agree (they're measuring different aggregates of the same causants)
 3. **Enable the applications** - the Tier 1 applications (cost of ownership, robustness metrics, future cost of decisions) all require distinguishing $\mathcal{M}$ from maintenance cost, which requires the causant decomposition
 4. **Connect to the Representational Efficiency principle** - explain *why* optimal representations have simple Lagrangian structure (because they correspond to natural bond clusters)
 5. **Potentially derive the Lagrangian** - moving the framework's strongest postulate from assumption to consequence
-
----
-
-[→ Part 1: The Generalized Mechanics](./01_generalized_mechanics.md)
-postulate from assumption to consequence
-
----
-
-[→ Part 1: The Generalized Mechanics](./01_generalized_mechanics.md)
-eralized_mechanics.md)
-postulate from assumption to consequence
 
 ---
 
