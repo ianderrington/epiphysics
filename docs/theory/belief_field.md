@@ -225,7 +225,9 @@ This has practical implications:
 
 The [Efficient Market Hypothesis (Fama, 1970)](https://doi.org/10.2307/2325486) claims prices reflect all available information. In belief-field terms: the collective belief field $\hat{V}_{\text{market}}$ equals the true potential $V$. Behavioral finance challenges this: [Shiller's excess volatility (1981)](https://doi.org/10.2307/1802789) showed prices move more than fundamentals justify; [De Bondt & Thaler (1985)](https://doi.org/10.1111/j.1540-6261.1985.tb05004.x) documented overreaction; [Shleifer & Vishny (1997)](https://doi.org/10.1111/j.1540-6261.1997.tb03807.x) showed arbitrage has limits.
 
-Epimechanics' contribution: markets are instantaneously efficient — every trade is optimal given traders' state vectors. But aggregate $\hat{V}_{\text{market}}$ can diverge from $V$ when:
+Epimechanics' contribution: **each trader acts optimally given their own state vector** — but this does not imply the market is efficient for any other entity (other traders, society, the market itself as a meta-entity). This is precisely the systemic coupling problem from [Part 2](./02_meta_entities.md): a sub-entity can be locally optimal ($\rho_{\text{ac}} > 0$ for itself) while having $\kappa_{\text{sys}} < 0$ for its containing system. A trader maximizing their $\hat{V}$ may be parasitic on the market's $\rho_{\text{ac}}$ — extracting value that degrades the market's function for others.
+
+Aggregate $\hat{V}_{\text{market}}$ can diverge from $V$ when:
 - Many traders share the same $\hat{V}$ error (herding, bubbles)
 - State constraints (margin calls, redemption pressure) force locally optimal but globally suboptimal actions
 - Information cascades make $\hat{V}$ self-referential: traders update $\hat{V}$ based on other traders' actions, not on $V$ directly
