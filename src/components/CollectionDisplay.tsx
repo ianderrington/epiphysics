@@ -169,6 +169,9 @@ const CollectionDisplay: React.FC<CollectionDisplayProps> = ({
           title={indexPost.metadata.title}
           isIndex={isIndex}
           hide={indexPost.metadata.hide}
+          authorName={typeof indexPost.metadata.author === 'object' ? indexPost.metadata.author?.name : (typeof indexPost.metadata.author === 'string' ? indexPost.metadata.author : 'Ian Derrington')}
+          authorUrl={indexPost.metadata.authorUrl || 'https://ian.ceo'}
+          aiAuthors={(indexPost.metadata.ai_authors && indexPost.metadata.ai_authors.length > 0 ? indexPost.metadata.ai_authors.map(a => a.name) : ['Codex 5.3', 'Opus 4.6', 'Sonnet 4.6'])}
         />
       )}
 

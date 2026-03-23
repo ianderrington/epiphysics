@@ -351,6 +351,29 @@ export default function PostComponent({ post }: PostComponentProps) {
   // Check if TOC should be hidden
   const shouldShowToc = !post.metadata.hide?.includes('toc');
 
+  const primaryAuthorName =
+    (typeof post.metadata.author === 'object' && post.metadata.author?.name) ||
+    (typeof post.metadata.author === 'string' ? post.metadata.author : undefined) ||
+    post.metadata.authors ||
+    'Ian Derrington';
+
+  const primaryAuthorTitle =
+    typeof post.metadata.author === 'object' && post.metadata.author?.title
+      ? post.metadata.author.title
+      : 'Author';
+
+  const primaryAuthorUrl = post.metadata.authorUrl || 'https://ian.ceo';
+
+  const defaultAiAuthors = [
+    { name: 'Codex 5.3', role: 'AI Co-Author' },
+    { name: 'Opus 4.6', role: 'AI Co-Author' },
+    { name: 'Sonnet 4.6', role: 'AI Co-Author' },
+  ];
+  const aiAuthors =
+    Array.isArray(post.metadata.ai_authors) && post.metadata.ai_authors.length > 0
+      ? post.metadata.ai_authors
+      : defaultAiAuthors;
+
   return (
     <div className="post-container">
       {/* Navigation Component for TOC (desktop only; mobile uses top reader bar drawer) */}
@@ -399,26 +422,18 @@ export default function PostComponent({ post }: PostComponentProps) {
           
           <div className="text-sm text-gray-600 dark:text-gray-300">
             <div className="mb-1">
-              <Link 
-                href={post.metadata.authorUrl || '/about'} 
+              <Link
+                href={primaryAuthorUrl}
                 className="text-primary-600 dark:text-primary-400 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {typeof post.metadata.author === 'object' && post.metadata.author !== null
-                  ? post.metadata.author.name
-                  : (post.metadata.authors || 
-                     (typeof post.metadata.author === 'string' ? post.metadata.author : 'Epiphysics'))}
-                {typeof post.metadata.author === 'object' && post.metadata.author !== null && post.metadata.author.title && (
-                  <span className="text-gray-500 dark:text-gray-400 ml-1">
-                    • {post.metadata.author.title}
-                  </span>
-                )}
+                {primaryAuthorName}
+                <span className="text-gray-500 dark:text-gray-400 ml-1">• {primaryAuthorTitle}</span>
               </Link>
-              {/* Hidden author title for bots/LLMs - invisible to users */}
-              {typeof post.metadata.author === 'object' && post.metadata.author !== null && post.metadata.author.title && (
-                <span className="sr-only" aria-hidden="true">
-                  Author title: {post.metadata.author.title}
-                </span>
-              )}
+            </div>
+            <div className="mb-1 text-gray-500 dark:text-gray-400">
+              AI co-authors: {aiAuthors.map((a) => a.name).join(', ')}
             </div>
             {post.metadata.date && (
               <span className="text-gray-500 dark:text-gray-400">

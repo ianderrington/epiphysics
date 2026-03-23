@@ -25,6 +25,9 @@ interface CollectionTTSContentProps {
   title?: string;
   isIndex?: boolean;
   hide?: string[];
+  authorName?: string;
+  authorUrl?: string;
+  aiAuthors?: string[];
 }
 
 export default function CollectionTTSContent({
@@ -34,6 +37,9 @@ export default function CollectionTTSContent({
   title,
   isIndex,
   hide,
+  authorName,
+  authorUrl,
+  aiAuthors,
 }: CollectionTTSContentProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -76,7 +82,23 @@ export default function CollectionTTSContent({
       data-enable-progress={tts?.enableProgress ? 'true' : undefined}
     >
       {title && !isIndex && !hide?.includes('title') && (
-        <h1 className="text-3xl md:text-4xl font-bold mb-6 font-display">{title}</h1>
+        <>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 font-display">{title}</h1>
+          <div className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <span>
+              By{' '}
+              {authorUrl ? (
+                <a href={authorUrl} target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">
+                  {authorName || 'Ian Derrington'}
+                </a>
+              ) : (
+                authorName || 'Ian Derrington'
+              )}
+            </span>
+            <span className="mx-1">•</span>
+            <span>AI co-authors: {(aiAuthors && aiAuthors.length ? aiAuthors : ['Codex 5.3', 'Opus 4.6', 'Sonnet 4.6']).join(', ')}</span>
+          </div>
+        </>
       )}
       <SafeHTML html={html} />
     </div>
