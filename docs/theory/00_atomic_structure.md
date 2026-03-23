@@ -62,6 +62,15 @@ This is the periodic table problem. Physics had $F = ma$ for two centuries befor
 
 The following are proposed as domain-independent causants from which $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, robustness, and other derived quantities are composed.
 
+### Visual: Causant interaction graph
+
+```mermaid
+flowchart LR
+  A[Subsystem A] -->|σ=0.8, τ=1, r=0.9| B[Subsystem B]
+  B -->|σ=0.6, τ=2, r=0.8| C[Subsystem C]
+  C -->|σ=0.7, τ=1, r=0.85| A
+```
+
 ### Units and dimensional analysis
 
 The framework commits to the following: **a causal event is an energy exchange, measured in Joules at the physical level.** This fixes the dimensional chain:
@@ -121,6 +130,25 @@ This is exactly [Kauffman's autocatalytic set](https://doi.org/10.1093/oso/97801
 - **Social reciprocity**: A trusts B, B cooperates with C, C supports A - no individual trust relationship sustains itself; the triangle does
 - **Neural assemblies**: individual neurons don't fire themselves; recurrent circuits do
 
+### Visual: loop emergence
+
+```mermaid
+flowchart LR
+  subgraph Micro[Bond-level view]
+    A1[A] --> B1[B]
+    B1 --> C1[C]
+    C1 --> A1
+  end
+
+  subgraph Macro[Loop-level view]
+    L((Closed loop))
+    RAC[ρ_ac > 0]
+    L --> RAC
+  end
+
+  Micro --> Macro
+```
+
 **Implication for the causant framework:** $\rho_{\text{ac}}$ is NOT a bond-level property. It is a **loop-level emergent property** - the first level at which auto-causality appears. Bonds are the constituents; loops are the "molecules." You cannot measure $\rho_{\text{ac}}$ by examining individual bonds any more than you can measure wetness by examining individual water molecules.
 
 This connects directly to [Hoel et al.'s causal emergence](https://doi.org/10.1073/pnas.1314922110): the loop-level description has more causal information than the bond-level description ($EI(\text{macro}) > EI(\text{micro})$). The loop IS the entity at its most fundamental level - the smallest unit of self-sustaining causal structure.
@@ -167,6 +195,16 @@ $$\dot{R}_{\text{repair}} = \text{bonds restored per unit time}$$
 The net maintenance cost is:
 
 $$C_{\text{maintenance}} = \dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$$
+
+### Visual: maintenance balance
+
+```mermaid
+flowchart TD
+  Sint[Ṡ_int: entropy production] --> Net[C_maint]
+  Rrep[Ṙ_repair: repair rate] --> Net
+  Net[Net maintenance pressure
+C_maint = Ṡ_int - Ṙ_repair]
+```
 
 - When $\dot{R}_{\text{repair}} > \dot{S}_{\text{int}}$: the entity is *self-maintaining*. No external maintenance needed. (A living organism in favorable conditions.)
 - When $\dot{R}_{\text{repair}} \approx \dot{S}_{\text{int}}$: marginal. The entity persists but is fragile. (A machine that requires regular servicing.)

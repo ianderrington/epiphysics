@@ -1,6 +1,7 @@
 nav:
   - index
   - glossary
+  - diagram_style_guide
   - 00_prelude
   - 01_generalized_mechanics
   - 01b_uncertainty_coordinates_relativity
