@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { X } from 'lucide-react';
@@ -18,16 +18,48 @@ interface MobileMenuProps {
   }>;
 }
 
+const FONT_KEY = 'epiphysics-font-size';
+const FONT_SIZES = [1.05, 1.2, 1.35, 1.5];
+const FONT_STYLE_ID = 'ep-fontsize';
+
+function readFontIdx(): number {
+  try {
+    const value = localStorage.getItem(FONT_KEY);
+    if (value !== null) {
+      const idx = parseInt(value, 10);
+      if (idx >= 0 && idx < FONT_SIZES.length) return idx;
+    }
+  } catch {}
+  return 1;
+}
+
+function applyFontSize(idx: number) {
+  if (typeof document === 'undefined') return;
+  let el = document.getElementById(FONT_STYLE_ID) as HTMLStyleElement | null;
+  if (!el) {
+    el = document.createElement('style');
+    el.id = FONT_STYLE_ID;
+    document.head.appendChild(el);
+  }
+  el.textContent = `.post-content,.prose,.prose-lg,.prose-base{font-size:${FONT_SIZES[idx]}rem!important}`;
+}
+
 const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] }) => {
   const { isOpen, closeMenu, isMobile } = useMobileMenu();
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const [fontIdx, setFontIdx] = useState(1);
 
   // Get current section from pathname
   const currentSection = pathname?.split('/')[1];
 
-  // Remove excessive debug logging
+  useEffect(() => {
+    if (!isMobile) return;
+    const idx = readFontIdx();
+    setFontIdx(idx);
+    applyFontSize(idx);
+  }, [isMobile]);
 
   // Close menu on route change
   useEffect(() => {
@@ -87,6 +119,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] })
     }
   };
 
+  const changeFontSize = (delta: number) => {
+    const next = Math.max(0, Math.min(FONT_SIZES.length - 1, fontIdx + delta));
+    setFontIdx(next);
+    applyFontSize(next);
+    try {
+      localStorage.setItem(FONT_KEY, String(next));
+    } catch {}
+  };
+
   // Only render on mobile
   if (!isMobile) {
     return null;
@@ -100,8 +141,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] })
         className={`
           fixed inset-0 bg-black z-[9998]
           transition-opacity duration-300 ease-in-out
-          ${isOpen 
-            ? 'opacity-50 pointer-events-auto' 
+          ${isOpen
+            ? 'opacity-50 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
           }
         `}
@@ -176,9 +217,28 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] })
 
         {/* Footer */}
         <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mb-3">
             <span className="text-sm text-gray-600 dark:text-gray-400">Theme</span>
             <ThemeToggle />
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-600 dark:text-gray-400">Text size</span>
+            <div className="inline-flex items-center rounded-lg border border-gray-300 dark:border-gray-600 overflow-hidden">
+              <button
+                type="button"
+                onClick={() => changeFontSize(-1)}
+                disabled={fontIdx === 0}
+                className="px-3 py-1 text-lg font-semibold text-gray-700 dark:text-gray-200 disabled:opacity-40"
+                aria-label="Smaller text"
+              >−</button>
+              <button
+                type="button"
+                onClick={() => changeFontSize(1)}
+                disabled={fontIdx === FONT_SIZES.length - 1}
+                className="px-3 py-1 text-lg font-semibold text-gray-700 dark:text-gray-200 disabled:opacity-40 border-l border-gray-300 dark:border-gray-600"
+                aria-label="Larger text"
+              >+</button>
+            </div>
           </div>
         </div>
       </div>
@@ -186,4 +246,4 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] })
   );
 };
 
-export default MobileMenu; 
+export default MobileMenu;

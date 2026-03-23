@@ -73,7 +73,6 @@ export default async function RootLayout({
           </Providers>
         </div>
         <TTSInit />
-        <FontSizeControl />
       </body>
     </html>
   );
