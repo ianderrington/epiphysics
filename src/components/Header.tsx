@@ -34,6 +34,7 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
   const [subNavItems, setSubNavItems] = useState<Array<{ href: string; title: string }>>([]);
   const [showSubNav, setShowSubNav] = useState(true);
   const [showMobileTopNav, setShowMobileTopNav] = useState(true);
+  const [mobileReaderActive, setMobileReaderActive] = useState(false);
   const lastScrollYRef = useRef(0);
   const upScrollCountRef = useRef(0);
   const { isOpen, toggleMenu, closeMenu, isMobile } = useMobileMenu();
@@ -419,7 +420,7 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
         </div>
 
         {/* Mobile subsection switcher (auto-generated from current section content) */}
-        {currentSection && subNavItems.length > 0 && (
+        {!mobileReaderActive && currentSection && subNavItems.length > 0 && (
           <div
             className={`md:hidden border-t border-gray-200 dark:border-gray-800 px-2 py-2 overflow-x-auto transition-all duration-200 ${
               showSubNav && showMobileTopNav ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0 py-0 border-t-0'
