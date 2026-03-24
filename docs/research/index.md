@@ -33,6 +33,7 @@ tts:
 - [Experimental Protocol](./experimental_protocol.md) — planned empirical tests
 - [TP Bridge Experiments — Plain English Explainer](./tp_bridge_explainer_plain_english.md) — what the current TP bridge experiments are testing, what charts mean, and how this maps to Epimechanics
 - [TP Bridge — Architecture-Realistic Trace Update](./tp_bridge_architecture_trace_update.md) — extension from toy runs to architecture-like trace experiments with preserved metric contract
+- [Brainstorm — Causor as Functional 'That-Which-Causes'](./brainstorm_causor_functional_definition_2026-03-23.md) — working note on clearer causor language, causal density refinement, and labeling/separability hypothesis
 
 ## Source Registry (for citation)
 
