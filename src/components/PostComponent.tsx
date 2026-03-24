@@ -438,7 +438,7 @@ export default function PostComponent({ post }: PostComponentProps) {
               </div>
             )}
             <div className="mb-1 text-gray-500 dark:text-gray-400">
-              AI co-authors: {aiAuthors.map((a) => a.name).join(', ')}
+              AI Contributors: {aiAuthors.map((a) => a.name).join(', ')}
             </div>
             {post.metadata.date && (
               <span className="text-gray-500 dark:text-gray-400">

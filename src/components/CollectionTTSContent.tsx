@@ -96,7 +96,7 @@ export default function CollectionTTSContent({
               )}
             </span>
             <span className="mx-1">•</span>
-            <span>AI co-authors: {(aiAuthors && aiAuthors.length ? aiAuthors : ['Codex 5.3', 'Opus 4.6', 'Sonnet 4.6']).join(', ')}</span>
+            <span>AI Contributors: {(aiAuthors && aiAuthors.length ? aiAuthors : ['Codex 5.3', 'Opus 4.6', 'Sonnet 4.6']).join(', ')}</span>
           </div>
         </>
       )}
