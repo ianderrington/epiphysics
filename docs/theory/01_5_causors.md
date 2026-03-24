@@ -73,7 +73,21 @@ This is the periodic table problem. Chemistry needed a periodic table — a fini
 
 ## The Six Causors
 
-<abbr title="Causor: a minimal causally operative constituent that composes higher-order structures and dynamics.">Causor</abbr> is the core term in this chapter (see [Glossary](./glossary.md)). The following six causors are proposed as domain-independent building blocks from which $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, robustness, and other derived quantities are composed.
+<abbr title="Causor: a minimal causally operative constituent that composes higher-order structures and dynamics.">Causor</abbr> is the core term in this chapter (see [Glossary](./glossary.md)).
+
+Plainly stated: a **causor** is *that-which-causes* — the concrete mechanism by which a cause produces an effect.
+
+In this framework, causal description has three irreducible roles:
+
+$$\text{Cause} \xrightarrow{\text{Causor}} \text{Effect}$$
+
+- **Cause**: antecedent condition/input
+- **Causor**: mechanism/operator that produces change
+- **Effect**: resulting state/output
+
+We use **causal operator** as the formal mathematical representation of a causor when writing explicit model equations.
+
+The following six causors are proposed as domain-independent building blocks from which $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, robustness, and other derived quantities are composed.
 
 ### 1. Causal Bond ($b$)
 
@@ -171,6 +185,30 @@ $$C_{\text{maintenance}} = \dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$$
 - When $\dot{R}_{\text{repair}} = 0$: no self-repair. All maintenance is external. (A rock — but rocks have very low $\dot{S}_{\text{int}}$ too, so they persist.)
 
 ---
+
+## Causal Density, Labeling, and Predictability
+
+Part 1.5 now distinguishes two different questions:
+
+1. **How much causal structure is active?** (causal density)
+2. **How cleanly can we distinguish causal regimes?** (labeling/separability quality)
+
+A useful operational framing is:
+
+$$\rho_C(\Omega) = \frac{|\Pi_{\text{eff}}|}{\mu(\Omega)}$$
+
+where $\Pi_{\text{eff}}$ is the set of effective causal pathways in region $\Omega$ and $\mu(\Omega)$ is the region measure at the chosen scale.
+
+And a companion concept:
+
+- **Labeling/separability quality (LSQ):** how cleanly observed states map to distinct causal operator classes.
+
+Working hypothesis for experiments:
+
+- Prediction error decreases as LSQ improves.
+- Prediction error increases as unresolved causal density rises.
+
+This explains why two systems with similar apparent complexity can have very different predictability: one may have cleaner causal labeling and lower pathway aliasing.
 
 ## Why This Matters: The House Problem
 

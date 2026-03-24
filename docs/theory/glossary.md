@@ -16,7 +16,21 @@ coverImage:
 
 ## Causor
 
-A **causor** is a minimal causally operative constituent that composes higher-order structures and dynamics.
+A **causor** is *that-which-causes*: the concrete mechanism/process by which a cause produces an effect. In Epimechanics, it is the functional middle term in the triad:
+
+$$\text{Cause} \rightarrow \text{Causor} \rightarrow \text{Effect}$$
+
+## Causal Operator
+
+A **causal operator** is the formal mathematical representation of a causor, mapping cause-state to effect-state under specified conditions.
+
+## Causal Density ($\rho_C$)
+
+Effective causal pathway density at a chosen scale; informally, how many non-negligible causal routes are active per unit region.
+
+## Labeling/Separability Quality (LSQ)
+
+How cleanly observed states can be partitioned into distinct causal operator regimes. Higher LSQ generally improves predictability by reducing causal aliasing.
 
 ## Generalized Mass ($\mathcal{M}$)
 
