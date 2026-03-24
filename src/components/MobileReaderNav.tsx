@@ -13,6 +13,8 @@ interface NavNode {
 
 interface MobileReaderNavProps {
   currentTitle: string;
+  currentHref?: string;
+  chapters?: NavNode[];
   parent?: NavNode | null;
   prev?: NavNode | null;
   next?: NavNode | null;
@@ -22,6 +24,8 @@ interface MobileReaderNavProps {
 
 export default function MobileReaderNav({
   currentTitle,
+  currentHref,
+  chapters = [],
   parent,
   prev,
   next,
@@ -29,6 +33,7 @@ export default function MobileReaderNav({
   ttsEnabled = false,
 }: MobileReaderNavProps) {
   const [tocOpen, setTocOpen] = useState(false);
+  const [drawerView, setDrawerView] = useState<'toc' | 'chapters'>('toc');
   const [visible, setVisible] = useState(true);
   const lastYRef = useRef(0);
 
@@ -111,10 +116,13 @@ export default function MobileReaderNav({
 
           <button
             type="button"
-            onClick={() => setTocOpen(true)}
+            onClick={() => {
+              setDrawerView(tocContentHtml ? 'toc' : 'chapters');
+              setTocOpen(true);
+            }}
             className="h-10 w-10 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-[0.98]"
-            aria-label="Open table of contents"
-            title="Table of contents"
+            aria-label="Open navigation drawer"
+            title="Navigation"
           >
             <List size={18} />
           </button>
@@ -151,7 +159,7 @@ export default function MobileReaderNav({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
-              <span className="font-semibold text-gray-900 dark:text-gray-100">TOC</span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">Navigate</span>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
@@ -171,11 +179,47 @@ export default function MobileReaderNav({
                 </button>
               </div>
             </div>
+            <div className="px-3 pt-3 pb-1 border-b border-gray-100 dark:border-gray-800 flex gap-2">
+              <button
+                type="button"
+                onClick={() => setDrawerView('toc')}
+                className={`px-3 py-1.5 rounded-md text-xs font-medium ${drawerView === 'toc' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'}`}
+              >
+                Local TOC
+              </button>
+              <button
+                type="button"
+                onClick={() => setDrawerView('chapters')}
+                className={`px-3 py-1.5 rounded-md text-xs font-medium ${drawerView === 'chapters' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'}`}
+              >
+                Chapters
+              </button>
+            </div>
             <div className="p-4">
-              {tocContentHtml ? (
-                <TableOfContents content={tocContentHtml} onLinkClick={() => setTocOpen(false)} />
+              {drawerView === 'toc' ? (
+                tocContentHtml ? (
+                  <TableOfContents content={tocContentHtml} onLinkClick={() => setTocOpen(false)} />
+                ) : (
+                  <div className="text-sm text-gray-500">No local table of contents for this page.</div>
+                )
               ) : (
-                <div className="text-sm text-gray-500">No table of contents for this page.</div>
+                <div className="space-y-1">
+                  {chapters.length > 0 ? chapters.map((ch) => {
+                    const active = currentHref === ch.href;
+                    return (
+                      <Link
+                        key={ch.href}
+                        href={ch.href}
+                        onClick={() => setTocOpen(false)}
+                        className={`block px-3 py-2 rounded-md text-sm ${active ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'}`}
+                      >
+                        {ch.title}
+                      </Link>
+                    );
+                  }) : (
+                    <div className="text-sm text-gray-500">No sibling chapters found.</div>
+                  )}
+                </div>
               )}
             </div>
           </div>

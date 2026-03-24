@@ -40,12 +40,18 @@ async function resolveMobileNav(
   currentSlug: string,
   isCollection: boolean,
   currentTitle: string
-): Promise<{ parent: NavNode | null; prev: NavNode | null; next: NavNode | null }> {
+): Promise<{ parent: NavNode | null; prev: NavNode | null; next: NavNode | null; chapters: NavNode[]; currentHref: string }> {
   const currentNodeSlug = currentSlug.replace(/\/index$/, '');
   const parentSlug = slugSegments.length > 1 ? [section, ...slugSegments.slice(0, -1)].join('/') : section;
 
+  const parentTitle = parentSlug
+    .split('/')
+    .pop()
+    ?.replace(/[-_]/g, ' ')
+    .replace(/\b\w/g, l => l.toUpperCase()) || 'Collection';
+
   const parent: NavNode | null = parentSlug && parentSlug !== currentNodeSlug
-    ? { href: hrefFromSlug(parentSlug), title: 'Parent' }
+    ? { href: hrefFromSlug(parentSlug), title: parentTitle }
     : null;
 
   const { getCachedSectionContent, getCachedPostBySlug, getCachedChildPosts } = await import('@/lib/content');
@@ -93,6 +99,8 @@ async function resolveMobileNav(
     parent,
     prev: idx > 0 ? siblingNodes[idx - 1] : null,
     next: idx >= 0 && idx < siblingNodes.length - 1 ? siblingNodes[idx + 1] : null,
+    chapters: siblingNodes,
+    currentHref: hrefFromSlug(currentNodeSlug),
   };
 }
 
@@ -172,6 +180,8 @@ export default async function Page({ params }: PageProps) {
 
       <MobileReaderNav
         currentTitle={renderData.indexPost.metadata.title}
+        currentHref={mobileNav.currentHref}
+        chapters={mobileNav.chapters}
         parent={mobileNav.parent}
         prev={mobileNav.prev}
         next={mobileNav.next}
