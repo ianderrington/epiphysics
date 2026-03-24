@@ -247,7 +247,7 @@ This explains why two systems with similar apparent complexity can have very dif
 
 ## Why This Matters: The House Problem
 
-With the six causors defined, we can now resolve a puzzle that Part 1's grammar cannot handle.
+With core causors (bond + loop mechanisms) and their descriptors defined, we can now resolve a puzzle that Part 1's grammar cannot handle.
 
 **The house problem.** A well-built house has high $\mathcal{M}$ — dense structural connections (foundation, framing, plumbing, electrical, insulation, all tightly integrated). A poorly built house has lower $\mathcal{M}$ — fewer connections, cheaper materials, less integration. If $\mathcal{M}$ were the only relevant quantity, we'd expect the well-built house to require *more* maintenance (more stuff to maintain). But the opposite is true: the well-built house requires *less* maintenance.
 
@@ -399,11 +399,11 @@ This is causal power normalized by mass-equivalent. Higher $\dot{\varepsilon}_m$
 
 ---
 
-## Building Higher Quantities from Causors
+## Building Higher Quantities from Mechanisms + Descriptors
 
-The six causors combine to produce the framework's higher-level concepts:
+Core causor mechanisms (bonds, loops) together with their descriptors produce the framework's higher-level concepts:
 
-| Derived Quantity | Causor Composition | What It Means |
+| Derived Quantity | Composed From (mechanisms/descriptors) | What It Means |
 |---|---|---|
 | **Causal power** $\mathcal{P}$ | $\mathbf{F} \cdot \mathbf{v}$ (force × velocity) | Rate of work on state trajectories; normalized by mass gives Chaisson's $\dot{\varepsilon}_m$ |
 | **Causal action** $A_{\text{causal}}$ | $\int_0^{T_{\text{local}}} \mathcal{M}_{\text{ac}}(t) \, dt$ | Total self-sustaining structure over lifetime; units of J·s (same as physical action $S$) |
@@ -537,17 +537,17 @@ The Representational Efficiency principle ([Part 5](./05_ontology_and_open_quest
 
 ## Open Questions
 
-### Q1: Are these the right causors?
+### Q1: Are these the right mechanism-level causors and descriptors?
 
-The six quantities proposed here (bond, strength, loop order, basin depth, entropy production, repair rate) are candidates, not conclusions. The test: can they be measured independently in at least one domain, and do the derived quantities ($\mathcal{M}$, $C_{\text{maint}}$, robustness, etc.) computed from them match independent measurements of those derived quantities? This is the causor-level version of the equivalence principle test from [Part 1, Section 2b](./01_generalized_mechanics.md).
+Current proposal: mechanism-level causors are **bond** and **loop** operators; quantities like strength, loop order, basin depth, entropy production, and repair are descriptors/observables. This split is still a hypothesis. The test: can these be measured independently in at least one domain, and do the derived quantities ($\mathcal{M}$, $C_{\text{maint}}$, robustness, etc.) computed from them match independent measurements? This is the causor-level version of the equivalence principle test from [Part 1, Section 2b](./01_generalized_mechanics.md).
 
-### Q2: Are the causors domain-independent?
+### Q2: Are the mechanism-level causors domain-independent?
 
-The examples above suggest they are — "causal bond" maps naturally to chemical bonds, institutional connections, and cognitive associations. But the *measure* on each (what units, what grain) is domain-specific. Can we define a domain-independent formalism for these causors, the way physics defines "bond" abstractly through quantum mechanics regardless of which elements are bonding?
+The examples above suggest they are — "causal bond" and "causal loop" map naturally to physical, institutional, and cognitive settings. But the *measure* on their descriptors (what units, what grain) is domain-specific. Can we define a domain-independent formalism for bond/loop causors while allowing descriptor calibration to vary by domain?
 
-### Q3: How do causors compose into tensors?
+### Q3: How do mechanism-level causors and descriptors compose into tensors?
 
-The coupling tensor $T^i{}_j$ describes cross-domain propagation. In causor terms: a force applied in domain $j$ propagates through bonds that cross domain boundaries to produce a response in domain $i$. The off-diagonal elements of $T$ are determined by the number, strength, and loop structure of cross-domain bonds. Can the tensor structure be *derived* from the bond network, rather than measured as a separate quantity?
+The coupling tensor $T^i{}_j$ describes cross-domain propagation. In causor terms: a force applied in domain $j$ propagates through bond/loop mechanisms that cross domain boundaries to produce a response in domain $i$. Descriptor fields (strength, latency, reliability, loop structure) weight this propagation. Can the tensor structure be *derived* from mechanism topology + descriptor fields, rather than measured as a separate quantity?
 
 ### Q4: What is the relationship between assembly index and stability?
 
