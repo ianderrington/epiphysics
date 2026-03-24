@@ -75,7 +75,7 @@ This is the periodic table problem. Chemistry needed a periodic table — a fini
 
 <abbr title="Causor: a minimal causally operative constituent that composes higher-order structures and dynamics.">Causor</abbr> is the core term in this chapter (see [Glossary](./glossary.md)).
 
-Plainly stated: a **causor** is *that-which-causes* — the concrete mechanism by which a cause produces an effect.
+Plainly stated: a **causor** is *that-which-causes* — the concrete mechanism by which a cause produces an effect. This follows the structural-causal distinction between conditions and mechanisms emphasized in modern causal modeling (especially [Pearl, 2009, 2nd ed.](https://doi.org/10.1017/CBO9780511803161)).
 
 In this framework, causal description has three irreducible roles:
 
@@ -197,6 +197,8 @@ A useful operational framing is:
 
 $$\rho_C(\Omega) = \frac{|\Pi_{\text{eff}}|}{\mu(\Omega)}$$
 
+Related terminology on **causal density** appears in prior complexity/consciousness literature (e.g., [Seth, Barrett, & Barnett, 2011](https://doi.org/10.1098/rsta.2011.0079)); here we adapt it for domain-general Epimechanics operator analysis.
+
 where $\Pi_{\text{eff}}$ is the set of effective causal pathways in region $\Omega$ and $\mu(\Omega)$ is the region measure at the chosen scale.
 
 And a companion concept:
@@ -209,6 +211,11 @@ Working hypothesis for experiments:
 - Prediction error increases as unresolved causal density rises.
 
 This explains why two systems with similar apparent complexity can have very different predictability: one may have cleaner causal labeling and lower pathway aliasing.
+
+## Canonical references (prominent)
+
+- **Pearl, J. (2009). _Causality_ (2nd ed.)** — structural-causal framework; explicit separation of conditions, mechanisms, and effects. DOI: https://doi.org/10.1017/CBO9780511803161
+- **Seth, A. K., Barrett, A. B., & Barnett, L. (2011).** Causal density and integrated information as measures of conscious level. DOI: https://doi.org/10.1098/rsta.2011.0079
 
 ## Why This Matters: The House Problem
 
