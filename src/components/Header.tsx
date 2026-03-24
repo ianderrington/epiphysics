@@ -158,7 +158,6 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
       const e = event as CustomEvent<{ active?: boolean }>;
       const active = !!e.detail?.active;
       setMobileReaderActive(active);
-      setShowMobileTopNav(!active);
     };
     window.addEventListener('mobile-reader-active', activeHandler as EventListener);
     return () => window.removeEventListener('mobile-reader-active', activeHandler as EventListener);

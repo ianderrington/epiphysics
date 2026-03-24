@@ -32,10 +32,9 @@ function extractSectionsFromHtml(html?: string): SectionNode[] {
   try {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     const headings = Array.from(doc.querySelectorAll('h2[id], h3[id]'));
-    return headings.map((h) => ({
-      id: h.id,
-      text: (h.textContent || '').trim(),
-    })).filter(h => !!h.id && !!h.text);
+    return headings
+      .map((h) => ({ id: h.id, text: (h.textContent || '').trim() }))
+      .filter((h) => !!h.id && !!h.text);
   } catch {
     return [];
   }
@@ -54,8 +53,10 @@ export default function MobileReaderNav({
 }: MobileReaderNavProps) {
   const [showDomainMenu, setShowDomainMenu] = useState(false);
   const [showChapterParent, setShowChapterParent] = useState(false);
-  const [showSectionParent, setShowSectionParent] = useState(false);
-  const [visibleRows, setVisibleRows] = useState<0 | 1 | 2>(2); // 2: all, 1: row2+row3, 0: row3 only
+  const [showSectionDrawer, setShowSectionDrawer] = useState(false);
+  const [drawerView, setDrawerView] = useState<'toc' | 'chapters'>('toc');
+  const [stage, setStage] = useState<0 | 1 | 2>(2); // 2: A+B+C, 1: B+C, 0: B only
+  const [isNarrow, setIsNarrow] = useState(false);
 
   const sections = useMemo(() => extractSectionsFromHtml(tocContentHtml), [tocContentHtml]);
   const [currentSectionIdx, setCurrentSectionIdx] = useState(0);
@@ -66,7 +67,15 @@ export default function MobileReaderNav({
   const THRESHOLD = 24;
 
   useEffect(() => {
+    const onResize = () => setIsNarrow(window.innerWidth < 480);
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  useEffect(() => {
     window.dispatchEvent(new CustomEvent('mobile-reader-active', { detail: { active: true } }));
+
     const onScroll = () => {
       const y = window.scrollY;
       const delta = y - lastYRef.current;
@@ -75,14 +84,14 @@ export default function MobileReaderNav({
         downAccumRef.current += delta;
         upAccumRef.current = 0;
         if (downAccumRef.current > THRESHOLD) {
-          setVisibleRows((v) => (v > 0 ? ((v - 1) as 0 | 1 | 2) : 0));
+          setStage((s) => (s > 0 ? ((s - 1) as 0 | 1 | 2) : 0));
           downAccumRef.current = 0;
         }
       } else if (delta < 0) {
         upAccumRef.current += Math.abs(delta);
         downAccumRef.current = 0;
         if (upAccumRef.current > THRESHOLD) {
-          setVisibleRows((v) => (v < 2 ? ((v + 1) as 0 | 1 | 2) : 2));
+          setStage((s) => (s < 2 ? ((s + 1) as 0 | 1 | 2) : 2));
           upAccumRef.current = 0;
         }
       }
@@ -97,7 +106,6 @@ export default function MobileReaderNav({
     };
   }, []);
 
-  // Track current section by scroll position
   useEffect(() => {
     if (!sections.length) return;
     const onScroll = () => {
@@ -113,8 +121,7 @@ export default function MobileReaderNav({
     return () => window.removeEventListener('scroll', onScroll);
   }, [sections]);
 
-  const currentChapterNumber = Math.max(1, chapters.findIndex(c => c.href === currentHref) + 1);
-
+  const currentChapterNumber = Math.max(1, chapters.findIndex((c) => c.href === currentHref) + 1);
   const prevSection = currentSectionIdx > 0 ? sections[currentSectionIdx - 1] : null;
   const nextSection = currentSectionIdx < sections.length - 1 ? sections[currentSectionIdx + 1] : null;
   const currentSection = sections[currentSectionIdx] || null;
@@ -125,82 +132,139 @@ export default function MobileReaderNav({
   };
 
   return (
-    <div className="md:hidden sticky top-0 z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
-      {/* Row A: Domain */}
-      <div className={`transition-all duration-200 overflow-hidden ${visibleRows >= 2 ? 'max-h-12 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="h-11 px-2.5 flex items-center gap-2 border-b border-gray-100 dark:border-gray-800">
+    <div className="sticky top-0 z-40 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+      {/* Layer A: Focus Domain (hidden on narrow + stage collapsed) */}
+      {!isNarrow && stage >= 2 && (
+        <div className="h-10 px-3 flex items-center gap-2 border-b border-gray-100 dark:border-gray-800">
           <span className="font-semibold text-sm">◍</span>
           <button
             type="button"
-            onClick={() => setShowDomainMenu(v => !v)}
+            onClick={() => setShowDomainMenu((v) => !v)}
             className="text-sm font-medium text-gray-800 dark:text-gray-100 inline-flex items-center gap-1"
           >
             Domain: {domainTitle} <ChevronDown size={14} />
           </button>
           <div className="ml-auto text-xs text-gray-400">⋯</div>
         </div>
-        {showDomainMenu && domainOptions.length > 0 && (
-          <div className="px-2 pb-2 space-y-1">
-            {domainOptions.map(opt => (
-              <Link key={opt.href} href={opt.href} className="block px-2 py-1.5 rounded text-sm hover:bg-gray-100 dark:hover:bg-gray-800">
-                {opt.title}
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Row B: Chapter */}
-      <div className={`transition-all duration-200 overflow-hidden ${visibleRows >= 1 ? 'max-h-12 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="h-11 px-1.5 grid grid-cols-[36px_1fr_36px] items-center border-b border-gray-100 dark:border-gray-800">
-          {prev ? <Link href={prev.href} className="h-9 w-9 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"><ChevronLeft size={18} /></Link> : <div className="h-9 w-9" />}
-          <div className="min-w-0 px-1 text-[13px] font-medium truncate inline-flex items-center gap-1">
-            <span className="text-xs text-gray-500">({currentChapterNumber})</span>
-            <span className="truncate">{currentTitle}</span>
-            {parent && (
-              <button onClick={() => setShowChapterParent(v => !v)} className="ml-1 text-gray-500">{showChapterParent ? <ChevronUp size={14} /> : <ChevronDown size={14} />}</button>
-            )}
-          </div>
-          {next ? <Link href={next.href} className="h-9 w-9 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"><ChevronRight size={18} /></Link> : <div className="h-9 w-9" />}
+      )}
+      {showDomainMenu && !isNarrow && domainOptions.length > 0 && (
+        <div className="px-2 pb-2 space-y-1 border-b border-gray-100 dark:border-gray-800">
+          {domainOptions.map((opt) => (
+            <Link key={opt.href} href={opt.href} className="block px-2 py-1.5 rounded text-sm hover:bg-gray-100 dark:hover:bg-gray-800">
+              {opt.title}
+            </Link>
+          ))}
         </div>
-        {showChapterParent && parent && (
-          <div className="px-2 pb-2">
-            <Link href={parent.href} className="block px-2 py-1.5 rounded text-sm hover:bg-gray-100 dark:hover:bg-gray-800">↑ {parent.title}</Link>
-          </div>
-        )}
-      </div>
+      )}
 
-      {/* Row C: Section (always sticky/visible in compact mode) */}
-      <div className="h-11 px-1.5 grid grid-cols-[36px_1fr_36px] items-center">
-        {prevSection ? <button onClick={() => goSection(prevSection.id)} className="h-9 w-9 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"><ChevronLeft size={18} /></button> : <div className="h-9 w-9" />}
+      {/* Layer B: Chapter Level (always available) */}
+      <div className={`${isNarrow ? 'h-11' : 'h-12'} px-2 grid grid-cols-[36px_1fr_36px_36px] items-center gap-1 border-b border-gray-100 dark:border-gray-800`}>
+        {prev ? (
+          <Link href={prev.href} className="h-9 w-9 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Previous chapter">
+            <ChevronLeft size={18} />
+          </Link>
+        ) : (
+          <div className="h-9 w-9" />
+        )}
+
         <div className="min-w-0 px-1 text-[13px] font-medium truncate inline-flex items-center gap-1">
-          <button onClick={() => setShowSectionParent(v => !v)} className="text-gray-500"><List size={14} /></button>
-          <span className="truncate">{currentSection?.text || 'Section'}</span>
-          <span className="text-xs text-gray-500 ml-1">{sections.length ? `${Math.round(((currentSectionIdx + 1) / sections.length) * 100)}%` : ''}</span>
-        </div>
-        {nextSection ? <button onClick={() => goSection(nextSection.id)} className="h-9 w-9 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"><ChevronRight size={18} /></button> : <div className="h-9 w-9" />}
-      </div>
-
-      {showSectionParent && (
-        <div className="px-2 pb-2 border-t border-gray-100 dark:border-gray-800 max-h-[45vh] overflow-y-auto">
-          <div className="text-xs uppercase tracking-wide text-gray-500 px-2 py-1">Local TOC</div>
-          {tocContentHtml ? (
-            <TableOfContents content={tocContentHtml} onLinkClick={() => setShowSectionParent(false)} />
-          ) : (
-            <div className="text-sm text-gray-500 px-2 py-1">No local sections found.</div>
+          <span className="text-xs text-gray-500">({currentChapterNumber})</span>
+          <span className="truncate">{currentTitle}</span>
+          {parent && !isNarrow && (
+            <button onClick={() => setShowChapterParent((v) => !v)} className="ml-1 text-gray-500">
+              {showChapterParent ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+            </button>
           )}
-          <div className="text-xs uppercase tracking-wide text-gray-500 px-2 py-2">Chapters</div>
-          <div className="space-y-1 pb-1">
-            {chapters.map(ch => (
-              <Link
-                key={ch.href}
-                href={ch.href}
-                onClick={() => setShowSectionParent(false)}
-                className={`block px-2 py-1.5 rounded text-sm ${ch.href === currentHref ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'hover:bg-gray-100 dark:hover:bg-gray-800'}`}
-              >
-                {ch.title}
-              </Link>
-            ))}
+        </div>
+
+        {next ? (
+          <Link href={next.href} className="h-9 w-9 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Next chapter">
+            <ChevronRight size={18} />
+          </Link>
+        ) : (
+          <div className="h-9 w-9" />
+        )}
+
+        <button
+          type="button"
+          onClick={() => {
+            setDrawerView('chapters');
+            setShowSectionDrawer(true);
+          }}
+          className="h-9 w-9 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"
+          aria-label="Open chapter selector"
+        >
+          <List size={16} />
+        </button>
+      </div>
+      {showChapterParent && parent && !isNarrow && (
+        <div className="px-2 pb-2 border-b border-gray-100 dark:border-gray-800">
+          <Link href={parent.href} className="block px-2 py-1.5 rounded text-sm hover:bg-gray-100 dark:hover:bg-gray-800">↑ {parent.title}</Link>
+        </div>
+      )}
+
+      {/* Layer C: Section Level (collapsible; on narrow use drawer only) */}
+      {!isNarrow && stage >= 1 && (
+        <div className="h-9 px-2 grid grid-cols-[32px_1fr_32px_32px] items-center gap-1">
+          {prevSection ? (
+            <button onClick={() => goSection(prevSection.id)} className="h-8 w-8 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Previous section">
+              <ChevronLeft size={16} />
+            </button>
+          ) : (
+            <div className="h-8 w-8" />
+          )}
+
+          <div className="min-w-0 px-1 text-xs font-medium truncate">{currentSection?.text || 'Section'}</div>
+
+          {nextSection ? (
+            <button onClick={() => goSection(nextSection.id)} className="h-8 w-8 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Next section">
+              <ChevronRight size={16} />
+            </button>
+          ) : (
+            <div className="h-8 w-8" />
+          )}
+
+          <button
+            type="button"
+            onClick={() => {
+              setDrawerView('toc');
+              setShowSectionDrawer(true);
+            }}
+            className="h-8 w-8 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"
+            aria-label="Open section TOC"
+          >
+            <List size={14} />
+          </button>
+        </div>
+      )}
+
+      {/* Shared drawer for chapters + local TOC */}
+      {showSectionDrawer && (
+        <div className="fixed inset-0 z-50 bg-black/35" onClick={() => setShowSectionDrawer(false)}>
+          <div className="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-white dark:bg-gray-900 rounded-t-2xl border-t border-gray-200 dark:border-gray-700 shadow-xl overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+              <span className="font-semibold text-gray-900 dark:text-gray-100">Navigate</span>
+              <button className="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" onClick={() => setShowSectionDrawer(false)}>Close</button>
+            </div>
+            <div className="px-3 pt-3 pb-1 flex gap-2 border-b border-gray-100 dark:border-gray-800">
+              <button type="button" onClick={() => setDrawerView('chapters')} className={`px-3 py-1.5 rounded-md text-xs font-medium ${drawerView === 'chapters' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'}`}>Chapters</button>
+              <button type="button" onClick={() => setDrawerView('toc')} className={`px-3 py-1.5 rounded-md text-xs font-medium ${drawerView === 'toc' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'}`}>Local TOC</button>
+            </div>
+            <div className="p-4">
+              {drawerView === 'chapters' ? (
+                <div className="space-y-1">
+                  {chapters.length > 0 ? chapters.map((ch) => (
+                    <Link key={ch.href} href={ch.href} onClick={() => setShowSectionDrawer(false)} className={`block px-2 py-1.5 rounded text-sm ${ch.href === currentHref ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'hover:bg-gray-100 dark:hover:bg-gray-800'}`}>
+                      {ch.title}
+                    </Link>
+                  )) : <div className="text-sm text-gray-500">No sibling chapters found.</div>}
+                </div>
+              ) : tocContentHtml ? (
+                <TableOfContents content={tocContentHtml} onLinkClick={() => setShowSectionDrawer(false)} />
+              ) : (
+                <div className="text-sm text-gray-500">No local sections found.</div>
+              )}
+            </div>
           </div>
         </div>
       )}
