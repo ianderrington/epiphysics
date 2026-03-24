@@ -102,6 +102,7 @@ export default function MobileReaderNav({
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', onScroll);
+      if (raf) window.cancelAnimationFrame(raf);
       window.dispatchEvent(new CustomEvent('mobile-reader-active', { detail: { active: false } }));
     };
   }, []);

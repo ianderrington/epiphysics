@@ -296,7 +296,7 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
   return (
     <>
       <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 m-0 p-0">
-        <div className={`w-full px-4 sm:px-6 lg:px-8 py-0 transition-all duration-200 ${mobileReaderActive ? 'max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100' : 'max-h-20 opacity-100'}`}>
+        <div className={`w-full px-4 sm:px-6 lg:px-8 py-0 ${mobileReaderActive ? 'hidden md:block' : 'block'}`}>
           <div className="flex justify-between items-center h-16">
             {/* Logo/Home link */}
             <div className="flex items-center h-full">
