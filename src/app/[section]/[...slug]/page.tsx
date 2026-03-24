@@ -179,6 +179,13 @@ export default async function Page({ params }: PageProps) {
       )}
 
       <MobileReaderNav
+        domainTitle={section.charAt(0).toUpperCase() + section.slice(1)}
+        domainOptions={[
+          { href: '/theory', title: 'Theory' },
+          { href: '/research', title: 'Research' },
+          { href: '/experiments', title: 'Experiments' },
+          { href: '/applications', title: 'Applications' },
+        ]}
         currentTitle={renderData.indexPost.metadata.title}
         currentHref={mobileNav.currentHref}
         chapters={mobileNav.chapters}
@@ -186,7 +193,6 @@ export default async function Page({ params }: PageProps) {
         prev={mobileNav.prev}
         next={mobileNav.next}
         tocContentHtml={renderData.indexPost.html || ''}
-        ttsEnabled={!!renderData.indexPost.metadata.tts?.enabled}
       />
 
       {renderData.isCollection ? (

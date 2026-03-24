@@ -1,17 +1,23 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, CornerUpLeft, List, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, List } from 'lucide-react';
 import TableOfContents from '@/components/TableOfContents';
-import { toast } from 'react-hot-toast';
 
 interface NavNode {
   href: string;
   title: string;
 }
 
+interface SectionNode {
+  id: string;
+  text: string;
+}
+
 interface MobileReaderNavProps {
+  domainTitle: string;
+  domainOptions?: NavNode[];
   currentTitle: string;
   currentHref?: string;
   chapters?: NavNode[];
@@ -19,10 +25,25 @@ interface MobileReaderNavProps {
   prev?: NavNode | null;
   next?: NavNode | null;
   tocContentHtml?: string;
-  ttsEnabled?: boolean;
+}
+
+function extractSectionsFromHtml(html?: string): SectionNode[] {
+  if (!html) return [];
+  try {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const headings = Array.from(doc.querySelectorAll('h2[id], h3[id]'));
+    return headings.map((h) => ({
+      id: h.id,
+      text: (h.textContent || '').trim(),
+    })).filter(h => !!h.id && !!h.text);
+  } catch {
+    return [];
+  }
 }
 
 export default function MobileReaderNav({
+  domainTitle,
+  domainOptions = [],
   currentTitle,
   currentHref,
   chapters = [],
@@ -30,21 +51,42 @@ export default function MobileReaderNav({
   prev,
   next,
   tocContentHtml,
-  ttsEnabled = false,
 }: MobileReaderNavProps) {
-  const [tocOpen, setTocOpen] = useState(false);
-  const [drawerView, setDrawerView] = useState<'toc' | 'chapters'>('toc');
-  const [visible, setVisible] = useState(true);
+  const [showDomainMenu, setShowDomainMenu] = useState(false);
+  const [showChapterParent, setShowChapterParent] = useState(false);
+  const [showSectionParent, setShowSectionParent] = useState(false);
+  const [visibleRows, setVisibleRows] = useState<0 | 1 | 2>(2); // 2: all, 1: row2+row3, 0: row3 only
+
+  const sections = useMemo(() => extractSectionsFromHtml(tocContentHtml), [tocContentHtml]);
+  const [currentSectionIdx, setCurrentSectionIdx] = useState(0);
+
   const lastYRef = useRef(0);
+  const downAccumRef = useRef(0);
+  const upAccumRef = useRef(0);
+  const THRESHOLD = 24;
 
   useEffect(() => {
     window.dispatchEvent(new CustomEvent('mobile-reader-active', { detail: { active: true } }));
-
     const onScroll = () => {
       const y = window.scrollY;
       const delta = y - lastYRef.current;
-      if (delta > 6) setVisible(false);
-      if (delta < -6) setVisible(true);
+
+      if (delta > 0) {
+        downAccumRef.current += delta;
+        upAccumRef.current = 0;
+        if (downAccumRef.current > THRESHOLD) {
+          setVisibleRows((v) => (v > 0 ? ((v - 1) as 0 | 1 | 2) : 0));
+          downAccumRef.current = 0;
+        }
+      } else if (delta < 0) {
+        upAccumRef.current += Math.abs(delta);
+        downAccumRef.current = 0;
+        if (upAccumRef.current > THRESHOLD) {
+          setVisibleRows((v) => (v < 2 ? ((v + 1) as 0 | 1 | 2) : 2));
+          upAccumRef.current = 0;
+        }
+      }
+
       lastYRef.current = y;
     };
 
@@ -55,176 +97,113 @@ export default function MobileReaderNav({
     };
   }, []);
 
-  const handlePlay = () => {
-    const attemptPlay = () => {
-      const root = document.querySelector('.supernal-tts-widget') as HTMLElement | null;
-      if (!root) return false;
-
-      const candidate = root.querySelector(
-        '[data-tts-action="play"], .supernal-tts-play-button, button[aria-label*="Play" i]'
-      ) as HTMLButtonElement | null;
-
-      if (candidate && !candidate.disabled) {
-        candidate.click();
-        return true;
+  // Track current section by scroll position
+  useEffect(() => {
+    if (!sections.length) return;
+    const onScroll = () => {
+      let idx = 0;
+      for (let i = 0; i < sections.length; i++) {
+        const el = document.getElementById(sections[i].id);
+        if (el && el.getBoundingClientRect().top <= 120) idx = i;
       }
-      return false;
+      setCurrentSectionIdx(idx);
     };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [sections]);
 
-    if (attemptPlay()) {
-      toast.success('Playing audio');
-      return;
-    }
+  const currentChapterNumber = Math.max(1, chapters.findIndex(c => c.href === currentHref) + 1);
 
-    window.setTimeout(() => {
-      if (attemptPlay()) toast.success('Playing audio');
-      else toast('Audio player unavailable on this page');
-    }, 300);
+  const prevSection = currentSectionIdx > 0 ? sections[currentSectionIdx - 1] : null;
+  const nextSection = currentSectionIdx < sections.length - 1 ? sections[currentSectionIdx + 1] : null;
+  const currentSection = sections[currentSectionIdx] || null;
+
+  const goSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
-    <>
-      <div
-        className={`md:hidden sticky top-0 z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-transform duration-200 ${visible ? 'translate-y-0' : '-translate-y-full'}`}
-      >
-        <div className="h-12 px-2.5 grid grid-cols-[40px_40px_1fr_40px_40px] items-center gap-1">
-          {parent ? (
-            <Link
-              href={parent.href}
-              className="h-10 w-10 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-[0.98]"
-              aria-label={`Up to ${parent.title}`}
-              title={`Up to ${parent.title}`}
-            >
-              <CornerUpLeft size={16} />
-            </Link>
-          ) : (
-            <div className="h-10 w-10" />
-          )}
-
-          {prev ? (
-            <Link
-              href={prev.href}
-              className="h-10 w-10 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-[0.98]"
-              aria-label="Previous sibling"
-              title="Previous sibling"
-            >
-              <ChevronLeft size={18} />
-            </Link>
-          ) : (
-            <div className="h-10 w-10" />
-          )}
-
+    <div className="md:hidden sticky top-0 z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+      {/* Row A: Domain */}
+      <div className={`transition-all duration-200 overflow-hidden ${visibleRows >= 2 ? 'max-h-12 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="h-11 px-2.5 flex items-center gap-2 border-b border-gray-100 dark:border-gray-800">
+          <span className="font-semibold text-sm">◍</span>
           <button
             type="button"
-            onClick={() => {
-              setDrawerView(tocContentHtml ? 'toc' : 'chapters');
-              setTocOpen(true);
-            }}
-            className="h-10 w-10 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-[0.98]"
-            aria-label="Open navigation drawer"
-            title="Navigation"
+            onClick={() => setShowDomainMenu(v => !v)}
+            className="text-sm font-medium text-gray-800 dark:text-gray-100 inline-flex items-center gap-1"
           >
-            <List size={18} />
+            Domain: {domainTitle} <ChevronDown size={14} />
           </button>
-
-          <div
-            className="min-w-0 px-1.5 text-[13px] leading-tight font-medium text-gray-800 dark:text-gray-100 truncate"
-            title={currentTitle}
-            aria-current="page"
-          >
-            {currentTitle}
-          </div>
-
-          {next ? (
-            <Link
-              href={next.href}
-              className="h-10 w-10 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-[0.98]"
-              aria-label="Next sibling"
-              title="Next sibling"
-            >
-              <ChevronRight size={18} />
-            </Link>
-          ) : (
-            <div className="h-10 w-10" />
-          )}
-
-
+          <div className="ml-auto text-xs text-gray-400">⋯</div>
         </div>
+        {showDomainMenu && domainOptions.length > 0 && (
+          <div className="px-2 pb-2 space-y-1">
+            {domainOptions.map(opt => (
+              <Link key={opt.href} href={opt.href} className="block px-2 py-1.5 rounded text-sm hover:bg-gray-100 dark:hover:bg-gray-800">
+                {opt.title}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
 
-      {tocOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-black/35" onClick={() => setTocOpen(false)}>
-          <div
-            className="absolute top-16 left-2 right-2 max-h-[70vh] bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
-              <span className="font-semibold text-gray-900 dark:text-gray-100">Navigate</span>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={handlePlay}
-                  disabled={!ttsEnabled}
-                  className="h-8 w-8 rounded-md flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30"
-                  aria-label="Play audio"
-                  title={ttsEnabled ? 'Play audio' : 'Audio unavailable'}
-                >
-                  <Play size={15} />
-                </button>
-                <button
-                  className="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
-                  onClick={() => setTocOpen(false)}
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-            <div className="px-3 pt-3 pb-1 border-b border-gray-100 dark:border-gray-800 flex gap-2">
-              <button
-                type="button"
-                onClick={() => setDrawerView('toc')}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium ${drawerView === 'toc' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'}`}
+      {/* Row B: Chapter */}
+      <div className={`transition-all duration-200 overflow-hidden ${visibleRows >= 1 ? 'max-h-12 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="h-11 px-1.5 grid grid-cols-[36px_1fr_36px] items-center border-b border-gray-100 dark:border-gray-800">
+          {prev ? <Link href={prev.href} className="h-9 w-9 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"><ChevronLeft size={18} /></Link> : <div className="h-9 w-9" />}
+          <div className="min-w-0 px-1 text-[13px] font-medium truncate inline-flex items-center gap-1">
+            <span className="text-xs text-gray-500">({currentChapterNumber})</span>
+            <span className="truncate">{currentTitle}</span>
+            {parent && (
+              <button onClick={() => setShowChapterParent(v => !v)} className="ml-1 text-gray-500">{showChapterParent ? <ChevronUp size={14} /> : <ChevronDown size={14} />}</button>
+            )}
+          </div>
+          {next ? <Link href={next.href} className="h-9 w-9 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"><ChevronRight size={18} /></Link> : <div className="h-9 w-9" />}
+        </div>
+        {showChapterParent && parent && (
+          <div className="px-2 pb-2">
+            <Link href={parent.href} className="block px-2 py-1.5 rounded text-sm hover:bg-gray-100 dark:hover:bg-gray-800">↑ {parent.title}</Link>
+          </div>
+        )}
+      </div>
+
+      {/* Row C: Section (always sticky/visible in compact mode) */}
+      <div className="h-11 px-1.5 grid grid-cols-[36px_1fr_36px] items-center">
+        {prevSection ? <button onClick={() => goSection(prevSection.id)} className="h-9 w-9 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"><ChevronLeft size={18} /></button> : <div className="h-9 w-9" />}
+        <div className="min-w-0 px-1 text-[13px] font-medium truncate inline-flex items-center gap-1">
+          <button onClick={() => setShowSectionParent(v => !v)} className="text-gray-500"><List size={14} /></button>
+          <span className="truncate">{currentSection?.text || 'Section'}</span>
+          <span className="text-xs text-gray-500 ml-1">{sections.length ? `${Math.round(((currentSectionIdx + 1) / sections.length) * 100)}%` : ''}</span>
+        </div>
+        {nextSection ? <button onClick={() => goSection(nextSection.id)} className="h-9 w-9 rounded flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"><ChevronRight size={18} /></button> : <div className="h-9 w-9" />}
+      </div>
+
+      {showSectionParent && (
+        <div className="px-2 pb-2 border-t border-gray-100 dark:border-gray-800 max-h-[45vh] overflow-y-auto">
+          <div className="text-xs uppercase tracking-wide text-gray-500 px-2 py-1">Local TOC</div>
+          {tocContentHtml ? (
+            <TableOfContents content={tocContentHtml} onLinkClick={() => setShowSectionParent(false)} />
+          ) : (
+            <div className="text-sm text-gray-500 px-2 py-1">No local sections found.</div>
+          )}
+          <div className="text-xs uppercase tracking-wide text-gray-500 px-2 py-2">Chapters</div>
+          <div className="space-y-1 pb-1">
+            {chapters.map(ch => (
+              <Link
+                key={ch.href}
+                href={ch.href}
+                onClick={() => setShowSectionParent(false)}
+                className={`block px-2 py-1.5 rounded text-sm ${ch.href === currentHref ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'hover:bg-gray-100 dark:hover:bg-gray-800'}`}
               >
-                Local TOC
-              </button>
-              <button
-                type="button"
-                onClick={() => setDrawerView('chapters')}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium ${drawerView === 'chapters' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'}`}
-              >
-                Chapters
-              </button>
-            </div>
-            <div className="p-4">
-              {drawerView === 'toc' ? (
-                tocContentHtml ? (
-                  <TableOfContents content={tocContentHtml} onLinkClick={() => setTocOpen(false)} />
-                ) : (
-                  <div className="text-sm text-gray-500">No local table of contents for this page.</div>
-                )
-              ) : (
-                <div className="space-y-1">
-                  {chapters.length > 0 ? chapters.map((ch) => {
-                    const active = currentHref === ch.href;
-                    return (
-                      <Link
-                        key={ch.href}
-                        href={ch.href}
-                        onClick={() => setTocOpen(false)}
-                        className={`block px-3 py-2 rounded-md text-sm ${active ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'}`}
-                      >
-                        {ch.title}
-                      </Link>
-                    );
-                  }) : (
-                    <div className="text-sm text-gray-500">No sibling chapters found.</div>
-                  )}
-                </div>
-              )}
-            </div>
+                {ch.title}
+              </Link>
+            ))}
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
