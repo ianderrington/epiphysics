@@ -308,4 +308,4 @@ Together they describe how higher-level auto-causal loops emerge from lower-leve
 
 The next question follows naturally: what do these entities - individual and meta - know? How do they model the world? What are they trying to do? That requires the concepts of intelligence, consciousness, and agency.
 
-[← Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 3: Intelligence, Consciousness, and Agency](./03_intelligence_consciousness_agency.md)
+[← Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 2.5: Entity Interaction](./02_5_entity_interaction.md) | [→ Part 3: Intelligence, Consciousness, and Agency](./03_intelligence_consciousness_agency.md)

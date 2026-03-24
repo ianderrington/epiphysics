@@ -408,12 +408,19 @@ Units: **J·s** — the same as physical action $S = \int L \, dt$ and Planck's 
 
 Selection dynamics follow a rock-paper-scissors pattern across timescales:
 
-```
-    FITNESS
-      ↗   ↖
-   beats   beats
-    ↙       ↘
-TRUTH ←beats← DEATH
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#EAF2FF', 'primaryTextColor': '#0F172A', 'primaryBorderColor': '#7AA2E3', 'lineColor': '#334155', 'fontSize': '14px'}}}%%
+graph TD
+  F["🏆 FITNESS\n(short timescales)"]
+  D["💀 DEATH\n(medium timescales)"]
+  T["🔬 TRUTH\n(long timescales)"]
+
+  F -->|"beats"| T
+  D -->|"beats"| F
+  T -->|"beats"| D
+
+  classDef node fill:#EAF2FF,stroke:#7AA2E3,stroke-width:2px,color:#0F172A,padding:10px;
+  class F,D,T node;
 ```
 
 **Fitness beats Truth** (short timescales). [Hoffman (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) proved this formally: in evolutionary competition, organisms that perceive fitness-relevant features outcompete those that perceive accurately. The organism that sees "tiger → run" beats the one carefully modeling tiger biomechanics. Truth-tracking is computationally expensive; fitness-tracking is efficient. On the timescale of individual selection events, fitness wins.
@@ -472,6 +479,57 @@ At biological levels, the relevant unit is not raw Joules but **functionalized e
 - **Biological:** ATP, NADH
 - **Institutional:** budget dollars, authorized decisions, trained personnel
 - **Cognitive:** attention, working memory capacity
+
+### Entities as Unit-Carriers: Tensor Coupling Chains
+
+The ATP example reveals something more general: **entities are typed dimensional units**, and the coupling tensor $T^i{}_j$ is a unit-conversion operator between them. This is **dimensional analysis** — the same technique every physicist (and anyone tracking units in daily life) uses to verify and trace causal chains. Write the units at every step, cancel what cancels, and what remains tells you what the chain actually computes. The extension here is that the "units" are not just meters and seconds — they are *entities* like ATP, Krebs turns, or dollars.
+
+**Entities as typed units.** Let $\mathcal{E} = \{e_1, e_2, \ldots\}$ be a set of entity types — ATP, NADH, a Krebs cycle turn, a glucose molecule, a photon, a dollar, an authorized decision. Each carries a dimensional signature:
+
+$$[e_i] = \prod_k U_k^{n_{ik}}$$
+
+where $U_k$ are base units (J, s, mol, bit, ...). For example:
+
+| Entity | Dimensional signature | Approximate value |
+|---|---|---|
+| ATP (hydrolysis) | J · mol⁻¹ | ~30.5 kJ/mol |
+| NADH (oxidation) | J · mol⁻¹ | ~158 kJ/mol |
+| Krebs turn | mol · s⁻¹ (cycle rate) | context-dependent |
+| Photon (visible) | J | ~3.1 eV (~0.5 × 10⁻¹⁸ J) |
+
+**Coupling as a unit-conversion tensor.** The coupling between entity layers $i$ and $j$ is the conversion ratio, mediated by a transducer:
+
+$$T^i{}_j = \frac{\partial e_i}{\partial e_j}\bigg|_{\text{transducer}}$$
+
+This is **transducer-dependent** — the same entity pair can have different coupling ratios depending on what converts them. For the Krebs→ATP step:
+
+$$T^{\text{ATP}}_{\text{Krebs}} = \eta \cdot T^{\text{ATP,max}}_{\text{Krebs}} \approx \eta \cdot 10 \text{ ATP/turn}$$
+
+where $\eta \in (0,1]$ is the coupling efficiency of the mitochondrion (affected by membrane potential, proton leak, uncoupling proteins). The transducer sets $\eta$; the entity types set the units.
+
+**The full coupling chain is a tensor contraction:**
+
+$$\mathcal{P}_{\text{effective}} = \underbrace{T^{\text{J}}_{\text{ATP}}}_{30.5 \text{ kJ/mol}} \cdot \underbrace{T^{\text{ATP}}_{\text{Krebs}}}_{10 \text{ ATP/turn}} \cdot \underbrace{T^{\text{Krebs}}_{\text{glucose}}}_{1 \text{ turn/acetyl-CoA}} \cdot \dot{n}_{\text{glucose}}$$
+
+Each arrow in the chain is a coupling tensor element; the product gives causal power in Watts. Unit consistency is guaranteed by tracking dimensional signatures at every step.
+
+**Block-diagonal structure for hierarchical systems.** When subsystems use non-overlapping entity vocabularies, their coupling blocks are zero — the full tensor factorizes:
+
+$$T = \begin{pmatrix} T_{\text{glycolysis}} & T_{\text{gly→Krebs}} & 0 \\ 0 & T_{\text{Krebs}} & T_{\text{Krebs→ETC}} \\ 0 & 0 & T_{\text{ETC→ATP}} \end{pmatrix}$$
+
+The diagonal blocks describe internal conversions; off-diagonal blocks are transducer couplings between layers. A zero off-diagonal block means causal decoupling — energy cannot propagate between those layers without an explicit transducer. To analyze one subsystem in isolation, restrict to its diagonal block and solve within that subspace.
+
+**Higher-order couplings.** A second-order coupling describes how a coupling coefficient itself depends on entity state — i.e., regulation:
+
+$$T^{\text{ATP}}_{\text{Krebs}} = f(\eta), \quad \eta = g\!\left(\frac{[\text{ADP}]}{[\text{ATP}]},\, \Delta\psi_m\right)$$
+
+Here the ATP/ADP ratio and mitochondrial membrane potential $\Delta\psi_m$ modulate the coupling efficiency — the system encodes its own conversion factors as state-dependent tensors. This is what adaptive and regulatory systems do: they write higher-order terms into the coupling tensor to adjust energy routing in response to context.
+
+> [!sidenote]
+> **Entity types as basis vectors.** Treating entities as unit-carriers is equivalent to choosing a basis for the causal state space where each basis direction corresponds to a distinct entity type. The coupling tensor then maps between these basis directions — exactly as a change-of-basis matrix operates in linear algebra, but with physical units attached.
+
+> [!example]
+> **Worked examples:** Full coupling chains for muscle contraction (signal → torque), cellular energy (glucose → work), and kinesin transport are collected in [Coupling Chain Examples](./coupling_chains.md).
 
 ### Domain-specific operationalization
 
