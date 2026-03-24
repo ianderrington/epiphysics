@@ -23,6 +23,21 @@ const FONT_KEY = 'epiphysics-font-size';
 const FONT_SIZES = [1.05, 1.2, 1.35, 1.5];
 const FONT_STYLE_ID = 'ep-fontsize';
 
+const STATIC_SECTION_FALLBACKS: Record<string, Array<{ href: string; title: string }>> = {
+  theory: [
+    { href: '/theory/00_prelude', title: 'Prelude' },
+    { href: '/theory/01_generalized_mechanics', title: 'Part 1 — Generalized Mechanics' },
+    { href: '/theory/01_5_causors', title: 'Part 1.5 — Causors' },
+    { href: '/theory/01b_uncertainty_coordinates_relativity', title: 'Part 1b — Uncertainty' },
+    { href: '/theory/01c_thermodynamic_emergence_of_life', title: 'Part 1c — Emergence of Life' },
+    { href: '/theory/02_meta_entities', title: 'Part 2 — Meta-Entities' },
+    { href: '/theory/03_intelligence_consciousness_agency', title: 'Part 3 — Intelligence/Consciousness' },
+    { href: '/theory/04_time_and_soul', title: 'Part 4 — Time and Soul' },
+    { href: '/theory/05_ontology_and_open_questions', title: 'Part 5 — Open Questions' },
+    { href: '/theory/glossary', title: 'Glossary' },
+  ],
+};
+
 function readFontIdx(): number {
   try {
     const value = localStorage.getItem(FONT_KEY);
@@ -73,7 +88,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] })
   };
 
   const getSectionChildren = (sectionId: string): Array<{ href: string; title: string }> => {
-    if (!posts?.length) return [];
+    const fallback = STATIC_SECTION_FALLBACKS[sectionId] || [];
+
+    if (!posts?.length) return fallback;
 
     const normalized = posts
       .map((p: any) => ({
@@ -110,9 +127,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ sections, externalLinks = [] })
         };
       });
 
-    return [...directDocs, ...folderItems]
+    const dynamic = [...directDocs, ...folderItems]
       .filter((item) => item.href !== `/${sectionId}`)
       .sort((a, b) => a.title.localeCompare(b.title));
+
+    // Merge fallback + dynamic, preserving order and removing duplicates
+    const mergedMap = new Map<string, { href: string; title: string }>();
+    [...fallback, ...dynamic].forEach((item) => {
+      if (!mergedMap.has(item.href)) mergedMap.set(item.href, item);
+    });
+
+    return Array.from(mergedMap.values());
   };
 
   useEffect(() => {
