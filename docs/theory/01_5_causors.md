@@ -89,17 +89,26 @@ We use **causal operator** as the formal mathematical representation of a causor
 
 **Important distinction:** not every quantity in the model is a causor. Variables such as bond strength, basin depth, entropy production, and repair rate are best treated as **causal descriptors/properties** of underlying causor structures (e.g., loops, operator motifs, and mechanism classes), rather than causors themselves.
 
-## Six Core Causal Descriptors
+## Three-Layer Architecture (Mechanisms, Descriptors, Observables)
 
-The following six descriptors are proposed as a practical decomposition for quantifying causor structures and their consequences for $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, and robustness.
+To avoid category errors, Part 1.5 uses three layers:
 
-Interpretive guide:
-- **Causors (mechanism-level):** loop/operator structures that actually generate state transitions.
-- **Descriptors (measurement-level):** quantities used to characterize those structures (strength, depth, rates, etc.).
+- **Layer A — Causors (mechanisms/operators):** what actually produces state transitions.
+- **Layer B — Descriptors (properties/parameters):** how causors are characterized.
+- **Layer C — Observables/derived quantities:** what we measure from A+B in context.
 
-### 1. Causal Bond ($b$)
+| Symbol/Concept | Type |
+|---|---|
+| $b$, $\mathcal{L}$ | Causor operator (mechanism) |
+| $\sigma_b$, $\ell$, $\Delta V$ | Descriptor / parameter |
+| $\dot{S}_{\text{int}}$, $\dot{R}_{\text{repair}}$ | Process observables (rate-level descriptors) |
+| $\mathcal{M}$, $\rho_{ac}$, $C_{\text{maint}}$ | Derived quantities |
 
-A single directed causal connection between two state variables: a change in $X_i$ produces a change in $X_j$. This is the minimal unit of causal structure. In [Pearl's framework](https://doi.org/10.1017/CBO9780511803161), it corresponds to a single edge in a causal DAG.
+### Layer A: Core causors (mechanism-level)
+
+### A1. Causal Bond Operator ($b$)
+
+A single directed causal connection between two state variables: a change in $X_i$ produces a change in $X_j$. This is a primitive causor in the framework. In [Pearl's framework](https://doi.org/10.1017/CBO9780511803161), it corresponds to a single edge in a causal DAG.
 
 **Examples across domains:**
 - **Physical**: an intermolecular force (covalent, ionic, van der Waals)
@@ -112,19 +121,30 @@ A causal bond has four properties:
 - **Latency** $\tau_b$: the time delay between cause and effect
 - **Reliability** $r_b \in [0,1]$: the probability that the connection fires when activated
 
-### 2. Bond Strength ($\sigma_b$)
+### A2. Loop Operator ($\mathcal{L}$)
+
+A **loop operator** is a closed causal composition that regenerates conditions for its own continuation (directly or indirectly). This is the minimal mechanism-level unit for self-sustaining causation.
+
+- Bond-level causation explains local propagation.
+- Loop-level causation explains persistence, self-maintenance, and auto-causality.
+
+### Layer B: Core causal descriptors (property-level)
+
+### 1. Bond Strength ($\sigma_b$)
 
 The energy required to sever a single causal bond. At the physical level, this is measured in Joules — analogous to bond dissociation energy in chemistry.
 
-Bond strength is called out as its own causor because it is the primary contributor to generalized mass: $\mathcal{M} = \sum_{\text{bonds}} \sigma_b$. Mass is the sum of bond strengths.
+Bond strength is called out as a primary **descriptor/parameter** of the bond causor because it is a major contributor to generalized mass: $\mathcal{M} = \sum_{\text{bonds}} \sigma_b$. Mass depends on bond strengths but bond strength itself is not a standalone causor mechanism.
 
 **Examples:**
 - **Strong bonds** (hard to break): a covalent bond between carbon atoms (~350 kJ/mol), a deeply ingrained habit, a legal contract
 - **Weak bonds** (easy to break): a van der Waals interaction (~1 kJ/mol), a casual acquaintance, a verbal agreement
 
-### 3. Loop Order ($\ell$)
+### 2. Loop Order ($\ell$)
 
 The length of the shortest self-referential causal cycle passing through a given point. A loop of order 1 is direct self-causation ($X_i \to X_i$). A loop of order 2 is $X_i \to X_j \to X_i$. A loop of order $\ell$ passes through $\ell$ intermediate states before returning.
+
+Loop order is a **descriptor** of loop causors, not a standalone causor.
 
 Loop order determines the *character* of auto-causal structure:
 - $\ell = 1$: direct self-reinforcement (a thermostat, a habit loop)
@@ -138,7 +158,7 @@ Loop order determines the *character* of auto-causal structure:
 
 Shorter loops respond faster to perturbation (the feedback signal returns sooner). Longer loops are slower but can be more robust — disrupting one link doesn't immediately break the cycle if alternative paths exist.
 
-### 4. Stability Basin Depth ($\Delta V$)
+### 3. Stability Basin Depth ($\Delta V$)
 
 The energy barrier between the entity's current configuration and the nearest dissolution pathway. Formally: the height of the lowest saddle point on the potential energy surface surrounding the entity's equilibrium position.
 
@@ -153,7 +173,7 @@ Deep basins mean the entity can absorb large perturbations without leaving its c
 - **A new startup's culture**: $\Delta V$ is shallow (one bad hire, one crisis can reshape it entirely)
 - **A centuries-old institution**: $\Delta V$ is deep (survives wars, scandals, leadership changes)
 
-### 5. Entropy Production Rate ($\dot{S}_{\text{int}}$)
+### 4. Entropy Production Rate ($\dot{S}_{\text{int}}$)
 
 The rate at which the entity's internal structure generates disorder that must be managed. Every causal bond produces some entropy — some fraction of causal activity degrades the structure rather than maintaining it.
 
@@ -171,7 +191,7 @@ where $\dot{s}_b$ is the entropy production per bond per unit time. This depends
 
 $\dot{S}_{\text{int}}$ is what makes entities mortal. Even the most robust structure produces *some* entropy. If this is not exported or repaired, it accumulates until the structure fails. [Prigogine](https://doi.org/10.1126/science.201.4358.777) showed that living systems persist by exporting entropy to their environment faster than they produce it internally. When export fails, the entity dissolves.
 
-### 6. Repair Rate ($\dot{R}_{\text{repair}}$)
+### 5. Repair Rate ($\dot{R}_{\text{repair}}$)
 
 The rate at which the auto-causal structure restores broken or degraded bonds. This is the operational definition of "self-sustaining" — the entity does degrade, but it fixes itself faster than it breaks.
 
