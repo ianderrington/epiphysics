@@ -1,5 +1,5 @@
 ---
-title: "Epimechanics — Part 1.5: Causants"
+title: "Epimechanics — Part 1.5: Causors"
 description: >-
   Epimechanics provides the grammar - state, force, energy, coupling. But what are the fundamental
   building blocks from which generalized mass, auto-causal density, maintenance cost, and robustness
@@ -8,6 +8,9 @@ date: 2026-03-17T00:00:00.000Z
 draft: false
 author:
   name: "Ian Derrington"
+co_authors:
+  - name: "Parnian Barekatain"
+    role: "Brainstorming Contributor"
 contentType: article
 mediaTypes:
   - text
@@ -31,8 +34,8 @@ coverImage:
     aesthetic crossed with network topology.
 bullets:
   - Epimechanics has the grammar but not the periodic table - what are entities made of?
-  - Six candidate causants - causal bond, bond strength, loop order, basin depth, entropy production rate, repair rate
-  - Mass and maintenance cost are different quantities built from different combinations of the same causants
+  - Six candidate causors - causal bond, bond strength, loop order, basin depth, entropy production rate, repair rate
+  - Mass and maintenance cost are different quantities built from different combinations of the same causors
   - Connection to assembly theory, information geometry, and the Representational Efficiency principle
 tts:
   enabled: true
@@ -64,13 +67,13 @@ $$F = \mathcal{M}\ddot{X} + \dot{\mathcal{M}}\dot{X}$$
 
 This works — you can describe institutional inertia, belief persistence, market momentum. But $\mathcal{M}$ is still a black box. What is it made of? What determines whether an entity has high or low $\mathcal{M}$? Why do some high-$\mathcal{M}$ entities require constant maintenance while others persist for millennia?
 
-This is the periodic table problem. Chemistry needed a periodic table — a finite set of elements that combine to produce all substances. Epimechanics needs the same: a finite set of **causants** that combine to produce all the quantities the grammar uses.
+This is the periodic table problem. Chemistry needed a periodic table — a finite set of elements that combine to produce all substances. Epimechanics needs the same: a finite set of **causors** that combine to produce all the quantities the grammar uses.
 
 ---
 
-## The Six Causants
+## The Six Causors
 
-<abbr title="Causant: a minimal causally operative constituent that composes higher-order structures and dynamics.">Causant</abbr> is the core term in this chapter (see [Glossary](./glossary.md)). The following six causants are proposed as domain-independent building blocks from which $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, robustness, and other derived quantities are composed.
+<abbr title="Causor: a minimal causally operative constituent that composes higher-order structures and dynamics.">Causor</abbr> is the core term in this chapter (see [Glossary](./glossary.md)). The following six causors are proposed as domain-independent building blocks from which $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, robustness, and other derived quantities are composed.
 
 ### 1. Causal Bond ($b$)
 
@@ -91,7 +94,7 @@ A causal bond has four properties:
 
 The energy required to sever a single causal bond. At the physical level, this is measured in Joules — analogous to bond dissociation energy in chemistry.
 
-Bond strength is called out as its own causant because it is the primary contributor to generalized mass: $\mathcal{M} = \sum_{\text{bonds}} \sigma_b$. Mass is the sum of bond strengths.
+Bond strength is called out as its own causor because it is the primary contributor to generalized mass: $\mathcal{M} = \sum_{\text{bonds}} \sigma_b$. Mass is the sum of bond strengths.
 
 **Examples:**
 - **Strong bonds** (hard to break): a covalent bond between carbon atoms (~350 kJ/mol), a deeply ingrained habit, a legal contract
@@ -171,11 +174,11 @@ $$C_{\text{maintenance}} = \dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$$
 
 ## Why This Matters: The House Problem
 
-With the six causants defined, we can now resolve a puzzle that Part 1's grammar cannot handle.
+With the six causors defined, we can now resolve a puzzle that Part 1's grammar cannot handle.
 
 **The house problem.** A well-built house has high $\mathcal{M}$ — dense structural connections (foundation, framing, plumbing, electrical, insulation, all tightly integrated). A poorly built house has lower $\mathcal{M}$ — fewer connections, cheaper materials, less integration. If $\mathcal{M}$ were the only relevant quantity, we'd expect the well-built house to require *more* maintenance (more stuff to maintain). But the opposite is true: the well-built house requires *less* maintenance.
 
-**The causant resolution.** $\mathcal{M}$ and maintenance cost are different combinations of the same causants:
+**The causor resolution.** $\mathcal{M}$ and maintenance cost are different combinations of the same causors:
 
 | Entity | $\mathcal{M}$ (bond sum) | $\Delta V$ (basin depth) | $\dot{S}_{\text{int}}$ | $\dot{R}_{\text{repair}}$ | $C_{\text{maint}}$ |
 |---|---|---|---|---|---|
@@ -193,7 +196,7 @@ With the six causants defined, we can now resolve a puzzle that Part 1's grammar
 
 These are independent. A system can be massive and cheap to maintain (diamond: high $\mathcal{M}$, deep $\Delta V$, near-zero $\dot{S}_{\text{int}}$). Or light and expensive to maintain (sandcastle: low $\mathcal{M}$, shallow $\Delta V$, positive $\dot{S}_{\text{int}}$, zero repair).
 
-The well-built house has high $\mathcal{M}$ *and* deep $\Delta V$ *and* low $\dot{S}_{\text{int}}$. The cheap house has medium $\mathcal{M}$ but shallow $\Delta V$ and high $\dot{S}_{\text{int}}$. The grammar alone ($F = \mathcal{M}\ddot{X}$) couldn't distinguish these cases. The causant decomposition can.
+The well-built house has high $\mathcal{M}$ *and* deep $\Delta V$ *and* low $\dot{S}_{\text{int}}$. The cheap house has medium $\mathcal{M}$ but shallow $\Delta V$ and high $\dot{S}_{\text{int}}$. The grammar alone ($F = \mathcal{M}\ddot{X}$) couldn't distinguish these cases. The causor decomposition can.
 
 ---
 
@@ -221,7 +224,7 @@ This is exactly [Kauffman's autocatalytic set](https://doi.org/10.1093/oso/97801
 
 This connects directly to [Hoel et al.'s causal emergence](https://doi.org/10.1073/pnas.1314922110): the loop-level description has more causal information than the bond-level description ($EI(\text{macro}) > EI(\text{micro})$). The loop IS the entity at its most fundamental level — the smallest unit of self-sustaining causal structure.
 
-### Visual: Causant interaction graph
+### Visual: Causor interaction graph
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#EAF2FF', 'primaryTextColor': '#0F172A', 'primaryBorderColor': '#7AA2E3', 'lineColor': '#334155', 'fontSize': '14px'}}}%%
@@ -305,13 +308,13 @@ The relevant quantity is expected future contribution: $\int_t^{\infty} \kappa_{
 
 ## Causal Power
 
-With the six causants defined, we can now define **causal power** — the rate at which an entity does work on state trajectories.
+With the six causors defined, we can now define **causal power** — the rate at which an entity does work on state trajectories.
 
 $$\mathcal{P}_{E \to j} = \mathbf{F}_{E \to j} \cdot \mathbf{v}_{X_j}$$
 
 where $\mathbf{F}_{E \to j}$ is the force entity $E$ exerts on entity $j$'s state, and $\mathbf{v}_{X_j} = dX_j/dt$ is $j$'s state velocity. This has units of energy per time — it is power in the literal mechanical sense, extended to abstract state spaces. (See [Part 3](./03_intelligence_consciousness_agency.md) for full treatment.)
 
-**How causal power relates to the causants:** An entity's capacity for sustained causal power depends on its bond structure. High $\mathcal{M}$ (dense, strong bonds) provides a larger energy reservoir from which to do work. The coupling tensor $T^i{}_j$ determines how efficiently that reservoir translates into force on other entities' states. Causal power is not a seventh causant — it is a *derived quantity* that emerges from bond strengths, coupling structure, and state velocities.
+**How causal power relates to the causors:** An entity's capacity for sustained causal power depends on its bond structure. High $\mathcal{M}$ (dense, strong bonds) provides a larger energy reservoir from which to do work. The coupling tensor $T^i{}_j$ determines how efficiently that reservoir translates into force on other entities' states. Causal power is not a seventh causor — it is a *derived quantity* that emerges from bond strengths, coupling structure, and state velocities.
 
 ### Connection to Chaisson's energy rate density
 
@@ -323,11 +326,11 @@ This is causal power normalized by mass-equivalent. Higher $\dot{\varepsilon}_m$
 
 ---
 
-## Building Higher Quantities from Causants
+## Building Higher Quantities from Causors
 
-The six causants combine to produce the framework's higher-level concepts:
+The six causors combine to produce the framework's higher-level concepts:
 
-| Derived Quantity | Causant Composition | What It Means |
+| Derived Quantity | Causor Composition | What It Means |
 |---|---|---|
 | **Causal power** $\mathcal{P}$ | $\mathbf{F} \cdot \mathbf{v}$ (force × velocity) | Rate of work on state trajectories; normalized by mass gives Chaisson's $\dot{\varepsilon}_m$ |
 | **Causal action** $A_{\text{causal}}$ | $\int_0^{T_{\text{local}}} \mathcal{M}_{\text{ac}}(t) \, dt$ | Total self-sustaining structure over lifetime; units of J·s (same as physical action $S$) |
@@ -439,13 +442,13 @@ The framework provides the grammar ($\mathcal{M} = \sum T^i{}_j \cdot \sigma_b$)
 
 ## Connection to Assembly Theory
 
-[Assembly theory (Cronin & Walker, 2023)](https://doi.org/10.1038/s41586-023-06600-9) measures one causant: the minimum number of bond-formation operations to construct an object. The assembly index AI is a static, constructive measure — it counts how many steps to *build* the structure.
+[Assembly theory (Cronin & Walker, 2023)](https://doi.org/10.1038/s41586-023-06600-9) measures one causor: the minimum number of bond-formation operations to construct an object. The assembly index AI is a static, constructive measure — it counts how many steps to *build* the structure.
 
-The causant framework extends assembly theory in two directions:
+The causor framework extends assembly theory in two directions:
 
 1. **From construction to maintenance.** AI tells you how hard the entity was to build. $C_{\text{maint}} = \dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$ tells you how hard it is to *keep*. These differ: a complex molecule in a stable configuration (deep $\Delta V$) is hard to build and easy to keep. A complex molecule in an unstable configuration (shallow $\Delta V$) is hard to build and hard to keep.
 
-2. **From counting to dynamics.** AI counts construction steps. The causant framework adds *dynamics*: how do bonds evolve over time? Which degrade? How fast? What repair mechanisms exist? This is the difference between a blueprint (AI) and a maintenance manual ($\dot{S}_{\text{int}}$, $\dot{R}_{\text{repair}}$, $\Delta V$).
+2. **From counting to dynamics.** AI counts construction steps. The causor framework adds *dynamics*: how do bonds evolve over time? Which degrade? How fast? What repair mechanisms exist? This is the difference between a blueprint (AI) and a maintenance manual ($\dot{S}_{\text{int}}$, $\dot{R}_{\text{repair}}$, $\Delta V$).
 
 **Prediction:** AI and durability should be correlated but not identical. High-AI entities tend to have deeper stability basins — but the correlation is imperfect. Fragile complexity exists (a poorly designed bridge). Durable simplicity exists (a stone wall).
 
@@ -461,23 +464,23 @@ The Representational Efficiency principle ([Part 5](./05_ontology_and_open_quest
 
 ## Open Questions
 
-### Q1: Are these the right causants?
+### Q1: Are these the right causors?
 
-The six quantities proposed here (bond, strength, loop order, basin depth, entropy production, repair rate) are candidates, not conclusions. The test: can they be measured independently in at least one domain, and do the derived quantities ($\mathcal{M}$, $C_{\text{maint}}$, robustness, etc.) computed from them match independent measurements of those derived quantities? This is the causant-level version of the equivalence principle test from [Part 1, Section 2b](./01_generalized_mechanics.md).
+The six quantities proposed here (bond, strength, loop order, basin depth, entropy production, repair rate) are candidates, not conclusions. The test: can they be measured independently in at least one domain, and do the derived quantities ($\mathcal{M}$, $C_{\text{maint}}$, robustness, etc.) computed from them match independent measurements of those derived quantities? This is the causor-level version of the equivalence principle test from [Part 1, Section 2b](./01_generalized_mechanics.md).
 
-### Q2: Are the causants domain-independent?
+### Q2: Are the causors domain-independent?
 
-The examples above suggest they are — "causal bond" maps naturally to chemical bonds, institutional connections, and cognitive associations. But the *measure* on each (what units, what grain) is domain-specific. Can we define a domain-independent formalism for these causants, the way physics defines "bond" abstractly through quantum mechanics regardless of which elements are bonding?
+The examples above suggest they are — "causal bond" maps naturally to chemical bonds, institutional connections, and cognitive associations. But the *measure* on each (what units, what grain) is domain-specific. Can we define a domain-independent formalism for these causors, the way physics defines "bond" abstractly through quantum mechanics regardless of which elements are bonding?
 
-### Q3: How do causants compose into tensors?
+### Q3: How do causors compose into tensors?
 
-The coupling tensor $T^i{}_j$ describes cross-domain propagation. In causant terms: a force applied in domain $j$ propagates through bonds that cross domain boundaries to produce a response in domain $i$. The off-diagonal elements of $T$ are determined by the number, strength, and loop structure of cross-domain bonds. Can the tensor structure be *derived* from the bond network, rather than measured as a separate quantity?
+The coupling tensor $T^i{}_j$ describes cross-domain propagation. In causor terms: a force applied in domain $j$ propagates through bonds that cross domain boundaries to produce a response in domain $i$. The off-diagonal elements of $T$ are determined by the number, strength, and loop structure of cross-domain bonds. Can the tensor structure be *derived* from the bond network, rather than measured as a separate quantity?
 
 ### Q4: What is the relationship between assembly index and stability?
 
-Assembly theory predicts that high-AI objects require selection (they don't arise by chance). The causant framework adds that high-AI objects *may* have deep stability basins — but need not. Is there a formal relationship between construction complexity and thermodynamic stability? If so, it would connect assembly theory to the Representational Efficiency principle: complex structures that persist (high AI, deep basin) are the ones that correspond to efficient representations.
+Assembly theory predicts that high-AI objects require selection (they don't arise by chance). The causor framework adds that high-AI objects *may* have deep stability basins — but need not. Is there a formal relationship between construction complexity and thermodynamic stability? If so, it would connect assembly theory to the Representational Efficiency principle: complex structures that persist (high AI, deep basin) are the ones that correspond to efficient representations.
 
-### Q5: Can we derive the Lagrangian from the causant structure?
+### Q5: Can we derive the Lagrangian from the causor structure?
 
 The Lagrangian $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V(X)$ is currently a structural postulate. If $\mathcal{M}$ is composed of bonds with known strengths, and $V(X)$ is determined by the basin structure, can the Lagrangian be *derived* from the bond network? This would move the quadratic kinetic energy from postulate to consequence — the strongest possible grounding of the framework.
 
@@ -485,9 +488,9 @@ The Lagrangian $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V(X)$ is currently a str
 
 ## Relationship to the Series
 
-This document sits between the [series overview](./index.md) and [Part 1](./01_generalized_mechanics.md). It addresses the question that Part 1's grammar leaves open: what is the grammar *about*? The grammar describes how $\mathcal{M}$, $F$, $V$, $T^i{}_j$ relate to each other. This document asks what these quantities are *made of* — and proposes that the answer, like chemistry's periodic table, is a small set of causants that combine differently in different domains to produce the observed diversity of entities.
+This document sits between the [series overview](./index.md) and [Part 1](./01_generalized_mechanics.md). It addresses the question that Part 1's grammar leaves open: what is the grammar *about*? The grammar describes how $\mathcal{M}$, $F$, $V$, $T^i{}_j$ relate to each other. This document asks what these quantities are *made of* — and proposes that the answer, like chemistry's periodic table, is a small set of causors that combine differently in different domains to produce the observed diversity of entities.
 
-The grammar works regardless of whether the causant decomposition is correct — $F = \mathcal{M}\ddot{X}$ holds whether or not we know what $\mathcal{M}$ is made of, just as $F = ma$ held before understanding the substructure of mass. But the causant decomposition, if correct, would:
+The grammar works regardless of whether the causor decomposition is correct — $F = \mathcal{M}\ddot{X}$ holds whether or not we know what $\mathcal{M}$ is made of, just as $F = ma$ held before understanding the substructure of mass. But the causor decomposition, if correct, would:
 
 1. **Resolve the house problem** — explain why $\mathcal{M}$ and maintenance cost diverge
 2. **Ground the equivalence principle** — provide a micro-level explanation for why different measurement approaches to $\mathcal{M}$ agree

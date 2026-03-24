@@ -458,7 +458,7 @@ What is *not* open is the structural claim: if a system admits a Lagrangian desc
 
 $$A_{\text{causal}}(E) = \int_0^{T_{\text{local}}} \mathcal{M}_{\text{ac}}(E, t) \, dt$$
 
-where $\mathcal{M}_{\text{ac}}$ is the auto-causal component of generalized mass (the self-sustaining fraction) and $T_{\text{local}}$ is the entity's local time ([Part 4](./04_time_and_soul.md)). The dimensional match to physical action is structural: both measure energy-weighted duration. Physical action selects trajectories; causal action measures total self-sustaining presence. [Part 1.5](./01_5_causants.md) introduces causal action and its connection to fitness×truth selection; [Part 4](./04_time_and_soul.md) develops the full treatment.
+where $\mathcal{M}_{\text{ac}}$ is the auto-causal component of generalized mass (the self-sustaining fraction) and $T_{\text{local}}$ is the entity's local time ([Part 4](./04_time_and_soul.md)). The dimensional match to physical action is structural: both measure energy-weighted duration. Physical action selects trajectories; causal action measures total self-sustaining presence. [Part 1.5](./01_5_causors.md) introduces causal action and its connection to fitness×truth selection; [Part 4](./04_time_and_soul.md) develops the full treatment.
 
 ---
 

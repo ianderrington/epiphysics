@@ -64,6 +64,11 @@ export interface AIAuthor {
   role?: string;
 }
 
+export interface CoAuthor {
+  name: string;
+  role?: string;
+}
+
 export interface PostMetadata {
   title: string;
   date: string;
@@ -86,6 +91,7 @@ export interface PostMetadata {
   authorImage?: string;
   authorBio?: string;
   author_id?: string;
+  co_authors?: CoAuthor[];
   ai_author_ids?: string[];
   ai_authors?: AIAuthor[];
   coverImage?: {

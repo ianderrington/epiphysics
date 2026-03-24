@@ -14,9 +14,9 @@ coverImage:
   alt: "Concept map of Epimechanics core terms and relationships."
 ---
 
-## Causant
+## Causor
 
-A **causant** is a minimal causally operative constituent that composes higher-order structures and dynamics.
+A **causor** is a minimal causally operative constituent that composes higher-order structures and dynamics.
 
 ## Generalized Mass ($\mathcal{M}$)
 

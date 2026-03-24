@@ -432,6 +432,11 @@ export default function PostComponent({ post }: PostComponentProps) {
                 <span className="text-gray-500 dark:text-gray-400 ml-1">• {primaryAuthorTitle}</span>
               </Link>
             </div>
+            {Array.isArray(post.metadata.co_authors) && post.metadata.co_authors.length > 0 && (
+              <div className="mb-1 text-gray-500 dark:text-gray-400">
+                Contributors: {post.metadata.co_authors.map((c) => c.name).join(', ')}
+              </div>
+            )}
             <div className="mb-1 text-gray-500 dark:text-gray-400">
               AI co-authors: {aiAuthors.map((a) => a.name).join(', ')}
             </div>

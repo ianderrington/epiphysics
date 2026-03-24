@@ -243,7 +243,7 @@ Aggregate $\hat{V}_{\text{market}}$ can diverge from $V$ when:
 
 ### Connection to fitness×truth
 
-[The causal action principle](./01_5_causants.md) says fitness×truth strategies have higher $A_{\text{causal}}$ than fitness-alone strategies. Translating to belief fields:
+[The causal action principle](./01_5_causors.md) says fitness×truth strategies have higher $A_{\text{causal}}$ than fitness-alone strategies. Translating to belief fields:
 
 - **Fitness alone**: $\hat{V}$ optimized for immediate reward, decoupled from $V$
 - **Fitness×truth**: $\hat{V}$ coupled to $V$, accepting short-term costs for long-term accuracy

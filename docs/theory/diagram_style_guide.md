@@ -1,5 +1,5 @@
 ---
-title: "Causant Diagram Style Guide"
+title: "Causor Diagram Style Guide"
 description: >-
   Minimal, reusable visual standard for Epimechanics diagrams using Mermaid-first
   notation so diagrams can be embedded at all report levels.
@@ -26,8 +26,8 @@ Use one simple diagram language across theory, research notes, and reports.
 - Rectangles = state-bearing entities/subsystems
 - Rounded nodes = aggregates/meta-entities
 
-### Edges (Causants)
-- Directed edge `A --> B` = causant relation
+### Edges (Causors)
+- Directed edge `A --> B` = causor relation
 - Edge label format: `σ, τ, r`
   - `σ` = strength
   - `τ` = latency
@@ -44,7 +44,7 @@ Use one simple diagram language across theory, research notes, and reports.
 
 ---
 
-## Template 1 — Causant Interaction Graph
+## Template 1 — Causor Interaction Graph
 
 ```mermaid
 flowchart LR

@@ -102,7 +102,7 @@ $X$ is not the thing itself. It is a formal description of the thing's condition
 
 [Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces. The desktop icon does not resemble the magnetic patterns on the disk. It doesn't need to — it needs to be *useful*: to let you predict what happens when you double-click. $X$ has the same status. It is an interface through which we interact with reality, not a photograph of it.
 
-Hoffman's result raises a puzzle: if fitness beats truth in evolutionary competition, why do truth-tracking practices (science, engineering, accurate maps) exist at all? The resolution lies in *temporal extent*. Fitness-only strategies can achieve high short-term performance but are temporally bounded — they eventually collide with causal reality. Fitness×truth strategies couple effectiveness to actual causal structure, extending their duration. Over long timescales, selection favors high *causal action* (energy × time) — which means selection favors fitness×truth over fitness alone. Science persists not because truth beats fitness, but because truth *extends* fitness. See [Part 1.5](./01_5_causants.md) and [Part 4](./04_time_and_soul.md) for the formal treatment.
+Hoffman's result raises a puzzle: if fitness beats truth in evolutionary competition, why do truth-tracking practices (science, engineering, accurate maps) exist at all? The resolution lies in *temporal extent*. Fitness-only strategies can achieve high short-term performance but are temporally bounded — they eventually collide with causal reality. Fitness×truth strategies couple effectiveness to actual causal structure, extending their duration. Over long timescales, selection favors high *causal action* (energy × time) — which means selection favors fitness×truth over fitness alone. Science persists not because truth beats fitness, but because truth *extends* fitness. See [Part 1.5](./01_5_causors.md) and [Part 4](./04_time_and_soul.md) for the formal treatment.
 
 The interface view entails three properties:
 - **$X$ can be wrong.** A representation may be inaccurate, incomplete, or misleading. "Calling a tree a car" assigns the tree a representation in a state space (vehicles) where the dynamics don't apply. The tree's measurable properties are unaffected. The mislabel is a coordinate error — it assigns the wrong $X$ to the wrong $S$.
@@ -174,7 +174,7 @@ Both quantities are representations — values we assign within a model, not pro
 
 The framework's mechanical apparatus (mass, force, energy) applies to all entities. For entities with very low $\rho_{\text{ac}}$, the quantities are near-zero and carry little predictive content. What makes some entities more persistent and more dynamically self-sustaining than others is the density and structure of their self-sustaining causal loops — and that difference is what the rest of the framework formalizes.
 
-[Part 1.5: Causants](./01_5_causants.md) develops what $\rho_{\text{ac}}$ is made of — the causal bonds, loop structures, and stability basins from which auto-causal density emerges.
+[Part 1.5: Causors](./01_5_causors.md) develops what $\rho_{\text{ac}}$ is made of — the causal bonds, loop structures, and stability basins from which auto-causal density emerges.
 
 ---
 
@@ -272,10 +272,10 @@ With these foundations in place:
 
 - [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) — the full mechanical apparatus: state, velocity, mass, momentum, force, energy, Lagrangian, coupling, fields, thermodynamics, fluid dynamics.
 - [Part 1b: Uncertainty, Coordinates, and Relativity](./01b_uncertainty_coordinates_relativity.md) — how representations transform between coordinate systems; measurement changes the state.
-- [Part 1.5: Causants](./01_5_causants.md) — what are entities *made of*? The six candidate causants.
+- [Part 1.5: Causors](./01_5_causors.md) — what are entities *made of*? The six candidate causors.
 - [Parts 2–5](./index.md) — meta-entities, intelligence/consciousness/agency, time and soul, full ontology.
 - [Applications](../applications/index.md) — where epiphysics happens: testing predictions in specific domains.
 
 ---
 
-[→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 1.5: Causants](./01_5_causants.md)
+[→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 1.5: Causors](./01_5_causors.md)

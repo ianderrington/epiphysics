@@ -19,3 +19,8 @@ contributors:
     type: ai
     name: Sonnet 4.6
     title: AI Co-Author
+
+  - id: parnian_barekatain
+    type: human
+    name: Parnian Barekatain
+    title: Brainstorming Contributor

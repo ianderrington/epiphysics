@@ -30,7 +30,7 @@ tts:
   enableProgress: true
 ---
 
-> **Context.** This document extends the [Causants](./01_5_causants.md) (Part 1.5) by showing how the medium modifies an entity's measured inertia. For the general mechanical framework, see [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
+> **Context.** This document extends the [Causors](./01_5_causors.md) (Part 1.5) by showing how the medium modifies an entity's measured inertia. For the general mechanical framework, see [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
 
 ---
 
@@ -75,4 +75,4 @@ The constraining case is especially important: it's not just high $\mathcal{M}_{
 
 ---
 
-> **See also:** [Causants](./01_5_causants.md) (Part 1.5) for the six atomic quantities from which mass is composed. [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) for the full tensorial treatment of $\mathcal{M}_{ij}$.
+> **See also:** [Causors](./01_5_causors.md) (Part 1.5) for the six atomic quantities from which mass is composed. [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) for the full tensorial treatment of $\mathcal{M}_{ij}$.
