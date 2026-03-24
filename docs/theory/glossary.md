@@ -16,9 +16,11 @@ coverImage:
 
 ## Causor
 
-A **causor** is *that-which-causes*: the concrete mechanism/process by which a cause produces an effect. In Epimechanics, it is the functional middle term in the triad:
+A **causor** is *that-which-causes*: a higher-level causal mechanism/structure (often loop/operator-like) that produces state change. In Epimechanics, it is the functional middle term in the triad:
 
 $$\text{Cause} \rightarrow \text{Causor} \rightarrow \text{Effect}$$
+
+Note: scalar/model variables (e.g., basin depth, entropy production rate) are typically descriptors of causor structures, not causors themselves.
 
 ## Causal Operator
 

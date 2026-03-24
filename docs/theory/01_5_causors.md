@@ -71,11 +71,11 @@ This is the periodic table problem. Chemistry needed a periodic table — a fini
 
 ---
 
-## The Six Causors
+## Causors vs Causal Descriptors
 
-<abbr title="Causor: a minimal causally operative constituent that composes higher-order structures and dynamics.">Causor</abbr> is the core term in this chapter (see [Glossary](./glossary.md)).
+<abbr title="Causor: a higher-order causal mechanism/structure that produces state change (typically implemented by interacting bonds and loops).">Causor</abbr> is the core term in this chapter (see [Glossary](./glossary.md)).
 
-Plainly stated: a **causor** is *that-which-causes* — the concrete mechanism by which a cause produces an effect. This follows the structural-causal distinction between conditions and mechanisms emphasized in modern causal modeling (especially [Pearl, 2009, 2nd ed.](https://doi.org/10.1017/CBO9780511803161)).
+Plainly stated: a **causor** is *that-which-causes* — the mechanism/structure by which a cause produces an effect. This follows the structural-causal distinction between conditions and mechanisms emphasized in modern causal modeling (especially [Pearl, 2009, 2nd ed.](https://doi.org/10.1017/CBO9780511803161)).
 
 In this framework, causal description has three irreducible roles:
 
@@ -87,7 +87,15 @@ $$\text{Cause} \xrightarrow{\text{Causor}} \text{Effect}$$
 
 We use **causal operator** as the formal mathematical representation of a causor when writing explicit model equations.
 
-The following six causors are proposed as domain-independent building blocks from which $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, robustness, and other derived quantities are composed.
+**Important distinction:** not every quantity in the model is a causor. Variables such as bond strength, basin depth, entropy production, and repair rate are best treated as **causal descriptors/properties** of underlying causor structures (e.g., loops, operator motifs, and mechanism classes), rather than causors themselves.
+
+## Six Core Causal Descriptors
+
+The following six descriptors are proposed as a practical decomposition for quantifying causor structures and their consequences for $\mathcal{M}$, $\rho_{\text{ac}}$, maintenance cost, and robustness.
+
+Interpretive guide:
+- **Causors (mechanism-level):** loop/operator structures that actually generate state transitions.
+- **Descriptors (measurement-level):** quantities used to characterize those structures (strength, depth, rates, etc.).
 
 ### 1. Causal Bond ($b$)
 
