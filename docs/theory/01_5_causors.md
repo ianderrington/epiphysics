@@ -134,7 +134,8 @@ A **loop operator** is a closed causal composition that regenerates conditions f
 
 The energy required to sever a single causal bond. At the physical level, this is measured in Joules — analogous to bond dissociation energy in chemistry.
 
-Bond strength is called out as a primary **descriptor/parameter** of the bond causor because it is a major contributor to generalized mass: $\mathcal{M} = \sum_{\text{bonds}} \sigma_b$. Mass depends on bond strengths but bond strength itself is not a standalone causor mechanism.
+> [!sidenote]
+> Bond strength is a **descriptor** of the bond causor, not a standalone mechanism. It is a major contributor to generalized mass: $\mathcal{M} = \sum_{\text{bonds}} \sigma_b$.
 
 **Examples:**
 - **Strong bonds** (hard to break): a covalent bond between carbon atoms (~350 kJ/mol), a deeply ingrained habit, a legal contract
@@ -144,7 +145,8 @@ Bond strength is called out as a primary **descriptor/parameter** of the bond ca
 
 The length of the shortest self-referential causal cycle passing through a given point. A loop of order 1 is direct self-causation ($X_i \to X_i$). A loop of order 2 is $X_i \to X_j \to X_i$. A loop of order $\ell$ passes through $\ell$ intermediate states before returning.
 
-Loop order is a **descriptor** of loop causors, not a standalone causor.
+> [!sidenote]
+> Loop order is a **descriptor** of loop causors. Shorter loops respond faster to perturbation; longer loops can be more robust if alternative paths exist.
 
 Loop order determines the *character* of auto-causal structure:
 - $\ell = 1$: direct self-reinforcement (a thermostat, a habit loop)
@@ -189,7 +191,8 @@ where $\dot{s}_b$ is the entropy production per bond per unit time. This depends
 - **Institutional**: process degradation, knowledge loss, alignment drift
 - **Cognitive**: forgetting, confusion, belief drift
 
-$\dot{S}_{\text{int}}$ is what makes entities mortal. Even the most robust structure produces *some* entropy. If this is not exported or repaired, it accumulates until the structure fails. [Prigogine](https://doi.org/10.1126/science.201.4358.777) showed that living systems persist by exporting entropy to their environment faster than they produce it internally. When export fails, the entity dissolves.
+> [!sidenote]
+> $\dot{S}_{\text{int}}$ is what makes entities mortal. [Prigogine](https://doi.org/10.1126/science.201.4358.777) showed living systems persist by exporting entropy faster than they produce it internally. When export fails, the entity dissolves.
 
 ### 5. Repair Rate ($\dot{R}_{\text{repair}}$)
 
@@ -297,17 +300,17 @@ This is exactly [Kauffman's autocatalytic set](https://doi.org/10.1093/oso/97801
 
 This connects directly to [Hoel et al.'s causal emergence](https://doi.org/10.1073/pnas.1314922110): the loop-level description has more causal information than the bond-level description ($EI(\text{macro}) > EI(\text{micro})$). The loop IS the entity at its most fundamental level — the smallest unit of self-sustaining causal structure.
 
-### Visual: Causor interaction graph
+### Visual: Auto-causal loop with external coupling
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#EAF2FF', 'primaryTextColor': '#0F172A', 'primaryBorderColor': '#7AA2E3', 'lineColor': '#334155', 'fontSize': '14px'}}}%%
 flowchart LR
-  A[Signal Source] -->|σ=0.80 · τ=1 · r=0.90| B[Integrator]
-  B -->|σ=0.62 · τ=2 · r=0.82| C[Action Layer]
-  C -->|σ=0.74 · τ=1 · r=0.86| A
+  A[A] --> B[B]
+  B --> C[C]
+  C --> A
 
-  D[Environment] -->|input required| B
-  C -->|output| E[Observed Output]
+  D[Environment] -.->|input| B
+  C -.->|output| E[External]
 
   classDef core fill:#EAF2FF,stroke:#7AA2E3,stroke-width:2px,color:#0F172A;
   classDef ext fill:#EEF2F7,stroke:#8A99AD,stroke-width:1.5px,color:#0F172A;
@@ -316,40 +319,17 @@ flowchart LR
   class D,E ext;
 ```
 
-The loop A → B → C → A is auto-causal (it sustains its own continuation), but it requires input from the environment (D) and produces output (E). Auto-causal ≠ self-contained.
+The loop A → B → C → A is **auto-causal** (it regenerates conditions for its continuation), but it requires input from the environment and produces output. Auto-causal ≠ self-contained.
 
-### Visual: Loop emergence from bonds
-
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#0F172A', 'lineColor': '#334155', 'fontSize': '14px'}}}%%
-flowchart LR
-  subgraph Micro[Bond-level view]
-    A1[A]
-    B1[B]
-    C1[C]
-    A1 -->|ρ_ac = 0| B1
-    B1 -->|ρ_ac = 0| C1
-    C1 -->|ρ_ac = 0| A1
-  end
-
-  subgraph Macro[Loop-level emergence]
-    L((Closed loop))
-    RAC["ρ_ac > 0\n(emergent)"]
-    L --> RAC
-  end
-
-  Micro -->|coarse-grain| Macro
-
-  classDef micro fill:#FFF7E6,stroke:#E1A957,stroke-width:1.5px,color:#111827;
-  classDef macro fill:#ECFDF3,stroke:#61B08C,stroke-width:2px,color:#052E16;
-
-  class A1,B1,C1 micro;
-  class L,RAC macro;
-```
+> [!sidenote]
+> Each bond in the loop has its own descriptors (strength σ, latency τ, reliability r), but the diagram omits these for clarity. The key point is the loop structure, not the bond parameters.
 
 ### Local auto-causality does not guarantee contribution to containing systems
 
 A second clarification: **auto-causality operates at specific scales of time and space.** A loop that sustains itself locally may not contribute to — or may actively drain — a containing system at a larger scale.
+
+> [!sidenote]
+> **Systemic coupling** $\kappa_{\text{sys}} = \partial \rho_{\text{ac}}^{\text{containing}} / \partial \rho_{\text{ac}}^{\text{loop}}$ measures whether a sub-loop contributes to ($\kappa_{\text{sys}} > 0$), drains from ($\kappa_{\text{sys}} < 0$), or is decoupled from ($\kappa_{\text{sys}} = 0$) its containing system. See [Part 2](./02_meta_entities.md) for full treatment.
 
 A loop can sustain itself ($\rho_{\text{ac}} > 0$ at its own scale) while:
 - Contributing nothing to the containing system's $\rho_{\text{ac}}$ (decoupled)
@@ -357,51 +337,37 @@ A loop can sustain itself ($\rho_{\text{ac}} > 0$ at its own scale) while:
 - Producing entropy without useful work (dissipative)
 
 **Examples:**
-- An idling engine: combustion sustains combustion locally, but $\mathcal{P}_{\text{useful}} = 0$ — no work done on the containing system
+- An idling engine: combustion sustains combustion locally, but no work done on the containing system
 - A bureaucratic process that perpetuates itself but doesn't serve the organization's persistence
-- A tumor: high local $\rho_{\text{ac}}$, but $\kappa_{\text{sys}} < 0$ — it drains the organism's resources
+- A tumor: high local $\rho_{\text{ac}}$, but drains the organism's resources
 
-Define **systemic coupling** $\kappa_{\text{sys}}$ as the derivative of containing-system auto-causality with respect to sub-loop auto-causality:
-
-$$\kappa_{\text{sys}} = \frac{\partial \rho_{\text{ac}}^{\text{containing}}}{\partial \rho_{\text{ac}}^{\text{loop}}}$$
-
-When $\kappa_{\text{sys}} > 0$, the loop contributes to the containing system's persistence. When $\kappa_{\text{sys}} < 0$, it's parasitic — the loop persists at the expense of the whole. When $\kappa_{\text{sys}} = 0$, it's decoupled — self-sustaining but systemically inert.
-
-**Note on "value":** This framework does not invoke normative value. It describes *structural relationships* between scales. "Contribution" means: does increasing the sub-loop's $\rho_{\text{ac}}$ increase the containing system's $\rho_{\text{ac}}$? Existence itself is the selection criterion — structures that persist, persist; those that don't, don't. This is structural, not normative (see [The Persistence Reversal](./persistence_reversal.md): "Existence is the filter that selects for persistence mechanisms — not as a value statement but as a structural fact").
-
-**The temporal dimension: parasites can become organs.** Instantaneous $\kappa_{\text{sys}}(t)$ isn't the full picture. A loop with $\kappa_{\text{sys}}(t) < 0$ today but $d\kappa_{\text{sys}}/dt > 0$ may be integrating:
-- R&D departments initially drain resources before producing value
-- Mitochondria were originally parasitic bacteria; now they're essential for eukaryotic energy metabolism
-- Some organs may have evolved from initially parasitic or neutral growths
-- Venture capital logic: fund negative-$\kappa_{\text{sys}}$ loops with high expected future integration
-
-The relevant quantity is expected future contribution: $\int_t^{\infty} \kappa_{\text{sys}}(t') \, dt'$. See [Part 2](./02_meta_entities.md) for full treatment of part-whole causal relationships across scales.
+> [!sidenote]
+> **Parasites can become organs.** Mitochondria were originally parasitic bacteria; R&D departments initially drain resources before producing value. The relevant quantity is expected future contribution, not instantaneous $\kappa_{\text{sys}}$. See [Part 2, Section 2.5](./02_meta_entities.md) for the full temporal analysis.
 
 ---
 
-## Causal Power
+## Derived Quantities
 
-With the six causors defined, we can now define **causal power** — the rate at which an entity does work on state trajectories.
+Core causor mechanisms (bonds, loops) together with their descriptors produce the framework's higher-level concepts.
+
+### Causal Power
+
+**Causal power** $\mathcal{P}$ is the rate at which an entity does work on state trajectories:
 
 $$\mathcal{P}_{E \to j} = \mathbf{F}_{E \to j} \cdot \mathbf{v}_{X_j}$$
 
-where $\mathbf{F}_{E \to j}$ is the force entity $E$ exerts on entity $j$'s state, and $\mathbf{v}_{X_j} = dX_j/dt$ is $j$'s state velocity. This has units of energy per time — it is power in the literal mechanical sense, extended to abstract state spaces. (See [Part 3](./03_intelligence_consciousness_agency.md) for full treatment.)
+where $\mathbf{F}_{E \to j}$ is the force entity $E$ exerts on entity $j$'s state, and $\mathbf{v}_{X_j} = dX_j/dt$ is $j$'s state velocity. Units: energy per time (Watts). This is power in the literal mechanical sense, extended to abstract state spaces.
 
-**How causal power relates to the causors:** An entity's capacity for sustained causal power depends on its bond structure. High $\mathcal{M}$ (dense, strong bonds) provides a larger energy reservoir from which to do work. The coupling tensor $T^i{}_j$ determines how efficiently that reservoir translates into force on other entities' states. Causal power is not a seventh causor — it is a *derived quantity* that emerges from bond strengths, coupling structure, and state velocities.
+> [!sidenote]
+> Causal power is not a seventh causor — it is a *derived quantity* that emerges from bond strengths, coupling structure, and state velocities. See [Part 3](./03_intelligence_consciousness_agency.md) for full treatment.
 
-### Connection to Chaisson's energy rate density
-
-[Eric Chaisson (*Complexity*, 2011)](https://onlinelibrary.wiley.com/doi/abs/10.1002/cplx.20323) measured $\dot{\varepsilon}_m = \text{power} / \text{mass}$ (W/kg) across cosmic evolution — from galaxies to stars to planets to life to brains to civilization — and found it increases with complexity. In Epimechanics terms:
+**Connection to Chaisson's energy rate density.** [Eric Chaisson (*Complexity*, 2011)](https://onlinelibrary.wiley.com/doi/abs/10.1002/cplx.20323) measured $\dot{\varepsilon}_m = \text{power} / \text{mass}$ (W/kg) across cosmic evolution — from galaxies to stars to planets to life to brains to civilization — and found it increases with complexity:
 
 $$\dot{\varepsilon}_m = \frac{\mathcal{P}}{\mathcal{M}/c_D^2}$$
 
-This is causal power normalized by mass-equivalent. Higher $\dot{\varepsilon}_m$ means more causal work per unit structure. Chaisson's empirical finding is a claim about *causal power density* increasing with complexity — more complex entities do more work on their environment per unit of their own causal mass.
+Higher $\dot{\varepsilon}_m$ means more causal work per unit structure. Chaisson's empirical finding is a claim about *causal power density* increasing with complexity.
 
----
-
-## Building Higher Quantities from Mechanisms + Descriptors
-
-Core causor mechanisms (bonds, loops) together with their descriptors produce the framework's higher-level concepts:
+### The Derived Quantities Table
 
 | Derived Quantity | Composed From (mechanisms/descriptors) | What It Means |
 |---|---|---|
@@ -424,27 +390,42 @@ Core causor mechanisms (bonds, loops) together with their descriptors produce th
 
 $$A_{\text{causal}}(E) = \int_0^{T_{\text{local}}} \mathcal{M}_{\text{ac}}(E, t) \, dt$$
 
-This has units of **J·s** — the same as physical action $S = \int L \, dt$ and Planck's constant ℏ. The dimensional match is not coincidental: the principle of least action ($\delta S = 0$) selects which *trajectories* are realized; causal action measures which *entities* persist.
+Units: **J·s** — the same as physical action $S = \int L \, dt$ and Planck's constant ℏ. The dimensional match is structural: the principle of least action ($\delta S = 0$) selects which *trajectories* are realized; causal action measures which *entities* persist.
 
-**High instantaneous density is not enough.** An entity can have very high $\mathcal{M}_{\text{ac}}$ for a short time and then collapse — a flash fire, a viral meme, a speculative bubble, a population boom enabled by unsustainable technology. The product $\mathcal{M}_{\text{ac}} \times T_{\text{local}}$ is what matters for long-term causal presence.
+**High instantaneous density is not enough.** An entity can have very high $\mathcal{M}_{\text{ac}}$ for a short time and then collapse — a flash fire, a viral meme, a speculative bubble. The product $\mathcal{M}_{\text{ac}} \times T_{\text{local}}$ is what matters for long-term causal presence.
 
 | Entity | $\mathcal{M}_{\text{ac}}$ | $T_{\text{local}}$ | $A_{\text{causal}}$ |
 |---|---|---|---|
 | Flash fire | Very high | Seconds | Low |
 | Viral meme | High | Days–weeks | Low–moderate |
-| Speculative bubble | High | Months–years | Moderate |
 | Stone wall | Low | Centuries | High |
 | Ancient institution | Moderate | Millennia | Very high |
 
-**The fitness×truth connection.** [Hoffman (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) showed that evolutionary selection favors fitness-tuned interfaces over truth-tracking ones — organisms perceive what's useful, not what's real. But fitness *alone* is temporally bounded: a strategy that exploits a resource without tracking the underlying causal structure will eventually hit reality's constraints.
+> [!sidenote]
+> See [Part 4](./04_time_and_soul.md) for full treatment of causal action, including the fitness×truth principle and the Haber process example.
 
-Consider nitrogen fertilizers before the Haber process:
-- **Fitness alone:** Mining guano and nitrates enabled a population boom (high $\mathcal{M}_{\text{ac}}$) — but the resource was finite. The strategy was decoupled from the causal reality of nitrogen availability. $T_{\text{local}}$ was bounded by resource exhaustion.
-- **Fitness×truth:** The Haber-Bosch process (1909) coupled fitness to truth — atmospheric nitrogen is effectively unlimited. This extended $T_{\text{local}}$ dramatically, yielding higher $A_{\text{causal}}$.
+### The Conquering Triad: Fitness, Death, and Truth
 
-**The general principle:** Strategies that achieve high $\mathcal{M}_{\text{ac}}$ by decoupling from causal reality have bounded $T_{\text{local}}$. Strategies that couple fitness to truth — that work *with* causal structure rather than against it — sustain $\mathcal{M}_{\text{ac}}$ longer. Selection over long timescales favors high $A_{\text{causal}}$, which means selection favors fitness×truth over fitness alone.
+Selection dynamics follow a rock-paper-scissors pattern across timescales:
 
-This resolves an apparent paradox in Hoffman's framework: if fitness beats truth, why does science work? Because science is a meta-strategy that couples fitness to truth — it selects for representations that track causal structure, which extends $T_{\text{local}}$ for the entities (individuals, institutions, civilizations) that adopt it. Over sufficiently long timescales, fitness×truth dominates. See [Part 4](./04_time_and_soul.md) for full treatment.
+```
+    FITNESS
+      ↗   ↖
+   beats   beats
+    ↙       ↘
+TRUTH ←beats← DEATH
+```
+
+**Fitness beats Truth** (short timescales). [Hoffman (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) proved this formally: in evolutionary competition, organisms that perceive fitness-relevant features outcompete those that perceive accurately. The organism that sees "tiger → run" beats the one carefully modeling tiger biomechanics. Truth-tracking is computationally expensive; fitness-tracking is efficient. On the timescale of individual selection events, fitness wins.
+
+**Death beats Fitness** (medium timescales). Every fitness-maximizing strategy eventually encounters constraints it didn't model — resources deplete, environments shift, black swans arrive. The fitness-optimized entity that ignored these contingencies dies. Mining guano for nitrogen fertilizer was fitness-optimal until the guano ran out. The 2008 financial models were fitness-optimal until the housing market they ignored collapsed. Death is the filter that removes strategies decoupled from causal reality.
+
+**Truth beats Death** (long timescales). Strategies that track causal structure — that couple fitness to truth — survive what kills fitness-only strategies. The Haber-Bosch process coupled nitrogen availability to atmospheric reality; populations that adopted it survived the constraints that would have killed guano-dependent agriculture. Science, engineering, and accurate maps are truth-tracking meta-strategies that extend $T_{\text{local}}$ by anticipating the deaths that fitness-only strategies cannot see.
+
+**The cycle completes:** Truth-tracking is expensive, so fitness-only strategies outcompete in the short term — until Death removes them, leaving Truth-trackers to persist. Over sufficiently long timescales, selection favors high $A_{\text{causal}}$, which requires fitness×truth.
+
+> [!sidenote]
+> This triad is a *framing*, not a theorem. It organizes observations about selection dynamics across scales. The timescale boundaries are fuzzy and domain-dependent.
 
 ### Visual: Maintenance balance
 
@@ -482,56 +463,58 @@ A causal event is an energy exchange, measured in Joules. This fixes the dimensi
 
 At biological levels, the relevant unit is not raw Joules but **functionalized energy** — energy in a form that can do causal work within the system's bond network.
 
-ATP (adenosine triphosphate) is the paradigm case. A cell sitting in a glucose solution has access to energy, but that energy cannot do causal work until it is converted to ATP. ATP is energy *functionalized* — packaged in a form that the cell's causal machinery (enzymes, transporters, molecular motors) can use to drive state changes.
+**ATP** is the paradigm case. A cell sitting in glucose has access to energy, but that energy cannot do causal work until converted to ATP. ATP is energy *functionalized* — packaged in a form the cell's causal machinery can use.
 
-This is why biological energy rate density is measured in metabolic watts (ATP hydrolysis rate), not raw thermal energy. The Krebs cycle doesn't just process energy — it converts substrate energy into the functionalized form (ATP, NADH, FADH₂) that can propagate through the cell's causal bond network.
+> [!sidenote]
+> This is why biological energy rate density is measured in metabolic watts (ATP hydrolysis rate), not raw thermal energy. The Krebs cycle converts substrate energy into functionalized form (ATP, NADH, FADH₂).
 
-**The principle generalizes:** In any domain, the relevant energy measure is *functionalized* energy — energy in a form that can propagate through that domain's causal bonds. At the institutional level, this might be budget dollars (money functionalized for organizational use), authorized decisions (authority functionalized for action), or trained personnel (human capability functionalized for institutional work).
+**The principle generalizes:** In any domain, the relevant energy measure is *functionalized* energy — energy that can propagate through that domain's causal bonds:
+- **Biological:** ATP, NADH
+- **Institutional:** budget dollars, authorized decisions, trained personnel
+- **Cognitive:** attention, working memory capacity
 
-### Domain-specific measurement
+### Domain-specific operationalization
 
-For abstract state spaces, the measure $d\mu$ has domain-specific units (per-agent, per-belief, per-organizational-unit), and "energy" must be operationalized domain by domain. Bond strength $\sigma_b$ at the institutional level might be measured in:
+Bond strength $\sigma_b$ at the institutional level might be measured in:
 - Dollars-to-sever (cost to break the relationship)
 - Hours-of-disruption (time cost of bond failure)
 - Bits-of-information-lost (knowledge destroyed when bond breaks)
 
-All are legitimate energy-equivalents within their domain.
+All are legitimate energy-equivalents within their domain. The framework provides the grammar; the domain provides the units.
 
-### The coupling tensor as conversion factor
-
-The exchange rate between domain units and fundamental energy is not constant — it varies across state space, determined by the local coupling tensor $T^i{}_j$. A dollar converts to different amounts of directed state change depending on local context: prices, labor costs, institutional efficiency, crisis vs stability.
-
-This parallels physics: the electromagnetic coupling constant $\alpha$ runs with energy scale (vacuum polarization changes its effective value at different energies). The "strength" of a dollar is a running coupling constant, not a fixed conversion factor.
-
-The framework predicts: the effective energy of any domain-specific unit is $\sigma_{\text{effective}} = T^i{}_j(X) \cdot \sigma_{\text{domain}}$ — bond strength in domain $j$ mapped through the local coupling tensor to effective causal capacity in domain $i$.
+> [!sidenote]
+> **The coupling tensor as conversion factor.** The exchange rate between domain units varies across state space, determined by the local coupling tensor $T^i{}_j$. A dollar converts to different amounts of state change depending on context — like how the electromagnetic coupling constant $\alpha$ runs with energy scale. See [Part 1, Section 5](./01_generalized_mechanics.md).
 
 ### The measurement frontier
 
-At the physical level, units are clean: Joules, meters, seconds. At biological levels, they are operationalizable (ATP hydrolysis, metabolic watts). At institutional and cognitive levels, the "energy" of a causal bond depends on context through the coupling tensor — it is measurable but not universal.
+At the physical level, units are clean: Joules, meters, seconds. At biological levels, they are operationalizable (ATP hydrolysis, metabolic watts). At institutional and cognitive levels, the "energy" of a causal bond depends on context — measurable but not universal.
 
-The framework provides the grammar ($\mathcal{M} = \sum T^i{}_j \cdot \sigma_b$); the domain provides the units and the coupling tensor must be empirically determined. Dimensional cleanliness degrades as abstraction increases, and this is honest: the difficulty is real, not hidden.
-
----
-
-## Connection to Assembly Theory
-
-[Assembly theory (Cronin & Walker, 2023)](https://doi.org/10.1038/s41586-023-06600-9) measures one causor: the minimum number of bond-formation operations to construct an object. The assembly index AI is a static, constructive measure — it counts how many steps to *build* the structure.
-
-The causor framework extends assembly theory in two directions:
-
-1. **From construction to maintenance.** AI tells you how hard the entity was to build. $C_{\text{maint}} = \dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$ tells you how hard it is to *keep*. These differ: a complex molecule in a stable configuration (deep $\Delta V$) is hard to build and easy to keep. A complex molecule in an unstable configuration (shallow $\Delta V$) is hard to build and hard to keep.
-
-2. **From counting to dynamics.** AI counts construction steps. The causor framework adds *dynamics*: how do bonds evolve over time? Which degrade? How fast? What repair mechanisms exist? This is the difference between a blueprint (AI) and a maintenance manual ($\dot{S}_{\text{int}}$, $\dot{R}_{\text{repair}}$, $\Delta V$).
-
-**Prediction:** AI and durability should be correlated but not identical. High-AI entities tend to have deeper stability basins — but the correlation is imperfect. Fragile complexity exists (a poorly designed bridge). Durable simplicity exists (a stone wall).
-
-For how composites can outlive their constituents, see [The Persistence Reversal](./persistence_reversal.md). For how these primitives trace across scales, see [Cross-Level Tracing](./cross_level_tracing.md).
+> [!caveat]
+> Dimensional cleanliness degrades as abstraction increases. This is honest: the difficulty is real, not hidden. The coupling tensor must be empirically determined for each domain.
 
 ---
 
-## Connection to the Representational Efficiency Principle
+## Connections to Other Frameworks
 
-The Representational Efficiency principle ([Part 5](./05_ontology_and_open_questions.md)) connects these primitives to optimal representation: the "right" description is the one whose state variables correspond to natural clusters of bonds — the mesoscale structures that have their own dynamics. This is exactly what coarse-graining does in physics: identify the collective degrees of freedom (phonons, quasiparticles) that capture the system's behavior more efficiently than tracking individual particles.
+### Assembly Theory
+
+[Assembly theory (Cronin & Walker, 2023)](https://doi.org/10.1038/s41586-023-06600-9) measures one quantity: the minimum number of bond-formation operations to construct an object. The assembly index AI is static and constructive — it counts steps to *build*.
+
+The causor framework extends assembly theory:
+1. **From construction to maintenance.** AI tells you how hard to build; $C_{\text{maint}}$ tells you how hard to *keep*.
+2. **From counting to dynamics.** AI counts steps; causors add how bonds evolve, degrade, and repair over time.
+
+**Prediction:** AI and durability should be correlated but not identical. Fragile complexity exists (poorly designed bridge). Durable simplicity exists (stone wall).
+
+> [!sidenote]
+> For how composites can outlive their constituents, see [The Persistence Reversal](./persistence_reversal.md). For cross-scale tracing, see [Cross-Level Tracing](./cross_level_tracing.md).
+
+### Representational Efficiency Principle
+
+The Representational Efficiency principle ([Part 5](./05_ontology_and_open_questions.md)) connects causors to optimal representation: the "right" description is one whose state variables correspond to natural clusters of bonds — mesoscale structures with their own dynamics.
+
+> [!sidenote]
+> This is exactly what coarse-graining does in physics: identify collective degrees of freedom (phonons, quasiparticles) that capture behavior more efficiently than tracking individual particles.
 
 ---
 
