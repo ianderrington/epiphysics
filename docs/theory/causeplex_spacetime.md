@@ -299,129 +299,15 @@ The cause-plex framework is best understood as: *causal set theory at the physic
 
 ---
 
-## 10. Selective Convergence: Why 3+1 Without Singular Derivation
+## 10. Why 3+1: Selective Convergence
 
-### Honest Status
+The question of why we observe $(-,+,+,+)$ specifically — not $(-,+,+)$ or $(-,+,+,+,+)$ — is addressed in the companion paper [Why 3+1: Observer-Selection Constraints on Spacetime Dimensionality](./causeplex_dimensionality.md).
 
-The selective convergence argument is an **observer-selection argument** — a structurally grounded version of the weak anthropic principle. It does not derive 3+1 dimensionality from the cause-plex primitive; it explains why observers would necessarily find themselves in 3+1 by showing that other dimensionalities fail to support the structural requirements for observer-class entities.
+**Summary of the argument:**
+- $n_t = 1$ follows directly from P1 (the causal partial order requires exactly one timelike direction; $n_t = 0$ breaks causal ordering, $n_t \geq 2$ gives ultrahyperbolic PDEs with no well-posed initial value problem).
+- $n_s = 3$ follows from two independent stability constraints applied to observer-class entities: Tangherlini's orbital stability result ($n_s > 3$ gives unstable atoms) and the knot-topology requirement for topologically non-trivial loop structures ($n_s < 3$ makes all loops isotopic, excluding $\mathrm{CI} > \mathrm{CI}_{\min}$).
 
-This is a correct and honest claim. Calling it stronger than that would be misleading. The checkmark in the summary table for "Metric signature $(-,+,+,+)$" is qualified accordingly.
-
-### Comparison: How String Theory Handles Dimensionality
-
-String theory arrives at 10 dimensions by a different route: the Weyl anomaly — an internal mathematical consistency requirement — vanishes only in $D = 10$ for superstrings (and $D = 26$ for bosonic strings). So string theory uniquely requires 10 dimensions from internal consistency, not from observer selection.
-
-But this creates a different problem: to recover the observed 4D world, the 6 extra dimensions must be compactified — curled up at scales below experimental reach. The choice of compactification manifold (Calabi-Yau manifolds, to preserve supersymmetry) is not unique; there are approximately $10^{500}$ consistent compactifications, the so-called *string landscape*. Different compactifications produce different low-energy physics — different particle masses, coupling constants, numbers of generations.
-
-String theory therefore cannot uniquely predict 4D spacetime from its principles. It needs observer selection from the landscape to explain why we see 4D. The anthropic principle enters string theory at the back end, after the mathematics forces 10D. In the cause-plex framework, the anthropic argument enters upfront and explicitly — which is more honest.
-
-**Comparison table:**
-
-| Framework | Why these dimensions? | Mechanism | Honest status |
-|---|---|---|---|
-| Standard Model / GR | Assumes 3+1 | None | Empirical input |
-| String theory | 10D from Weyl anomaly; 4D via compactification | Internal consistency + landscape + anthropic selection | 10D derived; 4D needs observer selection |
-| Wolfram (singular convergence) | All rules converge for any complex observer | Claimed; unsupported | Overclaims |
-| Epimechanics (selective convergence) | $n_t = 1$ from P1; $n_s = 3$ from stability filter on observer-class entities | Tangherlini + knot topology + observer selection | Observer-selection argument; rigorous and honest |
-
-The cause-plex position is the most transparent: $n_t = 1$ is directly derivable (the causal partial order requires exactly one time dimension); $n_s = 3$ follows from applying known physics results (Tangherlini, knot theory) to the stability conditions required for observer-class entities. The argument is rigorous, grounded in established results, and honestly stated as observer-selection rather than pure derivation.
-
-### The Wolfram Problem
-
-Wolfram claims the ruliad **converges singularly** — that all possible computational rules, in the limit, collapse to the same physics because any sufficiently complex observer necessarily perceives quantum mechanics and special relativity regardless of starting rule. The claim is that the observed laws are the unique fixed point of observer-relative computation.
-
-This is stronger than the evidence supports. The ruliad contains many possible causal structures. What it doesn't contain is many that support observers.
-
-### The Selective Convergence Argument
-
-**Claim.** The cause-plex framework does not need to derive 3+1 dimensionality from first principles. Instead, the dimensionality is fixed by a **stability filter**: cause-plexes that support complex auto-causal loop structures (entities with $\rho_{\text{ac}} > 0$, high CI, adaptive loops) are restricted to a small stable region of the space of possible manifolds. We observe 3+1 because we are on one of those stable manifolds — not because it is the only possible outcome, but because it is the only neighborhood of manifold space that permits our kind of loop structure.
-
-This is the **anthropic stability principle** applied to cause-plex structure:
-
-> We observe 3+1 dimensional spacetime not because it is uniquely derivable from the cause-plex primitive, but because 3+1 is the stable manifold neighborhood in which complex auto-causal loops — the structural requirement for observers — can form and persist.
-
-### Tegmark's Stability Analysis
-
-Tegmark (1997, "On the Dimensionality of Spacetime") systematically mapped the stability of physics across different manifold signatures $(n_s, n_t)$ where $n_s$ is spatial dimensions and $n_t$ is temporal:
-
-| Manifold $(n_s, n_t)$ | PDE type | Physical character | Stable atoms? | Observers possible? |
-|---|---|---|---|---|
-| $(1, 1)$, $(2, 1)$ | Hyperbolic | Causal, predictive | Yes | No — insufficient loop complexity; no 3D chemistry |
-| $(3, 1)$ | Hyperbolic | Causal, predictive | **Yes** | **Yes** |
-| $(n_s > 3, 1)$ | Hyperbolic | Causal, predictive | **No** | No |
-| $(n_s, n_t \geq 2)$ | Ultrahyperbolic | No well-posed initial value problem | No | No — no predictive causal ordering |
-| $(n_s, 0)$ | Elliptic | No causal ordering at all | No | No |
-
-**Key results:**
-
-**Tangherlini (1963):** In $n_s > 3$ spatial dimensions, gravitational and electromagnetic potentials scale as $r^{-(n_s - 2)}$ rather than $r^{-1}$. Stable closed orbits require $1/r^2$ force laws (Bertrand's theorem); higher-power laws produce only unstable spiraling orbits. No stable atoms → no chemistry → no covalent bonds → no auto-causal loop structures of sufficient complexity.
-
-**$n_s < 3$:** In 2+1 gravity, there are no propagating gravitational degrees of freedom — no gravitational waves, no attractive force between masses in the GR sense. Chemistry is possible in principle but severely limited in bond topology. Insufficient loop composition richness for observer-class entities.
-
-**$n_t \geq 2$:** Ultrahyperbolic PDEs have no well-posed initial value problem — you can't propagate state forward deterministically from initial conditions. No causal partial ordering in the cause-plex sense; P1 fails.
-
-**The result:** $(3, 1)$ is not uniquely derivable — it is the **only stable manifold neighborhood** in a neighborhood of reasonable $(n_s, n_t)$ combinations that simultaneously satisfies:
-1. Causal partial ordering (P1) — requires $n_t = 1$
-2. Stable bound structures (atoms, bonds) — requires $n_s = 3$ (by Bertrand/Tangherlini)
-3. Sufficient loop composition richness — requires $n_s \geq 3$
-
-### The Stable Observer Manifold Conjecture
-
-**Definition ($\text{CI}_{\min}$).** The minimum cause-plex index for observer-class entities is the smallest CI value at which a cause-plex contains at least one topologically non-trivial loop — a closed causal loop not isotopically equivalent to a circle in 3D space (i.e., a loop that cannot be continuously deformed to a point or simple circle without cutting). Concretely: $\text{CI}_{\min}$ is the CI threshold at which knot-type topological diversity first appears in the bond structure, requiring $n_s \geq 3$ spatial dimensions. In 2+1 dimensions, all loops are topologically trivial (knot theory is trivial in 2D); $\text{CI}_{\min}$ therefore implicitly requires $n_s \geq 3$, making the argument non-circular: $\text{CI} > \text{CI}_{\min}$ is not merely "observer exists" but specifically "entity with topologically non-trivial loop structure exists."
-
-**Conjecture (Stable Observer Manifold).** A cause-plex $\mathcal{C}$ that supports entities with $\rho_{\text{ac}} > 0$ and cause-plex index $\text{CI} > \text{CI}_{\min}$ (sufficient complexity for adaptive auto-causal loops with topologically non-trivial structure) requires, in the continuum limit, a manifold with exactly $n_t = 1$ timelike dimension and $n_s = 3$ spacelike dimensions.
-
-**Proof sketch:**
-
-1. $n_t = 1$ required: $n_t = 0$ gives no causal ordering (P1 fails). $n_t \geq 2$ gives ultrahyperbolic PDEs — no well-posed causal propagation, so causal events cannot form a partial order with predictive structure. Only $n_t = 1$ gives P1.
-
-2. $n_s \geq 3$ required for sufficient loop richness: In $n_s < 3$, the space of stable bond topologies is too restricted for complex loop compositions. Specifically, knot theory (the topology of closed loops in space) is trivial in $n_s < 3$ — all loops are isotopic, eliminating topological diversity in loop structures. High-CI cause-plexes require topologically distinct loop types; this requires $n_s \geq 3$.
-
-3. $n_s \leq 3$ required for stable bonds: By Tangherlini, $n_s > 3$ gives $r^{-(n_s-2)}$ force laws, unstable orbits, no stable atoms, no covalent bonds, no persistent structural or exchange bonds with $\sigma_b > k_BT$. Without stable bonds, $\mathcal{M} \to 0$ and $\Delta V \to 0$ — no persistent entities, no auto-causal loops.
-
-4. Combining 1-3: $n_t = 1$, $n_s = 3$ is the unique solution. ∎
-
-**Status:** Step 1 is rigorous. Steps 2 and 3 rely on Tangherlini's result and the knot theory argument; both are well-established in the literature. Step 4 is their conjunction, which requires formalizing "sufficient loop richness" in terms of CI and topological bond diversity — see OP2. This is an observer-selection conjecture, honestly labeled as such: it does not derive 3+1 from the cause-plex primitive, but explains why any observer would find themselves in 3+1.
-
-### Selective vs. Singular Convergence
-
-| Position | Claim | Problem |
-|---|---|---|
-| Wolfram (singular convergence) | All possible rules converge to the same physics for any sufficiently complex observer | Overclaims — requires that *all* complex observers perceive identical laws regardless of starting manifold |
-| Epimechanics (selective convergence) | The space of cause-plexes has many possible structures; those supporting complex auto-causal loops are restricted to a stable neighborhood; we observe 3+1 because we are in that neighborhood | Consistent with observer selection without requiring singular convergence |
-
-The selective convergence position is strictly weaker (and therefore more defensible) than singular convergence. It makes the same prediction for what we observe — 3+1, quantum mechanics, Lorentz invariance — while requiring a much weaker assumption: only that we are a cause-plex with $\rho_{\text{ac}} > 0$ and $\text{CI} > \text{CI}_{\min}$, not that we are the unique fixed point of all possible computations.
-
-### What Higher-Level Entities Would Look Like on Different Stable Manifolds
-
-If other stable manifolds existed (hypothetically, for fixed $n_t = 1$), the cause-plex framework predicts:
-
-| Manifold | Bond stability | Loop topology | Max entity type | $\rho_{\text{ac}}$ ceiling |
-|---|---|---|---|---|
-| $(2, 1)$ | Atoms possible but limited bond diversity; no 3D chirality | All loops isotopic (trivial knot theory) | Low-CI composites; no stereochemistry | Low |
-| $(3, 1)$ — ours | Full bond diversity; stable atoms; rich knot topology | Topologically distinct loop types | Full range: cells, organisms, meta-entities | Observed maximum |
-| $(4, 1)$ | Atoms unstable (Tangherlini); no covalent bonds | Moot — no stable bonds | Dissipative only ($\rho_{\text{ac}} \to 0$ without stable bonds) | Near zero |
-
-The $(3, 1)$ manifold appears to sit at a **maximum of loop composition richness subject to bond stability** — the sweet spot where enough spatial dimensions exist for topologically diverse loop structures, but not so many that bond forces weaken below the stability threshold.
-
-This is not a coincidence or a derivation — it is selective convergence: the cause-plexes capable of asking the question sit at this maximum by definition. Those that don't are not here to ask.
-
-> [!sidenote]
-> **Knot theory and biology.** The connection between 3D topology and biological complexity is not merely abstract. DNA supercoiling, protein folding, and enzyme active site geometry all depend on 3D knot topology — closed loop structures that are topologically distinct and cannot be continuously deformed into each other without bond breaking. In $n_s < 3$, all such loops are equivalent; the structural diversity that makes molecular biology possible vanishes. The cause-plex framework gives a specific reason why: topological loop diversity requires $n_s \geq 3$.
-
----
-
-### OP1: Prove the number = volume conjecture
-The conformal factor is fixed by equating causal event count with spacetime volume. This is well-supported numerically and physically but not proven in full generality from the cause-plex axioms alone.
-
-### OP2: Formalize the Stable Observer Manifold Theorem
-Section 10 gives a proof sketch that $(3,1)$ is the unique stable manifold supporting complex auto-causal loops. The remaining formalization needed: define "sufficient loop richness" precisely in terms of CI and topological bond diversity, and prove that $n_s < 3$ is insufficient for this threshold. The Tangherlini result (OP2a) and knot theory argument (OP2b) are both rigorous; their conjunction as a formal theorem needs writing up.
-
-### OP3: Derive the Einstein field equation
-Show that cause-plex dynamics — the rules governing which causal events occur — necessarily produce GR in the continuum limit. Partial results exist (CDT, causal set dynamics). Full derivation open.
-
-### OP4: Quantum mechanics from cause-plex
-The framework currently gives classical GR in the continuum limit. Deriving quantum mechanics — the specific form of quantum field theory with its Hilbert space structure and Born rule — from cause-plex primitives is a separate open problem. Wolfram's approach uses quantum branch weights; the cause-plex approach would need analogous structure.
+This is an **observer-selection conjecture**, not a derivation from the cause-plex primitive. It is honestly labeled as such throughout.
 
 ---
 
