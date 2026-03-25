@@ -80,3 +80,5 @@ USER.md
 papers/
 *.pdf
 docs/theory/refs/
+# arXiv generated output (source-of-truth is the .md files)
+arxiv/
