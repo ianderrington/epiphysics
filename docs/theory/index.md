@@ -120,13 +120,15 @@ The final part assembles the full formal ontology and states nine open questions
 
 ## Series Navigation
 
+> 📍 **New here?** Start with the [**Series Map**](./series_map.md) — it shows every document, what's proved vs. open, and how everything connects before you dive in.
+
 | Part | Title | Core Claim |
 |------|-------|-----------|
 | [Part 0: Foundations](./00_prelude.md) | What Epimechanics is and isn't | Causation and entity are co-primitive; computation and representation are co-primitive; state bridges them; information is predictive content; X is a representation; entities are anything with causal presence (equivalently, anything representable) |
-| [Part 1.5: Causors](./01_5_causors.md) | What are entities made of? | Six candidate causors (bond, strength, loop order, basin depth, entropy production, repair rate); auto-causality is emergent at the loop level |
-| [Glossary](./glossary.md) | Canonical terms | Definitions for core Epimechanics terms (including causor) |
-| [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | X as universal state variable | Standard physics is the primary instantiation; Epimechanics abstracts the formal structure to cover other domains |
+| [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | X as universal state variable | Standard physics is the primary instantiation; Epimechanics abstracts the formal structure to cover other domains — **read before Part 1.5** |
+| [Part 1.5: Causors](./01_5_causors.md) | What are entities made of? | Two Layer A structures (bond operator, loop operator) with Q1–Q4 descriptors (energy mode, output target, topology, leverage); derived Layer C quantities include generalized mass, auto-causal density, maintenance cost; auto-causality is a loop-level emergent property — **requires Part 1** |
 | [Part 1b: Uncertainty, Coordinates, and Relativity](./01b_uncertainty_coordinates_relativity.md) | The limits and extensions of the clean framework | Measuring X changes X; different entities may have non-isomorphic state spaces; forces are reference-frame-relative |
+| [Glossary](./glossary.md) | Canonical terms | Definitions for core Epimechanics terms (including causor) |
 | [Part 2: Meta-Entities](./02_meta_entities.md) | When aggregates become entities | A religion, nation, or market earns entity status when its macro-level description has more causal information than its micro-level description |
 | [Part 3: Intelligence, Consciousness, Agency](./03_intelligence_consciousness_agency.md) | What entities know and do | Intelligence = predictive accuracy; consciousness = self-inclusive modeling scope; agency = outgoing coupling × meta-cognition × consciousness |
 | [Part 4: Local Time, Non-Local Time, and Soul](./04_time_and_soul.md) | How long entities matter | Soul = R(E,t), the complete signed representational propagation function - formally defined |
@@ -154,6 +156,11 @@ Standalone documents extending specific topics from the main series.
 | [Effective Mass](./effective_mass.md) | Part 1.5 | How the medium shapes an entity's resistance to state change; bare vs. effective mass |
 | [The Persistence Reversal](./persistence_reversal.md) | Part 1.5, Part 1c | When composites outlive their constituents; passive vs. active stability |
 | [Cross-Level Tracing](./cross_level_tracing.md) | Part 1.5, Part 1, Part 5 | What survives coarse-graining across scales; positioning against Simon, Rosen, sloppy models |
+| [Cause-Plex and Spacetime](./causeplex_spacetime.md) | Part 1.5 | Lorentzian metric, Lorentz invariance, energy, GR from causal structure; CST relationship; self-grounding stack |
+| [Cause-Plex and Quantum Mechanics](./causeplex_quantum.md) | Spacetime paper | QM from multiway cause-plex; three convergent arguments for complex amplitudes; Born rule |
+| [Complex Amplitudes from Loop-Phase Consistency](./causeplex_loop_phase.md) | Quantum paper | Derives U(1) from stable loop structure — the deepest foundational argument; all open problems resolved |
+| [Step 3 Lemma: Critical-Events Rerouting](./causeplex_loop_phase_step3_lemma.md) | Loop-phase paper | Closes the key gap in Theorem 4.4; 3-lemma proof of loop rerouting in CSS cause-plexes |
+| [Proof Attempt: Conjecture 4.2](./causeplex_loop_phase_proof_attempt.md) | Loop-phase paper | Counterexample analysis, history-space connectivity proof, restricted theorem development |
 
 ---
 

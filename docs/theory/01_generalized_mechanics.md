@@ -602,7 +602,7 @@ $$\mathcal{T} \propto \left\langle \frac{1}{2}\mathcal{M}\lvert\dot{X}\rvert^2 \
 
 Temperature measures how much agitation is present - how rapidly entities are changing state. A "hot" social system has entities moving fast through state space (rapid opinion change, high behavioral volatility). A "cold" system has entities near rest (stable consensus, behavioral rigidity). A market in a period of high volatility has high $\mathcal{T}$; a market in a stable equilibrium has low $\mathcal{T}$.
 
-> [!caveat] **Equilibrium limitation.** This equipartition definition requires near-equilibrium. Most social systems are far from equilibrium. Non-equilibrium extensions (Jarzynski equality, fluctuation theorems) exist but are not yet incorporated.
+> [!caveat] **Equilibrium limitation.** This equipartition definition requires near-equilibrium. Most social systems are far from equilibrium. Non-equilibrium extensions (Jarzynski equality, fluctuation theorems) exist but are not yet incorporated. For the thermodynamic treatment of far-from-equilibrium systems see [Part 1c: Thermodynamic Emergence of Life](./01c_thermodynamic_emergence_of_life.md).
 
 **Pressure** $P$: the force per unit boundary in state space. When many entities are crowded into a small region of state space - a narrow consensus under tension, a market with many participants concentrated at similar prices - pressure builds. The pressure is the aggregate force that entities at the boundary exert on the constraints holding them in place. A population under ideological conformity pressure has high $P$ if the conformity is enforced (the constraint is rigid) and the population has kinetic energy (individuals are trying to move but are prevented).
 
@@ -703,4 +703,4 @@ But the structure - $X$, $\dot{X}$, $\mathcal{M}$, $p = \mathcal{M}\dot{X}$, $F$
 
 The next part asks a harder question first: if X is defined in a state space S, how confident are we that S is the same for all entities? That X can be measured without changing it? That forces look the same from all reference frames? These complications - the analogues of quantum mechanics, non-Euclidean geometry, and relativity - must be addressed before Epimechanics can be applied honestly.
 
-[→ Part 1b: Uncertainty, Coordinates, and Relativity](./01b_uncertainty_coordinates_relativity.md) | [→ Part 2: Meta-Entities](./02_meta_entities.md)
+[→ Part 1.5: Causors — What entities are made of](./01_5_causors.md) | [→ Part 1b: Uncertainty, Coordinates, and Relativity](./01b_uncertainty_coordinates_relativity.md) | [→ Part 2: Meta-Entities](./02_meta_entities.md)
