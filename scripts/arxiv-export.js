@@ -113,8 +113,12 @@ const KNOWN_REFS = {
 
 function collectCitations(text) {
   const cited = new Set();
+  // Match on short form ("Baez 2012") AND on long form author names in references section
   for (const [name, ref] of Object.entries(KNOWN_REFS)) {
-    if (text.includes(name)) {
+    const authorPart = name.split(' ')[0]; // e.g. "Baez"
+    const yearPart = name.split(' ')[1];   // e.g. "2012"
+    if (text.includes(name) || 
+        (text.includes(authorPart) && text.includes(yearPart))) {
       cited.add(name);
       bibEntries[ref.key] = ref.entry;
     }
@@ -131,6 +135,17 @@ function preprocessMarkdown(content, outputBase) {
   // 1. Remove YAML frontmatter (already parsed)
   text = text.replace(/^---\n[\s\S]*?\n---\n/, '');
 
+  // 1b. Truncate after References section — remove navigation footers
+  // Find the last "## References" and keep everything up to end of refs list, then stop
+  const refsMatch = text.match(/\n## References\n/);
+  if (refsMatch) {
+    const refsStart = text.lastIndexOf('\n## References\n');
+    const afterRefs = text.slice(refsStart);
+    // Keep the refs section but stop at the first blank line after the last reference bullet
+    const refsSection = afterRefs.replace(/\n---+[\s\S]*$/, '').replace(/\n\*\s*\[.*?\][\s\S]*$/, '');
+    text = text.slice(0, refsStart) + refsSection;
+  }
+
   // 2. Remove prerequisite callouts (> **Prerequisites...**)
   text = text.replace(/^> \*\*(Prerequisites|Layer architecture note)\.\*\*[\s\S]*?\n\n/gm, '');
 
@@ -140,15 +155,16 @@ function preprocessMarkdown(content, outputBase) {
     figCount++;
     const figName = `${outputBase}-fig${figCount}.pdf`;
     figures.push({ num: figCount, name: figName, diagram: diagram.trim() });
-    return `\n\\begin{figure}[htbp]\n\\centering\n\\includegraphics[width=0.9\\textwidth]{${figName}}\n\\caption{[Figure ${figCount}: diagram — see source for Mermaid definition]}\n\\label{fig:${outputBase}-${figCount}}\n\\end{figure}\n`;
+      const figNameEscaped = figName.replace(/_/g, '\\_');
+    return `\n\\begin{figure}[htbp]\n\\centering\n\\fbox{\\parbox{0.85\\textwidth}{\\centering\\vspace{2cm}\\textit{[Figure ${figCount}: Diagram placeholder --- export Mermaid to PDF]}\\vspace{2cm}}}\n\\caption{Figure ${figCount}: See Markdown source for diagram definition.}\n\\label{fig:${outputBase}-${figCount}}\n\\end{figure}\n`;
   });
 
-  // 4. Remove status badges that don't render well: ✅ → (proved), ⚠️ → (conditional), 🧭 → (postulate)
-  text = text.replace(/✅/g, '(\\checkmark)');
-  text = text.replace(/⚠️/g, '(\\triangle)');
-  text = text.replace(/🧭/g, '(\\ast)');
+  // 4. Remove status badges — wrap in math mode
+  text = text.replace(/✅/g, '$\\checkmark$');
+  text = text.replace(/⚠️/g, '$\\triangle$');
+  text = text.replace(/🧭/g, '$\\ast$');
   text = text.replace(/🧱/g, '');
-  text = text.replace(/❌/g, '(\\times)');
+  text = text.replace(/❌/g, '$\\times$');
 
   // 5. Theorem/Lemma/Proof block conversion
   // Pattern: **Theorem X.Y (Name).** *statement* → \begin{theorem}[Name]\label{thm:XY} statement \end{theorem}
@@ -259,13 +275,91 @@ function preprocessMarkdown(content, outputBase) {
     text = text.replace(new RegExp(`${author}\\s+\\(${year}[^)]*\\)`, 'g'), `${author} \\cite{${ref.key}}`);
   }
 
-  // 7. Convert internal cross-links to footnotes
-  text = text.replace(/\[([^\]]+)\]\(\.\/([^)]+)\.md([^)]*)\)/g, (match, text, file, anchor) => {
-    return `${text}\\footnote{See companion document: \\texttt{${file}}}`;
+  // 7. Convert internal cross-links:
+  // Inside table cells (lines starting with |): strip links, keep only text
+  // Outside tables: convert to footnote
+  const tableLines = text.split('\n').map(line => {
+    if (line.trim().startsWith('|') || line.trim().startsWith('|-')) {
+      // Strip all markdown links inside table cells, keep link text only
+      return line.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+    }
+    return line;
+  });
+  text = tableLines.join('\n');
+  // Outside tables: convert remaining internal links to footnotes
+  text = text.replace(/\[([^\]]+)\]\(\.\/([^)]+)\.md([^)]*)\)/g, (match, linkText, file, anchor) => {
+    return `${linkText}\\footnote{See companion document: \\texttt{${file}}}`;
   });
 
   // 8. Remove markdown horizontal rules
   text = text.replace(/^---+$/gm, '\\medskip');
+
+  // 9. Strip navigation footer lines — all forms
+  // Remove any line that is purely a series of link/text | link/text patterns (nav footers)
+  // After link stripping in step 7, these become "Text1 | Text2 | Text3" lines at end of file
+  // Most reliable: remove the last few lines if they match nav patterns
+  // Also remove lines that originally had multiple internal .md links (now plain text with |)
+  text = text.replace(/^\*?\s*\[?[A-Za-z][^\n]+\]\([^)]*\.md[^)]*\)(\s*\|[^|\n]*)*\s*$/gm, '');
+  // After link stripping, remove lines that are just "Text | Text | Text" at end (nav remnants)
+  // These show up as lines ending with series navigation names
+  text = text.replace(/^[A-Za-z ]+\s*\|\s*[A-Za-z ]+.*$/gm, (line) => {
+    // Only strip if it looks like a nav footer (no | in content otherwise)
+    const parts = line.split('|').map(p => p.trim());
+    if (parts.every(p => p.length < 60 && !p.includes('&') && !p.includes('\\('))) {
+      return ''; // looks like nav footer
+    }
+    return line;
+  });
+
+  // 10a. Fix math asterisks before pandoc interprets them as italic markers
+  // Pandoc treats * inside $...$ as italic in some contexts — safest fix:
+  // globally replace _* → _{\\ast} and ^* → ^{\\ast} in ALL math contexts
+  // by scanning the entire text character by character for math spans
+  {
+    let inMath = false;
+    let doubleDollar = false;
+    let out = '';
+    let i = 0;
+    while (i < text.length) {
+      if (!inMath && text[i] === '$' && text[i+1] === '$') {
+        inMath = true; doubleDollar = true; out += '$$'; i += 2;
+      } else if (!inMath && text[i] === '$') {
+        inMath = true; doubleDollar = false; out += '$'; i += 1;
+      } else if (inMath && doubleDollar && text[i] === '$' && text[i+1] === '$') {
+        inMath = false; out += '$$'; i += 2;
+      } else if (inMath && !doubleDollar && text[i] === '$') {
+        inMath = false; out += '$'; i += 1;
+      } else if (inMath && text[i] === '_' && text[i+1] === '*') {
+        out += '_{\\ast}'; i += 2;
+      } else if (inMath && text[i] === '^' && text[i+1] === '*') {
+        out += '^{\\ast}'; i += 2;
+      } else {
+        out += text[i]; i += 1;
+      }
+    }
+    text = out;
+  }
+
+  // 10. Replace Unicode special chars that LaTeX can't handle
+  text = text.replace(/∎/g, '\\qed');
+  // ℏ and ℓ: replace with LaTeX commands; pandoc will handle math-mode context
+  text = text.replace(/ℏ/g, '$\\hbar$');
+  text = text.replace(/ℓ/g, '$\\ell$');
+  text = text.replace(/→/g, '$\\to$');
+  text = text.replace(/←/g, '$\\leftarrow$');
+  text = text.replace(/↔/g, '$\\leftrightarrow$');
+  text = text.replace(/≺/g, '$\\prec$');
+  text = text.replace(/≻/g, '$\\succ$');
+  text = text.replace(/⊆/g, '$\\subseteq$');
+  text = text.replace(/∈/g, '$\\in$');
+  text = text.replace(/∉/g, '$\\notin$');
+  text = text.replace(/∅/g, '$\\emptyset$');
+  text = text.replace(/∞/g, '$\\infty$');
+  text = text.replace(/≥/g, '$\\geq$');
+  text = text.replace(/≤/g, '$\\leq$');
+  text = text.replace(/≠/g, '$\\neq$');
+  text = text.replace(/×/g, '$\\times$');
+  text = text.replace(/⊕/g, '$\\oplus$');
 
   // 9. Fix $\square$ at end of proofs → proper qed
   text = text.replace(/\$\\square\$/g, '\\qed');
@@ -282,7 +376,12 @@ function buildPreamble(meta) {
 \\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{booktabs}
+\\usepackage{longtable}
+\\usepackage{array}
+\\usepackage{calc}
+\\usepackage{soul}
 \\usepackage{geometry}
+\\providecommand{\\tightlist}{\\setlength{\\itemsep}{0pt}\\setlength{\\parskip}{0pt}}
 \\geometry{margin=1in}
 
 % Theorem environments
@@ -298,9 +397,8 @@ function buildPreamble(meta) {
 \\newtheorem{remark}[theorem]{Remark}
 
 % Cause-plex notation shortcuts
-\\newcommand{\\CC}{\\mathcal{C}}
+\\newcommand{\\CP}{\\mathcal{C}}
 \\newcommand{\\Cstar}{\\mathcal{C}^*}
-\\newcommand{\\prec}{\\prec}
 \\newcommand{\\loopspace}{\\Omega(\\mathcal{C}^*, e_*)}
 
 \\title{${meta.title || 'Untitled'}}
@@ -311,7 +409,16 @@ function buildPreamble(meta) {
 \\maketitle
 
 \\begin{abstract}
-${(meta.description || '').replace(/\s+/g, ' ').trim()}
+${(meta.description || '').replace(/\s+/g, ' ').trim()
+  // Wrap bare n_t, n_s, ρ_ac, CI_min patterns in math mode
+  .replace(/\bn_t\b/g, '$n_t$')
+  .replace(/\bn_s\b/g, '$n_s$')
+  .replace(/ρ_ac/g, '$\\\\rho_{\\\\mathrm{ac}}$')
+  .replace(/CI_min/g, '$\\\\mathrm{CI}_{\\\\min}$')
+  .replace(/e\^{iS\/ℏ}/g, '$e^{iS/\\hbar}$')
+  .replace(/ℏ/g, '$\\hbar$')
+  .replace(/U\(1\)/g, '$\\\\mathrm{U}(1)$')
+}
 \\end{abstract}
 
 `;
@@ -371,6 +478,35 @@ function exportToArxiv(inputPath, outputPath) {
   }
 
   let latexBody = pandocResult.stdout;
+
+  // Fix pandoc mangling of ^* and _* in math: pandoc converts {\ast} → {st}
+  // after stripping the backslash. Restore proper LaTeX:
+  latexBody = latexBody.replace(/\^{st}/g, '^{*}');
+  latexBody = latexBody.replace(/_{st}/g, '_{*}');
+  // Also catch cases where pandoc dropped entirely
+  // Fix \mathcal{C}^ followed by non-{ non-\w → was \mathcal{C}^* with * stripped
+  latexBody = latexBody.replace(/\\mathcal\{C\}\^([^{\w\\])/g, '\\mathcal{C}^{*}$1');
+  latexBody = latexBody.replace(/\\mathcal\{C\}\^$/mg, '\\mathcal{C}^{*}');
+  // Fix e_ followed by ) ] , . space → was e_* with * stripped
+  latexBody = latexBody.replace(/\be_([)\].,\s$])/g, 'e_{*}$1');
+
+  // Post-process: remove orphaned series nav footnote blocks
+  latexBody = latexBody.replace(/\\emph\{[^}]*\\footnote\{See companion document:[^}]*\}[^}]*\}/g, '');
+  latexBody = latexBody.replace(/[^\n]*See companion document:[^\n]*\n/g, '');
+
+  // Clean up inline footnotes from link references that ended up inside table cells
+  latexBody = latexBody.replace(/\\footnote\{See companion document: \\texttt\{([^}]+)\}\}/g, '');
+  // Remove stray "Part X.Y:" and "See X" fragments after checkmarks in table cells
+  // These come from links like [✅ [Part 1.5: Causors](link)] in source tables
+  latexBody = latexBody.replace(/\\checkmark\\\)\s+(?:Part|See)\s+[^\n\\&]+/g, '\\checkmark\\)');
+  latexBody = latexBody.replace(/\\checkmark\\\)\s*\n(?:Part|See)\s+[^\n\\&]+:\s*\n/g, '\\checkmark\\)\n');
+
+  // Fix \mathcal{C}^_{...} → \mathcal{C}^{*}_{...} (double subscript/superscript)
+  latexBody = latexBody.replace(/\\mathcal\{C\}\^_/g, '\\mathcal{C}^{*}_');
+
+  // Ensure longtable rows end with \\ (pandoc sometimes omits on final rows)
+  // Match lines inside longtable that end with content but no \\ and are followed by a line starting with \d or \end
+  latexBody = latexBody.replace(/(\\checkmark\)[^\n\\]*)\n(\d+\.|\\end\{longtable\})/g, '$1 \\\\\n$2');
 
   // Build full document
   const bibFile = outputBase;
