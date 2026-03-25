@@ -3,7 +3,6 @@
 import React, { useEffect, Suspense } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { Providers } from './providers'
-import MobileNavWrapper from '@/components/MobileNavWrapper'
 import '@fontsource/inter'
 import { initCardEffects } from './card-effects'
 
@@ -64,11 +63,9 @@ function ClientLayoutContent({
   
   return (
     <Providers>
-      <MobileNavWrapper>
-        <div className="w-full max-w-full overflow-x-hidden">
-          {children}
-        </div>
-      </MobileNavWrapper>
+      <div className="w-full max-w-full overflow-x-hidden">
+        {children}
+      </div>
     </Providers>
   );
 }

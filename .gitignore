@@ -75,3 +75,8 @@ USER.md
 # Credential files (never commit)
 *.credentials.json
 *.credentials.enc
+
+# Citation verification downloads (not committed)
+papers/
+*.pdf
+docs/theory/refs/

@@ -31,7 +31,8 @@ abbr[title] {
   --header-height: 4rem;
   --header-offset: calc(var(--header-height) + 1rem);
   --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
-  
+  --nav-fade-from: rgba(255, 255, 255, 0.6);
+
   /* Color variables */
   --background: 255 255 255;
   --foreground: 17 24 39;
@@ -47,6 +48,7 @@ abbr[title] {
   --background: 17 24 39;
   --foreground: 243 244 246;
   --primary: 96 165 250;
+  --nav-fade-from: rgba(10, 15, 26, 0.6);
   --card-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.3);
   --card-hover-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.5);
 }
@@ -3393,12 +3395,13 @@ article #hubspot-form {
 @media (max-width: 768px) {
   .post-content.supernal-tts-widget,
   .prose.supernal-tts-widget {
-    padding-top: 96px !important;
+    /* header (4rem/64px) + chapter bar (44px) + toc bar (36px) + breathing room */
+    padding-top: calc(var(--header-height) + 96px) !important;
   }
 
   .post-content.supernal-tts-widget[data-enable-progress="true"],
   .prose.supernal-tts-widget[data-enable-progress="true"] {
-    padding-top: 108px !important;
+    padding-top: calc(var(--header-height) + 108px) !important;
   }
 
   .supernal-tts-widget .supernal-tts-modular-widget {

@@ -30,6 +30,9 @@ bullets:
   - The same interaction type can be mutualistic, commensal, parasitic, or predatory depending on timescale and state
 ---
 
+> [!sidenote]
+> **Layer note.** This document operates at the coarse-grained scale where time-translation symmetry holds and "energy" is a well-defined conserved quantity (Layer C in the [causor framework](./01_5_causors.md)). At this scale, "energy exchange" is the right description of bonds and coupling. The foundational primitive is the causal event; energy is its coarse-grained description where symmetry permits.
+
 ## Where We Are
 
 [Part 2](./02_meta_entities.md) established that entities — including meta-entities like nations, firms, and religions — persist through auto-causal loops: closed causal structures where the output regenerates the conditions for the next iteration. Systemic coupling $\kappa_{\text{sys}}$ measures whether a sub-loop contributes to ($\kappa_{\text{sys}} > 0$), drains from ($\kappa_{\text{sys}} < 0$), or is decoupled from ($\kappa_{\text{sys}} = 0$) a containing entity.
@@ -346,6 +349,60 @@ The ratio can be enormous. A nuclear weapon can destroy a city through brute for
 | Financial system (2008) | Credit rating integrity | Corrupted the trust bond underlying all derivative pricing | Contagion spread through interconnected balance sheets |
 | Soviet Union | Legitimacy narrative | Internal contradiction between stated values and lived experience | Narrative collapse propagated through all three substrates simultaneously |
 | Firm | Key personnel (single founder) | Dependency on irreplaceable human bond | No succession loop → dissolution on departure |
+
+### Causal Attack Surface Density
+
+Here is the uncomfortable symmetry: **the same property that makes an entity powerful makes it susceptible to intelligent destruction.**
+
+Auto-causal density $\rho_{\text{ac}}$ measures how strongly an entity sustains itself — how tightly its loops regenerate their own conditions. High $\rho_{\text{ac}}$ means:
+- Powerful self-maintenance
+- High resistance to brute-force dissolution
+- Rapid state-change amplification
+
+But those same loops, if a keystone perturbation enters them, become **amplification engines for dissolution**. The SNP doesn't dissolve the cell directly — cell division does, copying the error into every daughter. The more auto-causal the replication loop, the faster the error propagates.
+
+Define the **causal attack surface density** $\rho_{\text{attack}}$:
+
+$$\rho_{\text{attack}}(\partial E) = \sum_{b \in \partial E} \kappa_b \cdot \rho_{\text{ac}}(\mathcal{L}_b)$$
+
+where the sum is over keystone bonds $b$ accessible at the entity's boundary $\partial E$, $\kappa_b$ is the keystone index of each bond, and $\rho_{\text{ac}}(\mathcal{L}_b)$ is the auto-causal density of the loop that bond belongs to.
+
+**$\rho_{\text{attack}}$ is high when:**
+- Keystone bonds are accessible from outside (low protection at boundary)
+- Those keystone bonds belong to high-$\rho_{\text{ac}}$ loops (powerful amplification if entered)
+
+For a SNP in a replication gene: $\kappa_b$ is enormous (loss-of-function in DNA repair collapses genome integrity), and $\rho_{\text{ac}}(\mathcal{L}_{\text{replication}})$ is near-maximum (replication is the most auto-causal loop in biology — the loop that copies the loop). The product is through the roof.
+
+**The fundamental tension:**
+
+| Entity property | Effect on strength | Effect on attack surface |
+|---|---|---|
+| High $\rho_{\text{ac}}$ | ↑ Self-sustaining power | ↑ Amplification of keystone perturbations |
+| Tight internal coupling | ↑ Coordination efficiency | ↑ Propagation speed of perturbations |
+| Complex loop structure | ↑ Functional capability | ↑ Number of potential keystones |
+| Deep $\Delta V$ | ↑ Brute-force resistance | ↓ Attack surface (harder to enter) |
+
+The first three rows are in direct tension: the properties that make entities capable also make them more susceptible to intelligent destruction. Only $\Delta V$ (basin depth, boundary protection) provides resistance to both attack modes simultaneously.
+
+This is not a paradox — it is the **structural cost of auto-causality**. An entity that sustains itself through powerful loops necessarily hands those loops over as amplifiers to anything that enters at a keystone. The cell's replication fidelity is the genome's protection; the cell's replication power is the genome's vulnerability. You cannot have high $\rho_{\text{ac}}$ for free.
+
+**The SNP in context.** A human genome has ~3 billion base pairs. The vast majority of positions are low-$\kappa_b$ (peripheral). A small number — tumor suppressors, DNA repair genes, developmental regulators — have $\kappa_b \gg 1$. The genome's attack surface density is concentrated in these positions, not distributed uniformly. The high overall $\rho_{\text{ac}}$ of the organism means that once a high-$\kappa_b$ position is perturbed, the organism's own metabolic loops propagate the effect — cancer is the organism's auto-causal machinery running without its keystone governor.
+
+**Generalizes across scales:**
+
+| Entity | High-$\rho_{\text{ac}}$ loop exploited | Keystone attacked | Attack surface density |
+|---|---|---|---|
+| Cell | DNA replication | Tumor suppressor gene | Extreme |
+| Organism | Immune amplification | T-cell receptor (HIV) | Extreme |
+| Firm | Hiring/promotion loop | Cultural integrity norm | High |
+| Financial system | Credit propagation | Rating agency trust | High |
+| Society | Information sharing | Epistemic common ground | High |
+| Software | Dependency resolution | Trusted package (supply chain) | High |
+
+In every case: the entity's most auto-causal loop becomes the propagation mechanism. High $\rho_{\text{ac}}$ at the loop level → high $\rho_{\text{attack}}$ at the boundary level, given accessible keystones.
+
+> [!sidenote]
+> **This feeds directly into the auto-causal density discussions in [Part 1.5](./01_5_causors.md) and [Part 2](./02_meta_entities.md).** The $\rho_{\text{ac}}$ quantity defined there is simultaneously the measure of entity robustness (against brute force) and entity vulnerability (to intelligent keystone targeting). A complete entity characterization requires both $\rho_{\text{ac}}$ (loop strength) and $\rho_{\text{attack}}$ (loop-amplified vulnerability). They are not independent — they are two faces of the same structural property.
 
 ### The Defensive Implication: Structural Robustness
 

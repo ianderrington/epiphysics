@@ -122,13 +122,6 @@ const CollectionDisplay: React.FC<CollectionDisplayProps> = ({
 
   return (
     <div className="max-w-[1600px] mx-auto px-1 sm:px-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      {/* Render Breadcrumbs */}
-      {!indexPost?.metadata?.hide?.includes('breadcrumbs') && (
-        <div className="breadcrumb-container">
-          <Breadcrumb path={breadcrumbPath} />
-        </div>
-      )}
-
       {/* Render Media Container */}
       {(mediaProps || (!mediaProps && !hasIndexContent)) && (
         <div className="mb-8 relative max-w-xl mx-auto">

@@ -61,8 +61,16 @@ export default function NavBars({
   const chapterRef = useRef<HTMLDivElement>(null);
   const tocRef = useRef<HTMLDivElement>(null);
   const [headerH, setHeaderH] = useState(64);
+  const [isXL, setIsXL] = useState(false);
 
-  useEffect(() => { setHeaderH(getHeaderHeight()); }, []);
+  useEffect(() => {
+    setHeaderH(getHeaderHeight());
+    const mq = window.matchMedia('(min-width: 1280px)');
+    setIsXL(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsXL(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const toggle = useCallback((panel: 'chapters' | 'toc') => {
     setExpanded((prev) => (prev === panel ? null : panel));
@@ -106,10 +114,10 @@ export default function NavBars({
       if (scrollDelta.current > 100) setShowChapter(false);
       if (scrollDelta.current > 160) setShowToc(false);
 
-      // up: toc first, then chapter, then header
-      if (scrollDelta.current < -20) setShowToc(true);
-      if (scrollDelta.current < -40) setShowChapter(true);
-      if (scrollDelta.current < -60) setShowHeader(true);
+      // up: toc first, then chapter, then header (wide gaps so they stagger visibly)
+      if (scrollDelta.current < -30) setShowToc(true);
+      if (scrollDelta.current < -90) setShowChapter(true);
+      if (scrollDelta.current < -150) setShowHeader(true);
 
       if (y < 80) {
         setShowHeader(true); setShowChapter(true); setShowToc(true);
@@ -127,31 +135,6 @@ export default function NavBars({
     w.classList.toggle('nav-header-hidden', !showHeader);
     return () => { w.classList.remove('nav-header-hidden'); };
   }, [showHeader]);
-
-  /*
-   * Position math — pure `top` sliding, no opacity/translate tricks.
-   *
-   * Chapter bar top:
-   *   visible:  headerH (below header) or 0 (header hidden)
-   *   hidden:   -CHAPTER_H (slid off screen above)
-   *
-   * TOC bar top:
-   *   visible:  chapterTop + CHAPTER_H  (below chapter)
-   *             or chapterTop            (chapter hidden, TOC fills gap)
-   *   hidden:   -TOC_H (slid off screen above)
-   */
-  const chapterShown = showChapter || expanded !== null;
-  const tocShown = (showToc || expanded === 'toc') && expanded !== 'chapters';
-
-  const chapterTop = chapterShown
-    ? (showHeader ? headerH : 0)
-    : -CHAPTER_H;
-
-  const tocTop = tocShown
-    ? (chapterShown
-        ? (showHeader ? headerH : 0) + CHAPTER_H
-        : (showHeader ? headerH : 0))
-    : -TOC_H;
 
   /* ── TOC headings + scroll spy ── */
   const [headings, setHeadings] = useState<Heading[]>([]);
@@ -172,10 +155,31 @@ export default function NavBars({
     return () => observer.disconnect();
   }, [headings]);
 
+  const hasChapters = chapters.length > 0;
+  const hasHeadings = headings.length > 0;
+  // On XL screens, ReaderSidebar handles TOC — don't show TOC bar here
+  const showTocBar = hasHeadings && !isXL;
+
+  /* ── position math ── */
+  const chapterShown = showChapter || expanded !== null;
+  const tocShown = showTocBar && (showToc || expanded === 'toc') && expanded !== 'chapters';
+
+  const chapterTop = chapterShown
+    ? (showHeader ? headerH : 0)
+    : -CHAPTER_H;
+
+  const tocTop = tocShown
+    ? (chapterShown
+        ? (showHeader ? headerH : 0) + CHAPTER_H
+        : (showHeader ? headerH : 0))
+    : -TOC_H;
+
+  /* ── chapter data ── */
   const chapterIdx = chapters.findIndex((c) => c.href === currentChapterHref);
   const chapterPrev = chapterIdx > 0 ? chapters[chapterIdx - 1] : null;
   const chapterNext = chapterIdx >= 0 && chapterIdx < chapters.length - 1 ? chapters[chapterIdx + 1] : null;
 
+  /* ── heading prev/next ── */
   const activeIdx = headings.findIndex((h) => h.id === activeHeadingId);
   const headingPrev = activeIdx > 0 ? headings[activeIdx - 1] : null;
   const headingNext = activeIdx >= 0 && activeIdx < headings.length - 1 ? headings[activeIdx + 1] : null;
@@ -190,17 +194,16 @@ export default function NavBars({
     }
   }, [headerH]);
 
-  const hasChapters = chapters.length > 0;
-  const hasHeadings = headings.length > 0;
-  if (!hasChapters && !hasHeadings) return null;
+  if (!hasChapters && !showTocBar) return null;
 
-  const spacerHeight = (hasChapters ? CHAPTER_H : 0) + (hasHeadings ? TOC_H : 0);
+  // spacer = bar heights + a little breathing room for the fade gradient
+  const spacerHeight = (hasChapters ? CHAPTER_H : 0) + (showTocBar ? TOC_H : 0) + 8;
   const arrowCls = 'flex items-center justify-center shrink-0 h-full transition-colors text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 active:bg-black/5 dark:active:bg-white/5';
 
-  /* only the bottom-most ON-SCREEN bar gets the heavier outer border */
-  const chapterBorder = (!tocShown || expanded === 'chapters')
-    ? 'border-b border-gray-200 dark:border-gray-800'
-    : 'border-b border-gray-100 dark:border-white/[0.06]';
+  /* bottom-most bar gets a subtle shadow for depth; internal dividers are lighter */
+  const bottomEdge = 'border-b border-gray-200/80 dark:border-gray-700/40 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.3)]';
+  const innerEdge = 'border-b border-gray-100 dark:border-white/[0.06]';
+  const chapterBorder = (!tocShown || expanded === 'chapters') ? bottomEdge : innerEdge;
 
   return (
     <>
@@ -262,14 +265,14 @@ export default function NavBars({
         </div>
       )}
 
-      {/* ═══ TOC BAR — slides via top only ═══ */}
-      {hasHeadings && (
+      {/* ═══ TOC BAR — slides via top only; hidden on XL where ReaderSidebar has TOC ═══ */}
+      {showTocBar && (
         <div
           ref={tocRef}
           className={`fixed left-0 right-0 z-[29] ${TRANSITION}`}
           style={{ top: tocTop }}
         >
-          <div className={`${BG} border-b border-gray-200 dark:border-gray-800`}>
+          <div className={`${BG} ${bottomEdge}`}>
             <div className="max-w-[1120px] mx-auto flex items-center px-1" style={{ height: TOC_H }}>
               {headingPrev ? (
                 <button type="button" onClick={() => scrollTo(headingPrev.id)} className={`${arrowCls} w-10`} title={headingPrev.text}>
@@ -318,6 +321,24 @@ export default function NavBars({
             </div>
           )}
         </div>
+      )}
+
+      {/* ═══ FADE GRADIENT — content fades as it goes under the nav stack ═══ */}
+      {!expanded && (
+        <div
+          className={`fixed left-0 right-0 z-[28] pointer-events-none ${TRANSITION}`}
+          style={{
+            top: tocShown
+              ? tocTop + TOC_H
+              : chapterShown
+                ? chapterTop + CHAPTER_H
+                : showHeader
+                  ? headerH
+                  : 0,
+            height: 36,
+            background: 'linear-gradient(to bottom, var(--nav-fade-from) 0%, var(--nav-fade-from) 20%, transparent 100%)',
+          }}
+        />
       )}
 
       {expanded && (

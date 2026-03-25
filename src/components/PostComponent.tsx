@@ -1,21 +1,16 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { formatDate } from '@/lib/utils/dates';
 import { Post } from '@/lib/content';
 import SafeHTML from '@/components/SafeHTML';
-import TableOfContents from '@/components/TableOfContents';
 import DynamicChatRenderer from '@/components/DynamicChatRenderer';
 import { DEFAULT_IMAGES } from '@/lib/constants';
-import { useFloatingVisibility } from '@/hooks/useFloatingVisibility';
-import { Navigation } from '@/components/Navigation';
-import styles from '@/components/Navigation.module.css';
 import { MediaResolver } from '@/lib/utils/mediaResolver';
 import Media from '@/components/media/Media';
 import { MediaProps, MediaType } from '@/lib/types/media';
 import { CoverMedia } from '@/lib/mediaUtils';
-import ReadingMemory from '@/components/ReadingMemory';
 
 interface Author {
   name: string;
@@ -59,47 +54,6 @@ function getImagePath(imagePath: string | undefined, section: string, slugSegmen
 }
 
 export default function PostComponent({ post }: PostComponentProps) {
-  const [tocOpen, setTocOpen] = useState(false);
-  const [headerVisible, setHeaderVisible] = useState(true);
-  const tocRef = useRef<HTMLDivElement>(null);
-  const footerRef = useRef<HTMLElement | null>(null);
-  
-  // Track scroll position to detect when header is shown/hidden
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      // Assuming header disappears after scrolling past 100px
-      const isHeaderVisible = scrollY < 100;
-      setHeaderVisible(isHeaderVisible);
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Find the footer element and store its reference
-    const footer = document.querySelector('footer');
-    footerRef.current = footer as HTMLElement | null;
-  }, []);
-
-  const { isVisible } = useFloatingVisibility({ 
-    scrollThreshold: 100,
-    mobileTimeout: 0,
-    footerRef,
-    alwaysVisible: false
-  });
-
-  const handleTocLinkClick = () => {
-    if (window.innerWidth < 768) {
-      setTocOpen(false);
-    }
-  };
-  
   // Handle scrolling to anchor IDs on initial page load
   useEffect(() => {
     // Handle initial page load anchor navigation
@@ -348,9 +302,6 @@ export default function PostComponent({ post }: PostComponentProps) {
 
   const renderAsChat = post.metadata.render_as === 'chat';
   
-  // Check if TOC should be hidden
-  const shouldShowToc = !post.metadata.hide?.includes('toc');
-
   const primaryAuthorName =
     (typeof post.metadata.author === 'object' && post.metadata.author?.name) ||
     (typeof post.metadata.author === 'string' ? post.metadata.author : undefined) ||
@@ -376,38 +327,6 @@ export default function PostComponent({ post }: PostComponentProps) {
 
   return (
     <div className="post-container">
-      {/* Navigation Component for TOC (desktop only; mobile uses top reader bar drawer) */}
-      {shouldShowToc && (
-        <div 
-          ref={tocRef}
-          className={`hidden md:block ${styles.floatingNav} transition-opacity duration-300`}
-        >
-          <Navigation
-            type="toc"
-            isOpen={tocOpen}
-            onToggle={() => setTocOpen(!tocOpen)}
-            headerVisible={headerVisible}
-            footerRef={footerRef}
-            alwaysVisible={false}
-          >
-            <div className="flex flex-col h-full">
-              <div className={styles['nav-panel-header']}>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">Contents</span>
-              </div>
-              <div className={styles['nav-panel-content']}>
-                <TableOfContents 
-                  content={post.html} 
-                  onLinkClick={handleTocLinkClick}
-                />
-                <div className="mt-3">
-                  <ReadingMemory slug={post.slug} contentHash={`${post.metadata.date || ''}:${post.html.length}`} />
-                </div>
-              </div>
-            </div>
-          </Navigation>
-        </div>
-      )}
-
       <article className="bg-white dark:bg-gray-900 rounded-lg overflow-hidden xl:overflow-visible shadow-sm">
         <div className="post-header">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">
