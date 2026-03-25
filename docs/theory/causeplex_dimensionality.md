@@ -130,7 +130,7 @@ Combining §6.1 and §6.2: $n_s \leq 3$ and $n_s \geq 3$, so $n_s = 3$.
 
 ## 7. Tegmark's Stability Table
 
-Tegmark (1997) independently mapped the stability of physics across different $(n_s, n_t)$ signatures, confirming the argument:
+Tegmark (1997) mapped the stability of physics across different $(n_s, n_t)$ signatures, confirming the argument:
 
 | Manifold $(n_s, n_t)$ | PDE type | Stable atoms? | Sufficient loop richness? | Observers possible? |
 |---|---|---|---|---|

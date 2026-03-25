@@ -368,7 +368,7 @@ The proof relies on the locality assumption (L) from the spacetime companion pap
 **For completeness** (see [proof attempt](./causeplex_loop_phase_proof_attempt.md)):
 - The full loop-space connectivity conjecture is false in general — causal voids create isolated loops with invariant winding number.
 - For causally simply-connected cause-plexes (satisfied by all observer-class cause-plexes by Lemma 4.3), Theorem 4.4 holds.
-- History space connectivity is fully proved independently.
+- History space connectivity is fully proved (proof attempt §2).
 
 **Status: Lemma 4.3 resolved.** The Critical-Events Rerouting Lemma (Theorem 4.4 Step 3, formerly Open Problem 7.3) is also proved — see [causeplex_loop_phase_step3_lemma.md](./causeplex_loop_phase_step3_lemma.md). Theorem 5.2 is now complete subject only to Conjecture 6.2.
 
