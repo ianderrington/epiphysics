@@ -44,8 +44,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, sections, config }) =
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 w-full overflow-x-hidden m-0 p-0">
-      <div className={`header-wrapper fixed top-0 left-0 right-0 z-40 w-full ${headerClass} m-0 p-0`}>
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 w-full m-0 p-0" style={{ overflowX: 'clip' }}>
+      <div className={`header-wrapper fixed top-0 left-0 right-0 z-40 w-full bg-white dark:bg-[#0a0f1a] ${headerClass} m-0 p-0`}>
         <Header sections={sections} />
       </div>
       <main className="flex-grow w-full flex flex-col p-0 m-0">

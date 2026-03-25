@@ -388,48 +388,34 @@ abbr[title] {
   transform: translateY(-100%);
 }
 
-/* Header animations */
+/* Header animations — positioning handled by Tailwind (fixed top-0 z-40) */
 .header-wrapper {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: var(--header-bg, rgba(255, 255, 255, 0.9));
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform, opacity;
-}
-
-.dark .header-wrapper {
-  background: var(--header-bg, rgba(17, 24, 39, 0.9));
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .header-wrapper.slide-up {
   transform: translateY(-100%);
-  opacity: 0;
 }
 
-/* Keep header reachable on mobile so section switching doesn't require long scrolls */
+/* On mobile, disable the PageLayout slide-up — NavBars controls header visibility instead */
 @media (max-width: 767px) {
   .header-wrapper.slide-up {
     transform: translateY(0);
-    opacity: 1;
   }
 }
 
-/* Header styles */
+/* NavBars-driven header hide — pure slide, no opacity */
+.header-wrapper.nav-header-hidden {
+  transform: translateY(-100%) !important;
+  pointer-events: none;
+}
+
+/* Header styles — bg comes from the component; no border here (NavBars handles the stack edge) */
 header {
   position: relative;
   height: var(--header-height);
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  z-index: 60; /* Higher z-index to ensure it's above the mobile menu */
-}
-
-.dark header {
-  background: rgba(17, 24, 39, 0.9);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 60;
 }
 
 /* Breadcrumb styles */
@@ -1652,11 +1638,8 @@ article.max-w-3xl,
   isolation: isolate;
 }
 
-/* Remove transforms from containers that might affect stacking */
-.page-transition-container,
-.container,
-main,
-article {
+/* Remove transforms from page-transition containers (not main/article — those break fixed positioning) */
+.page-transition-container {
   transform: none !important;
 }
 

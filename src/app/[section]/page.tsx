@@ -9,6 +9,7 @@ import FloatingShareButton from '@/components/FloatingShareButton';
 import { resolveImagePath } from '@/lib/imageUtils';
 import CollectionDisplay from '@/components/CollectionDisplay';
 import { prepareCollectionRenderData } from '@/lib/content/collectionRenderer';
+import NavBars from '@/components/NavBars';
 
 // Force dynamic rendering to avoid SSR issues with client components
 export const dynamic = 'force-dynamic';
@@ -167,8 +168,22 @@ export default async function SectionPage({ params }: SectionPageProps) {
   const defaultViewType = renderData.indexPost?.metadata?.defaultViewType || 'cards';
   const allowedViewTypes = renderData.indexPost?.metadata?.allowedViewTypes;
 
+  // Build chapter list (children of this section)
+  const chapterNodes = renderData.items.map((item: any) => {
+    if ('posts' in item) {
+      return { href: `/${item.fullSlug?.replace(/\/index$/, '') || item.slug}`, title: item.indexPost?.metadata?.title || item.slug };
+    }
+    return { href: `/${item.slug}`, title: item.metadata?.title || item.slug.split('/').pop() || item.slug };
+  });
+
   return (
     <>
+      <NavBars
+        chapters={chapterNodes}
+        currentChapterTitle="Chapters"
+        tocHtml={renderData.indexPost?.html || ''}
+      />
+
       <CollectionDisplay
         indexPost={renderData.indexPost}
         items={renderData.items}

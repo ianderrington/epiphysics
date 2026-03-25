@@ -4,10 +4,12 @@ import { loadConfig } from '@/lib/content/resolver';
 import { DEFAULT_IMAGES } from '@/lib/constants';
 import PostComponent from '@/components/PostComponent';
 import FloatingShareButton from '@/components/FloatingShareButton';
-import Breadcrumb from '@/components/Breadcrumb';
+
 import { resolveImagePath } from '@/lib/imageUtils';
 import CollectionDisplay from '@/components/CollectionDisplay';
-import MobileReaderNav from '@/components/MobileReaderNav';
+import NavBars from '@/components/NavBars';
+import ReaderSidebar from '@/components/ReaderSidebar';
+import { getCachedSections } from '@/lib/content';
 import { prepareCollectionRenderData } from '@/lib/content/collectionRenderer';
 import { ArticleSchema, BreadcrumbSchema } from '@/components/seo';
 import FeedbackAnnotator from '@/components/FeedbackAnnotator';
@@ -110,6 +112,9 @@ export default async function Page({ params }: PageProps) {
   const resolvedParams = await params;
   const { section, slug } = resolvedParams;
   
+  // Fetch sections (cached, zero cost) — used for metadata only now
+  const allSections = await getCachedSections();
+
   // Use unified collection renderer
   const renderData = await prepareCollectionRenderData(section, slug);
   
@@ -178,21 +183,11 @@ export default async function Page({ params }: PageProps) {
         </>
       )}
 
-      <MobileReaderNav
-        domainTitle={section.charAt(0).toUpperCase() + section.slice(1)}
-        domainOptions={[
-          { href: '/theory', title: 'Theory' },
-          { href: '/research', title: 'Research' },
-          { href: '/experiments', title: 'Experiments' },
-          { href: '/applications', title: 'Applications' },
-        ]}
-        currentTitle={renderData.indexPost.metadata.title}
-        currentHref={mobileNav.currentHref}
+      <NavBars
         chapters={mobileNav.chapters}
-        parent={mobileNav.parent}
-        prev={mobileNav.prev}
-        next={mobileNav.next}
-        tocContentHtml={renderData.indexPost.html || ''}
+        currentChapterHref={mobileNav.currentHref}
+        currentChapterTitle={renderData.indexPost.metadata.title}
+        tocHtml={renderData.indexPost.html || ''}
       />
 
       {renderData.isCollection ? (
@@ -207,11 +202,17 @@ export default async function Page({ params }: PageProps) {
         />
       ) : (
         <>
-          <div className="breadcrumb-container">
-            <Breadcrumb path={renderData.breadcrumbPath} />
-          </div>
-          <div className="max-w-[1600px] mx-auto px-1 sm:px-6 py-4">
-            <PostComponent post={renderData.indexPost} />
+          <div className="max-w-[1120px] mx-auto px-1 sm:px-6 py-4">
+            <div className="flex gap-6 items-start">
+              <ReaderSidebar
+                chapters={mobileNav.chapters}
+                currentHref={mobileNav.currentHref}
+                tocHtml={renderData.indexPost.html || ''}
+              />
+              <div className="min-w-0 flex-1 xl:[&_.post-container]:max-w-none xl:[&_.post-container]:mx-0">
+                <PostComponent post={renderData.indexPost} />
+              </div>
+            </div>
           </div>
           <ContributeSection />
         </>

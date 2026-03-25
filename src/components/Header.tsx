@@ -9,7 +9,7 @@ import SearchBar from './SearchBar';
 import ThemeToggle from './ThemeToggle';
 import MobileMenu from './MobileMenu';
 import { QRCodeSVG } from 'qrcode.react';
-import { Search, QrCode, Menu, X } from 'lucide-react';
+import { Search, QrCode, Menu, X, ChevronDown } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { useMobileMenu } from '@/contexts/MobileMenuContext';
 
@@ -32,12 +32,10 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
   const pathname = usePathname();
   const [currentUrl, setCurrentUrl] = useState('');
   const [isMounted, setIsMounted] = useState(false);
-  const [subNavItems, setSubNavItems] = useState<Array<{ href: string; title: string }>>([]);
-  const [showSubNav, setShowSubNav] = useState(true);
   const [mobileReaderActive, setMobileReaderActive] = useState(false);
-  const lastScrollYRef = useRef(0);
-  const upScrollCountRef = useRef(0);
-  const { isOpen, toggleMenu, closeMenu, isMobile } = useMobileMenu();
+  const [mobileSectionOpen, setMobileSectionOpen] = useState(false);
+  const mobileSectionRef = useRef<HTMLDivElement>(null);
+  const { isOpen, toggleMenu, closeMenu } = useMobileMenu();
 
   // Set mounted state for portal rendering
   useEffect(() => {
@@ -54,90 +52,23 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
     }
   }, [pathname]);
 
-  // Build subsection nav (auto-generated from loaded content context)
+  // Close mobile section dropdown on outside click
   useEffect(() => {
-    if (!currentSection || !isMounted || !posts?.length) {
-      setSubNavItems([]);
-      return;
-    }
-
-    try {
-      const normalized = posts
-        .map((p: any) => ({
-          slug: p?.slug as string | undefined,
-          title: (p?.metadata?.title || p?.title || '') as string,
-        }))
-        .filter((p: any) => typeof p.slug === 'string' && p.slug.length > 0) as Array<{ slug: string; title: string }>;
-
-      const inSection = normalized.filter((p) => p.slug.startsWith(`${currentSection}/`));
-      const directDocs = inSection.filter((p) => {
-        const rel = p.slug.slice(currentSection.length + 1);
-        return rel && !rel.includes('/') && rel !== 'index';
-      });
-
-      const folderNames = new Set<string>();
-      inSection.forEach((p) => {
-        const rel = p.slug.slice(currentSection.length + 1);
-        if (!rel || rel === 'index') return;
-        const first = rel.split('/')[0];
-        if (first && first !== 'index') folderNames.add(first);
-      });
-
-      const folderItems = Array.from(folderNames)
-        .filter((name) => !directDocs.find((d) => d.slug === `${currentSection}/${name}`))
-        .map((name) => {
-          const exact = inSection.find((p) => p.slug === `${currentSection}/${name}`);
-          const indexLike = inSection.find((p) => p.slug === `${currentSection}/${name}/index`);
-          return {
-            href: `/${currentSection}/${name}`,
-            title: exact?.title || indexLike?.title || name.replace(/[-_]/g, ' '),
-          };
-        });
-
-      const docItems = directDocs.map((d) => ({
-        href: `/${d.slug}`,
-        title: d.title,
-      }));
-
-      const merged = [...docItems, ...folderItems]
-        .filter((item) => item.href !== `/${currentSection}`)
-        .sort((a, b) => a.title.localeCompare(b.title));
-
-      setSubNavItems(merged);
-    } catch {
-      setSubNavItems([]);
-    }
-  }, [currentSection, isMounted, posts]);
-
-  // Mobile: hide subsection row on downward scroll; show after two upward scroll intents
-  useEffect(() => {
-    if (!isMobile) return;
-
-    const onScroll = () => {
-      const y = window.scrollY;
-      const delta = y - lastScrollYRef.current;
-
-      if (delta > 6) {
-        upScrollCountRef.current = 0;
-        setShowSubNav(false);
-      } else if (delta < -6) {
-        upScrollCountRef.current += 1;
-        if (upScrollCountRef.current >= 2) {
-          setShowSubNav(true);
-        }
+    if (!mobileSectionOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (mobileSectionRef.current && !mobileSectionRef.current.contains(e.target as Node)) {
+        setMobileSectionOpen(false);
       }
-
-      lastScrollYRef.current = y;
     };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [isMobile]);
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [mobileSectionOpen]);
 
   // Close modals when route changes and notify parent
-  React.useEffect(() => {
+  useEffect(() => {
     setShowQRCode(false);
     setShowSearch(false);
+    setMobileSectionOpen(false);
     onMenuToggle?.(false);
   }, [pathname, onMenuToggle]);
 
@@ -145,12 +76,6 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
   useEffect(() => {
     onMenuToggle?.(isOpen);
   }, [isOpen, onMenuToggle]);
-
-  // Reset subsection row visibility on navigation
-  useEffect(() => {
-    setShowSubNav(true);
-    upScrollCountRef.current = 0;
-  }, [pathname]);
 
   // Reader mode signal from mobile reader nav
   useEffect(() => {
@@ -163,15 +88,15 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
     return () => window.removeEventListener('mobile-reader-active', activeHandler as EventListener);
   }, []);
 
-  // Add keyboard event handler for ESC key
-  React.useEffect(() => {
+  // Close all popups on ESC
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setShowQRCode(false);
         setShowSearch(false);
+        setMobileSectionOpen(false);
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
@@ -295,11 +220,11 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
 
   return (
     <>
-      <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 m-0 p-0">
+      <header className="bg-white dark:bg-[#0a0f1a] border-b border-gray-200 dark:border-gray-800 m-0 p-0">
         <div className={`w-full px-4 sm:px-6 lg:px-8 py-0 ${mobileReaderActive ? 'hidden md:block' : 'block'}`}>
           <div className="flex justify-between items-center h-16">
-            {/* Logo/Home link */}
-            <div className="flex items-center h-full">
+            {/* Logo + Mobile section selector */}
+            <div className="flex items-center h-full gap-2">
               <Link href="/" className="site-title flex items-center h-full">
                 {/* Mobile: Show logo only */}
                 <div className="md:hidden flex items-center">
@@ -317,6 +242,47 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
                   Epiphysics
                 </span>
               </Link>
+
+              {/* Mobile section selector */}
+              {currentSection && (
+                <div ref={mobileSectionRef} className="relative md:hidden">
+                  <button
+                    type="button"
+                    onClick={() => setMobileSectionOpen((v) => !v)}
+                    className="flex items-center gap-1 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    <span className="truncate max-w-[120px]">
+                      {sections.find((s) => s.id === currentSection)?.title ||
+                        currentSection.charAt(0).toUpperCase() + currentSection.slice(1)}
+                    </span>
+                    <ChevronDown
+                      size={14}
+                      className={`shrink-0 text-gray-400 transition-transform ${mobileSectionOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+
+                  {mobileSectionOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 py-1 overflow-hidden">
+                      {sections
+                        .filter((s) => !s.id.endsWith('.md'))
+                        .map((s) => (
+                          <Link
+                            key={s.id}
+                            href={`/${s.id}`}
+                            onClick={() => setMobileSectionOpen(false)}
+                            className={`block px-4 py-2.5 text-sm transition-colors ${
+                              s.id === currentSection
+                                ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 font-medium'
+                                : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800'
+                            }`}
+                          >
+                            {s.title}
+                          </Link>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Desktop menu */}
@@ -389,78 +355,6 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
             </div>
           </div>
         </div>
-
-        {/* Mobile quick section switcher (auto-generated from configured sections) */}
-        {!mobileReaderActive && (
-          <div className="md:hidden border-t border-gray-200 dark:border-gray-800 px-2 overflow-x-auto transition-all duration-200 max-h-20 opacity-100 py-2">
-          <nav className="flex items-center gap-2 min-w-max" aria-label="Quick section navigation">
-            <Link
-              href="/"
-              className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                pathname === '/'
-                  ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300'
-                  : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
-              }`}
-            >
-              Home
-            </Link>
-            {sections.map((section) => {
-              const isActive = section.id === currentSection;
-              return (
-                <Link
-                  key={`quick-${section.id}`}
-                  href={`/${section.id}`}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                    isActive
-                      ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300'
-                      : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
-                  }`}
-                >
-                  {section.title}
-                </Link>
-              );
-            })}
-          </nav>
-          </div>
-        )}
-
-        {/* Mobile subsection switcher (auto-generated from current section content) */}
-        {!mobileReaderActive && currentSection && subNavItems.length > 0 && (
-          <div
-            className={`md:hidden border-t border-gray-200 dark:border-gray-800 px-2 py-2 overflow-x-auto transition-all duration-200 ${
-              showSubNav ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0 py-0 border-t-0'
-            }`}
-          >
-            <nav className="flex items-center gap-2 min-w-max" aria-label="Subsection navigation">
-              <Link
-                href={`/${currentSection}`}
-                className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                  pathname === `/${currentSection}`
-                    ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300'
-                    : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
-                }`}
-              >
-                Overview
-              </Link>
-              {subNavItems.map((item) => {
-                const isActive = pathname === item.href || pathname?.startsWith(`${item.href}/`);
-                return (
-                  <Link
-                    key={`sub-${item.href}`}
-                    href={item.href}
-                    className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                      isActive
-                        ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300'
-                        : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
-                    }`}
-                  >
-                    {item.title}
-                  </Link>
-                );
-              })}
-            </nav>
-          </div>
-        )}
       </header>
 
       {/* Render modals via portal to avoid DOM nesting issues */}
