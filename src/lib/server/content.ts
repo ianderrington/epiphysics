@@ -46,6 +46,7 @@ export interface HomePageContent {
       title: string;
       description: string;
       icon: string;
+      url?: string;
     }>;
   };
   cta: {
