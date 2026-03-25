@@ -410,14 +410,16 @@ function buildPreamble(meta) {
 
 \\begin{abstract}
 ${(meta.description || '').replace(/\s+/g, ' ').trim()
-  // Wrap bare n_t, n_s, ρ_ac, CI_min patterns in math mode
   .replace(/\bn_t\b/g, '$n_t$')
   .replace(/\bn_s\b/g, '$n_s$')
-  .replace(/ρ_ac/g, '$\\\\rho_{\\\\mathrm{ac}}$')
-  .replace(/CI_min/g, '$\\\\mathrm{CI}_{\\\\min}$')
+  .replace(/ρ_ac/g, '$\\rho_{\\mathrm{ac}}$')
+  .replace(/CI_min/g, '$\\mathrm{CI}_{\\min}$')
   .replace(/e\^{iS\/ℏ}/g, '$e^{iS/\\hbar}$')
   .replace(/ℏ/g, '$\\hbar$')
-  .replace(/U\(1\)/g, '$\\\\mathrm{U}(1)$')
+  .replace(/U\(1\)/g, '$\\mathrm{U}(1)$')
+  .replace(/\\\\mathrm/g, '\\mathrm')
+  .replace(/\\\\rho/g, '\\rho')
+  .replace(/\\\\hbar/g, '\\hbar')
 }
 \\end{abstract}
 
@@ -489,6 +491,18 @@ function exportToArxiv(inputPath, outputPath) {
   latexBody = latexBody.replace(/\\mathcal\{C\}\^$/mg, '\\mathcal{C}^{*}');
   // Fix e_ followed by ) ] , . space → was e_* with * stripped
   latexBody = latexBody.replace(/\be_([)\].,\s$])/g, 'e_{*}$1');
+
+  // Remove duplicate Abstract subsection (pandoc converts "## Abstract" to \subsection{Abstract})
+  latexBody = latexBody.replace(/\\(?:sub)*section\*?\{Abstract\}\\label\{[^}]*\}\n\n/g, '');
+  latexBody = latexBody.replace(/\\(?:sub)*section\*?\{Abstract\}\n\n/g, '');
+  // The body text of the abstract section duplicates the \begin{abstract} — remove it
+  // It appears right after \subsection{Abstract} up to the next section
+  // After removing the header, the body text follows; the abstract env handles it, skip body duplicate
+  // Actually pandoc puts the abstract BODY in the section body — we need to remove that too
+  // Strategy: the abstract text appears twice (in \begin{abstract}...\end{abstract} and as body)
+  // Remove the section body by checking if the text in the first \section matches the abstract
+  // Simpler: just remove up to 15 lines after a removed Abstract section header
+  latexBody = latexBody.replace(/\\subsection\{Abstract\}\\label\{abstract\}\n([\s\S]{0,2000}?)(?=\\(?:sub)*section|\Z)/g, '');
 
   // Post-process: remove orphaned series nav footnote blocks
   latexBody = latexBody.replace(/\\emph\{[^}]*\\footnote\{See companion document:[^}]*\}[^}]*\}/g, '');
