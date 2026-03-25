@@ -80,7 +80,7 @@ The rank of $\mathbf{T}$ determines the depth of self-influence available at eac
 - Rank 3: the state determines how the state determines the rules
 - Rank $k$: $k-1$ levels of recursive self-modification
 
-This may connect to **loop order** in [Part 0.5](../theory/01_5_causants.md): the number of levels of self-referential causal structure within an entity. A rank-$k$ transition tensor permits loop structures of depth $k-1$.
+This may connect to **loop order** in [Part 0.5](../theory/01_5_causors.md): the number of levels of self-referential causal structure within an entity. A rank-$k$ transition tensor permits loop structures of depth $k-1$.
 
 ---
 
@@ -462,7 +462,7 @@ These predictions are testable with current mechanistic interpretability tools.
 
 5. **Empirical signature.** What measurable difference does the self-multiplication formulation make? If it is equivalent to the current Epimechanics formalism at the level of predictions, it is a reformulation, not a new theory. It becomes a new theory only if it predicts something the current formalism does not — for instance, constraints on $\rho_{\text{ac}}$ that follow from the self-consistency condition but are not derivable from the current postulates.
 
-6. **Relationship to tensor rank and loop order.** The proposed connection between tensor rank and loop depth ([Part 0.5](../theory/01_5_causants.md)) is suggestive but not formalized.
+6. **Relationship to tensor rank and loop order.** The proposed connection between tensor rank and loop depth ([Part 0.5](../theory/01_5_causors.md)) is suggestive but not formalized.
 
 7. **The $|\lambda| = 1$ condition and actual conservation laws.** The argument that conservation laws are survival conditions in the space of all dynamics is compelling at the structural level. Whether the specific conservation laws of physics (energy, momentum, charge, baryon number) can be derived as the $|\lambda| = 1$ eigenvectors of a particular self-multiplication tensor is a concrete open problem. If achievable, it would connect Epimechanics to fundamental physics in a testable way.
 
