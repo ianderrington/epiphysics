@@ -15,9 +15,9 @@ tags:
   - Navigation
   - Series map
 coverImage:
-  url: ./images/epimechanics_series_map-1-1-1.png
+  url: ./images/epimechanics_series_map-1-1-1-1.png
   alt: >-
-    Epimechanics series map — all six parts and theory notes as nodes in a dependency graph, arrows showing prerequisite relationships. Blueprint aesthetic, gold nodes on dark background.
+    A radiant constellation of interconnected stars against deep space — six bright nodes arranged in a flowing arc, connected by golden lines of varying thickness suggesting conceptual hierarchy, the brightest node at center emanates outward, no text or labels, vast dark cosmos
 ---
 
 > **This is the map.** It shows what exists, what's proved, what's open, and how everything connects. Read this before diving into individual documents.

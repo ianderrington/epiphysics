@@ -21,9 +21,9 @@ tags:
   - Coupling tensor
   - Examples
 coverImage:
-  url: ./images/coupling_chains-1-1-1.png
+  url: ./images/coupling_chains-1-1-1-2.png
   alt: >-
-    Epimechanics coupling chain examples — sequences of causal entities linked by coupling tensors, showing how force propagates through multi-entity systems. Abstract blueprint, teal and amber.
+    A chain of glowing orbs suspended in deep space, each connected to the next by arcing beams of light, force rippling along the chain like a wave — teal and amber colors, motion blur on the central orb suggesting it transmits energy to its neighbors, dark background, no text
 ---
 
 ## What This Document Is

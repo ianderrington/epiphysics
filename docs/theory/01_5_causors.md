@@ -46,9 +46,9 @@ tts:
   provider: openai
   voice: onyx
 coverImage:
-  url: ./images/epimechanics_01_5_causors-1-1-1.png
+  url: ./images/epimechanics_01_5_causors-1-1-1-1.png
   alt: >-
-    Periodic table of causal building blocks — bond and loop operators arranged in a grid with Q1-Q4 descriptors (energy mode, output target, topology, leverage). Dark blueprint aesthetic, gold and teal.
+    Abstract dark composition: a precise geometric lattice of glowing nodes arranged in a 4x4 grid, each node connected by luminous teal lines to its neighbors, some nodes pulsing with warm gold internal light suggesting stored energy, others dim — no text or labels, pure structural beauty, deep space background, blueprint aesthetic
 ---
 
 ## Where We Are

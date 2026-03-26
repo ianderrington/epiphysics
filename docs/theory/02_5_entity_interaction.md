@@ -42,9 +42,9 @@ bullets:
     The same interaction type can be mutualistic, commensal, parasitic, or
     predatory depending on timescale and state
 coverImage:
-  url: ./images/epimechanics_02_5_entity_interaction-1-1-1.png
+  url: ./images/epimechanics_02_5_entity_interaction-1-1-1-1.png
   alt: >-
-    Two self-sustaining causal loops coupled by external chains — trade, dependency, parasitism, predation shown as arrows between looping structures. Dark background, blueprint style, cyan and amber.
+    Two luminous spiral vortices facing each other on a dark background, connected by flowing streams of light — one vortex gold, one cyan — the streams between them suggesting exchange, tension, and dependency, abstract and ethereal, no text or labels
 ---
 
 > [!sidenote]
