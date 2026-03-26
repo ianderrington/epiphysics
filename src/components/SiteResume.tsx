@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
 const PATH_COOKIE = 'ep_last_path';
@@ -19,17 +19,28 @@ function getCookie(name: string): string | null {
 export default function SiteResume() {
   const pathname = usePathname();
   const router = useRouter();
+  // Track whether user arrived at '/' via internal client-side navigation (intentional)
+  // vs. fresh page load (auto-resume should apply)
+  const prevPathname = useRef<string | null>(null);
 
   useEffect(() => {
     if (!pathname) return;
 
-    // Auto-return to last page when landing on home
+    // Auto-return to last page only on a fresh load (not when user clicks Home intentionally)
     if (pathname === '/') {
-      const lastPath = getCookie(PATH_COOKIE);
-      if (lastPath && lastPath !== '/' && !lastPath.startsWith('/api')) {
-        router.replace(lastPath);
-        return;
+      const cameFromInternal = prevPathname.current !== null;
+      if (!cameFromInternal) {
+        const lastPath = getCookie(PATH_COOKIE);
+        if (lastPath && lastPath !== '/' && !lastPath.startsWith('/api')) {
+          prevPathname.current = '/';
+          router.replace(lastPath);
+          return;
+        }
       }
+      // Intentional home nav — clear the last path so next fresh load starts at home
+      prevPathname.current = '/';
+    } else {
+      prevPathname.current = pathname;
     }
 
     setCookie(PATH_COOKIE, pathname);
