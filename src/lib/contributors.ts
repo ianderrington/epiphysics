@@ -19,10 +19,15 @@ let cache: Map<string, Contributor> | null = null;
 
 async function loadContributorsMap(): Promise<Map<string, Contributor>> {
   if (cache) return cache;
-  const filePath = path.join(process.cwd(), 'docs', 'contributors.yaml');
-  const raw = await fs.readFile(filePath, 'utf8');
-  const parsed = (yaml.load(raw) as ContributorsFile) || { contributors: [] };
-  cache = new Map((parsed.contributors || []).map(c => [c.id, c]));
+  try {
+    const filePath = path.join(process.cwd(), 'docs', 'contributors.yaml');
+    const raw = await fs.readFile(filePath, 'utf8');
+    const parsed = (yaml.load(raw) as ContributorsFile) || { contributors: [] };
+    cache = new Map((parsed.contributors || []).map(c => [c.id, c]));
+  } catch {
+    // docs/ is excluded from Vercel serverless bundles — fall back to empty map
+    cache = new Map();
+  }
   return cache;
 }
 

@@ -1,16 +1,25 @@
 nav:
   - index
-  - glossary
   - 00_prelude
   - 01_generalized_mechanics
+  - 01_5_causors
   - 01b_uncertainty_coordinates_relativity
   - 01c_thermodynamic_emergence_of_life
-  - 01_5_causors
   - 02_meta_entities
+  - 02_5_entity_interaction
   - 03_intelligence_consciousness_agency
   - 04_time_and_soul
   - 05_ontology_and_open_questions
+  - glossary
+  - series_map
   - effective_mass
   - persistence_reversal
   - cross_level_tracing
   - belief_field
+  - coupling_chains
+  - causeplex_spacetime
+  - causeplex_quantum
+  - causeplex_loop_phase
+  - causeplex_loop_phase_step3_lemma
+  - causeplex_loop_phase_proof_attempt
+  - causeplex_dimensionality
