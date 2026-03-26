@@ -135,16 +135,17 @@ function preprocessMarkdown(content, outputBase) {
   // 1. Remove YAML frontmatter (already parsed)
   text = text.replace(/^---\n[\s\S]*?\n---\n/, '');
 
-  // 1b. Truncate after References section — remove navigation footers
-  // Find the last "## References" and keep everything up to end of refs list, then stop
-  const refsMatch = text.match(/\n## References\n/);
-  if (refsMatch) {
-    const refsStart = text.lastIndexOf('\n## References\n');
-    const afterRefs = text.slice(refsStart);
-    // Keep the refs section but stop at the first blank line after the last reference bullet
-    const refsSection = afterRefs.replace(/\n---+[\s\S]*$/, '').replace(/\n\*\s*\[.*?\][\s\S]*$/, '');
-    text = text.slice(0, refsStart) + refsSection;
-  }
+  // 1b. Remove the entire markdown ## References section
+  // BibTeX handles references; the markdown list is redundant and creates duplicate refs section
+  text = text.replace(/\n## References\n[\s\S]*$/, '\n');
+
+  // 1c. Strip leading section numbers from headings (## 1. Intro → ## Intro)
+  // LaTeX will auto-number them; embedded numbers cause "0.1  1. Introduction"
+  text = text.replace(/^(#{1,4})\s+\d+[\d.]*\s+/gm, '$1 ');
+
+  // 1d. Strip "independently" when referring to prior established work
+  text = text.replace(/,\s*independently\s*(proved|established|verified|derived|shown)\b/gi, ', $1');
+  text = text.replace(/\bindependently\s+(proved|established|verified|derived|shown)\b/gi, '$1');
 
   // 2. Remove prerequisite callouts (> **Prerequisites...**)
   text = text.replace(/^> \*\*(Prerequisites|Layer architecture note)\.\*\*[\s\S]*?\n\n/gm, '');
@@ -466,6 +467,7 @@ function exportToArxiv(inputPath, outputPath) {
     '-f', 'markdown+tex_math_dollars+smart',
     '-t', 'latex',
     '--no-highlight',
+    '--shift-heading-level-by=-1',  // ## → \section, ### → \subsection, #### → \subsubsection
   ], { encoding: 'utf8' });
 
   fs.unlinkSync(tmpMd);
@@ -492,17 +494,9 @@ function exportToArxiv(inputPath, outputPath) {
   // Fix e_ followed by ) ] , . space → was e_* with * stripped
   latexBody = latexBody.replace(/\be_([)\].,\s$])/g, 'e_{*}$1');
 
-  // Remove duplicate Abstract subsection (pandoc converts "## Abstract" to \subsection{Abstract})
-  latexBody = latexBody.replace(/\\(?:sub)*section\*?\{Abstract\}\\label\{[^}]*\}\n\n/g, '');
-  latexBody = latexBody.replace(/\\(?:sub)*section\*?\{Abstract\}\n\n/g, '');
-  // The body text of the abstract section duplicates the \begin{abstract} — remove it
-  // It appears right after \subsection{Abstract} up to the next section
-  // After removing the header, the body text follows; the abstract env handles it, skip body duplicate
-  // Actually pandoc puts the abstract BODY in the section body — we need to remove that too
-  // Strategy: the abstract text appears twice (in \begin{abstract}...\end{abstract} and as body)
-  // Remove the section body by checking if the text in the first \section matches the abstract
-  // Simpler: just remove up to 15 lines after a removed Abstract section header
-  latexBody = latexBody.replace(/\\subsection\{Abstract\}\\label\{abstract\}\n([\s\S]{0,2000}?)(?=\\(?:sub)*section|\Z)/g, '');
+  // Remove Abstract section (pandoc converts ## Abstract → \section{Abstract} with --top-level-division)
+  // Already in \begin{abstract}; remove the duplicate body section
+  latexBody = latexBody.replace(/\\section\*?\{Abstract\}\\label\{[^}]*\}\n[\s\S]*?(?=\\section\{[^A]|\Z)/g, '');
 
   // Post-process: remove orphaned series nav footnote blocks
   latexBody = latexBody.replace(/\\emph\{[^}]*\\footnote\{See companion document:[^}]*\}[^}]*\}/g, '');

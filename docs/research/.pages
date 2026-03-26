@@ -6,5 +6,3 @@ nav:
   - tp_bridge_explainer_plain_english
   - tp_bridge_architecture_trace_update
   - tensor_programs
-  - sources
-  - RESEARCH_INGEST_PIPELINE
