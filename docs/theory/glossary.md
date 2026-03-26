@@ -60,9 +60,13 @@ Net structural degradation pressure, typically $\dot{S}_{\text{int}} - \dot{R}_{
 
 ---
 
+## Causal Event (*state couplet*, $e$)
+
+The primitive of Epimechanics. An ordered pair $e = (\mathcal{S}_{\text{in}}, \mathcal{S}_{\text{out}})$ where $\mathcal{S}_{\text{out}}$ is determined by $\mathcal{S}_{\text{in}}$. No physical content is assumed — no energy, no units, no conservation laws. Also called a *state couplet* to emphasize the pairing of input and output states. The cause-plex $\mathcal{C} = (E, \prec)$ is a partial order on a set $E$ of causal events. See [Cause-Plex and Spacetime](./causeplex_spacetime.md) §1.
+
 ## Cause-Plex ($\mathcal{C}$)
 
-A locally finite strict partial order $(E, \prec)$ of causal events — the fundamental structure from which spacetime, energy, and entities emerge. Each element $e \in E$ is a causal event (state transition); $\prec$ encodes causal precedence. Defined formally in [Cause-Plex and Spacetime](./causeplex_spacetime.md) §1.
+A locally finite strict partial order $(E, \prec)$ of causal events — the fundamental structure from which spacetime, energy, and entities emerge. Each element $e \in E$ is a causal event (state couplet); $\prec$ encodes causal precedence. Defined formally in [Cause-Plex and Spacetime](./causeplex_spacetime.md) §1.
 
 ## Bond Operator ($b$)
 
@@ -71,6 +75,10 @@ A Layer A structural element: a recurring pattern of causal events connecting tw
 ## Loop Operator ($\mathcal{L}$)
 
 A Layer A structural element: a closed recurring pattern of causal events — a causal loop that returns to its initial state. Auto-causal density $\rho_{\mathrm{ac}} > 0$ requires at least one stable loop operator. See [Part 1.5: Causors](./01_5_causors.md).
+
+## Causal Event (*state couplet*, $e$)
+
+The primitive of Epimechanics. An ordered pair $e = (\mathcal{S}_{\text{in}}, \mathcal{S}_{\text{out}})$ where $\mathcal{S}_{\text{out}}$ is determined by $\mathcal{S}_{\text{in}}$. No physical content is assumed — no energy, no units, no conservation laws. Also called a *state couplet* to emphasize the pairing of input and output states. The cause-plex $\mathcal{C} = (E, \prec)$ is a partial order on a set $E$ of causal events. See [Cause-Plex and Spacetime](./causeplex_spacetime.md) §1.
 
 ## Cause-Plex Index (CI)
 

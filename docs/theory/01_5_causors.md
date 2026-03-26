@@ -74,7 +74,7 @@ The same must be true here for the framework to be genuinely foundational. Start
 
 ## The True Primitive: The Causal Event
 
-The primitive is the **causal event** $e$:
+The primitive is the **causal event** (also: *state couplet*) $e$:
 
 $$e: \mathcal{S}_i \to \mathcal{S}_j$$
 

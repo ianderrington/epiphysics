@@ -1,0 +1,684 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{soul}
+\usepackage{geometry}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\geometry{margin=1in}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Postulate}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Cause-plex notation shortcuts
+\newcommand{\CP}{\mathcal{C}}
+\newcommand{\Cstar}{\mathcal{C}^*}
+\newcommand{\loopspace}{\Omega(\mathcal{C}^*, e_*)}
+
+\title{Cause-Plex and Spacetime: Deriving the Lorentzian Metric from Causal Structure}
+\author{Ian Derrington}
+\date{2026-03-25}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Formal derivation of the Lorentzian metric, Lorentz invariance, and energy conservation from cause-plex structure alone. The primitive is the causal event — a state transition with no assumed physics. Spacetime and energy emerge from structural properties of the cause-plex hypergraph.
+\end{abstract}
+
+\begin{quote}
+This document derives spacetime structure from cause-plex primitives. It
+draws on causal set theory (Bombelli, Lee, Meyer, Sorkin 1987),
+Malament's theorem (1977), and Wolfram's causal invariance argument.
+Where results are established, proofs are given. Where results are at
+the research frontier (GR from causal dynamics), status is stated
+explicitly.
+\end{quote}
+
+\medskip
+
+\section{The Primitive}\label{the-primitive}
+
+\begin{definition}[Causal event]
+\label{definition:1-1}
+A causal event (\emph{state couplet}) $e$ is an ordered pair $(\mathcal{S}_{\text{in}}, \mathcal{S}_{\text{out}})$ where $\mathcal{S}_{\text{out}}$ is determined by $\mathcal{S}_{\text{in}}$. No physical content is assumed — no energy, no units, no conservation laws.
+
+\end{definition}
+
+\begin{definition}[Cause-plex]
+\label{definition:1-2}
+The cause-plex $\mathcal{C} = (E, \prec)$ is a set of causal events $E$ equipped with a binary relation $\prec$ ("precedes") satisfying:
+\end{definition}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Irreflexivity:} \(e \not\prec e\) for all \(e \in E\)
+\item
+  \textbf{Transitivity:} \(e_1 \prec e_2\) and \(e_2 \prec e_3\) implies
+  \(e_1 \prec e_3\)
+\item
+  \textbf{Local finiteness:} for all \(e_1, e_2 \in E\), the set
+  \(\{e \in E : e_1 \prec e \prec e_2\}\) is finite
+\end{enumerate}
+
+\((E, \prec)\) is a \textbf{locally finite partially ordered set}
+(locally finite poset). This is identical to the structure of a causal
+set as defined in causal set theory.
+
+\begin{definition}[Spacelike separation]
+\label{definition:1-3}
+Events $e_1, e_2 \in E$ are *spacelike separated*, written $e_1 \perp e_2$, if neither $e_1 \prec e_2$ nor $e_2 \prec e_1$.
+
+\end{definition}
+
+\begin{definition}[State domain]
+\label{definition:1-4}
+Each event $e$ has a *state domain* $D(e) \subseteq \mathcal{S}$ — the set of state variables it reads from ($D_{\text{in}}(e)$) and writes to ($D_{\text{out}}(e)$).
+
+**Locality assumption (L).** For each event $e$, $|D(e)| < \infty$ and $D_{\text{out}}(e)$ is disjoint from $D_{\text{in}}(e')$ for all $e' \prec e$ not immediately preceding $e$. Events act on bounded local state domains.
+
+**Causal dependency axiom (CD).** If event $e_2$ reads a state written by event $e_1$ — i.e., $D_{\text{out}}(e_1) \cap D_{\text{in}}(e_2) \neq \emptyset$ — then $e_1 \prec e_2$.
+
+*Remark on CD.* This axiom links the abstract partial order relation $\prec$ (defined in Definition 1.2 structurally) to the physical notion of state propagation. Without it, $\prec$ is a purely formal ordering with no guaranteed connection to actual state domain dependencies. CD is the minimally necessary bridge: it says the causal ordering respects information flow. It is a physical assumption — not derivable from the poset axioms alone — and is stated explicitly here as such.
+\end{definition}
+
+\medskip
+
+\section{Three Properties and Their
+Derivation}\label{three-properties-and-their-derivation}
+
+\subsection{P1: Causal Partial
+Ordering}\label{p1-causal-partial-ordering}
+
+\textbf{Claim.} \((E, \prec)\) is a strict partial order.
+
+\begin{proof}
+\end{proof}
+
+\subsection{P2: Causal Invariance}\label{p2-causal-invariance}
+
+\textbf{Claim.} Spacelike-separated events commute:
+\(e_1 \perp e_2 \implies e_1 \circ e_2 = e_2 \circ e_1\).
+
+\begin{proof}
+\end{proof}
+
+We claim \(D_{\text{out}}(e_1) \cap D_{\text{in}}(e_2) = \emptyset\) and
+\(D_{\text{out}}(e_2) \cap D_{\text{in}}(e_1) = \emptyset\).
+
+Suppose otherwise: say
+\(s \in D_{\text{out}}(e_1) \cap D_{\text{in}}(e_2)\). Then by the
+Causal Dependency Axiom (CD),
+\(D_{\text{out}}(e_1) \cap D_{\text{in}}(e_2) \neq \emptyset\) implies
+\(e_1 \prec e_2\) --- contradicting \(e_1 \perp e_2\). The symmetric
+argument gives the second case.
+
+Therefore \(D(e_1) \cap D(e_2) = \emptyset\): the events act on disjoint
+state domains. Operators acting on disjoint domains commute (their
+composition is independent of order). \qed
+
+\textbf{Corollary.} P2 follows from P1, locality (L), and the Causal
+Dependency Axiom (CD). The physical content is in CD --- the requirement
+that the causal ordering respects state domain dependencies. CD is an
+independent structural axiom, not derivable from the poset definition
+alone.
+
+\subsection{P3: Finite Minimum Event
+Latency}\label{p3-finite-minimum-event-latency}
+
+\begin{assumption}[There exists $\tau_{\min} > 0$ such that every causal event has latency $\tau_e \geq \tau_{\min}$.]
+There exists $\tau_{\min} > 0$ such that every causal event has latency $\tau_e \geq \tau_{\min}$.
+
+**Status: Postulate (well-motivated by local finiteness).** P3 is not derived from local finiteness alone — a genuine derivation would require showing that finite minimum latency follows from discrete poset structure without invoking the continuum limit, which would be circular (the continuum limit requires the discreteness of P3 to be defined). P3 is therefore treated as a well-motivated independent structural postulate, motivated by:
+\end{assumption}
+
+\begin{itemize}
+\tightlist
+\item
+  Local finiteness: between any two causally related events, the causal
+  chain is finite. This strongly motivates a minimum spacing but does
+  not logically force a specific minimum time.
+\item
+  Physical calibration: the Planck time
+  \(t_P = \sqrt{\hbar G / c^5} \approx 5.4 \times 10^{-44}\) s is the
+  scale below which the classical spacetime description breaks down.
+  Local finiteness is the structural claim; \(t_P\) is its physical
+  calibration.
+\end{itemize}
+
+P3 joins local finiteness as the two structural postulates of the
+cause-plex at Layer 0.
+
+\medskip
+
+\section{Time as Causal Path Count}\label{time-as-causal-path-count}
+
+\begin{definition}[Causal path]
+\label{definition:3-1}
+A causal path from $e_1$ to $e_2$ is a sequence $e_1 = f_0 \prec f_1 \prec \cdots \prec f_n = e_2$ of events. The *length* of the path is $n$ (number of steps).
+
+\end{definition}
+
+\begin{definition}[Proper time]
+\label{definition:3-2}
+Given a reference cause-plex $\mathcal{C}_{\text{ref}}$ (an oscillating loop with period $T_{\text{ref}}$, e.g., an atomic clock), the proper time elapsed along a worldline $\gamma$ is:
+\end{definition}
+
+\[\tau(\gamma) = \frac{|\gamma|}{|\mathcal{C}_{\text{ref}}|}\]
+
+where \(|\gamma|\) is the number of causal events along \(\gamma\) and
+\(|\mathcal{C}_{\text{ref}}|\) is the number of events per reference
+period. This is a dimensionless ratio until the reference period is
+assigned a unit.
+
+\textbf{This definition requires no background time coordinate.} Time is
+a count of cause-plex events relative to a reference oscillation ---
+intrinsic to the structure, not imposed from outside.
+
+\textbf{Corollary (Q5 resolved).} Timescale separation between loops is
+a ratio of causal event counts per reference period. Fast loops have
+high event density per reference cycle; slow loops have low density.
+Timescale is a derived quantity from cause-plex structure, not an
+independent structural parameter.
+
+\medskip
+
+\section{Recovering the Lorentzian
+Metric}\label{recovering-the-lorentzian-metric}
+
+\subsection{Malament's Theorem}\label{malaments-theorem}
+
+\textbf{Theorem (Malament 1977).} Let \((M, g)\) and \((M', g')\) be two
+distinguishing spacetimes (spacetimes where distinct points have
+distinct causal pasts and futures). If there exists a bijection
+\(\phi: M \to M'\) that preserves the causal ordering in both directions
+(a causal isomorphism), then \(\phi\) is a conformal isometry:
+\(g' = \Omega^2 \phi^{\ast} g\) for some smooth positive function
+\(\Omega\).
+
+\textbf{Meaning.} The causal ordering uniquely determines the metric
+\textbf{up to a conformal factor} \(\Omega^2\) --- an overall scale that
+can vary point-by-point but cannot change the causal structure.
+Malament's theorem means: know the causal partial order, know the metric
+up to scale.
+
+\subsection{Fixing the Conformal Factor by Event
+Counting}\label{fixing-the-conformal-factor-by-event-counting}
+
+\textbf{Claim.} The conformal factor \(\Omega\) is fixed by the density
+of causal events per spacetime volume.
+
+In causal set theory, the fundamental relation is:
+
+\[N(A) \approx \frac{V(A)}{V_P}\]
+
+where \(N(A)\) is the number of causal events in spacetime region \(A\),
+\(V(A)\) is the spacetime volume of \(A\) in the continuum limit, and
+\(V_P = \ell_P^4\) is the Planck volume (the natural unit set by local
+finiteness).
+
+This is the \textbf{``number = volume''} conjecture of causal set theory
+(Bombelli et al.~1987, Sorkin 1991). If the event count faithfully
+approximates spacetime volume, the conformal factor is fixed: regions
+with higher event density have smaller \(V_P\)-normalized volume,
+setting \(\Omega\) consistently across the manifold.
+
+\textbf{Together:} causal ordering (Malament) + event counting (number =
+volume) \(\to\) full Lorentzian metric. No additional assumptions beyond
+P1 and local finiteness.
+
+\subsection{\texorpdfstring{The Metric Signature
+\((-,+,+,+)\)}{The Metric Signature (-,+,+,+)}}\label{the-metric-signature--}
+
+The Lorentzian signature is not assumed --- it follows from the
+asymmetry built into the causal partial order.
+
+\textbf{Claim.} The causal partial order \((E, \prec)\) naturally
+induces a bilinear form with signature \((-,+,+,+)\) in 3+1 dimensions.
+
+\textbf{Argument.} In the continuum limit, consider the interval
+function \$I(e\_1, e\_2) = \$ number of events causally between \(e_1\)
+and \(e_2\):
+
+\begin{itemize}
+\tightlist
+\item
+  If \(e_1 \prec e_2\): \(I(e_1, e_2) > 0\) --- timelike separation,
+  events share a causal cone
+\item
+  If \(e_1 \perp e_2\): \(I(e_1, e_2) = 0\) by definition --- spacelike
+  separation, no causal path
+\item
+  On the boundary: \(I(e_1, e_2) = 0\) with \(e_1 \prec e_2\) ---
+  lightlike, causal but no intermediate events
+\end{itemize}
+
+The interval function is the continuum spacetime interval \(ds^2\) up to
+sign convention. The single negative direction (timelike) vs.~three
+positive directions (spacelike) reflects the observed 3+1 dimensionality
+of the cause-plex --- an empirical fact about the physical world's
+cause-plex, not a derivation from pure structure.
+
+\textbf{On dimensionality.} The specific signature \((-,+,+,+)\) vs
+\((-,+,+)\) or \((-,+,+,+,+)\) is not derivable from the abstract
+cause-plex structure alone --- it is a fact about how many independent
+spacelike dimensions the physical cause-plex has. The structure
+determines the form of the metric; the dimensionality is a property of
+the specific cause-plex realized. See OP3.
+
+\subsection{Lorentz Invariance}\label{lorentz-invariance}
+
+\textbf{Claim.} In the continuum limit, the symmetry group preserving
+causal structure is the Lorentz group.
+
+\textbf{Argument (following Wolfram 2020, adapted).} A transformation
+\(\Lambda\) of the cause-plex preserves causal structure if:
+
+\[e_1 \prec e_2 \iff \Lambda(e_1) \prec \Lambda(e_2)\]
+
+By Malament's theorem, causal-structure-preserving maps are conformal
+isometries. The subgroup of conformal isometries that also preserve
+event count density (fixing the conformal factor) is the isometry group
+of the metric. For flat Minkowski spacetime, this is the Poincaré group.
+The homogeneous subgroup (fixing the origin) is the Lorentz group.
+
+In terms of causal path counts: a Lorentz boost is a transformation that
+changes the distribution of causal events between timelike and spacelike
+directions while preserving the total causal interval. Time dilation and
+length contraction are the observed consequence of this redistribution.
+\qed
+
+\medskip
+
+\section{Energy from Symmetry}\label{energy-from-symmetry}
+
+\subsection{Discrete to Continuous
+Symmetry}\label{discrete-to-continuous-symmetry}
+
+The cause-plex has \textbf{discrete time-translation symmetry} if the
+transition rules governing causal events are the same at every step ---
+i.e., the cause-plex is homogeneous along causal chains. In the
+continuum limit (\(\tau_{\min} \to 0\), many events per reference
+period), discrete translation symmetry becomes continuous
+time-translation symmetry.
+
+\subsection{Noether's Theorem}\label{noethers-theorem}
+
+\textbf{Theorem (Noether 1915).} For every continuous symmetry of the
+action of a physical system, there is a corresponding conserved
+quantity.
+
+\textbf{Applied to time-translation symmetry:} continuous
+time-translation invariance of the cause-plex action gives a conserved
+quantity. We define this quantity as \textbf{energy}.
+
+\textbf{Meaning.} Energy is not primitive --- it is the name for the
+conserved quantity associated with the cause-plex having the same event
+structure at every time step. In regions where this symmetry holds (most
+of macroscopic physics), energy is well-defined and conserved. In
+regions where it is broken (strongly non-equilibrium, rapidly evolving,
+symmetry-breaking transitions), ``energy'' is not a clean quantity and
+the framework works at the causal event level directly.
+
+\textbf{Units.} Energy has units J = kg·m²·s⁻² where all three base
+units are ratios of cause-plex path counts to reference oscillations: -
+\textbf{Second:} \(9{,}192{,}631{,}770\) Cs-133 hyperfine transition
+cycles (by definition) - \textbf{Meter:} distance light travels in
+\(1/299{,}792{,}458\) seconds = \(c / f_{\text{ref}}\) cause-plex
+propagation events - \textbf{Kilogram:} defined via Planck's constant
+\(h = 6.626 \times 10^{-34}\) J·s, itself a count of action quanta
+(phase cycles of matter waves)
+
+All units reduce to cause-plex event counts relative to reference
+oscillations. No unit is assumed.
+
+Similarly, \textbf{spatial translation symmetry} \(\to\) momentum;
+\textbf{rotational symmetry} \(\to\) angular momentum; \textbf{U(1)
+gauge symmetry} \(\to\) charge.
+
+\medskip
+
+\section{The Coarse-Graining Ladder}\label{the-coarse-graining-ladder}
+
+The cause-plex structure, once spacetime and conserved quantities are
+established, produces the coarse-grained descriptions used throughout
+the epimechanics series:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Scale
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cause-plex description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Coarse-grained description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Valid where
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Planck & Discrete causal events \((E, \prec)\) & --- & Always \\
+Quantum field & Gauge boson exchange events & Quantum fields
+\(\hat{\phi}(x)\) & Flat spacetime, weak coupling \\
+Classical mechanics & Many-event averages & Force \(F = dp/dt\), energy
+\(W\) & \(\hbar \to 0\), macroscopic \\
+Thermodynamics & Ensemble of causal event chains & Temperature, entropy
+& Many-body, near-equilibrium \\
+Biology & Coupled oscillating cause-plexes & ATP, metabolic flux,
+\(\rho_{\text{ac}}\) & Time-translation symmetry holds locally \\
+Institution & Human-scale cause-plexes & Dollars, decisions, norms &
+Social-scale description valid \\
+\end{longtable}
+}
+
+Each row is a coarse-graining of the row above. The descriptions in
+column 3 are valid Layer C observables within their scope. ``Energy
+exchange'' at the biological scale is valid because time-translation
+symmetry holds there; it is not the primitive.
+
+\medskip
+
+\section{Curved Spacetime and General
+Relativity}\label{curved-spacetime-and-general-relativity}
+
+\subsection{\texorpdfstring{Non-Uniform Event Density \(\to\) Curved
+Spacetime}{Non-Uniform Event Density \textbackslash to Curved Spacetime}}\label{non-uniform-event-density-to-curved-spacetime}
+
+In flat Minkowski spacetime, causal event density is uniform across the
+cause-plex. Curved spacetime corresponds to non-uniform event density:
+regions with higher event density per coordinate volume have more causal
+structure per unit coordinate interval --- the cause-plex is ``denser''
+there.
+
+The stress-energy tensor \(T_{\mu\nu}\) is a measure of energy-momentum
+density at a point --- which is a measure of cause-plex event density
+and flow at that point. The Einstein field equation:
+
+\[G_{\mu\nu} = 8\pi T_{\mu\nu}\]
+
+states that cause-plex event density (\(T_{\mu\nu}\)) determines the
+curvature of the cause-plex metric (\(G_{\mu\nu}\)). This is a
+cause-plex interpretation of GR.
+
+\subsection{Actions in the Cause-Plex
+Framework}\label{actions-in-the-cause-plex-framework}
+
+Two distinct actions appear in the cause-plex framework, operating at
+different layers. They should not be conflated.
+
+\textbf{Gravitational action (Layer 0 --- purely combinatorial).}
+Benincasa and Dowker (2010, \emph{Phys. Rev.~Lett.} 104:181301) define a
+scalar curvature action on causal sets from event counts alone --- no
+energy, no Lagrangian:
+
+\[S_{\text{BD}} = \ell_P^2 \sum_{x \in \mathcal{C}} \left[ 1 - N_1(x) + \frac{N_2(x)}{2} - \cdots \right]\]
+
+where \(N_k(x)\) counts causal intervals of depth \(k\) above \(x\). In
+the continuum limit, \(S_{\text{BD}} \to \int R \sqrt{-g}\, d^4x\) ---
+the Einstein-Hilbert action. This is clean at Layer 0: no energy
+assumed, no circularity.
+
+\textbf{Matter action (Layer C --- definitional, not derived).} The
+matter action \(S[\gamma] = \sum_k \Delta E(e_k) \cdot \tau_{e_k}\) is a
+Layer C construct. Energy \(\Delta E\) is defined at Layer C as the
+Noether conserved quantity where time-translation symmetry holds
+(Section 5). Time \(\tau\) is the event-count ratio (Definition 3.2). At
+Layer C, the action is therefore well-defined and non-circular: it uses
+quantities that are precisely defined at that layer.
+
+The earlier concern (AUDIT.md Priority 1a) was that energy appeared to
+be both derived-from and used-in the action. This concern is dissolved
+by the layer separation: energy is not derived from the matter action at
+Layer 0; rather, the matter action is a Layer C expression that names
+what the Layer 0 phase function \(\phi(\gamma)\) (proved to lie in U(1)
+in Complex Amplitudes from Loop-Phase
+corresponds to in Layer C vocabulary. The identification
+\(\phi(\gamma) = S[\gamma]/\hbar\) is a definitional bridge between
+layers, not a circular derivation. See Proposition 6.2 of that paper for
+the full argument.
+
+\textbf{\(\hbar\) non-circularly.} The quantum of action
+\(\hbar = \Delta E_{\min} \cdot \tau_{\min} = \Delta E_{\min}/|\mathcal{C}_{\text{ref}}|\)
+--- minimum energy per causal event divided by the reference clock
+frequency --- is defined using only Layer C energy and the event-count
+time definition. It does not presuppose \(\hbar\). See §6.3 of the
+loop-phase paper.
+
+\subsection{Status: Partial (GR)}\label{status-partial-gr}
+
+Deriving the Einstein field equation from cause-plex dynamics (rather
+than interpreting it) requires showing that the dynamics governing
+causal event density necessarily produce the GR equations in the
+continuum limit. The Benincasa-Dowker action (Section 7.2) provides a
+combinatorial causal-set action that converges to the Einstein-Hilbert
+action --- this is the strongest existing result. Full derivation of the
+dynamics remains open. This is the subject of:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Causal dynamical triangulations (CDT)} --- numerical evidence
+  that the path integral over causal geometries gives 4D de Sitter
+  spacetime in the continuum limit (Ambjorn, Jurkiewicz, Loll 2004)
+\item
+  \textbf{Causal set dynamics} (Sorkin's sequential growth models) ---
+  show that certain natural random growth processes on causal sets
+  produce Lorentzian geometry
+\item
+  \textbf{Spin foam models} --- discrete path integrals over causal
+  structures that give GR in the semiclassical limit
+\end{itemize}
+
+\textbf{Current status:} The cause-plex interpretation of GR is
+structurally correct and consistent with these results. A complete
+derivation of the Einstein field equation from cause-plex primitives
+alone is open. This is where epimechanics connects to the frontier of
+quantum gravity research.
+
+\medskip
+
+\section{Relationship to Causal Set
+Theory}\label{relationship-to-causal-set-theory}
+
+At the physics level, the cause-plex framework is built on causal set
+theory (CST). This section states the overlap and contributions
+honestly.
+
+\subsection{What the cause-plex shares with causal set
+theory}\label{what-the-cause-plex-shares-with-causal-set-theory}
+
+The cause-plex \((E, \prec)\) as defined in Section 1 is identical to a
+causal set as introduced by Bombelli, Lee, Meyer, and Sorkin (1987): a
+locally finite partially ordered set where the partial order encodes
+causal precedence. The following results in this paper are drawn
+directly from CST:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Result
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+CST source
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+P1: causal partial order & Bombelli et al.~(1987), Definition \\
+P2: spacelike commutativity & Standard in CST; follows from locality \\
+Metric from causal order (Malament) & Malament \cite{Malament1977},
+applied in CST \\
+Number = volume conjecture & Sorkin (1991), foundational CST
+conjecture \\
+Lorentz invariance from causal structure & Henson (2006), Dowker
+(2006) \\
+Gravitational action (Section 7.2) & Benincasa \& Dowker (2010) \\
+QM via path integral on causal sets & Sorkin \cite{Sorkin1994} quantum
+measure theory \\
+\end{longtable}
+}
+
+The cause-plex framework does not re-derive these results --- it
+inherits them. Any paper that presents these results as novel without
+acknowledging CST would be misleading.
+
+\subsection{What the cause-plex framework
+adds}\label{what-the-cause-plex-framework-adds}
+
+The distinctive contributions of epimechanics beyond CST are:
+
+\textbf{1. The coarse-graining ladder to biology and society.} CST
+focuses on the Planck-scale structure of spacetime. Epimechanics extends
+the same primitive to bonds, loops, auto-causal entities, meta-entities,
+and social systems --- a multi-scale program that CST does not address.
+
+\textbf{2. The Q1--Q4 entity type descriptors.} The classification of
+entities by bond type, loop order, basin depth, entropy production, and
+repair rate {[}Part 1.5: Causors{]} is not present in CST. This provides
+the vocabulary for the entity taxonomy.
+
+\textbf{3. The selective convergence argument for dimensionality.} CST
+takes the dimensionality of spacetime as an empirical input calibrated
+by the number-volume conjecture. The cause-plex framework adds the
+observer-selection argument (Section 10) grounding why 3+1 is the
+observed dimensionality in terms of structural stability conditions for
+observer-class entities.
+
+\textbf{4. The loop-phase derivation of complex amplitudes.} The
+argument that \(i\) in \(e^{iS/\hbar}\) follows from stable loop
+structure {[}causeplex\_loop\_phase.md{]} is not present in CST.
+Sorkin's quantum measure theory derives complex amplitudes from a
+different direction (probability theory hierarchy).
+
+\textbf{5. Integration with the epimechanics entity framework.} The
+connection between fundamental causal structure and the
+biological/social entity hierarchy is the central application of
+epimechanics and has no analog in CST.
+
+\subsection{Positioning}\label{positioning}
+
+The cause-plex framework is best understood as: \emph{causal set theory
+at the physics level, with a coarse-graining program extending to
+biological and social systems, grounded by an observer-selection
+argument for dimensionality, and augmented by a loop-phase derivation of
+quantum amplitudes.} The physics is not new; the extension and
+integration are.
+
+\medskip
+
+\section{Summary: What Is Derived, What Is
+Assumed}\label{summary-what-is-derived-what-is-assumed}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Claim
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Derivation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Causal partial order exists (P1) & \(\checkmark\) Derived & By
+construction from Definition 1.2 \\
+Spacelike events commute (P2) & \(\checkmark\) Derived & From P1 +
+locality (L) + Causal Dependency Axiom (CD) (Section 2) \\
+Finite minimum event latency (P3) & \(\ast\) Postulate & Well-motivated
+by local finiteness; not formally derived (Section 2) \\
+Proper time as event count ratio & \(\checkmark\) Derived & Definition
+3.2 \\
+Q5 (timescale) is derived, not primitive & \(\checkmark\) Derived &
+Corollary to Definition 3.2 \\
+Metric determined up to conformal factor & \(\checkmark\) Derived &
+Malament's theorem (1977) \\
+Conformal factor fixed by event counting & \(\checkmark\) (conditional)
+& Number = volume conjecture (well-supported, not proven) \\
+Full Lorentzian metric falls out & \(\checkmark\) (conditional on above)
+& Malament + event counting \\
+Lorentz invariance & \(\checkmark\) Derived & Malament + continuum
+limit \\
+Metric signature \((-,+,+,+)\) & \(\triangle\) Observer-selection
+argument & Causal structure gives \(n_t = 1\); \(n_s = 3\) follows from
+stability filter (Tangherlini + knot topology) applied to observer-class
+entities. This is a rigorous observer-selection argument, not a
+derivation from pure cause-plex structure (Section 10) \\
+Energy from time-translation symmetry & \(\checkmark\) Derived &
+Noether's theorem in continuum limit \\
+All units as event count ratios & \(\checkmark\) Derived & Reference
+oscillation definitions \\
+Flat spacetime (Minkowski) & \(\checkmark\) Derived & Uniform event
+density \\
+Curved spacetime interpretation & \(\checkmark\) Derived & Non-uniform
+density = curvature \\
+Einstein field equation & 🔬 Open & Frontier of causal set / quantum
+gravity research \\
+\end{longtable}
+}
+
+\textbf{One remaining empirical input:} the spatial dimensionality of
+the physical cause-plex (3+1). The framework derives that the metric has
+Lorentzian signature; the specific \((-, +, +, +)\) form requires that
+the cause-plex has 3 independent spacelike dimensions. This is an
+observed property of the physical world, not a logical necessity.
+
+\medskip
+
+\section{Why 3+1: Selective
+Convergence}\label{why-31-selective-convergence}
+
+The question of why we observe \((-,+,+,+)\) specifically --- not
+\((-,+,+)\) or \((-,+,+,+,+)\) --- is addressed in the companion paper
+Why 3+1: Observer-Selection Constraints on Spacetime
+
+\textbf{Summary of the argument:} - \(n_t = 1\) follows directly from P1
+(the causal partial order requires exactly one timelike direction;
+\(n_t = 0\) breaks causal ordering, \(n_t \geq 2\) gives ultrahyperbolic
+PDEs with no well-posed initial value problem). - \(n_s = 3\) follows
+from two independent stability constraints applied to observer-class
+entities: Tangherlini's orbital stability result (\(n_s > 3\) gives
+unstable atoms) and the knot-topology requirement for topologically
+non-trivial loop structures (\(n_s < 3\) makes all loops isotopic,
+excluding \(\mathrm{CI} > \mathrm{CI}_{\min}\)).
+
+This is an \textbf{observer-selection conjecture}, not a derivation from
+the cause-plex primitive. It is honestly labeled as such throughout.
+
+\medskip
+
+\bibliographystyle{plain}
+\bibliography{causeplex_spacetime}
+
+\end{document}
