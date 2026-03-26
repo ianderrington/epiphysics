@@ -3327,91 +3327,67 @@ article #hubspot-form {
 }
 
 /* === TTS WIDGET STYLES === */
-/* Supernal TTS Widget - Subtle appearance, reveals on text hover */
+/* Supernal TTS Widget - Compact, clean appearance */
 
-/* The TTS controls inside the widget - visible by default */
-.supernal-tts-widget [class*="tts-"],
-.supernal-tts-widget [class*="supernal-tts"],
-.supernal-tts-widget .tts-controls,
-.supernal-tts-widget .tts-player,
-.supernal-tts-widget > div[style*="position"] {
-  opacity: 0.7;
-  transform: scale(1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Container: enough top padding for the widget to sit in without overlapping text */
+.supernal-tts-widget {
+  position: relative;
+  padding-top: 2rem !important;
 }
 
-/* On hover of the PARENT container (text area) - reveal the widget */
-.supernal-tts-widget:hover [class*="tts-"],
-.supernal-tts-widget:hover [class*="supernal-tts"],
+/* Compact widget: sits in the padding area above text, left-aligned */
+.supernal-tts-widget .supernal-tts-modular-widget {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  transform: scale(0.7);
+  transform-origin: top left;
+}
+
+/* Controls: subtle by default, full on hover/play */
+.supernal-tts-widget .tts-controls,
+.supernal-tts-widget .tts-player {
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
 .supernal-tts-widget:hover .tts-controls,
 .supernal-tts-widget:hover .tts-player,
-.supernal-tts-widget:hover > div[style*="position"] {
+.supernal-tts-widget.playing .tts-controls,
+.supernal-tts-widget.playing .tts-player,
+.supernal-tts-widget.active .tts-controls,
+.supernal-tts-widget.active .tts-player,
+.supernal-tts-widget:focus-within .tts-controls,
+.supernal-tts-widget:focus-within .tts-player {
   opacity: 1;
-  transform: scale(1);
 }
 
-/* When playing - keep visible */
-.supernal-tts-widget [class*="tts-"].playing,
-.supernal-tts-widget [class*="supernal-tts"].playing,
-.supernal-tts-widget [class*="tts-"].active,
-.supernal-tts-widget [class*="supernal-tts"].active,
-.supernal-tts-widget.playing [class*="tts-"],
-.supernal-tts-widget.playing [class*="supernal-tts"],
-.supernal-tts-widget.active [class*="tts-"],
-.supernal-tts-widget.active [class*="supernal-tts"] {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Focus states for accessibility */
-.supernal-tts-widget:focus-within [class*="tts-"],
-.supernal-tts-widget:focus-within [class*="supernal-tts"] {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Ensure buttons are always clickable even when subtle */
+/* Buttons always clickable */
 .supernal-tts-widget button,
 .supernal-tts-widget [role="button"] {
   pointer-events: auto;
 }
 
-/* Dark mode adjustments */
-.dark .supernal-tts-widget [class*="tts-"],
-.dark .supernal-tts-widget [class*="supernal-tts"] {
-  opacity: 0.7;
+/* Dark mode */
+.dark .supernal-tts-widget .tts-controls,
+.dark .supernal-tts-widget .tts-player {
+  opacity: 0.5;
 }
-
-.dark .supernal-tts-widget:hover [class*="tts-"],
-.dark .supernal-tts-widget:hover [class*="supernal-tts"],
-.dark .supernal-tts-widget [class*="tts-"].playing,
-.dark .supernal-tts-widget [class*="supernal-tts"].playing,
-.dark .supernal-tts-widget.playing [class*="tts-"],
-.dark .supernal-tts-widget.playing [class*="supernal-tts"] {
+.dark .supernal-tts-widget:hover .tts-controls,
+.dark .supernal-tts-widget:hover .tts-player,
+.dark .supernal-tts-widget.playing .tts-controls,
+.dark .supernal-tts-widget.playing .tts-player {
   opacity: 1;
 }
 
-/* Mobile TTS cleanup: avoid overlap and noisy slider background */
+/* Mobile: position below nav stack, no progress slider */
 @media (max-width: 768px) {
-  .post-content.supernal-tts-widget,
-  .prose.supernal-tts-widget {
-    /* header (4rem/64px) + chapter bar (44px) + toc bar (36px) + breathing room */
-    padding-top: calc(var(--header-height) + 96px) !important;
-  }
-
-  .post-content.supernal-tts-widget[data-enable-progress="true"],
-  .prose.supernal-tts-widget[data-enable-progress="true"] {
-    padding-top: calc(var(--header-height) + 108px) !important;
-  }
-
   .supernal-tts-widget .supernal-tts-modular-widget {
-    top: 0 !important;
-    left: 0 !important;
-    right: auto !important;
-    max-width: 100%;
+    transform: scale(0.6);
+    transform-origin: top left;
   }
 
-  /* Hide progress slider on touch devices (looks noisy and overlaps content) */
   .supernal-tts-widget .supernal-tts-progress-container {
     display: none !important;
   }

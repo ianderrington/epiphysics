@@ -1,20 +1,23 @@
 ---
-title: "Cause-Plex and Quantum Mechanics: Deriving Quantum Structure from Multiway Causal Order"
+title: >-
+  Cause-Plex and Quantum Mechanics: Deriving Quantum Structure from Multiway
+  Causal Order
 description: >-
-  We derive quantum mechanical structure from the multiway cause-plex — the collection
-  of all causally consistent histories consistent with a given initial state. Given
-  Postulate Q' (the cause-plex is multiway), quantum mechanics follows via two convergent
-  arguments: (1) Sorkin's grade-2 quantum measure — the minimal consistent probability
-  theory on a multiway structure forces complex amplitudes; (2) a loop-phase argument
-  native to the cause-plex — closed loop amplitude weights must form a minimal continuous
-  group, which is uniquely U(1). The Wick rotation analogy provides corroborating
-  structural motivation. Together these arguments, plus Gorard's continuum limit result,
+  We derive quantum mechanical structure from the multiway cause-plex — the
+  collection of all causally consistent histories consistent with a given
+  initial state. Given Postulate Q' (the cause-plex is multiway), quantum
+  mechanics follows via two convergent arguments: (1) Sorkin's grade-2 quantum
+  measure — the minimal consistent probability theory on a multiway structure
+  forces complex amplitudes; (2) a loop-phase argument native to the cause-plex
+  — closed loop amplitude weights must form a minimal continuous group, which is
+  uniquely U(1). The Wick rotation analogy provides corroborating structural
+  motivation. Together these arguments, plus Gorard's continuum limit result,
   recover the full quantum formalism.
 date: 2026-03-25T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
-series: "Epimechanics"
+  name: Ian Derrington
+series: Epimechanics
 tags:
   - Epimechanics
   - Quantum mechanics
@@ -24,6 +27,10 @@ tags:
   - Entanglement
   - Causal structure
   - Foundations
+coverImage:
+  url: ./images/causeplex_quantum-1-1-1.png
+  alt: >-
+    Quantum mechanical structure derived from multiway cause-plex — interference paths through a branching causal network, Born rule probabilities emerging from path weights. Dark space aesthetic, electric blue and gold.
 ---
 
 > **Layer architecture note.** This paper operates at **Layer 0** (causal event primitive, multiway cause-plex $\mathcal{C}^*$) and **Layer A** (quantum mechanics as the amplitude theory of the multiway structure in the continuum limit). Postulate Q' (all histories coexist) is a Layer 0 structural claim. The Hilbert space, Born rule, and Schrödinger equation are Layer A emergent descriptions. Classical mechanics (Layer A, single dominant path), thermodynamics (Layer B), and biology/society (Layer C) are downstream in the coarse-graining ladder — see [Part 1.5: Causors](./01_5_causors.md).

@@ -61,16 +61,8 @@ export default function NavBars({
   const chapterRef = useRef<HTMLDivElement>(null);
   const tocRef = useRef<HTMLDivElement>(null);
   const [headerH, setHeaderH] = useState(64);
-  const [isXL, setIsXL] = useState(false);
 
-  useEffect(() => {
-    setHeaderH(getHeaderHeight());
-    const mq = window.matchMedia('(min-width: 1280px)');
-    setIsXL(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsXL(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
+  useEffect(() => { setHeaderH(getHeaderHeight()); }, []);
 
   const toggle = useCallback((panel: 'chapters' | 'toc') => {
     setExpanded((prev) => (prev === panel ? null : panel));
@@ -157,8 +149,7 @@ export default function NavBars({
 
   const hasChapters = chapters.length > 0;
   const hasHeadings = headings.length > 0;
-  // On XL screens, ReaderSidebar handles TOC — don't show TOC bar here
-  const showTocBar = hasHeadings && !isXL;
+  const showTocBar = hasHeadings;
 
   /* ── position math ── */
   const chapterShown = showChapter || expanded !== null;
@@ -196,8 +187,8 @@ export default function NavBars({
 
   if (!hasChapters && !showTocBar) return null;
 
-  // spacer = bar heights + a little breathing room for the fade gradient
-  const spacerHeight = (hasChapters ? CHAPTER_H : 0) + (showTocBar ? TOC_H : 0) + 8;
+  // spacer = bar heights + minimal breathing room
+  const spacerHeight = (hasChapters ? CHAPTER_H : 0) + (showTocBar ? TOC_H : 0) + 4;
   const arrowCls = 'flex items-center justify-center shrink-0 h-full transition-colors text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 active:bg-black/5 dark:active:bg-white/5';
 
   /* bottom-most bar gets a subtle shadow for depth; internal dividers are lighter */
@@ -207,13 +198,13 @@ export default function NavBars({
 
   return (
     <>
-      <div style={{ height: spacerHeight }} aria-hidden />
+      <div className="xl:hidden" style={{ height: spacerHeight }} aria-hidden />
 
-      {/* ═══ CHAPTER BAR — slides via top only ═══ */}
+      {/* ═══ CHAPTER BAR — slides via top only; hidden at XL where ReaderSidebar takes over ═══ */}
       {hasChapters && (
         <div
           ref={chapterRef}
-          className={`fixed left-0 right-0 z-30 ${TRANSITION}`}
+          className={`fixed left-0 right-0 z-30 xl:hidden ${TRANSITION}`}
           style={{ top: chapterTop }}
         >
           <div className={`${BG} ${chapterBorder}`}>
@@ -265,11 +256,11 @@ export default function NavBars({
         </div>
       )}
 
-      {/* ═══ TOC BAR — slides via top only; hidden on XL where ReaderSidebar has TOC ═══ */}
+      {/* ═══ TOC BAR — slides via top only; hidden at XL ═══ */}
       {showTocBar && (
         <div
           ref={tocRef}
-          className={`fixed left-0 right-0 z-[29] ${TRANSITION}`}
+          className={`fixed left-0 right-0 z-[29] xl:hidden ${TRANSITION}`}
           style={{ top: tocTop }}
         >
           <div className={`${BG} ${bottomEdge}`}>
@@ -326,7 +317,7 @@ export default function NavBars({
       {/* ═══ FADE GRADIENT — content fades as it goes under the nav stack ═══ */}
       {!expanded && (
         <div
-          className={`fixed left-0 right-0 z-[28] pointer-events-none ${TRANSITION}`}
+          className={`fixed left-0 right-0 z-[28] pointer-events-none xl:hidden ${TRANSITION}`}
           style={{
             top: tocShown
               ? tocTop + TOC_H
@@ -335,14 +326,14 @@ export default function NavBars({
                 : showHeader
                   ? headerH
                   : 0,
-            height: 36,
-            background: 'linear-gradient(to bottom, var(--nav-fade-from) 0%, var(--nav-fade-from) 20%, transparent 100%)',
+            height: 16,
+            background: 'linear-gradient(to bottom, var(--nav-fade-from), transparent)',
           }}
         />
       )}
 
       {expanded && (
-        <div className="fixed inset-0 bg-black/10 dark:bg-black/30 z-[28] animate-fadeIn" onClick={close} />
+        <div className="fixed inset-0 bg-black/10 dark:bg-black/30 z-[28] xl:hidden animate-fadeIn" onClick={close} />
       )}
     </>
   );

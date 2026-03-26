@@ -1,5 +1,5 @@
 ---
-title: "Complex Amplitudes from Loop-Phase Consistency in the Multiway Cause-Plex"
+title: Complex Amplitudes from Loop-Phase Consistency in the Multiway Cause-Plex
 description: >-
   We prove that in any multiway cause-plex satisfying two natural conditions —
   bounded iterated amplitudes and causal continuity — the amplitude weights of
@@ -10,8 +10,8 @@ description: >-
 date: 2026-03-25T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
-series: "Epimechanics"
+  name: Ian Derrington
+series: Epimechanics
 tags:
   - Epimechanics
   - Quantum mechanics
@@ -20,6 +20,10 @@ tags:
   - Complex amplitudes
   - Causal structure
   - Path integral
+coverImage:
+  url: ./images/causeplex_loop_phase-1-1-1.png
+  alt: >-
+    Complex amplitude U(1) phase emerging from stable loop structure in a multiway causal graph — rotating phasors on a unit circle overlaid on branching causal paths. Dark blueprint, luminous cyan and gold.
 ---
 
 > **Prerequisites.** This paper builds on [Cause-Plex and Spacetime](./causeplex_spacetime.md) and [Cause-Plex and Quantum Mechanics](./causeplex_quantum.md). The cause-plex $\mathcal{C} = (E, \prec)$ is a locally finite strict partial order of causal events; the multiway cause-plex $\mathcal{C}^*$ is the collection of all causally consistent histories (Definitions 1.1–2.1 of those papers). The present paper is self-contained mathematically: all required definitions are restated here.

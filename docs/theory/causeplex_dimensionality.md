@@ -1,20 +1,23 @@
 ---
-title: "Why 3+1: Observer-Selection Constraints on Spacetime Dimensionality in the Cause-Plex Framework"
+title: >-
+  Why 3+1: Observer-Selection Constraints on Spacetime Dimensionality in the
+  Cause-Plex Framework
 description: >-
   The cause-plex framework does not derive 3+1 dimensional spacetime from first
-  principles. Instead, it explains why observers necessarily find themselves in 3+1
-  by showing that other dimensionalities fail to support the structural requirements
-  for observer-class entities. This paper develops the selective convergence argument:
-  n_t = 1 follows from the causal partial order; n_s = 3 follows from Tangherlini's
-  orbital stability result and the knot-topology requirement for topologically
-  non-trivial loop structures. The argument is honestly labeled as an observer-selection
-  conjecture, not a derivation, and is shown to be strictly more defensible than
-  Wolfram's singular convergence claim.
+  principles. Instead, it explains why observers necessarily find themselves in
+  3+1 by showing that other dimensionalities fail to support the structural
+  requirements for observer-class entities. This paper develops the selective
+  convergence argument: n_t = 1 follows from the causal partial order; n_s = 3
+  follows from Tangherlini's orbital stability result and the knot-topology
+  requirement for topologically non-trivial loop structures. The argument is
+  honestly labeled as an observer-selection conjecture, not a derivation, and is
+  shown to be strictly more defensible than Wolfram's singular convergence
+  claim.
 date: 2026-03-25T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
-series: "Epimechanics"
+  name: Ian Derrington
+series: Epimechanics
 tags:
   - Epimechanics
   - Spacetime
@@ -23,6 +26,10 @@ tags:
   - Causal structure
   - Knot theory
   - Tangherlini
+coverImage:
+  url: ./images/causeplex_dimensionality-1-1-1.png
+  alt: >-
+    Observer-selection argument for 3+1 spacetime dimensions — branching causal graphs with only stable 3+1 paths highlighted, others fading out. Abstract dark space, gold and purple.
 ---
 
 > **Prerequisites.** This paper assumes the cause-plex framework as developed in [Cause-Plex and Spacetime](./causeplex_spacetime.md): the Lorentzian metric and Lorentz invariance are derived from causal structure (Malament 1977 + event counting); the metric signature has exactly one timelike dimension from P1. The present paper addresses what fixes the number of *spatial* dimensions at 3.

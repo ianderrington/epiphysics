@@ -1,14 +1,15 @@
 ---
-title: "Epimechanics — Part 2.5: Entity Interaction"
+title: 'Epimechanics — Part 2.5: Entity Interaction'
 description: >-
-  How entities sustain, strengthen, weaken, or dissolve each other through external coupling.
-  Trade, dependency, parasitism, and predation analyzed as coupling chain relationships between
-  auto-causal loops. The foundation for understanding complex multi-entity systems.
+  How entities sustain, strengthen, weaken, or dissolve each other through
+  external coupling. Trade, dependency, parasitism, and predation analyzed as
+  coupling chain relationships between auto-causal loops. The foundation for
+  understanding complex multi-entity systems.
 date: 2026-03-24T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
-series: "Epimechanics"
+  name: Ian Derrington
+series: Epimechanics
 series_order: 2.5
 categories:
   - Philosophy
@@ -23,11 +24,27 @@ tags:
   - Dependency
   - Coupling tensor
 bullets:
-  - An entity exists as long as its auto-causal loops are maintained — existence is a dynamic condition, not a static one
-  - External coupling can strengthen, weaken, or dissolve another entity's loops — the sign of the effect depends on what is imported and what it does to internal bonds
-  - Trade is the most common form of external coupling — beneficial when it adds loop inputs without replacing internal loops; dangerous when it atrophies the loops it substitutes
-  - Dependency traps form when an entity's internal loops weaken faster than the value it gains from imports
-  - The same interaction type can be mutualistic, commensal, parasitic, or predatory depending on timescale and state
+  - >-
+    An entity exists as long as its auto-causal loops are maintained — existence
+    is a dynamic condition, not a static one
+  - >-
+    External coupling can strengthen, weaken, or dissolve another entity's loops
+    — the sign of the effect depends on what is imported and what it does to
+    internal bonds
+  - >-
+    Trade is the most common form of external coupling — beneficial when it adds
+    loop inputs without replacing internal loops; dangerous when it atrophies
+    the loops it substitutes
+  - >-
+    Dependency traps form when an entity's internal loops weaken faster than the
+    value it gains from imports
+  - >-
+    The same interaction type can be mutualistic, commensal, parasitic, or
+    predatory depending on timescale and state
+coverImage:
+  url: ./images/epimechanics_02_5_entity_interaction-1-1-1.png
+  alt: >-
+    Two self-sustaining causal loops coupled by external chains — trade, dependency, parasitism, predation shown as arrows between looping structures. Dark background, blueprint style, cyan and amber.
 ---
 
 > [!sidenote]

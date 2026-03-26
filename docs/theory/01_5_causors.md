@@ -1,5 +1,5 @@
 ---
-title: "Epimechanics — Part 1.5: Causors"
+title: 'Epimechanics — Part 1.5: Causors'
 description: >-
   The periodic table problem for general mechanics. What are entities made of?
   Starting from bare causal events — state transitions with no assumed physics —
@@ -8,14 +8,14 @@ description: >-
 date: 2026-03-25T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
+  name: Ian Derrington
 co_authors:
-  - name: "Parnian Barekatain"
-    role: "Contributing Author"
+  - name: Parnian Barekatain
+    role: Contributing Author
 contentType: article
 mediaTypes:
   - text
-series: "Epimechanics"
+series: Epimechanics
 series_order: 1.5
 categories:
   - Philosophy
@@ -29,14 +29,26 @@ tags:
   - Causal structure
 bullets:
   - The primitive is the causal event — a state transition — not energy exchange
-  - Energy is a conserved quantity that emerges from time-translation symmetry of causal structure (Noether)
-  - The cause-plex is the hypergraph of all causal events; bond and loop operators are structures within it
-  - At coarse-grained scales where time-translation symmetry holds, energy exchange is the right description of bonds
-  - Higher-level entities — cells, organisms, institutions — are cause-plexes with specific loop structures
+  - >-
+    Energy is a conserved quantity that emerges from time-translation symmetry
+    of causal structure (Noether)
+  - >-
+    The cause-plex is the hypergraph of all causal events; bond and loop
+    operators are structures within it
+  - >-
+    At coarse-grained scales where time-translation symmetry holds, energy
+    exchange is the right description of bonds
+  - >-
+    Higher-level entities — cells, organisms, institutions — are cause-plexes
+    with specific loop structures
 tts:
   enabled: true
   provider: openai
   voice: onyx
+coverImage:
+  url: ./images/epimechanics_01_5_causors-1-1-1.png
+  alt: >-
+    Periodic table of causal building blocks — bond and loop operators arranged in a grid with Q1-Q4 descriptors (energy mode, output target, topology, leverage). Dark blueprint aesthetic, gold and teal.
 ---
 
 ## Where We Are

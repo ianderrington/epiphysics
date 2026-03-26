@@ -1,15 +1,15 @@
 ---
-title: "Cause-Plex and Spacetime: Deriving the Lorentzian Metric from Causal Structure"
+title: 'Cause-Plex and Spacetime: Deriving the Lorentzian Metric from Causal Structure'
 description: >-
-  Formal derivation of the Lorentzian metric, Lorentz invariance, and energy conservation
-  from cause-plex structure alone. The primitive is the causal event — a state transition
-  with no assumed physics. Spacetime and energy emerge from structural properties of the
-  cause-plex hypergraph.
+  Formal derivation of the Lorentzian metric, Lorentz invariance, and energy
+  conservation from cause-plex structure alone. The primitive is the causal
+  event — a state transition with no assumed physics. Spacetime and energy
+  emerge from structural properties of the cause-plex hypergraph.
 date: 2026-03-25T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
-series: "Epimechanics"
+  name: Ian Derrington
+series: Epimechanics
 tags:
   - Epimechanics
   - Spacetime
@@ -18,6 +18,10 @@ tags:
   - Causal set theory
   - Noether theorem
   - Foundations
+coverImage:
+  url: ./images/causeplex_spacetime-1-1-1.png
+  alt: >-
+    Lorentzian metric and light cone emerging from causal ordering in a cause-plex graph — spacetime intervals as causal separations, GR structure rising from pure causal order. Dark blueprint, gold and violet.
 ---
 
 > This document derives spacetime structure from cause-plex primitives. It draws on causal set theory (Bombelli, Lee, Meyer, Sorkin 1987), Malament's theorem (1977), and Wolfram's causal invariance argument. Where results are established, proofs are given. Where results are at the research frontier (GR from causal dynamics), status is stated explicitly.

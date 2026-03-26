@@ -1,14 +1,15 @@
 ---
-title: "Epimechanics — Coupling Chain Examples"
+title: Epimechanics — Coupling Chain Examples
 description: >-
-  Worked examples of entity-coupling chains across biology, economics, and society.
-  Dimensional analysis applied to real processes: each chain shows entities as typed
-  unit-carriers and coupling tensors as transducer-dependent conversion factors.
+  Worked examples of entity-coupling chains across biology, economics, and
+  society. Dimensional analysis applied to real processes: each chain shows
+  entities as typed unit-carriers and coupling tensors as transducer-dependent
+  conversion factors.
 date: 2026-03-24T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
-series: "Epimechanics"
+  name: Ian Derrington
+series: Epimechanics
 categories:
   - Physics
   - Biology
@@ -19,6 +20,10 @@ tags:
   - Dimensional analysis
   - Coupling tensor
   - Examples
+coverImage:
+  url: ./images/coupling_chains-1-1-1.png
+  alt: >-
+    Epimechanics coupling chain examples — sequences of causal entities linked by coupling tensors, showing how force propagates through multi-entity systems. Abstract blueprint, teal and amber.
 ---
 
 ## What This Document Is
