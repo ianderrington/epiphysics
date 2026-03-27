@@ -44,13 +44,7 @@ export default function HomePage({
       {CustomIntro && <CustomIntro {...introProps} />}
 
       {/* Features Section - Only render if CustomFeatures is provided */}
-      {CustomFeatures && (
-        <div className="py-20 w-full bg-gray-50 dark:bg-gray-900">
-          <div className="w-full px-4 sm:px-6 lg:px-8">
-            <CustomFeatures {...featuresProps} />
-          </div>
-        </div>
-      )}
+      {CustomFeatures && <CustomFeatures {...featuresProps} />}
 
       {/* Featured Posts Section - Only render if CustomFeaturedPosts is provided */}
       {CustomFeaturedPosts && (
@@ -60,13 +54,7 @@ export default function HomePage({
       )}
 
       {/* CTA Section - Only render if CustomCTA is provided */}
-      {CustomCTA && (
-        <div className="w-full bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-800 dark:to-blue-900">
-          <div className="w-full text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
-            <CustomCTA {...ctaProps} />
-          </div>
-        </div>
-      )}
+      {CustomCTA && <CustomCTA {...ctaProps} />}
     </div>
   );
 } 
