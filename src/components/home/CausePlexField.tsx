@@ -57,7 +57,9 @@ const CausePlexField = () => {
       centerY: number;
       totalPhase: number; // Should be ≈ 2πn for stability
       rotation: number;
+      rotationRate: number; // Based on total phase
       stable: boolean;
+      tier: number; // 1 = basic loop, 2 = merged loop, etc.
     }
 
     let events: Event[] = [];
@@ -144,14 +146,17 @@ const CausePlexField = () => {
             const cx = loopEvents.reduce((s, e) => s + e.x, 0) / loopEvents.length;
             const cy = loopEvents.reduce((s, e) => s + e.y, 0) / loopEvents.length;
 
+            const totalPhase = phases.reduce((a, b) => a + b, 0);
             const loop: Loop = {
               id: nextLoopId++,
               events: loopEvents.map(e => e.id),
               centerX: cx,
               centerY: cy,
-              totalPhase: phases.reduce((a, b) => a + b, 0),
+              totalPhase: totalPhase,
               rotation: 0,
+              rotationRate: 0.005 + (totalPhase % TAU) * 0.003, // Rate depends on phase
               stable: true,
+              tier: 1,
             };
 
             // Arrange events in circle
@@ -168,6 +173,82 @@ const CausePlexField = () => {
 
             loops.push(loop);
             return;
+          }
+        }
+      }
+    };
+
+    // Try to merge two nearby loops with compatible phases
+    const tryMergeLoops = () => {
+      for (let i = 0; i < loops.length; i++) {
+        for (let j = i + 1; j < loops.length; j++) {
+          const loop1 = loops[i];
+          const loop2 = loops[j];
+
+          const dx = loop2.centerX - loop1.centerX;
+          const dy = loop2.centerY - loop1.centerY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          // Check if close enough to interact
+          if (dist < 60) {
+            // Check phase compatibility (aligned phases can merge)
+            const phaseDiff = Math.abs(((loop1.totalPhase - loop2.totalPhase + Math.PI) % TAU) - Math.PI);
+            
+            if (phaseDiff > 2.5) {
+              // Compatible! Merge into higher-tier structure
+              const allEventIds = [...loop1.events, ...loop2.events];
+              const allEvents = allEventIds
+                .map(id => events.find(e => e.id === id))
+                .filter(Boolean) as Event[];
+
+              if (allEvents.length > MAX_LOOP_SIZE * 2) continue; // Too big
+
+              const newCx = (loop1.centerX + loop2.centerX) / 2;
+              const newCy = (loop1.centerY + loop2.centerY) / 2;
+              const newTotalPhase = loop1.totalPhase + loop2.totalPhase;
+
+              // Create merged loop
+              const mergedLoop: Loop = {
+                id: nextLoopId++,
+                events: allEventIds,
+                centerX: newCx,
+                centerY: newCy,
+                totalPhase: newTotalPhase,
+                rotation: 0,
+                rotationRate: 0.003 + (newTotalPhase % TAU) * 0.002,
+                stable: true,
+                tier: Math.max(loop1.tier, loop2.tier) + 1,
+              };
+
+              // Arrange in larger circle
+              const radius = 25 + allEvents.length * 3;
+              allEvents.forEach((e, idx) => {
+                const angle = (idx / allEvents.length) * TAU;
+                e.x = newCx + Math.cos(angle) * radius;
+                e.y = newCy + Math.sin(angle) * radius;
+                e.loopId = mergedLoop.id;
+                e.radius = 4 + mergedLoop.tier;
+              });
+
+              // Remove old loops, add new
+              loops.splice(j, 1);
+              loops.splice(i, 1);
+              loops.push(mergedLoop);
+              return;
+            } else if (phaseDiff < 0.5) {
+              // Opposite phases - loops annihilate each other!
+              const allEventIds = [...loop1.events, ...loop2.events];
+              allEventIds.forEach(id => {
+                const e = events.find(ev => ev.id === id);
+                if (e) {
+                  e.dying = true;
+                  e.loopId = null;
+                }
+              });
+              loops.splice(j, 1);
+              loops.splice(i, 1);
+              return;
+            }
           }
         }
       }
@@ -196,11 +277,16 @@ const CausePlexField = () => {
         tryFormLoop();
       }
 
+      // Try to merge nearby compatible loops
+      if (Math.random() < 0.01 && loops.length >= 2) {
+        tryMergeLoops();
+      }
+
       // Update loops
       for (let i = loops.length - 1; i >= 0; i--) {
         const loop = loops[i];
-        loop.rotation += 0.015;
-        loop.centerY += 0.2; // Slow drift
+        loop.rotation += loop.rotationRate; // Each loop rotates at its own rate
+        loop.centerY += 0.15 / loop.tier; // Higher tier = slower drift
 
         // Get loop events
         const loopEvents = loop.events
@@ -309,13 +395,26 @@ const CausePlexField = () => {
         });
         ctx.closePath();
 
-        // Golden glow for stable loops
+        // Color based on tier: gold → cyan → magenta for higher tiers
         const avgAlpha = loopEvents.reduce((s, e) => s + e.alpha, 0) / loopEvents.length;
-        ctx.strokeStyle = `rgba(255, 200, 100, ${avgAlpha * 0.7})`;
+        let strokeColor: string;
+        let fillColor: string;
+        
+        if (loop.tier === 1) {
+          strokeColor = `rgba(255, 200, 100, ${avgAlpha * 0.8})`;
+          fillColor = `rgba(255, 200, 100, ${avgAlpha * 0.1})`;
+        } else if (loop.tier === 2) {
+          strokeColor = `rgba(100, 220, 255, ${avgAlpha * 0.9})`;
+          fillColor = `rgba(100, 220, 255, ${avgAlpha * 0.15})`;
+        } else {
+          strokeColor = `rgba(255, 100, 255, ${avgAlpha * 0.95})`;
+          fillColor = `rgba(255, 100, 255, ${avgAlpha * 0.2})`;
+        }
+        
+        ctx.lineWidth = 1.5 + loop.tier;
+        ctx.strokeStyle = strokeColor;
         ctx.stroke();
-
-        // Fill with subtle glow
-        ctx.fillStyle = `rgba(255, 200, 100, ${avgAlpha * 0.1})`;
+        ctx.fillStyle = fillColor;
         ctx.fill();
       }
 
