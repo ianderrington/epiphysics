@@ -253,11 +253,13 @@ const AnimatedHero = ({
         {/* Dynamic background based on style */}
         {background_style === 'dynamic' && (
           <>
-            {/* WebGL PlasmaField - works on most screens */}
-            <PlasmaField />
-            {/* Fallback gradient visible only when PlasmaField not rendering */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900">
+            {/* Fallback gradient - behind PlasmaField, shows when WebGL unavailable */}
+            <div className="absolute inset-0 z-0 bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900">
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/30 via-purple-600/30 to-pink-600/30 animate-pulse" />
+            </div>
+            {/* WebGL PlasmaField - on top when rendering */}
+            <div className="absolute inset-0 z-0">
+              <PlasmaField />
             </div>
           </>
         )}
