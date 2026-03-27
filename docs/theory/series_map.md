@@ -13,6 +13,8 @@ tags:
   - Epimechanics
   - Navigation
   - Series map
+coverImage:
+  url: ./images/epimechanics_series_map-1-1-1-1.png
 ---
 
 > **This is the map.** It shows what exists, what's proved, what's open, and how everything connects. Read this before diving into individual documents.

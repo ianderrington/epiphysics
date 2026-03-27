@@ -2,7 +2,7 @@ title: Epiphysics
 description: The empirical science of Epimechanics
 
 hero:
-  subtitle: "What if the math behind physics worked for everything? From why your desk gets messy to why organizations resist change — one framework, any domain."
+  subtitle: "F = ma — force equals mass times acceleration — is the skeleton of all motion. Epimechanics shows that same skeleton describes anything that changes: beliefs, institutions, ecosystems, markets. One framework. Any domain. And its physics foundation — why quantum mechanics uses complex numbers — is now derived, not postulated."
   quick_links:
     - title: "Series Map"
       description: "Start here — what exists, what's proved, how it connects"
@@ -31,39 +31,19 @@ featured_posts:
   description: The latest from theory development, applications, and research
 
 features:
-  title: Explore Epiphysics
-  description: From foundational theory to empirical tests
+  title: "Go Deeper"
+  description: ""
   items:
-    - title: "Series Map"
-      description: "Every document. What's proved. What's open. Start here."
-      icon: map
-      url: "/theory/series_map"
-    - title: "Foundations"
-      description: "X is a representation. Entities are anything representable. All representations have mechanical structure."
+    - title: "The Full Argument"
+      description: "From causal event → spacetime → quantum mechanics → life. The complete derivation chain."
       icon: zap
-      url: "/theory/00_prelude"
-    - title: "Physics Foundations"
-      description: "U(1) — the complex phase group of quantum mechanics — is the unique fixed point of recursive self-composition. Derived from causal structure alone."
-      icon: network
-      url: "/theory/amplitude-phase-fixed-point-paper"
-    - title: "Generalized Mechanics"
-      description: "State, mass, force, energy, coupling, fields, thermodynamics — the full mechanical apparatus applied to any domain."
-      icon: compass
-      url: "/theory/01_generalized_mechanics"
+      url: "/theory/series_map"
     - title: "Applications"
-      description: "Efficiency limits, robustness metrics, future cost of decisions. Testing the grammar in real domains."
+      description: "Testing the framework: efficiency limits, robustness metrics, entropy in everyday systems."
       icon: arrow-right
       url: "/applications"
-    - title: "Representational Efficiency"
-      description: "The central theorem and conjecture: optimal representations minimize predictive cost."
-      icon: sparkles
-      url: "/research/paper_representational_efficiency"
-    - title: "Experiments"
-      description: "Lagrangian vs neural ODE, conservation law discovery. Protocols designed and waiting."
-      icon: activity
-      url: "/experiments"
-    - title: "Popular Introductions"
-      description: "Accessible on-ramp: why your desk gets messy, why habits stick, why the best description wins."
+    - title: "Popular Introduction"
+      description: "Why your desk gets messy. Why habits stick. Accessible on-ramp, no equations."
       icon: heart
       url: "https://ian.ceo/musings/existence_physics_and_life/physics_of_common_sense"
 

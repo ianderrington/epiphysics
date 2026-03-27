@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import DefaultHomeLayout from '@/layouts/default/home';
 import Features from '@/components/home/Features';
 import WhatsThis from '@/components/home/WhatsThis';
+import EmbeddedMap from '@/components/home/EmbeddedMap';
 import Link from 'next/link';
 import SafeHTML from '@/components/SafeHTML';
 import { markdownToHtml } from '@/lib/content/markdown';
@@ -85,11 +86,14 @@ export default async function Home() {
   const CustomWhatsThis = () => <WhatsThis />;
 
   const CustomFeatures = () => (
-    <Features 
-      features={content.features?.items || []} 
-      title={content.features?.title}
-      description={content.features?.description}
-    />
+    <>
+      <EmbeddedMap />
+      <Features 
+        features={content.features?.items || []} 
+        title={content.features?.title}
+        description={content.features?.description}
+      />
+    </>
   );
   
   const CustomFeaturedPosts = () => (
@@ -174,6 +178,7 @@ export default async function Home() {
     <DefaultHomeLayout 
       hero={AnimatedHero}
       intro={CustomWhatsThis}
+      features={CustomFeatures}
       featuredPosts={CustomFeaturedPosts}
       cta={CustomCTA}
       heroProps={{

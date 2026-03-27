@@ -37,6 +37,8 @@ tts:
   enabled: true
   provider: openai
   voice: onyx
+coverImage:
+  url: ./images/epimechanics_00_atomic_structure-1-1.png
 ---
 
 > **In plain English:** The periodic table tells you what atoms are made of. This paper asks the same question one level more fundamental: what are *entities* made of — not just atoms, but any persistent thing, from a cell to a corporation to a particle? The answer is causal loops: patterns of cause-and-effect that return to their starting state and sustain themselves. A flame, a cell, a bond, a galaxy — all are causal loops at different scales with different stability properties. Energy, mass, and force aren't primitive — they emerge from the symmetry structure of these loops. This is the "periodic table" of epimechanics: a taxonomy of what stable things are made of, derived from causal structure alone.

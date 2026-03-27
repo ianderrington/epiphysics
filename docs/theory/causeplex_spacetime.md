@@ -18,6 +18,8 @@ tags:
   - Causal set theory
   - Noether theorem
   - Foundations
+coverImage:
+  url: ./images/causeplex_quantum-1-1-1.png
 ---
 
 > **In plain English:** Spacetime — the arena in which physics happens — is usually taken as a given. This paper asks: where does it come from? The answer: spacetime is what you get when you have a set of events with a causal ordering ("this happened before that"). From nothing more than that ordering, you can derive the geometry of space and time (the Lorentzian metric), the fact that nothing travels faster than light (Lorentz invariance), and what energy means (Noether's theorem). The one-time-dimension, three-space-dimension structure of our universe (3+1D) isn't derived from first principles — it's explained by observer selection: only in 3+1D can complex structures like atoms, chemistry, and observers form and persist. Everything else follows from the causal ordering alone.

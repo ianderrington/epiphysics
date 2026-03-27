@@ -237,21 +237,10 @@ const PlasmaField = () => {
 
 const AnimatedHero = ({ 
   title, 
-  description, 
-  quick_links,
-  cta, 
+  description,
   background_style = 'dynamic',
   background_image 
 }: AnimatedHeroProps) => {
-  
-  // Type indicator styling
-  const getTypeIndicator = (type: 'music' | 'writing') => {
-    const styles = {
-      music: 'bg-purple-600/90 text-purple-100 border-purple-400 hover:bg-purple-500/90',
-      writing: 'bg-blue-600/90 text-blue-100 border-blue-400 hover:bg-blue-500/90'
-    };
-    return styles[type];
-  };
   return (
     <div className="relative w-full overflow-hidden m-0 p-0">
       {/* Hero Section */}
@@ -312,83 +301,28 @@ const AnimatedHero = ({
                 {description}
               </motion.p>
 
-              {/* Quick Navigation Links */}
-              {quick_links && quick_links.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-                  className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-4 gap-3 sm:gap-6 max-w-md sm:max-w-6xl mx-auto px-1 sm:px-3 w-full"
+              {/* Two primary CTAs */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+                className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
+              >
+                <Link
+                  href="/theory/00_prelude"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-gray-900 font-semibold text-lg hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                 >
-                  {quick_links.map((link, index) => {
-                    // Define background images for each section
-                    const getBackgroundImage = (title: string) => {
-                      if (title.includes('Theory')) {
-                        return '/docs/theory/images/physics_as_metaphysics_00_series_overview-1-1.png';
-                      } else if (title.includes('Applications')) {
-                        return '/docs/applications/images/applications-cover-1.png';
-                      } else if (title.includes('Research')) {
-                        return '/docs/theory/images/epimechanics_00_prelude-1-1.png';
-                      } else if (title.includes('Experiments')) {
-                        return '/docs/theory/images/epimechanics_00_atomic_structure-1-1.png';
-                      }
-                      return '/images/default-collection.jpg';
-                    };
-
-                    // Get watermark icon for type
-                    const getWatermarkIcon = (type: 'music' | 'writing') => {
-                      return type === 'music' ? '♪' : '✎';
-                    };
-
-                    return (
-                      <motion.div
-                        key={link.title}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                        className="h-44 sm:h-auto sm:aspect-square w-full"
-                      >
-                        <Link
-                          href={link.link}
-                          className="group block relative h-full rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300 transform hover:scale-105 overflow-hidden"
-                        >
-                          {/* Background Image with Overlay */}
-                          <div className="absolute inset-0">
-                            <Image
-                              src={getBackgroundImage(link.title)}
-                              alt={`${link.title} background`}
-                              fill
-                              sizes="(max-width: 640px) 50vw, 25vw"
-                              className="object-cover transition-transform duration-300 group-hover:scale-110"
-                              priority={index < 4}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-                          </div>
-
-                          {/* Watermark Icon */}
-                          <div className="absolute top-2 right-2 sm:top-3 sm:right-3 text-white text-base sm:text-xl font-bold bg-black/40 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center backdrop-blur-sm">
-                            {getWatermarkIcon(link.type)}
-                          </div>
-
-                          {/* Content */}
-                          <div className="relative h-full flex items-center justify-center p-3 sm:p-5 text-white">
-                            <div className="text-center">
-                              <div className="text-2xl sm:text-2xl lg:text-3xl font-bold leading-tight text-white drop-shadow-lg">
-                                {link.title}
-                              </div>
-                              {link.description && (
-                                <div className="text-base sm:text-sm text-white/70 mt-1 sm:mt-2 drop-shadow leading-snug">
-                                  {link.description}
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </Link>
-                      </motion.div>
-                    );
-                  })}
-                </motion.div>
-              )}
+                  Start with the Idea
+                  <span className="text-xl">→</span>
+                </Link>
+                <Link
+                  href="/theory/amplitude-phase-fixed-point-paper"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/30 text-white font-semibold text-lg hover:bg-white/20 transition-all duration-200"
+                >
+                  See the Physics Proof
+                  <span className="text-xl">→</span>
+                </Link>
+              </motion.div>
             </div>
           </div>
         </div>

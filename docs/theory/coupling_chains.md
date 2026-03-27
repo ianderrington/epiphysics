@@ -19,6 +19,8 @@ tags:
   - Dimensional analysis
   - Coupling tensor
   - Examples
+coverImage:
+  url: ./images/coupling_chains-1-1-1-1.png
 ---
 
 ## What This Document Is

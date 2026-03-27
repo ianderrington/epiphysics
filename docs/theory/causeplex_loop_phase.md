@@ -17,6 +17,8 @@ tags:
   - Complex amplitudes
   - Causal structure
   - Path integral
+coverImage:
+  url: ./images/causeplex_loop_phase-1-1-2.png
 ---
 
 > **Series status:** This paper contains valuable research — including the causal-void counterexample to unrestricted loop-space connectedness and the conditional CSS connectivity theorem — but is no longer the primary route to $G = \mathrm{U}(1)$ in the Epimechanics series. The clean derivation is now in [Compositional Fixed-Point Derivation of the Amplitude Phase Group](./amplitude-phase-fixed-point-paper.md). The present paper provides corroborating routes (A and B) and documents the research trajectory. It is retained as a working paper, not a primary series entry.

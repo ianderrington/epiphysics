@@ -24,6 +24,8 @@ tags:
   - Entanglement
   - Causal structure
   - Foundations
+coverImage:
+  url: ./images/causeplex_quantum-1-1-2.png
 ---
 
 > **In plain English:** Quantum mechanics — the theory of how particles behave — has always seemed strange: things can be in two places at once, measurements change outcomes, and particles interfere with themselves. This paper explains why all of that is inevitable, not mysterious. The key move: instead of one history of the universe (what classical physics assumes), consider all possible histories simultaneously. When you sum over all those histories with appropriate weights, interference appears naturally — some paths reinforce, others cancel. The weights must be complex phases (the $i$ in $e^{iS/\hbar}$) — see the [Amplitude Fixed-Point paper](./amplitude-phase-fixed-point-paper.md) for why that's the only self-consistent choice. Entanglement — the spooky correlations between distant particles — is simply two systems that share a common ancestor in their causal history. No action at a distance; just correlated branch structure.

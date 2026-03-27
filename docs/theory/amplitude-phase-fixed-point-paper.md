@@ -16,6 +16,8 @@ tags:
   - Amplitude phase
   - Lie groups
   - Compositionality
+coverImage:
+  url: ./images/amplitude-phase-fixed-point-paper-1-1.png
 ---
 
 > **In plain English:** The imaginary unit $i$ in quantum mechanics — the $i$ in $e^{iS/\hbar}$ — has always been postulated, not derived. This paper derives it. The argument: any physical theory that can describe its own composite parts consistently has exactly one possible phase structure for path amplitudes. That structure is the unit circle in the complex plane — $\mathrm{U}(1)$, the group of complex phases. Every other option (SU(2), higher groups) fails the self-consistency test: when you try to compose such a theory with itself, it produces a larger, different group. Only $\mathrm{U}(1)$ closes on itself. This is why quantum mechanics uses complex numbers: they are the unique self-consistent amplitude structure. The cause-plex grounding (Appendix B) shows this follows from the most basic features of causal structure — not from quantum mechanics itself.

@@ -28,6 +28,8 @@ bullets:
   - Trade is the most common form of external coupling — beneficial when it adds loop inputs without replacing internal loops; dangerous when it atrophies the loops it substitutes
   - Dependency traps form when an entity's internal loops weaken faster than the value it gains from imports
   - The same interaction type can be mutualistic, commensal, parasitic, or predatory depending on timescale and state
+coverImage:
+  url: ./images/epimechanics_02_5_entity_interaction-1-1.png
 ---
 
 > [!sidenote]

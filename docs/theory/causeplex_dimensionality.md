@@ -23,6 +23,8 @@ tags:
   - Causal structure
   - Knot theory
   - Tangherlini
+coverImage:
+  url: ./images/causeplex_dimensionality-1-1-2.png
 ---
 
 > **Prerequisites.** This paper assumes the cause-plex framework as developed in [Cause-Plex and Spacetime](./causeplex_spacetime.md): the Lorentzian metric and Lorentz invariance are derived from causal structure (Malament 1977 + event counting); the metric signature has exactly one timelike dimension from P1. The present paper addresses what fixes the number of *spatial* dimensions at 3.
