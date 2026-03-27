@@ -1,15 +1,15 @@
 ---
-title: "Cause-Plex and Spacetime: Deriving the Lorentzian Metric from Causal Structure"
+title: 'Cause-Plex and Spacetime: Deriving the Lorentzian Metric from Causal Structure'
 description: >-
-  Formal derivation of the Lorentzian metric, Lorentz invariance, and energy conservation
-  from cause-plex structure alone. The primitive is the causal event — a state transition
-  with no assumed physics. Spacetime and energy emerge from structural properties of the
-  cause-plex hypergraph.
+  Formal derivation of the Lorentzian metric, Lorentz invariance, and energy
+  conservation from cause-plex structure alone. The primitive is the causal
+  event — a state transition with no assumed physics. Spacetime and energy
+  emerge from structural properties of the cause-plex hypergraph.
 date: 2026-03-25T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
-series: "Epimechanics"
+  name: Ian Derrington
+series: Epimechanics
 tags:
   - Epimechanics
   - Spacetime
@@ -19,7 +19,9 @@ tags:
   - Noether theorem
   - Foundations
 coverImage:
-  url: ./images/causeplex_quantum-1-1-1.png
+  url: ./images/causeplex_spacetime-1-1-1.png
+  alt: >-
+    Lorentzian metric and light cone emerging from causal ordering in a cause-plex graph — spacetime intervals as causal separations, GR structure rising from pure causal order. Dark blueprint, gold and violet.
 ---
 
 > **In plain English:** Spacetime — the arena in which physics happens — is usually taken as a given. This paper asks: where does it come from? The answer: spacetime is what you get when you have a set of events with a causal ordering ("this happened before that"). From nothing more than that ordering, you can derive the geometry of space and time (the Lorentzian metric), the fact that nothing travels faster than light (Lorentz invariance), and what energy means (Noether's theorem). The one-time-dimension, three-space-dimension structure of our universe (3+1D) isn't derived from first principles — it's explained by observer selection: only in 3+1D can complex structures like atoms, chemistry, and observers form and persist. Everything else follows from the causal ordering alone.

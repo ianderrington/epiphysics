@@ -1,13 +1,14 @@
 ---
-title: "Epimechanics — Series Map"
+title: Epimechanics — Series Map
 description: >-
-  Complete map of the epimechanics theory series: reading order, document relationships,
-  proof status, and open questions. Start here to find your way through the full framework.
+  Complete map of the epimechanics theory series: reading order, document
+  relationships, proof status, and open questions. Start here to navigate the
+  full framework.
 date: 2026-03-25T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
-series: "Epimechanics"
+  name: Ian Derrington
+series: Epimechanics
 series_order: 0.1
 tags:
   - Epimechanics
@@ -15,6 +16,8 @@ tags:
   - Series map
 coverImage:
   url: ./images/epimechanics_series_map-1-1-1-1.png
+  alt: >-
+    A radiant constellation of interconnected stars against deep space — six bright nodes arranged in a flowing arc, connected by golden lines of varying thickness suggesting conceptual hierarchy, the brightest node at center emanates outward, no text or labels, vast dark cosmos
 ---
 
 > **This is the map.** It shows what exists, what's proved, what's open, and how everything connects. Read this before diving into individual documents.

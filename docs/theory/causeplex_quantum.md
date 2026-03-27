@@ -1,20 +1,23 @@
 ---
-title: "Cause-Plex and Quantum Mechanics: Deriving Quantum Structure from Multiway Causal Order"
+title: >-
+  Cause-Plex and Quantum Mechanics: Deriving Quantum Structure from Multiway
+  Causal Order
 description: >-
-  We derive quantum mechanical structure from the multiway cause-plex — the collection
-  of all causally consistent histories consistent with a given initial state. Given
-  Postulate Q' (the cause-plex is multiway), quantum mechanics follows via two convergent
-  arguments: (1) Sorkin's grade-2 quantum measure — the minimal consistent probability
-  theory on a multiway structure forces complex amplitudes; (2) a loop-phase argument
-  native to the cause-plex — closed loop amplitude weights must form a minimal continuous
-  group, which is uniquely U(1). The Wick rotation analogy provides corroborating
-  structural motivation. Together these arguments, plus Gorard's continuum limit result,
+  We derive quantum mechanical structure from the multiway cause-plex — the
+  collection of all causally consistent histories consistent with a given
+  initial state. Given Postulate Q' (the cause-plex is multiway), quantum
+  mechanics follows via two convergent arguments: (1) Sorkin's grade-2 quantum
+  measure — the minimal consistent probability theory on a multiway structure
+  forces complex amplitudes; (2) a loop-phase argument native to the cause-plex
+  — closed loop amplitude weights must form a minimal continuous group, which is
+  uniquely U(1). The Wick rotation analogy provides corroborating structural
+  motivation. Together these arguments, plus Gorard's continuum limit result,
   recover the full quantum formalism.
 date: 2026-03-25T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
-series: "Epimechanics"
+  name: Ian Derrington
+series: Epimechanics
 tags:
   - Epimechanics
   - Quantum mechanics
@@ -25,7 +28,9 @@ tags:
   - Causal structure
   - Foundations
 coverImage:
-  url: ./images/causeplex_quantum-1-1-2.png
+  url: ./images/causeplex_quantum-1-1-1.png
+  alt: >-
+    Quantum mechanical structure derived from multiway cause-plex — interference paths through a branching causal network, Born rule probabilities emerging from path weights. Dark space aesthetic, electric blue and gold.
 ---
 
 > **In plain English:** Quantum mechanics — the theory of how particles behave — has always seemed strange: things can be in two places at once, measurements change outcomes, and particles interfere with themselves. This paper explains why all of that is inevitable, not mysterious. The key move: instead of one history of the universe (what classical physics assumes), consider all possible histories simultaneously. When you sum over all those histories with appropriate weights, interference appears naturally — some paths reinforce, others cancel. The weights must be complex phases (the $i$ in $e^{iS/\hbar}$) — see the [Amplitude Fixed-Point paper](./amplitude-phase-fixed-point-paper.md) for why that's the only self-consistent choice. Entanglement — the spooky correlations between distant particles — is simply two systems that share a common ancestor in their causal history. No action at a distance; just correlated branch structure.

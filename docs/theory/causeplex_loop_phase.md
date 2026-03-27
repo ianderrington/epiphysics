@@ -1,5 +1,5 @@
 ---
-title: "Complex Amplitudes from Loop-Phase Consistency in the Multiway Cause-Plex"
+title: Complex Amplitudes from Loop-Phase Consistency in the Multiway Cause-Plex
 description: >-
   Consolidated single-document version combining the main loop-phase paper,
   Step 3 rerouting lemma details, and proof-attempt counterexample analysis;
@@ -7,8 +7,8 @@ description: >-
 date: 2026-03-25T00:00:00.000Z
 draft: true
 author:
-  name: "Ian Derrington"
-series: "Epimechanics"
+  name: Ian Derrington
+series: Epimechanics
 tags:
   - Epimechanics
   - Quantum mechanics
@@ -18,7 +18,9 @@ tags:
   - Causal structure
   - Path integral
 coverImage:
-  url: ./images/causeplex_loop_phase-1-1-2.png
+  url: ./images/causeplex_loop_phase-1-1-1.png
+  alt: >-
+    Complex amplitude U(1) phase emerging from stable loop structure in a multiway causal graph — rotating phasors on a unit circle overlaid on branching causal paths. Dark blueprint, luminous cyan and gold.
 ---
 
 > **Series status:** This paper contains valuable research — including the causal-void counterexample to unrestricted loop-space connectedness and the conditional CSS connectivity theorem — but is no longer the primary route to $G = \mathrm{U}(1)$ in the Epimechanics series. The clean derivation is now in [Compositional Fixed-Point Derivation of the Amplitude Phase Group](./amplitude-phase-fixed-point-paper.md). The present paper provides corroborating routes (A and B) and documents the research trajectory. It is retained as a working paper, not a primary series entry.

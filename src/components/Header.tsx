@@ -287,7 +287,7 @@ const Header: React.FC<HeaderProps> = ({ sections, externalLinks = [], onMenuTog
 
             {/* Desktop menu */}
             <nav className="hidden md:flex items-center space-x-6">
-              {sections.map((section) => {
+              {sections.filter((s) => !s.id.endsWith('.md')).map((section) => {
                 const isActive = section.id === currentSection;
                 return (
                   <Link

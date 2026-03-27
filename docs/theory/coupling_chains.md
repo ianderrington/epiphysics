@@ -1,14 +1,15 @@
 ---
-title: "Epimechanics — Coupling Chain Examples"
+title: Epimechanics — Coupling Chain Examples
 description: >-
-  Worked examples of entity-coupling chains across biology, economics, and society.
-  Dimensional analysis applied to real processes: each chain shows entities as typed
-  unit-carriers and coupling tensors as transducer-dependent conversion factors.
+  Worked examples of entity-coupling chains across biology, economics, and
+  society. Dimensional analysis applied to real processes: each chain shows
+  entities as typed unit-carriers and coupling tensors as transducer-dependent
+  conversion factors.
 date: 2026-03-24T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
-series: "Epimechanics"
+  name: Ian Derrington
+series: Epimechanics
 categories:
   - Physics
   - Biology
@@ -20,7 +21,9 @@ tags:
   - Coupling tensor
   - Examples
 coverImage:
-  url: ./images/coupling_chains-1-1-1-1.png
+  url: ./images/coupling_chains-1-1-1-2.png
+  alt: >-
+    A chain of glowing orbs suspended in deep space, each connected to the next by arcing beams of light, force rippling along the chain like a wave — teal and amber colors, motion blur on the central orb suggesting it transmits energy to its neighbors, dark background, no text
 ---
 
 ## What This Document Is

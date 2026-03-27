@@ -90,3 +90,10 @@ public/docs/
 # Temporary image generation output (copy finished images to docs/*/images/)
 generated_images/
 good_images/
+
+# Image generation variants (-2, -3 etc — only keep -1 canonical)
+docs/**/images/*-[2-9].png
+docs/**/images/*-1[0-9].png
+public/docs/**/images/*-[2-9].png
+public/docs/**/images/*-1[0-9].png
+public/docs/**/images/cover-*.png

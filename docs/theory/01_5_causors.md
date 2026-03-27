@@ -1,5 +1,5 @@
 ---
-title: "Epimechanics — Part 1.5: Causors"
+title: 'Epimechanics — Part 1.5: Causors'
 description: >-
   The periodic table problem for general mechanics. What are entities made of?
   Starting from bare causal events — state transitions with no assumed physics —
@@ -8,14 +8,14 @@ description: >-
 date: 2026-03-25T00:00:00.000Z
 draft: false
 author:
-  name: "Ian Derrington"
+  name: Ian Derrington
 co_authors:
-  - name: "Parnian Barekatain"
-    role: "Contributing Author"
+  - name: Parnian Barekatain
+    role: Contributing Author
 contentType: article
 mediaTypes:
   - text
-series: "Epimechanics"
+series: Epimechanics
 series_order: 1.5
 categories:
   - Philosophy
@@ -29,16 +29,26 @@ tags:
   - Causal structure
 bullets:
   - The primitive is the causal event — a state transition — not energy exchange
-  - Energy is a conserved quantity that emerges from time-translation symmetry of causal structure (Noether)
-  - The cause-plex is the hypergraph of all causal events; bond and loop operators are structures within it
-  - At coarse-grained scales where time-translation symmetry holds, energy exchange is the right description of bonds
-  - Higher-level entities — cells, organisms, institutions — are cause-plexes with specific loop structures
+  - >-
+    Energy is a conserved quantity that emerges from time-translation symmetry
+    of causal structure (Noether)
+  - >-
+    The cause-plex is the hypergraph of all causal events; bond and loop
+    operators are structures within it
+  - >-
+    At coarse-grained scales where time-translation symmetry holds, energy
+    exchange is the right description of bonds
+  - >-
+    Higher-level entities — cells, organisms, institutions — are cause-plexes
+    with specific loop structures
 tts:
   enabled: true
   provider: openai
   voice: onyx
 coverImage:
-  url: ./images/epimechanics_00_atomic_structure-1-1.png
+  url: ./images/epimechanics_01_5_causors-1-1-1-1.png
+  alt: >-
+    Abstract dark composition: a precise geometric lattice of glowing nodes arranged in a 4x4 grid, each node connected by luminous teal lines to its neighbors, some nodes pulsing with warm gold internal light suggesting stored energy, others dim — no text or labels, pure structural beauty, deep space background, blueprint aesthetic
 ---
 
 > **In plain English:** The periodic table tells you what atoms are made of. This paper asks the same question one level more fundamental: what are *entities* made of — not just atoms, but any persistent thing, from a cell to a corporation to a particle? The answer is causal loops: patterns of cause-and-effect that return to their starting state and sustain themselves. A flame, a cell, a bond, a galaxy — all are causal loops at different scales with different stability properties. Energy, mass, and force aren't primitive — they emerge from the symmetry structure of these loops. This is the "periodic table" of epimechanics: a taxonomy of what stable things are made of, derived from causal structure alone.
