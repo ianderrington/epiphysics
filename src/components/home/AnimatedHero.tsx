@@ -1,9 +1,12 @@
 'use client';
 
-import { ReactNode, useRef, useEffect, useState } from 'react';
+import { ReactNode, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const CausePlexField = dynamic(() => import('./CausePlexField'), { ssr: false });
 
 interface AnimatedHeroProps {
   title?: ReactNode;
@@ -244,13 +247,9 @@ const AnimatedHero = ({
         {/* Dynamic background based on style */}
         {background_style === 'dynamic' && (
           <>
-            {/* Fallback gradient - behind PlasmaField, shows when WebGL unavailable */}
-            <div className="absolute inset-0 z-0 bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/30 via-purple-600/30 to-pink-600/30 animate-pulse" />
-            </div>
-            {/* WebGL PlasmaField - on top when rendering */}
+            {/* CausePlexField - visualization of causal event structure */}
             <div className="absolute inset-0 z-0">
-              <PlasmaField />
+              <CausePlexField />
             </div>
           </>
         )}
