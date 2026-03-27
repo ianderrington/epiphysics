@@ -3,338 +3,361 @@
 import { useRef, useEffect } from 'react';
 
 /**
- * CausePlexField: Plasma field driven by causal event sources
+ * CausePlexField: Phase-based causal dynamics
  * 
- * The visual is fluid plasma, but the dynamics come from causal structure:
- * - Causal events act as "sources" that emit influence
- * - The plasma field responds to these sources
- * - Loops create stable attractor regions
- * - The field shows how causal influence propagates
+ * Each event has a phase θ. Interactions are determined by phase:
+ * - Opposite phase (Δθ ≈ π) → annihilation (destructive interference)
+ * - Same phase (Δθ ≈ 0) → reinforcement
+ * - Loops form when N events arrange with phases summing to 2πn
+ * - Stable loops persist; unstable configurations dissolve
  */
 const CausePlexField = () => {
-  const mountRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const mount = mountRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    // Dynamically import THREE.js
-    import('three').then((THREE) => {
-      if (!mountRef.current) return;
+    let animationId: number;
 
-      const rect = mount.getBoundingClientRect();
-      const width = rect.width || window.innerWidth;
-      const height = rect.height || window.innerHeight;
+    const resize = () => {
+      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    };
+    resize();
+    window.addEventListener('resize', resize);
 
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({
-        alpha: true,
-        antialias: true,
-        powerPreference: "high-performance"
-      });
+    const width = () => canvas.offsetWidth;
+    const height = () => canvas.offsetHeight;
 
-      renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      mount.appendChild(renderer.domElement);
+    const TAU = Math.PI * 2;
 
-      // Causal sources - these drive the plasma
-      interface CausalSource {
-        x: number;
-        y: number;
-        vx: number;
-        vy: number;
-        strength: number;
-        phase: number;
-        isLoop: boolean;
-        age: number;
+    interface Event {
+      id: number;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      phase: number; // θ ∈ [0, 2π)
+      radius: number;
+      alpha: number;
+      loopId: number | null;
+      dying: boolean;
+      dyingProgress: number;
+    }
+
+    interface Loop {
+      id: number;
+      events: number[];
+      centerX: number;
+      centerY: number;
+      totalPhase: number; // Should be ≈ 2πn for stability
+      rotation: number;
+      stable: boolean;
+    }
+
+    let events: Event[] = [];
+    let loops: Loop[] = [];
+    let nextId = 0;
+    let nextLoopId = 0;
+
+    const MAX_EVENTS = 80;
+    const MAX_LOOPS = 6;
+    const ANNIHILATION_DIST = 12;
+    const LOOP_FORMATION_DIST = 40;
+    const MIN_LOOP_SIZE = 3;
+    const MAX_LOOP_SIZE = 6;
+
+    // Phase to color: smooth rainbow based on phase
+    const phaseToColor = (phase: number, alpha: number): string => {
+      const hue = (phase / TAU) * 360;
+      return `hsla(${hue}, 70%, 60%, ${alpha})`;
+    };
+
+    // Check if two phases are opposite (destructive)
+    const areOpposite = (p1: number, p2: number): boolean => {
+      const diff = Math.abs(((p1 - p2 + Math.PI) % TAU) - Math.PI);
+      return diff < 0.4; // ~23 degrees tolerance
+    };
+
+    // Check if two phases are aligned (constructive)
+    const areAligned = (p1: number, p2: number): boolean => {
+      const diff = Math.abs(((p1 - p2 + Math.PI) % TAU) - Math.PI);
+      return diff > 2.7; // Close to π means opposite, close to 0 means aligned
+    };
+
+    // Check if loop phases sum to 2πn (quantization)
+    const isQuantized = (phases: number[]): boolean => {
+      const sum = phases.reduce((a, b) => a + b, 0);
+      const remainder = sum % TAU;
+      return remainder < 0.5 || remainder > TAU - 0.5;
+    };
+
+    const createEvent = (): Event | null => {
+      if (events.filter(e => !e.loopId).length >= MAX_EVENTS) return null;
+
+      const event: Event = {
+        id: nextId++,
+        x: width() * (0.1 + Math.random() * 0.8),
+        y: -10,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: 0.5 + Math.random() * 0.5,
+        phase: Math.random() * TAU,
+        radius: 3,
+        alpha: 0,
+        loopId: null,
+        dying: false,
+        dyingProgress: 0,
+      };
+      events.push(event);
+      return event;
+    };
+
+    // Try to form a loop from nearby events
+    const tryFormLoop = () => {
+      if (loops.length >= MAX_LOOPS) return;
+
+      const freeEvents = events.filter(e => !e.loopId && !e.dying && e.y > 50 && e.y < height() - 100);
+      if (freeEvents.length < MIN_LOOP_SIZE) return;
+
+      // Find a cluster
+      for (const seed of freeEvents) {
+        const nearby = freeEvents.filter(e => {
+          if (e.id === seed.id) return false;
+          const dx = e.x - seed.x;
+          const dy = e.y - seed.y;
+          return Math.sqrt(dx * dx + dy * dy) < LOOP_FORMATION_DIST;
+        });
+
+        if (nearby.length >= MIN_LOOP_SIZE - 1) {
+          // Take seed + enough nearby to form loop
+          const loopEvents = [seed, ...nearby.slice(0, MAX_LOOP_SIZE - 1)];
+          const phases = loopEvents.map(e => e.phase);
+
+          // Check quantization condition
+          if (isQuantized(phases)) {
+            // Form stable loop!
+            const cx = loopEvents.reduce((s, e) => s + e.x, 0) / loopEvents.length;
+            const cy = loopEvents.reduce((s, e) => s + e.y, 0) / loopEvents.length;
+
+            const loop: Loop = {
+              id: nextLoopId++,
+              events: loopEvents.map(e => e.id),
+              centerX: cx,
+              centerY: cy,
+              totalPhase: phases.reduce((a, b) => a + b, 0),
+              rotation: 0,
+              stable: true,
+            };
+
+            // Arrange events in circle
+            const radius = 18 + loopEvents.length * 2;
+            loopEvents.forEach((e, i) => {
+              const angle = (i / loopEvents.length) * TAU;
+              e.x = cx + Math.cos(angle) * radius;
+              e.y = cy + Math.sin(angle) * radius;
+              e.vx = 0;
+              e.vy = 0;
+              e.loopId = loop.id;
+              e.radius = 4;
+            });
+
+            loops.push(loop);
+            return;
+          }
+        }
+      }
+    };
+
+    // Initialize
+    for (let i = 0; i < 15; i++) {
+      const e = createEvent();
+      if (e) {
+        e.y = Math.random() * height() * 0.7;
+        e.alpha = 1;
+      }
+    }
+
+    const animate = () => {
+      ctx.fillStyle = 'rgba(10, 10, 26, 1)';
+      ctx.fillRect(0, 0, width(), height());
+
+      // Spawn new events
+      if (Math.random() < 0.04) {
+        createEvent();
       }
 
-      const sources: CausalSource[] = [];
-      const MAX_SOURCES = 12;
+      // Try to form loops occasionally
+      if (Math.random() < 0.02) {
+        tryFormLoop();
+      }
 
-      // Initialize some sources
-      for (let i = 0; i < 6; i++) {
-        sources.push({
-          x: Math.random(),
-          y: Math.random(),
-          vx: (Math.random() - 0.5) * 0.001,
-          vy: (Math.random() - 0.5) * 0.001 + 0.0005,
-          strength: 0.5 + Math.random() * 0.5,
-          phase: Math.random() * Math.PI * 2,
-          isLoop: Math.random() > 0.7,
-          age: 0,
+      // Update loops
+      for (let i = loops.length - 1; i >= 0; i--) {
+        const loop = loops[i];
+        loop.rotation += 0.015;
+        loop.centerY += 0.2; // Slow drift
+
+        // Get loop events
+        const loopEvents = loop.events
+          .map(id => events.find(e => e.id === id))
+          .filter(Boolean) as Event[];
+
+        if (loopEvents.length < MIN_LOOP_SIZE || loop.centerY > height() + 50) {
+          // Loop dies
+          loopEvents.forEach(e => {
+            e.loopId = null;
+            e.dying = true;
+          });
+          loops.splice(i, 1);
+          continue;
+        }
+
+        // Update positions
+        const radius = 18 + loopEvents.length * 2;
+        loopEvents.forEach((e, j) => {
+          const angle = loop.rotation + (j / loopEvents.length) * TAU;
+          e.x = loop.centerX + Math.cos(angle) * radius;
+          e.y = loop.centerY + Math.sin(angle) * radius;
+          e.alpha = Math.min(1, e.alpha + 0.02);
         });
       }
 
-      const plasmaMaterial = new THREE.ShaderMaterial({
-        uniforms: {
-          uTime: { value: 0 },
-          uMouse: { value: new THREE.Vector2(0.5, 0.5) },
-          uResolution: { value: new THREE.Vector2(width, height) },
-          // Pass causal sources to shader
-          uSourceCount: { value: sources.length },
-          uSources: { value: new Float32Array(MAX_SOURCES * 4) }, // x, y, strength, isLoop
-        },
-        vertexShader: `
-          varying vec2 vUv;
-          void main() {
-            vUv = uv;
-            gl_Position = vec4(position, 1.0);
+      // Update free events and check interactions
+      const freeEvents = events.filter(e => !e.loopId);
+
+      for (let i = freeEvents.length - 1; i >= 0; i--) {
+        const e = freeEvents[i];
+
+        if (e.dying) {
+          e.dyingProgress += 0.05;
+          e.alpha = 1 - e.dyingProgress;
+          if (e.dyingProgress >= 1) {
+            const idx = events.indexOf(e);
+            if (idx >= 0) events.splice(idx, 1);
           }
-        `,
-        fragmentShader: `
-          uniform float uTime;
-          uniform vec2 uMouse;
-          uniform vec2 uResolution;
-          uniform int uSourceCount;
-          uniform float uSources[${MAX_SOURCES * 4}];
-          varying vec2 vUv;
-
-          #define NUM_OCTAVES 4
-
-          float rand(vec2 n) { 
-            return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
-          }
-
-          float noise(vec2 p) {
-            vec2 ip = floor(p);
-            vec2 u = fract(p);
-            u = u*u*(3.0-2.0*u);
-            float res = mix(
-              mix(rand(ip), rand(ip+vec2(1.0,0.0)), u.x),
-              mix(rand(ip+vec2(0.0,1.0)), rand(ip+vec2(1.0,1.0)), u.x), u.y);
-            return res*res;
-          }
-
-          float fbm(vec2 x) {
-            float v = 0.0;
-            float a = 0.5;
-            vec2 shift = vec2(100);
-            mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.50));
-            for (int i = 0; i < NUM_OCTAVES; ++i) {
-              v += a * noise(x);
-              x = rot * x * 2.0 + shift;
-              a *= 0.5;
-            }
-            return v;
-          }
-
-          void main() {
-            vec2 uv = vUv;
-            float time = uTime * 0.15;
-            float aspect = uResolution.x / uResolution.y;
-
-            // Base plasma pattern
-            vec2 baseUV = uv * 3.0;
-            
-            // Accumulate influence from causal sources
-            float causalField = 0.0;
-            float loopField = 0.0;
-            vec2 flowDir = vec2(0.0);
-            
-            for (int i = 0; i < ${MAX_SOURCES}; i++) {
-              if (i >= uSourceCount) break;
-              
-              float sx = uSources[i * 4];
-              float sy = uSources[i * 4 + 1];
-              float strength = uSources[i * 4 + 2];
-              float isLoop = uSources[i * 4 + 3];
-              
-              vec2 sourcePos = vec2(sx, sy);
-              vec2 toSource = sourcePos - uv;
-              toSource.x *= aspect;
-              float dist = length(toSource);
-              
-              // Causal influence falls off with distance
-              float influence = strength * exp(-dist * 4.0);
-              causalField += influence;
-              
-              // Loops create stable rotating regions
-              if (isLoop > 0.5) {
-                loopField += influence * 1.5;
-                // Add rotation around loop sources
-                vec2 perpendicular = vec2(-toSource.y, toSource.x);
-                flowDir += perpendicular * influence * 0.5;
-              }
-              
-              // Flow toward sources
-              flowDir += normalize(toSource + 0.001) * influence * 0.3;
-            }
-
-            // Apply flow to UV for distortion
-            vec2 distortedUV = baseUV + flowDir * 2.0;
-            
-            // Generate plasma waves influenced by causal field
-            vec2 q = vec2(
-              fbm(distortedUV + 0.1 * time),
-              fbm(distortedUV + vec2(1.0) - 0.1 * time)
-            );
-            
-            vec2 r = vec2(
-              fbm(distortedUV + 4.0 * q + 0.15 * time + causalField),
-              fbm(distortedUV + 4.0 * q - 0.126 * time + loopField)
-            );
-            
-            float pattern = fbm(distortedUV + r);
-            
-            // Color palette - blue for flow, gold for loops
-            vec3 flowColor1 = vec3(0.05, 0.2, 0.6);    // Deep blue
-            vec3 flowColor2 = vec3(0.1, 0.4, 0.8);     // Ocean blue
-            vec3 loopColor1 = vec3(0.8, 0.6, 0.2);     // Gold
-            vec3 loopColor2 = vec3(0.6, 0.3, 0.5);     // Purple
-            
-            // Mix based on pattern and causal influence
-            vec3 flowMix = mix(flowColor1, flowColor2, pattern);
-            vec3 loopMix = mix(loopColor1, loopColor2, r.x);
-            
-            // Blend between flow and loop colors based on field strength
-            float loopRatio = clamp(loopField / (causalField + 0.001), 0.0, 1.0);
-            vec3 color = mix(flowMix, loopMix, loopRatio * 0.7);
-            
-            // Add glow around sources
-            color += vec3(0.1, 0.15, 0.3) * causalField;
-            color += vec3(0.2, 0.15, 0.05) * loopField;
-            
-            // Mouse interaction - local brightening
-            vec2 mousePos = vec2(uMouse.x * aspect, uMouse.y);
-            vec2 uvPos = vec2(uv.x * aspect, uv.y);
-            float mouseDist = length(uvPos - mousePos);
-            float mouseGlow = exp(-mouseDist * 5.0) * 0.3;
-            color += vec3(0.2, 0.25, 0.4) * mouseGlow;
-            
-            // Enhance contrast and brightness
-            color = pow(color, vec3(0.85));
-            color *= 1.1;
-            
-            gl_FragColor = vec4(color, 0.95);
-          }
-        `,
-        transparent: true,
-      });
-
-      const geometry = new THREE.PlaneGeometry(2, 2);
-      const mesh = new THREE.Mesh(geometry, plasmaMaterial);
-      scene.add(mesh);
-
-      // Mouse interaction
-      const handleMouseMove = (event: MouseEvent) => {
-        const rect = mountRef.current?.getBoundingClientRect();
-        if (!rect) return;
-        const x = (event.clientX - rect.left) / rect.width;
-        const y = 1.0 - (event.clientY - rect.top) / rect.height;
-        plasmaMaterial.uniforms.uMouse.value.set(x, y);
-      };
-      window.addEventListener('mousemove', handleMouseMove);
-
-      const clock = new THREE.Clock();
-
-      const animate = () => {
-        const elapsed = clock.getElapsedTime();
-        plasmaMaterial.uniforms.uTime.value = elapsed;
-
-        // Update causal sources
-        const sourceData = new Float32Array(MAX_SOURCES * 4);
-        
-        for (let i = sources.length - 1; i >= 0; i--) {
-          const s = sources[i];
-          s.age += 0.016;
-          
-          // Move sources
-          s.x += s.vx;
-          s.y += s.vy;
-          
-          // Wrap or remove
-          if (s.y > 1.2 || s.y < -0.2 || s.x < -0.2 || s.x > 1.2) {
-            sources.splice(i, 1);
-            continue;
-          }
-          
-          // Loops orbit slightly
-          if (s.isLoop) {
-            s.phase += 0.01;
-            s.vx += Math.cos(s.phase) * 0.00005;
-            s.vy += Math.sin(s.phase) * 0.00005;
-          }
+          continue;
         }
 
-        // Spawn new sources
-        if (sources.length < MAX_SOURCES && Math.random() < 0.02) {
-          sources.push({
-            x: Math.random(),
-            y: -0.05,
-            vx: (Math.random() - 0.5) * 0.001,
-            vy: 0.001 + Math.random() * 0.001,
-            strength: 0.3 + Math.random() * 0.7,
-            phase: Math.random() * Math.PI * 2,
-            isLoop: Math.random() > 0.6,
-            age: 0,
-          });
+        // Fade in
+        e.alpha = Math.min(1, e.alpha + 0.02);
+
+        // Move
+        e.x += e.vx;
+        e.y += e.vy;
+
+        // Gentle center drift
+        e.vx += (width() / 2 - e.x) * 0.00003;
+        e.vx *= 0.99;
+
+        // Remove if off screen
+        if (e.y > height() + 20 || e.x < -20 || e.x > width() + 20) {
+          const idx = events.indexOf(e);
+          if (idx >= 0) events.splice(idx, 1);
+          continue;
         }
 
-        // Occasionally form loop from nearby sources
-        if (Math.random() < 0.005) {
-          for (const s of sources) {
-            if (s.isLoop) continue;
-            for (const other of sources) {
-              if (other === s || other.isLoop) continue;
-              const dx = other.x - s.x;
-              const dy = other.y - s.y;
-              const dist = Math.sqrt(dx * dx + dy * dy);
-              if (dist < 0.15) {
-                // Merge into loop
-                s.isLoop = true;
-                s.x = (s.x + other.x) / 2;
-                s.y = (s.y + other.y) / 2;
-                s.strength = s.strength + other.strength * 0.5;
-                s.vx *= 0.3;
-                s.vy *= 0.3;
-                const idx = sources.indexOf(other);
-                if (idx >= 0) sources.splice(idx, 1);
-                break;
-              }
+        // Check for annihilation with other free events
+        for (let j = i + 1; j < freeEvents.length; j++) {
+          const other = freeEvents[j];
+          if (other.dying || other.loopId) continue;
+
+          const dx = other.x - e.x;
+          const dy = other.y - e.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < ANNIHILATION_DIST) {
+            if (areOpposite(e.phase, other.phase)) {
+              // Destructive interference - annihilate!
+              e.dying = true;
+              other.dying = true;
+            } else if (areAligned(e.phase, other.phase)) {
+              // Constructive - merge phases slightly
+              const avgPhase = (e.phase + other.phase) / 2;
+              e.phase = avgPhase;
+              other.phase = avgPhase;
+              // Push apart gently
+              const pushX = dx / dist * 0.5;
+              const pushY = dy / dist * 0.5;
+              e.vx -= pushX;
+              e.vy -= pushY;
+              other.vx += pushX;
+              other.vy += pushY;
             }
           }
         }
+      }
 
-        // Pack source data for shader
-        for (let i = 0; i < sources.length && i < MAX_SOURCES; i++) {
-          sourceData[i * 4] = sources[i].x;
-          sourceData[i * 4 + 1] = sources[i].y;
-          sourceData[i * 4 + 2] = sources[i].strength;
-          sourceData[i * 4 + 3] = sources[i].isLoop ? 1.0 : 0.0;
+      // Draw connections within loops
+      ctx.lineWidth = 2;
+      for (const loop of loops) {
+        const loopEvents = loop.events
+          .map(id => events.find(e => e.id === id))
+          .filter(Boolean) as Event[];
+
+        if (loopEvents.length < 2) continue;
+
+        // Draw loop polygon
+        ctx.beginPath();
+        loopEvents.forEach((e, j) => {
+          if (j === 0) ctx.moveTo(e.x, e.y);
+          else ctx.lineTo(e.x, e.y);
+        });
+        ctx.closePath();
+
+        // Golden glow for stable loops
+        const avgAlpha = loopEvents.reduce((s, e) => s + e.alpha, 0) / loopEvents.length;
+        ctx.strokeStyle = `rgba(255, 200, 100, ${avgAlpha * 0.7})`;
+        ctx.stroke();
+
+        // Fill with subtle glow
+        ctx.fillStyle = `rgba(255, 200, 100, ${avgAlpha * 0.1})`;
+        ctx.fill();
+      }
+
+      // Draw events
+      for (const e of events) {
+        if (e.dying) {
+          // Annihilation flash
+          ctx.beginPath();
+          ctx.arc(e.x, e.y, e.radius + 5 * e.dyingProgress, 0, TAU);
+          ctx.fillStyle = `rgba(255, 100, 100, ${e.alpha * 0.5})`;
+          ctx.fill();
         }
-        
-        plasmaMaterial.uniforms.uSourceCount.value = sources.length;
-        plasmaMaterial.uniforms.uSources.value = sourceData;
 
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
-      };
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, e.radius, 0, TAU);
+        ctx.fillStyle = phaseToColor(e.phase, e.alpha);
+        ctx.fill();
 
-      animate();
+        // Subtle glow
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, e.radius + 2, 0, TAU);
+        ctx.fillStyle = phaseToColor(e.phase, e.alpha * 0.2);
+        ctx.fill();
+      }
 
-      const handleResize = () => {
-        if (!mount) return;
-        const rect = mount.getBoundingClientRect();
-        const newWidth = rect.width || window.innerWidth;
-        const newHeight = rect.height || window.innerHeight;
-        renderer.setSize(newWidth, newHeight);
-        plasmaMaterial.uniforms.uResolution.value.set(newWidth, newHeight);
-        camera.aspect = newWidth / newHeight;
-        camera.updateProjectionMatrix();
-      };
-      window.addEventListener('resize', handleResize);
+      animationId = requestAnimationFrame(animate);
+    };
 
-    }).catch((error) => {
-      console.error('Failed to load Three.js:', error);
-    });
+    animationId = requestAnimationFrame(animate);
 
-    return () => {};
+    return () => {
+      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationId);
+    };
   }, []);
 
-  return <div ref={mountRef} className="absolute inset-0 w-full h-full overflow-hidden" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full"
+    />
+  );
 };
 
 export default CausePlexField;
