@@ -83,9 +83,7 @@ This paper provides:
 4. A uniqueness theorem with correct dimensional analysis: $\dim(\mathrm{U}(1)^n \otimes \mathrm{U}(1)^n) = 2n-1$, fixed-point forces $n=1$ (Theorem 6.1);
 5. A rigorous product/non-product domain split, with entangled states correctly appearing as cross-term admitting cases (Section 7).
 
-**On novelty.** The fixed-point framing — $G \otimes G \cong G$ characterizes U(1) — is a new way of stating a conclusion that has been reached before (e.g., via local tomography arguments in quantum reconstruction). The genuinely new content is: (a) the dimensional uniqueness proof for tori is precise where prior arguments were loose; (b) exceptional groups are explicitly checked; (c) the framing explains *why* U(1) is stable (it is the unique fixed point) rather than merely that it satisfies axioms; (d) the connection to recursive self-description gives a structural motivation for the assumptions. The conclusion is not new; the route and its explanation are.
-
-**Relation to local tomography.** Assumptions A1+A2 are in the same strength class as local tomography (LT). This paper does not claim to derive U(1) from strictly weaker premises than LT. It claims a different framing that makes the structure visible: U(1) is not selected by LT as a satisfier of constraints; it is selected by recursive composition as the unique fixed point. That reframing has explanatory and predictive content independent of whether the formal derivation is novel.
+**Note on scope.** Assumptions A1+A2 are equivalent in strength to local tomography; U(1) has been identified this way before. What is new here is the fixed-point framing: U(1) is not merely a satisfier of constraints but the *unique self-consistent* amplitude group under recursive composition. The dimensional uniqueness proof (Theorem 6.1) and explicit verification for all exceptional Lie groups (Corollary 5.2) are precise where prior arguments were loose. See Appendix B for the cause-plex derivation of A1–A4 from more primitive principles.
 
 ---
 
@@ -120,21 +118,22 @@ $$
 $$
 A\perp B \implies \Gamma_{A\otimes B}=\Gamma_A\times\Gamma_B.
 $$
-*Physical motivation:* In a locally finite causal framework (e.g., the multiway cause-plex), product-state preparation ($A \perp B$) means the initial state imposes no cross-constraints between $A$'s and $B$'s histories. The admissible joint histories are then exactly Cartesian pairs. In cause-plex terms: $\mathcal{S}_0 = \mathcal{S}_0^A \times \mathcal{S}_0^B$ and $A \perp B$ together give $\mathcal{C}^*_{A \sqcup B} = \mathcal{C}^*_A \times \mathcal{C}^*_B$. A1 is therefore derivable from the cause-plex definition of product states.
+Independent systems have independent history spaces. Entangled systems ($A \not\perp B$) are not covered by A1; they are handled in Section 7. In the cause-plex, A1 follows from spacelike separation plus a product initial state — see [Appendix B](#appendix-b-cause-plex-motivation).
 
-*Honest status:* As stated here, A1 is a postulate scoped to product-state preparations. It is not a claim about all states. Entangled states ($A \not\perp B$) are handled in Section 7.
+**A2 (Compositional consistency).** For $A \perp B$: composite amplitude $\mathcal{A}_{A \otimes B}(\gamma_A, \gamma_B)$ (i) depends on $\gamma_A$ only through $\mathcal{A}_A(\gamma_A)$ and on $\gamma_B$ only through $\mathcal{A}_B(\gamma_B)$, and (ii) is multiplicative in $\mathcal{V}^\times$. In the cause-plex, (i) follows from event locality ([Cause-Plex and Spacetime](./causeplex_spacetime.md), Def 1.4) and (ii) from the path-integral composition rule ([Cause-Plex and Quantum Mechanics](./causeplex_quantum.md), Def 2.8).
 
-**A2 (Compositional consistency).** For $A \perp B$: composite amplitude $\mathcal{A}_{A \otimes B}(\gamma_A, \gamma_B)$ (i) depends on $\gamma_A$ only through $\mathcal{A}_A(\gamma_A)$ and on $\gamma_B$ only through $\mathcal{A}_B(\gamma_B)$, and (ii) is multiplicative in $\mathcal{V}^\times$.
+**A3 (Recursive closure).** Composition laws are level-invariant and closed under iteration: the same rule applies at every level of a nested description. In the cause-plex, this follows from Postulate Q' — observer-class entities are themselves cause-plexes governed by the same rules (see [Part 1.5: Causors](./01_5_causors.md)).
 
-*Honest status:* A2 is the key assumption. Condition (i) is "no global cross-data beyond the subsystem amplitudes" — a locality/no-hidden-information condition. Condition (ii) is "amplitudes compose multiplicatively in independent sectors." Together, A1+A2 are equivalent in strength to local tomography for amplitude assignments. They are well-motivated but not derived from more primitive principles within this paper. The cause-plex framework provides a derivation of A2(i) from event locality (L) for product-state preparations.
+**A4 (Lie regularity).** $G$ is a compact connected Lie group. Compactness follows from loop stability ($|w|=1$, [Cause-Plex and Quantum Mechanics](./causeplex_quantum.md), Prop 3.1); connectedness from requiring non-trivial continuous interference; smoothness is a regularity assumption.
 
-**A3 (Recursive closure).** Composition laws are level-invariant and closed under iteration: the same composition rule applies at every level of a nested description.
+**Assumption status summary:**
 
-*Honest status:* A3 is the self-description condition — the claim that the framework applies to itself. Any theory whose ontology includes observer-class entities (which the cause-plex does, by Part 1.5) must apply the same composition rules to the observer as to any other system. It is not independently verifiable; it is the recursive requirement that makes the fixed-point argument non-circular.
-
-**A4 (Lie regularity).** $G$ is a compact connected Lie group.
-
-*Honest status:* A4 is a regularity assumption. Stability of loops forces $|w| = 1$ (compactness); non-trivial continuous interference requires $\dim G \geq 1$ (connected, non-discrete). The Lie structure is a smoothness assumption; without it, the classification theorem does not apply. It is reasonable but explicit.
+| Assumption | Role | Status in cause-plex |
+|---|---|---|
+| A1 | Independent systems → independent histories | Derived from $A \perp B$ + product $\mathcal{S}_0$ |
+| A2 | Amplitudes factorize over independent systems | Derived from event locality (L) + composition rule |
+| A3 | Same rules at all levels (self-description) | Derived from Postulate Q' |
+| A4 | G is a smooth compact connected group | Motivated: stability + continuity + regularity |
 
 ---
 
@@ -284,15 +283,13 @@ The framework is internally consistent across product and non-product preparatio
 
 ---
 
----
-
 ## Appendix B. Cause-Plex Motivation
 
 The abstract framework of Section 2 is grounded in the multiway cause-plex [Derrington 2026a, 2026b]. This appendix makes the correspondence explicit, showing that A1–A4 are not independent postulates when embedded in the cause-plex — three of them are derived, and one (A2/multiplicativity) follows from event locality.
 
 ### B.1 The cause-plex substrate
 
-The cause-plex $\mathcal{C} = (E, \prec)$ is a locally finite strict partial order of causal events — state transitions $e: \mathcal{S}_\text{in} \to \mathcal{S}_\text{out}$ — with no assumed physics [Derrington 2026a, Def 1.1–1.2]. The multiway cause-plex $\mathcal{C}^*(\mathcal{S}_0)$ is the collection of all locally finite partial orders consistent with initial state $\mathcal{S}_0$ [Derrington 2026b, Def 2.1]. The history space of the present framework maps to:
+The cause-plex $\mathcal{C} = (E, \prec)$ is a locally finite strict partial order of causal events — state transitions $e: \mathcal{S}_\text{in} \to \mathcal{S}_\text{out}$ — with no assumed physics ([Cause-Plex and Spacetime](./causeplex_spacetime.md), Def 1.1–1.2). The multiway cause-plex $\mathcal{C}^*(\mathcal{S}_0)$ is the collection of all locally finite partial orders consistent with initial state $\mathcal{S}_0$ ([Cause-Plex and Quantum Mechanics](./causeplex_quantum.md), Def 2.1). The history space of the present framework maps to:
 $$
 \Gamma_X \leftrightarrow \mathcal{C}^*(\mathcal{S}_0^X)
 $$
@@ -311,19 +308,19 @@ A1 in the abstract framework corresponds to this proposition: $A \perp B$ combin
 
 ### B.3 A2(i) is derived from event locality
 
-Event locality (Assumption L of [Derrington 2026a, Def 1.4]): each event $e$ reads from and writes to a finite local state domain $D(e)$, with $D_\text{out}(e) \cap D_\text{in}(e') = \emptyset$ for non-adjacent events.
+Event locality (Assumption L of [Cause-Plex and Spacetime](./causeplex_spacetime.md), Def 1.4): each event $e$ reads from and writes to a finite local state domain $D(e)$, with $D_\text{out}(e) \cap D_\text{in}(e') = \emptyset$ for non-adjacent events.
 
 **Consequence for amplitudes.** Any amplitude assignment consistent with the event structure — computable from the cause-plex data — can only access local event data at each event. For $A \perp B$, no event in either system can access the state domain of the other. Therefore the amplitude contribution at each event depends only on local data at that event, giving A2(i): composite amplitude depends on $\gamma_A$ only through $\mathcal{A}_A(\gamma_A)$ and on $\gamma_B$ only through $\mathcal{A}_B(\gamma_B)$.
 
-*Note: A2(ii) (multiplicativity) is a further structural condition. Multiplicativity of amplitudes in $\mathcal{V}^\times$ follows from the path-integral composition rule (Definition 2.8 of [Derrington 2026b]), which requires $w(\gamma_1 \cdot \gamma_2) = w(\gamma_1) \cdot w(\gamma_2)$ for sequential loops. Extending this to parallel composition requires additionally that spacelike independence implies amplitude independence — this is the content of A2(ii) and is derived from event locality + spacelike separation for product states.*
+*Note: A2(ii) (multiplicativity) is a further structural condition. Multiplicativity of amplitudes in $\mathcal{V}^\times$ follows from the path-integral composition rule (Definition 2.8 of [Cause-Plex and Quantum Mechanics](./causeplex_quantum.md)), which requires $w(\gamma_1 \cdot \gamma_2) = w(\gamma_1) \cdot w(\gamma_2)$ for sequential loops. Extending this to parallel composition requires additionally that spacelike independence implies amplitude independence — this is the content of A2(ii) and is derived from event locality + spacelike separation for product states.*
 
 ### B.4 A3 (recursive closure) from Postulate Q'
 
-Postulate Q' [Derrington 2026b, Section 2]: the physical cause-plex is multiway — all causally consistent histories coexist. Observer-class entities within $\mathcal{C}^*$ are themselves cause-plexes (nested multiway structures). The same composition rules that govern physical interactions govern the observer's own dynamics. This is A3: composition is level-invariant and closed under iteration. It is the recursive self-description property: the theory applies to itself.
+Postulate Q' ([Cause-Plex and Quantum Mechanics](./causeplex_quantum.md), Section 2): the physical cause-plex is multiway — all causally consistent histories coexist. Observer-class entities within $\mathcal{C}^*$ are themselves cause-plexes (nested multiway structures). The same composition rules that govern physical interactions govern the observer's own dynamics. This is A3: composition is level-invariant and closed under iteration. It is the recursive self-description property: the theory applies to itself.
 
 ### B.5 A4 (Lie regularity) from stability
 
-Proposition 3.1 of [Derrington 2026b] (stability forces $|w|=1$): if loops iterate without divergence or extinction, $|w(\gamma)| = 1$. This forces $G$ compact. Non-trivial continuous interference requires $\dim G \geq 1$, ruling out discrete groups. Smoothness (Lie structure) is the natural regularity assumption for a group parameterized by the continuous real action $S[\gamma] \in \mathbb{R}$.
+Proposition 3.1 of [Cause-Plex and Quantum Mechanics](./causeplex_quantum.md) (stability forces $|w|=1$): if loops iterate without divergence or extinction, $|w(\gamma)| = 1$. This forces $G$ compact. Non-trivial continuous interference requires $\dim G \geq 1$, ruling out discrete groups. Smoothness (Lie structure) is the natural regularity assumption for a group parameterized by the continuous real action $S[\gamma] \in \mathbb{R}$.
 
 ### B.6 Summary of cause-plex grounding
 
@@ -347,9 +344,9 @@ In the cause-plex, A1–A4 are not independent postulates but consequences of th
 - Benincasa, D.M.T. & Dowker, F. (2010). Scalar curvature of a causal set. *Physical Review Letters*, 104, 181301.
 - Bombelli, L., Lee, J., Meyer, D., & Sorkin, R.D. (1987). Space-time as a causal set. *Physical Review Letters*, 59(5), 521–524.
 - Chiribella, G., D'Ariano, G.M., & Perinotti, P. (2011). Informational derivation of quantum theory. *Physical Review A*, 84, 012311.
-- Derrington, I. (2026a). Cause-plex and spacetime: Deriving the Lorentzian metric from causal structure. *Epimechanics series*.
-- Derrington, I. (2026b). Cause-plex and quantum mechanics: Deriving quantum structure from multiway causal order. *Epimechanics series*.
-- Derrington, I. (2026c). Complex amplitudes from loop-phase consistency in the multiway cause-plex. *Epimechanics series*.
+- Derrington, I. (2026a). [Cause-plex and spacetime: Deriving the Lorentzian metric from causal structure.](./causeplex_spacetime.md) *Epimechanics series*.
+- Derrington, I. (2026b). [Cause-plex and quantum mechanics: Deriving quantum structure from multiway causal order.](./causeplex_quantum.md) *Epimechanics series*.
+- Derrington, I. (2026c). [Complex amplitudes from loop-phase consistency in the multiway cause-plex.](./causeplex_loop_phase.md) *Epimechanics series*.
 - Hardy, L. (2001). Quantum theory from five reasonable axioms. *arXiv:quant-ph/0101012*.
 - Hurwitz, A. (1898). Ueber die Composition der quadratischen Formen von beliebig vielen Variabeln. *Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen*, 309–316.
 - Malament, D.B. (1977). The class of continuous timelike curves determines the topology of spacetime. *Journal of Mathematical Physics*, 18(7), 1399–1404.
