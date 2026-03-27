@@ -9,6 +9,7 @@ import { useRef, useEffect } from 'react';
  * Edges = causal precedence (one event enables another)
  * Branches = multiway structure (alternative histories)
  * Loops = stable entities (causors)
+ * Annihilation = when branches meet and cancel (interference)
  */
 const CausePlexField = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -19,6 +20,8 @@ const CausePlexField = () => {
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+
+    let animationId: number;
 
     // Set canvas size
     const resize = () => {
@@ -42,6 +45,8 @@ const CausePlexField = () => {
       connections: number[];
       birth: number;
       alpha: number;
+      dying: boolean;
+      deathTime: number;
     }
 
     const events: CausalEvent[] = [];
@@ -51,27 +56,35 @@ const CausePlexField = () => {
     const width = () => canvas.offsetWidth;
     const height = () => canvas.offsetHeight;
 
+    // Max events to prevent overwhelming
+    const MAX_EVENTS = 80;
+
     // Create initial seed events
-    const createEvent = (x: number, y: number, generation: number, branch: number, parent?: CausalEvent): CausalEvent => {
+    const createEvent = (x: number, y: number, generation: number, branch: number, parent?: CausalEvent): CausalEvent | null => {
+      // Don't create if at max
+      if (events.length >= MAX_EVENTS) return null;
+      
       const event: CausalEvent = {
         id: nextId++,
         x,
         y,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: 0.2 + Math.random() * 0.3, // Drift downward (time flows down)
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: 0.4 + Math.random() * 0.4, // Drift downward (time flows down)
         generation,
         branch,
         isLoop: false,
         connections: parent ? [parent.id] : [],
         birth: time,
         alpha: 0,
+        dying: false,
+        deathTime: 0,
       };
       events.push(event);
       return event;
     };
 
     // Seed the initial events
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
       createEvent(
         width() * (0.3 + Math.random() * 0.4),
         -20,
@@ -85,8 +98,8 @@ const CausePlexField = () => {
       time += 0.016;
       ctx.clearRect(0, 0, width(), height());
 
-      // Spawn new events from top
-      if (Math.random() < 0.03 && events.length < 150) {
+      // Spawn new events from top (rate limited)
+      if (Math.random() < 0.02 && events.length < MAX_EVENTS) {
         createEvent(
           width() * (0.2 + Math.random() * 0.6),
           -10,
@@ -95,43 +108,85 @@ const CausePlexField = () => {
         );
       }
 
+      // Check for annihilation (nearby events from different branches cancel)
+      for (let i = 0; i < events.length; i++) {
+        for (let j = i + 1; j < events.length; j++) {
+          const e1 = events[i];
+          const e2 = events[j];
+          
+          if (e1.dying || e2.dying) continue;
+          if (Math.abs(e1.branch - e2.branch) < 0.3) continue; // Same branch, no annihilation
+          
+          const dx = e2.x - e1.x;
+          const dy = e2.y - e1.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          
+          // Annihilation when different branches get very close
+          if (dist < 15 && Math.random() < 0.3) {
+            e1.dying = true;
+            e2.dying = true;
+            e1.deathTime = time;
+            e2.deathTime = time;
+          }
+        }
+      }
+
       // Update and draw events
       for (let i = events.length - 1; i >= 0; i--) {
         const e = events[i];
         
+        // Handle dying events (annihilation flash then remove)
+        if (e.dying) {
+          const deathProgress = (time - e.deathTime) / 0.3; // 0.3 second death
+          if (deathProgress > 1) {
+            events.splice(i, 1);
+            continue;
+          }
+          // Flash bright then fade
+          e.alpha = Math.max(0, 1 - deathProgress);
+          
+          // Draw annihilation flash
+          ctx.beginPath();
+          ctx.arc(e.x, e.y, 8 * (1 - deathProgress) + 4, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 100, 100, ${e.alpha * 0.5})`;
+          ctx.fill();
+          continue;
+        }
+        
         // Fade in
-        e.alpha = Math.min(1, e.alpha + 0.02);
+        e.alpha = Math.min(1, e.alpha + 0.03);
         
         // Move
         e.x += e.vx;
         e.y += e.vy;
         
         // Slight horizontal drift toward center
-        e.vx += (width() / 2 - e.x) * 0.0001;
+        e.vx += (width() / 2 - e.x) * 0.0002;
+        // Dampen horizontal velocity
+        e.vx *= 0.99;
         
-        // Remove if off screen
-        if (e.y > height() + 50) {
+        // Remove if off screen (bottom or sides)
+        if (e.y > height() + 30 || e.x < -30 || e.x > width() + 30) {
           events.splice(i, 1);
           continue;
         }
 
-        // Occasionally branch (multiway structure)
-        if (Math.random() < 0.002 && e.y > 50 && e.y < height() - 100) {
-          const child1 = createEvent(e.x - 20, e.y + 10, e.generation + 1, e.branch, e);
-          const child2 = createEvent(e.x + 20, e.y + 10, e.generation + 1, e.branch + 0.5, e);
-          child1.vx = -0.3;
-          child2.vx = 0.3;
+        // Occasionally branch (multiway structure) - less frequent
+        if (Math.random() < 0.001 && e.y > 50 && e.y < height() - 150 && events.length < MAX_EVENTS - 2) {
+          const child1 = createEvent(e.x - 15, e.y + 10, e.generation + 1, e.branch - 0.5, e);
+          const child2 = createEvent(e.x + 15, e.y + 10, e.generation + 1, e.branch + 0.5, e);
+          if (child1) child1.vx = -0.4;
+          if (child2) child2.vx = 0.4;
         }
 
-        // Occasionally form loops (causor structures)
-        if (Math.random() < 0.001 && !e.isLoop) {
-          // Find nearby event to connect to (simulating causal loop)
+        // Occasionally form loops (causor structures) - less frequent
+        if (Math.random() < 0.0005 && !e.isLoop) {
           for (const other of events) {
-            if (other.id !== e.id && !e.connections.includes(other.id)) {
+            if (other.id !== e.id && !other.dying && !e.connections.includes(other.id)) {
               const dx = other.x - e.x;
               const dy = other.y - e.y;
               const dist = Math.sqrt(dx * dx + dy * dy);
-              if (dist < 80 && dist > 20) {
+              if (dist < 60 && dist > 15 && Math.abs(e.branch - other.branch) < 0.5) {
                 e.connections.push(other.id);
                 e.isLoop = true;
                 other.isLoop = true;
@@ -145,18 +200,17 @@ const CausePlexField = () => {
       // Draw connections (causal edges)
       ctx.lineWidth = 1;
       for (const e of events) {
+        if (e.dying) continue;
         for (const connId of e.connections) {
           const other = events.find(ev => ev.id === connId);
-          if (other) {
+          if (other && !other.dying) {
             const gradient = ctx.createLinearGradient(e.x, e.y, other.x, other.y);
             if (e.isLoop || other.isLoop) {
-              // Loop connections glow gold
-              gradient.addColorStop(0, `rgba(255, 200, 100, ${e.alpha * 0.6})`);
-              gradient.addColorStop(1, `rgba(255, 200, 100, ${other.alpha * 0.6})`);
+              gradient.addColorStop(0, `rgba(255, 200, 100, ${e.alpha * 0.5})`);
+              gradient.addColorStop(1, `rgba(255, 200, 100, ${other.alpha * 0.5})`);
             } else {
-              // Normal causal connections are blue
-              gradient.addColorStop(0, `rgba(100, 150, 255, ${e.alpha * 0.4})`);
-              gradient.addColorStop(1, `rgba(100, 150, 255, ${other.alpha * 0.4})`);
+              gradient.addColorStop(0, `rgba(100, 150, 255, ${e.alpha * 0.3})`);
+              gradient.addColorStop(1, `rgba(100, 150, 255, ${other.alpha * 0.3})`);
             }
             ctx.strokeStyle = gradient;
             ctx.beginPath();
@@ -169,32 +223,35 @@ const CausePlexField = () => {
 
       // Draw events (nodes)
       for (const e of events) {
-        const size = e.isLoop ? 4 : 2.5;
+        if (e.dying) continue;
+        
+        const size = e.isLoop ? 3.5 : 2;
         const color = e.isLoop 
-          ? `rgba(255, 220, 150, ${e.alpha})` // Gold for loop nodes
-          : `rgba(150, 200, 255, ${e.alpha})`; // Blue for regular nodes
+          ? `rgba(255, 220, 150, ${e.alpha})` 
+          : `rgba(150, 200, 255, ${e.alpha * 0.8})`;
         
         ctx.beginPath();
         ctx.arc(e.x, e.y, size, 0, Math.PI * 2);
         ctx.fillStyle = color;
         ctx.fill();
         
-        // Glow effect for loop nodes
+        // Subtle glow for loop nodes
         if (e.isLoop) {
           ctx.beginPath();
-          ctx.arc(e.x, e.y, size + 3, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 200, 100, ${e.alpha * 0.2})`;
+          ctx.arc(e.x, e.y, size + 2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 200, 100, ${e.alpha * 0.15})`;
           ctx.fill();
         }
       }
 
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     };
 
     animate();
 
     return () => {
       window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationId);
     };
   }, []);
 
