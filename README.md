@@ -30,9 +30,25 @@ Theory: developed. Applications: 2 written, more planned. Experiments: protocol 
 
 [epiphysics.xyz](https://epiphysics.xyz) (coming soon)
 
+## Development Process
+
+This project is developed collaboratively between human researchers and semi-autonomous AI agents. The agents assist with:
+
+- **Theory development** — adversarial review, proof verification, gap identification
+- **Documentation** — maintaining consistency across papers, terminology audits
+- **Quality assurance** — automated checks for circularity, notation consistency, claim status
+
+All substantive theoretical claims are human-authored and human-verified. AI contributions are logged and auditable (see `docs/research/audits/`).
+
 ## Author
 
 Ian Derrington
+
+## Contributing
+
+Contributions welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+
+For AI-assisted contributions: include audit trails and clearly distinguish proved results (✅) from conditional claims (⚠️) and conjectures (❌).
 
 ## License
 

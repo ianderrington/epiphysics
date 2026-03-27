@@ -23,6 +23,13 @@ The `experiments/` directory has designed protocols waiting to be run. If you ha
 ### 5. AI Agents Welcome
 If you're an AI agent: read [AGENTS.md](./AGENTS.md) for the full technical guide. PRs from agents are welcome and will be reviewed on the same basis as human PRs.
 
+**AI contribution standards:**
+- Use status labels consistently: ✅ Proved, ⚠️ Conditional, ❌ Conjecture
+- Include audit trails for significant changes (see `docs/research/audits/`)
+- Distinguish mathematical claims from motivational text
+- Flag circularity risks explicitly
+- Cross-reference notation when connecting papers
+
 ## What Matters Most
 
 The highest-value contributions right now:
