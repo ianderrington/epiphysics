@@ -5,10 +5,11 @@ description: >-
   principles, with explicit theorem/proof structure, domain separation, and
   fixed-point uniqueness.
 date: 2026-03-27T03:06:00.000Z
-draft: false
+draft: true
 author:
   name: "Ian Derrington"
 series: "Epimechanics"
+series_order: 1.6
 tags:
   - Epimechanics
   - Quantum mechanics
@@ -169,6 +170,8 @@ $$
 G\otimes G\cong G.
 $$
 We call this the **compositional fixed-point condition**.
+
+**Notation clarification.** Throughout this paper, $G \otimes G$ denotes the *image* of the tensor product representation of $G \times G$ acting on amplitude space — not the direct product $G \times G$ as an abstract group. The dimension of this image is generically $2\dim G - k$ where $k$ counts redundant phase parameters (see Theorem 6.1 proof). For $\mathrm{U}(1)$, $k=1$, so $\dim(\mathrm{U}(1) \otimes \mathrm{U}(1)) = 1 = \dim\,\mathrm{U}(1)$ — the fixed-point condition is satisfied. For higher tori, $k=1$ still but $2n-1 \neq n$ for $n > 1$.
 
 ---
 

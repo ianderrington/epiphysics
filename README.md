@@ -18,13 +18,13 @@ All representations have mechanical structure (trivially — it's calculus). Goo
 
 ## Key Results
 
-- **Theorem:** Among real-analytic, time-reversible kinetic energies, the quadratic form minimizes total predictive cost (description length + integration cost).
+- **Theorem (U(1) uniqueness):** Under product-state independence, compositional consistency, recursive closure, and compact connected Lie regularity, the unique nontrivial amplitude phase group is $\mathrm{U}(1)$. See [Compositional Fixed-Point Derivation](./docs/theory/amplitude-phase-fixed-point-paper.md).
 - **Conjecture:** Information-theoretically optimal representations have Lagrangian structure.
 - **Open problem:** Does this hold for irreversible systems?
 
 ## Status
 
-Theory: developed. Applications: 5 written, 11 planned. Experiments: protocol designed, not yet run.
+Theory: developed. Applications: 2 written, more planned. Experiments: protocol designed, not yet run.
 
 ## URL
 
