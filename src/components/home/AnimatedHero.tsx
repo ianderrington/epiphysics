@@ -27,8 +27,11 @@ const PlasmaField = () => {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    // Check if desktop on mount
-    setIsDesktop(window.innerWidth >= 768);
+    // Check if desktop on mount - lower threshold for half-screen views
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 600);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
   }, []);
 
   useEffect(() => {
@@ -250,11 +253,11 @@ const AnimatedHero = ({
         {/* Dynamic background based on style */}
         {background_style === 'dynamic' && (
           <>
-            {/* Desktop: WebGL PlasmaField */}
+            {/* WebGL PlasmaField - works on most screens */}
             <PlasmaField />
-            {/* Mobile: Animated CSS gradient fallback */}
-            <div className="absolute inset-0 lg:hidden bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 animate-gradient-shift">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/50 via-purple-500/50 to-pink-500/50 animate-pulse" />
+            {/* Fallback gradient visible only when PlasmaField not rendering */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900">
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/30 via-purple-600/30 to-pink-600/30 animate-pulse" />
             </div>
           </>
         )}

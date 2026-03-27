@@ -23,7 +23,7 @@ export default function ReaderSidebar({
 
   return (
     <aside
-      className="hidden xl:block w-64 shrink-0 sticky top-[calc(var(--header-height)+52px)] max-h-[calc(100vh-var(--header-height)-68px)] overflow-y-auto pr-4"
+      className="hidden xl:block w-64 shrink-0 sticky top-[calc(var(--header-height)+52px)] max-h-[calc(100vh-var(--header-height)-60px)] overflow-y-auto pr-4"
       style={{ scrollbarWidth: 'thin' }}
     >
       {hasChapters && (

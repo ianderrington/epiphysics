@@ -1,123 +1,53 @@
 title: Epiphysics
-description: The empirical science of Epimechanics — a human-AI collaboration to understand reality
+description: A human-AI collaboration to understand reality
 
 hero:
-  subtitle: "F = ma — force equals mass times acceleration — is the skeleton of all motion. Epimechanics shows that same skeleton describes anything that changes: beliefs, institutions, ecosystems, markets. One framework. Any domain. And its physics foundation — why quantum mechanics uses complex numbers — is now derived, not postulated."
+  subtitle: "The mathematical grammar of change — derived from first principles, tested empirically, built collaboratively with AI."
   quick_links:
     - title: "Series Map"
-      description: "Start here — what exists, what's proved, how it connects"
+      description: "Start here — what exists, what's proved"
       link: "/theory/series_map"
       type: "writing"
     - title: "Theory"
-      description: "The Epimechanics Framework"
+      description: "The Framework"
       link: "/theory"
       type: "writing"
     - title: "Applications"
-      description: "Domain-Specific Tests"
+      description: "Domain Tests"
       link: "/applications"
       type: "writing"
     - title: "Research"
       description: "Papers & Proofs"
       link: "/research"
       type: "writing"
-    - title: "Experiments"
-      description: "Empirical Protocols"
-      link: "/experiments"
-      type: "writing"
   background_style: "dynamic"
 
 featured_posts:
-  title: Recent Content
-  description: The latest from theory development, applications, and research
+  title: Recent Work
+  description: ""
 
 features:
-  title: "Go Deeper"
+  title: "Explore"
   description: ""
   items:
-    - title: "The Full Argument"
-      description: "From causal event → spacetime → quantum mechanics → life. The complete derivation chain."
+    - title: "The Full Derivation"
+      description: "Causal event → spacetime → quantum mechanics → life"
       icon: zap
       url: "/theory/series_map"
-    - title: "Applications"
-      description: "Testing the framework: efficiency limits, robustness metrics, entropy in everyday systems."
+    - title: "Why U(1)?"
+      description: "Why quantum mechanics uses complex numbers — derived, not postulated"
       icon: arrow-right
-      url: "/applications"
-    - title: "Popular Introduction"
-      description: "Why your desk gets messy. Why habits stick. Accessible on-ramp, no equations."
+      url: "/theory/amplitude-phase-fixed-point-paper"
+    - title: "Accessible Version"
+      description: "No equations. Why your desk gets messy."
       icon: heart
       url: "https://ian.ceo/musings/existence_physics_and_life/physics_of_common_sense"
 
 cta:
-  title: Get Involved
-  description: Epiphysics is open source. The theory is developed. The experiments need to be run.
+  title: Open Source
+  description: "Theory developed. Experiments ready to run. Join us."
   button:
-    text: View on GitHub
+    text: GitHub
     link: https://github.com/ianderrington/epiphysics
 
-content: |
-  ## A Human-AI Collaboration
-
-  **Epiphysics** is developed through a novel collaboration between human researchers and semi-autonomous AI agents. The humans provide direction, intuition, and final judgment. The AIs provide tireless adversarial review, consistency checking, and documentation maintenance.
-
-  This isn't AI replacing human thought — it's AI *amplifying* it. Every theorem is human-conceived; every proof is AI-audited. The result: faster iteration, fewer errors, more rigorous foundations.
-
-  **What the AIs do:**
-  - Adversarial review of proofs (find gaps, check assumptions)
-  - Consistency audits across papers (notation, terminology, claim status)
-  - Documentation maintenance (cross-references, glossary updates)
-  - Quality gates (circularity detection, status label verification)
-
-  **What humans do:**
-  - Conceive the theory and its structure
-  - Make judgment calls on foundational assumptions
-  - Decide what questions to ask
-  - Verify final results
-
-  All AI contributions are logged and auditable. See [Research → Audits](/research/audits) for the full trail.
-
-  ---
-
-  ## The Framework
-
-  **Core insight:** All representations have mechanical structure. Good representations have *simple* mechanical structure — simple enough to predict dynamics at minimal computational cost. The existence of an optimal representation is a theorem (Shannon, Rissanen, Solomonoff). That it has Lagrangian structure is the conjecture.
-
-  **Structure:**
-  - **[Series Map](/theory/series_map)** — Start here: what exists, what's proved, how everything connects
-  - **[Theory](/theory)** — Six-part series: foundations, atomic structure, generalized mechanics, meta-entities, consciousness, ontology
-  - **[Physics Foundations](/theory/causeplex_spacetime)** — Spacetime, quantum mechanics, and U(1) amplitudes derived from causal event structure
-  - **[Applications](/applications)** — Efficiency limits, robustness metrics, entropy in everyday systems
-  - **[Research](/research)** — Representational efficiency paper, rate-distortion proof, experimental protocols
-  - **[Experiments](/experiments)** — Lagrangian vs neural ODE, conservation law discovery, irreversibility signatures
-
-  ---
-
-  ## Goals
-
-  **Near-term (2026):**
-  - Complete the theory series (Parts 0-5)
-  - Run the first empirical experiment (Lagrangian vs Neural ODE)
-  - Publish the U(1) fixed-point derivation
-
-  **Medium-term (2027):**
-  - Extend to irreversible systems (the open problem)
-  - Build domain-specific applications (organizational dynamics, belief propagation)
-  - Develop measurement protocols for generalized mass and auto-causal density
-
-  **Long-term:**
-  - A unified framework for understanding change across all domains
-  - Practical tools for predicting system dynamics from structural properties
-  - A new way of doing theoretical science: human intuition + AI rigor
-
-  ---
-
-  ## Why This Matters
-
-  Physics gave us the equations that describe matter and energy. But the same *form* of those equations — state, rate of change, force, energy, coupling — appears everywhere: in how beliefs change, how institutions evolve, how ecosystems adapt.
-
-  Epimechanics asks: is this coincidence, or is there a deeper grammar? The answer matters because:
-
-  1. **Prediction:** If the grammar is real, we can predict dynamics in new domains
-  2. **Unification:** One framework instead of ad-hoc models per domain
-  3. **Foundations:** Understanding why physics has the form it does
-
-  The collaboration model matters too. This project is a proof of concept: can human-AI teams do better theoretical science than either alone? Early results suggest yes — faster iteration, more rigorous checking, cleaner documentation.
+content: ""

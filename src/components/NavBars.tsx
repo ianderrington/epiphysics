@@ -61,8 +61,16 @@ export default function NavBars({
   const chapterRef = useRef<HTMLDivElement>(null);
   const tocRef = useRef<HTMLDivElement>(null);
   const [headerH, setHeaderH] = useState(64);
+  const [isXL, setIsXL] = useState(false);
 
-  useEffect(() => { setHeaderH(getHeaderHeight()); }, []);
+  useEffect(() => {
+    setHeaderH(getHeaderHeight());
+    const mq = window.matchMedia('(min-width: 1280px)');
+    setIsXL(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsXL(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const toggle = useCallback((panel: 'chapters' | 'toc') => {
     setExpanded((prev) => (prev === panel ? null : panel));
@@ -149,7 +157,8 @@ export default function NavBars({
 
   const hasChapters = chapters.length > 0;
   const hasHeadings = headings.length > 0;
-  const showTocBar = hasHeadings;
+  // At XL, ReaderSidebar shows TOC — only show chapter bar here
+  const showTocBar = hasHeadings && !isXL;
 
   /* ── position math ── */
   const chapterShown = showChapter || expanded !== null;
