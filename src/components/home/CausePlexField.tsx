@@ -147,6 +147,11 @@ const CausePlexField = () => {
             const cy = loopEvents.reduce((s, e) => s + e.y, 0) / loopEvents.length;
 
             const totalPhase = phases.reduce((a, b) => a + b, 0);
+            // Direction based on whether total phase is above or below π per element
+            const avgPhase = totalPhase / loopEvents.length;
+            const direction = avgPhase > Math.PI ? -1 : 1;
+            const speed = 0.008 + Math.abs(avgPhase - Math.PI) * 0.005;
+            
             const loop: Loop = {
               id: nextLoopId++,
               events: loopEvents.map(e => e.id),
@@ -154,7 +159,7 @@ const CausePlexField = () => {
               centerY: cy,
               totalPhase: totalPhase,
               rotation: 0,
-              rotationRate: 0.005 + (totalPhase % TAU) * 0.003, // Rate depends on phase
+              rotationRate: direction * speed, // Direction AND speed from phase
               stable: true,
               tier: 1,
             };
@@ -207,7 +212,11 @@ const CausePlexField = () => {
               const newCy = (loop1.centerY + loop2.centerY) / 2;
               const newTotalPhase = loop1.totalPhase + loop2.totalPhase;
 
-              // Create merged loop
+              // Create merged loop - inherit combined rotation properties
+              const avgPhase = newTotalPhase / allEvents.length;
+              const direction = avgPhase > Math.PI ? -1 : 1;
+              const speed = 0.006 + Math.abs(avgPhase - Math.PI) * 0.003;
+              
               const mergedLoop: Loop = {
                 id: nextLoopId++,
                 events: allEventIds,
@@ -215,7 +224,7 @@ const CausePlexField = () => {
                 centerY: newCy,
                 totalPhase: newTotalPhase,
                 rotation: 0,
-                rotationRate: 0.003 + (newTotalPhase % TAU) * 0.002,
+                rotationRate: direction * speed,
                 stable: true,
                 tier: Math.max(loop1.tier, loop2.tier) + 1,
               };
