@@ -3,13 +3,13 @@
 import { useRef, useEffect } from 'react';
 
 /**
- * CausePlexField: A visualization of causal event structure
+ * CausePlexField: Deterministic causal graph evolution
  * 
- * Based on the epimechanics theory:
- * - Causal events flow and connect (partial order)
- * - Chains that form loops become stable entities (causors)
- * - Unstable chains naturally fade
- * - Stable loops persist and glow
+ * Based on a simple rewriting rule:
+ * - Each event has inputs and outputs (state domains)
+ * - New events are created when outputs connect to inputs
+ * - The graph grows according to local rules, not randomness
+ * - Loops form when causal paths return to compatible states
  */
 const CausePlexField = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -31,289 +31,267 @@ const CausePlexField = () => {
     resize();
     window.addEventListener('resize', resize);
 
-    interface CausalEvent {
-      id: number;
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      alpha: number;
-      stable: boolean; // Part of a stable loop
-      loopId: number | null; // Which loop it belongs to
-      parent: number | null;
-      children: number[];
-      age: number;
-    }
-
-    interface StableLoop {
-      id: number;
-      events: number[];
-      centerX: number;
-      centerY: number;
-      radius: number;
-      rotation: number;
-      pulsePhase: number;
-    }
-
-    const events: CausalEvent[] = [];
-    const loops: StableLoop[] = [];
-    let nextId = 0;
-    let nextLoopId = 0;
-    let time = 0;
-
     const width = () => canvas.offsetWidth;
     const height = () => canvas.offsetHeight;
 
-    const MAX_EVENTS = 100;
-    const MAX_LOOPS = 8;
-
-    // Create a new causal event
-    const createEvent = (x: number, y: number, parent: CausalEvent | null = null): CausalEvent | null => {
-      if (events.filter(e => !e.stable).length >= MAX_EVENTS) return null;
-
-      const event: CausalEvent = {
-        id: nextId++,
-        x,
-        y,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: 0.3 + Math.random() * 0.2,
-        alpha: 0,
-        stable: false,
-        loopId: null,
-        parent: parent?.id ?? null,
-        children: [],
-        age: 0,
-      };
-
-      if (parent) {
-        parent.children.push(event.id);
-      }
-
-      events.push(event);
-      return event;
-    };
-
-    // Create a stable loop structure
-    const createLoop = (x: number, y: number): StableLoop | null => {
-      if (loops.length >= MAX_LOOPS) return null;
-
-      const loopEventCount = 4 + Math.floor(Math.random() * 3); // 4-6 events per loop
-      const radius = 15 + Math.random() * 10;
-      const loop: StableLoop = {
-        id: nextLoopId++,
-        events: [],
-        centerX: x,
-        centerY: y,
-        radius,
-        rotation: 0,
-        pulsePhase: Math.random() * Math.PI * 2,
-      };
-
-      // Create events in a circle
-      for (let i = 0; i < loopEventCount; i++) {
-        const angle = (i / loopEventCount) * Math.PI * 2;
-        const ex = x + Math.cos(angle) * radius;
-        const ey = y + Math.sin(angle) * radius;
-
-        const event: CausalEvent = {
-          id: nextId++,
-          x: ex,
-          y: ey,
-          vx: 0,
-          vy: 0,
-          alpha: 0,
-          stable: true,
-          loopId: loop.id,
-          parent: null,
-          children: [],
-          age: 0,
-        };
-
-        events.push(event);
-        loop.events.push(event.id);
-      }
-
-      loops.push(loop);
-      return loop;
-    };
-
-    // Seed initial events
-    for (let i = 0; i < 5; i++) {
-      createEvent(width() * (0.2 + Math.random() * 0.6), Math.random() * height() * 0.3);
+    // A causal event with a discrete "state" value
+    // Events connect when output state matches input state
+    interface Event {
+      id: number;
+      x: number;
+      y: number;
+      state: number; // discrete state value (0-7)
+      inputFrom: number | null; // parent event id
+      outputTo: number[]; // child event ids
+      depth: number; // causal depth from root
+      birthTime: number;
+      alpha: number;
     }
 
-    // Create a couple initial stable loops
-    createLoop(width() * 0.3, height() * 0.5);
-    createLoop(width() * 0.7, height() * 0.6);
+    interface Edge {
+      from: number;
+      to: number;
+      alpha: number;
+    }
 
-    const animate = () => {
-      time += 0.016;
-      ctx.clearRect(0, 0, width(), height());
+    let events: Event[] = [];
+    let edges: Edge[] = [];
+    let nextId = 0;
+    let time = 0;
+    let stepCount = 0;
 
-      // Spawn new events from top
-      if (Math.random() < 0.03 && events.filter(e => !e.stable).length < MAX_EVENTS) {
-        createEvent(width() * (0.15 + Math.random() * 0.7), -5);
+    const MAX_EVENTS = 120;
+    const NUM_STATES = 6;
+
+    // Deterministic state transition rule
+    // Given current state and position, compute next state(s)
+    const transitionRule = (state: number, depth: number): number[] => {
+      // Simple rule: state evolves based on depth mod pattern
+      // This creates structured, non-random growth
+      const base = (state + 1) % NUM_STATES;
+      
+      // At certain depths, branch into two states
+      if (depth % 4 === 3) {
+        return [base, (base + 3) % NUM_STATES];
       }
+      return [base];
+    };
 
-      // Occasionally form a new stable loop from flowing events
-      if (Math.random() < 0.002 && loops.length < MAX_LOOPS) {
-        // Find a cluster of nearby unstable events
-        const unstable = events.filter(e => !e.stable && e.y > 100 && e.y < height() - 100);
-        if (unstable.length > 3) {
-          const seed = unstable[Math.floor(Math.random() * unstable.length)];
-          const nearby = unstable.filter(e => {
-            const dx = e.x - seed.x;
-            const dy = e.y - seed.y;
-            return Math.sqrt(dx * dx + dy * dy) < 50;
-          });
+    // Check if two states can form a loop (compatible for recurrence)
+    const canLoop = (state1: number, state2: number): boolean => {
+      // States loop if they're equal or complementary
+      return state1 === state2 || (state1 + state2) % NUM_STATES === 0;
+    };
 
-          if (nearby.length >= 3) {
-            // Convert to stable loop
-            const avgX = nearby.reduce((s, e) => s + e.x, 0) / nearby.length;
-            const avgY = nearby.reduce((s, e) => s + e.y, 0) / nearby.length;
+    // Initialize with seed events across the top
+    const initialize = () => {
+      events = [];
+      edges = [];
+      nextId = 0;
+      stepCount = 0;
 
-            // Remove the unstable events
-            nearby.forEach(e => {
-              const idx = events.indexOf(e);
-              if (idx >= 0) events.splice(idx, 1);
-            });
-
-            // Create stable loop
-            createLoop(avgX, avgY);
-          }
-        }
-      }
-
-      // Update stable loops
-      for (let i = loops.length - 1; i >= 0; i--) {
-        const loop = loops[i];
-
-        // Slow drift downward
-        loop.centerY += 0.15;
-        loop.rotation += 0.008;
-        loop.pulsePhase += 0.03;
-
-        // Remove if off screen
-        if (loop.centerY > height() + 50) {
-          // Remove associated events
-          loop.events.forEach(eid => {
-            const idx = events.findIndex(e => e.id === eid);
-            if (idx >= 0) events.splice(idx, 1);
-          });
-          loops.splice(i, 1);
-          continue;
-        }
-
-        // Update event positions in loop
-        const loopEvents = loop.events.map(eid => events.find(e => e.id === eid)).filter(Boolean) as CausalEvent[];
-        const pulseRadius = loop.radius + Math.sin(loop.pulsePhase) * 2;
-
-        loopEvents.forEach((e, j) => {
-          const angle = loop.rotation + (j / loopEvents.length) * Math.PI * 2;
-          e.x = loop.centerX + Math.cos(angle) * pulseRadius;
-          e.y = loop.centerY + Math.sin(angle) * pulseRadius;
-          e.alpha = Math.min(1, e.alpha + 0.02);
+      // Create initial events with different states
+      const numSeeds = 5;
+      for (let i = 0; i < numSeeds; i++) {
+        events.push({
+          id: nextId++,
+          x: width() * (0.15 + (i / (numSeeds - 1)) * 0.7),
+          y: 30,
+          state: i % NUM_STATES,
+          inputFrom: null,
+          outputTo: [],
+          depth: 0,
+          birthTime: time,
+          alpha: 1,
         });
       }
+    };
 
-      // Update unstable events
-      for (let i = events.length - 1; i >= 0; i--) {
-        const e = events[i];
-        if (e.stable) continue;
+    // One step of causal evolution
+    const evolveStep = () => {
+      if (events.length >= MAX_EVENTS) return;
 
-        e.age += 0.016;
-        e.alpha = Math.min(0.8, e.alpha + 0.02);
+      // Find frontier events (those that can spawn children)
+      const frontier = events.filter(e => 
+        e.outputTo.length === 0 && 
+        e.y < height() - 80 &&
+        e.depth < 25
+      );
 
-        // Move
-        e.x += e.vx;
-        e.y += e.vy;
+      if (frontier.length === 0) {
+        // Reset when graph is complete
+        setTimeout(() => initialize(), 1000);
+        return;
+      }
 
-        // Gentle drift toward center
-        e.vx += (width() / 2 - e.x) * 0.00005;
-        e.vx *= 0.995;
+      // Process one frontier event per step (deterministic order)
+      const parent = frontier[stepCount % frontier.length];
+      const nextStates = transitionRule(parent.state, parent.depth);
 
-        // Fade out older events
-        if (e.age > 3) {
-          e.alpha -= 0.01;
-        }
+      const childSpacing = 40;
+      const baseX = parent.x - ((nextStates.length - 1) * childSpacing) / 2;
 
-        // Remove if faded or off screen
-        if (e.alpha <= 0 || e.y > height() + 20 || e.x < -20 || e.x > width() + 20) {
-          events.splice(i, 1);
-          continue;
-        }
+      for (let i = 0; i < nextStates.length; i++) {
+        if (events.length >= MAX_EVENTS) break;
 
-        // Occasionally branch
-        if (Math.random() < 0.003 && e.y > 30 && e.y < height() - 100 && e.children.length === 0) {
-          const child = createEvent(e.x + (Math.random() - 0.5) * 20, e.y + 10, e);
-          if (child) {
-            child.vx = e.vx + (Math.random() - 0.5) * 0.3;
+        const childState = nextStates[i];
+        const childX = baseX + i * childSpacing;
+        const childY = parent.y + 35 + (parent.depth % 2) * 5;
+
+        // Check for loop closure with existing events
+        let loopTarget: Event | null = null;
+        for (const existing of events) {
+          if (existing.id === parent.id) continue;
+          if (existing.depth < parent.depth - 1) continue; // Must be recent
+          
+          const dx = existing.x - childX;
+          const dy = existing.y - childY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          
+          if (dist < 30 && canLoop(childState, existing.state)) {
+            loopTarget = existing;
+            break;
           }
+        }
+
+        if (loopTarget) {
+          // Form a loop edge instead of new event
+          edges.push({
+            from: parent.id,
+            to: loopTarget.id,
+            alpha: 1,
+          });
+          parent.outputTo.push(loopTarget.id);
+        } else {
+          // Create new child event
+          const child: Event = {
+            id: nextId++,
+            x: Math.max(20, Math.min(width() - 20, childX)),
+            y: childY,
+            state: childState,
+            inputFrom: parent.id,
+            outputTo: [],
+            depth: parent.depth + 1,
+            birthTime: time,
+            alpha: 0,
+          };
+
+          events.push(child);
+          parent.outputTo.push(child.id);
+
+          edges.push({
+            from: parent.id,
+            to: child.id,
+            alpha: 0,
+          });
         }
       }
 
-      // Draw connections for unstable events (to parents)
-      ctx.lineWidth = 1;
+      stepCount++;
+    };
+
+    initialize();
+
+    // State colors (deterministic, based on state value)
+    const stateColors = [
+      [100, 180, 255], // 0: blue
+      [150, 220, 180], // 1: teal
+      [200, 180, 255], // 2: purple
+      [255, 200, 150], // 3: gold
+      [180, 255, 200], // 4: green
+      [255, 150, 180], // 5: pink
+    ];
+
+    const getColor = (state: number, alpha: number): string => {
+      const c = stateColors[state % stateColors.length];
+      return `rgba(${c[0]}, ${c[1]}, ${c[2]}, ${alpha})`;
+    };
+
+    let lastStep = 0;
+    const STEP_INTERVAL = 150; // ms between evolution steps
+
+    const animate = (timestamp: number) => {
+      time = timestamp / 1000;
+
+      // Evolve at fixed intervals
+      if (timestamp - lastStep > STEP_INTERVAL) {
+        evolveStep();
+        lastStep = timestamp;
+      }
+
+      ctx.clearRect(0, 0, width(), height());
+
+      // Update alphas (fade in)
       for (const e of events) {
-        if (e.stable || e.parent === null) continue;
-        const parent = events.find(p => p.id === e.parent);
-        if (parent) {
-          ctx.strokeStyle = `rgba(100, 150, 255, ${Math.min(e.alpha, parent.alpha) * 0.3})`;
+        e.alpha = Math.min(1, e.alpha + 0.05);
+      }
+      for (const edge of edges) {
+        edge.alpha = Math.min(1, edge.alpha + 0.05);
+      }
+
+      // Draw edges
+      ctx.lineWidth = 1.5;
+      for (const edge of edges) {
+        const from = events.find(e => e.id === edge.from);
+        const to = events.find(e => e.id === edge.to);
+        if (!from || !to) continue;
+
+        // Check if this is a loop edge (to an earlier event)
+        const isLoop = to.depth <= from.depth;
+
+        if (isLoop) {
+          // Loop edges are gold and curved
+          ctx.strokeStyle = `rgba(255, 200, 100, ${edge.alpha * 0.8})`;
+          ctx.lineWidth = 2;
+          
+          const midX = (from.x + to.x) / 2 + (from.x - to.x) * 0.3;
+          const midY = (from.y + to.y) / 2;
+          
           ctx.beginPath();
-          ctx.moveTo(e.x, e.y);
-          ctx.lineTo(parent.x, parent.y);
+          ctx.moveTo(from.x, from.y);
+          ctx.quadraticCurveTo(midX, midY, to.x, to.y);
+          ctx.stroke();
+          ctx.lineWidth = 1.5;
+        } else {
+          // Normal causal edges
+          const avgState = Math.floor((from.state + to.state) / 2);
+          ctx.strokeStyle = getColor(avgState, edge.alpha * 0.5);
+          
+          ctx.beginPath();
+          ctx.moveTo(from.x, from.y);
+          ctx.lineTo(to.x, to.y);
           ctx.stroke();
         }
       }
 
-      // Draw stable loops
-      for (const loop of loops) {
-        const loopEvents = loop.events.map(eid => events.find(e => e.id === eid)).filter(Boolean) as CausalEvent[];
-        if (loopEvents.length < 2) continue;
-
-        const avgAlpha = loopEvents.reduce((s, e) => s + e.alpha, 0) / loopEvents.length;
-
-        // Draw loop connections
-        ctx.strokeStyle = `rgba(255, 200, 100, ${avgAlpha * 0.6})`;
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        loopEvents.forEach((e, j) => {
-          if (j === 0) ctx.moveTo(e.x, e.y);
-          else ctx.lineTo(e.x, e.y);
-        });
-        ctx.closePath();
-        ctx.stroke();
-
-        // Draw soft glow
-        const gradient = ctx.createRadialGradient(
-          loop.centerX, loop.centerY, 0,
-          loop.centerX, loop.centerY, loop.radius + 10
-        );
-        gradient.addColorStop(0, `rgba(255, 200, 100, ${avgAlpha * 0.15})`);
-        gradient.addColorStop(1, `rgba(255, 200, 100, 0)`);
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(loop.centerX, loop.centerY, loop.radius + 10, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // Draw event nodes
+      // Draw events
       for (const e of events) {
-        const size = e.stable ? 3 : 2;
-        const color = e.stable
-          ? `rgba(255, 220, 150, ${e.alpha})`
-          : `rgba(150, 200, 255, ${e.alpha})`;
+        // Check if part of a loop
+        const hasLoopEdge = edges.some(edge => 
+          (edge.from === e.id || edge.to === e.id) && 
+          events.find(ev => ev.id === edge.to)?.depth <= events.find(ev => ev.id === edge.from)?.depth
+        );
 
+        const size = hasLoopEdge ? 4 : 3;
+        
         ctx.beginPath();
         ctx.arc(e.x, e.y, size, 0, Math.PI * 2);
-        ctx.fillStyle = color;
+        ctx.fillStyle = getColor(e.state, e.alpha);
         ctx.fill();
+
+        // Glow for loop nodes
+        if (hasLoopEdge) {
+          ctx.beginPath();
+          ctx.arc(e.x, e.y, size + 4, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 200, 100, ${e.alpha * 0.2})`;
+          ctx.fill();
+        }
       }
 
       animationId = requestAnimationFrame(animate);
     };
 
-    animate();
+    animationId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('resize', resize);
