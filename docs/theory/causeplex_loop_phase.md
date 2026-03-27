@@ -313,6 +313,8 @@ $$\phi(\gamma_1\cdot\gamma_2)=\phi(\gamma_1)+\phi(\gamma_2)\pmod{2\pi}.$$
 
 ### 6.3 Action identification
 
+> ⚠️ **Circularity warning (see §6.5).** The definition below uses energy $\Delta E$, but energy is supposed to emerge from Noether's theorem applied to the cause-plex action. This section is a **Layer C bridge**, not a Layer 0 derivation. The action $S[\gamma]$ is defined here *only after* assuming time-translation symmetry holds and energy is already a well-defined conserved quantity. It does not derive energy from the cause-plex; it names the phase in terms of pre-existing energy concepts.
+
 $$S[\gamma] = \sum_{k=1}^n \Delta E(e_k) \cdot \tau_{e_k}, \qquad \phi(\gamma)=\frac{S[\gamma]}{\hbar}.$$
 
 ### 6.4 Identification statement
@@ -321,6 +323,20 @@ $$S[\gamma] = \sum_{k=1}^n \Delta E(e_k) \cdot \tau_{e_k}, \qquad \phi(\gamma)=\
 At Layer C (time-translation symmetry + Noether energy definitions in force),
 $$\phi(\gamma) = \frac{S[\gamma]}{\hbar}, \quad \hbar = \Delta E_{\min}\cdot\tau_{\min} = \frac{\Delta E_{\min}}{|\mathcal{C}_{\text{ref}}|}.$$
 This is a naming/bridge step, not a standalone microscopic derivation of specific system Lagrangians.
+
+### 6.5 On the energy/action circularity
+
+The derivation of $G = \mathrm{U}(1)$ in Sections 3–5 is **independent of the action definition** in §6.3. Routes A, B, and C establish the phase group from:
+- Loop stability (Proposition 3.1: $|w|=1$)
+- Compositional closure (Route C: $G \otimes G \cong G$)
+- Postulate R (Route A: minimal dimension)
+- Connectivity + tomography (Route B)
+
+None of these use energy or action. The $\mathrm{U}(1)$ result is Layer 0.
+
+Section 6.3 then asks: *given* that phases are $\mathrm{U}(1)$-valued, what physical quantity does the phase correspond to? The answer — action $S = \int L\,dt$ — requires Layer C machinery (Lagrangian, energy, time-translation symmetry). This is a **naming step**, not a derivation step. The circularity concern applies only if one claims to derive energy from the action while defining action in terms of energy. We do not make that claim here; we identify the phase with action after both are independently established at their respective layers.
+
+**Open problem:** Define a Layer 0 action functional $S_0[\gamma]$ in terms of cause-plex structure alone (event counts, partial-order depth, information-theoretic quantities) without using energy. Show that $S_0$ reduces to the physical action $S$ in the continuum/thermodynamic limit where time-translation symmetry holds. This would close the derivational gap.
 
 ---
 

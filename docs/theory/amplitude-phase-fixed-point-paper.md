@@ -359,7 +359,9 @@ In the cause-plex, A1–A4 are not independent postulates but consequences of th
 
 ---
 
-## Appendix A. Notation
+## Appendix A. Notation and Crosswalk
+
+### A.1 This paper's notation
 
 $$
 \mathcal{S}:\text{ system class},\quad
@@ -374,3 +376,18 @@ $$
 G:\text{ compact connected phase Lie group},\quad
 \mathfrak{P}(X):\text{ normalized phase sector of }X.
 $$
+
+### A.2 Notation crosswalk with other Epimechanics papers
+
+| Concept | This paper | [Loop-phase paper](./causeplex_loop_phase.md) | [Cause-plex spacetime](./causeplex_spacetime.md) |
+|---------|------------|----------------------------------------------|--------------------------------------------------|
+| History space | $\Gamma_X$ | $\Omega(\mathcal{C}^*, e_*)$ | $\mathcal{C}^*(\mathcal{S}_0)$ |
+| Amplitude map | $\mathcal{A}_X: \Gamma_X \to \mathcal{V}$ | $w: \Omega \to G$ | — |
+| Phase group | $G$ | $G$ | — |
+| Product composition | $\boxtimes$ | $\cdot$ (multiplication) | — |
+| Independent systems | $A \perp B$ | $A \perp B$ (spacelike) | $e_1 \perp e_2$ (spacelike) |
+| Causal event | — | $e = (\mathcal{S}_\text{in}, \mathcal{S}_\text{out})$ | $e: \mathcal{S}_i \to \mathcal{S}_j$ |
+| Cause-plex | — | $\mathcal{C} = (E, \prec)$ | $\mathcal{C} = (E, \prec)$ |
+| Loop concatenation | — | $\gamma_1 \cdot \gamma_2$ | — |
+
+The present paper's notation is intentionally more abstract (no cause-plex dependency) to emphasize that the fixed-point argument applies to any compositional amplitude framework, not just the cause-plex instantiation.
