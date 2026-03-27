@@ -332,7 +332,7 @@ In regions of the cause-plex where symmetry holds, Layer 0 causal events aggrega
 | **Robustness** | $\Delta V / \langle\text{perturbation}\rangle$ | Basin depth relative to typical shocks |
 | **Causal action** $A_{\text{causal}}$ | $\int_0^T \mathcal{M}_{\text{ac}}(t)\,dt$ | Total self-sustaining structure over lifetime; units J·s |
 
-**Energy accessibility hierarchy.** At Layer C, the concept of "potential potential energy" formalizes as cause-plex chain depth: how many transducer entities (enable-role bonds) separate a stored energy source from the entity that could use it. The same matter has different accessible energy depending on whether the transducer chain connecting it to the entity exists. This is relational, not intrinsic to matter.
+**Energy accessibility hierarchy.** At Layer C, the concept of "potential potential energy" formalizes as cause-plex chain depth: how many transducer entities (enable-role bonds) separate a stored energy source from the entity that could use it. The same matter has different accessible energy depending on whether the transducer chain connecting it to the entity exists. This is relational, not built into matter itself.
 
 ---
 

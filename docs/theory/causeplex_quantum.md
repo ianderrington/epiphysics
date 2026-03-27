@@ -118,7 +118,7 @@ Three convergent arguments address this. The first is native to the cause-plex f
 
 **Argument 1: Loop-phase consistency (native to the cause-plex — target derivation)**
 
-Every persistent entity in the cause-plex is a stable recurring loop: a pattern of causal events that returns to its initial state (Definition, [Part 1.5: Causors]). When such a loop completes one cycle, the accumulated amplitude weight $w$ must be *self-consistent*: the weight assigned to a closed causal path must compose consistently with itself and with other loops.
+Every persistent entity in the cause-plex is a stable recurring loop: a pattern of causal events that returns to its initial state (Definition, [Part 1.5: Causors](./01_5_causors.md)). When such a loop completes one cycle, the accumulated amplitude weight $w$ must be *self-consistent*: the weight assigned to a closed causal path must compose consistently with itself and with other loops.
 
 The set of consistent weights for closed loops must therefore form a **group under multiplication** — the amplitude of composing two closed loops must itself be a valid closed-loop amplitude.
 

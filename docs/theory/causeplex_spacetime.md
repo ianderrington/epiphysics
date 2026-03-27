@@ -269,11 +269,11 @@ The distinctive contributions of epimechanics beyond CST are:
 
 **1. The coarse-graining ladder to biology and society.** CST focuses on the Planck-scale structure of spacetime. Epimechanics extends the same primitive to bonds, loops, auto-causal entities, meta-entities, and social systems — a multi-scale program that CST does not address.
 
-**2. The Q1–Q4 entity type descriptors.** The classification of entities by bond type, loop order, basin depth, entropy production, and repair rate [Part 1.5: Causors] is not present in CST. This provides the vocabulary for the entity taxonomy.
+**2. The Q1–Q4 entity type descriptors.** The classification of entities by bond type, loop order, basin depth, entropy production, and repair rate [Part 1.5: Causors](./01_5_causors.md) is not present in CST. This provides the vocabulary for the entity taxonomy.
 
 **3. The selective convergence argument for dimensionality.** CST takes the dimensionality of spacetime as an empirical input calibrated by the number-volume conjecture. The cause-plex framework adds the observer-selection argument (Section 10) grounding why 3+1 is the observed dimensionality in terms of structural stability conditions for observer-class entities.
 
-**4. The loop-phase derivation of complex amplitudes.** The argument that $i$ in $e^{iS/\hbar}$ follows from stable loop structure [causeplex_loop_phase.md] is not present in CST. Sorkin's quantum measure theory derives complex amplitudes from a different direction (probability theory hierarchy).
+**4. The loop-phase derivation of complex amplitudes.** The argument that $i$ in $e^{iS/\hbar}$ follows from stable loop structure [Loop-Phase Consistency](./causeplex_loop_phase.md) is not present in CST. Sorkin's quantum measure theory derives complex amplitudes from a different direction (probability theory hierarchy).
 
 **5. Integration with the epimechanics entity framework.** The connection between fundamental causal structure and the biological/social entity hierarchy is the central application of epimechanics and has no analog in CST.
 
