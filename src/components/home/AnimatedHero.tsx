@@ -314,7 +314,7 @@ const AnimatedHero = ({
                   href="/theory/amplitude-phase-fixed-point-paper"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/30 text-white font-semibold text-lg hover:bg-white/20 transition-all duration-200"
                 >
-                  See the Physics Proof
+                  See the Theory
                   <span className="text-xl">→</span>
                 </Link>
               </motion.div>
