@@ -147,10 +147,20 @@ const CausePlexField = () => {
             const cy = loopEvents.reduce((s, e) => s + e.y, 0) / loopEvents.length;
 
             const totalPhase = phases.reduce((a, b) => a + b, 0);
-            // Direction based on whether total phase is above or below π per element
-            const avgPhase = totalPhase / loopEvents.length;
-            const direction = avgPhase > Math.PI ? -1 : 1;
-            const speed = 0.008 + Math.abs(avgPhase - Math.PI) * 0.005;
+            // Compute net "angular momentum" from phase differences around the loop
+            // Sum of (θ[i+1] - θ[i]) gives net winding
+            let windingSum = 0;
+            for (let k = 0; k < phases.length; k++) {
+              const next = (k + 1) % phases.length;
+              let diff = phases[next] - phases[k];
+              // Wrap to [-π, π]
+              while (diff > Math.PI) diff -= TAU;
+              while (diff < -Math.PI) diff += TAU;
+              windingSum += diff;
+            }
+            // windingSum will be positive or negative based on phase ordering
+            const direction = windingSum >= 0 ? 1 : -1;
+            const speed = 0.008 + Math.abs(windingSum) * 0.003;
             
             const loop: Loop = {
               id: nextLoopId++,
@@ -159,7 +169,7 @@ const CausePlexField = () => {
               centerY: cy,
               totalPhase: totalPhase,
               rotation: 0,
-              rotationRate: direction * speed, // Direction AND speed from phase
+              rotationRate: direction * speed,
               stable: true,
               tier: 1,
             };
@@ -212,10 +222,10 @@ const CausePlexField = () => {
               const newCy = (loop1.centerY + loop2.centerY) / 2;
               const newTotalPhase = loop1.totalPhase + loop2.totalPhase;
 
-              // Create merged loop - inherit combined rotation properties
-              const avgPhase = newTotalPhase / allEvents.length;
-              const direction = avgPhase > Math.PI ? -1 : 1;
-              const speed = 0.006 + Math.abs(avgPhase - Math.PI) * 0.003;
+              // Create merged loop - combine rotation rates
+              const combinedRate = loop1.rotationRate + loop2.rotationRate;
+              const direction = combinedRate >= 0 ? 1 : -1;
+              const speed = Math.abs(combinedRate) * 0.7 + 0.004;
               
               const mergedLoop: Loop = {
                 id: nextLoopId++,
