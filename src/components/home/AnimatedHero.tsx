@@ -24,18 +24,9 @@ interface AnimatedHeroProps {
 
 const PlasmaField = () => {
   const mountRef = useRef<HTMLDivElement>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    // Check if desktop on mount - lower threshold for half-screen views
-    const checkDesktop = () => setIsDesktop(window.innerWidth >= 600);
-    checkDesktop();
-    window.addEventListener('resize', checkDesktop);
-    return () => window.removeEventListener('resize', checkDesktop);
-  }, []);
-
-  useEffect(() => {
-    if (!mountRef.current || !isDesktop) return;
+    if (!mountRef.current) return;
 
     // Dynamically import THREE.js only on desktop
     import('three').then((THREE) => {
@@ -233,7 +224,7 @@ const PlasmaField = () => {
     return () => {
       // Cleanup will be handled by the dynamic import context
     };
-  }, [isDesktop]);
+  }, []);
 
   return <div ref={mountRef} className="absolute inset-0 w-full h-full overflow-hidden" />;
 };
