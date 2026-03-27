@@ -1,5 +1,5 @@
 title: Epiphysics
-description: The empirical science of Epimechanics
+description: The empirical science of Epimechanics — a human-AI collaboration to understand reality
 
 hero:
   subtitle: "F = ma — force equals mass times acceleration — is the skeleton of all motion. Epimechanics shows that same skeleton describes anything that changes: beliefs, institutions, ecosystems, markets. One framework. Any domain. And its physics foundation — why quantum mechanics uses complex numbers — is now derived, not postulated."
@@ -55,7 +55,29 @@ cta:
     link: https://github.com/ianderrington/epiphysics
 
 content: |
-  **Epiphysics** is the empirical science of **Epimechanics** — a generalized mechanical framework where F = dp/dt applies to any time-varying representation, not just physical ones.
+  ## A Human-AI Collaboration
+
+  **Epiphysics** is developed through a novel collaboration between human researchers and semi-autonomous AI agents. The humans provide direction, intuition, and final judgment. The AIs provide tireless adversarial review, consistency checking, and documentation maintenance.
+
+  This isn't AI replacing human thought — it's AI *amplifying* it. Every theorem is human-conceived; every proof is AI-audited. The result: faster iteration, fewer errors, more rigorous foundations.
+
+  **What the AIs do:**
+  - Adversarial review of proofs (find gaps, check assumptions)
+  - Consistency audits across papers (notation, terminology, claim status)
+  - Documentation maintenance (cross-references, glossary updates)
+  - Quality gates (circularity detection, status label verification)
+
+  **What humans do:**
+  - Conceive the theory and its structure
+  - Make judgment calls on foundational assumptions
+  - Decide what questions to ask
+  - Verify final results
+
+  All AI contributions are logged and auditable. See [Research → Audits](/research/audits) for the full trail.
+
+  ---
+
+  ## The Framework
 
   **Core insight:** All representations have mechanical structure. Good representations have *simple* mechanical structure — simple enough to predict dynamics at minimal computational cost. The existence of an optimal representation is a theorem (Shannon, Rissanen, Solomonoff). That it has Lagrangian structure is the conjecture.
 
@@ -66,4 +88,36 @@ content: |
   - **[Applications](/applications)** — Efficiency limits, robustness metrics, entropy in everyday systems
   - **[Research](/research)** — Representational efficiency paper, rate-distortion proof, experimental protocols
   - **[Experiments](/experiments)** — Lagrangian vs neural ODE, conservation law discovery, irreversibility signatures
-  - **[Popular](https://ian.ceo/musings/existence_physics_and_life/physics_of_common_sense)** — Accessible introductions on ian.ceo
+
+  ---
+
+  ## Goals
+
+  **Near-term (2026):**
+  - Complete the theory series (Parts 0-5)
+  - Run the first empirical experiment (Lagrangian vs Neural ODE)
+  - Publish the U(1) fixed-point derivation
+
+  **Medium-term (2027):**
+  - Extend to irreversible systems (the open problem)
+  - Build domain-specific applications (organizational dynamics, belief propagation)
+  - Develop measurement protocols for generalized mass and auto-causal density
+
+  **Long-term:**
+  - A unified framework for understanding change across all domains
+  - Practical tools for predicting system dynamics from structural properties
+  - A new way of doing theoretical science: human intuition + AI rigor
+
+  ---
+
+  ## Why This Matters
+
+  Physics gave us the equations that describe matter and energy. But the same *form* of those equations — state, rate of change, force, energy, coupling — appears everywhere: in how beliefs change, how institutions evolve, how ecosystems adapt.
+
+  Epimechanics asks: is this coincidence, or is there a deeper grammar? The answer matters because:
+
+  1. **Prediction:** If the grammar is real, we can predict dynamics in new domains
+  2. **Unification:** One framework instead of ad-hoc models per domain
+  3. **Foundations:** Understanding why physics has the form it does
+
+  The collaboration model matters too. This project is a proof of concept: can human-AI teams do better theoretical science than either alone? Early results suggest yes — faster iteration, more rigorous checking, cleaner documentation.
