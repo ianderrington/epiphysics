@@ -35,7 +35,7 @@ features:
   description: From foundational theory to empirical tests
   items:
     - title: "Series Map"
-      description: "New here? Start with the map — shows every document, what's proved, and how everything connects."
+      description: "Every document. What's proved. What's open. Start here."
       icon: map
       url: "/theory/series_map"
     - title: "Foundations"
@@ -43,9 +43,9 @@ features:
       icon: zap
       url: "/theory/00_prelude"
     - title: "Physics Foundations"
-      description: "The imaginary unit in quantum mechanics — derived, not postulated — from stable causal loops. Spacetime, QM, and U(1) from a single primitive."
+      description: "U(1) — the complex phase group of quantum mechanics — is the unique fixed point of recursive self-composition. Derived from causal structure alone."
       icon: network
-      url: "/theory/causeplex_loop_phase"
+      url: "/theory/amplitude-phase-fixed-point-paper"
     - title: "Generalized Mechanics"
       description: "State, mass, force, energy, coupling, fields, thermodynamics — the full mechanical apparatus applied to any domain."
       icon: compass

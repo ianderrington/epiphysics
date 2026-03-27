@@ -45,6 +45,8 @@ tts:
   enableProgress: true
 ---
 
+> **If you only read one thing:** Epimechanics asks: what is physics, really — before we specify particles, forces, or dimensions? The answer: causation. If you have things that cause other things (events with inputs and outputs), everything else — spacetime, quantum mechanics, energy, life, consciousness — follows as mathematical consequence. This document lays the three commitments the framework rests on. Accept them and the rest is derivation. Reject any one of them and you know exactly where you disagree.
+
 ## What This Document Does
 
 Part 0 lays the foundation. Everything in the Epimechanics series — the mechanics, the entities, the coupling tensors, the thermodynamics, the applications — rests on a small number of conceptual commitments stated here. If you accept these commitments, the rest follows as mathematics. If you reject any of them, you know exactly where the framework breaks for you.

@@ -157,10 +157,9 @@ Standalone documents extending specific topics from the main series.
 | [The Persistence Reversal](./persistence_reversal.md) | Part 1.5, Part 1c | When composites outlive their constituents; passive vs. active stability |
 | [Cross-Level Tracing](./cross_level_tracing.md) | Part 1.5, Part 1, Part 5 | What survives coarse-graining across scales; positioning against Simon, Rosen, sloppy models |
 | [Cause-Plex and Spacetime](./causeplex_spacetime.md) | Part 1.5 | Lorentzian metric, Lorentz invariance, energy, GR from causal structure; CST relationship; self-grounding stack |
-| [Cause-Plex and Quantum Mechanics](./causeplex_quantum.md) | Spacetime paper | QM from multiway cause-plex; three convergent arguments for complex amplitudes; Born rule |
-| [Complex Amplitudes from Loop-Phase Consistency](./causeplex_loop_phase.md) | Quantum paper | Derives U(1) from stable loop structure — the deepest foundational argument; all open problems resolved |
-| [Step 3 Lemma: Critical-Events Rerouting](./causeplex_loop_phase_step3_lemma.md) | Loop-phase paper | Closes the key gap in Theorem 4.4; 3-lemma proof of loop rerouting in CSS cause-plexes |
-| [Proof Attempt: Conjecture 4.2](./causeplex_loop_phase_proof_attempt.md) | Loop-phase paper | Counterexample analysis, history-space connectivity proof, restricted theorem development |
+| [Cause-Plex and Quantum Mechanics](./causeplex_quantum.md) | Spacetime paper | QM from multiway cause-plex; Born rule; entanglement as branch structure |
+| [**Amplitude Fixed-Point Derivation**](./amplitude-phase-fixed-point-paper.md) | Quantum paper | **PRIMARY:** U(1) is the unique fixed point of G⊗G≅G — derives from compositional first principles with cause-plex grounding in Appendix B |
+| [Loop-Phase Consistency](./causeplex_loop_phase.md) | Quantum paper | Corroborating routes A+B; CSS connectivity theorem; causal-void counterexample [working paper] |
 
 ---
 

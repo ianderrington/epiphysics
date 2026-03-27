@@ -1,5 +1,6 @@
 nav:
   - index
+  - series_map
   - 00_prelude
   - 01_generalized_mechanics
   - 01_5_causors
@@ -11,13 +12,14 @@ nav:
   - 04_time_and_soul
   - 05_ontology_and_open_questions
   - glossary
-  - series_map
+  - causeplex_spacetime
+  - causeplex_quantum
+  - amplitude-phase-fixed-point-paper
+  - causeplex_loop_phase
+  - causeplex_dimensionality
   - effective_mass
   - persistence_reversal
   - cross_level_tracing
   - belief_field
   - coupling_chains
-  - causeplex_spacetime
-  - causeplex_quantum
-  - causeplex_loop_phase
-  - causeplex_dimensionality
+  - future_gauge_symmetry

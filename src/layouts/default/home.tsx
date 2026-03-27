@@ -7,12 +7,14 @@ const AnimatedHero = dynamic(() => import('@/components/home/AnimatedHero'), { s
 
 export interface HomePageProps {
   hero?: ComponentType<any>;
+  intro?: ComponentType<any>;
   features?: ComponentType<any>;
   featuredPosts?: ComponentType<any>;
   cta?: ComponentType<any>;
   // Additional props for customization
   className?: string;
   heroProps?: Record<string, unknown>;
+  introProps?: Record<string, unknown>;
   featuresProps?: Record<string, unknown>;
   featuredPostsProps?: Record<string, unknown>;
   ctaProps?: Record<string, unknown>;
@@ -20,11 +22,13 @@ export interface HomePageProps {
 
 export default function HomePage({
   hero: CustomHero = AnimatedHero,
+  intro: CustomIntro,
   features: CustomFeatures,
   featuredPosts: CustomFeaturedPosts,
   cta: CustomCTA,
   className = '',
   heroProps = {},
+  introProps = {},
   featuresProps = {},
   featuredPostsProps = {},
   ctaProps = {},
@@ -35,6 +39,9 @@ export default function HomePage({
       <div className="relative w-full overflow-hidden m-0 p-0">
         <CustomHero {...heroProps} />
       </div>
+
+      {/* Intro Section - Only render if CustomIntro is provided */}
+      {CustomIntro && <CustomIntro {...introProps} />}
 
       {/* Features Section - Only render if CustomFeatures is provided */}
       {CustomFeatures && (

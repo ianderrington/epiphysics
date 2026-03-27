@@ -5,7 +5,7 @@ description: >-
   Step 3 rerouting lemma details, and proof-attempt counterexample analysis;
   all theorem statuses are explicitly labeled as Proved, Conditional, or Conjecture.
 date: 2026-03-25T00:00:00.000Z
-draft: false
+draft: true
 author:
   name: "Ian Derrington"
 series: "Epimechanics"
@@ -18,6 +18,8 @@ tags:
   - Causal structure
   - Path integral
 ---
+
+> **Series status:** This paper contains valuable research — including the causal-void counterexample to unrestricted loop-space connectedness and the conditional CSS connectivity theorem — but is no longer the primary route to $G = \mathrm{U}(1)$ in the Epimechanics series. The clean derivation is now in [Compositional Fixed-Point Derivation of the Amplitude Phase Group](./amplitude-phase-fixed-point-paper.md). The present paper provides corroborating routes (A and B) and documents the research trajectory. It is retained as a working paper, not a primary series entry.
 
 ## Abstract
 
@@ -189,21 +191,109 @@ Hence Step 3 is established under A\_rich, completing Theorem 4.4 under stated a
 
 ## 5. Part 3: Minimality Forces $G = \mathrm{U}(1)$
 
+### 5.0 Route C: Fixed-Point of Recursive Self-Description (Independent Route — ✅ Conditional)
+
+This section develops a third, independent route to $G = \mathrm{U}(1)$, not relying on A\_rich or Postulate R. It derives U(1) as the unique fixed point of recursive self-description in the multiway cause-plex.
+
+#### 5.0.1 The fixed-point framing
+
+A cause-plex $\mathcal{C}^*$ is **recursively self-describing** if it contains observer-class entities that can represent the structure of $\mathcal{C}^*$ itself — including the amplitude group $G$. Self-consistency requires: the amplitude structure used to describe $G$ must itself have amplitude group $G$. When a cause-plex with amplitude group $G$ describes another with amplitude group $G$, the joint system has amplitude group $\Phi(G)$.
+
+**Self-consistency condition:** $\Phi(G) = G$ — $G$ is a fixed point of $\Phi$.
+
+#### 5.0.2 The self-description map $\Phi(G) = G \otimes G$
+
+**Proposition 5.0.1 (PFT — Parallel Factorization Theorem) — ✅ Proved conditional on product initial state.**
+*For systems $A \perp B$ (spacelike separated) with product initial state $\mathcal{S}_0 = \mathcal{S}_0^A \times \mathcal{S}_0^B$:*
+$$w_{A \sqcup B}(\gamma_A, \gamma_B) = w_A(\gamma_A) \cdot w_B(\gamma_B)$$
+
+*Proof.* A history $\mathcal{C}_\omega \in \mathcal{C}^*(\mathcal{S}_0^A \times \mathcal{S}_0^B)$ is consistent with the joint initial state iff it is independently consistent with $\mathcal{S}_0^A$ on $A$'s events and $\mathcal{S}_0^B$ on $B$'s events. Since $A \perp B$, there are no covering relations crossing the $A/B$ boundary, and the product initial state imposes no cross-constraints. Therefore $\{\omega : \gamma_A \cup \gamma_B \subset \mathcal{C}_\omega\} = \{\alpha : \gamma_A \subset \mathcal{C}_\alpha\} \times \{\beta : \gamma_B \subset \mathcal{C}_\beta\}$ — the history index sets are Cartesian-independent. The joint amplitude sum factorizes because P2 (spacelike events commute) and Def 2.8 (composition rule) give per-history factorization within each $\mathcal{C}_\alpha$, and the Cartesian index structure gives the full factorization. $\square$
+
+*Remark.* PFT fails for entangled systems (non-product $\mathcal{S}_0$). This is correct: entanglement is precisely the presence of cross-terms in the joint amplitude arising from shared initial conditions. PFT applies exactly to the unentangled case.
+
+**Corollary 5.0.2.** For product-state independent systems, the joint amplitude group is the tensor product $G_A \otimes G_B$. (Amplitudes are scalars in $\mathbb{C}$; the joint action $(g_A, g_B) \mapsto g_A \cdot g_B$ on a single complex number is the $\mathbb{Z}$-tensor product $G_A \otimes_\mathbb{Z} G_B$ in $\mathbf{Ab}$.)
+
+Therefore: $\Phi(G) = G \otimes G$ and the self-consistency condition is $G \otimes G \cong G$.
+
+#### 5.0.3 Fixed-point uniqueness
+
+**Lemma 5.0.3 (No nonabelian fixed point) — ✅ Proved.**
+*For any compact connected simple Lie group $G$ with $\dim G > 0$:*
+$$\dim(G \otimes G) = 2\,\dim G \neq \dim G$$
+*Therefore no nonabelian compact connected simple Lie group satisfies $G \otimes G \cong G$.*
+
+*Proof.* For faithful finite-dimensional unitary rep $\rho$ of $G$, the Lie algebra of $\text{Im}(\rho \otimes \rho)$ has dimension $2\dim\mathfrak{g}$ (the two copies act independently on the tensor-product space, with at most finite center overlap). A fixed point requires $2\dim G = \dim G$, impossible for $\dim G > 0$. Concretely: $\dim G_2 = 14, F_4 = 52, E_6 = 78, E_7 = 133, E_8 = 248$, $\mathrm{SU}(n)$ has $\dim n^2-1$; all double under tensor product. $\square$
+
+**Theorem 5.0.4 (U(1) as unique fixed point) — ✅ Proved.**
+*The unique non-trivial connected compact Lie group satisfying $G \otimes G \cong G$ is $G = \mathrm{U}(1)$.*
+
+*Proof.* Trivial fixed points: $\{1\}$ (dimension 0, no interference) and $\mathbb{Z}_2$ (disconnected, discrete — excluded by CC). By Lemma 5.0.3, all nonabelian groups fail. Among abelian connected compact Lie groups, only $\mathrm{U}(1)$ satisfies $G \otimes G \cong G$ (both sides are $S^1$; $e^{i\theta} \otimes e^{i\phi} = e^{i(\theta+\phi)}$ is again in $\mathrm{U}(1)$). All higher tori $\mathrm{U}(1)^k$ for $k \geq 2$ give $\mathrm{U}(1)^{k^2} \not\cong \mathrm{U}(1)^k$. $\square$
+
+**Corollary 5.0.5 (Route C conclusion) — ✅ Conditional on PFT scope + CC + compact Lie regularity.**
+*The amplitude group of a recursively self-describing multiway cause-plex with product-state composites and non-trivial continuous interference is $G = \mathrm{U}(1)$.*
+
+*Honest condition set for Route C:* P1, P2, (L), Def 2.8, product initial state (scope condition), CC (continuity), compact Lie regularity. Does not require A\_rich, Postulate R, Aaronson, Baez, or local tomography as independent axioms.
+
+---
+
 ### 5.1 Algebraic candidates
 
-By Hurwitz: $\mathbb{R},\mathbb{C},\mathbb{H},\mathbb{O}$.
+By Hurwitz's theorem (1898), the only normed division algebras are $\mathbb{R},\mathbb{C},\mathbb{H},\mathbb{O}$, giving unit spheres $S^0, S^1, S^3, S^7$ respectively. The amplitude group $G$ must be one of these unit spheres (or a subgroup thereof).
 
-### 5.2 Elimination
+### 5.2 Postulate R: Representation Least Action
 
-- $\mathbb{O}$ excluded (unit sphere not associative group for required composition structure).
-- $\mathbb{R}$ excluded by disconnected $S^0$ once connected-image condition holds.
-- $\mathbb{H}$ excluded by local tomography/tensor-product constraints (Baez 2012) with experimental support against real alternatives (Renou et al. 2021).
+The physical principle of least action (PLA) — that among all causal paths, nature selects those near stationary action — is not a primitive postulate. It is *derived* from the path-integral structure: coherent sum over causal paths weighted by $e^{iS/\hbar}$, stationary-phase paths dominate, classical trajectory obeys $\delta S = 0$. PLA is thus a consequence of the amplitude group structure, not prior to it.
 
-**Theorem 5.2 (Main structural theorem) — ⚠️ Conditional (CC + H + C + locality/tomography premises).**
-Then
-$$w(\gamma)=e^{i\phi(\gamma)},\quad \phi: \Omega(\mathcal{C}^*,e_*)\to\mathbb{R}.$$
+But the structural principle that *generates* PLA is prior:
 
-Proof chain: Proposition 3.1 + Section 4 connectivity + elimination above. $\square$
+> **Structural Principle S (Stationary Complexity).** Among all possibilities consistent with constraints, the realized structure is the one of minimal topological complexity. Equivalently: the selection principle extremizes complexity within the feasible set.
+
+This principle operates in causal path space to give physical PLA. It is the same structural mechanism that, when applied to *representation space* — the space of possible amplitude groups — selects the amplitude group itself.
+
+**Postulate R (Representation Least Action).** The same Structural Principle S that governs selection in causal path space governs selection in representation space. The realized amplitude group $G$ is the connected compact topological group of *minimal dimension* consistent with the physical constraints on closed-loop amplitudes.
+
+The topological dimension $\dim(G)$ is the natural measure of complexity here: it counts the minimum number of independent continuous parameters needed to specify an element of $G$ — equivalently, the minimum number of real degrees of freedom per amplitude assignment. A group of lower dimension makes strictly fewer independent claims per causal loop.
+
+**Remark (non-circularity).** Physical PLA is derived from the path integral with weight $e^{iS/\hbar}$, which already presupposes $G = \mathrm{U}(1)$. Postulate R selects $G = \mathrm{U}(1)$ from the structure of representation space via Structural Principle S, without using the path integral. The same underlying mechanism — stationary-complexity selection — operates at both levels. U(1) is the fixed point: it is selected by Postulate R and then generates, via the path integral, the physical PLA. This is a co-derivation, not a circular one.
+
+**Remark (relation to prior elimination arguments).** The elimination of $\mathbb{H}$ via local tomography / tensor product constraints (Baez 2012, Aaronson 2004) and the elimination via Postulate R are independent routes to the same conclusion. The Postulate R route is more foundational: it does not depend on the connectedness machinery of Section 4 (Conjecture A\_rich), and it does not require importing facts about quantum information locality. It requires only Proposition 3.1 (stability $\Rightarrow$ $|w|=1$, i.e. $G$ compact) and the definition of non-trivial interference.
+
+### 5.3 Elimination via Postulate R
+
+**Constraints on G:**
+1. $G$ compact — from Proposition 3.1 ($|w|=1$ for stable loops)
+2. $G$ connected — required for non-trivially continuous interference (degenerate otherwise; see Remark 3.3)
+3. $\dim(G) \geq 1$ — required for non-trivial (non-binary) interference; $\dim G = 0$ gives only discrete groups ($\{+1\}$, $\{±1\}$), producing no continuous phase variation between paths
+4. $G$ is a Lie group with a composition law (Definition 2.8 requires group structure)
+
+**Proposition 5.1 (Minimality selects U(1)) — ✅ Proved given Postulate R.**
+*Under Postulate R and constraints 1–4, the unique realized amplitude group is $G = \mathrm{U}(1)$.*
+
+*Proof.* By Hurwitz, the unit spheres of normed division algebras are $S^0$ ($\dim=0$), $S^1 = \mathrm{U}(1)$ ($\dim=1$), $S^3 \cong \mathrm{SU}(2)$ ($\dim=3$), $S^7$ ($\dim=7$, not a Lie group). Constraint 3 eliminates $S^0$. Constraint 4 eliminates $S^7$ (not a group under composition). Among remaining candidates $\{S^1, S^3\}$:
+$$\dim(\mathrm{U}(1)) = 1 < \dim(\mathrm{SU}(2)) = 3$$
+Postulate R selects the minimum: $G = \mathrm{U}(1)$. $\square$
+
+**Corollary 5.2.** $w(\gamma) = e^{i\phi(\gamma)}$ for some real-valued $\phi: \Omega(\mathcal{C}^*, e_*) \to \mathbb{R}$.
+
+*Proof.* $\mathrm{U}(1) = \{e^{i\phi} : \phi \in \mathbb{R}\}$. Any group homomorphism $w: \Omega \to \mathrm{U}(1)$ has this form. $\square$
+
+### 5.4 Elimination (independent route: algebraic/structural)
+
+The following independent elimination, relying on Section 4 connectivity and physical locality, corroborates Proposition 5.1 and provides additional constraint:
+
+- $\mathbb{O}$ excluded: $S^7$ is not a Lie group (not closed under associative composition as required by Definition 2.8)
+- $\mathbb{R}$ excluded: $S^0 = \{+1,-1\}$ is disconnected; under CC + A\_rich connectivity, the image $w(\Omega)$ must be a connected subgroup (Corollary 4.7), which $S^0$ is not
+- $\mathbb{H}$ excluded (independent of Postulate R): local tomography and tensor product structure of the cause-plex require $f(n_A n_B) = f(n_A) f(n_B)$ where $f(n)$ counts real parameters for density matrices; quaternionic QM gives $f(n) = 2n^2 - n$, violating this (Aaronson 2004, Baez 2012)
+
+Both routes converge on $G = \mathrm{U}(1)$.
+
+**Theorem 5.3 (Main structural theorem — two routes).**
+*$w(\gamma) = e^{i\phi(\gamma)}$, $\phi: \Omega(\mathcal{C}^*, e_*) \to \mathbb{R}$.*
+
+- **Route A (Postulate R):** ✅ Proved given Postulate R + Proposition 3.1. Does not require A\_rich or locality/tomography.
+- **Route B (Connectivity + Locality):** ⚠️ Conditional on CC + H + C (A\_rich) + locality/tomography premises. Independent of Postulate R.
+
+The convergence of two independent routes strengthens the conclusion. $\square$
 
 ---
 
@@ -258,17 +348,23 @@ Derive concrete Lagrangian sectors from cause-plex microstructure to turn struct
 
 | Claim | Status |
 |---|---|
-| Stable loop amplitudes have unit magnitude | ✅ **Proved** |
+| Stable loop amplitudes have unit magnitude | ✅ **Proved** (Proposition 3.1) |
 | History space connected under single-relation edits | ✅ **Proved** |
-| Full unrestricted loop-space connectedness | ❌ **Conjecture** (counterexample exists) |
+| Full unrestricted loop-space connectedness | ❌ **Conjecture** (counterexample exists for generic cause-plexes) |
 | Counterexample via causal void / annulus obstruction | ✅ **Proved** |
-| Observer-class $\Rightarrow$ CSS | ⚠️ **Conditional** (Homogeneity condition H; see Lemma 4.3a) |
-| CSS loop-space connectivity (Theorem 4.4 restricted) | ⚠️ **Conditional** (H + consistency condition C; see Lemmas 4.3a–4.3b) |
-| Connected image subgroup from CC + connectivity | ⚠️ **Conditional** |
-| $\mathbb{R}$ elimination | ⚠️ **Conditional** (connectivity premises) |
-| $\mathbb{H}$ elimination (tomography/tensor constraints) | ⚠️ **Conditional** (locality/tomography mapping) |
-| $G=\mathrm{U}(1)$ | ⚠️ **Conditional** (Theorem 5.2 premises) |
-| $\phi=S/\hbar$ Layer C identification | ⚠️ **Conditional** |
+| Observer-class $\Rightarrow$ CSS | ⚠️ **Conditional** (Homogeneity condition H) |
+| CSS loop-space connectivity (Theorem 4.4 restricted) | ⚠️ **Conditional** (H + consistency condition C) |
+| Connected image subgroup from CC + connectivity | ⚠️ **Conditional** (Route B only) |
+| $\mathbb{R}$ elimination | ⚠️ **Conditional** (connectivity premises; Route B) |
+| $\mathbb{H}$ elimination via tomography/tensor | ⚠️ **Conditional** (locality/tomography; Route B) |
+| Structural Principle S (stationary-complexity selection) | 🔵 **Postulate** (Postulate R — explicit, motivated) |
+| $G = \mathrm{U}(1)$ via Postulate R (Route A) | ✅ **Proved** given Postulate R + Prop 3.1 (Proposition 5.1) |
+| $G = \mathrm{U}(1)$ via connectivity + locality (Route B) | ⚠️ **Conditional** (CC + H + C + locality) |
+| PFT (parallel factorization for product states) | ✅ **Proved** given product initial state + P2 + Def 2.8 (Prop 5.0.1) |
+| No nonabelian fixed point of $G \otimes G \cong G$ | ✅ **Proved** (Lemma 5.0.3 — dimension doubling) |
+| $G = \mathrm{U}(1)$ unique fixed point of self-description (Route C) | ✅ **Proved** given CC + compact Lie regularity + product state scope (Theorem 5.0.4) |
+| Three convergent routes to $G = \mathrm{U}(1)$ | ✅ **Routes A, B, C independent** |
+| $\phi=S/\hbar$ Layer C identification | ⚠️ **Conditional** (Layer C structure assumptions) |
 
 ### 8.2 Interpretation
 

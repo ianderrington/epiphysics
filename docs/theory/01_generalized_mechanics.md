@@ -50,6 +50,21 @@ tts:
   enableProgress: true
 ---
 
+> **Quick reference — what this paper builds:** Every concept below generalizes one from physics. Here are the first eight, which are enough to follow the argument:
+>
+> | Physics concept | Generalized to | Plain meaning |
+> |---|---|---|
+> | Position | State $X$ | Where a system is in any space of possibilities |
+> | Velocity | $\dot{X}$ | How fast that state is changing |
+> | Mass | Causal density $\mathcal{M}$ | How much internal structure resists change |
+> | Momentum | $p = \mathcal{M}\dot{X}$ | Tendency to keep moving in current direction |
+> | Force | $F = dp/dt$ | Whatever changes that tendency |
+> | Energy | Capacity for state change | "Has energy" = can move things through state space |
+> | Coupling constant | $\kappa$ | How sensitive an entity is to a given field |
+> | Entity | Anything with causal presence | A proton, a belief, an institution, a flame |
+>
+> The full table with all 25 concepts is at the end of the paper (Summary section).
+
 The standard move when connecting physics to social or metaphysical ideas is analogy. *Society is like a physical system*. *Ideas behave like particles*. *Culture flows like a fluid*.
 
 The claim here is that the mathematical structure of physics - state, derivative, force, energy, coupling - does not depend on the substrate being physical. When the state variable $X$ is left abstract, the same equations can describe a wide range of systems with quantities that change continuously under influences. Physics as it is taught is one instantiation - state spaces are physical, constants are measured, and the potential landscape $V(X)$ is known. What follows explores the general case: the same formal skeleton applied to any domain, with domain-specific empirical content filling in what the skeleton leaves open. At coarse-grained levels, this grammar acquires dissipation and stochastic terms absent at the fundamental level — see Part 1.5 on cross-level tracing.
@@ -400,6 +415,8 @@ The generalized implications are immediate:
 
 ## 4b. The Lagrangian, Least Action, and Equilibrium Principles
 
+> **In this section:** Nature picks the most efficient path — not the fastest, not the shortest, but the one that minimizes a quantity called action. We extend this principle beyond physics to any system evolving over time. The upshot: every stable system, from a planet to an organism to an economy, settles into trajectories that make a certain quantity stationary. Equilibrium is not an accident — it is the path of least resistance in state space.
+
 Epimechanics so far has asserted $F = dp/dt$ and $p = \mathcal{M}\dot{X}$ as postulates. But in physics, these are not postulates - they are consequences of a deeper principle. In physics, the most fundamental formulation of mechanics is not $F = ma$ but the **principle of stationary action**. Epimechanics proposes (as its strongest structural postulate) that this extends to generalized state spaces:
 
 $$\delta S = 0, \quad S = \int_0^T L(X, \dot{X}, t) \, dt$$
@@ -485,6 +502,8 @@ The field exerts a force; how strongly that force acts on a given entity depends
 
 ## 5b. The Existential Coupling Tensor $T^i{}_j$
 
+> **In this section:** A single coupling constant says "how much does this force affect this entity." But forces in one dimension of life spill over into others — economic stress bleeds into mental health, which bleeds into physical health, which bleeds back into economic capacity. This section introduces the coupling tensor: the matrix that captures all the cross-domain pathways through which one kind of change propagates into another. It's the structure of vulnerability and resilience.
+
 The scalar $\kappa$ is the simplest case - and often the wrong one. In reality, X is multi-dimensional. A person's state is a vector with simultaneous components in emotional, cognitive, physical, social, economic, and other dimensions. A scalar coupling treats all dimensions as independent and identical: economic force → economic state change, full stop.
 
 But the structure of coupling matters more than its magnitude. Economic stress bleeds into psychological state. Psychological state feeds back into social behavior. Social isolation drives physical health outcomes. Physical illness depletes cognitive resources. These cross-dimensional propagation paths are not captured by a scalar $\kappa$. They require a **coupling tensor** $T^i{}_j$:
@@ -533,6 +552,8 @@ The genuine open question is not "is $T^i{}_j$ a tensor?" - it is, given the man
 ---
 
 ## 6. Fields as Domains of Influence
+
+> **In this section:** Gravity and electromagnetism work through fields — invisible structures that fill space and push on everything in them. Culture, reputation, and social pressure work the same way: they assign different "forces" to every position in social space. This section generalizes the field concept to any domain. The math is the same; the domain changes.
 
 **Physics**: A field assigns a value (scalar, vector, or tensor) to every point in space. The gravitational field assigns a force vector to every point in space - specifying what force would act on a test mass placed there. The electromagnetic field assigns both electric and magnetic vector quantities. Fields are real; they carry energy; they mediate interactions.
 

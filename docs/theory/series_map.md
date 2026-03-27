@@ -2,7 +2,7 @@
 title: "Epimechanics — Series Map"
 description: >-
   Complete map of the epimechanics theory series: reading order, document relationships,
-  proof status, and open questions. Start here to navigate the full framework.
+  proof status, and open questions. Start here to find your way through the full framework.
 date: 2026-03-25T00:00:00.000Z
 draft: false
 author:
@@ -38,7 +38,7 @@ graph LR
 
     ST["Cause-Plex<br/>and Spacetime"]:::physics
     QM["Cause-Plex<br/>and Quantum"]:::physics
-    LP["Loop-Phase<br/>Consistency"]:::physics
+    FP["Amplitude<br/>Fixed-Point"]:::physics
 
     P0 --> P1
     P1 --> P15
@@ -51,7 +51,7 @@ graph LR
 
     P1 -.->|"physics<br/>grounding"| ST
     ST --> QM
-    QM --> LP
+    QM --> FP
     ST -.->|"grounds"| P15
 ```
 
@@ -62,7 +62,7 @@ There are two entry points depending on your goal:
 | Goal | Start here |
 |---|---|
 | Understand the framework (concepts, applications) | [Part 0: Foundations](./00_prelude.md) → Part 1 → Part 1.5 → Parts 2–5 |
-| Understand the physics foundations | [Cause-Plex and Spacetime](./causeplex_spacetime.md) → [Quantum](./causeplex_quantum.md) → [Loop-Phase](./causeplex_loop_phase.md) |
+| Understand the physics foundations | [Cause-Plex and Spacetime](./causeplex_spacetime.md) → [Quantum](./causeplex_quantum.md) → [Amplitude Fixed-Point](./amplitude-phase-fixed-point-paper.md) |
 | Understand one specific result | Use the dependency graph below |
 
 ---
@@ -100,9 +100,10 @@ Cause-Plex and Spacetime     → Lorentzian metric, energy, GR from causal primi
     ↓
 Cause-Plex and Quantum       → QM from multiway cause-plex; Born rule; entanglement
     ↓
-Loop-Phase Consistency       → U(1) amplitudes from stable loops (deepest foundation)
-    ├── Step 3 Lemma         → Closes Theorem 4.4 (critical-events rerouting)
-    └── Proof Attempt        → Counterexamples; history-space connectivity
+Amplitude Fixed-Point        → U(1) unique fixed point of G⊗G≅G  ← PRIMARY derivation
+    ↓
+Loop-Phase Consistency       → Corroborating routes A+B; causal-void counterexample;
+                               CSS connectivity theorem  [working paper]
 ```
 
 ### Theory Notes (standalone extensions)
@@ -154,7 +155,7 @@ graph TD
 
     subgraph LA3["Layer A — Quantum"]
         QP["Postulate Q': multiway C*"]:::postulate
-        U1["w(γ) ∈ U(1) ✅<br/>Theorem 5.2"]:::proved
+        U1["w(γ) ∈ U(1) ✅<br/>Fixed-point theorem"]:::proved
         PHI["φ(γ) = S/ℏ ✅<br/>Layer C identification"]:::definition
         BORN["Born rule ⚠️<br/>via Gorard 2020"]:::conditional
         SCHRO["Schrödinger eq. ⚠️<br/>via Gorard 2020"]:::conditional
@@ -235,7 +236,7 @@ graph TD
 | Energy from Noether (Layer C) | ✅ Defined at Layer C | Spacetime §5 |
 | Gravitational action (Layer 0) | ✅ Benincasa-Dowker 2010 | Spacetime §7.2 |
 | Matter action (Layer C) | ✅ Defined at Layer C | Spacetime §7.2 |
-| w(γ) ∈ U(1) | ✅ Proved (Theorem 5.2) | Loop-phase paper |
+| w(γ) ∈ U(1) | ✅ Proved — G⊗G≅G has unique non-trivial compact connected solution U(1) | [Amplitude Fixed-Point](./amplitude-phase-fixed-point-paper.md) Theorem 6.1 |
 | φ(γ) = S/ℏ (Layer C) | ✅ Proved (Proposition 6.2) | Loop-phase §6 |
 | ℏ = ΔE_min/\|C_ref\| non-circular | ✅ Derived | Loop-phase §6.3 |
 | Born rule | ⚠️ Conditional on Gorard 2020 | Quantum §4.2 |

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import DefaultHomeLayout from '@/layouts/default/home';
 import Features from '@/components/home/Features';
+import WhatsThis from '@/components/home/WhatsThis';
 import Link from 'next/link';
 import SafeHTML from '@/components/SafeHTML';
 import { markdownToHtml } from '@/lib/content/markdown';
@@ -81,6 +82,8 @@ export default async function Home() {
   const html = await markdownToHtml(content.content || '');
 
   // Create components for the home page
+  const CustomWhatsThis = () => <WhatsThis />;
+
   const CustomFeatures = () => (
     <Features 
       features={content.features?.items || []} 
@@ -170,6 +173,7 @@ export default async function Home() {
   return (
     <DefaultHomeLayout 
       hero={AnimatedHero}
+      intro={CustomWhatsThis}
       featuredPosts={CustomFeaturedPosts}
       cta={CustomCTA}
       heroProps={{

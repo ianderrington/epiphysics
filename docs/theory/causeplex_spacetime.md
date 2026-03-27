@@ -20,9 +20,15 @@ tags:
   - Foundations
 ---
 
+> **In plain English:** Spacetime — the arena in which physics happens — is usually taken as a given. This paper asks: where does it come from? The answer: spacetime is what you get when you have a set of events with a causal ordering ("this happened before that"). From nothing more than that ordering, you can derive the geometry of space and time (the Lorentzian metric), the fact that nothing travels faster than light (Lorentz invariance), and what energy means (Noether's theorem). The one-time-dimension, three-space-dimension structure of our universe (3+1D) isn't derived from first principles — it's explained by observer selection: only in 3+1D can complex structures like atoms, chemistry, and observers form and persist. Everything else follows from the causal ordering alone.
+
 > This document derives spacetime structure from cause-plex primitives. It draws on causal set theory (Bombelli, Lee, Meyer, Sorkin 1987), Malament's theorem (1977), and Wolfram's causal invariance argument. Where results are established, proofs are given. Where results are at the research frontier (GR from causal dynamics), status is stated explicitly.
 
 > **Layer architecture note.** This paper operates at **Layer 0** (causal event primitive and locally finite poset) and **Layer A** (spacetime, energy, conserved quantities in the continuum limit). The cause-plex $(E, \prec)$ is the Layer 0 object. Spacetime metric, energy, and Lorentz invariance are Layer A emergent descriptions valid in the continuum limit. General relativity is a further coarse-graining. The Layer B (bond/loop structures) and Layer C (force, temperature, biological observables) coarse-graining ladder is developed in [Part 1.5: Causors](./01_5_causors.md) and [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
+
+---
+
+> **Worked example before the formalism:** A light signal leaves a lamp (event A) and arrives at your eye (event B). A comes before B — causally, not just temporally. That's the entire primitive: one event precedes another. Now imagine building up all the events in the universe into a single giant "before/after" web. This paper shows that web already contains spacetime geometry, Lorentz invariance, and the meaning of energy — without assuming any of them. Every formal definition below is just making "before/after web" precise enough to derive those consequences rigorously.
 
 ---
 
@@ -473,6 +479,27 @@ graph TD
 **Meeting point:** The branches converge at Level 4 (quantum mechanics) and flow together through classical mechanics → thermodynamics → biology → society.
 
 **Conditional items (⚠️):** Number=volume conjecture, dimensionality conjecture, and Gorard-dependent Born rule/Schrödinger equation are the three remaining open items. All other nodes are proved or definitionally established.
+
+---
+
+---
+
+## Conclusion
+
+**What this paper showed, in plain English:**
+
+Spacetime is not a container that physics happens inside. It is a description of causal structure — the pattern of "this event preceded that one" relationships across all events in the universe.
+
+Starting from nothing but that ordering, we derived:
+- **Time** — a count of causal events relative to a reference oscillation (an atomic clock is just a very reliable loop)
+- **The Lorentzian metric** — the geometry of spacetime, including the fact that timelike and spacelike directions behave differently — from Malament's theorem plus event counting
+- **Lorentz invariance** — the symmetry group of physics, from the structure of causal-order-preserving maps
+- **Energy** — the conserved quantity that appears when the causal structure has the same rules at every moment (Noether's theorem)
+- **Why 3+1 dimensions** — not from first principles, but from observer selection: only in 3+1D can atoms be stable, chemistry work, and complex observers exist
+
+Three items remain open or conditional: the number=volume conjecture (well-supported but unproved), the 3D observer-selection argument (rigorous reasoning, not a derivation), and the full Einstein field equation from cause-plex dynamics (frontier of quantum gravity research).
+
+Everything else is derived from a single primitive: a state transition with no physics assumed.
 
 ---
 

@@ -39,6 +39,8 @@ tts:
   voice: onyx
 ---
 
+> **In plain English:** The periodic table tells you what atoms are made of. This paper asks the same question one level more fundamental: what are *entities* made of — not just atoms, but any persistent thing, from a cell to a corporation to a particle? The answer is causal loops: patterns of cause-and-effect that return to their starting state and sustain themselves. A flame, a cell, a bond, a galaxy — all are causal loops at different scales with different stability properties. Energy, mass, and force aren't primitive — they emerge from the symmetry structure of these loops. This is the "periodic table" of epimechanics: a taxonomy of what stable things are made of, derived from causal structure alone.
+
 ## Where We Are
 
 [Part 1](./01_generalized_mechanics.md) defined the grammar of Epimechanics — how state $X$, force $F$, energy $W$, and coupling $T^i{}_j$ relate. Two quantities emerged: **generalized mass** $\mathcal{M}$ (total causal content) and **auto-causal density** $\rho_{\text{ac}}$ (the self-sustaining fraction). The grammar works — you can model institutional inertia, belief persistence, metabolic dynamics. But $\mathcal{M}$ and $\rho_{\text{ac}}$ are still black boxes. What are they made of?
@@ -73,6 +75,8 @@ The same must be true here for the framework to be genuinely foundational. Start
 ---
 
 ## The True Primitive: The Causal Event
+
+> **Concrete anchor before the formalism:** A candle flame. The heat from the burning wax vaporizes more wax, which feeds the flame, which produces more heat. Each step is a state transition: one configuration of molecules produces the next. No energy concept is needed to describe this chain — just "this state follows from that one." The cause-plex is nothing more than all such "follows from" relationships in the universe, assembled into a single structure. Every concept below — bonds, loops, auto-causal density, energy — emerges from patterns in that structure.
 
 The primitive is the **causal event** (also: *state couplet*) $e$:
 
@@ -268,6 +272,8 @@ Every bond has latency $\tau_b$. In a loop, the ratio of bond latencies determin
 
 See [Cause-Plex and Spacetime](./causeplex_spacetime.md) for the full treatment.
 
+> **What Q1–Q5 tell you together:** These five descriptors let you read a bond or loop and predict what kind of entity it belongs to — without invoking labels like "organism" or "institution." A bond that stores energy (Q1: potential), gates a larger cluster (Q2: gating), sits in a closed loop (Q3: closed), has high leverage (Q4: Λ ≫ 1), and fires on a timescale comparable to the loop period (Q5: slow) is behaving like a metabolic regulation step. A bond that dissipates energy (Q1: kinetic), connects directly to state (Q2: direct), is open-ended (Q3: open), and is low-leverage (Q4: Λ ≈ 1) is behaving like heat flow. The labels come last; the structural description comes first.
+
 ---
 
 ## The Cause-Plex and the Composition Hierarchy
@@ -305,7 +311,7 @@ Self-containment is not binary. It is a spectrum tied to the ratio of bond disso
 | Auto-causal composites (cell) | Variable; many low-$\sigma_b$ bonds | Positive | No | Repair loops required; $\dot{S}_{\text{int}}$ high |
 | Meta-entities (institution, nation) | Variable; bonds between humans | Positive | No | Continuous renewal required |
 
-The framework's interesting regime is where $\sigma_b / k_BT$ is low enough that bonds degrade measurably. At the top of the table, entities are trivially stable. At the bottom, maintenance and auto-causality are what keeps them from dissolving. The causor framework is an answer to *why some composites persist despite degradable bonds* — the stable extremes need no explanation.
+The framework's interesting regime is where $\sigma_b / k_BT$ is low enough that bonds degrade measurably. At the top of the table, entities are unconditionally stable. At the bottom, maintenance and auto-causality are what keeps them from dissolving. The causor framework is an answer to *why some composites persist despite degradable bonds* — the stable extremes need no explanation.
 
 ---
 
