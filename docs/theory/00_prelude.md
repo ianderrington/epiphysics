@@ -72,7 +72,7 @@ Seven terms organize into two **co-primitive pairs**, a **bridge concept**, and 
 
 **Second co-primitive pair (epistemological):**
 
-- **Computation** — producing a representation: discriminating, partitioning, compressing. At the granular level, this acts like logical gates chaining across a causal graph.
+- **Computation** — producing a representation: discriminating, partitioning, compressing.
 - **Representation** — the product of computation: an approximation of state. This is $X$.
 
 **Derived pair:**
