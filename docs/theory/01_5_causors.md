@@ -11,7 +11,6 @@ author:
   name: Ian Derrington
 co_authors:
   - name: Parnian Barekatain
-    role: Contributing Author
 contentType: article
 mediaTypes:
   - text

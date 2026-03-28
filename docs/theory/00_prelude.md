@@ -72,12 +72,12 @@ Seven terms organize into two **co-primitive pairs**, a **bridge concept**, and 
 
 **Second co-primitive pair (epistemological):**
 
-- **Computation** — producing a representation: discriminating, partitioning, compressing.
+- **Computation** — producing a representation: discriminating, partitioning, compressing. At the granular level, this acts like logical gates chaining across a causal graph.
 - **Representation** — the product of computation: an approximation of state. This is $X$.
 
 **Derived pair:**
 
-- **Information** — the degree to which a representation reduces uncertainty about future states.
+- **Information** — the degree to which a representation reduces uncertainty about future states. Formally: $I(X) = H(\text{future}) - H(\text{future} \mid X)$.
 - **Prediction** — reduction of that uncertainty.
 
 The pairs require each other: computation and representation need entities and causation to be *about* something; entities and causation are only accessible *through* computation and representation. State is where they meet.
