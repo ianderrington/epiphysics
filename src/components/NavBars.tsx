@@ -207,13 +207,13 @@ export default function NavBars({
 
   return (
     <>
-      <div className="xl:hidden" style={{ height: spacerHeight }} aria-hidden />
+      <div style={{ height: spacerHeight }} aria-hidden />
 
       {/* ═══ CHAPTER BAR — slides via top only; hidden at XL where ReaderSidebar takes over ═══ */}
       {hasChapters && (
         <div
           ref={chapterRef}
-          className={`fixed left-0 right-0 z-30 xl:hidden ${TRANSITION}`}
+          className={`fixed left-0 right-0 z-30 ${TRANSITION}`}
           style={{ top: chapterTop }}
         >
           <div className={`${BG} ${chapterBorder}`}>
@@ -269,7 +269,7 @@ export default function NavBars({
       {showTocBar && (
         <div
           ref={tocRef}
-          className={`fixed left-0 right-0 z-[29] xl:hidden ${TRANSITION}`}
+          className={`fixed left-0 right-0 z-[29] ${TRANSITION}`}
           style={{ top: tocTop }}
         >
           <div className={`${BG} ${bottomEdge}`}>
@@ -326,7 +326,7 @@ export default function NavBars({
       {/* ═══ FADE GRADIENT — content fades as it goes under the nav stack ═══ */}
       {!expanded && (
         <div
-          className={`fixed left-0 right-0 z-[28] pointer-events-none xl:hidden ${TRANSITION}`}
+          className={`fixed left-0 right-0 z-[28] pointer-events-none ${TRANSITION}`}
           style={{
             top: tocShown
               ? tocTop + TOC_H
@@ -342,7 +342,7 @@ export default function NavBars({
       )}
 
       {expanded && (
-        <div className="fixed inset-0 bg-black/10 dark:bg-black/30 z-[28] xl:hidden animate-fadeIn" onClick={close} />
+        <div className="fixed inset-0 bg-black/10 dark:bg-black/30 z-[28] animate-fadeIn" onClick={close} />
       )}
     </>
   );

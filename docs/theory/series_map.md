@@ -76,50 +76,38 @@ There are two entry points depending on your goal:
 
 ### Core Series (public reading path)
 
-```
-Part 0: Foundations          → What epimechanics is; causation as primitive
-    ↓
-Part 1: Generalized Mechanics → X as universal state variable; mass, force, energy, Lagrangian
-    ↓
-Part 1.5: Causors            → What entities are made of; bond/loop operators; Q1–Q4 descriptors
-    ↓                           (requires Part 1 — opens "Part 1 defined the grammar")
-Part 1b: Uncertainty/Coordinates → Limits of the framework; reference frames
-    ↓
-Part 1c: Thermodynamic Emergence → Life as thermodynamic inevitability
-    ↓
-Part 2: Meta-Entities        → When aggregates earn entity status
-    ↓
-Part 3: Intelligence/Consciousness/Agency → What entities know and do
-    ↓
-Part 4: Time and Soul        → How long entities matter; soul as causal biography
-    ↓
-Part 5: Ontology and Open Questions → Full formal ontology; nine open questions
-
-> **Note:** The `series_order` metadata on Part 1.5 is `1.5` — between Part 1 and Part 2. The navigation reflects this: read Part 1 first, then Part 1.5.
-```
+| Order | Part | Topic | Next |
+|---|---|---|---|
+| 0 | [Part 0: Foundations](./00_prelude.md) | What epimechanics is; causation as primitive | → Part 1 |
+| 1 | [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | X as universal state variable; mass, force, energy, Lagrangian | → Part 1.5, Part 1b |
+| 1.5 | [Part 1.5: Causors](./01_5_causors.md) | What entities are made of; bond/loop operators; Q1–Q4 descriptors | → Part 2 |
+| 1b | [Part 1b: Uncertainty/Coordinates](./01b_uncertainty_coordinates_relativity.md) | Limits of the framework; reference frames | → Part 2 |
+| 1c | [Part 1c: Thermodynamic Emergence](./01c_thermodynamic_emergence_of_life.md) | Life as thermodynamic inevitability | → Part 2 |
+| 2 | [Part 2: Meta-Entities](./02_meta_entities.md) | When aggregates earn entity status | → Part 3 |
+| 2.5 | [Part 2.5: Entity Interaction](./02_5_entity_interaction.md) | How entities couple and interact | → Part 3 |
+| 3 | [Part 3: Intelligence/Consciousness/Agency](./03_intelligence_consciousness_agency.md) | What entities know and do | → Part 4 |
+| 4 | [Part 4: Time and Soul](./04_time_and_soul.md) | How long entities matter; soul as causal biography | → Part 5 |
+| 5 | [Part 5: Ontology and Open Questions](./05_ontology_and_open_questions.md) | Full formal ontology; nine open questions | — |
 
 ### Physics Foundations (grounding the framework)
 
-```
-Cause-Plex and Spacetime     → Lorentzian metric, energy, GR from causal primitive
-    ↓
-Cause-Plex and Quantum       → QM from multiway cause-plex; Born rule; entanglement
-    ↓
-Amplitude Fixed-Point        → U(1) unique fixed point of G⊗G≅G  ← PRIMARY derivation
-    ↓
-Loop-Phase Consistency       → Corroborating routes A+B; causal-void counterexample;
-                               CSS connectivity theorem  [working paper]
-```
+| Order | Document | Topic | Depends on |
+|---|---|---|---|
+| A1 | [Cause-Plex and Spacetime](./causeplex_spacetime.md) | Lorentzian metric, energy, GR from causal primitive | Part 1 |
+| A2 | [Cause-Plex and Quantum](./causeplex_quantum.md) | QM from multiway cause-plex; Born rule; entanglement | Spacetime |
+| A3 | [Amplitude Fixed-Point](./amplitude-phase-fixed-point-paper.md) | U(1) unique fixed point of G⊗G≅G — PRIMARY derivation | Quantum |
+| A4 | [Loop-Phase Consistency](./causeplex_loop_phase.md) | Corroborating routes; causal-void counterexample; CSS connectivity | Amplitude FP |
+| A5 | [Dimensionality](./causeplex_dimensionality.md) | Why 3+1: observer-selection constraints on spacetime | Spacetime |
 
 ### Theory Notes (standalone extensions)
 
-```
-Effective Mass               → Bare vs. effective mass; medium effects on entity resistance
-Persistence Reversal         → When composites outlive constituents
-Cross-Level Tracing          → What survives coarse-graining
-Belief Field                 → Belief dynamics as field theory
-Coupling Chains              → Causal chain propagation
-```
+| Note | Topic | Relates to |
+|---|---|---|
+| [Effective Mass](./effective_mass.md) | Bare vs. effective mass; medium effects on entity resistance | Part 1 |
+| [Persistence Reversal](./persistence_reversal.md) | When composites outlive constituents | Part 2 |
+| [Cross-Level Tracing](./cross_level_tracing.md) | What survives coarse-graining | Parts 2–3 |
+| [Belief Field](./belief_field.md) | Belief dynamics as field theory | Part 3 |
+| [Coupling Chains](./coupling_chains.md) | Causal chain propagation | Part 1.5 |
 
 ---
 

@@ -45,7 +45,13 @@ tts:
   enableProgress: true
 ---
 
-> **If you only read one thing:** Epimechanics asks: what is physics, really — before we specify particles, forces, or dimensions? The answer: causation. If you have things that cause other things (events with inputs and outputs), everything else — spacetime, quantum mechanics, energy, life, consciousness — follows as mathematical consequence. This document lays the three commitments the framework rests on. Accept them and the rest is derivation. Reject any one of them and you know exactly where you disagree.
+> ### If you only read one thing
+>
+> **Epiphysics** is the empirical science of **Epimechanics** — a framework that asks: what is physics, really, _before_ we specify particles, forces, or dimensions?
+>
+> The answer: **causation**. If you have things that cause other things (events with inputs and outputs), everything else — _spacetime_, _quantum mechanics_, _energy_, _life_, _consciousness_ — follows as mathematical consequence.
+>
+> This document lays the three commitments the framework rests on. **Accept them and the rest is derivation.** Reject any one of them and you know exactly where you disagree.
 
 ## What This Document Does
 
