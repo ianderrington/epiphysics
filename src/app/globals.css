@@ -1481,6 +1481,109 @@ header.mb-6 + div {
   z-index: 1;
 }
 
+/* Smooth appearance for chat bubbles */
+.chat-bubble {
+  animation: fadeSlideIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Task list styling with smooth checkbox appearance */
+.prose ul.contains-task-list,
+.chat-bubble ul.contains-task-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose li.task-list-item,
+.chat-bubble li.task-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  animation: taskSlideIn 0.25s ease-out forwards;
+  opacity: 0;
+}
+
+.prose li.task-list-item:nth-child(1) { animation-delay: 0.05s; }
+.prose li.task-list-item:nth-child(2) { animation-delay: 0.1s; }
+.prose li.task-list-item:nth-child(3) { animation-delay: 0.15s; }
+.prose li.task-list-item:nth-child(4) { animation-delay: 0.2s; }
+.prose li.task-list-item:nth-child(5) { animation-delay: 0.25s; }
+.prose li.task-list-item:nth-child(n+6) { animation-delay: 0.3s; }
+
+@keyframes taskSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Checkbox styling */
+.prose input[type="checkbox"],
+.chat-bubble input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid #9ca3af;
+  border-radius: 4px;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.prose input[type="checkbox"]:checked,
+.chat-bubble input[type="checkbox"]:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.prose input[type="checkbox"]:checked::after,
+.chat-bubble input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 0px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.prose input[type="checkbox"]:hover,
+.chat-bubble input[type="checkbox"]:hover {
+  border-color: #3b82f6;
+}
+
+/* Dark mode checkbox */
+.dark .prose input[type="checkbox"],
+.dark .chat-bubble input[type="checkbox"] {
+  border-color: #6b7280;
+}
+
+.dark .prose input[type="checkbox"]:checked,
+.dark .chat-bubble input[type="checkbox"]:checked {
+  background-color: #60a5fa;
+  border-color: #60a5fa;
+}
+
 .chat-renderer-container.expanded {
   position: fixed;
   top: 0;

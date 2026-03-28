@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 // Import the data type
 import { ChatSegmentData } from '@/lib/content';
 
@@ -34,20 +35,23 @@ const ChatRenderer: React.FC<ChatRendererProps> = ({
         if (metadata.sound) {
           // TODO: Implement sound playback using metadata.sound path
           console.log('Sound directive found:', metadata.sound);
-          // Decide if sound directive segments should render content or not
-          // If they shouldn't render content, return null here.
-          // return null; 
         }
         
         // --- End Metadata Handling ---
 
         // If it wasn't a directive that prevents rendering, render the segment content
         return (
-          <div 
+          <motion.div 
             key={index}
-            // TODO: Apply styling based on metadata.type or metadata.style if needed
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 0.3, 
+              delay: index * 0.05, // Stagger effect
+              ease: "easeOut" 
+            }}
             className="chat-bubble prose dark:prose-invert max-w-none"
-            dangerouslySetInnerHTML={{ __html: segmentHtml }} // Use segment.content
+            dangerouslySetInnerHTML={{ __html: segmentHtml }}
           />
         );
       })}
