@@ -1,50 +1,43 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { memo } from 'react';
 import dynamic from 'next/dynamic';
 import { useTheme } from 'next-themes';
-// Import the type for chat segment data
 import { ChatSegmentData } from '@/lib/content';
 
-// Import the base ChatRenderer
-const BaseChatRenderer = dynamic(() => import('./ChatRenderer'), { ssr: false });
+// Import the base ChatRenderer with no SSR
+const BaseChatRenderer = dynamic(() => import('./ChatRenderer'), { 
+  ssr: false,
+  loading: () => (
+    <div className="space-y-4 px-2 animate-pulse">
+      <div className="h-16 bg-gray-200 dark:bg-gray-700 rounded-lg" />
+      <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded-lg" />
+    </div>
+  )
+});
 
 export interface DynamicChatRendererProps {
-  // content prop might not be needed anymore if segments are passed directly
-  // content?: string; 
-  chatSegments: ChatSegmentData[]; // Expect pre-processed segments
-  config?: any;  // Keep for compatibility but ignore for now
+  chatSegments: ChatSegmentData[];
+  config?: any;
 }
 
-function DynamicChatRenderer({
+// Memoize to prevent unnecessary re-renders from parent
+const DynamicChatRenderer = memo(function DynamicChatRenderer({
   chatSegments,
 }: DynamicChatRendererProps) {
-  // Remove state for segments and loading, as segments are passed directly
-  // const [segments, setSegments] = useState<string[]>([]);
-  // const [isLoading, setIsLoading] = useState(true);
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === 'dark';
 
-  // Remove useEffect for client-side splitting
-  // useEffect(() => { ... });
-
-  // Remove loading indicator if segments are passed directly and guaranteed to be present
-  // if (isLoading) { ... }
-  
-  // Check if segments exist and are valid before rendering
   if (!chatSegments || chatSegments.length === 0) {
-    // Optionally return null or a placeholder if no segments are provided
-    return <div>No chat content available.</div>; 
+    return null;
   }
 
-  // Pass the pre-processed segments (ChatSegmentData[]) to BaseChatRenderer
-  // We assume BaseChatRenderer can handle this structure. If not, adjust mapping here.
   return (
     <BaseChatRenderer
-      segments={chatSegments} // Pass ChatSegmentData[]
+      segments={chatSegments}
       isDark={isDark}
     />
   );
-}
+});
 
 export default DynamicChatRenderer;
