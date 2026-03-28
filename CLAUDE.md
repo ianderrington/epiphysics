@@ -26,7 +26,7 @@ npm run build                 # must pass before push
 ```
 
 ## GitHub
-Repo: ianderrington/epiphysics
+Repo: supernalintelligence/epiphysics
 Always push to main. Vercel auto-deploys.
 Do NOT commit .env.local or secrets.
 

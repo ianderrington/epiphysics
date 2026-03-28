@@ -8,7 +8,7 @@ Thank you for your interest in contributing to Epiphysics. This project develops
 Every page on [epiphysics.xyz](https://epiphysics.xyz) has a **Feedback** button. Select text, add comments, and submit as a GitHub issue — no account setup beyond GitHub needed.
 
 ### 2. File Issues
-[Open an issue](https://github.com/ianderrington/epiphysics/issues/new) for:
+[Open an issue](https://github.com/supernalintelligence/epiphysics/issues/new) for:
 - Errors in the theory (mathematical, conceptual, or factual)
 - Missing citations or prior work we should engage with
 - Suggestions for new applications

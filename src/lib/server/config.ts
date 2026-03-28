@@ -50,7 +50,7 @@ const DEFAULT_SITE_CONFIG: SiteConfig = {
     link: '/theory',
     social: {
       twitter: 'https://x.com/ian_derrington',
-      github: 'https://github.com/ianderrington',
+      github: 'https://github.com/supernalintelligence/epiphysics',
       bluesky: '',
       threads: '',
     },

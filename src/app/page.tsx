@@ -143,7 +143,7 @@ export default async function Home() {
           {content.cta?.description || 'Theory developed. Experiments ready to run.'}
         </p>
         <Link
-          href={content.cta?.button?.link || 'https://github.com/ianderrington/epiphysics'}
+          href={content.cta?.button?.link || 'https://github.com/supernalintelligence/epiphysics'}
           className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-colors"
         >
           {content.cta?.button?.text || 'View on GitHub'}

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-const GITHUB_REPO = 'ianderrington/epiphysics';
+const GITHUB_REPO = 'supernalintelligence/epiphysics';
 
 interface Annotation {
   id: string;

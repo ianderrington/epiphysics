@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-const GITHUB_REPO = 'ianderrington/epiphysics';
+const GITHUB_REPO = 'supernalintelligence/epiphysics';
 const GITHUB_URL = `https://github.com/${GITHUB_REPO}`;
 
 export default function ContributeSection() {

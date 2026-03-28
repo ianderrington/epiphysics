@@ -51,54 +51,46 @@ tts:
 >
 > The answer: **causation**. If you have things that cause other things (events with inputs and outputs), everything else — _spacetime_, _quantum mechanics_, _energy_, _life_, _consciousness_ — follows as mathematical consequence.
 >
-> This document lays the commitments the framework rests upon. **Accept them and the rest should be derivation.**.
+> This document lays the co-definitions the framework rests upon. **Accept them and the rest is derivation.**
 
 ## What This Document Does
 
-Part 0 lays the foundation. Everything in the Epimechanics series — the mechanics, the entities, the coupling tensors, the thermodynamics, the applications — rests on a small number of conceptual commitments stated here. If you accept these commitments, the rest follows as mathematics. If you reject any of them, you know exactly where the framework breaks for you.
-
-The commitments are:
-1. $X$ is a representation, not reality
-2. Causation (effective, interventionist) is the working primitive
-3. Anything with causal presence is an entity
-4. The mechanical structure (state, force, energy) is grammar — domain sciences supply vocabulary
-5. All representations have epimechanical structure; predictively effective ones are efficient
+Part 0 lays the foundation. Everything in the Epimechanics series rests on a small set of co-defined concepts stated here. If you accept them, the rest follows as mathematics. If you reject any, you know exactly where the framework breaks for you.
 
 ### Core vocabulary
 
-Seven terms recur throughout the series. They organize into two co-primitive pairs, a bridge concept, and a derived pair:
+Seven terms organize into two **co-primitive pairs**, a **bridge concept**, and a **derived pair**:
 
-**First co-primitive pair:**
+**First co-primitive pair (ontological):**
 
-- **Causation** — the relation by which one entity's state constrains another's. Operationally detected via intervention: if intervening on $X$ changes $Y$, $X$ causes $Y$ ([Woodward 2003](https://doi.org/10.1093/0195155270.001.0001), [Pearl 2000](https://doi.org/10.1017/CBO9780511803161)).
-- **Entity** — anything with causal presence; equivalently, anything representable ($\rho_{\text{causal}} > 0$). The two formulations converge: causal presence is detected through representation, and representation requires causal interaction. Causation is what connects entities; entities are what causation connects. Neither is prior to the other.
+- **Causation** — the relation by which one entity's state constrains another's. Detected via intervention: if intervening on $X$ changes $Y$, $X$ causes $Y$.
+- **Entity** — anything with causal presence; equivalently, anything representable. Causation connects entities; entities are what causation connects. Neither is prior.
 
 **Bridge concept:**
 
-- **State** — what determines an entity's causal dispositions. The posited referent that representations approximate. Epimechanics assumes states exist but does not claim direct access to them.
+- **State** — what determines an entity's causal dispositions. The referent that representations approximate. States exist; direct access is limited.
 
-> [!sidenote]
-> Quantum mechanics provides independent evidence for this commitment. The [PBR theorem (2012)](https://doi.org/10.1038/nphys2309) shows quantum states are ontic (real, not merely bookkeeping), yet measurement disturbs the state (Heisenberg), unknown states cannot be copied (no-cloning), and different preparations can be statistically indistinguishable (density matrix degeneracy). States exist; direct access to them is fundamentally limited. Quantum mechanics and [Hoffman's Interface Theory](https://wwnorton.com/books/9780393254693) reach this conclusion from different directions — Epimechanics inherits from both.
+**Second co-primitive pair (epistemological):**
 
-**Second co-primitive pair:**
-
-- **Computation** — producing a representation: discriminating, partitioning, compressing. Varies in depth from passive encoding to self-referential modeling. Happens at every scale.
-- **Representation** — the product of computation: an approximation of state. This is $X$. May be predictively effective or not.
+- **Computation** — producing a representation: discriminating, partitioning, compressing.
+- **Representation** — the product of computation: an approximation of state. This is $X$.
 
 **Derived pair:**
 
-- **Information** — predictive information: the degree to which a representation's distinctions reduce uncertainty about future states, above background noise.
-- **Prediction** — reduction of uncertainty about future states given a representation's information content.
+- **Information** — the degree to which a representation reduces uncertainty about future states.
+- **Prediction** — reduction of that uncertainty.
 
-The two co-primitive pairs require each other: computation and representation need entities and causation to be *about* something; entities and causation are only accessible *through* computation and representation. State is where they meet — derived from causal dispositions, targeted by representational approximation. Knowledge of a causal relation is itself a state, which is itself known only through representation. The definitions apply to themselves.
+The pairs require each other: computation and representation need entities and causation to be *about* something; entities and causation are only accessible *through* computation and representation. State is where they meet.
 
-> [!sidenote]
-> The first pair addresses what exists and how it relates; the second addresses how we approximate and what we produce. Philosophers will recognize these as the ontological and epistemological aspects of the framework. Epimechanics does not treat them as separate domains — each pair is inaccessible without the other.
+### The framework's commitments
 
-> [!sidenote]
-> The co-primitive structure parallels second quantization in quantum mechanics, where creation/annihilation operators and Fock states are co-defined via commutation relations ($[a, a^\dagger] = 1$). Entities are analogous to states; causation is analogous to operators. The intervention test plays the role of the commutation relation — it is the operational content from which everything else is built. The analogy is structural: both frameworks rest on co-defined pairs with an operational test substituting for independent definitions. The algebraic content of the analogy — whether causal composition obeys specific constraint equations analogous to $[a, a^\dagger] = 1$ — is open.
+From these co-definitions, five commitments follow:
 
-The chain Entity → Computation → Representation → Information → Prediction is recursive, not linear: the computing entity is itself known only through representations computed by other entities or itself. The definitions are themselves representations — approximations, not perfect copies — and the framework predicts its own improvability: each iteration of self-application should refine the definitions toward an attractor, not reproduce them exactly.
+1. **Representation, not reality** — $X$ is a model of state, not state itself
+2. **Causation as primitive** — the intervention test grounds all other concepts
+3. **Entity as causal presence** — anything representable is an entity
+4. **Grammar vs vocabulary** — Epimechanics provides structure (state, force, energy); domain sciences provide content
+5. **Efficiency principle** — all representations have mechanical structure; good ones have *simple* mechanical structure
 
 ---
 

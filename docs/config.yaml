@@ -26,6 +26,6 @@ layout:
       default_order: [theory, applications, research, experiments]
       external_links:
         - title: GitHub
-          href: https://github.com/ianderrington/epiphysics
+          href: https://github.com/supernalintelligence/epiphysics
   footer:
     copyright: "\u00A9 {year} Ian Derrington. All rights reserved."

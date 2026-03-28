@@ -23,7 +23,7 @@ export default function PersonSchema({
   image = "https://epiphysics.xyz/favicon.ico",
   sameAs = [
     "https://x.com/ian_derrington",
-    "https://github.com/ianderrington",
+    "https://github.com/supernalintelligence",
     "https://bsky.app/profile/sentienti.bsky.social",
     "https://www.threads.net/@supernalai",
     "https://www.linkedin.com/in/ian-derrington",
