@@ -271,7 +271,7 @@ const AnimatedHero = ({
         )}
 
         {/* Hero Content */}
-        <div className="relative sm:absolute sm:inset-0 z-[2] flex items-start sm:items-center justify-center pt-20 pb-10 sm:pb-8 sm:pt-24 lg:pt-28">
+        <div className="relative sm:absolute sm:inset-0 z-[2] flex items-start sm:items-start justify-center pt-20 pb-10 sm:pb-8 sm:pt-32 lg:pt-40">
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center welcome-text">
               {title && (

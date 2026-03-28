@@ -48,7 +48,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, sections, config }) =
       <div className={`header-wrapper fixed top-0 left-0 right-0 z-40 w-full bg-white dark:bg-[#0a0f1a] ${headerClass} m-0 p-0`}>
         <Header sections={sections} />
       </div>
-      <main className="flex-grow w-full flex flex-col px-0 m-0 pt-[var(--header-height)]">
+      <main className="flex-grow w-full flex flex-col px-0 m-0 pt-16">
         {children}
       </main>
       <Footer ref={footerRef} config={config} />
