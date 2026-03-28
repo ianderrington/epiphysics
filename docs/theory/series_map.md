@@ -66,7 +66,7 @@ There are two entry points depending on your goal:
 
 | Goal | Start here |
 |---|---|
-| Understand the framework (concepts, applications) | [Part 0: Foundations](./00_prelude.md) → Part 1 → Part 1.5 → Parts 2–5 |
+| Understand the framework (concepts, applications) | [Part 0: Foundations](./00_prelude.md) → [Part 1](./01_generalized_mechanics.md) → [Part 1.5](./01_5_causors.md) → [Part 2](./02_meta_entities.md)–[Part 5](./05_ontology_and_open_questions.md) |
 | Understand the physics foundations | [Cause-Plex and Spacetime](./causeplex_spacetime.md) → [Quantum](./causeplex_quantum.md) → [Amplitude Fixed-Point](./amplitude-phase-fixed-point-paper.md) |
 | Understand one specific result | Use the dependency graph below |
 
@@ -78,36 +78,36 @@ There are two entry points depending on your goal:
 
 | Order | Part | Topic | Next |
 |---|---|---|---|
-| 0 | [Part 0: Foundations](./00_prelude.md) | What epimechanics is; causation as primitive | → Part 1 |
-| 1 | [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | X as universal state variable; mass, force, energy, Lagrangian | → Part 1.5, Part 1b |
-| 1.5 | [Part 1.5: Causors](./01_5_causors.md) | What entities are made of; bond/loop operators; Q1–Q4 descriptors | → Part 2 |
-| 1b | [Part 1b: Uncertainty/Coordinates](./01b_uncertainty_coordinates_relativity.md) | Limits of the framework; reference frames | → Part 2 |
-| 1c | [Part 1c: Thermodynamic Emergence](./01c_thermodynamic_emergence_of_life.md) | Life as thermodynamic inevitability | → Part 2 |
-| 2 | [Part 2: Meta-Entities](./02_meta_entities.md) | When aggregates earn entity status | → Part 3 |
-| 2.5 | [Part 2.5: Entity Interaction](./02_5_entity_interaction.md) | How entities couple and interact | → Part 3 |
-| 3 | [Part 3: Intelligence/Consciousness/Agency](./03_intelligence_consciousness_agency.md) | What entities know and do | → Part 4 |
-| 4 | [Part 4: Time and Soul](./04_time_and_soul.md) | How long entities matter; soul as causal biography | → Part 5 |
+| 0 | [Part 0: Foundations](./00_prelude.md) | What epimechanics is; causation as primitive | → [Part 1](./01_generalized_mechanics.md) |
+| 1 | [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | X as universal state variable; mass, force, energy, Lagrangian | → [Part 1.5](./01_5_causors.md), [Part 1b](./01b_uncertainty_coordinates_relativity.md) |
+| 1.5 | [Part 1.5: Causors](./01_5_causors.md) | What entities are made of; bond/loop operators; Q1–Q4 descriptors | → [Part 2](./02_meta_entities.md) |
+| 1b | [Part 1b: Uncertainty/Coordinates](./01b_uncertainty_coordinates_relativity.md) | Limits of the framework; reference frames | → [Part 2](./02_meta_entities.md) |
+| 1c | [Part 1c: Thermodynamic Emergence](./01c_thermodynamic_emergence_of_life.md) | Life as thermodynamic inevitability | → [Part 2](./02_meta_entities.md) |
+| 2 | [Part 2: Meta-Entities](./02_meta_entities.md) | When aggregates earn entity status | → [Part 3](./03_intelligence_consciousness_agency.md) |
+| 2.5 | [Part 2.5: Entity Interaction](./02_5_entity_interaction.md) | How entities couple and interact | → [Part 3](./03_intelligence_consciousness_agency.md) |
+| 3 | [Part 3: Intelligence/Consciousness/Agency](./03_intelligence_consciousness_agency.md) | What entities know and do | → [Part 4](./04_time_and_soul.md) |
+| 4 | [Part 4: Time and Soul](./04_time_and_soul.md) | How long entities matter; soul as causal biography | → [Part 5](./05_ontology_and_open_questions.md) |
 | 5 | [Part 5: Ontology and Open Questions](./05_ontology_and_open_questions.md) | Full formal ontology; nine open questions | — |
 
 ### Physics Foundations (grounding the framework)
 
 | Order | Document | Topic | Depends on |
 |---|---|---|---|
-| A1 | [Cause-Plex and Spacetime](./causeplex_spacetime.md) | Lorentzian metric, energy, GR from causal primitive | Part 1 |
-| A2 | [Cause-Plex and Quantum](./causeplex_quantum.md) | QM from multiway cause-plex; Born rule; entanglement | Spacetime |
-| A3 | [Amplitude Fixed-Point](./amplitude-phase-fixed-point-paper.md) | U(1) unique fixed point of G⊗G≅G — PRIMARY derivation | Quantum |
-| A4 | [Loop-Phase Consistency](./causeplex_loop_phase.md) | Corroborating routes; causal-void counterexample; CSS connectivity | Amplitude FP |
-| A5 | [Dimensionality](./causeplex_dimensionality.md) | Why 3+1: observer-selection constraints on spacetime | Spacetime |
+| A1 | [Cause-Plex and Spacetime](./causeplex_spacetime.md) | Lorentzian metric, energy, GR from causal primitive | [Part 1](./01_generalized_mechanics.md) |
+| A2 | [Cause-Plex and Quantum](./causeplex_quantum.md) | QM from multiway cause-plex; Born rule; entanglement | [Spacetime](./causeplex_spacetime.md) |
+| A3 | [Amplitude Fixed-Point](./amplitude-phase-fixed-point-paper.md) | U(1) unique fixed point of G⊗G≅G — PRIMARY derivation | [Quantum](./causeplex_quantum.md) |
+| A4 | [Loop-Phase Consistency](./causeplex_loop_phase.md) | Corroborating routes; causal-void counterexample; CSS connectivity | [Amplitude FP](./amplitude-phase-fixed-point-paper.md) |
+| A5 | [Dimensionality](./causeplex_dimensionality.md) | Why 3+1: observer-selection constraints on spacetime | [Spacetime](./causeplex_spacetime.md) |
 
 ### Theory Notes (standalone extensions)
 
 | Note | Topic | Relates to |
 |---|---|---|
-| [Effective Mass](./effective_mass.md) | Bare vs. effective mass; medium effects on entity resistance | Part 1 |
-| [Persistence Reversal](./persistence_reversal.md) | When composites outlive constituents | Part 2 |
-| [Cross-Level Tracing](./cross_level_tracing.md) | What survives coarse-graining | Parts 2–3 |
-| [Belief Field](./belief_field.md) | Belief dynamics as field theory | Part 3 |
-| [Coupling Chains](./coupling_chains.md) | Causal chain propagation | Part 1.5 |
+| [Effective Mass](./effective_mass.md) | Bare vs. effective mass; medium effects on entity resistance | [Part 1](./01_generalized_mechanics.md) |
+| [Persistence Reversal](./persistence_reversal.md) | When composites outlive constituents | [Part 2](./02_meta_entities.md) |
+| [Cross-Level Tracing](./cross_level_tracing.md) | What survives coarse-graining | [Part 2](./02_meta_entities.md)–[Part 3](./03_intelligence_consciousness_agency.md) |
+| [Belief Field](./belief_field.md) | Belief dynamics as field theory | [Part 3](./03_intelligence_consciousness_agency.md) |
+| [Coupling Chains](./coupling_chains.md) | Causal chain propagation | [Part 1.5](./01_5_causors.md) |
 
 ---
 
@@ -218,26 +218,26 @@ graph TD
 
 | Claim | Status | Document |
 |---|---|---|
-| Cause-plex is a locally finite poset | ✅ Definition | Spacetime §1 |
-| P1: strict partial order | ✅ Proved | Spacetime §2 |
-| P2: spacelike commutativity | ✅ Proved (P1 + L + CD) | Spacetime §2 |
-| Proper time from event counts | ✅ Derived | Spacetime §3 |
-| Lorentzian metric (up to conformal factor) | ✅ Proved (Malament 1977) | Spacetime §4 |
-| Conformal factor fixed | ⚠️ Number=volume conjecture | Spacetime §4.2 |
-| Lorentz invariance | ✅ Proved | Spacetime §4.4 |
-| Dimensionality n_s=3 | ⚠️ Observer-selection conjecture | Spacetime §10 |
-| Energy from Noether (Layer C) | ✅ Defined at Layer C | Spacetime §5 |
-| Gravitational action (Layer 0) | ✅ Benincasa-Dowker 2010 | Spacetime §7.2 |
-| Matter action (Layer C) | ✅ Defined at Layer C | Spacetime §7.2 |
+| Cause-plex is a locally finite poset | ✅ Definition | [Spacetime](./causeplex_spacetime.md) §1 |
+| P1: strict partial order | ✅ Proved | [Spacetime](./causeplex_spacetime.md) §2 |
+| P2: spacelike commutativity | ✅ Proved (P1 + L + CD) | [Spacetime](./causeplex_spacetime.md) §2 |
+| Proper time from event counts | ✅ Derived | [Spacetime](./causeplex_spacetime.md) §3 |
+| Lorentzian metric (up to conformal factor) | ✅ Proved (Malament 1977) | [Spacetime](./causeplex_spacetime.md) §4 |
+| Conformal factor fixed | ⚠️ Number=volume conjecture | [Spacetime](./causeplex_spacetime.md) §4.2 |
+| Lorentz invariance | ✅ Proved | [Spacetime](./causeplex_spacetime.md) §4.4 |
+| Dimensionality n_s=3 | ⚠️ Observer-selection conjecture | [Spacetime](./causeplex_spacetime.md) §10 |
+| Energy from Noether (Layer C) | ✅ Defined at Layer C | [Spacetime](./causeplex_spacetime.md) §5 |
+| Gravitational action (Layer 0) | ✅ Benincasa-Dowker 2010 | [Spacetime](./causeplex_spacetime.md) §7.2 |
+| Matter action (Layer C) | ✅ Defined at Layer C | [Spacetime](./causeplex_spacetime.md) §7.2 |
 | w(γ) ∈ U(1) | ✅ Proved — G⊗G≅G has unique non-trivial compact connected solution U(1) | [Amplitude Fixed-Point](./amplitude-phase-fixed-point-paper.md) Theorem 6.1 |
-| φ(γ) = S/ℏ (Layer C) | ✅ Proved (Proposition 6.2) | Loop-phase §6 |
-| ℏ = ΔE_min/\|C_ref\| non-circular | ✅ Derived | Loop-phase §6.3 |
-| Born rule | ⚠️ Conditional on Gorard 2020 | Quantum §4.2 |
-| Classical limit | ✅ Stationary phase | Quantum §4.3 |
-| Entanglement as branch structure | ✅ Structural characterization | Quantum §5 |
+| φ(γ) = S/ℏ (Layer C) | ✅ Proved (Proposition 6.2) | [Loop-Phase](./causeplex_loop_phase.md) §6 |
+| ℏ = ΔE_min/\|C_ref\| non-circular | ✅ Derived | [Loop-Phase](./causeplex_loop_phase.md) §6.3 |
+| Born rule | ⚠️ Conditional on Gorard 2020 | [Quantum](./causeplex_quantum.md) §4.2 |
+| Classical limit | ✅ Stationary phase | [Quantum](./causeplex_quantum.md) §4.3 |
+| Entanglement as branch structure | ✅ Structural characterization | [Quantum](./causeplex_quantum.md) §5 |
 | Classical mechanics | ✅ Derived | — |
 | Thermodynamics | ✅ Derived | — |
-| Entity taxonomy (Q1-Q4) | ✅ [Part 1.5: Causors](./01_5_causors.md) | Causors |
+| Entity taxonomy (Q1-Q4) | ✅ [Part 1.5: Causors](./01_5_causors.md) | [Causors](./01_5_causors.md) |
 | Meta-entities | ✅ [Part 2](./02_meta_entities.md) | — |
 | Intelligence/consciousness/agency | ✅ [Part 3](./03_intelligence_consciousness_agency.md) | — |
 | Soul/non-local time | ✅ [Part 4](./04_time_and_soul.md) | — |

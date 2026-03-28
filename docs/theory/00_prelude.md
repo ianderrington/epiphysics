@@ -51,7 +51,7 @@ tts:
 >
 > The answer: **causation**. If you have things that cause other things (events with inputs and outputs), everything else — _spacetime_, _quantum mechanics_, _energy_, _life_, _consciousness_ — follows as mathematical consequence.
 >
-> This document lays the three commitments the framework rests on. **Accept them and the rest is derivation.** Reject any one of them and you know exactly where you disagree.
+> This document lays the commitments the framework rests upon. **Accept them and the rest should be derivation.**.
 
 ## What This Document Does
 
@@ -98,9 +98,7 @@ The two co-primitive pairs require each other: computation and representation ne
 > [!sidenote]
 > The co-primitive structure parallels second quantization in quantum mechanics, where creation/annihilation operators and Fock states are co-defined via commutation relations ($[a, a^\dagger] = 1$). Entities are analogous to states; causation is analogous to operators. The intervention test plays the role of the commutation relation — it is the operational content from which everything else is built. The analogy is structural: both frameworks rest on co-defined pairs with an operational test substituting for independent definitions. The algebraic content of the analogy — whether causal composition obeys specific constraint equations analogous to $[a, a^\dagger] = 1$ — is open.
 
-The chain Entity → Computation → Representation → Information → Prediction is recursive, not linear: the computing entity is itself known only through representations computed by other entities or itself. The definitions are themselves representations — approximations, not perfect copies — and the framework predicts its own improvability: each iteration of self-application should refine the definitions toward an attractor, not reproduce them exactly. The [research note on computation](../research/computation.md) develops these definitions formally. *[Research conjecture, supporting document pending:]* When the seven definitions are quotiented by their equivalences, they may converge to a four-node graph whose spectral radius is the golden ratio $\varphi$ — a structural consequence of this definitional architecture and the postulate that causal presence is coextensive with representability. This claim is speculative until `../research/definitional_convergence.md` is written.
-
-![Foundational architecture: two co-primitive pairs (Causation↔Entity, Computation↔Representation), State as bridge, Information↔Prediction as derived pair, with recursive chain](./images/foundational_architecture.svg)
+The chain Entity → Computation → Representation → Information → Prediction is recursive, not linear: the computing entity is itself known only through representations computed by other entities or itself. The definitions are themselves representations — approximations, not perfect copies — and the framework predicts its own improvability: each iteration of self-application should refine the definitions toward an attractor, not reproduce them exactly.
 
 ---
 
