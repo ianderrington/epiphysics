@@ -78,8 +78,6 @@ When a label appears as an example, it is a pointer to a structural configuratio
 
 > **Coming from Part 1?** Part 1 used energy, mass, and force as well-defined quantities — as they are, at the scales where the framework is applied. This document goes one level deeper and asks: *where do those quantities come from?* The answer doesn't undermine Part 1's framework; it grounds it. Energy is still the right quantity to use at Layer C. This document explains why, and what sits beneath it.
 
-The previous version of this document (archived as [01_5_causors_v1_archive.md](./01_5_causors_v1_archive.md)) took energy exchange as the primitive causor. This was one level too high.
-
 Energy is not primitive. It falls out of **Noether's theorem**: if the cause-plex has time-translation symmetry in some region, there exists a conserved quantity — we call it energy. Energy has units (J = kg·m²/s²) that are themselves derived from reference causal events (atomic clock, reference mass, speed of light). In Wolfram's ruliad, energy, momentum, and charge all *emerge* from symmetries of the abstract hypergraph update structure. No physical quantity is assumed at the primitive level.
 
 The same must be true here for the framework to be genuinely foundational. Starting with "energy exchange" as the primitive assumes conservation, units, and thermodynamics before deriving them. That is a coarse-graining — valid and useful at biological and institutional scales, but not the foundation.
@@ -430,5 +428,3 @@ $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V(X)$ is a structural postulate in Part
 ---
 
 [← Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 2: Meta-Entities](./02_meta_entities.md)
-
-*Archive of previous version (energy-exchange as primitive): [01_5_causors_v1_archive.md](./01_5_causors_v1_archive.md)*
