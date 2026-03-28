@@ -82,12 +82,12 @@ Seven terms recur throughout the series. They organize into two co-primitive pai
 
 **Second co-primitive pair:**
 
-- **Computation** — producing a representation: discriminating, partitioning, compressing. Varies in depth from passive encoding to self-referential modeling. Happens at every scale.
+- **Computation** — producing a representation: discriminating, partitioning, compressing. At the most granular level, computation between entities acts like **logical gates**: one entity's state constrains and transforms another's, exactly as a logic gate transforms its inputs into an output. A neuron fires only if sufficiently many upstream neurons are active (AND-like); a gene is expressed only if a repressor is absent (NOT-like); a market price moves only if buy orders exceed sell orders above a threshold (threshold gate). These elementary causal gates chain across entities — edge after edge in the causal graph — building up from simple binary transformations into the deep, self-referential modeling found in minds. Varies in depth from passive encoding to self-referential modeling. Happens at every scale.
 - **Representation** — the product of computation: an approximation of state. This is $X$. May be predictively effective or not.
 
 **Derived pair:**
 
-- **Information** — predictive information: the degree to which a representation's distinctions reduce uncertainty about future states, above background noise.
+- **Information** — predictive information: the degree to which a representation's distinctions reduce uncertainty about future states, above background noise. Not all distinctions count — only those that *matter for what happens next*. A representation that perfectly encodes yesterday's weather but tells you nothing about tomorrow's carries zero predictive information. Information is measured by how much knowing $X(t)$ shrinks your uncertainty about $X(t + \Delta t)$ relative to the baseline rate of change. More formally: $I(X) = H(\text{future}) - H(\text{future} \mid X)$, where $H$ is Shannon entropy. A representation earns its computational cost only to the extent it buys predictive reduction above noise.
 - **Prediction** — reduction of uncertainty about future states given a representation's information content.
 
 The two co-primitive pairs require each other: computation and representation need entities and causation to be *about* something; entities and causation are only accessible *through* computation and representation. State is where they meet — derived from causal dispositions, targeted by representational approximation. Knowledge of a causal relation is itself a state, which is itself known only through representation. The definitions apply to themselves.
@@ -148,6 +148,16 @@ Representation is not unique to conscious observers. A DNA codon encodes an amin
 
 Epimechanics is itself an example. It was originally labeled "The Physics of Metaphysics" — a coordinate choice that placed it in a region of intellectual state space where the dynamics (empirical prediction, formal mechanics) did not apply well. Relabeling it "Epimechanics" was a coordinate transform: the content didn't change, but the representation now sits in a region where the dynamics are more applicable. A framework that emphasizes choosing the right $X$ should eventually apply that principle to its own name.
 
+### Representations have levels: the same entity at different scales
+
+A human body can be represented as a collection of approximately 37 trillion cells — each cell a node in a causal graph, each membrane, receptor, and metabolic pathway an edge. Or it can be represented as a single node, "Person A", with a position in a social state space defined by mood, beliefs, health, and relationships. Both representations are valid. Neither is more "real" than the other.
+
+This is the **level of abstraction** choice. Every representation commits to a grain — a resolution at which entities are individuated and causal edges are drawn. Coarser grain: fewer nodes, simpler graph, lower computational cost, lower predictive resolution. Finer grain: more nodes, denser graph, higher computational cost, potentially higher predictive resolution — but only if the extra detail actually reduces uncertainty about future states.
+
+The same entity can therefore be *represented at many levels simultaneously*. The body-as-cells and the body-as-person are not competing descriptions of different things — they are two coordinate choices, at two different grains, for the same underlying causal structure. The Representational Efficiency Principle (Section 6) asks: at which level of abstraction does the representation achieve the best predictive compression? That level is the one that earns its computational cost. Which level that is depends on what you are trying to predict: to model immune response, the cellular level is indispensable; to model career trajectory, the person-level is sufficient and the cellular level is noise.
+
+This multi-level structure is not unique to biology. A corporation can be represented as thousands of individual employees (fine grain) or as a single agent with a strategy and a balance sheet (coarse grain). A conversation can be represented as a sequence of phonemes or as an exchange of beliefs. The grain choice is the first and most consequential representational decision — it sets the topology of the causal graph, the dimensionality of state space, and the range of predictions available.
+
 ### What this commits us to
 
 We do not claim that reality is "made of" states. We claim that for any system, you can construct a representation $X$ such that the system's behavior may be described by a trajectory through a state space $S$. The claim is a methodological commitment, not a metaphysical one. Epimechanics requires that representations exist — not that they be unique, not that they be accurate, not that they be metaphysically fundamental, and not that any particular coordinate choice be privileged over another. Like coordinates in physics, some choices of $X$ reveal more structure than others — but the underlying reality exists regardless of how well or poorly we represent it.
@@ -169,6 +179,23 @@ With causation established, a key observation follows: most causal chains run in
 ## 3. Entities Are Anything with Causal Presence
 
 An **entity**, in Epimechanics, is anything with causal presence ($\rho_{\text{causal}} > 0$) — equivalently, anything representable. A proton is an entity. A fleeting thought is an entity (it fires neurons, occupies cognitive resources). A cloud is an entity. The two formulations are equivalent: if something has causal presence, its effects can be detected and represented; if something can be represented, the act of representing it is a causal interaction. If something has zero causal interaction with anything, it cannot be represented and does not enter the framework's scope. The word is deliberately broad.
+
+### The Graph Picture: Nodes, Edges, and Causelets
+
+The most natural way to visualize a causal structure is as a **directed graph**:
+
+- **Nodes** are entities — anything with causal presence.
+- **Edges** are causal relationships — a directed edge from node $A$ to node $B$ means $A$'s state constrains $B$'s trajectory. The edge carries a weight (coupling strength $\kappa_{AB}$) and a direction (cause → effect).
+
+This picture is not a metaphor. It is the literal structure Epimechanics works with. A neuron is a node; a synapse is an edge. A firm is a node; a contract is an edge. A belief is a node; a persuasive argument is a directed edge that shifts another belief's state.
+
+**Representations as positions in state space.** Each node (entity) does not merely exist — it occupies a *position* in a high-dimensional state space $S$. The representation $X$ of an entity is precisely its coordinates in $S$: where it sits among all possible configurations. Changing the entity changes its position; applying a force moves it along a trajectory through $S$. State space is not physical space — it is the abstract manifold of all possible states, and its dimensionality is determined by how many independent quantities are needed to fully characterize the entity.
+
+**Observer-relative representations.** Different observers may work in different coordinate systems — different vector spaces, different bases, different projections of the same underlying $S$. Observer A might represent a political movement by its polling numbers; Observer B by its organizational density; Observer C by its media coupling tensor. Each is a valid coordinate chart on the same underlying causal structure. The representations differ numerically but describe the same node. Cross-observer convergence — agreement across independent coordinate systems — is what establishes that the representation tracks something real (see Section 1: Observer-dependence is a spectrum).
+
+**Causelets.** A connected subgraph — a set of nodes and their causal edges — forms a structured causal unit. We call such a unit a **causelet**: a bounded collection of entities and their causal relationships, considered as a whole. A cell is a causelet. A conversation is a causelet. A metabolic pathway is a causelet. The term is analogous to "monograph" in the sense of a self-contained structured unit, but the structure here is explicitly causal rather than merely topical.
+
+Causelets inherit observer-dependence from their constituents: two observers may carve the same causal graph into different causelets, use different coordinates to represent each causelet's position in state space, and reach different conclusions about which causelets are the "natural" units. The underlying causal graph is the same; the coordinate choices and groupings differ. Which decomposition into causelets is best — which groups nodes and edges into units with simple, predictive internal dynamics — is an empirical question settled by which representation achieves maximal predictive compression (see Section 6: Representational Efficiency).
 
 Entity-ness is a spectrum, not a binary. Entities differ not in kind but in structure. Two properties matter:
 
