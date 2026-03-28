@@ -197,6 +197,36 @@ This picture is not a metaphor. It is the literal structure Epimechanics works w
 
 Causelets inherit observer-dependence from their constituents: two observers may carve the same causal graph into different causelets, use different coordinates to represent each causelet's position in state space, and reach different conclusions about which causelets are the "natural" units. The underlying causal graph is the same; the coordinate choices and groupings differ. Which decomposition into causelets is best — which groups nodes and edges into units with simple, predictive internal dynamics — is an empirical question settled by which representation achieves maximal predictive compression (see Section 6: Representational Efficiency).
 
+### Causal Number: how much does it matter to represent this entity?
+
+Not all nodes are equally important to represent. An entity that sits at the intersection of many causal pathways — one whose state influences many others, and whose state is in turn shaped by many others — is more causally central than one that barely interacts with the rest of the graph. We call this measure the **causal number** $\mathcal{N}_c$ of an entity.
+
+Intuitively: if you removed node $A$ from the causal graph, how much would the rest of the graph's dynamics change? If very little — $A$ had few edges, weak coupling — then $A$ has a low causal number. If removing $A$ would cascade through the graph, disrupting many other trajectories, $A$ has a high causal number.
+
+More precisely, the causal number of an entity $E$ aggregates three things:
+
+1. **In-degree** — how many other entities causally influence $E$. The more dependencies $E$ has, the more its state is informationally rich (it integrates many upstream signals).
+2. **Out-degree** — how many other entities $E$ causally influences. The more downstream effects $E$ has, the more consequential changes in $E$'s state are for the rest of the graph.
+3. **Coupling strength** — not just the count of edges but their weight $\kappa$. A node with two strong edges may matter more than a node with twenty weak ones.
+
+Formally, a simple version:
+
+$$\mathcal{N}_c(E) = \sum_{j \in \text{in}(E)} \kappa_{jE} + \sum_{k \in \text{out}(E)} \kappa_{Ek}$$
+
+A richer version weights each edge by the causal number of the node on the other end — analogous to Google's PageRank, where a link from a highly connected page is worth more than a link from an isolated one. In this recursive form, causal number is defined by the fixed point:
+
+$$\mathcal{N}_c(E) \propto \sum_{j \to E} \kappa_{jE} \cdot \mathcal{N}_c(j) + \sum_{E \to k} \kappa_{Ek} \cdot \mathcal{N}_c(k)$$
+
+**Why does this matter for representation?** The causal number tells you *how much it costs to ignore* an entity. A low-$\mathcal{N}_c$ entity can be dropped from your representation with little predictive loss — it barely affects the dynamics you care about. A high-$\mathcal{N}_c$ entity *must* be represented: omitting it collapses your model's ability to predict anything downstream of it. In the levels-of-abstraction picture, coarse-graining a causal graph should preferentially *preserve* high-$\mathcal{N}_c$ nodes and *collapse* low-$\mathcal{N}_c$ ones — the grain choice that loses the least predictive information is the one that keeps the most causally central entities as distinct nodes.
+
+Some examples across scales:
+- In a metabolic network, ATP synthase has an extremely high causal number — virtually every energy-requiring process in the cell depends on it.
+- In a social network, a person who bridges two otherwise disconnected communities has a high causal number (structural hole in network theory) even if they have few total connections.
+- In a causal graph of a belief system, a foundational axiom has a high out-degree causal number — many downstream beliefs depend on it; shifting it cascades through the entire structure.
+- In a physical system, a bottleneck variable — one through which all information about future states must pass — has maximal causal number by definition.
+
+The causal number is itself a representation: it is $E$'s coordinate along the axis of causal centrality. It is observer-dependent in the sense that it depends on which edges the observer can detect and measure. And it is predictive: high-$\mathcal{N}_c$ entities are the ones whose representation most reduces uncertainty about the future states of the graph as a whole.
+
 Entity-ness is a spectrum, not a binary. Entities differ not in kind but in structure. Two properties matter:
 
 - **Causal density** $\rho_{\text{causal}}$ — how much causal activity is packed within the entity. A cloud has high causal density: enormous molecular interaction, turbulent flow, constant energy exchange. A rock has lower causal density: atomic bonds hold the lattice in a structurally repetitive pattern with less dynamic variation.
