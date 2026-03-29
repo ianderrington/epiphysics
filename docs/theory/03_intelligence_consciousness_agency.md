@@ -59,9 +59,9 @@ These are among the oldest questions in philosophy. They are also becoming urgen
 
 ## Section 1: Intelligence as Predictive Capacity
 
-Let an entity E have an internal model $M_E$ of the state space. In the notation of [Part 1](./01_generalized_mechanics.md), $M_E$ is a representation — itself a state instantiated in E's substrate — that models some actual state $\mathcal{X}$. Intelligence measures how well this representation tracks the territory it maps.
+Let an entity E have an internal model $M_E$ of state. In the notation of [Part 1](./01_generalized_mechanics.md), $M_E$ is a representation — itself a state instantiated in E's substrate — that models some target state $x \in \mathcal{X}$ (where $\mathcal{X}$ is the potential state space). Intelligence measures how well this representation tracks the territory it maps.
 
-Intelligence, in Epimechanics, is the accuracy of that model's predictions about how the actual state evolves:
+Intelligence, in Epimechanics, is the accuracy of that model's predictions about how state evolves:
 
 **$I(E)$ = accuracy of $dX/dt$ prediction over horizon $T$**
 
