@@ -136,9 +136,20 @@ A **loop** is a closed composition of bonds — a causal cycle where the output 
 
 $$\mathcal{L}: X_i \to X_j \to \cdots \to X_i$$
 
+```mermaid
+graph LR
+    subgraph Open["Open Chain (ρ_ac = 0)"]
+        A1["X_i"] -->|"b₁"| A2["X_j"] -->|"b₂"| A3["X_k"] -->|"dissipates"| A4["∅"]
+    end
+    
+    subgraph Loop["Closed Loop (ρ_ac > 0)"]
+        B1["X_i"] -->|"b₁"| B2["X_j"] -->|"b₂"| B3["X_k"] -->|"b₃"| B1
+    end
+```
+
 Loops are the **minimal structure for auto-causality**. Individual bonds cannot be auto-causal ($\rho_{\text{ac}} = 0$ for any single bond). The closed loop is the first level at which $\rho_{\text{ac}} > 0$ can appear — the first level at which the cause-plex regenerates conditions for its own continuation.
 
-**Auto-causal does not mean self-contained.** The Krebs cycle regenerates oxaloacetate (auto-causal) but requires acetyl-CoA input and exports CO₂ and electrons. Cut the input, the loop stops. Auto-causality is about loop regeneration, not independence from environment.
+**Auto-causal does not mean self-contained.** The Krebs cycle regenerates a key intermediate molecule (oxaloacetate) while requiring continuous fuel input (acetyl-CoA) and exporting waste (CO₂, electrons). Cut the input, the loop stops. Auto-causality is about loop regeneration, not independence from environment.
 
 ---
 
@@ -171,7 +182,7 @@ What we commonly call "structural bonds" are potential-mode bonds. Kinetic-mode 
 
 **Gating** is what "signal" describes at Observable Layer: a small bond cluster whose output triggers a much larger cluster from local reserves. Leverage ratio $\Lambda = \mathcal{P}_{\text{out}} / \mathcal{P}_{\text{in}} \gg 1$.
 
-**Enable** is a bond whose output maintains a loop's existence — keeps a transducer entity alive. At Observable Layer: food → organism metabolism.
+**Enable** is a bond whose output maintains a loop's existence — keeps a *transducer* alive. A transducer is an entity whose primary function is converting inputs of one type into outputs of another type (food → motion, light → signal, money → goods). At Observable Layer: food → organism metabolism.
 
 ### Q3: Topology
 
@@ -209,14 +220,14 @@ Q5 is derived from Event Layer structure: it is the count of causal events per r
 
 Stable configurations cluster at recognizable poles in the Q1–Q5 parameter space. These are the entity types we observe:
 
-| Q1 | Q2 | Q3 | Q4 | Entity Type | $\rho_{\text{ac}}$ | Example |
-|----|----|----|----|----|----|----|
-| Kinetic | State | Open | ~1 | Dissipative process | 0 | Heat flow |
-| Potential | State | Open | ~1 | Structural configuration | 0 | Crystal lattice |
-| Kinetic | State | Closed | ~1 | Dissipative auto-causal | >0 | Flame |
-| Both | Loop | Closed | ~1 | Self-maintaining entity | >0 | Cell |
-| Both | Bond+Loop | Closed | ≫1 | Adaptive entity | >0 | Nervous system |
-| Both | Loop-of-loops | Closed | ≫1 | Meta-entity | >0 | Organism, institution |
+| Q1 | Q2 | Q3 | Q4 | Q5 | Entity Type | $\rho_{\text{ac}}$ | Example |
+|----|----|----|----|----|----|----|-----|
+| Kinetic | State | Open | ~1 | — | Dissipative process | 0 | Heat flow |
+| Potential | State | Open | ~1 | — | Structural configuration | 0 | Crystal lattice |
+| Kinetic | State | Closed | ~1 | Fast | Dissipative auto-causal | >0 | Flame |
+| Both | Loop | Closed | ~1 | Mixed | Self-maintaining entity | >0 | Cell |
+| Both | Bond+Loop | Closed | ≫1 | Fast reg. | Adaptive entity | >0 | Nervous system |
+| Both | Loop-of-loops | Closed | ≫1 | Slow struct. | Meta-entity | >0 | Organism, institution |
 
 Each row is a region in a continuous parameter space. Real entities are intermediate and have mixed subsystems.
 

@@ -87,13 +87,15 @@ This is the minimal structure for "causation" to mean anything. It defines what 
 
 ### P2: Causal Invariance
 
-Events with no causal path between them — **spacelike-separated events** — commute:
+Events with no causal path between them — **causally disconnected** events — commute:
 
 $$e_1 \perp e_2 \implies (e_1 \circ e_2) = (e_2 \circ e_1)$$
 
 If there is no causal path from $e_1$ to $e_2$ or from $e_2$ to $e_1$, then the order in which they are applied doesn't matter. The final state is the same either way.
 
 This is physically motivated: if two events cannot influence each other, their relative ordering is not a fact about the world — it is a coordinate choice. Causal invariance encodes this.
+
+> **Terminology note:** In the derived spacetime geometry, causally disconnected events are called "spacelike-separated." We avoid that term here because spacetime has not yet been derived — we work only with causal structure.
 
 > **Open problem:** Does P2 follow from P1 alone, or does it require additional structure? See [Cause-Plex and Spacetime](./causeplex_spacetime.md) for the current state of this question.
 
@@ -152,7 +154,13 @@ All physical units reduce to counting causal events relative to reference causal
 
 ### Quantum Mechanics
 
-When multiple causal paths coexist — when the cause-plex has a **multiway structure** — quantum mechanics emerges. The superposition of histories, the Born rule, and the Schrödinger equation all follow from the amplitude structure of paths through the multiway cause-plex.
+When multiple causal paths coexist — when the cause-plex has a **multiway structure** — quantum mechanics emerges.
+
+**What is multiway structure?** A single causal event can have multiple possible outcomes. Instead of one path through the cause-plex, there are many — a branching tree of possibilities. The multiway cause-plex is the graph of *all* these paths, coexisting until some process (measurement, decoherence) selects among them.
+
+**How does QM emerge?** Each path through the multiway cause-plex carries an *amplitude* — a complex number. When paths converge (lead to the same final state), their amplitudes interfere: they can add constructively or cancel destructively. The probability of observing a state is the squared magnitude of the total amplitude reaching it (the Born rule). The Schrödinger equation describes how amplitudes evolve as events accumulate.
+
+This is the same insight as Feynman's path integral formulation: quantum mechanics is what happens when you sum over all possible histories. The cause-plex provides the structure; the amplitudes provide the weights; interference produces quantum behavior.
 
 See [Cause-Plex and Quantum Mechanics](./causeplex_quantum.md) for the full derivation.
 
@@ -161,6 +169,20 @@ See [Cause-Plex and Quantum Mechanics](./causeplex_quantum.md) for the full deri
 ## The Four-Layer Architecture
 
 The Event Layer is the foundation of a four-layer architecture:
+
+```mermaid
+graph TB
+    subgraph OL["<b>Observable Layer</b><br/>Energy, mass, force, temperature<br/><i>Derived quantities (valid where symmetries hold)</i>"]
+    end
+    subgraph DL["<b>Descriptor Layer</b><br/>Q1–Q5 structural properties<br/><i>How to characterize bonds and loops</i>"]
+    end
+    subgraph SL["<b>Structure Layer</b><br/>Bonds, loops<br/><i>Recurring patterns in the cause-plex</i>"]
+    end
+    subgraph EL["<b>Event Layer</b><br/>Causal event e: S_i → S_j<br/><i>The primitive — no physics assumed</i>"]
+    end
+    
+    EL --> SL --> DL --> OL
+```
 
 | Layer | Content | What it is |
 |-------|---------|------------|
@@ -215,7 +237,7 @@ The Event Layer is the foundation of epimechanics:
 2. **The cause-plex is the hypergraph of all causal events** — $(E, \prec)$
 3. **Three properties generate physics:**
    - P1: Causal partial ordering
-   - P2: Causal invariance (spacelike events commute)
+   - P2: Causal invariance (causally disconnected events commute)
    - P3: Finite minimum event latency
 4. **Everything else emerges:**
    - Spacetime from the causal geometry
@@ -228,4 +250,4 @@ No physics is assumed. Physics is derived.
 
 ---
 
-[← Part 0: Foundations](./00_prelude.md) | [→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md)
+[← Part 0: Foundations](./00_prelude.md) | [→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 1.5: Causors](./01_5_causors.md)

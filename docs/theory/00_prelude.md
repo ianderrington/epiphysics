@@ -59,6 +59,8 @@ Part 0 lays the foundation. Everything in the Epimechanics series rests on a sma
 
 ### Core vocabulary
 
+> **In plain English:** The framework rests on two ideas that define each other: *things* and *what they do to each other*. We call these "entity" and "causation." Everything else — how we describe things, how we measure them, what we call "energy" or "information" — is built on top. The formal vocabulary below makes this precise.
+
 Seven terms organize into two **co-primitive pairs**, a **bridge concept**, and a **derived pair**:
 
 **First co-primitive pair (ontological):**
