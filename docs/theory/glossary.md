@@ -14,6 +14,18 @@ coverImage:
   alt: "Concept map of Epimechanics core terms and relationships."
 ---
 
+## Actual State ($\mathcal{X}$)
+
+The full causal reality of a system's condition — the territory. Exists independently of any observer or model. Not directly accessible; only representations of it can be constructed and manipulated.
+
+## Representation ($X$)
+
+A model of an actual state $\mathcal{X}$ — the map. Lives in a state space $S$. Representations are always partial, finite-dimensional projections of underlying reality. Critically, representations are themselves states: they must be instantiated in some physical substrate (neurons, silicon, ink) which has its own actual state. Every representation is a state, but not every state is a representation.
+
+## Representational Fidelity ($\mathcal{F}$)
+
+How closely a representation $X$ tracks the actual state $\mathcal{X}$ it models: $\mathcal{F}(X, \mathcal{X}) = 1 - d(X, \mathcal{X})$. When $X \to \mathcal{X}$, $\mathcal{F} \to 1$. Predictive accuracy scales with fidelity given sufficient computation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
+
 ## Causor
 
 A **causor** is *that-which-causes*: a higher-level causal mechanism/structure (often loop/operator-like) that produces state change. In Epimechanics, it is the functional middle term in the triad:

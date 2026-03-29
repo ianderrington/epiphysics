@@ -50,12 +50,13 @@ tts:
   enableProgress: true
 ---
 
-> **Quick reference — what this paper builds:** Every concept below generalizes one from physics. Here are the first eight, which are enough to follow the argument:
+> **Quick reference — what this paper builds:** Every concept below generalizes one from physics. Here are the first nine, which are enough to follow the argument:
 >
 > | Physics concept | Generalized to | Plain meaning |
 > |---|---|---|
-> | Position | State $X$ | Where a system is in any space of possibilities |
-> | Velocity | $\dot{X}$ | How fast that state is changing |
+> | Position (actual) | Actual state $\mathcal{X}$ | The full causal reality of a system's condition |
+> | Position (measured) | Representation $X$ | A model of the actual state; always partial |
+> | Velocity | $\dot{X}$ | How fast the represented state is changing |
 > | Mass | Causal density $\mathcal{M}$ | How much internal structure resists change |
 > | Momentum | $p = \mathcal{M}\dot{X}$ | Tendency to keep moving in current direction |
 > | Force | $F = dp/dt$ | Whatever changes that tendency |
@@ -77,13 +78,29 @@ This is the full Epimechanics framework, one concept at a time.
 
 ---
 
-## 1. X as Universal Coordinate
+## 1. States and Representations
 
-**Physics**: Position is a vector specifying where an object is in geometric space - a measurable value assigned to a system at a moment in time.
+### The fundamental distinction
 
-**Generalized**: Let X be a *representation* of any measurable or definable aspect of any system. $X$ is not the thing itself - it is a formal description of the thing's condition, the way a map is a description of territory. The territory exists independently; $X$ is our model of it. Physical position is one instance of X. But X can equally represent a person's level of trust in an institution, a market's current price level, a culture's ideological center of mass, or a neural network's complete weight configuration. $X$ lives in some space of possible values - a **state space** $S$ - and it changes over time at some rate $\dot{X} = dX/dt$.
+Every system has an **actual state** $\mathcal{X}$ — the full causal reality of its condition. This is the territory. It exists independently of any observer or model.
 
-[Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces - the desktop icon does not resemble the magnetic patterns on the disk. $X$ has the same status. It is an interface through which we interact with reality, not a photograph of reality. Some interfaces track real structure well enough to make predictions; others are arbitrary or misleading. The framework's claim is not that $X$ accurately depicts reality - it is that when $X$ is chosen to track real causal structure, the mechanical relationships derived from $X$ (force, energy, coupling) predict how that structure changes over time.
+A **representation** $X$ is a model of that state — the map. $X$ lives in some **state space** $S$ and changes over time at rate $\dot{X} = dX/dt$. Representations are always partial, finite-dimensional projections of the underlying reality.
+
+The critical insight: **representations are themselves states**. A representation $X$ of some external state $\mathcal{X}$ must be instantiated somewhere — in neurons, in silicon, in ink on paper. That instantiation is itself a causal structure with its own actual state. Representations are a subset of states: every representation is a state, but not every state is a representation of something else.
+
+### Representational fidelity and prediction
+
+Define the **representational fidelity** of $X$ with respect to $\mathcal{X}$:
+
+$$\mathcal{F}(X, \mathcal{X}) = 1 - d(X, \mathcal{X})$$
+
+where $d$ is an appropriate distance metric between the representation and the actual state it models. When $X \to \mathcal{X}$ (the map approaches the territory), $\mathcal{F} \to 1$.
+
+**The prediction principle:** Given sufficient computation, predictive accuracy over future states scales with representational fidelity. A model that tracks real causal structure ($\mathcal{F}$ high) can predict how that structure evolves. A model decoupled from causal structure ($\mathcal{F}$ low) cannot, regardless of computational power.
+
+This is why the framework works: when $X$ is chosen to track actual causal structure, the mechanical relationships derived from $X$ (force, energy, coupling) predict how that structure changes over time. The equations are not about $X$ per se — they are about the causal reality $\mathcal{X}$ that $X$ models, accessed through $X$.
+
+[Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces — the desktop icon does not resemble the magnetic patterns on the disk. Representations optimized for fitness may diverge from representations optimized for fidelity. But prediction requires fidelity: fitness-tuned interfaces work only within the envelope where the fitness proxy tracks the causal structure. Outside that envelope, only high-$\mathcal{F}$ representations generalize.
 
 An *entity*, in Epimechanics, is anything with causal presence — anything that participates in causal relations. Auto-causal density $\rho_{\text{ac}}$ measures how strongly it sustains itself (formally defined in Section 1b immediately below).
 
