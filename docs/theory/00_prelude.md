@@ -96,6 +96,8 @@ From these co-definitions, five commitments follow:
 
 ## 1. States and Representations
 
+![State and Representation: The territory (potential state space 𝒳) exists independently of observers. Representations (X) are maps — partial projections that approximate state through computation.](./images/state_representation_final-1.png)
+
 Every system has a **potential state space** $\mathcal{X}$ — the full potential causal reality of all states the system could occupy. This is the territory. It exists independently of any observer or model.
 
 A **representation** $X$ is a model of state — the map. It can model actual state, potential state, or any state. Representations can take many forms: point estimates, probability distributions, partial observations, compressed encodings. All are partial projections of the territory.
@@ -181,6 +183,8 @@ The framework's mechanical apparatus (mass, force, energy) applies to all entiti
 ---
 
 ## 4. Grammar and Vocabulary
+
+![The Four-Layer Architecture: Event Layer (primitive causal events), Structure Layer (bonds, loops, causors), Descriptor Layer (mass, coupling, energy), Observable Layer (measurable quantities). Each layer emerges from patterns in the layer below.](./images/four_layer_architecture_final-1.png)
 
 Epimechanics provides **grammar** — structural relationships between state, mass, force, energy, coupling, field, temperature, entropy, and free energy. These relationships ($F = \mathcal{M}_{ij}\ddot{X}^j + \dot{\mathcal{M}}_{ij}\dot{X}^j$, Lagrangian mechanics, thermodynamic quantities from many-entity ensembles) are derived from calculus and variational principles. They hold for any representation of any system.
 

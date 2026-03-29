@@ -76,8 +76,6 @@ When a label appears as an example, it is a pointer to a structural configuratio
 
 ## The Foundational Problem: Energy Is Not Primitive
 
-> **Coming from Part 1?** Part 1 used energy, mass, and force as well-defined quantities — as they are, at the scales where the framework is applied. This document goes one level deeper and asks: *where do those quantities come from?* The answer doesn't undermine Part 1's framework; it grounds it. Energy is still the right quantity to use at Observable Layer. This document explains why, and what sits beneath it.
-
 Energy is not primitive. It falls out of **Noether's theorem**: if the cause-plex has time-translation symmetry in some region, there exists a conserved quantity — we call it energy. Energy has units (J = kg·m²/s²) that are themselves derived from reference causal events (atomic clock, reference mass, speed of light). In Wolfram's ruliad, energy, momentum, and charge all *emerge* from symmetries of the abstract hypergraph update structure. No physical quantity is assumed at the primitive level.
 
 The same must be true here for the framework to be genuinely foundational. Starting with "energy exchange" as the primitive assumes conservation, units, and thermodynamics before deriving them. That is a coarse-graining — valid and useful at biological and institutional scales, but not the foundation.
@@ -86,7 +84,7 @@ The same must be true here for the framework to be genuinely foundational. Start
 
 ## The True Primitive: The Causal Event
 
-> **Concrete anchor before the formalism:** A candle flame. The heat from the burning wax vaporizes more wax, which feeds the flame, which produces more heat. Each step is a state transition: one configuration of molecules produces the next. No energy concept is needed to describe this chain — just "this state follows from that one." The cause-plex is nothing more than all such "follows from" relationships in the universe, assembled into a single structure. Every concept below — bonds, loops, auto-causal density, energy — emerges from patterns in that structure.
+> Consider a candle flame. The heat from the burning wax vaporizes more wax, which feeds the flame, which produces more heat. Each step is a state transition: one configuration of molecules produces the next. No energy concept is needed to describe this chain — just "this state follows from that one." The cause-plex is nothing more than all such "follows from" relationships in the universe, assembled into a single structure. Bonds, loops, auto-causal density, energy — all emerge from patterns in that structure.
 
 The primitive is the **causal event** (also: *state couplet*) $e$:
 
