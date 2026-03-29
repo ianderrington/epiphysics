@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="territoryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="manifoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f3460;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#533483;stop-opacity:0.9" />
+    </linearGradient>
+    <linearGradient id="repGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#f39422;stop-opacity:0.8" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Arrow marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e94560"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#0a0a0f"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#ffffff" font-family="Georgia, serif" font-size="20" font-weight="bold">States and Representations</text>
+  
+  <!-- LEFT SIDE: Potential State Space (Territory) -->
+  <g transform="translate(50, 70)">
+    <!-- Label -->
+    <text x="150" y="0" text-anchor="middle" fill="#7ec8e3" font-family="Georgia, serif" font-size="16">Potential State Space 𝒳</text>
+    <text x="150" y="20" text-anchor="middle" fill="#5a5a7a" font-family="Georgia, serif" font-size="12" font-style="italic">the territory</text>
+    
+    <!-- Manifold shape - curved surface -->
+    <ellipse cx="150" cy="180" rx="130" ry="100" fill="url(#manifoldGrad)" opacity="0.6"/>
+    <ellipse cx="150" cy="180" rx="130" ry="100" fill="none" stroke="#7ec8e3" stroke-width="2" opacity="0.8"/>
+    
+    <!-- Grid lines on manifold to show curvature -->
+    <path d="M 40 180 Q 150 140 260 180" fill="none" stroke="#7ec8e3" stroke-width="0.5" opacity="0.4"/>
+    <path d="M 50 150 Q 150 110 250 150" fill="none" stroke="#7ec8e3" stroke-width="0.5" opacity="0.3"/>
+    <path d="M 50 210 Q 150 170 250 210" fill="none" stroke="#7ec8e3" stroke-width="0.5" opacity="0.3"/>
+    <path d="M 100 90 Q 100 180 100 270" fill="none" stroke="#7ec8e3" stroke-width="0.5" opacity="0.3"/>
+    <path d="M 150 80 Q 150 180 150 280" fill="none" stroke="#7ec8e3" stroke-width="0.5" opacity="0.4"/>
+    <path d="M 200 90 Q 200 180 200 270" fill="none" stroke="#7ec8e3" stroke-width="0.5" opacity="0.3"/>
+    
+    <!-- Actual state point x -->
+    <circle cx="170" cy="160" r="8" fill="#00ff88" filter="url(#glow)"/>
+    <circle cx="170" cy="160" r="4" fill="#ffffff"/>
+    <text x="185" y="150" fill="#00ff88" font-family="Georgia, serif" font-size="14" font-style="italic">x</text>
+    <text x="185" y="167" fill="#5a5a7a" font-family="Georgia, serif" font-size="10">(actual state)</text>
+    
+    <!-- Other potential states (dimmer) -->
+    <circle cx="100" cy="190" r="4" fill="#7ec8e3" opacity="0.3"/>
+    <circle cx="130" cy="220" r="4" fill="#7ec8e3" opacity="0.3"/>
+    <circle cx="200" cy="200" r="4" fill="#7ec8e3" opacity="0.3"/>
+    <circle cx="180" cy="130" r="4" fill="#7ec8e3" opacity="0.3"/>
+    <circle cx="220" cy="170" r="4" fill="#7ec8e3" opacity="0.3"/>
+    <circle cx="90" cy="150" r="4" fill="#7ec8e3" opacity="0.3"/>
+  </g>
+  
+  <!-- CENTER: Mapping Arrow -->
+  <g transform="translate(350, 200)">
+    <!-- Arrow body -->
+    <path d="M 0 50 C 40 30, 60 30, 100 50" fill="none" stroke="url(#repGrad)" stroke-width="3" marker-end="url(#arrowhead)" filter="url(#glow)"/>
+    
+    <!-- Labels -->
+    <text x="50" y="20" text-anchor="middle" fill="#e94560" font-family="Georgia, serif" font-size="14">representation</text>
+    <text x="50" y="90" text-anchor="middle" fill="#5a5a7a" font-family="Georgia, serif" font-size="11" font-style="italic">partial projection</text>
+  </g>
+  
+  <!-- RIGHT SIDE: Representation (Map) -->
+  <g transform="translate(500, 70)">
+    <!-- Label -->
+    <text x="150" y="0" text-anchor="middle" fill="#e94560" font-family="Georgia, serif" font-size="16">Representation X</text>
+    <text x="150" y="20" text-anchor="middle" fill="#5a5a7a" font-family="Georgia, serif" font-size="12" font-style="italic">the map</text>
+    
+    <!-- Representation forms container -->
+    <rect x="20" y="40" width="260" height="240" rx="10" fill="#1a1a2e" stroke="#e94560" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Point estimate -->
+    <g transform="translate(40, 60)">
+      <text x="0" y="0" fill="#f39422" font-family="monospace" font-size="11">point estimate</text>
+      <circle cx="100" cy="25" r="6" fill="#f39422" filter="url(#glow)"/>
+      <text x="115" y="30" fill="#f39422" font-family="Georgia, serif" font-size="12" font-style="italic">x̂</text>
+    </g>
+    
+    <!-- Distribution -->
+    <g transform="translate(40, 120)">
+      <text x="0" y="0" fill="#e94560" font-family="monospace" font-size="11">distribution</text>
+      <!-- Bell curve -->
+      <path d="M 60 40 Q 70 40, 80 35 Q 90 20, 100 10 Q 110 20, 120 35 Q 130 40, 140 40" 
+            fill="none" stroke="#e94560" stroke-width="2" filter="url(#glow)"/>
+      <path d="M 60 40 Q 70 40, 80 35 Q 90 20, 100 10 Q 110 20, 120 35 Q 130 40, 140 40 L 140 40 L 60 40 Z" 
+            fill="#e94560" opacity="0.2"/>
+      <text x="150" y="30" fill="#e94560" font-family="Georgia, serif" font-size="12" font-style="italic">P(x)</text>
+    </g>
+    
+    <!-- Partial observation -->
+    <g transform="translate(40, 190)">
+      <text x="0" y="0" fill="#9d65c9" font-family="monospace" font-size="11">partial observation</text>
+      <!-- Projection lines -->
+      <line x1="70" y1="20" x2="70" y2="45" stroke="#9d65c9" stroke-width="2" stroke-dasharray="4,2"/>
+      <line x1="100" y1="20" x2="100" y2="45" stroke="#9d65c9" stroke-width="2"/>
+      <line x1="130" y1="20" x2="130" y2="45" stroke="#9d65c9" stroke-width="2" stroke-dasharray="4,2" opacity="0.4"/>
+      <text x="150" y="35" fill="#9d65c9" font-family="Georgia, serif" font-size="12" font-style="italic">πᵢ(x)</text>
+    </g>
+  </g>
+  
+  <!-- Bottom: Key insight box -->
+  <g transform="translate(50, 380)">
+    <rect x="0" y="0" width="700" height="100" rx="8" fill="#1a1a2e" stroke="#533483" stroke-width="1"/>
+    
+    <text x="350" y="25" text-anchor="middle" fill="#ffffff" font-family="Georgia, serif" font-size="14" font-weight="bold">Key Insight</text>
+    
+    <text x="20" y="50" fill="#7ec8e3" font-family="Georgia, serif" font-size="13">
+      <tspan>Representations are themselves states.</tspan>
+    </text>
+    <text x="20" y="72" fill="#aaaaaa" font-family="Georgia, serif" font-size="12">
+      <tspan>A representation X must be instantiated somewhere — in neurons, silicon, ink.</tspan>
+    </text>
+    <text x="20" y="90" fill="#aaaaaa" font-family="Georgia, serif" font-size="12">
+      <tspan>That instantiation has its own potential state space. Every representation is a state.</tspan>
+    </text>
+  </g>
+  
+  <!-- Fidelity indicator -->
+  <g transform="translate(350, 320)">
+    <text x="50" y="0" text-anchor="middle" fill="#00ff88" font-family="Georgia, serif" font-size="13">ℱ(X, x) = fidelity</text>
+    <text x="50" y="18" text-anchor="middle" fill="#5a5a7a" font-family="Georgia, serif" font-size="11">how well the map tracks the territory</text>
+  </g>
+</svg>

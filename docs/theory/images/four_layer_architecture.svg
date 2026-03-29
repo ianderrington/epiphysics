@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="eventGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="structureGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0f3460;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#533483;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="descriptorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#533483;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e94560;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="observableGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f39422;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="upArrow" markerWidth="8" markerHeight="8" refX="4" refY="8" orient="auto">
+      <polygon points="4 0, 8 8, 0 8" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="600" fill="#0a0a0f"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#ffffff" font-family="Georgia, serif" font-size="22" font-weight="bold">The Four-Layer Architecture</text>
+  <text x="450" y="65" text-anchor="middle" fill="#7a7a9a" font-family="Georgia, serif" font-size="14" font-style="italic">from causal events to observable quantities</text>
+  
+  <!-- Vertical arrow indicating "read bottom-up" -->
+  <g transform="translate(60, 150)">
+    <line x1="0" y1="350" x2="0" y2="50" stroke="#7ec8e3" stroke-width="2" marker-end="url(#upArrow)"/>
+    <text x="-15" y="200" fill="#7ec8e3" font-family="Georgia, serif" font-size="11" transform="rotate(-90, -15, 200)">emergence</text>
+  </g>
+  
+  <!-- Layer 4: Observable Layer (top) -->
+  <g transform="translate(100, 100)">
+    <rect x="0" y="0" width="700" height="100" rx="12" fill="url(#observableGrad)" opacity="0.85"/>
+    <rect x="0" y="0" width="700" height="100" rx="12" fill="none" stroke="#f39422" stroke-width="2"/>
+    
+    <text x="20" y="35" fill="#ffffff" font-family="Georgia, serif" font-size="18" font-weight="bold">Observable Layer</text>
+    <text x="20" y="55" fill="#ffe0c0" font-family="Georgia, serif" font-size="13">Derived quantities valid where symmetries hold</text>
+    
+    <!-- Key quantities -->
+    <g transform="translate(350, 20)">
+      <text x="0" y="20" fill="#ffffff" font-family="monospace" font-size="12">ℳ (mass)</text>
+      <text x="100" y="20" fill="#ffffff" font-family="monospace" font-size="12">W (energy)</text>
+      <text x="200" y="20" fill="#ffffff" font-family="monospace" font-size="12">𝒫 (power)</text>
+      <text x="0" y="45" fill="#ffffff" font-family="monospace" font-size="12">ρₐc (auto-causal)</text>
+      <text x="150" y="45" fill="#ffffff" font-family="monospace" font-size="12">C_maint (maintenance)</text>
+    </g>
+    
+    <text x="680" y="85" text-anchor="end" fill="#ffe0c0" font-family="Georgia, serif" font-size="11" font-style="italic">physics, biology, economics</text>
+  </g>
+  
+  <!-- Layer 3: Descriptor Layer -->
+  <g transform="translate(100, 220)">
+    <rect x="0" y="0" width="700" height="100" rx="12" fill="url(#descriptorGrad)" opacity="0.85"/>
+    <rect x="0" y="0" width="700" height="100" rx="12" fill="none" stroke="#9d65c9" stroke-width="2"/>
+    
+    <text x="20" y="35" fill="#ffffff" font-family="Georgia, serif" font-size="18" font-weight="bold">Descriptor Layer</text>
+    <text x="20" y="55" fill="#e0c0ff" font-family="Georgia, serif" font-size="13">Structural properties Q1–Q5</text>
+    
+    <!-- Q descriptors -->
+    <g transform="translate(300, 15)">
+      <text x="0" y="20" fill="#ffffff" font-family="monospace" font-size="11">Q1: energy mode (kinetic ↔ potential)</text>
+      <text x="0" y="38" fill="#ffffff" font-family="monospace" font-size="11">Q2: output target (state / bond / loop)</text>
+      <text x="0" y="56" fill="#ffffff" font-family="monospace" font-size="11">Q3: topology (open ↔ closed)</text>
+      <text x="0" y="74" fill="#ffffff" font-family="monospace" font-size="11">Q4: leverage ratio Λ</text>
+    </g>
+    
+    <text x="680" y="85" text-anchor="end" fill="#e0c0ff" font-family="Georgia, serif" font-size="11" font-style="italic">bond/loop classification</text>
+  </g>
+  
+  <!-- Layer 2: Structure Layer -->
+  <g transform="translate(100, 340)">
+    <rect x="0" y="0" width="700" height="100" rx="12" fill="url(#structureGrad)" opacity="0.85"/>
+    <rect x="0" y="0" width="700" height="100" rx="12" fill="none" stroke="#533483" stroke-width="2"/>
+    
+    <text x="20" y="35" fill="#ffffff" font-family="Georgia, serif" font-size="18" font-weight="bold">Structure Layer</text>
+    <text x="20" y="55" fill="#c0c0ff" font-family="Georgia, serif" font-size="13">Patterns in the cause-plex</text>
+    
+    <!-- Structure elements -->
+    <g transform="translate(320, 25)">
+      <!-- Bond symbol -->
+      <circle cx="0" cy="20" r="8" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+      <circle cx="50" cy="20" r="8" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+      <line x1="8" y1="20" x2="42" y2="20" stroke="#7ec8e3" stroke-width="2"/>
+      <text x="70" y="25" fill="#ffffff" font-family="Georgia, serif" font-size="13">Bond b</text>
+      
+      <!-- Loop symbol -->
+      <ellipse cx="180" cy="20" rx="25" ry="15" fill="none" stroke="#00ff88" stroke-width="2"/>
+      <polygon points="205,20 198,15 198,25" fill="#00ff88"/>
+      <text x="220" y="25" fill="#ffffff" font-family="Georgia, serif" font-size="13">Loop ℒ</text>
+    </g>
+    
+    <text x="680" y="85" text-anchor="end" fill="#c0c0ff" font-family="Georgia, serif" font-size="11" font-style="italic">recurring causal patterns</text>
+  </g>
+  
+  <!-- Layer 1: Event Layer (bottom) -->
+  <g transform="translate(100, 460)">
+    <rect x="0" y="0" width="700" height="100" rx="12" fill="url(#eventGrad)" opacity="0.85"/>
+    <rect x="0" y="0" width="700" height="100" rx="12" fill="none" stroke="#1a5a8a" stroke-width="2"/>
+    
+    <text x="20" y="35" fill="#ffffff" font-family="Georgia, serif" font-size="18" font-weight="bold">Event Layer</text>
+    <text x="20" y="55" fill="#a0d0ff" font-family="Georgia, serif" font-size="13">The primitive — no physics assumed</text>
+    
+    <!-- Causal event notation -->
+    <g transform="translate(320, 20)">
+      <text x="0" y="25" fill="#7ec8e3" font-family="Georgia, serif" font-size="16" font-style="italic">e : 𝒮ᵢ → 𝒮ⱼ</text>
+      <text x="120" y="25" fill="#aaaaaa" font-family="Georgia, serif" font-size="13">causal event</text>
+      
+      <text x="0" y="55" fill="#7ec8e3" font-family="Georgia, serif" font-size="16" font-style="italic">𝒞 = (E, ≺)</text>
+      <text x="120" y="55" fill="#aaaaaa" font-family="Georgia, serif" font-size="13">cause-plex</text>
+    </g>
+    
+    <text x="680" y="85" text-anchor="end" fill="#a0d0ff" font-family="Georgia, serif" font-size="11" font-style="italic">substrate-independent</text>
+  </g>
+  
+  <!-- Connecting annotations -->
+  <g transform="translate(820, 150)">
+    <text x="0" y="50" fill="#f39422" font-family="Georgia, serif" font-size="10">symmetry</text>
+    <text x="0" y="62" fill="#f39422" font-family="Georgia, serif" font-size="10">required</text>
+  </g>
+  
+  <!-- Key insight at bottom -->
+  <text x="450" y="585" text-anchor="middle" fill="#7a7a9a" font-family="Georgia, serif" font-size="12" font-style="italic">
+    Energy lives at Observable Layer, not Event Layer — it emerges where time-translation symmetry holds
+  </text>
+</svg>
