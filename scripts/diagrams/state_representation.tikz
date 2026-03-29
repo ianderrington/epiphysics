@@ -1,107 +1,90 @@
 % Epimechanics: States and Representations
-% Compile with: tectonic state_representation.tikz
+% Final clean version with symmetric layout
 
-\documentclass[tikz,border=15pt]{standalone}
+\documentclass[tikz,border=20pt]{standalone}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{tikz}
 \usepackage{amsmath,amssymb}
-\usetikzlibrary{shapes,arrows.meta,positioning,calc,decorations.pathmorphing,backgrounds,fit}
+\usetikzlibrary{arrows.meta}
 
 \begin{document}
 
-\definecolor{territory}{HTML}{7ec8e3}
-\definecolor{mapcolor}{HTML}{e94560}
-\definecolor{actual}{HTML}{00ff88}
-\definecolor{bgdark}{HTML}{0a0a0f}
-\definecolor{subtle}{HTML}{b0b0d0}
-\definecolor{boxbg}{HTML}{1a1a2e}
-\definecolor{accent}{HTML}{f39422}
+% Color palette
+\definecolor{primary}{HTML}{4A90D9}      % Blue
+\definecolor{secondary}{HTML}{D94A6E}    % Rose
+\definecolor{highlight}{HTML}{4AD98A}    % Green
+\definecolor{bgdark}{HTML}{0D1117}       % Dark bg
+\definecolor{boxbg}{HTML}{161B22}        % Box bg
+\definecolor{textmain}{HTML}{E6EDF3}     % Main text
+\definecolor{textsub}{HTML}{8B949E}      % Subtle text
 
-\begin{tikzpicture}[
-    >=Stealth,
-    space/.style={draw=territory, fill=territory!15, thick, ellipse, minimum width=4.5cm, minimum height=3.2cm},
-    repbox/.style={draw=mapcolor, fill=boxbg, thick, rounded corners=8pt, minimum width=5cm, minimum height=4cm},
-    point/.style={circle, fill=actual, inner sep=3pt},
-    dimpoint/.style={circle, fill=territory!40, inner sep=2pt},
-    formlabel/.style={text=white, font=\small, anchor=west},
-    formnotation/.style={font=\small, anchor=west},
-    insightbox/.style={draw=territory!60, fill=boxbg, thick, rounded corners=6pt, text width=13cm, align=center, inner sep=12pt}
-]
+\begin{tikzpicture}[>=Stealth]
 
 % Background
-\fill[bgdark] (-7.5,-5.5) rectangle (7.5,4);
+\fill[bgdark] (-6.5,-4.5) rectangle (6.5,3);
 
-% Title
-\node[text=white, font=\Large\bfseries] at (0,3.5) {States and Representations};
+% === TITLE ===
+\node[font=\Large\bfseries, text=textmain] at (0,2.5) {States and Representations};
 
-% === LEFT: Potential State Space ===
-\node[space] (manifold) at (-3.5,0.5) {};
+% === SYMMETRIC BOX LAYOUT ===
+% Box dimensions
+\def\bw{2.2}   % box half-width
+\def\bh{1.1}  % box half-height
 
-% Header for left side
-\node[text=territory, font=\normalsize\bfseries] at (-3.5,2.5) {Potential State Space $\mathcal{X}$};
-\node[text=white, font=\footnotesize\itshape] at (-3.5,2.1) {the territory};
+% Left center at x=-3, right center at x=3
+\def\lc{-3}
+\def\rc{3}
 
-% Grid lines on manifold (subtle)
-\draw[territory!25, thin] (-5.3,0.5) .. controls (-3.5,0.9) .. (-1.7,0.5);
-\draw[territory!20, thin] (-5.1,-0.1) .. controls (-3.5,0.2) .. (-1.9,-0.1);
-\draw[territory!20, thin] (-5.1,1.1) .. controls (-3.5,1.4) .. (-1.9,1.1);
+% Draw boxes with IDENTICAL dimensions
+\draw[primary, fill=boxbg, rounded corners=5pt, line width=1pt]
+    (\lc-\bw, -\bh) rectangle (\lc+\bw, \bh);
+\draw[secondary, fill=boxbg, rounded corners=5pt, line width=1pt]
+    (\rc-\bw, -\bh) rectangle (\rc+\bw, \bh);
 
-% Potential state points (dim)
-\node[dimpoint] at (-4.6,0.7) {};
-\node[dimpoint] at (-4.2,-0.3) {};
-\node[dimpoint] at (-2.5,0.1) {};
-\node[dimpoint] at (-2.9,1.1) {};
-\node[dimpoint] at (-4.4,0.1) {};
 
-% Actual state (bright, prominent)
-\node[point] (x) at (-3.5,0.3) {};
-\node[actual, font=\normalsize\bfseries, anchor=west] at (-3.1,0.3) {$x$};
-\node[text=actual, font=\scriptsize, anchor=west] at (-3.1,-0.05) {(a state)};
 
-% === CENTER: Mapping Arrow ===
-\draw[->, mapcolor, line width=2.5pt] (-1,0.5) -- (0.8,0.5);
-\node[mapcolor, font=\normalsize\bfseries, anchor=south] at (-0.1,0.7) {$X(\cdot)$};
-\node[subtle, font=\footnotesize, anchor=north] at (-0.1,0.3) {representation};
+% === HEADERS (identical y positions) ===
+\node[font=\normalsize\bfseries, text=primary] at (\lc, 1.5) {Potential State Space $\mathcal{X}$};
+\node[font=\small\itshape, text=textsub] at (\lc, 1.2) {the territory};
 
-% === RIGHT: Representation Box ===
-\node[repbox] (repspace) at (3.5,0.5) {};
+\node[font=\normalsize\bfseries, text=secondary] at (\rc, 1.5) {Representation $X$};
+\node[font=\small\itshape, text=textsub] at (\rc, 1.2) {the map};
 
-% Header for right side
-\node[mapcolor, font=\normalsize\bfseries] at (3.5,2.9) {Representation $X$};
-\node[text=white, font=\footnotesize\itshape] at (3.5,2.5) {the map};
+% === LEFT BOX CONTENT ===
+% Scattered dim points (within box bounds)
+\node[circle, fill=primary!40, inner sep=1.2pt] at (-4,0.4) {};
+\node[circle, fill=primary!40, inner sep=1.2pt] at (-3.8,-0.5) {};
+\node[circle, fill=primary!40, inner sep=1.2pt] at (-2.2,0.3) {};
+\node[circle, fill=primary!40, inner sep=1.2pt] at (-2.5,-0.4) {};
+\node[circle, fill=primary!40, inner sep=1.2pt] at (-3.4,0.6) {};
 
-% Forms of representation - well-spaced rows
-% Row 1: Point estimate
-\node[formlabel] at (1.5,1.5) {point estimate};
-\node[circle, fill=accent, inner sep=3pt] at (4.5,1.5) {};
-\node[formnotation, text=accent] at (4.9,1.5) {$\hat{x}$};
+% Highlighted state x
+\node[circle, fill=highlight, inner sep=3pt] at (-3,0) {};
+\node[font=\normalsize, text=highlight] at (-2.5,0) {$x$};
 
-% Row 2: Distribution
-\node[formlabel] at (1.5,0.5) {distribution};
-\draw[mapcolor, thick] (4.2,0.2) 
-    .. controls (4.35,0.2) and (4.45,0.4) .. (4.5,0.8)
-    .. controls (4.55,0.4) and (4.65,0.2) .. (4.8,0.2);
-\node[formnotation, text=mapcolor] at (4.95,0.5) {$P(\cdot)$};
+% === ARROW ===
+\draw[->, primary, line width=2pt] (-0.5,0) -- (0.5,0);
+\node[font=\normalsize, text=primary] at (0,0.4) {$X(\cdot)$};
 
-% Row 3: Partial observation
-\node[formlabel] at (1.5,-0.5) {partial observation};
-\draw[cyan, line width=1.5pt, dashed] (4.25,-0.25) -- (4.25,-0.75);
-\draw[cyan, line width=2pt] (4.5,-0.25) -- (4.5,-0.75);
-\draw[cyan, line width=1.5pt, dashed, opacity=0.5] (4.75,-0.25) -- (4.75,-0.75);
-\node[formnotation, text=cyan] at (4.95,-0.5) {$\pi_i(x)$};
+% === RIGHT BOX CONTENT ===
+\node[font=\small, text=textmain, anchor=west] at (1,0.5) {point estimate};
+\node[font=\small, text=textmain, anchor=east] at (4.9,0.5) {$\hat{x}$};
 
-% === BOTTOM: Fidelity ===
-\node[actual, font=\normalsize] at (0,-1.8) {$\mathcal{F}(X(x), x) = \text{fidelity}$};
-\node[subtle, font=\footnotesize] at (0,-2.3) {how well the representation tracks the target state};
+\node[font=\small, text=textmain, anchor=west] at (1,0) {distribution};
+\node[font=\small, text=textmain, anchor=east] at (4.9,0) {$P(\cdot)$};
+
+\node[font=\small, text=textmain, anchor=west] at (1,-0.5) {partial};
+\node[font=\small, text=textmain, anchor=east] at (4.9,-0.5) {$\pi_i(x)$};
+
+% === FIDELITY ===
+\node[font=\normalsize, text=highlight] at (0,-1.7) {$\mathcal{F}(X(x), x)$ = fidelity};
+\node[font=\scriptsize, text=textsub] at (0,-2.1) {how well the map tracks the territory};
 
 % === KEY INSIGHT BOX ===
-\node[insightbox] at (0,-4.2) {
-    \textcolor{white}{\textbf{Key Insight}} \\[4pt]
-    \textcolor{territory}{Representations are themselves states.} \\[3pt]
-    \textcolor{subtle}{\small A representation $X$ must be instantiated somewhere---in neurons, silicon, ink---}\\
-    \textcolor{subtle}{\small with its own potential state space $\mathcal{X}'$.}
-};
+\draw[primary!50, fill=boxbg, rounded corners=5pt, line width=1pt]
+    (-5.5,-2.8) rectangle (5.5,-3.8);
+\node[font=\small, text=textmain] at (0,-3.3) {\textbf{Key:} Representations are themselves states, with their own $\mathcal{X}'$};
 
 \end{tikzpicture}
 
