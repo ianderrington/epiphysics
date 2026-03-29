@@ -77,7 +77,7 @@ Seven terms organize into two **co-primitive pairs**, a **bridge concept**, and 
 
 **Derived pair:**
 
-- **Information** — the degree to which a representation reduces uncertainty about future states.
+- **Information** — the degree to which a representation reduces uncertainty about future states. Information is not primitive — it is always implemented by physical causal structure. Shannon entropy describes probability distributions over causal states; it is an Observable Layer quantity, not a foundation.
 - **Prediction** — reduction of that uncertainty.
 
 The pairs require each other: computation and representation need entities and causation to be *about* something; entities and causation are only accessible *through* computation and representation. State is where they meet.

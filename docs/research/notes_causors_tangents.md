@@ -113,29 +113,6 @@ Original included a full worked example:
 
 ---
 
-## 6. Noether Derivation Details
-
-The original had a more detailed discussion of how energy emerges from symmetry:
-
-> From the symmetries of the cause-plex:
->
-> | Cause-plex symmetry | Conserved quantity (Noether) | Name |
-> |---|---|---|
-> | Time-translation invariance | $\sum_i p_i \dot{q}_i - L$ | Energy |
-> | Spatial translation invariance | $\sum_i m_i \dot{q}_i$ | Momentum |
-> | Rotational invariance | $\sum_i r_i \times p_i$ | Angular momentum |
-> | U(1) gauge symmetry | $\sum_i q_i$ | Charge |
->
-> **Energy is what we call the conserved quantity when the cause-plex has time-translation symmetry.** In regions where this symmetry holds (most of everyday physics), energy is well-defined and conserved. In regions where it is broken (strongly non-equilibrium, rapidly evolving, or symmetry-breaking systems), energy is not a clean quantity — and the framework must work at the causal event level directly.
->
-> **Units emerge from reference events.** The second is defined by counting Cs-133 hyperfine transitions (9,192,631,770 per second by definition). The meter falls out from the second and $c$. The kilogram falls out from Planck's constant, the second, and the meter. All units are ratios of cause-plex path counts to reference cause-plex path counts. No unit is assumed.
-
-**Why moved:** This is Event Layer content — it's now in `00b_event_layer.md` where it belongs.
-
-**Status:** ✅ Already incorporated into 00b_event_layer.md
-
----
-
 ## 7. Wolfram Ruliad Connection (Detailed)
 
 > **Wolfram's Ruliad**
@@ -150,20 +127,6 @@ The original had a more detailed discussion of how energy emerges from symmetry:
 - Part 5 (Ontology) discussion
 
 ---
-
-## 8. Assembly Theory Connection (Detailed)
-
-> **Assembly Theory**
->
-> Assembly theory (Cronin & Walker, 2023) counts the minimum bond-formation operations to construct an object — the assembly index AI. The cause-plex extends this:
->
-> 1. **Typed bonds.** AI counts undifferentiated bond operations. CI tracks Q1-Q4 bond structure. Same CI can produce completely different entity types depending on bond mode, target, and topology.
-> 2. **From construction to maintenance.** AI measures build complexity; $C_{\text{maint}}$ measures keep complexity.
-> 3. **From static to dynamic.** AI is a snapshot; the cause-plex tracks how bonds evolve, degrade, and repair.
->
-> **Selection criterion:** High-CI objects with $\rho_{\text{ac}} > 0$ require selection *and* sustained causal input — doubly improbable without a generative process. High-CI objects with $\rho_{\text{ac}} = 0$ require selection but not ongoing input (crystals, diamonds).
-
-**Status:** ✅ Kept in abbreviated form in 01_5_causors.md Section 8.
 
 ---
 
@@ -191,25 +154,9 @@ Some open questions were trimmed for the main document:
 
 The Lorentzian metric and Lorentz invariance follow from P1-P3. P2 (spacelike-separated events commute) is physically motivated but not yet derived from the causal event primitive alone. This is the central open problem for the full foundational derivation.
 
-**Status:** Now in 00b_event_layer.md
-
 ### Q: Does energy conservation follow from cause-plex time-translation symmetry?
 
 Noether's theorem requires a Lagrangian formulation and continuous symmetry. Can this be derived from the discrete cause-plex structure, or does the Lagrangian need to be postulated at the continuum limit?
-
-**Status:** Mentioned in 00b but could be expanded
-
-### Q: What is the relationship between CI and stability?
-
-High-CI objects may have deep stability basins — but need not (fragile complexity). Is there a formal relationship between construction complexity and thermodynamic stability?
-
-**Status:** ✅ Kept in 01_5_causors.md Section 10
-
-### Q: Can the Lagrangian be derived from cause-plex structure?
-
-$L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V(X)$ is a structural postulate in Part 1. If $\mathcal{M}$ is composed of bonds and $V(X)$ is determined by basin structure, can the quadratic kinetic energy be derived from the cause-plex rather than postulated?
-
-**Status:** ✅ Kept in 01_5_causors.md Section 10
 
 ---
 
