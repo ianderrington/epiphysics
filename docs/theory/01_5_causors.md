@@ -311,7 +311,9 @@ At the Observable Layer, structural primitives aggregate into familiar quantitie
 | **Robustness** | $\Delta V / \langle\text{perturbation}\rangle$ | Basin depth vs. typical shocks |
 | **Causal power** $\mathcal{P}$ | $\mathbf{F} \cdot \mathbf{v}$ | Rate of work on trajectories |
 
-These are the Observable Layer quantities that [Part 1](./01_generalized_mechanics.md) defines. This document grounds them: $\mathcal{M}$ is the sum of bond strengths; $\rho_{\text{ac}}$ emerges from loop topology.
+These are the Observable Layer quantities that [Part 1](./01_generalized_mechanics.md) defines. This document grounds them: $\mathcal{M}$ is proposed as the sum of bond strengths; $\rho_{\text{ac}}$ emerges from loop topology.
+
+> **Definitional note:** These aggregation rules ($\mathcal{M} = \sum \sigma_b$, etc.) are proposed correspondences, not derived results. The formal connection between bond-level structure and mechanical quantities requires domain-specific operationalization — what counts as a "bond" and how $\sigma_b$ is measured will differ between chemistry, biology, and economics. The framework provides the grammar; the vocabulary is domain-specific.
 
 ---
 

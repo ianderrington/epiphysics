@@ -49,9 +49,9 @@ tts:
 >
 > **Epiphysics** is the empirical science of **Epimechanics** — a framework that asks: what is physics, really, _before_ we specify particles, forces, or dimensions?
 >
-> The answer: **causation**. If you have things that cause other things (events with inputs and outputs), everything else — _spacetime_, _quantum mechanics_, _energy_, _life_, _consciousness_ — follows as mathematical consequence.
+> The answer: **causation**. If you have things that cause other things (events with inputs and outputs), the structure of spacetime, energy, and quantum mechanics can be *derived* rather than assumed — following results from causal set theory and related programs. The framework then extends this causal grammar to biology, cognition, and institutions.
 >
-> This document lays the co-definitions the framework rests upon. **Accept them and the rest is derivation.**
+> This document lays the co-definitions the framework rests upon. The derivations are developed in subsequent parts; this document establishes the conceptual foundation.
 
 ## What This Document Does
 
@@ -67,6 +67,8 @@ Seven terms organize into two **co-primitive pairs**, a **bridge concept**, and 
 
 - **Causation** — the relation by which one entity's state constrains another's. Detected via intervention: if intervening on $X$ changes $Y$, $X$ causes $Y$.
 - **Entity** — anything with causal presence; equivalently, anything representable. Causation connects entities; entities are what causation connects. Neither is prior.
+
+> **On circularity:** This co-definition is intentionally circular — neither concept can be defined without the other, just as "point" and "line" in geometry are co-defined. The circularity is not a bug; it is the claim that causation and entity are *equally fundamental*. The framework does not reduce one to the other. The empirical ground comes from the intervention test: we detect causation by acting on the world and observing consequences. That operational test breaks the definitional circle.
 
 **Bridge concept:**
 

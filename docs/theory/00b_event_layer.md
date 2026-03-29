@@ -225,15 +225,17 @@ The key insight: **quantities like energy and mass live at the Observable Layer,
 
 ### Causal Set Theory
 
-The cause-plex is closely related to causal set theory ([Bombelli et al. 1987](https://doi.org/10.1103/PhysRevLett.59.521), [Sorkin 2003](https://arxiv.org/abs/gr-qc/0309009)). Both start from a locally finite partial order of events. The cause-plex extends this by:
+The cause-plex is closely related to causal set theory ([Bombelli et al. 1987](https://doi.org/10.1103/PhysRevLett.59.521), [Sorkin 2003](https://arxiv.org/abs/gr-qc/0309009)). Both start from a locally finite partial order of events. The cause-plex inherits the technical challenges of causal set theory — the continuum approximation, the measure problem, and the derivation of dimensionality — which remain active research areas. What the epimechanics program adds is:
 
 1. Explicitly connecting to the multiway structure (quantum mechanics)
 2. Building the full coarse-graining ladder to biology and institutions
 3. Deriving the mechanical quantities (mass, force, energy) as emergent
 
+These extensions are developed in subsequent documents; this document establishes the shared causal foundation.
+
 ### Wolfram's Ruliad
 
-The cause-plex is a specific subgraph of the [ruliad](https://www.wolframphysics.org/) — the one realized by the physical world. The ruliad derivation works from abstract update rules; the cause-plex derivation works from physical causal events. Both arrive at the same structure.
+The cause-plex is a specific subgraph of the [ruliad](https://www.wolframphysics.org/) — the one realized by the physical world. The ruliad derivation works from abstract update rules; the cause-plex derivation works from physical causal events. Both arrive at similar structure and face similar challenges: deriving specific predictions (particle masses, coupling constants) remains an open problem for both programs.
 
 ### Process Philosophy
 
@@ -253,6 +255,24 @@ This document establishes the Event Layer — the foundation. It does not cover:
 
 ---
 
+## Open Problems
+
+The Event Layer framework inherits open problems from causal set theory and raises new ones:
+
+**P1: Does P2 follow from P1?** Causal invariance (P2) is physically motivated but not yet derived from the causal partial order (P1) alone. If P2 requires independent postulation, the "three properties" may not be minimal.
+
+**P2: The continuum limit.** Taking a discrete cause-plex to continuous spacetime requires a measure, topology, and assumptions about event distribution. The derivation of Lorentz invariance in this limit is technically non-trivial and an active research area in causal set theory.
+
+**P3: Quantum mechanics from multiway structure.** The claim that complex amplitudes, the Born rule, and the Schrödinger equation emerge from multiway graph structure is a research program, not a completed derivation. The specific mechanism mapping path interference to probability amplitudes requires further development.
+
+**P4: Selection of the physical cause-plex.** What determines which events are "real" causal events? Without a selection criterion, "the cause-plex realized by the physical world" is circular. This is the analogue of Wolfram's ruliad selection problem.
+
+**P5: Noether in the discrete.** Applying Noether's theorem (which requires continuous symmetry and a differentiable action) to a discrete cause-plex requires technical work on the continuum limit that is not completed here.
+
+These are honest acknowledgments of work remaining, not weaknesses to hide. The framework's value is in providing a unified conceptual architecture; the technical derivations are an ongoing research program.
+
+---
+
 ## Summary
 
 The Event Layer is the foundation of epimechanics:
@@ -263,14 +283,14 @@ The Event Layer is the foundation of epimechanics:
    - P1: Causal partial ordering
    - P2: Causal invariance (causally disconnected events commute)
    - P3: Finite minimum event latency
-4. **Everything else emerges:**
-   - Spacetime from the causal geometry
+4. **The program claims these emerge** (derivations in linked documents):
+   - Spacetime from the causal geometry (following causal set theory)
    - Time from event counts
-   - Energy from symmetry (Noether)
-   - Quantum mechanics from multiway structure
+   - Energy from symmetry (Noether, in the continuum limit)
+   - Quantum mechanics from multiway structure (research program)
    - Units from reference event counts
 
-No physics is assumed. Physics is derived.
+The framework takes causation as primitive and derives physics from it — but the derivations are technical and some remain incomplete. See the Open Problems section above.
 
 ---
 
