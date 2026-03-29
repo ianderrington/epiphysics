@@ -1,0 +1,29 @@
+-- Epimechanics Domain Schema
+-- Penrose Domain file (.domain)
+-- Defines types and predicates
+
+-- Basic types
+type Space
+type Point
+type Function
+type Metric
+
+-- Representation forms
+type PointEstimate
+type Distribution  
+type PartialObs
+
+-- Predicates
+predicate Element(Point p, Space s)
+predicate Domain(Function f, Space s)
+predicate Apply(Function f, Point input, Point output)
+predicate Arguments(Metric m, Point p1, Point p2)
+predicate IsFormOf(PointEstimate pe, Point p)
+predicate IsFormOf(Distribution d, Point p)
+predicate IsFormOf(PartialObs po, Point p)
+predicate IsInstantiationOf(Function f, Space s)
+
+-- Constructors
+constructor MakeSpace() -> Space
+constructor MakePoint() -> Point
+constructor MakeFunction() -> Function

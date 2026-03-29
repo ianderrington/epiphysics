@@ -1,0 +1,48 @@
+-- Epimechanics: States and Representations
+-- Penrose Substance file (.substance)
+-- Defines the mathematical objects and relationships
+
+-- Potential State Space (the territory)
+Space X_potential
+Label X_potential "𝒳"
+
+-- A specific state within the space
+Point x
+Element x X_potential
+Label x "x"
+
+-- The representation system (a function)
+Function X_rep
+Domain X_rep X_potential
+Label X_rep "X"
+
+-- The output of the representation applied to x
+Point X_of_x
+Apply X_rep x X_of_x
+Label X_of_x "X(x)"
+
+-- Fidelity metric
+Metric fidelity
+Arguments fidelity X_of_x x
+Label fidelity "ℱ(X(x), x)"
+
+-- Different representation forms (as subtypes)
+PointEstimate x_hat
+IsFormOf x_hat X_of_x
+Label x_hat "x̂"
+
+Distribution P_x
+IsFormOf P_x X_of_x
+Label P_x "P(·)"
+
+PartialObs pi_x
+IsFormOf pi_x X_of_x
+Label pi_x "πᵢ(x)"
+
+-- Key insight: representations are states
+Space X_prime
+IsInstantiationOf X_rep X_prime
+Label X_prime "𝒳'"
+
+-- Annotations
+AutoLabel All

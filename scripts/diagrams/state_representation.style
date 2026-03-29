@@ -1,0 +1,164 @@
+-- Epimechanics Visual Style
+-- Penrose Style file (.style)
+-- Maps domain objects to visual elements
+
+canvas {
+  width = 800
+  height = 500
+}
+
+colors {
+  territory = #7ec8e3
+  map = #e94560
+  actual = #00ff88
+  background = #0a0a0f
+  text = #ffffff
+  subtle = #7a7a9a
+}
+
+-- Style for Potential State Space
+forall Space s
+where s has label "𝒳" {
+  -- Manifold as ellipse
+  s.shape = Ellipse {
+    center: (-150, 0)
+    rx: 120
+    ry: 90
+    fillColor: rgba(0.49, 0.78, 0.89, 0.2)
+    strokeColor: colors.territory
+    strokeWidth: 2
+  }
+  
+  s.label = Text {
+    string: s.label
+    center: (-150, 120)
+    fontSize: "18px"
+    fillColor: colors.territory
+  }
+  
+  s.subtitle = Text {
+    string: "the territory"
+    center: (-150, 100)
+    fontSize: "12px"
+    fillColor: colors.subtle
+    fontStyle: "italic"
+  }
+}
+
+-- Style for specific state x
+forall Point x
+where Element(x, X_potential) {
+  x.shape = Circle {
+    center: (-130, 20)
+    r: 8
+    fillColor: colors.actual
+  }
+  
+  x.glow = Circle {
+    center: (-130, 20)
+    r: 12
+    fillColor: rgba(0, 1, 0.53, 0.3)
+  }
+  
+  x.label = Text {
+    string: x.label
+    center: (-110, 30)
+    fontSize: "16px"
+    fillColor: colors.actual
+    fontStyle: "italic"
+  }
+}
+
+-- Style for representation function
+forall Function f
+where f has label "X" {
+  -- Arrow from space to representation
+  f.arrow = Path {
+    d: "M -30 0 C 30 -30, 60 -30, 100 0"
+    strokeColor: colors.map
+    strokeWidth: 3
+    endArrowhead: true
+  }
+  
+  f.label = Text {
+    string: "X(·)"
+    center: (40, -50)
+    fontSize: "14px"
+    fillColor: colors.map
+  }
+  
+  f.subtitle = Text {
+    string: "representation"
+    center: (40, -35)
+    fontSize: "11px"
+    fillColor: colors.subtle
+  }
+}
+
+-- Style for representation output
+forall Point p
+where p has label "X(x)" {
+  -- Container box for forms
+  p.container = Rectangle {
+    center: (200, 0)
+    width: 180
+    height: 200
+    fillColor: rgba(0.1, 0.1, 0.18, 0.9)
+    strokeColor: colors.map
+    strokeWidth: 1
+    cornerRadius: 10
+  }
+  
+  p.title = Text {
+    string: "Representation X"
+    center: (200, 120)
+    fontSize: "16px"
+    fillColor: colors.map
+  }
+}
+
+-- Style for fidelity
+forall Metric m
+where m has label "ℱ(X(x), x)" {
+  m.label = Text {
+    string: "ℱ(X(x), x) = fidelity"
+    center: (0, -150)
+    fontSize: "14px"
+    fillColor: colors.actual
+  }
+  
+  m.subtitle = Text {
+    string: "how well the map tracks the territory"
+    center: (0, -170)
+    fontSize: "11px"
+    fillColor: colors.subtle
+  }
+}
+
+-- Key insight box
+global {
+  insight_box = Rectangle {
+    center: (0, -220)
+    width: 600
+    height: 60
+    fillColor: rgba(0.1, 0.1, 0.18, 0.9)
+    strokeColor: #533483
+    strokeWidth: 1
+    cornerRadius: 8
+  }
+  
+  insight_title = Text {
+    string: "Key Insight"
+    center: (0, -200)
+    fontSize: "14px"
+    fillColor: colors.text
+    fontWeight: "bold"
+  }
+  
+  insight_text = Text {
+    string: "Representations are themselves states — instantiated in substrates with their own 𝒳'"
+    center: (0, -235)
+    fontSize: "12px"
+    fillColor: colors.subtle
+  }
+}
