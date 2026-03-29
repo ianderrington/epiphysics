@@ -58,7 +58,7 @@ coverImage:
 
 Chemistry had $F = ma$ for two centuries before understanding what mass is made of. Epimechanics needs the same thing: the elements — the finite set of structural primitives that combine to produce the diversity of entities.
 
-This document provides those elements: **bonds** and **loops**.
+This document provides those elements: **bonds** and **loops**. Together, we call them **causors** — the causal structure primitives characterized by their position in Q1–Q5 parameter space. The causor framework is the vocabulary for reading what kind of entity you're looking at from its structural coordinates.
 
 ---
 
@@ -132,6 +132,8 @@ graph TB
 
 The flame is a **dissipative auto-causal entity**: it sustains itself by continuously processing fuel through a closed causal loop. Remove the fuel (wax), and the loop breaks — the flame goes out. The Observable Layer quantities (energy, temperature) are derived; the Structure Layer topology (closed loop) is what makes it auto-causal.
 
+> **Note:** This four-event decomposition makes heat transfer explicit. The three-event version in [Part 0b](./00b_event_layer.md) collapses the heat→melt step to illustrate causal disconnection (P2). Both decompositions are valid at different granularities.
+
 ---
 
 ## 1. The Foundation: Events and the Cause-Plex
@@ -158,7 +160,7 @@ $$b: X_i \rightrightarrows X_j$$
 
 The double arrow indicates: reliable, repeated, not one-off.
 
-At Observable Layer (where energy is defined), bonds appear as energy exchanges. At Event Layer, a bond is a cluster of causal events with a stable statistical structure — the same transition pattern fires reliably across different instances.
+At the Observable Layer (where energy is defined), bonds appear as energy exchanges. At the Event Layer, a bond is a cluster of causal events with a stable statistical structure — the same transition pattern fires reliably across different instances.
 
 **Bond properties:**
 
@@ -177,7 +179,9 @@ Bond strength $\sigma_b$ has two equivalent descriptions:
 
 A **loop** is a closed composition of bonds — a causal cycle where the output of the last bond feeds back to the input of the first:
 
-$$\mathcal{L}: X_i \to X_j \to \cdots \to X_i$$
+$$\mathcal{L}: X_i \rightrightarrows X_j \rightrightarrows \cdots \rightrightarrows X_i$$
+
+(Each $\rightrightarrows$ denotes a bond, not a single causal event.)
 
 ```mermaid
 graph LR
@@ -225,7 +229,7 @@ What we commonly call "structural bonds" are potential-mode bonds. Kinetic-mode 
 
 **Gating** is what "signal" describes at Observable Layer: a small bond cluster whose output triggers a much larger cluster from local reserves. Leverage ratio $\Lambda = \mathcal{P}_{\text{out}} / \mathcal{P}_{\text{in}} \gg 1$.
 
-**Enable** is a bond whose output maintains a loop's existence — keeps a *transducer* alive. A transducer is an entity whose primary function is converting inputs of one type into outputs of another type (food → motion, light → signal, money → goods). At Observable Layer: food → organism metabolism.
+**Enable** is a bond whose output maintains a loop's existence — keeps a *transducer* alive. A transducer is an entity whose primary function is converting inputs of one type into outputs of another type (food → motion, light → signal, money → goods). At the Observable Layer: food → organism metabolism.
 
 ### Q3: Topology
 
@@ -297,7 +301,7 @@ At the top, entities are unconditionally stable — no maintenance needed. At th
 
 ## 6. Derived Quantities
 
-At Observable Layer, structural primitives aggregate into familiar quantities:
+At the Observable Layer, structural primitives aggregate into familiar quantities:
 
 | Quantity | Definition | Meaning |
 |----------|------------|---------|

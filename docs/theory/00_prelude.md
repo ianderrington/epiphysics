@@ -79,7 +79,7 @@ Seven terms organize into two **co-primitive pairs**, a **bridge concept**, and 
 
 **Derived pair:**
 
-- **Information** — the degree to which a representation reduces uncertainty about future states. Information is not primitive — it is always implemented by physical causal structure. Shannon entropy describes probability distributions over causal states; it is an Observable Layer quantity, not a foundation.
+- **Information** — the degree to which a representation reduces uncertainty about future states. Information is not primitive — it is always implemented by physical causal structure. Shannon entropy describes probability distributions over causal states; it is a derived quantity (see §4: Observable Layer), not a foundation.
 - **Prediction** — reduction of that uncertainty.
 
 The pairs require each other: computation and representation need entities and causation to be *about* something; entities and causation are only accessible *through* computation and representation. State is where they meet.
@@ -237,6 +237,8 @@ where $C(X, \varepsilon)$ is the computational complexity of predicting $X(t + \
 
 These are the same result stated in different mathematical languages. The optimal representation exists and is characterized by maximal compression at a given accuracy. The existence result is not a conjecture — it is established mathematics.
 
+> ⚠️ **Central open problem:** Everything above is established mathematics. What follows is the conjecture.
+
 **What IS a conjecture** is the connection to mechanical structure: that $X^*$ necessarily has maximal Lagrangian symmetry, sparse coupling tensor, and minimal state-space dimensionality. The connection is Epimechanics' specific claim — that the information-theoretically optimal representation is also the one with the simplest mechanical form. [Part 5](./05_ontology_and_open_questions.md) develops the formal statement and the sketch of why this might hold (symmetries reduce prediction cost, sparse coupling enables parallel prediction, low dimensionality shrinks the search space). But the connection between information-theoretic optimality and Lagrangian structure is not yet proven. It is the central open problem.
 
 The [renormalization group (Wilson, 1971)](https://doi.org/10.1103/PhysRevB.4.3174), [causal emergence (Hoel et al., 2013)](https://doi.org/10.1073/pnas.1314922110), and the [free energy principle (Friston, 2010)](https://doi.org/10.1038/nrn2787) all provide evidence for this connection from different angles — each shows that the "right" level of description has specific structural properties that reduce predictive cost. But a unified proof connecting rate-distortion optimality to Lagrangian symmetry does not yet exist.
@@ -287,4 +289,4 @@ With these foundations in place:
 
 ---
 
-[→ Part 0b: The Event Layer](./00b_event_layer.md) | [→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md)
+[→ Part 0b: The Event Layer](./00b_event_layer.md) | [→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 1.5: Causors](./01_5_causors.md)
