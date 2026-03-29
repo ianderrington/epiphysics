@@ -3,6 +3,8 @@
 % Or include in a LaTeX document
 
 \documentclass[tikz,border=10pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{tikz}
 \usepackage{amsmath,amssymb}
 \usetikzlibrary{shapes,arrows.meta,positioning,calc,decorations.pathmorphing,backgrounds,fit}

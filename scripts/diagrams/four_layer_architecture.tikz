@@ -1,7 +1,9 @@
 % Epimechanics: Four-Layer Architecture
-% Compile with: pdflatex four_layer_architecture.tikz
+% Compile with: tectonic four_layer_architecture.tikz
 
-\documentclass[tikz,border=10pt]{standalone}
+\documentclass[tikz,border=20pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{tikz}
 \usepackage{amsmath,amssymb}
 \usetikzlibrary{shapes,arrows.meta,positioning,calc,fit,backgrounds}
@@ -14,88 +16,82 @@
 \definecolor{obscol}{HTML}{f39422}
 \definecolor{bgdark}{HTML}{0a0a0f}
 \definecolor{subtle}{HTML}{7a7a9a}
-\definecolor{boxbg}{HTML}{1a1a2e}
 \definecolor{loopcol}{HTML}{00ff88}
 
 \begin{tikzpicture}[
     >=Stealth,
-    layer/.style={draw=#1, fill=#1!15, thick, rounded corners=8pt, 
-                  minimum width=14cm, minimum height=2.2cm, 
-                  text=white, align=left, inner sep=12pt},
-    layerlabel/.style={font=\large\bfseries, text=white},
-    layerdesc/.style={font=\small, text=#1!70!white},
-    content/.style={font=\small\ttfamily, text=white},
-    transition/.style={font=\tiny, text=subtle, align=center},
-    emergelabel/.style={font=\scriptsize, text=white}
+    layer/.style={draw=#1, fill=#1!70!black, thick, rounded corners=6pt, 
+                  minimum width=12cm, text=white, inner sep=8pt},
+    layertitle/.style={font=\bfseries, text=white},
+    layerdesc/.style={font=\scriptsize\itshape, text=white!80},
+    content/.style={font=\scriptsize\ttfamily, text=white},
+    emergelabel/.style={font=\small, text=white}
 ]
 
 % Background
-\fill[bgdark] (-8.5,-10) rectangle (8.5,5);
+\fill[bgdark] (-8,-13) rectangle (8,5);
 
 % Title
-\node[text=white, font=\Large\bfseries] at (0,4.3) {The Four-Layer Architecture};
-\node[text=subtle, font=\normalsize\itshape] at (0,3.7) {from causal events to observable quantities};
+\node[text=white, font=\Large\bfseries] at (0,4) {The Four-Layer Architecture};
+\node[text=subtle, font=\small\itshape] at (0,3.3) {from causal events to observable quantities};
 
-% === LAYER 4: Observable (top) ===
-\node[layer=obscol] (obs) at (0,2) {};
-\node[layerlabel, anchor=west] at (-6.5,2.6) {Observable Layer};
-\node[layerdesc=obscol, anchor=west] at (-6.5,2.1) {valid where symmetries hold};
-\node[content, anchor=west] at (-3,2.5) {$\mathcal{M}$ (mass) \quad $W$ (energy) \quad $\mathcal{P}$ (power)};
-\node[content, anchor=west] at (-3,1.9) {$\rho_{\text{ac}}$ (auto-causal) \quad $C_{\text{maint}}$ (maintenance)};
-\node[obscol!70!white, font=\scriptsize, anchor=east] at (6.5,1.5) {Energy $\leftarrow$ time-translation symmetry};
+% ========== LAYER 4: Observable (top) ==========
+\node[layer=obscol, minimum height=2.2cm] (obs) at (0,1.5) {};
+% Title row
+\node[layertitle, anchor=west] at (-5.5,2.2) {Observable Layer};
+\node[layerdesc=obscol, anchor=west] at (-2.5,2.2) {--- where symmetries hold};
+% Content row 1
+\node[content, anchor=west] at (-5.2,1.5) {$\mathcal{M}$ (mass)};
+\node[content, anchor=west] at (-2.5,1.5) {$W$ (energy)};
+\node[content, anchor=west] at (0.5,1.5) {$\mathcal{P}$ (power)};
+% Content row 2
+\node[content, anchor=west] at (-5.2,0.9) {$\rho_{\text{ac}}$ (auto-causal)};
+\node[content, anchor=west] at (-1,0.9) {$C_{\text{maint}}$ (maintenance)};
+% Symmetry note
+\node[white!70, font=\tiny, anchor=east] at (5.5,0.6) {via Noether (time-translation)};
 
-% === LAYER 3: Descriptor ===
-\node[layer=desccol] (desc) at (0,-0.8) {};
-\node[layerlabel, anchor=west] at (-6.5,-0.2) {Descriptor Layer};
-\node[layerdesc=desccol, anchor=west] at (-6.5,-0.7) {structural properties Q1--Q5};
-\node[content, anchor=west] at (-3,-0.3) {Q1: transfer mode (kinetic $\leftrightarrow$ potential-like)};
-\node[content, anchor=west] at (-3,-0.75) {Q2: output target (state / bond / loop)};
-\node[content, anchor=west] at (-3,-1.2) {Q3: topology (open $\leftrightarrow$ closed)};
-\node[content, anchor=west] at (3,-0.3) {Q4: leverage ratio $\Lambda$};
-\node[content, anchor=west] at (3,-0.75) {Q5: timescale (latency/period)};
+% ========== LAYER 3: Descriptor ==========
+\node[layer=desccol, minimum height=2.6cm] (desc) at (0,-1.7) {};
+% Title row
+\node[layertitle, anchor=west] at (-5.5,-0.7) {Descriptor Layer};
+\node[layerdesc=desccol, anchor=west] at (-2.3,-0.7) {--- structural properties};
+% Content - left column
+\node[content, anchor=west] at (-5.2,-1.4) {Q1: transfer mode};
+\node[content, anchor=west] at (-5.2,-1.9) {Q2: output target};
+\node[content, anchor=west] at (-5.2,-2.4) {Q3: topology};
+% Content - right column
+\node[content, anchor=west] at (1,-1.4) {Q4: leverage $\Lambda$};
+\node[content, anchor=west] at (1,-1.9) {Q5: timescale};
 
-% === LAYER 2: Structure ===
-\node[layer=structcol] (struct) at (0,-3.6) {};
-\node[layerlabel, anchor=west] at (-6.5,-3) {Structure Layer};
-\node[layerdesc=structcol, anchor=west] at (-6.5,-3.5) {patterns in the cause-plex};
+% ========== LAYER 2: Structure ==========
+\node[layer=structcol, minimum height=2.2cm] (struct) at (0,-4.8) {};
+% Title row
+\node[layertitle, anchor=west] at (-5.5,-4.1) {Structure Layer};
+\node[layerdesc=structcol, anchor=west] at (-2.5,-4.1) {--- patterns in cause-plex};
+% Content
+\node[content, anchor=west] at (-5.2,-4.8) {Bond $b$: $X_i \rightrightarrows X_j$};
+\node[content, anchor=west] at (0,-4.8) {Loop $\mathcal{L}$: $X_i \to \cdots \to X_i$};
+% Note
+\node[white!70, font=\tiny, anchor=west] at (-5.2,-5.4) {Formation: stable causal correlation};
 
-% Bond visualization
-\draw[eventcol!70, thick] (-4,-3.8) circle (6pt);
-\draw[eventcol!70, thick] (-2.5,-3.8) circle (6pt);
-\draw[eventcol!70, thick, ->] (-3.7,-3.8) -- (-2.8,-3.8);
-\node[white, font=\small, anchor=west] at (-2,-3.8) {Bond $b$: $X_i \rightrightarrows X_j$};
+% ========== LAYER 1: Event (bottom) ==========
+\node[layer=eventcol, minimum height=2.2cm] (event) at (0,-7.8) {};
+% Title row
+\node[layertitle, anchor=west] at (-5.5,-7.1) {Event Layer};
+\node[layerdesc=eventcol, anchor=west] at (-3,-7.1) {--- the primitive};
+% Content
+\node[content, anchor=west] at (-5.2,-7.7) {Causal event: $e : \mathcal{S}_i \to \mathcal{S}_j$};
+\node[content, anchor=west] at (-5.2,-8.3) {Cause-plex: $\mathcal{C} = (E, \prec)$};
+% Note
+\node[white!70, font=\tiny, anchor=east] at (5.5,-8.5) {substrate-independent};
 
-% Loop visualization
-\draw[loopcol, thick] (2.5,-3.8) ellipse (12pt and 8pt);
-\draw[loopcol, thick, ->] (2.8,-3.65) arc (30:-30:8pt);
-\node[white, font=\small, anchor=west] at (3.3,-3.8) {Loop $\mathcal{L}$: $X_i \to \cdots \to X_i$};
+% ========== EMERGENCE ARROW (outside all boxes) ==========
+\draw[->, white, line width=2.5pt] (-6.8,-9) -- (-6.8,2.6);
+\node[emergelabel, rotate=90] at (-7.4,-3) {EMERGENCE};
 
-\node[structcol!60!white, font=\scriptsize, anchor=west] at (-6.3,-4.3) {Formation: stable causal correlation};
-
-% === LAYER 1: Event (bottom) ===
-\node[layer=eventcol] (event) at (0,-6.4) {};
-\node[layerlabel, anchor=west] at (-6.5,-5.8) {Event Layer};
-\node[layerdesc=eventcol, anchor=west] at (-6.5,-6.3) {the primitive --- no physics assumed};
-\node[content, anchor=west] at (-3,-5.9) {Causal event: $e : \mathcal{S}_i \to \mathcal{S}_j$ \quad (state transition)};
-\node[content, anchor=west] at (-3,-6.5) {Cause-plex: $\mathcal{C} = (E, \prec)$ \quad where $\prec$ = causal precedence};
-\node[eventcol!60!white, font=\scriptsize, anchor=east] at (6.5,-7) {substrate-independent};
-
-% === INTER-LAYER TRANSITIONS ===
-\draw[->, white, thick] (-7,0.5) -- (-7,1.4);
-\node[transition, anchor=east] at (-7.2,0.95) {aggregation\\+ symmetry};
-
-\draw[->, white, thick] (-7,-2.3) -- (-7,-1.4);
-\node[transition, anchor=east] at (-7.2,-1.85) {structural\\analysis};
-
-\draw[->, white, thick] (-7,-5.1) -- (-7,-4.2);
-\node[transition, anchor=east] at (-7.2,-4.65) {pattern\\recognition};
-
-% === EMERGENCE ARROW ===
-\draw[->, white, line width=2pt] (-7.8,-7) -- (-7.8,2.5);
-\node[emergelabel, rotate=90, anchor=south] at (-8.1,-2) {EMERGENCE};
-
-% === BOTTOM NOTE ===
-\node[text=subtle, font=\small\itshape] at (0,-8.5) {Energy lives at Observable Layer --- it emerges where time-translation symmetry holds};
+% ========== BOTTOM NOTE ==========
+\node[text=subtle, font=\footnotesize\itshape, text width=11cm, align=center] at (0,-11) 
+    {Energy lives at Observable Layer --- it emerges where time-translation symmetry holds};
 
 \end{tikzpicture}
 
