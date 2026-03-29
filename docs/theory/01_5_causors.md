@@ -334,7 +334,7 @@ In regions of the cause-plex where symmetry holds, Layer 0 causal events aggrega
 | **Energy** $W$ | Time-translation symmetry (Noether) | Conserved quantity associated with causal event rate |
 | **Momentum** $p$ | Spatial translation symmetry (Noether) | Conserved quantity associated with causal event direction |
 | **Causal power** $\mathcal{P}$ | $\mathbf{F} \cdot \mathbf{v}$ (force × velocity) | Rate of work on state trajectories |
-| **Generalized mass** $\mathcal{M}$ | $\sum_{\text{bonds}} \sigma_b$ | Total causal content; resistance to state change |
+| **Generalized mass** $\mathcal{M}$ | $\sum_{\text{bonds}} \sigma_b = \int \rho_{\text{causal}} \, d\mu$ | Total causal content; resistance to state change. The sum form discretizes bonds; the integral form treats causal density as continuous. They are equivalent at different granularities. |
 | **Auto-causal density** $\rho_{\text{ac}}$ | Emergent from closed loops | Self-sustaining fraction; loop-level, not bond-level |
 | **Maintenance cost** $C_{\text{maint}}$ | $\dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$ | Net entropy accumulation rate |
 | **Robustness** | $\Delta V / \langle\text{perturbation}\rangle$ | Basin depth relative to typical shocks |

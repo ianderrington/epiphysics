@@ -84,6 +84,22 @@ A scalar measure of the loop composition richness of a cause-plex — how many t
 
 A measure of the total directed causal influence exerted by an entity across other entities over its lifetime. Related to the fitness×truth product in representational evolution. Introduced in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) §4b; developed formally in [Part 4: Time and Soul](./04_time_and_soul.md).
 
+## Coupling Notation Reference
+
+Epimechanics uses several coupling quantities for different purposes:
+
+| Symbol | Name | Direction | Definition | Introduced |
+|--------|------|-----------|------------|------------|
+| $\kappa$ | Scalar coupling | Incoming | How strongly a field acts on an entity | Part 1 |
+| $T^i{}_j$ | Coupling tensor | Incoming | Direction-dependent coupling between field and entity state components | Part 1 |
+| $\kappa_{\text{sys}}$ | Systemic coupling | Inter-scale | $\partial \rho_{\text{ac}}^{\text{meta}} / \partial \rho_{\text{ac}}^{\text{sub}}$ — sub-entity's contribution to meta-entity persistence | Part 2 |
+| $\Gamma_{ij}$ | Inter-substrate coupling | Inter-substrate | Coupling strength between substrates $i$ and $j$ of a meta-entity | Part 2 |
+| $C_{\text{coupling}}$ | Outgoing causal power | Outgoing | Normalized capacity to influence others' states | Part 3 |
+| $\mathbf{K}_{Ej}$ | Soul coupling tensor | Propagation | Maps entity $j$'s state deviation into representational space | Part 4 |
+| $\kappa_b$ | Keystone index | Structural | $\Delta \rho_{\text{ac}} / \Delta \sigma_b$ — sensitivity of auto-causal density to bond strength | Part 2.5 |
+
+$\kappa$ and $T^i{}_j$ describe incoming sensitivity (how forces affect the entity). $C_{\text{coupling}}$ describes outgoing power (how the entity affects others). $\Gamma$, $\kappa_{\text{sys}}$, and $\mathbf{K}$ describe inter-entity or inter-scale relationships. $\kappa_b$ is structural (bond criticality within an entity).
+
 ## Coupling Tensor ($T^i{}_j$)
 
 A rank-2 tensor encoding how changes in the state of entity $j$ influence the state of entity $i$ across domain boundaries. The diagonal captures self-coupling; off-diagonal captures cross-domain coupling. Introduced in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
@@ -107,3 +123,34 @@ The product of outgoing causal coupling strength, meta-representational weight, 
 ## Soul ($\mathbf{R}(E,t)$)
 
 The complete signed representational propagation function of an entity — a causal biography encoding how and where the entity's causal influence has propagated, weighted by sign (constructive/destructive) and magnitude. A formal renaming of non-local time extended to a vector quantity. Defined in [Part 4: Time and Soul](./04_time_and_soul.md).
+
+## Self-Sufficiency ($\sigma$)
+
+Fraction of minimum required causal power that internal loops can supply without external coupling: $\sigma = \mathcal{P}_{\text{internal}} / \mathcal{P}_{\min}$. $\sigma = 1$: fully self-sufficient. $\sigma > 1$: surplus (can export). $\sigma < 1$: dependent on external input. Defined in [Part 2.5: Entity Interaction](./02_5_entity_interaction.md).
+
+## Attack Surface Density ($\rho_{\text{attack}}$)
+
+Vulnerability measure: sum over accessible keystone bonds of their keystone index times the auto-causal density of their loop: $\rho_{\text{attack}}(\partial E) = \sum_{b \in \partial E} \kappa_b \cdot \rho_{\text{ac}}(\mathcal{L}_b)$. High when keystones are accessible and belong to high-$\rho_{\text{ac}}$ loops. Defined in [Part 2.5: Entity Interaction](./02_5_entity_interaction.md).
+
+## Keystone Index ($\kappa_b$)
+
+Sensitivity of auto-causal density to bond strength: $\kappa_b = \Delta \rho_{\text{ac}} / \Delta \sigma_b$. High $\kappa_b$ indicates a load-bearing bond whose degradation cascades through the entity's loop structure. Defined in [Part 2.5: Entity Interaction](./02_5_entity_interaction.md).
+
+## Meta-Representation Weight ($\mu_{\text{meta}}$)
+
+Degree to which an entity's model represents itself *as* a model — subject to error, revision, and incompleteness. $\mu_{\text{meta}} \in [0,1]$. Zero for transparent self-models (thermostats, simple organisms); approaching 1 for entities with well-developed meta-cognitive capacity. Required for full moral agency. Defined in [Part 3: Intelligence, Consciousness, Agency](./03_intelligence_consciousness_agency.md).
+
+## Causal Power ($\mathcal{P}$)
+
+Rate of work on state trajectories: $\mathcal{P} = dW/dt = \mathbf{F} \cdot \mathbf{v}_X$. Units: energy per time. Outgoing causal power $\mathcal{P}_{E \to j}$ is the rate at which entity $E$'s actions do work on entity $j$'s state. Defined in [Part 2.5: Entity Interaction](./02_5_entity_interaction.md); used extensively in agency formula (Part 3).
+
+## Q1–Q5 Structural Descriptors
+
+Five continuous parameters characterizing any bond or loop composition:
+- **Q1 (Energy mode):** kinetic ↔ potential — where received energy goes
+- **Q2 (Output target):** state / bond / loop — what the output connects to  
+- **Q3 (Topology):** open chain ↔ closed loop
+- **Q4 (Leverage ratio Λ):** output event cluster size / input event cluster size
+- **Q5 (Timescale):** bond latency relative to loop period (derived from Q1–Q4)
+
+Defined in [Part 1.5: Causors](./01_5_causors.md).

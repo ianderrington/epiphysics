@@ -210,7 +210,7 @@ The fact that these three faces give the same number is not a logical necessity 
 
 In [Wolfram's hypergraph framework](https://arxiv.org/abs/2004.08210), this unification becomes structural. A particle is a persistent localized structure in the hypergraph. Energy is the timelike flux of causal edges - the density of causal connections flowing forward in time. A particle's mass is the **rest-frame causal event density of its internal structure**: the rate and density of causal events occurring within the persistent configuration that constitutes the particle. A proton is more massive than an electron because its internal structure (three quarks, gluon field) is causally denser - more causal events per unit time maintain and perpetuate it. This adds a fourth face: mass measured by **counting** internal causal events.
 
-**Generalized**: Section 1b defined an entity as anything with a describable state, with auto-causal density $\rho_{\text{ac}}$ measuring how strongly it sustains itself. The **generalized mass** $\mathcal{M}$ is the integral of total causal density - all causal events within the entity's region, self-sustaining or not:
+**Generalized**: Section 1b defined an entity as anything with causal presence ($\rho_{\text{causal}} > 0$), with auto-causal density $\rho_{\text{ac}}$ measuring how strongly it sustains itself. The **generalized mass** $\mathcal{M}$ is the integral of total causal density - all causal events within the entity's region, self-sustaining or not:
 
 $$\mathcal{M}(E,t) = \int_{\text{entity}} \rho_{\text{causal}}(E, x, t) \, d\mu(x)$$
 
