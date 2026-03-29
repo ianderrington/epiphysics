@@ -107,7 +107,7 @@ One serious position: emotional states are not fully determined until instantiat
 
 ### 1.4 Formal Treatment
 
-As established in [Part 1](./01_generalized_mechanics.md), a representation $X$ is not a point but a probability distribution over possible actual states: $X = P(\mathcal{X})$. This accommodates both epistemic uncertainty (we don't know the actual state) and ontic indefiniteness (the actual state may be genuinely indeterminate until measured). Write:
+As established in [Part 1](./01_generalized_mechanics.md), a representation $X$ models actual state within the potential state space $\mathcal{X}$. When uncertainty is significant, $X$ takes the form of a probability distribution. This accommodates both epistemic uncertainty (we don't know the actual state) and ontic indefiniteness (the actual state may be genuinely indeterminate until measured). Write:
 
 $$\rho(X, t) \in \mathcal{P}(S)$$
 

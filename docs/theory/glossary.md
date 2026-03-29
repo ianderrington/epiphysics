@@ -14,17 +14,17 @@ coverImage:
   alt: "Concept map of Epimechanics core terms and relationships."
 ---
 
-## Actual State ($\mathcal{X}$)
+## Potential State Space ($\mathcal{X}$)
 
-The full causal reality of a system's condition — the territory. Exists independently of any observer or model. Not directly accessible; only representations of it can be constructed and manipulated.
+The full potential causal reality — the territory. The space of all states a system could occupy, not just its current actuality. Exists independently of any observer or model. Not directly accessible; only representations of it can be constructed and manipulated. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
 
 ## Representation ($X$)
 
-A model of an actual state $\mathcal{X}$ — the map. Not a single point but a **probability distribution** over possible states: $X = P(\mathcal{X})$. The distribution captures uncertainty, partial observability, and measurement limits. A point estimate $\hat{X}$ is a lossy compression; the full representation includes uncertainty structure. Representations are themselves states: they must be instantiated in some physical substrate (neurons, silicon, ink) which has its own actual state. Every representation is a state, but not every state is a representation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
+A model of actual state within $\mathcal{X}$ — the map. Can take many forms: a point estimate, a probability distribution, a partial observation, a compressed encoding, or any structure that carries information about the actual state. Representations are themselves states: they must be instantiated in some physical substrate (neurons, silicon, ink) which has its own potential state space. Every representation is a state, but not every state is a representation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
 
 ## Representational Fidelity ($\mathcal{F}$)
 
-How concentrated a representation $X$ is around the actual state $\mathcal{X}$: $\mathcal{F}(X, \mathcal{X}) = 1 - H(X | \mathcal{X})$, where $H$ is normalized conditional entropy. When $X$ collapses to a delta function at $\mathcal{X}$, $\mathcal{F} \to 1$. When $X$ is maximally uncertain, $\mathcal{F} \to 0$. Predictive accuracy scales with fidelity given sufficient computation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
+How well a representation $X$ tracks the actual state $x \in \mathcal{X}$: $\mathcal{F}(X, x) = 1 - d(X, x)$, where $d$ is an appropriate distance or divergence. When $X$ perfectly captures $x$, $\mathcal{F} \to 1$. When $X$ is maximally uninformative, $\mathcal{F} \to 0$. Predictive accuracy scales with fidelity given sufficient computation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
 
 ## Causor
 

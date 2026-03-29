@@ -54,8 +54,8 @@ tts:
 >
 > | Physics concept | Generalized to | Plain meaning |
 > |---|---|---|
-> | Position (actual) | Actual state $\mathcal{X}$ | The full causal reality of a system's condition |
-> | Position (measured) | Representation $X$ | A model of the actual state; always partial |
+> | Configuration space | Potential state space $\mathcal{X}$ | All states the system could occupy — the territory |
+> | Position (measured) | Representation $X$ | A model of actual state within $\mathcal{X}$ — the map |
 > | Velocity | $\dot{X}$ | How fast the represented state is changing |
 > | Mass | Causal density $\mathcal{M}$ | How much internal structure resists change |
 > | Momentum | $p = \mathcal{M}\dot{X}$ | Tendency to keep moving in current direction |
@@ -82,53 +82,54 @@ This is the full Epimechanics framework, one concept at a time.
 
 ### The fundamental distinction
 
-Every system has an **actual state** $\mathcal{X}$ — the full causal reality of its condition. This is the territory. It exists independently of any observer or model.
+Every system has a **potential state space** $\mathcal{X}$ — the full potential causal reality of all states the system could occupy. This is the territory. It exists independently of any observer or model. Within $\mathcal{X}$, the system occupies some actual configuration at any moment — but $\mathcal{X}$ encompasses all possibilities, not just the current actuality.
 
-A **representation** $X$ is a model of that state — the map. Critically, $X$ is not a single point but a **probability distribution** over possible states: $X = P(\mathcal{X})$. This distribution lives in some **state space** $S$ and evolves over time. The distribution captures:
+A **representation** $X$ is a model of that state space — the map. Representations can take many forms:
 
-- **Uncertainty**: finite observations cannot fully resolve $\mathcal{X}$
-- **Partial observability**: only some dimensions of $\mathcal{X}$ are accessible
-- **Measurement limits**: all observations have finite precision
+- A **point estimate**: a single value in state space (the simplest, most lossy form)
+- A **probability distribution**: $X = P(\mathcal{X})$, capturing uncertainty about which state obtains
+- A **partial observation**: projections onto accessible dimensions
+- A **compressed encoding**: any structure that carries information about $\mathcal{X}$
 
-A point estimate $\hat{X}$ (e.g., the mean or mode of the distribution) is a lossy compression of $X$. The full representation includes the uncertainty structure.
+All representations are partial. Even a probability distribution over $\mathcal{X}$ is a representation — it lives in some model's substrate, not in the territory itself.
 
-The critical insight: **representations are themselves states**. A representation $X$ of some external state $\mathcal{X}$ must be instantiated somewhere — in neurons, in silicon, in ink on paper. That instantiation is itself a causal structure with its own actual state. Representations are a subset of states: every representation is a state, but not every state is a representation of something else.
+The critical insight: **representations are themselves states**. A representation $X$ of some external state must be instantiated somewhere — in neurons, in silicon, in ink on paper. That instantiation is itself a causal structure with its own potential state space. Representations are a subset of states: every representation is a state, but not every state is a representation of something else.
 
 ### Representational fidelity and prediction
 
-Define the **representational fidelity** of $X$ with respect to $\mathcal{X}$. Since $X$ is a distribution, fidelity measures how concentrated $X$ is around the true $\mathcal{X}$:
+Define the **representational fidelity** $\mathcal{F}$ of representation $X$ with respect to actual state $x \in \mathcal{X}$:
 
-$$\mathcal{F}(X, \mathcal{X}) = 1 - H(X | \mathcal{X})$$
+$$\mathcal{F}(X, x) = 1 - d(X, x)$$
 
-where $H(X | \mathcal{X})$ is the entropy of the representation given the actual state (normalized to $[0,1]$). When the distribution collapses to a delta function at the true state, $\mathcal{F} \to 1$. When $X$ is maximally uncertain (uniform over $S$), $\mathcal{F} \to 0$.
+where $d$ is an appropriate distance or divergence measure. For distributional representations, this can be entropy-based; for point estimates, Euclidean or domain-appropriate metrics. When $X$ perfectly captures $x$, $\mathcal{F} \to 1$. When $X$ is maximally uninformative, $\mathcal{F} \to 0$.
 
-**The prediction principle:** Given sufficient computation, predictive accuracy over future states scales with representational fidelity. A model that tracks real causal structure ($\mathcal{F}$ high, distribution concentrated near $\mathcal{X}$) can predict how that structure evolves. A model decoupled from causal structure ($\mathcal{F}$ low, distribution diffuse) cannot, regardless of computational power.
+**The prediction principle:** Given sufficient computation, predictive accuracy over future states scales with representational fidelity. A representation that tracks real causal structure ($\mathcal{F}$ high) can predict how that structure evolves. A representation decoupled from causal structure ($\mathcal{F}$ low) cannot, regardless of computational power.
 
-This is why the framework works: when $X$ is chosen to track actual causal structure, the mechanical relationships derived from $X$ (force, energy, coupling) predict how that structure changes over time. The equations are not about $X$ per se — they are about the causal reality $\mathcal{X}$ that $X$ models, accessed through $X$.
+This is why the framework works: when $X$ is chosen to track actual causal structure, the mechanical relationships derived from $X$ (force, energy, coupling) predict how that structure changes over time. The equations are not about $X$ per se — they are about the causal reality within $\mathcal{X}$ that $X$ models, accessed through $X$.
 
 [Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces — the desktop icon does not resemble the magnetic patterns on the disk. Representations optimized for fitness may diverge from representations optimized for fidelity. But prediction requires fidelity: fitness-tuned interfaces work only within the envelope where the fitness proxy tracks the causal structure. Outside that envelope, only high-$\mathcal{F}$ representations generalize.
 
 An *entity*, in Epimechanics, is anything with causal presence — anything that participates in causal relations. Auto-causal density $\rho_{\text{ac}}$ measures how strongly it sustains itself (formally defined in Section 1b immediately below).
 
-Here are a few concrete cases. In each, $X$ is a distribution over possible states; the point estimate $\hat{X}$ (mean or mode) is what we typically track, but the full uncertainty structure is part of the representation:
+Here are a few concrete cases. In each, $\mathcal{X}$ is the potential state space (the territory), and $X$ is a representation (the map) — which may be a point estimate, a distribution, or some other form:
 
-- **Physical position**: $X$ is a distribution over ℝ³. Standard physics often works with the point estimate, but quantum mechanics and measurement theory require the full distribution.
-- **Emotional valence**: $X$ is a distribution over affect space. A person's emotional state is not a single point — it has uncertainty both epistemically (we can't measure it precisely) and potentially ontically (it may be genuinely indefinite until expressed).
-- **Market price**: $X$ is a distribution over price space. The "current price" is a point estimate; the bid-ask spread, volatility, and order book depth are aspects of the distribution.
-- **Ideological position**: $X$ is a distribution over belief space. People hold probabilistic beliefs with varying confidence, not crisp positions.
-- **Neural network state**: $X$ is a distribution over parameter space. Bayesian neural networks make this explicit; standard networks are a point-estimate approximation.
+- **Physical position**: $\mathcal{X}$ is ℝ³ (all possible positions). $X$ might be a point estimate (classical mechanics), a wavefunction (quantum mechanics), or a probability distribution (statistical mechanics).
+- **Emotional valence**: $\mathcal{X}$ is affect space (all possible emotional configurations). $X$ might be a self-report (point estimate), a confidence interval, or a full probabilistic model.
+- **Market price**: $\mathcal{X}$ is price space. $X$ might be the last trade (point), the bid-ask spread (interval), or a full order-book distribution.
+- **Ideological position**: $\mathcal{X}$ is belief space. $X$ might be a survey response (point), confidence-weighted beliefs (distribution), or a latent factor model.
+- **Neural network state**: $\mathcal{X}$ is parameter space. $X$ might be trained weights (point) or a Bayesian posterior (distribution).
 
-In every case, the structure is shared: a system has an actual state $\mathcal{X}$, we represent it with a distribution $X$ over possible states in state space $S$, and that distribution evolves over time. Physical position is $X$ evaluated in three-dimensional Euclidean space - one specific, empirically rich instantiation. The examples above are others. What Epimechanics asks is: what structure remains when we abstract from the specific state space? The answer - state, derivative, mass, force, energy, coupling - is the content of Epimechanics.
+In every case, the structure is shared: a system has a potential state space $\mathcal{X}$, we construct a representation $X$ of the actual state within that space, and the representation evolves over time. The form of $X$ — point, interval, distribution, or other — depends on what the application requires and what information is available. What Epimechanics asks is: what structure remains when we abstract from the specific state space? The answer - state, derivative, mass, force, energy, coupling - is the content of Epimechanics.
 
 ### Labeling is state assignment
 
 The choice of $X$ is a representational act - labeling something places it in a state space. Not all representations are equal: some track measurable properties, some are assigned by the observer, and some are invariant across reference frames. [Part 1b](./01b_uncertainty_coordinates_relativity.md) develops these distinctions and how representations transform between coordinate systems.
 
-**Form**: $X \in \mathcal{P}(S)$, where $\mathcal{P}(S)$ is the space of probability distributions over state space $S$. When uncertainty is negligible, $X$ collapses to a delta function and we recover the classical point-valued description.
+**Form**: $X$ is a representation of some actual state $x \in \mathcal{X}$. The representation may be a point ($X = x$), a distribution ($X \in \mathcal{P}(\mathcal{X})$), or any other structure that carries information about $x$.
 
 ![A curved manifold representing state space S, with a point X on its surface, a tangent plane T_X S, and a trajectory showing the entity's path through state space](./images/state_space_manifold.svg)
 
-The dynamics of $X$ are governed by the Fokker-Planck equation when noise is significant, or by the classical mechanical equations when $X$ is well-approximated by its point estimate. [Part 1b](./01b_uncertainty_coordinates_relativity.md) develops the full stochastic treatment.
+When $X$ is distributional, dynamics are governed by the Fokker-Planck equation; when $X$ is a point estimate, classical mechanical equations apply. [Part 1b](./01b_uncertainty_coordinates_relativity.md) develops the full treatment.
 
 ---
 
