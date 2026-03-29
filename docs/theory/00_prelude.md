@@ -186,7 +186,7 @@ The framework's mechanical apparatus (mass, force, energy) applies to all entiti
 
 ## 4. Grammar and Vocabulary
 
-![The Four-Layer Architecture: Event Layer (primitive causal events), Structure Layer (bonds, loops, causors), Descriptor Layer (mass, coupling, energy), Observable Layer (measurable quantities). Each layer emerges from patterns in the layer below.](./images/four_layer_architecture_final-1.png)
+![The Four-Layer Architecture: Event Layer (primitive causal events), Structure Layer (bonds, loops), Descriptor Layer (Q1–Q5 structural properties), Observable Layer (energy, mass, force, temperature). Each layer emerges from patterns in the layer below.](./images/four_layer_architecture_final-1.png)
 
 Epimechanics provides **grammar** — structural relationships between state, mass, force, energy, coupling, field, temperature, entropy, and free energy. These relationships ($F = \mathcal{M}_{ij}\ddot{X}^j + \dot{\mathcal{M}}_{ij}\dot{X}^j$, Lagrangian mechanics, thermodynamic quantities from many-entity ensembles) are derived from calculus and variational principles. They hold for any representation of any system.
 

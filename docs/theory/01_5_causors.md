@@ -91,6 +91,49 @@ The **Event Layer** ([Part 0b](./00b_event_layer.md)) defines the primitive: cau
 
 ---
 
+## 0. Worked Example: A Candle Flame Through All Four Layers
+
+Before the formal definitions, here is a single system — a candle flame — described at each layer. This is what the architecture looks like in practice:
+
+```mermaid
+graph TB
+    subgraph OL["Observable Layer"]
+        o1["Energy release: ~40 kJ/g wax"]
+        o2["ρ_ac > 0 (auto-causal)"]
+        o3["Maintenance cost: continuous fuel"]
+    end
+    subgraph DL["Descriptor Layer"]
+        d1["Q1: Kinetic (heat drives state change)"]
+        d2["Q2: Direct (→ state) + Enable (→ loop)"]
+        d3["Q3: Closed loop"]
+        d4["Q4: Λ ≈ 1 (no amplification)"]
+        d5["Q5: Fast (millisecond transitions)"]
+    end
+    subgraph SL["Structure Layer"]
+        s1["Bonds: heat→melt, melt→vaporize, vapor→combust, combust→heat"]
+        s2["Loop: closed cycle (heat regenerates heat)"]
+    end
+    subgraph EL["Event Layer"]
+        e1["e₁: wax(solid) → wax(liquid)"]
+        e2["e₂: wax(liquid) → wax(vapor)"]
+        e3["e₃: wax(vapor) + O₂ → CO₂ + H₂O + heat"]
+        e4["e₄: heat → wax(solid) melts"]
+    end
+    
+    EL --> SL --> DL --> OL
+```
+
+| Layer | Flame Description |
+|-------|-------------------|
+| **Event Layer** | Four causal events: melting, vaporization, combustion, heat transfer. Each is a state transition $e: \mathcal{S}_i \to \mathcal{S}_j$ with no energy assumed — just "this configuration follows from that one." |
+| **Structure Layer** | The four events form bonds (recurring causal patterns). The bonds compose into a **closed loop**: combustion produces heat, heat melts wax, melted wax vaporizes, vapor combusts. The loop regenerates its own conditions. |
+| **Descriptor Layer** | Q1: Kinetic (energy drives motion, not storage). Q2: Direct (bonds target state variables) + Enable (heat bond maintains the loop). Q3: Closed. Q4: Λ ≈ 1. Q5: Fast relative to observation timescale. |
+| **Observable Layer** | Energy release ~40 kJ/g. Auto-causal density $\rho_{\text{ac}} > 0$ (the loop sustains itself). Maintenance cost > 0 (requires continuous wax input). Temperature, luminosity, and combustion rate are all Observable Layer quantities derived from the underlying structure. |
+
+The flame is a **dissipative auto-causal entity**: it sustains itself by continuously processing fuel through a closed causal loop. Remove the fuel (wax), and the loop breaks — the flame goes out. The Observable Layer quantities (energy, temperature) are derived; the Structure Layer topology (closed loop) is what makes it auto-causal.
+
+---
+
 ## 1. The Foundation: Events and the Cause-Plex
 
 > This section summarizes the Event Layer. For the full treatment, see [Part 0b: The Event Layer](./00b_event_layer.md).
@@ -124,7 +167,7 @@ At Observable Layer (where energy is defined), bonds appear as energy exchanges.
 | Direction | $i \to j$ | Asymmetric in general |
 | Strength | $\sigma_b$ | Resistance to dissolution |
 | Latency | $\tau_b$ | Time between input and output |
-| Reliability | $r_b \in [0,1]$ | Probability the pattern fires when activated |
+| Reliability | $r_b \in [0,1]$ | Probability the pattern fires when activated (see §10: candidate for Q6) |
 
 Bond strength $\sigma_b$ has two equivalent descriptions:
 - **Observable Layer:** The energy required to break the bond
@@ -315,12 +358,12 @@ The periodic table of chemistry gives you elements. The causor framework gives y
 
 ## 10. Open Questions
 
-**Q1: Are Q1–Q5 complete?** Can every distinction between causal structures be captured by position in the Q1–Q5 parameter space? Candidate additional dimensions: spatial locality, stochasticity, thermodynamic reversibility.
+**Q1: Are Q1–Q5 complete?** Can every distinction between causal structures be captured by position in the Q1–Q5 parameter space? Candidate additional dimensions: spatial locality, stochasticity (related to bond reliability $r_b$), thermodynamic reversibility.
 
 **Q2: CI and stability.** High complexity may correlate with deep stability basins — but need not (fragile complexity). What is the formal relationship between construction complexity and thermodynamic stability?
 
-**Q3: Derivation of the Lagrangian.** $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V(X)$ is postulated in Part 1. If $\mathcal{M}$ is composed of bonds and $V(X)$ is determined by basin structure, can the quadratic kinetic term be derived from cause-plex structure?
+**Q3: Derivation of the Lagrangian.** Part 1 postulates the Lagrangian $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V(X)$ on physical grounds. If $\mathcal{M}$ is composed of bonds and $V(X)$ is determined by basin structure, can the quadratic kinetic term be derived from cause-plex structure rather than assumed?
 
 ---
 
-[← Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 1b: Uncertainty, Coordinates, and Relativity](./01b_uncertainty_coordinates_relativity.md) | [→ Part 2: Meta-Entities](./02_meta_entities.md)
+[← Part 0b: The Event Layer](./00b_event_layer.md) | [← Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 1b: Uncertainty, Coordinates, and Relativity](./01b_uncertainty_coordinates_relativity.md) | [→ Part 2: Meta-Entities](./02_meta_entities.md)

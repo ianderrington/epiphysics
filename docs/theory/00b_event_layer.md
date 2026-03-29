@@ -54,6 +54,21 @@ One configuration follows from another. No energy assumed. No time assumed. No s
 
 > Consider a candle flame. The heat from the burning wax vaporizes more wax, which feeds the flame, which produces more heat. Each step is a state transition: one configuration of molecules produces the next. No energy concept is needed to describe this chain — just "this state follows from that one."
 
+In cause-plex notation, the flame is four causal events forming a loop:
+
+```mermaid
+graph LR
+    e1["e₁: wax(solid) → wax(liquid)"] --> e2["e₂: wax(liquid) → wax(vapor)"]
+    e2 --> e3["e₃: vapor + O₂ → CO₂ + heat"]
+    e3 --> e1
+    
+    e4["e₄: air turbulence"]
+    
+    style e4 stroke-dasharray: 5 5
+```
+
+Events $e_1, e_2, e_3$ form a closed causal loop — each event's output enables the next. Event $e_4$ (air turbulence elsewhere in the room) has no causal path to or from the flame's core loop — it is **causally disconnected** (P2 applies: their order doesn't matter to the outcome).
+
 This is the same starting point as [Wolfram's ruliad](https://www.wolframphysics.org/): an abstract hypergraph of state transitions. The cause-plex is the specific subgraph realized by the physical world.
 
 ---
@@ -172,16 +187,25 @@ The Event Layer is the foundation of a four-layer architecture:
 
 ```mermaid
 graph TB
-    subgraph OL["<b>Observable Layer</b><br/>Energy, mass, force, temperature<br/><i>Derived quantities (valid where symmetries hold)</i>"]
+    subgraph OL["Observable Layer: Energy, mass, force, temperature"]
+        ol[" "]
     end
-    subgraph DL["<b>Descriptor Layer</b><br/>Q1–Q5 structural properties<br/><i>How to characterize bonds and loops</i>"]
+    subgraph DL["Descriptor Layer: Q1–Q5 structural properties"]
+        dl[" "]
     end
-    subgraph SL["<b>Structure Layer</b><br/>Bonds, loops<br/><i>Recurring patterns in the cause-plex</i>"]
+    subgraph SL["Structure Layer: Bonds, loops"]
+        sl[" "]
     end
-    subgraph EL["<b>Event Layer</b><br/>Causal event e: S_i → S_j<br/><i>The primitive — no physics assumed</i>"]
+    subgraph EL["Event Layer: Causal event e: S_i → S_j"]
+        el[" "]
     end
     
-    EL --> SL --> DL --> OL
+    el --> sl --> dl --> ol
+    
+    style ol fill:none,stroke:none
+    style dl fill:none,stroke:none
+    style sl fill:none,stroke:none
+    style el fill:none,stroke:none
 ```
 
 | Layer | Content | What it is |
