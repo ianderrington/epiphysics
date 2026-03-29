@@ -20,11 +20,11 @@ The full potential causal reality — the territory. The space of all states a s
 
 ## Representation ($X$)
 
-A model of actual state within $\mathcal{X}$ — the map. Can take many forms: a point estimate, a probability distribution, a partial observation, a compressed encoding, or any structure that carries information about the actual state. Representations are themselves states: they must be instantiated in some physical substrate (neurons, silicon, ink) which has its own potential state space. Every representation is a state, but not every state is a representation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
+A model of state — the map. Can model actual state, potential state, or any state. Can take many forms: a point estimate, a probability distribution, a partial observation, a compressed encoding, or any structure that carries information about state. Representations are themselves states: they must be instantiated in some physical substrate (neurons, silicon, ink) which has its own potential state space. Every representation is a state, but not every state is a representation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
 
 ## Representational Fidelity ($\mathcal{F}$)
 
-How well a representation $X$ tracks the actual state $x \in \mathcal{X}$: $\mathcal{F}(X, x) = 1 - d(X, x)$, where $d$ is an appropriate distance or divergence. When $X$ perfectly captures $x$, $\mathcal{F} \to 1$. When $X$ is maximally uninformative, $\mathcal{F} \to 0$. Predictive accuracy scales with fidelity given sufficient computation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
+How well a representation $X$ tracks a target state $x \in \mathcal{X}$: $\mathcal{F}(X, x) = 1 - d(X, x)$, where $d$ is an appropriate distance or divergence. When $X$ perfectly captures $x$, $\mathcal{F} \to 1$. When $X$ is maximally uninformative, $\mathcal{F} \to 0$. Predictive accuracy scales with fidelity given sufficient computation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
 
 ## Causor
 

@@ -82,30 +82,36 @@ This is the full Epimechanics framework, one concept at a time.
 
 ### The fundamental distinction
 
-Every system has a **potential state space** $\mathcal{X}$ — the full potential causal reality of all states the system could occupy. This is the territory. It exists independently of any observer or model. Within $\mathcal{X}$, the system occupies some actual configuration at any moment — but $\mathcal{X}$ encompasses all possibilities, not just the current actuality.
+Every system has a **potential state space** $\mathcal{X}$ — the full potential causal reality of all states the system could occupy. This is the territory. It exists independently of any observer or model.
 
-A **representation** $X$ is a model of that state space — the map. Representations can take many forms:
+A **representation** $X$ is a model of state — the map. A representation can model:
+
+- **Actual state**: what currently obtains
+- **Potential state**: what could obtain
+- **Any state**: the representation doesn't distinguish — it's a model of "state," whatever that might be
+
+Representations can take many forms:
 
 - A **point estimate**: a single value in state space (the simplest, most lossy form)
-- A **probability distribution**: $X = P(\mathcal{X})$, capturing uncertainty about which state obtains
+- A **probability distribution**: capturing uncertainty about which state obtains
 - A **partial observation**: projections onto accessible dimensions
-- A **compressed encoding**: any structure that carries information about $\mathcal{X}$
+- A **compressed encoding**: any structure that carries information about state
 
 All representations are partial. Even a probability distribution over $\mathcal{X}$ is a representation — it lives in some model's substrate, not in the territory itself.
 
-The critical insight: **representations are themselves states**. A representation $X$ of some external state must be instantiated somewhere — in neurons, in silicon, in ink on paper. That instantiation is itself a causal structure with its own potential state space. Representations are a subset of states: every representation is a state, but not every state is a representation of something else.
+The critical insight: **representations are themselves states**. A representation $X$ must be instantiated somewhere — in neurons, in silicon, in ink on paper. That instantiation is itself a causal structure with its own potential state space. Representations are a subset of states: every representation is a state, but not every state is a representation of something else.
 
 ### Representational fidelity and prediction
 
-Define the **representational fidelity** $\mathcal{F}$ of representation $X$ with respect to actual state $x \in \mathcal{X}$:
+Define the **representational fidelity** $\mathcal{F}$ of representation $X$ with respect to some target state $x \in \mathcal{X}$:
 
 $$\mathcal{F}(X, x) = 1 - d(X, x)$$
 
 where $d$ is an appropriate distance or divergence measure. For distributional representations, this can be entropy-based; for point estimates, Euclidean or domain-appropriate metrics. When $X$ perfectly captures $x$, $\mathcal{F} \to 1$. When $X$ is maximally uninformative, $\mathcal{F} \to 0$.
 
-**The prediction principle:** Given sufficient computation, predictive accuracy over future states scales with representational fidelity. A representation that tracks real causal structure ($\mathcal{F}$ high) can predict how that structure evolves. A representation decoupled from causal structure ($\mathcal{F}$ low) cannot, regardless of computational power.
+**The prediction principle:** Given sufficient computation, predictive accuracy scales with representational fidelity. A representation that tracks real causal structure ($\mathcal{F}$ high) can predict how that structure evolves. A representation decoupled from causal structure ($\mathcal{F}$ low) cannot, regardless of computational power.
 
-This is why the framework works: when $X$ is chosen to track actual causal structure, the mechanical relationships derived from $X$ (force, energy, coupling) predict how that structure changes over time. The equations are not about $X$ per se — they are about the causal reality within $\mathcal{X}$ that $X$ models, accessed through $X$.
+This is why the framework works: when $X$ is chosen to track causal structure, the mechanical relationships derived from $X$ (force, energy, coupling) predict how that structure changes over time. The equations are not about $X$ per se — they are about the causal reality within $\mathcal{X}$ that $X$ models, accessed through $X$.
 
 [Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces — the desktop icon does not resemble the magnetic patterns on the disk. Representations optimized for fitness may diverge from representations optimized for fidelity. But prediction requires fidelity: fitness-tuned interfaces work only within the envelope where the fitness proxy tracks the causal structure. Outside that envelope, only high-$\mathcal{F}$ representations generalize.
 

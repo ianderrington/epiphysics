@@ -98,7 +98,7 @@ From these co-definitions, five commitments follow:
 
 Every system has a **potential state space** $\mathcal{X}$ — the full potential causal reality of all states the system could occupy. This is the territory. It exists independently of any observer or model.
 
-A **representation** $X$ is a model of actual state within $\mathcal{X}$ — the map. Representations can take many forms: point estimates, probability distributions, partial observations, compressed encodings. All are partial projections of the territory.
+A **representation** $X$ is a model of state — the map. It can model actual state, potential state, or any state. Representations can take many forms: point estimates, probability distributions, partial observations, compressed encodings. All are partial projections of the territory.
 
 Representations are themselves states. A representation $X$ must be instantiated somewhere — in neurons, silicon, ink. That instantiation has its own potential state space. Every representation is a state, but not every state is a representation.
 
