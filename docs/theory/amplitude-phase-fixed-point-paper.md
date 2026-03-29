@@ -27,7 +27,7 @@ coverImage:
 
 ## Reader's Bridge
 
-*Skip this section if you're comfortable with Lie groups and group representations. Read it if the words "compact connected Lie group" or "tensor product of groups" are unfamiliar.*
+*This section introduces the mathematical concepts used in the paper. Readers familiar with Lie groups and group representations may proceed directly to the Abstract.*
 
 **What is a group?** A group is a collection of operations that can be composed — where doing one then another is the same as doing some third one from the same collection. The rotation group SO(3) is all rotations in 3D space: rotate 30° then 45° = rotate 75°. The group U(1) is all rotations in the complex plane: multiply by $e^{i\theta}$ then by $e^{i\phi}$ = multiply by $e^{i(\theta+\phi)}$. Groups describe symmetry.
 
