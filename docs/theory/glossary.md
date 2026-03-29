@@ -20,11 +20,11 @@ The full causal reality of a system's condition — the territory. Exists indepe
 
 ## Representation ($X$)
 
-A model of an actual state $\mathcal{X}$ — the map. Lives in a state space $S$. Representations are always partial, finite-dimensional projections of underlying reality. Critically, representations are themselves states: they must be instantiated in some physical substrate (neurons, silicon, ink) which has its own actual state. Every representation is a state, but not every state is a representation.
+A model of an actual state $\mathcal{X}$ — the map. Not a single point but a **probability distribution** over possible states: $X = P(\mathcal{X})$. The distribution captures uncertainty, partial observability, and measurement limits. A point estimate $\hat{X}$ is a lossy compression; the full representation includes uncertainty structure. Representations are themselves states: they must be instantiated in some physical substrate (neurons, silicon, ink) which has its own actual state. Every representation is a state, but not every state is a representation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
 
 ## Representational Fidelity ($\mathcal{F}$)
 
-How closely a representation $X$ tracks the actual state $\mathcal{X}$ it models: $\mathcal{F}(X, \mathcal{X}) = 1 - d(X, \mathcal{X})$. When $X \to \mathcal{X}$, $\mathcal{F} \to 1$. Predictive accuracy scales with fidelity given sufficient computation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
+How concentrated a representation $X$ is around the actual state $\mathcal{X}$: $\mathcal{F}(X, \mathcal{X}) = 1 - H(X | \mathcal{X})$, where $H$ is normalized conditional entropy. When $X$ collapses to a delta function at $\mathcal{X}$, $\mathcal{F} \to 1$. When $X$ is maximally uncertain, $\mathcal{F} \to 0$. Predictive accuracy scales with fidelity given sufficient computation. Defined in [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
 
 ## Causor
 

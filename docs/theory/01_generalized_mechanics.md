@@ -84,19 +84,25 @@ This is the full Epimechanics framework, one concept at a time.
 
 Every system has an **actual state** $\mathcal{X}$ — the full causal reality of its condition. This is the territory. It exists independently of any observer or model.
 
-A **representation** $X$ is a model of that state — the map. $X$ lives in some **state space** $S$ and changes over time at rate $\dot{X} = dX/dt$. Representations are always partial, finite-dimensional projections of the underlying reality.
+A **representation** $X$ is a model of that state — the map. Critically, $X$ is not a single point but a **probability distribution** over possible states: $X = P(\mathcal{X})$. This distribution lives in some **state space** $S$ and evolves over time. The distribution captures:
+
+- **Uncertainty**: finite observations cannot fully resolve $\mathcal{X}$
+- **Partial observability**: only some dimensions of $\mathcal{X}$ are accessible
+- **Measurement limits**: all observations have finite precision
+
+A point estimate $\hat{X}$ (e.g., the mean or mode of the distribution) is a lossy compression of $X$. The full representation includes the uncertainty structure.
 
 The critical insight: **representations are themselves states**. A representation $X$ of some external state $\mathcal{X}$ must be instantiated somewhere — in neurons, in silicon, in ink on paper. That instantiation is itself a causal structure with its own actual state. Representations are a subset of states: every representation is a state, but not every state is a representation of something else.
 
 ### Representational fidelity and prediction
 
-Define the **representational fidelity** of $X$ with respect to $\mathcal{X}$:
+Define the **representational fidelity** of $X$ with respect to $\mathcal{X}$. Since $X$ is a distribution, fidelity measures how concentrated $X$ is around the true $\mathcal{X}$:
 
-$$\mathcal{F}(X, \mathcal{X}) = 1 - d(X, \mathcal{X})$$
+$$\mathcal{F}(X, \mathcal{X}) = 1 - H(X | \mathcal{X})$$
 
-where $d$ is an appropriate distance metric between the representation and the actual state it models. When $X \to \mathcal{X}$ (the map approaches the territory), $\mathcal{F} \to 1$.
+where $H(X | \mathcal{X})$ is the entropy of the representation given the actual state (normalized to $[0,1]$). When the distribution collapses to a delta function at the true state, $\mathcal{F} \to 1$. When $X$ is maximally uncertain (uniform over $S$), $\mathcal{F} \to 0$.
 
-**The prediction principle:** Given sufficient computation, predictive accuracy over future states scales with representational fidelity. A model that tracks real causal structure ($\mathcal{F}$ high) can predict how that structure evolves. A model decoupled from causal structure ($\mathcal{F}$ low) cannot, regardless of computational power.
+**The prediction principle:** Given sufficient computation, predictive accuracy over future states scales with representational fidelity. A model that tracks real causal structure ($\mathcal{F}$ high, distribution concentrated near $\mathcal{X}$) can predict how that structure evolves. A model decoupled from causal structure ($\mathcal{F}$ low, distribution diffuse) cannot, regardless of computational power.
 
 This is why the framework works: when $X$ is chosen to track actual causal structure, the mechanical relationships derived from $X$ (force, energy, coupling) predict how that structure changes over time. The equations are not about $X$ per se — they are about the causal reality $\mathcal{X}$ that $X$ models, accessed through $X$.
 
