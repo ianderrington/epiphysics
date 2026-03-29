@@ -74,11 +74,11 @@ Net structural degradation pressure, typically $\dot{S}_{\text{int}} - \dot{R}_{
 
 ## Causal Event (*state couplet*, $e$)
 
-The primitive of Epimechanics. An ordered pair $e = (\mathcal{S}_{\text{in}}, \mathcal{S}_{\text{out}})$ where $\mathcal{S}_{\text{out}}$ is determined by $\mathcal{S}_{\text{in}}$. No physical content is assumed — no energy, no units, no conservation laws. Also called a *state couplet* to emphasize the pairing of input and output states. The cause-plex $\mathcal{C} = (E, \prec)$ is a partial order on a set $E$ of causal events. See [Cause-Plex and Spacetime](./causeplex_spacetime.md) §1.
+The primitive of Epimechanics (Event Layer). A state transition $e: \mathcal{S}_i \to \mathcal{S}_j$ — one configuration follows from another. No physical content is assumed — no energy, no units, no conservation laws. Also called a *state couplet* to emphasize the pairing of input and output states. See [Part 0b: The Event Layer](./00b_event_layer.md) and [Cause-Plex and Spacetime](./causeplex_spacetime.md) §1.
 
 ## Cause-Plex ($\mathcal{C}$)
 
-A locally finite strict partial order $(E, \prec)$ of causal events — the fundamental structure from which spacetime, energy, and entities emerge. Each element $e \in E$ is a causal event (state couplet); $\prec$ encodes causal precedence. Defined formally in [Cause-Plex and Spacetime](./causeplex_spacetime.md) §1.
+A locally finite strict partial order $(E, \prec)$ of causal events — the Event Layer structure from which spacetime, energy, and entities emerge. Each element $e \in E$ is a causal event; $\prec$ encodes causal precedence. Three properties (P1: partial order, P2: causal invariance, P3: finite latency) generate physics. See [Part 0b: The Event Layer](./00b_event_layer.md) and [Cause-Plex and Spacetime](./causeplex_spacetime.md) §1.
 
 ## Bond Operator ($b$)
 

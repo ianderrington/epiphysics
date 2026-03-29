@@ -276,12 +276,13 @@ The antidote is empirical: epiphysics. The framework must generate predictions t
 
 With these foundations in place:
 
+- [Part 0b: The Event Layer](./00b_event_layer.md) — the causal event primitive; the cause-plex; how spacetime, energy, and quantum mechanics emerge.
 - [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) — the full mechanical apparatus: state, velocity, mass, momentum, force, energy, Lagrangian, coupling, fields, thermodynamics, fluid dynamics.
+- [Part 1.5: Causors](./01_5_causors.md) — what are entities *made of*? Bonds, loops, and the Q1–Q5 structural descriptors.
 - [Part 1b: Uncertainty, Coordinates, and Relativity](./01b_uncertainty_coordinates_relativity.md) — how representations transform between coordinate systems; measurement changes the state.
-- [Part 1.5: Causors](./01_5_causors.md) — what are entities *made of*? The six candidate causors.
 - [Parts 2–5](./index.md) — meta-entities, intelligence/consciousness/agency, time and soul, full ontology.
 - [Applications](../applications/index.md) — where epiphysics happens: testing predictions in specific domains.
 
 ---
 
-[→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | [→ Part 1.5: Causors](./01_5_causors.md)
+[→ Part 0b: The Event Layer](./00b_event_layer.md) | [→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md)

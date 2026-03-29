@@ -1,0 +1,231 @@
+---
+title: 'Epimechanics — Part 0b: The Event Layer'
+description: >-
+  The foundation beneath physics. The causal event primitive, the cause-plex,
+  and the three structural properties from which spacetime, energy, and quantum
+  mechanics emerge. No physics is assumed — physics is derived.
+date: 2026-03-29T00:00:00.000Z
+draft: false
+author:
+  name: Ian Derrington
+contentType: article
+mediaTypes:
+  - text
+series: Epimechanics
+series_order: 0.2
+categories:
+  - Philosophy
+  - Physics
+  - Systems thinking
+tags:
+  - Epimechanics
+  - Foundations
+  - Cause-plex
+  - Causal structure
+  - Event Layer
+bullets:
+  - The primitive is the causal event — a state transition with no assumed physics
+  - The cause-plex is the hypergraph of all causal events with their partial ordering
+  - Three properties (partial order, causal invariance, finite latency) generate spacetime
+  - Energy, momentum, and charge emerge from symmetries — they are not primitive
+  - Units are ratios of cause-plex path counts to reference path counts
+tts:
+  enabled: true
+  provider: openai
+  voice: onyx
+coverImage:
+  url: ./images/epimechanics_00_prelude-1-1.png
+  alt: >-
+    Abstract foundation: geometric nodes connected by luminous causal arrows,
+    deep space background, no labels, pure structural beauty
+---
+
+> **In plain English:** Before energy, before spacetime, before particles — there is causation. One thing leads to another. That's it. From just this primitive — "this state follows from that state" — the entire structure of physics emerges. Spacetime is the geometry of causal relationships. Energy is a conserved quantity that appears when causation has a certain symmetry. Quantum mechanics is what happens when multiple causal paths coexist. This document lays out the foundation: the causal event, the cause-plex, and the three properties that generate everything else.
+
+---
+
+## The Primitive: The Causal Event
+
+The most fundamental thing in the framework is not energy, not spacetime, not a particle. It is the **causal event** — a state transition:
+
+$$e: \mathcal{S}_i \to \mathcal{S}_j$$
+
+One configuration follows from another. No energy assumed. No time assumed. No space assumed. Just the "follows from" relation between states.
+
+> Consider a candle flame. The heat from the burning wax vaporizes more wax, which feeds the flame, which produces more heat. Each step is a state transition: one configuration of molecules produces the next. No energy concept is needed to describe this chain — just "this state follows from that one."
+
+This is the same starting point as [Wolfram's ruliad](https://www.wolframphysics.org/): an abstract hypergraph of state transitions. The cause-plex is the specific subgraph realized by the physical world.
+
+---
+
+## The Cause-Plex
+
+The **cause-plex** $\mathcal{C}$ is the hypergraph of all causal events with their partial ordering:
+
+$$\mathcal{C} = (E, \prec)$$
+
+where:
+- $E$ is the set of all causal events
+- $\prec$ is the "precedes" relation (strict partial order)
+
+The cause-plex carries no physics by assumption. Physics emerges from its structure.
+
+---
+
+## Three Properties
+
+The cause-plex has three structural properties. From these, the physics we observe emerges:
+
+### P1: Causal Partial Ordering
+
+Already encoded in $(E, \prec)$:
+- **Irreflexive:** No event precedes itself
+- **Transitive:** If $e_1 \prec e_2$ and $e_2 \prec e_3$ then $e_1 \prec e_3$
+- **Asymmetric:** If $e_1 \prec e_2$ then not $e_2 \prec e_1$
+
+This is the minimal structure for "causation" to mean anything. It defines what "before" and "after" mean — not in time (time doesn't exist yet), but in the causal ordering itself.
+
+### P2: Causal Invariance
+
+Events with no causal path between them — **spacelike-separated events** — commute:
+
+$$e_1 \perp e_2 \implies (e_1 \circ e_2) = (e_2 \circ e_1)$$
+
+If there is no causal path from $e_1$ to $e_2$ or from $e_2$ to $e_1$, then the order in which they are applied doesn't matter. The final state is the same either way.
+
+This is physically motivated: if two events cannot influence each other, their relative ordering is not a fact about the world — it is a coordinate choice. Causal invariance encodes this.
+
+> **Open problem:** Does P2 follow from P1 alone, or does it require additional structure? See [Cause-Plex and Spacetime](./causeplex_spacetime.md) for the current state of this question.
+
+### P3: Finite Minimum Event Latency
+
+Every causal event has a latency $\tau_e \geq \tau_{\min} > 0$:
+
+$$\forall e \in E: \tau_e \geq \tau_{\min} > 0$$
+
+This defines a maximum propagation rate. In the continuum limit, this becomes the speed of light $c$.
+
+---
+
+## What Emerges
+
+Given P1–P3, the structure of physics emerges:
+
+### Spacetime
+
+The Lorentzian metric — the geometry of special relativity — emerges from the cause-plex structure. Spacetime is not a container that events happen *in*; spacetime *is* the geometry of causal relationships.
+
+The derivation follows causal set theory ([Bombelli, Lee, Meyer, Sorkin 1987](https://doi.org/10.1103/PhysRevLett.59.521)) and [Malament's theorem (1977)](https://doi.org/10.1063/1.523436): the causal structure determines the metric up to a conformal factor.
+
+See [Cause-Plex and Spacetime](./causeplex_spacetime.md) for the full derivation.
+
+### Time
+
+Time is not primitive. Time is the **count of causal events along a path**:
+
+$$\tau(\gamma) = |\{e \in \gamma\}| \cdot \tau_{\min}$$
+
+The "flow of time" is the accumulation of causal events. A clock is a stable causal loop that produces events at a regular rate. The second is defined by counting Cs-133 hyperfine transitions (9,192,631,770 per second by definition). All time measurements are ratios of cause-plex path counts.
+
+### Energy and Conserved Quantities
+
+Energy is not primitive. It emerges from **Noether's theorem**: if the cause-plex has a continuous symmetry, there exists a conserved quantity.
+
+| Cause-plex symmetry | Conserved quantity | Name |
+|---------------------|-------------------|------|
+| Time-translation invariance | $\sum_i p_i \dot{q}_i - L$ | Energy |
+| Spatial translation invariance | $\sum_i m_i \dot{q}_i$ | Momentum |
+| Rotational invariance | $\sum_i r_i \times p_i$ | Angular momentum |
+| U(1) gauge symmetry | $\sum_i q_i$ | Charge |
+
+**Energy is what we call the conserved quantity when the cause-plex has time-translation symmetry.** In regions where this symmetry holds (most of everyday physics), energy is well-defined and conserved. In regions where it is broken (strongly non-equilibrium, rapidly evolving, cosmological expansion), energy is not a clean quantity.
+
+### Units
+
+Units are not primitive. They are ratios of cause-plex path counts to reference cause-plex path counts:
+
+- **The second:** 9,192,631,770 Cs-133 hyperfine transitions (by definition)
+- **The meter:** The distance light travels in 1/299,792,458 of a second
+- **The kilogram:** Defined via Planck's constant, the second, and the meter
+
+All physical units reduce to counting causal events relative to reference causal events. No unit is assumed.
+
+### Quantum Mechanics
+
+When multiple causal paths coexist — when the cause-plex has a **multiway structure** — quantum mechanics emerges. The superposition of histories, the Born rule, and the Schrödinger equation all follow from the amplitude structure of paths through the multiway cause-plex.
+
+See [Cause-Plex and Quantum Mechanics](./causeplex_quantum.md) for the full derivation.
+
+---
+
+## The Four-Layer Architecture
+
+The Event Layer is the foundation of a four-layer architecture:
+
+| Layer | Content | What it is |
+|-------|---------|------------|
+| **Event Layer** | Causal event $e: \mathcal{S}_i \to \mathcal{S}_j$, cause-plex $(E, \prec)$ | The primitive — no physics assumed |
+| **Structure Layer** | Bonds, loops | Recurring patterns in the cause-plex |
+| **Descriptor Layer** | Q1–Q5 structural properties | How to characterize bonds and loops |
+| **Observable Layer** | Energy, mass, force, temperature | Derived quantities valid where symmetries hold |
+
+Each layer emerges from patterns in the layer below. The Event Layer is the foundation; everything else is emergent.
+
+The key insight: **quantities like energy and mass live at the Observable Layer, not the Event Layer.** They are coarse-grained descriptions valid where certain symmetries hold. At biological and institutional scales, time-translation symmetry holds well enough that "energy" is the right concept. At the Planck scale or in strongly non-equilibrium systems, you may need to work at the Event Layer directly.
+
+---
+
+## Relationship to Other Work
+
+### Causal Set Theory
+
+The cause-plex is closely related to causal set theory ([Bombelli et al. 1987](https://doi.org/10.1103/PhysRevLett.59.521), [Sorkin 2003](https://arxiv.org/abs/gr-qc/0309009)). Both start from a locally finite partial order of events. The cause-plex extends this by:
+
+1. Explicitly connecting to the multiway structure (quantum mechanics)
+2. Building the full coarse-graining ladder to biology and institutions
+3. Deriving the mechanical quantities (mass, force, energy) as emergent
+
+### Wolfram's Ruliad
+
+The cause-plex is a specific subgraph of the [ruliad](https://www.wolframphysics.org/) — the one realized by the physical world. The ruliad derivation works from abstract update rules; the cause-plex derivation works from physical causal events. Both arrive at the same structure.
+
+### Process Philosophy
+
+The cause-plex instantiates [Whitehead's process ontology](https://doi.org/10.1017/CBO9781139644037): events, not substances, are fundamental. What we call "things" are stable patterns in the flow of events.
+
+---
+
+## What This Document Does Not Cover
+
+This document establishes the Event Layer — the foundation. It does not cover:
+
+- **How bonds and loops emerge from causal events** → [Part 1.5: Causors](./01_5_causors.md)
+- **The full derivation of spacetime** → [Cause-Plex and Spacetime](./causeplex_spacetime.md)
+- **The full derivation of quantum mechanics** → [Cause-Plex and Quantum Mechanics](./causeplex_quantum.md)
+- **Why 3+1 dimensions** → [Cause-Plex Dimensionality](./causeplex_dimensionality.md)
+- **The mechanical grammar (mass, force, energy, coupling)** → [Part 1: Generalized Mechanics](./01_generalized_mechanics.md)
+
+---
+
+## Summary
+
+The Event Layer is the foundation of epimechanics:
+
+1. **The primitive is the causal event** — a state transition $e: \mathcal{S}_i \to \mathcal{S}_j$
+2. **The cause-plex is the hypergraph of all causal events** — $(E, \prec)$
+3. **Three properties generate physics:**
+   - P1: Causal partial ordering
+   - P2: Causal invariance (spacelike events commute)
+   - P3: Finite minimum event latency
+4. **Everything else emerges:**
+   - Spacetime from the causal geometry
+   - Time from event counts
+   - Energy from symmetry (Noether)
+   - Quantum mechanics from multiway structure
+   - Units from reference event counts
+
+No physics is assumed. Physics is derived.
+
+---
+
+[← Part 0: Foundations](./00_prelude.md) | [→ Part 1: Generalized Mechanics](./01_generalized_mechanics.md)

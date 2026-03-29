@@ -2,6 +2,7 @@ nav:
   - index
   - series_map
   - 00_prelude
+  - 00b_event_layer
   - 01_generalized_mechanics
   - 01_5_causors
   - 01b_uncertainty_coordinates_relativity

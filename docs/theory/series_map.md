@@ -78,9 +78,10 @@ There are two entry points depending on your goal:
 
 | Order | Part | Topic | Next |
 |---|---|---|---|
-| 0 | [Part 0: Foundations](./00_prelude.md) | What epimechanics is; causation as primitive | → [Part 1](./01_generalized_mechanics.md) |
+| 0 | [Part 0: Foundations](./00_prelude.md) | What epimechanics is; causation as primitive | → [Part 0b](./00b_event_layer.md), [Part 1](./01_generalized_mechanics.md) |
+| 0b | [Part 0b: Event Layer](./00b_event_layer.md) | The causal event primitive; cause-plex; emergence of physics | → [Part 1](./01_generalized_mechanics.md), [Part 1.5](./01_5_causors.md) |
 | 1 | [Part 1: Generalized Mechanics](./01_generalized_mechanics.md) | X as universal state variable; mass, force, energy, Lagrangian | → [Part 1.5](./01_5_causors.md), [Part 1b](./01b_uncertainty_coordinates_relativity.md) |
-| 1.5 | [Part 1.5: Causors](./01_5_causors.md) | What entities are made of; bond/loop operators; Q1–Q4 descriptors | → [Part 2](./02_meta_entities.md) |
+| 1.5 | [Part 1.5: Causors](./01_5_causors.md) | Structure Layer: bonds, loops; Descriptor Layer: Q1–Q5 | → [Part 2](./02_meta_entities.md) |
 | 1b | [Part 1b: Uncertainty/Coordinates](./01b_uncertainty_coordinates_relativity.md) | Limits of the framework; reference frames | → [Part 2](./02_meta_entities.md) |
 | 1c | [Part 1c: Thermodynamic Emergence](./01c_thermodynamic_emergence_of_life.md) | Life as thermodynamic inevitability | → [Part 2](./02_meta_entities.md) |
 | 2 | [Part 2: Meta-Entities](./02_meta_entities.md) | When aggregates earn entity status | → [Part 3](./03_intelligence_consciousness_agency.md) |
