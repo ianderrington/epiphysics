@@ -336,7 +336,7 @@ In regions of the cause-plex where symmetry holds, Layer 0 causal events aggrega
 | **Causal power** $\mathcal{P}$ | $\mathbf{F} \cdot \mathbf{v}$ (force × velocity) | Rate of work on state trajectories |
 | **Generalized mass** $\mathcal{M}$ | $\sum_{\text{bonds}} \sigma_b = \int \rho_{\text{causal}} \, d\mu$ | Total causal content; resistance to state change. The sum form discretizes bonds; the integral form treats causal density as continuous. They are equivalent at different granularities. |
 | **Auto-causal density** $\rho_{\text{ac}}$ | Emergent from closed loops | Self-sustaining fraction; loop-level, not bond-level |
-| **Maintenance cost** $C_{\text{maint}}$ | $\dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$ | Net entropy accumulation rate |
+| **Maintenance cost** $C_{\text{maint}}$ | $\dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$ | Net entropy accumulation rate. Negative when repair outpaces degradation (entity thriving); positive when degradation outpaces repair (entity declining). Survival requires $C_{\text{maint}} \leq 0$. |
 | **Robustness** | $\Delta V / \langle\text{perturbation}\rangle$ | Basin depth relative to typical shocks |
 | **Causal action** $A_{\text{causal}}$ | $\int_0^T \mathcal{M}_{\text{ac}}(t)\,dt$ | Total self-sustaining structure over lifetime; units J·s |
 
