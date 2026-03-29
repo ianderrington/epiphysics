@@ -28,7 +28,7 @@ coverImage:
 
 > This document derives spacetime structure from cause-plex primitives. It draws on causal set theory (Bombelli, Lee, Meyer, Sorkin 1987), Malament's theorem (1977), and Wolfram's causal invariance argument. Where results are established, proofs are given. Where results are at the research frontier (GR from causal dynamics), status is stated explicitly.
 
-> **Layer architecture note.** This paper operates at **Layer 0** (causal event primitive and locally finite poset) and **Layer A** (spacetime, energy, conserved quantities in the continuum limit). The cause-plex $(E, \prec)$ is the Layer 0 object. Spacetime metric, energy, and Lorentz invariance are Layer A emergent descriptions valid in the continuum limit. General relativity is a further coarse-graining. The Layer B (bond/loop structures) and Layer C (force, temperature, biological observables) coarse-graining ladder is developed in [Part 1.5: Causors](./01_5_causors.md) and [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
+> **Layer architecture note.** This paper operates at **Event Layer** (causal event primitive and locally finite poset) and **Structure Layer** (spacetime, energy, conserved quantities in the continuum limit). The cause-plex $(E, \prec)$ is the Event Layer object. Spacetime metric, energy, and Lorentz invariance are Structure Layer emergent descriptions valid in the continuum limit. General relativity is a further coarse-graining. The Descriptor Layer (bond/loop structures) and Observable Layer (force, temperature, biological observables) coarse-graining ladder is developed in [Part 1.5: Causors](./01_5_causors.md) and [Part 1: Generalized Mechanics](./01_generalized_mechanics.md).
 
 ---
 
@@ -91,7 +91,7 @@ Therefore $D(e_1) \cap D(e_2) = \emptyset$: the events act on disjoint state dom
 - Local finiteness: between any two causally related events, the causal chain is finite. This strongly motivates a minimum spacing but does not logically force a specific minimum time.
 - Physical calibration: the Planck time $t_P = \sqrt{\hbar G / c^5} \approx 5.4 \times 10^{-44}$ s is the scale below which the classical spacetime description breaks down. Local finiteness is the structural claim; $t_P$ is its physical calibration.
 
-P3 joins local finiteness as the two structural postulates of the cause-plex at Layer 0.
+P3 joins local finiteness as the two structural postulates of the cause-plex at Event Layer.
 
 ---
 
@@ -201,7 +201,7 @@ The cause-plex structure, once spacetime and conserved quantities are establishe
 | Biology | Coupled oscillating cause-plexes | ATP, metabolic flux, $\rho_{\text{ac}}$ | Time-translation symmetry holds locally |
 | Institution | Human-scale cause-plexes | Dollars, decisions, norms | Social-scale description valid |
 
-Each row is a coarse-graining of the row above. The descriptions in column 3 are valid Layer C observables within their scope. "Energy exchange" at the biological scale is valid because time-translation symmetry holds there; it is not the primitive.
+Each row is a coarse-graining of the row above. The descriptions in column 3 are valid Observable Layer observables within their scope. "Energy exchange" at the biological scale is valid because time-translation symmetry holds there; it is not the primitive.
 
 ---
 
@@ -221,17 +221,17 @@ states that cause-plex event density ($T_{\mu\nu}$) determines the curvature of 
 
 Two distinct actions appear in the cause-plex framework, operating at different layers. They should not be conflated.
 
-**Gravitational action (Layer 0 — purely combinatorial).** Benincasa and Dowker (2010, *Phys. Rev. Lett.* 104:181301) define a scalar curvature action on causal sets from event counts alone — no energy, no Lagrangian:
+**Gravitational action (Event Layer — purely combinatorial).** Benincasa and Dowker (2010, *Phys. Rev. Lett.* 104:181301) define a scalar curvature action on causal sets from event counts alone — no energy, no Lagrangian:
 
 $$S_{\text{BD}} = \ell_P^2 \sum_{x \in \mathcal{C}} \left[ 1 - N_1(x) + \frac{N_2(x)}{2} - \cdots \right]$$
 
-where $N_k(x)$ counts causal intervals of depth $k$ above $x$. In the continuum limit, $S_{\text{BD}} \to \int R \sqrt{-g}\, d^4x$ — the Einstein-Hilbert action. This is clean at Layer 0: no energy assumed, no circularity.
+where $N_k(x)$ counts causal intervals of depth $k$ above $x$. In the continuum limit, $S_{\text{BD}} \to \int R \sqrt{-g}\, d^4x$ — the Einstein-Hilbert action. This is clean at Event Layer: no energy assumed, no circularity.
 
-**Matter action (Layer C — definitional, not derived).** The matter action $S[\gamma] = \sum_k \Delta E(e_k) \cdot \tau_{e_k}$ is a Layer C construct. Energy $\Delta E$ is defined at Layer C as the Noether conserved quantity where time-translation symmetry holds (Section 5). Time $\tau$ is the event-count ratio (Definition 3.2). At Layer C, the action is therefore well-defined and non-circular: it uses quantities that are precisely defined at that layer.
+**Matter action (Observable Layer — definitional, not derived).** The matter action $S[\gamma] = \sum_k \Delta E(e_k) \cdot \tau_{e_k}$ is an Observable Layer construct. Energy $\Delta E$ is defined at Observable Layer as the Noether conserved quantity where time-translation symmetry holds (Section 5). Time $\tau$ is the event-count ratio (Definition 3.2). At Observable Layer, the action is therefore well-defined and non-circular: it uses quantities that are precisely defined at that layer.
 
-The earlier concern (AUDIT.md Priority 1a) was that energy appeared to be both derived-from and used-in the action. This concern is dissolved by the layer separation: energy is not derived from the matter action at Layer 0; rather, the matter action is a Layer C expression that names what the Layer 0 phase function $\phi(\gamma)$ (proved to lie in U(1) in [Complex Amplitudes from Loop-Phase Consistency](./causeplex_loop_phase.md)) corresponds to in Layer C vocabulary. The identification $\phi(\gamma) = S[\gamma]/\hbar$ is a definitional bridge between layers, not a circular derivation. See Proposition 6.2 of that paper for the full argument.
+The earlier concern (AUDIT.md Priority 1a) was that energy appeared to be both derived-from and used-in the action. This concern is dissolved by the layer separation: energy is not derived from the matter action at the Event Layer; rather, the matter action is an Observable Layer expression that names what the Event Layer phase function $\phi(\gamma)$ (proved to lie in U(1) in [Complex Amplitudes from Loop-Phase Consistency](./causeplex_loop_phase.md)) corresponds to in Observable Layer vocabulary. The identification $\phi(\gamma) = S[\gamma]/\hbar$ is a definitional bridge between layers, not a circular derivation. See Proposition 6.2 of that paper for the full argument.
 
-**$\hbar$ non-circularly.** The quantum of action $\hbar = \Delta E_{\min} \cdot \tau_{\min} = \Delta E_{\min}/|\mathcal{C}_{\text{ref}}|$ — minimum energy per causal event divided by the reference clock frequency — is defined using only Layer C energy and the event-count time definition. It does not presuppose ℏ. See §6.3 of the loop-phase paper.
+**$\hbar$ non-circularly.** The quantum of action $\hbar = \Delta E_{\min} \cdot \tau_{\min} = \Delta E_{\min}/|\mathcal{C}_{\text{ref}}|$ — minimum energy per causal event divided by the reference clock frequency — is defined using only Observable Layer energy and the event-count time definition. It does not presuppose ℏ. See §6.3 of the loop-phase paper.
 
 ### 7.3 Status: Partial (GR)
 
@@ -356,12 +356,12 @@ The epimechanics framework derives from a single primitive — the causal event 
 | 2e. Conformal factor | Event count density fixes scale | Number=volume conjecture | ⚠️ Well-supported; unproved |
 | 2f. Lorentz invariance | Symmetry group of causal structure | Malament + continuum limit | ✅ Derived |
 | 2g. Spatial dimensionality $n_s = 3$ | Stability filter on observer-class entities | Tangherlini + knot topology (Section 10) | ⚠️ Observer-selection conjecture; rigorous reasoning, not pure derivation |
-| 3a. Energy (Layer C) | Noether conserved quantity under time-translation symmetry | Definition at Layer C (Section 5) | ✅ Defined at Layer C |
-| 3b. Gravitational action (Layer 0) | $S_{\text{BD}}$ — purely combinatorial event count | Benincasa-Dowker (2010) | ✅ Derived at Layer 0 |
-| 3c. Matter action (Layer C) | $S[\gamma] = \sum \Delta E \cdot \tau$ | Layer C definition using 3a + 2c | ✅ Defined at Layer C |
+| 3a. Energy (Observable Layer) | Noether conserved quantity under time-translation symmetry | Definition at Observable Layer (Section 5) | ✅ Defined at Observable Layer |
+| 3b. Gravitational action (Event Layer) | $S_{\text{BD}}$ — purely combinatorial event count | Benincasa-Dowker (2010) | ✅ Derived at Event Layer |
+| 3c. Matter action (Observable Layer) | $S[\gamma] = \sum \Delta E \cdot \tau$ | Observable Layer definition using 3a + 2c | ✅ Defined at Observable Layer |
 | 4a. Postulate Q': multiway structure | All causally consistent histories coexist | Structural postulate | 🧭 Postulate (irreducible quantum input) |
 | 4b. $w(\gamma) \in \mathrm{U}(1)$ | Stable loops + CSS + locality → complex phases | Theorem 5.2, [loop-phase paper](./causeplex_loop_phase.md) | ✅ Proved |
-| 4c. $\phi(\gamma) = S[\gamma]/\hbar$ | Layer C identification of U(1) phase with action | Proposition 6.2, loop-phase paper | ✅ Proved (Layer C) |
+| 4c. $\phi(\gamma) = S[\gamma]/\hbar$ | Observable Layer identification of U(1) phase with action | Proposition 6.2, loop-phase paper | ✅ Proved (Observable Layer) |
 | 4d. $\hbar = \Delta E_{\min}/\lvert\mathcal{C}_{\text{ref}}\rvert$ | Minimum action quantum from event-count time | §6.3, loop-phase paper | ✅ Non-circular identification |
 | 4e. Born rule | Gorard continuum limit + Gleason's theorem | Theorem 4.2, [quantum paper](./causeplex_quantum.md) | ⚠️ Conditional on Gorard (2020) preprint |
 | 4f. Schrödinger equation | Continuum limit of multiway path integral | Via Gorard (2020) | ⚠️ Conditional on Gorard (2020) preprint |
@@ -408,13 +408,13 @@ graph TD
     P2f["Lorentz invariance<br/>✅ derived"]:::proved
     P2g["Dimensionality n_s=3<br/>⚠️ observer-selection conjecture"]:::conditional
 
-    P3a["Energy E — Layer C<br/>✅ defined via Noether"]:::definition
+    P3a["Energy E — Observable Layer<br/>✅ defined via Noether"]:::definition
     P3b["Gravitational action S_BD<br/>✅ Benincasa-Dowker 2010"]:::proved
-    P3c["Matter action S[γ] — Layer C<br/>✅ definition"]:::definition
+    P3c["Matter action S[γ] — Observable Layer<br/>✅ definition"]:::definition
 
     Q0["Postulate Q': multiway C*<br/>Postulate"]:::postulate
     Q1["w(γ) ∈ U(1)<br/>✅ Theorem 5.2"]:::proved
-    Q2["φ(γ) = S/ℏ — Layer C<br/>✅ Identification 6.2"]:::definition
+    Q2["φ(γ) = S/ℏ — Observable Layer<br/>✅ Identification 6.2"]:::definition
     Q3["ℏ = ΔE_min/|C_ref|<br/>✅ non-circular"]:::proved
     Q4["Born rule<br/>⚠️ via Gorard 2020"]:::conditional
     Q5["Schrödinger equation<br/>⚠️ via Gorard 2020"]:::conditional
@@ -478,7 +478,7 @@ graph TD
 
 **Two derivation branches:**
 - *Left branch* (spacetime): cause-plex → P1/P2 → proper time → metric → Lorentz invariance → dimensionality
-- *Right branch* (quantum): multiway + stability/CSS/locality → U(1) amplitudes → Layer C identification with S/ℏ
+- *Right branch* (quantum): multiway + stability/CSS/locality → U(1) amplitudes → Observable Layer identification with S/ℏ
 
 **Meeting point:** The branches converge at Level 4 (quantum mechanics) and flow together through classical mechanics → thermodynamics → biology → society.
 

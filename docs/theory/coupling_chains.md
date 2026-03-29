@@ -32,7 +32,7 @@ A living collection of **coupling chain examples** for Epimechanics, organized b
 
 Each example traces how cause propagates through a real system as a chain of entity-to-entity conversions. The method is ordinary **dimensional analysis** — track units at every step, cancel what cancels, and what remains tells you what the chain computes. The extension: "units" here are *entities* (ATP, dollars, votes, norms) not just meters and seconds. The coupling at each step is **transducer-dependent** — the same entity pair can have different conversion ratios depending on what converts them.
 
-See [Part 1.5: Causors](./01_5_causors.md) for the formal treatment. These examples operate at the coarse-grained scale where energy is a well-defined conserved quantity (Layer C) — the right description for biological, economic, and social systems. The foundational primitive is the causal event; energy is its coarse-grained form where time-translation symmetry holds.
+See [Part 1.5: Causors](./01_5_causors.md) for the formal treatment. These examples operate at the coarse-grained scale where energy is a well-defined conserved quantity (Observable Layer) — the right description for biological, economic, and social systems. The foundational primitive is the causal event; energy is its coarse-grained form where time-translation symmetry holds.
 
 ---
 

@@ -48,7 +48,7 @@ coverImage:
 ---
 
 > [!sidenote]
-> **Layer note.** This document operates at the coarse-grained scale where time-translation symmetry holds and "energy" is a well-defined conserved quantity (Layer C in the [causor framework](./01_5_causors.md)). At this scale, "energy exchange" is the right description of bonds and coupling. The foundational primitive is the causal event; energy is its coarse-grained description where symmetry permits.
+> **Layer note.** This document operates at the coarse-grained scale where time-translation symmetry holds and "energy" is a well-defined conserved quantity (Observable Layer in the [causor framework](./01_5_causors.md)). At this scale, "energy exchange" is the right description of bonds and coupling. The foundational primitive is the causal event; energy is its coarse-grained description where symmetry permits.
 
 ## Where We Are
 

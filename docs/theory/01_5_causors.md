@@ -76,7 +76,7 @@ When a label appears as an example, it is a pointer to a structural configuratio
 
 ## The Foundational Problem: Energy Is Not Primitive
 
-> **Coming from Part 1?** Part 1 used energy, mass, and force as well-defined quantities — as they are, at the scales where the framework is applied. This document goes one level deeper and asks: *where do those quantities come from?* The answer doesn't undermine Part 1's framework; it grounds it. Energy is still the right quantity to use at Layer C. This document explains why, and what sits beneath it.
+> **Coming from Part 1?** Part 1 used energy, mass, and force as well-defined quantities — as they are, at the scales where the framework is applied. This document goes one level deeper and asks: *where do those quantities come from?* The answer doesn't undermine Part 1's framework; it grounds it. Energy is still the right quantity to use at Observable Layer. This document explains why, and what sits beneath it.
 
 Energy is not primitive. It falls out of **Noether's theorem**: if the cause-plex has time-translation symmetry in some region, there exists a conserved quantity — we call it energy. Energy has units (J = kg·m²/s²) that are themselves derived from reference causal events (atomic clock, reference mass, speed of light). In Wolfram's ruliad, energy, momentum, and charge all *emerge* from symmetries of the abstract hypergraph update structure. No physical quantity is assumed at the primitive level.
 
@@ -133,7 +133,7 @@ From the symmetries of the cause-plex:
 
 ---
 
-## The Three-Layer Architecture
+## The Four-Layer Architecture
 
 ```mermaid
 graph BT
@@ -143,7 +143,7 @@ graph BT
     classDef layerC fill:#27ae60,color:#fff,stroke:#1e8449
     classDef example fill:#ecf0f1,color:#2c3e50,stroke:#bdc3c7
 
-    subgraph LC["Layer C — Derived observables<br/>(valid where symmetries hold)"]
+    subgraph LC["Observable Layer — Derived observables<br/>(valid where symmetries hold)"]
         E["Energy E<br/>Noether conserved qty"]:::layerC
         M["Generalized mass M"]:::layerC
         RHO["Auto-causal density ρ_ac"]:::layerC
@@ -151,19 +151,19 @@ graph BT
         P["Causal power P"]:::layerC
     end
 
-    subgraph LB["Layer B — Structural descriptors<br/>(Q1–Q4 properties of bonds/loops)"]
+    subgraph LB["Descriptor Layer — Structural descriptors<br/>(Q1–Q4 properties of bonds/loops)"]
         Q1["Q1 Energy mode<br/>exchange vs. structural"]:::layerB
         Q2["Q2 Output target<br/>state vs. capacity"]:::layerB
         Q3["Q3 Topology<br/>chain/cycle/gate/enable"]:::layerB
         Q4["Q4 Leverage ratio Λ"]:::layerB
     end
 
-    subgraph LA["Layer A — Structural primitives<br/>(patterns in the cause-plex)"]
+    subgraph LA["Structure Layer — Structural primitives<br/>(patterns in the cause-plex)"]
         BOND["Bond operator b<br/>stable recurring event cluster"]:::layerA
         LOOP["Loop operator L<br/>closed recurring causal loop"]:::layerA
     end
 
-    subgraph L0["Layer 0 — Primitive<br/>(no physics assumed)"]
+    subgraph L0["Event Layer — Primitive<br/>(no physics assumed)"]
         CE["Causal event e: Sᵢ→Sⱼ<br/>state transition"]:::layer0
         CP["Cause-plex E,≺<br/>locally finite partial order"]:::layer0
     end
@@ -186,20 +186,20 @@ graph BT
     LOOP --> RHO
 ```
 
-*Read bottom-up: each layer is built from the one below. Layer C quantities (energy, mass) are only valid where the appropriate symmetries hold.*
+*Read bottom-up: each layer is built from the one below. Observable Layer quantities (energy, mass) are only valid where the appropriate symmetries hold.*
 
 | Layer | Content | What it is |
 |---|---|---|
-| **Layer 0** | Causal event $e: \mathcal{S}_i \to \mathcal{S}_j$ | The primitive — no physics assumed |
-| **Layer A** | Bond $b$, Loop $\mathcal{L}$ | Structural patterns in the cause-plex |
-| **Layer B** | Descriptors: mode, target, topology, leverage, timescale | Properties of Layer A structures |
-| **Layer C** | Derived quantities: $\mathcal{M}$, $\rho_{\text{ac}}$, $C_{\text{maint}}$, $\mathcal{P}$, energy | Observables computed from A+B in context |
+| **Event Layer** | Causal event $e: \mathcal{S}_i \to \mathcal{S}_j$ | The primitive — no physics assumed |
+| **Structure Layer** | Bond $b$, Loop $\mathcal{L}$ | Structural patterns in the cause-plex |
+| **Descriptor Layer** | Descriptors: mode, target, topology, leverage, timescale | Properties of Structure Layer structures |
+| **Observable Layer** | Derived quantities: $\mathcal{M}$, $\rho_{\text{ac}}$, $C_{\text{maint}}$, $\mathcal{P}$, energy | Observables computed from Structure + Descriptor layers in context |
 
-The key insight: **energy lives at Layer C, not Layer 0**. It is a derived quantity valid where time-translation symmetry holds — a coarse-grained description of patterns in the underlying causal event structure. At biological and institutional scales, time-translation symmetry holds well enough that "energy exchange" is the right description of bonds. At the Planck scale or in strongly non-equilibrium systems, it may not be.
+The key insight: **energy lives at Observable Layer, not Event Layer**. It is a derived quantity valid where time-translation symmetry holds — a coarse-grained description of patterns in the underlying causal event structure. At biological and institutional scales, time-translation symmetry holds well enough that "energy exchange" is the right description of bonds. At the Planck scale or in strongly non-equilibrium systems, it may not be.
 
 ---
 
-## Layer A: Structural Patterns in the Cause-Plex
+## Structure Layer: Structural Patterns in the Cause-Plex
 
 ### A1. The Bond Operator ($b$)
 
@@ -209,11 +209,11 @@ $$b: X_i \rightrightarrows X_j$$
 
 (double arrow: reliable, repeated, not one-off)
 
-At Layer C, where time-translation symmetry holds, bonds are described as energy exchanges. At Layer 0, a bond is a cluster of causal events with a stable statistical structure — the same transition pattern fires reliably across different instances. Bond strength $\sigma_b$ at Layer C is the energy (conserved quantity) associated with breaking this pattern; at Layer 0, it is the count of alternative causal event sequences required to dissolve the cluster.
+At Observable Layer, where time-translation symmetry holds, bonds are described as energy exchanges. At Event Layer, a bond is a cluster of causal events with a stable statistical structure — the same transition pattern fires reliably across different instances. Bond strength $\sigma_b$ at Observable Layer is the energy (conserved quantity) associated with breaking this pattern; at Event Layer, it is the count of alternative causal event sequences required to dissolve the cluster.
 
-A bond has four Layer B descriptors:
+A bond has four Descriptor Layer descriptors:
 - **Direction** $i \to j$: asymmetric in general
-- **Strength** $\sigma_b$: resistance to dissolution (energy at Layer C; event count at Layer 0)
+- **Strength** $\sigma_b$: resistance to dissolution (energy at Observable Layer; event count at Event Layer)
 - **Latency** $\tau_b$: time between input and output events
 - **Reliability** $r_b \in [0,1]$: probability the pattern fires when activated
 
@@ -227,7 +227,7 @@ Loops are the minimal structure for auto-causality: the first level at which $\r
 
 ---
 
-## Layer B: Structural Questions
+## Descriptor Layer: Structural Questions
 
 Every bond and loop composition necessarily forces five structural questions. These are continuous parameters, not binary categories.
 
@@ -253,12 +253,12 @@ What we commonly call "structural bonds" are potential-mode bonds. Kinetic-mode 
 | Another bond $b'$ | Gating | Small event cluster releases large event cluster |
 | A loop $\mathcal{L}$ | Enable | Transducer entity continues to exist |
 
-**Gating** is what "signal" describes at Layer C: a small bond cluster whose output triggers a much larger bond cluster from local reserves. Leverage ratio $\Lambda = \mathcal{P}_{\text{out}} / \mathcal{P}_{\text{in}} \gg 1$. At Layer 0: a small event cluster changes the state of another cluster's input, enabling events that wouldn't otherwise fire.
+**Gating** is what "signal" describes at Observable Layer: a small bond cluster whose output triggers a much larger bond cluster from local reserves. Leverage ratio $\Lambda = \mathcal{P}_{\text{out}} / \mathcal{P}_{\text{in}} \gg 1$. At Event Layer: a small event cluster changes the state of another cluster's input, enabling events that wouldn't otherwise fire.
 
-**Enable** is a bond whose output maintains a loop's existence — keeps the transducer entity alive so its exchange capacity persists. At Layer C this looks like food → organism metabolism. At Layer 0 it is: event clusters that sustain the conditions required for another cluster to keep firing.
+**Enable** is a bond whose output maintains a loop's existence — keeps the transducer entity alive so its exchange capacity persists. At Observable Layer this looks like food → organism metabolism. At Event Layer it is: event clusters that sustain the conditions required for another cluster to keep firing.
 
 > [!sidenote]
-> **"Information" is not primitive.** Information transfer is always implemented by a gating composition — a small event cluster directing a large one. Shannon entropy is a description of probability distributions over causal states. It is a Layer C observable: a summary of gating structure from an observer's perspective. Making it primitive creates circular definitions.
+> **"Information" is not primitive.** Information transfer is always implemented by a gating composition — a small event cluster directing a large one. Shannon entropy is a description of probability distributions over causal states. It is an Observable Layer observable: a summary of gating structure from an observer's perspective. Making it primitive creates circular definitions.
 
 ### Q3: Topology (open or closed?)
 
@@ -278,7 +278,7 @@ $$\Lambda = \frac{\text{output event cluster size}}{\text{input event cluster si
 
 Every bond has latency $\tau_b$. In a loop, the ratio of bond latencies determines whether components are regulators (fast, $\tau_b$ small relative to loop period) or structural features (slow, $\tau_b$ comparable to loop period).
 
-**Q5 is derived, not independent.** Timescale is the count of causal events per reference loop cycle — a ratio of cause-plex path counts. At Layer 0, there is no external time; there are only relative event counts. Q5 is the observer-relative projection of that count ratio onto a reference clock. The Q1-Q4 structure of the cause-plex determines which event clusters fire and how they depend on each other; Q5 describes how that structure is distributed relative to a reference oscillation.
+**Q5 is derived, not independent.** Timescale is the count of causal events per reference loop cycle — a ratio of cause-plex path counts. At Event Layer, there is no external time; there are only relative event counts. Q5 is the observer-relative projection of that count ratio onto a reference clock. The Q1-Q4 structure of the cause-plex determines which event clusters fire and how they depend on each other; Q5 describes how that structure is distributed relative to a reference oscillation.
 
 See [Cause-Plex and Spacetime](./causeplex_spacetime.md) for the full treatment.
 
@@ -325,9 +325,9 @@ The framework's interesting regime is where $\sigma_b / k_BT$ is low enough that
 
 ---
 
-## Layer C: Derived Quantities
+## Observable Layer: Derived Quantities
 
-In regions of the cause-plex where symmetry holds, Layer 0 causal events aggregate into familiar physical quantities:
+In regions of the cause-plex where symmetry holds, Event Layer causal events aggregate into familiar physical quantities:
 
 | Derived Quantity | Symmetry / Composition | Meaning |
 |---|---|---|
@@ -340,7 +340,7 @@ In regions of the cause-plex where symmetry holds, Layer 0 causal events aggrega
 | **Robustness** | $\Delta V / \langle\text{perturbation}\rangle$ | Basin depth relative to typical shocks |
 | **Causal action** $A_{\text{causal}}$ | $\int_0^T \mathcal{M}_{\text{ac}}(t)\,dt$ | Total self-sustaining structure over lifetime; units J·s |
 
-**Energy accessibility hierarchy.** At Layer C, the concept of "potential potential energy" formalizes as cause-plex chain depth: how many transducer entities (enable-role bonds) separate a stored energy source from the entity that could use it. The same matter has different accessible energy depending on whether the transducer chain connecting it to the entity exists. This is relational, not built into matter itself.
+**Energy accessibility hierarchy.** At Observable Layer, the concept of "potential potential energy" formalizes as cause-plex chain depth: how many transducer entities (enable-role bonds) separate a stored energy source from the entity that could use it. The same matter has different accessible energy depending on whether the transducer chain connecting it to the entity exists. This is relational, not built into matter itself.
 
 ---
 
@@ -395,7 +395,7 @@ Assembly theory (Cronin & Walker, 2023) counts the minimum bond-formation operat
 
 ### Wolfram's Ruliad
 
-The cause-plex is a specific subgraph of the ruliad — the one realized by the physical world. The ruliad derivation works from abstract update rules; the cause-plex derivation works from physical causal events. If causal invariance (P2) follows from the energy exchange primitive that emerges at Layer C, the cause-plex derivation is strictly more grounded than the ruliad approach. See [Cause-Plex and Spacetime](./causeplex_spacetime.md).
+The cause-plex is a specific subgraph of the ruliad — the one realized by the physical world. The ruliad derivation works from abstract update rules; the cause-plex derivation works from physical causal events. If causal invariance (P2) follows from the energy exchange primitive that emerges at Observable Layer, the cause-plex derivation is strictly more grounded than the ruliad approach. See [Cause-Plex and Spacetime](./causeplex_spacetime.md).
 
 ### Representational Efficiency
 

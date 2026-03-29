@@ -41,8 +41,8 @@ Status labels used throughout are exactly:
 Standard path-integral quantum mechanics uses $e^{iS/\hbar}$ as a postulate. This paper asks which amplitude group is forced by loop structure in a multiway causal substrate.
 
 We keep a strict distinction:
-- Layer 0 structural claim: $w(\gamma)\in\mathrm{U}(1)$
-- Layer C physical naming claim: $\phi(\gamma)=S[\gamma]/\hbar$
+- Event Layer structural claim: $w(\gamma)\in\mathrm{U}(1)$
+- Observable Layer physical naming claim: $\phi(\gamma)=S[\gamma]/\hbar$
 
 ---
 
@@ -305,8 +305,8 @@ The convergence of two independent routes strengthens the conclusion. $\square$
 
 ### 6.1 Layer separation
 
-Layer 0: $w\in\mathrm{U}(1)$.
-Layer C: identify phase with action ratio.
+Event Layer: $w\in\mathrm{U}(1)$.
+Observable Layer: identify phase with action ratio.
 
 ### 6.2 Additivity
 
@@ -315,14 +315,14 @@ $$\phi(\gamma_1\cdot\gamma_2)=\phi(\gamma_1)+\phi(\gamma_2)\pmod{2\pi}.$$
 
 ### 6.3 Action identification
 
-> ⚠️ **Circularity warning (see §6.5).** The definition below uses energy $\Delta E$, but energy is supposed to emerge from Noether's theorem applied to the cause-plex action. This section is a **Layer C bridge**, not a Layer 0 derivation. The action $S[\gamma]$ is defined here *only after* assuming time-translation symmetry holds and energy is already a well-defined conserved quantity. It does not derive energy from the cause-plex; it names the phase in terms of pre-existing energy concepts.
+> ⚠️ **Circularity warning (see §6.5).** The definition below uses energy $\Delta E$, but energy is supposed to emerge from Noether's theorem applied to the cause-plex action. This section is an **Observable Layer bridge**, not an Event Layer derivation. The action $S[\gamma]$ is defined here *only after* assuming time-translation symmetry holds and energy is already a well-defined conserved quantity. It does not derive energy from the cause-plex; it names the phase in terms of pre-existing energy concepts.
 
 $$S[\gamma] = \sum_{k=1}^n \Delta E(e_k) \cdot \tau_{e_k}, \qquad \phi(\gamma)=\frac{S[\gamma]}{\hbar}.$$
 
 ### 6.4 Identification statement
 
-**Identification 6.2 — ⚠️ Conditional (Layer C structure assumptions).**
-At Layer C (time-translation symmetry + Noether energy definitions in force),
+**Identification 6.2 — ⚠️ Conditional (Observable Layer structure assumptions).**
+At Observable Layer (time-translation symmetry + Noether energy definitions in force),
 $$\phi(\gamma) = \frac{S[\gamma]}{\hbar}, \quad \hbar = \Delta E_{\min}\cdot\tau_{\min} = \frac{\Delta E_{\min}}{|\mathcal{C}_{\text{ref}}|}.$$
 This is a naming/bridge step, not a standalone microscopic derivation of specific system Lagrangians.
 
@@ -334,11 +334,11 @@ The derivation of $G = \mathrm{U}(1)$ in Sections 3–5 is **independent of the 
 - Postulate R (Route A: minimal dimension)
 - Connectivity + tomography (Route B)
 
-None of these use energy or action. The $\mathrm{U}(1)$ result is Layer 0.
+None of these use energy or action. The $\mathrm{U}(1)$ result is Event Layer.
 
-Section 6.3 then asks: *given* that phases are $\mathrm{U}(1)$-valued, what physical quantity does the phase correspond to? The answer — action $S = \int L\,dt$ — requires Layer C machinery (Lagrangian, energy, time-translation symmetry). This is a **naming step**, not a derivation step. The circularity concern applies only if one claims to derive energy from the action while defining action in terms of energy. We do not make that claim here; we identify the phase with action after both are independently established at their respective layers.
+Section 6.3 then asks: *given* that phases are $\mathrm{U}(1)$-valued, what physical quantity does the phase correspond to? The answer — action $S = \int L\,dt$ — requires Observable Layer machinery (Lagrangian, energy, time-translation symmetry). This is a **naming step**, not a derivation step. The circularity concern applies only if one claims to derive energy from the action while defining action in terms of energy. We do not make that claim here; we identify the phase with action after both are independently established at their respective layers.
 
-**Open problem:** Define a Layer 0 action functional $S_0[\gamma]$ in terms of cause-plex structure alone (event counts, partial-order depth, information-theoretic quantities) without using energy. Show that $S_0$ reduces to the physical action $S$ in the continuum/thermodynamic limit where time-translation symmetry holds. This would close the derivational gap.
+**Open problem:** Define an Event Layer action functional $S_0[\gamma]$ in terms of cause-plex structure alone (event counts, partial-order depth, information-theoretic quantities) without using energy. Show that $S_0$ reduces to the physical action $S$ in the continuum/thermodynamic limit where time-translation symmetry holds. This would close the derivational gap.
 
 ---
 
@@ -384,7 +384,7 @@ Derive concrete Lagrangian sectors from cause-plex microstructure to turn struct
 | No nonabelian fixed point of $G \otimes G \cong G$ | ✅ **Proved** (Lemma 5.0.3 — dimension doubling) |
 | $G = \mathrm{U}(1)$ unique fixed point of self-description (Route C) | ✅ **Proved** given CC + compact Lie regularity + product state scope (Theorem 5.0.4) |
 | Three convergent routes to $G = \mathrm{U}(1)$ | ✅ **Routes A, B, C independent** |
-| $\phi=S/\hbar$ Layer C identification | ⚠️ **Conditional** (Layer C structure assumptions) |
+| $\phi=S/\hbar$ Observable Layer identification | ⚠️ **Conditional** (Observable Layer structure assumptions) |
 
 ### 8.2 Interpretation
 
@@ -405,7 +405,7 @@ The prior optimistic claim that all open problems were resolved is not retained.
 1. Unit-modulus loop amplitudes are proved.
 2. Full unconstrained loop-space connectedness is false (counterexample).
 3. Restricted CSS connectivity result supports the U(1) conclusion under explicit assumptions (A\_dens, A\_rich, CC, locality/tomography mapping).
-4. Layer C phase-action identification is retained as conditional structural correspondence.
+4. Observable Layer phase-action identification is retained as conditional structural correspondence.
 
 Accordingly, the strongest honest claim is **conditional structural derivation** of U(1), not unconditional completion.
 

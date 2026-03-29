@@ -70,11 +70,11 @@ A locally finite strict partial order $(E, \prec)$ of causal events — the fund
 
 ## Bond Operator ($b$)
 
-A Layer A structural element: a recurring pattern of causal events connecting two regions of the cause-plex. Bonds carry state information between entities and ground the concept of interaction at the primitive level. See [Part 1.5: Causors](./01_5_causors.md).
+A Structure Layer structural element: a recurring pattern of causal events connecting two regions of the cause-plex. Bonds carry state information between entities and ground the concept of interaction at the primitive level. See [Part 1.5: Causors](./01_5_causors.md).
 
 ## Loop Operator ($\mathcal{L}$)
 
-A Layer A structural element: a closed recurring pattern of causal events — a causal loop that returns to its initial state. Auto-causal density $\rho_{\mathrm{ac}} > 0$ requires at least one stable loop operator. See [Part 1.5: Causors](./01_5_causors.md).
+A Structure Layer structural element: a closed recurring pattern of causal events — a causal loop that returns to its initial state. Auto-causal density $\rho_{\mathrm{ac}} > 0$ requires at least one stable loop operator. See [Part 1.5: Causors](./01_5_causors.md).
 
 ## Cause-Plex Index (CI)
 

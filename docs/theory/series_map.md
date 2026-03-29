@@ -125,47 +125,47 @@ graph TD
     classDef layerB fill:#8e44ad,color:#fff,stroke:#6c3483
     classDef layerC fill:#16a085,color:#fff,stroke:#0e6655
 
-    subgraph L0["Layer 0 — Primitive"]
+    subgraph L0["Event Layer — Primitive"]
         P0["Causal event e: Sᵢ→Sⱼ"]:::primitive
         L["Locality L"]:::postulate
         CD["Causal Dependency CD"]:::postulate
     end
 
-    subgraph LA1["Layer 0/A — Cause-Plex"]
+    subgraph LA1["Event Layer/A — Cause-Plex"]
         CP["Cause-plex E,≺"]:::definition
         P1["P1: partial order ✅"]:::proved
         P2["P2: spacelike commutativity ✅"]:::proved
         TIME["Proper time τ = |γ|/|C_ref| ✅"]:::proved
     end
 
-    subgraph LA2["Layer A — Spacetime"]
+    subgraph LA2["Structure Layer — Spacetime"]
         MET["Lorentzian metric ✅<br/>Malament + event counting"]:::proved
         LOR["Lorentz invariance ✅"]:::proved
         DIM["Dimensionality n_s=3<br/>⚠️ observer-selection"]:::conditional
-        EN["Energy E ✅<br/>Noether, Layer C"]:::definition
+        EN["Energy E ✅<br/>Noether, Observable Layer"]:::definition
         HBAR["ℏ = ΔE_min/|C_ref| ✅"]:::proved
     end
 
-    subgraph LA3["Layer A — Quantum"]
+    subgraph LA3["Structure Layer — Quantum"]
         QP["Postulate Q': multiway C*"]:::postulate
         U1["w(γ) ∈ U(1) ✅<br/>Fixed-point theorem"]:::proved
-        PHI["φ(γ) = S/ℏ ✅<br/>Layer C identification"]:::definition
+        PHI["φ(γ) = S/ℏ ✅<br/>Observable Layer identification"]:::definition
         BORN["Born rule ⚠️<br/>via Gorard 2020"]:::conditional
         SCHRO["Schrödinger eq. ⚠️<br/>via Gorard 2020"]:::conditional
     end
 
-    subgraph LA4["Layer A — Classical Limit"]
+    subgraph LA4["Structure Layer — Classical Limit"]
         CM["Classical mechanics ✅<br/>stationary phase"]:::proved
         TD["Thermodynamics ✅<br/>ensemble statistics"]:::proved
     end
 
-    subgraph LB["Layer B — Entity Structure"]
+    subgraph LB["Descriptor Layer — Entity Structure"]
         BONDS["Stable bonds ✅<br/>σ_b/k_BT ≫ 1"]:::layerB
         LOOPS["Auto-causal loops ✅<br/>ρ_ac > 0"]:::layerB
         CHEM["Chemistry / Biology ✅"]:::layerB
     end
 
-    subgraph LC["Layer C — Complex Entities"]
+    subgraph LC["Observable Layer — Complex Entities"]
         CE["Complex entities ✅<br/>high CI"]:::layerC
         ME["Meta-entities / Society ✅"]:::layerC
         IC["Intelligence / Consciousness ✅"]:::layerC
@@ -226,11 +226,11 @@ graph TD
 | Conformal factor fixed | ⚠️ Number=volume conjecture | [Spacetime](./causeplex_spacetime.md) §4.2 |
 | Lorentz invariance | ✅ Proved | [Spacetime](./causeplex_spacetime.md) §4.4 |
 | Dimensionality n_s=3 | ⚠️ Observer-selection conjecture | [Spacetime](./causeplex_spacetime.md) §10 |
-| Energy from Noether (Layer C) | ✅ Defined at Layer C | [Spacetime](./causeplex_spacetime.md) §5 |
-| Gravitational action (Layer 0) | ✅ Benincasa-Dowker 2010 | [Spacetime](./causeplex_spacetime.md) §7.2 |
-| Matter action (Layer C) | ✅ Defined at Layer C | [Spacetime](./causeplex_spacetime.md) §7.2 |
+| Energy from Noether (Observable Layer) | ✅ Defined at Observable Layer | [Spacetime](./causeplex_spacetime.md) §5 |
+| Gravitational action (Event Layer) | ✅ Benincasa-Dowker 2010 | [Spacetime](./causeplex_spacetime.md) §7.2 |
+| Matter action (Observable Layer) | ✅ Defined at Observable Layer | [Spacetime](./causeplex_spacetime.md) §7.2 |
 | w(γ) ∈ U(1) | ✅ Proved — G⊗G≅G has unique non-trivial compact connected solution U(1) | [Amplitude Fixed-Point](./amplitude-phase-fixed-point-paper.md) Theorem 6.1 |
-| φ(γ) = S/ℏ (Layer C) | ✅ Proved (Proposition 6.2) | [Loop-Phase](./causeplex_loop_phase.md) §6 |
+| φ(γ) = S/ℏ (Observable Layer) | ✅ Proved (Proposition 6.2) | [Loop-Phase](./causeplex_loop_phase.md) §6 |
 | ℏ = ΔE_min/\|C_ref\| non-circular | ✅ Derived | [Loop-Phase](./causeplex_loop_phase.md) §6.3 |
 | Born rule | ⚠️ Conditional on Gorard 2020 | [Quantum](./causeplex_quantum.md) §4.2 |
 | Classical limit | ✅ Stationary phase | [Quantum](./causeplex_quantum.md) §4.3 |
@@ -274,11 +274,11 @@ For those tracking the framework's development — the following gaps identified
 |---|---|
 | P2 hidden assumption | Added Causal Dependency Axiom (CD) explicitly |
 | Imaginary phase underspecified | Three-argument approach: Sorkin grade-2 + loop-phase + Wick rotation |
-| Energy/action circularity | Layer separation: U(1) at Layer 0, S/ℏ identification at Layer C |
+| Energy/action circularity | Layer separation: U(1) at Event Layer, S/ℏ identification at Observable Layer |
 | ℏ circular (Planck time) | Redefined τ_min = 1/\|C_ref\| — event count ratio, no ℏ involved |
 | Conjecture 4.2 (loop connectivity) | Proved for CSS cause-plexes (Theorem 4.4); counterexample found for general case |
 | Critical-events rerouting (Step 3) | Proved via L1/L2/L3 sub-lemmas in step3_lemma.md |
-| Phase-action identification | Proved as Proposition 6.2 (definitional identification at Layer C) |
+| Phase-action identification | Proved as Proposition 6.2 (definitional identification at Observable Layer) |
 | Stable Observer Manifold called "Theorem" | Downgraded to "Conjecture" with honest status |
 | Missing Tangherlini reference | Added to spacetime paper references |
 | Halliwell & Yearsley wrong journal | Fixed: PRD 86 (2012) not PRA 87 (2013) |
