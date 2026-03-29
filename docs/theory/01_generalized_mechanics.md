@@ -110,26 +110,25 @@ This is why the framework works: when $X$ is chosen to track actual causal struc
 
 An *entity*, in Epimechanics, is anything with causal presence — anything that participates in causal relations. Auto-causal density $\rho_{\text{ac}}$ measures how strongly it sustains itself (formally defined in Section 1b immediately below).
 
-Here are a few concrete cases:
+Here are a few concrete cases. In each, $X$ is a distribution over possible states; the point estimate $\hat{X}$ (mean or mode) is what we typically track, but the full uncertainty structure is part of the representation:
 
-- **Physical position**: X is a vector in ℝ³. Standard physics.
-- **Emotional valence**: X is a scalar (or vector in circumplex affect space) measuring a person's emotional state. It has a value, it changes over time, and its dynamics can be modeled.
-- **Market price**: X is a scalar (or vector in multi-asset space) measuring the price level of one or many goods.
-- **Ideological position**: X is a point in a multi-dimensional belief space - economic left/right, social liberal/conservative, internationalist/nationalist. Political science models this routinely.
-- **Neural network state**: X is the full weight and activation vector - a high-dimensional point in parameter space.
+- **Physical position**: $X$ is a distribution over ℝ³. Standard physics often works with the point estimate, but quantum mechanics and measurement theory require the full distribution.
+- **Emotional valence**: $X$ is a distribution over affect space. A person's emotional state is not a single point — it has uncertainty both epistemically (we can't measure it precisely) and potentially ontically (it may be genuinely indefinite until expressed).
+- **Market price**: $X$ is a distribution over price space. The "current price" is a point estimate; the bid-ask spread, volatility, and order book depth are aspects of the distribution.
+- **Ideological position**: $X$ is a distribution over belief space. People hold probabilistic beliefs with varying confidence, not crisp positions.
+- **Neural network state**: $X$ is a distribution over parameter space. Bayesian neural networks make this explicit; standard networks are a point-estimate approximation.
 
-In every case, the structure is shared: a system has a state X, that state lives in some state space S, and the state changes over time. Physical position is X evaluated in three-dimensional Euclidean space - one specific, empirically rich instantiation. The examples above are others. What Epimechanics asks is: what structure remains when we abstract from the specific state space? The answer - state, derivative, mass, force, energy, coupling - is the content of Epimechanics.
+In every case, the structure is shared: a system has an actual state $\mathcal{X}$, we represent it with a distribution $X$ over possible states in state space $S$, and that distribution evolves over time. Physical position is $X$ evaluated in three-dimensional Euclidean space - one specific, empirically rich instantiation. The examples above are others. What Epimechanics asks is: what structure remains when we abstract from the specific state space? The answer - state, derivative, mass, force, energy, coupling - is the content of Epimechanics.
 
 ### Labeling is state assignment
 
 The choice of $X$ is a representational act - labeling something places it in a state space. Not all representations are equal: some track measurable properties, some are assigned by the observer, and some are invariant across reference frames. [Part 1b](./01b_uncertainty_coordinates_relativity.md) develops these distinctions and how representations transform between coordinate systems.
 
-**Form**: $X \in S$, where S is the state space of the system.
+**Form**: $X \in \mathcal{P}(S)$, where $\mathcal{P}(S)$ is the space of probability distributions over state space $S$. When uncertainty is negligible, $X$ collapses to a delta function and we recover the classical point-valued description.
 
 ![A curved manifold representing state space S, with a point X on its surface, a tangent plane T_X S, and a trajectory showing the entity's path through state space](./images/state_space_manifold.svg)
 
-> [!sidenote]
-> *Note on smoothness*: The calculus assumes $X(t)$ is differentiable. In practice, $X$ is a coarse-grained average; stochastic extensions ([Fokker-Planck](https://en.wikipedia.org/wiki/Fokker%E2%80%93Planck_equation), [Langevin](https://en.wikipedia.org/wiki/Langevin_equation)) handle noise.
+The dynamics of $X$ are governed by the Fokker-Planck equation when noise is significant, or by the classical mechanical equations when $X$ is well-approximated by its point estimate. [Part 1b](./01b_uncertainty_coordinates_relativity.md) develops the full stochastic treatment.
 
 ---
 

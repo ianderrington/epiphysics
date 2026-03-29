@@ -94,9 +94,13 @@ From these co-definitions, five commitments follow:
 
 ---
 
-## 1. X Is a Representation
+## 1. States and Representations
 
-$X$ is not the thing itself. It is a formal description of the thing's condition — the way a map describes territory. The territory exists independently; $X$ is our model of it.
+Every system has an **actual state** $\mathcal{X}$ — the full causal reality of its condition. This is the territory. It exists independently of any observer or model.
+
+A **representation** $X$ is a model of that state — the map. Critically, $X$ is not a single point but a **probability distribution** over possible states: $X = P(\mathcal{X})$. The distribution captures uncertainty, partial observability, and measurement limits. A point estimate $\hat{X}$ is a lossy compression; the full representation includes the uncertainty structure.
+
+Representations are themselves states. A representation $X$ must be instantiated somewhere — in neurons, silicon, ink. That instantiation has its own actual state. Every representation is a state, but not every state is a representation.
 
 [Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces. The desktop icon does not resemble the magnetic patterns on the disk. It doesn't need to — it needs to be *useful*: to let you predict what happens when you double-click. $X$ has the same status. It is an interface through which we interact with reality, not a photograph of it.
 

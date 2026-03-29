@@ -107,7 +107,7 @@ One serious position: emotional states are not fully determined until instantiat
 
 ### 1.4 Formal Treatment
 
-Epimechanics accommodates both the epistemic and ontic positions via the probability distribution over state space. Instead of $X(t) \in S$ (a definite state), write:
+As established in [Part 1](./01_generalized_mechanics.md), a representation $X$ is not a point but a probability distribution over possible actual states: $X = P(\mathcal{X})$. This accommodates both epistemic uncertainty (we don't know the actual state) and ontic indefiniteness (the actual state may be genuinely indeterminate until measured). Write:
 
 $$\rho(X, t) \in \mathcal{P}(S)$$
 
