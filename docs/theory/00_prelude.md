@@ -49,9 +49,9 @@ tts:
 >
 > **Epiphysics** is the empirical science of **Epimechanics** — a framework that asks: what is physics, really, _before_ we specify particles, forces, or dimensions?
 >
-> The answer: **causation**. Causal set theory (Bombelli, Sorkin, Malament, and others) has shown that spacetime geometry can be derived from causal structure alone — this is established physics, not our claim. **What epimechanics adds:** we extend this causal foundation *upward* through a coarse-graining ladder — from Planck-scale events through chemistry, biology, cognition, and institutions — using the same structural grammar at every level.
+> The answer: **causation**. Causal set theory (Bombelli, Sorkin, Malament, and others) has shown that spacetime geometry can be derived from causal structure alone — this is established physics, not our claim. **What epimechanics proposes:** the same causal grammar might extend to biology, cognition, and institutions. This is a hypothesis, not a result. The test is whether it generates measurable predictions.
 >
-> The physics foundation is inherited. The multi-scale extension is ours.
+> The physics foundation is inherited. The multi-scale extension is a research program awaiting empirical validation.
 
 ## What This Document Does
 

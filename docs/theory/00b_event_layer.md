@@ -234,8 +234,8 @@ The key insight: **quantities like energy and mass live at the Observable Layer,
 
 The cause-plex $(E, \prec)$ is identical to a causal set as defined by [Bombelli et al. 1987](https://doi.org/10.1103/PhysRevLett.59.521). The spacetime derivation (Malament's theorem, number=volume) is theirs. What epimechanics contributes is the *extension* — not the foundation:
 
-| Inherited from CST | Our contribution |
-|-------------------|------------------|
+| Inherited from CST (established) | Our proposal (untested) |
+|----------------------------------|------------------------|
 | Causal partial order as primitive | — |
 | Spacetime from causal structure | — |
 | Malament's theorem | — |
@@ -245,9 +245,8 @@ The cause-plex $(E, \prec)$ is identical to a causal set as defined by [Bombelli
 | **—** | Q1-Q5 entity type descriptors |
 | **—** | Generalized mass, auto-causal density |
 | **—** | Observer-selection argument for 3+1D |
-| **—** | Loop-phase derivation of complex amplitudes |
 
-The continuum approximation and measure problems remain active research areas in CST. We inherit those open problems.
+The right column is a **research program**, not established results. The test: do these concepts generate measurable predictions? That's what the [applications](../applications/index.md) documents aim to develop.
 
 ### Wolfram's Ruliad
 
@@ -305,14 +304,13 @@ The Event Layer is the foundation of epimechanics:
    - Energy from symmetry — **standard physics** (Noether's theorem)
    - Lorentz invariance — **CST result** (causal structure → symmetry group)
 
-5. **What epimechanics adds:**
+5. **What epimechanics proposes (untested):**
    - The coarse-graining ladder from Planck scale to institutions
    - Q1-Q5 entity descriptors and the causor taxonomy
    - Generalized mass and auto-causal density as domain-general quantities
-   - Observer-selection argument for dimensionality
    - Application to biology, cognition, economics
 
-**Be clear:** The physics foundation is inherited. Our contribution is the extension upward through the coarse-graining ladder.
+**Be clear:** The physics foundation is inherited. The multi-scale extension is a hypothesis. The test is empirical: do these concepts predict anything measurable? See [applications](../applications/index.md) for attempts to answer this.
 
 ---
 
