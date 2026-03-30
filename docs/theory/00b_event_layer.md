@@ -40,7 +40,7 @@ coverImage:
     deep space background, no labels, pure structural beauty
 ---
 
-> **In plain English:** Before energy, before spacetime, before particles — there is causation. One thing leads to another. That's it. From just this primitive — "this state follows from that state" — the entire structure of physics emerges. Spacetime is the geometry of causal relationships. Energy is a conserved quantity that appears when causation has a certain symmetry. Quantum mechanics is what happens when multiple causal paths coexist. This document lays out the foundation: the causal event, the cause-plex, and the three properties that generate everything else.
+> **In plain English:** Before energy, before spacetime, before particles — there is causation. One thing leads to another. That's it. Causal set theory (not us) showed that spacetime geometry can be derived from causal structure — this is established physics. Noether's theorem (standard physics) shows energy emerges from symmetry. Quantum mechanics from multiway structure is a research program, not a completed derivation. This document summarizes the causal foundation and points to where the established results come from.
 
 ---
 
@@ -83,13 +83,13 @@ where:
 - $E$ is the set of all causal events
 - $\prec$ is the "precedes" relation (strict partial order)
 
-The cause-plex carries no physics by assumption. Physics emerges from its structure.
+The cause-plex carries no physics by assumption.
 
 ---
 
 ## Three Properties
 
-The cause-plex has three structural properties. From these, the physics we observe emerges:
+The cause-plex has three structural properties. Causal set theory has shown that spacetime geometry follows from these (Malament's theorem). Energy from symmetry is standard physics (Noether). QM from multiway is a research program.
 
 ### P1: Causal Partial Ordering
 

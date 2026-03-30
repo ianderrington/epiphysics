@@ -376,7 +376,26 @@ The periodic table of chemistry gives you elements. The causor framework gives y
 
 ---
 
-## 10. Open Questions
+## 10. How to Use This (If You Want to Test It)
+
+The Q1-Q5 framework is untested. Here's how you could apply it:
+
+1. **Pick a system** you understand well (a metabolic pathway, a market mechanism, an organizational process)
+2. **Identify the bonds** — what are the recurring causal connections? What changes what?
+3. **Characterize each bond by Q1-Q5:**
+   - Q1: Does it store energy or dissipate it?
+   - Q2: Does it connect to state directly, gate another bond, or enable a loop?
+   - Q3: Is it part of a closed loop or an open chain?
+   - Q4: What's the leverage ratio (output/input)?
+   - Q5: Fast or slow relative to the system's characteristic timescale?
+4. **Check predictions:** Does the entity-type table (§4) correctly predict what kind of system you're looking at?
+5. **Report failures:** Where does the framework get it wrong? That's the valuable data.
+
+**The test:** Does Q1-Q5 classification tell you something you didn't already know? If not, it's relabeling. If yes, what?
+
+---
+
+## 11. Open Questions
 
 **Q1: Are Q1–Q5 complete?** Can every distinction between causal structures be captured by position in the Q1–Q5 parameter space? Candidate additional dimensions: spatial locality, stochasticity (related to bond reliability $r_b$), thermodynamic reversibility.
 
