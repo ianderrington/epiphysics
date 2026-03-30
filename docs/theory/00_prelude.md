@@ -93,7 +93,7 @@ From these co-definitions, five commitments follow:
 1. **Representation, not reality** — $X$ is a model of state, not state itself
 2. **Causation as primitive** — the intervention test grounds all other concepts
 3. **Entity as causal presence** — anything representable is an entity
-4. **Grammar vs vocabulary** — Epimechanics provides structure (state, force, energy); domain sciences provide content
+4. **Grammar vs vocabulary** — Epimechanics provides structural relationships (the form of state evolution, what force and energy mean structurally, how coupling tensors connect entities); domain sciences provide the specific variables, units, and operationalizations
 5. **Efficiency principle** — all representations have mechanical structure; good ones have *simple* mechanical structure
 
 ---

@@ -62,9 +62,9 @@ graph LR
     e2 --> e3["e₃: vapor + O₂ → CO₂ + heat"]
     e3 --> e1
     
-    e4["e₄: air turbulence"]
+    e4["e₄: air turbulence (causally disconnected)"]
     
-    style e4 stroke-dasharray: 5 5
+    style e4 stroke:#aaa,fill:#f5f5f5,color:#666
 ```
 
 Events $e_1, e_2, e_3$ form a closed causal loop — each event's output enables the next. Event $e_4$ (air turbulence elsewhere in the room) has no causal path to or from the flame's core loop — it is **causally disconnected** (P2 applies: their order doesn't matter to the outcome).
@@ -120,7 +120,7 @@ Every causal event has a latency $\tau_e \geq \tau_{\min} > 0$:
 
 $$\forall e \in E: \tau_e \geq \tau_{\min} > 0$$
 
-This defines a maximum propagation rate. The mechanism: if causal influence requires at least $\tau_{\min}$ per event, and spatial distance emerges from the causal structure (see Spacetime below), then the maximum rate at which causal influence can propagate through space is $c = \ell_{\min}/\tau_{\min}$, where $\ell_{\min}$ is the minimum spatial interval corresponding to one causal event. In the continuum limit where the discrete structure becomes smooth spacetime, this ratio becomes the speed of light.
+This defines a maximum propagation rate. The mechanism: if every causal event takes at least $\tau_{\min}$, then any causal influence must traverse at least one event per $\tau_{\min}$. When spacetime is derived from this causal structure (see Spacetime below), distance is measured in units of causal events — the minimum spatial interval $\ell_{\min}$ is the interval associated with one event step. The maximum propagation rate is then $c = \ell_{\min}/\tau_{\min}$. In the continuum limit where the discrete cause-plex structure becomes smooth spacetime, this ratio becomes the speed of light. Note that $\ell_{\min}$ is not assumed here — it is defined by the same causal structure that defines distance.
 
 ---
 
@@ -259,15 +259,15 @@ This document establishes the Event Layer — the foundation. It does not cover:
 
 The Event Layer framework inherits open problems from causal set theory and raises new ones:
 
-**P1: Does P2 follow from P1?** Causal invariance (P2) is physically motivated but not yet derived from the causal partial order (P1) alone. If P2 requires independent postulation, the "three properties" may not be minimal.
+**OP1: Does P2 follow from P1?** Causal invariance (P2) is physically motivated but not yet derived from the causal partial order (P1) alone. If P2 requires independent postulation, the "three properties" may not be minimal.
 
-**P2: The continuum limit.** Taking a discrete cause-plex to continuous spacetime requires a measure, topology, and assumptions about event distribution. The derivation of Lorentz invariance in this limit is technically non-trivial and an active research area in causal set theory.
+**OP2: The continuum limit.** Taking a discrete cause-plex to continuous spacetime requires a measure, topology, and assumptions about event distribution. The derivation of Lorentz invariance in this limit is technically non-trivial and an active research area in causal set theory.
 
-**P3: Quantum mechanics from multiway structure.** The claim that complex amplitudes, the Born rule, and the Schrödinger equation emerge from multiway graph structure is a research program, not a completed derivation. The specific mechanism mapping path interference to probability amplitudes requires further development.
+**OP3: Quantum mechanics from multiway structure.** The claim that complex amplitudes, the Born rule, and the Schrödinger equation emerge from multiway graph structure is a research program, not a completed derivation. The specific mechanism mapping path interference to probability amplitudes requires further development.
 
-**P4: Selection of the physical cause-plex.** What determines which events are "real" causal events? Without a selection criterion, "the cause-plex realized by the physical world" is circular. This is the analogue of Wolfram's ruliad selection problem.
+**OP4: Selection of the physical cause-plex.** What determines which events are "real" causal events? Without a selection criterion, "the cause-plex realized by the physical world" is circular. This is the analogue of Wolfram's ruliad selection problem.
 
-**P5: Noether in the discrete.** Applying Noether's theorem (which requires continuous symmetry and a differentiable action) to a discrete cause-plex requires technical work on the continuum limit that is not completed here.
+**OP5: Noether in the discrete.** Applying Noether's theorem (which requires continuous symmetry and a differentiable action) to a discrete cause-plex requires technical work on the continuum limit that is not completed here.
 
 These are honest acknowledgments of work remaining, not weaknesses to hide. The framework's value is in providing a unified conceptual architecture; the technical derivations are an ongoing research program.
 

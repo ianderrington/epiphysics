@@ -312,8 +312,8 @@ At the top, entities are unconditionally stable — no maintenance needed. At th
 
 At the Observable Layer, structural primitives aggregate into familiar quantities:
 
-| Quantity | Definition | Meaning |
-|----------|------------|---------|
+| Quantity | Proposed definition† | Meaning |
+|----------|---------------------|---------|
 | **Generalized mass** $\mathcal{M}$ | $\sum_{\text{bonds}} \sigma_b$ | Total causal content |
 | **Auto-causal density** $\rho_{\text{ac}}$ | Loop closure fraction | Self-sustaining fraction |
 | **Maintenance cost** $C_{\text{maint}}$ | $\dot{S}_{\text{int}} - \dot{R}_{\text{repair}}$ | Net entropy rate |
@@ -322,7 +322,7 @@ At the Observable Layer, structural primitives aggregate into familiar quantitie
 
 These are the Observable Layer quantities that [Part 1](./01_generalized_mechanics.md) defines. This document grounds them: $\mathcal{M}$ is proposed as the sum of bond strengths; $\rho_{\text{ac}}$ emerges from loop topology.
 
-> **Definitional note:** These aggregation rules ($\mathcal{M} = \sum \sigma_b$, etc.) are proposed correspondences, not derived results. The formal connection between bond-level structure and mechanical quantities requires domain-specific operationalization — what counts as a "bond" and how $\sigma_b$ is measured will differ between chemistry, biology, and economics. The framework provides the grammar; the vocabulary is domain-specific.
+> †**Definitional note:** These aggregation rules ($\mathcal{M} = \sum \sigma_b$, etc.) are proposed correspondences, not derived results. The formal connection between bond-level structure and mechanical quantities requires domain-specific operationalization — what counts as a "bond" and how $\sigma_b$ is measured will differ between chemistry, biology, and economics. The framework provides the grammar; the vocabulary is domain-specific.
 
 > **Dimensional analysis:** In the mechanical grammar, $p = \mathcal{M}\dot{X}$, so $[\mathcal{M}] = [p]/[\dot{X}]$. For physical systems where $X$ has dimensions of length, this gives $[\mathcal{M}] = \text{mass}$. For abstract state spaces (beliefs, market positions), $X$ is dimensionless or has domain-specific units, and $\mathcal{M}$ inherits corresponding dimensions. The key constraint: $\sigma_b$ must have the same dimensions as $\mathcal{M}$ for the sum to be meaningful. In chemistry, $\sigma_b$ is bond dissociation energy (Joules); $\mathcal{M}$ then has dimensions of energy, and the Lagrangian $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V$ requires $\dot{X}$ to be dimensionless (a rate of change in a normalized state space). This is the standard physics case with a change of variables.
 
