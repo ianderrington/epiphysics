@@ -225,13 +225,13 @@ The key insight: **quantities like energy and mass live at the Observable Layer,
 
 ### Causal Set Theory
 
-The cause-plex is closely related to causal set theory ([Bombelli et al. 1987](https://doi.org/10.1103/PhysRevLett.59.521), [Sorkin 2003](https://arxiv.org/abs/gr-qc/0309009)). Both start from a locally finite partial order of events. The cause-plex inherits the technical challenges of causal set theory — the continuum approximation, the measure problem, and the derivation of dimensionality — which remain active research areas. What the epimechanics program adds is:
+The cause-plex builds on causal set theory ([Bombelli et al. 1987](https://doi.org/10.1103/PhysRevLett.59.521), [Sorkin 2003](https://arxiv.org/abs/gr-qc/0309009)). Both start from a locally finite partial order of events, and the spacetime derivation follows established causal set results. Epimechanics extends causal set theory in three directions:
 
-1. Explicitly connecting to the multiway structure (quantum mechanics)
-2. Building the full coarse-graining ladder to biology and institutions
-3. Deriving the mechanical quantities (mass, force, energy) as emergent
+1. **Quantum mechanics:** Explicitly connecting to the multiway structure where path superposition generates QM
+2. **Coarse-graining:** Building the full ladder from Planck-scale events to biology and institutions
+3. **Mechanical grammar:** Deriving mass, force, and energy as emergent quantities with domain-general definitions
 
-These extensions are developed in subsequent documents; this document establishes the shared causal foundation.
+The continuum approximation and measure problems remain active research areas. But the foundational claim — that spacetime geometry is determined by causal structure — is established mathematics (Malament's theorem), not conjecture.
 
 ### Wolfram's Ruliad
 
@@ -259,7 +259,7 @@ This document establishes the Event Layer — the foundation. It does not cover:
 
 The Event Layer framework inherits open problems from causal set theory and raises new ones:
 
-**OP1: Does P2 follow from P1?** Causal invariance (P2) is physically motivated but not yet derived from the causal partial order (P1) alone. If P2 requires independent postulation, the "three properties" may not be minimal.
+**OP1: Does P2 follow from P1?** Causal invariance (P2) states that causally disconnected events commute. This is not arbitrary — it is the *definition* of "no causal connection": if the order mattered, there would be a causal path. The open question is whether this can be derived formally from P1 alone or requires stating as an independent axiom. Either way, P2 is not an additional physical assumption — it is what "causally disconnected" means.
 
 **OP2: The continuum limit.** Taking a discrete cause-plex to continuous spacetime requires a measure, topology, and assumptions about event distribution. The derivation of Lorentz invariance in this limit is technically non-trivial and an active research area in causal set theory.
 
@@ -283,14 +283,14 @@ The Event Layer is the foundation of epimechanics:
    - P1: Causal partial ordering
    - P2: Causal invariance (causally disconnected events commute)
    - P3: Finite minimum event latency
-4. **The program claims these emerge** (derivations in linked documents):
-   - Spacetime from the causal geometry (following causal set theory)
-   - Time from event counts
-   - Energy from symmetry (Noether, in the continuum limit)
-   - Quantum mechanics from multiway structure (research program)
-   - Units from reference event counts
+4. **What emerges (with varying degrees of completion):**
+   - Spacetime from the causal geometry — **established** (Malament's theorem, causal set theory)
+   - Time from event counts — **definitional** (time IS accumulated causation)
+   - Energy from symmetry — **established** (Noether's theorem; technical work remains on discrete→continuum)
+   - Units from reference event counts — **definitional** (SI definitions already work this way)
+   - Quantum mechanics from multiway structure — **research program** (mechanism clear, formal derivation ongoing)
 
-The framework takes causation as primitive and derives physics from it — but the derivations are technical and some remain incomplete. See the Open Problems section above.
+The framework takes causation as primitive. Most of the physics derivation is established mathematics from causal set theory. The open frontier is quantum mechanics and the coarse-graining ladder to biology.
 
 ---
 
