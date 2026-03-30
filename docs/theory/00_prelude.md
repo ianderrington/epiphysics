@@ -110,7 +110,7 @@ Representations are themselves states. A representation $X$ must be instantiated
 
 [Hoffman's Interface Theory of Perception (*The Case Against Reality*, 2019)](https://wwnorton.com/books/9780393254693) makes the sharpest version of this point: our perceptions are not accurate depictions of reality but fitness-tuned interfaces. The desktop icon does not resemble the magnetic patterns on the disk. It doesn't need to — it needs to be *useful*: to let you predict what happens when you double-click. $X$ has the same status. It is an interface through which we interact with reality, not a photograph of it.
 
-Hoffman's result raises a puzzle: if fitness beats truth in evolutionary competition, why do truth-tracking practices (science, engineering, accurate maps) exist at all? The resolution lies in *temporal extent*. Fitness-only strategies can achieve high short-term performance but are temporally bounded — they eventually collide with causal reality. Fitness×truth strategies couple effectiveness to actual causal structure, extending their duration. Over long timescales, selection favors high *causal action* (energy × time) — which means selection favors fitness×truth over fitness alone. Science persists not because truth beats fitness, but because truth *extends* fitness. See [Part 1.5](./01_5_causors.md) and [Part 4](./04_time_and_soul.md) for the formal treatment.
+Hoffman's result raises a puzzle: if fitness beats truth in evolutionary competition, why do truth-tracking practices (science, engineering, accurate maps) exist at all? One hypothesis (not established): fitness-only strategies may achieve high short-term performance but are temporally bounded — they eventually collide with causal reality. Fitness×truth strategies may couple effectiveness to actual causal structure, extending their duration. If selection favors high *causal action* (energy × time) over long timescales, it would favor fitness×truth over fitness alone. This is a conjecture about evolutionary dynamics, not a proven result. See [Part 1.5](./01_5_causors.md) and [Part 4](./04_time_and_soul.md) for the proposed formal treatment.
 
 The interface view entails three properties:
 - **$X$ can be wrong.** A representation may be inaccurate, incomplete, or misleading. "Calling a tree a car" assigns the tree a representation in a state space (vehicles) where the dynamics don't apply. The tree's measurable properties are unaffected. The mislabel is a coordinate error — it assigns the wrong $X$ to the wrong $S$.
@@ -218,7 +218,7 @@ Epimechanics provides the equations. Epiphysics provides the measurements. The e
 
 ---
 
-## 6. The Representational Efficiency Principle
+## 6. The Representational Efficiency Conjecture
 
 A foundational observation: **all representations have epimechanical structure.** The observation follows from calculus. For any time-varying representation $X(t)$, you can compute $\dot{X}$, $\ddot{X}$, define $p = \mathcal{M}\dot{X}$, and write $F = dp/dt$. The mechanical formalism applies to every representation, including arbitrary or useless ones.
 
@@ -252,7 +252,7 @@ These are the same result stated in different mathematical languages. The optima
 
 The [renormalization group (Wilson, 1971)](https://doi.org/10.1103/PhysRevB.4.3174), [causal emergence (Hoel et al., 2013)](https://doi.org/10.1073/pnas.1314922110), and the [free energy principle (Friston, 2010)](https://doi.org/10.1038/nrn2787) all demonstrate versions of this connection empirically. What remains is a unified proof connecting rate-distortion optimality to Lagrangian symmetry — the formal statement that makes "simpler mechanical form" precise.
 
-The Representational Efficiency Principle reframes what Epimechanics claims. Epimechanics does not claim that reality "has" mechanical structure. It observes that all representations have epimechanical structure (a mathematical triviality), and proposes — with the support of information-theoretic results but without a complete proof — that representations which track real causal structure have *simple* epimechanical structure. Whether reality is "mechanical" or merely "looks mechanical through well-chosen representations" is a question Epimechanics does not need to answer. The empirical test — epiphysics — is whether the predictions hold.
+The Representational Efficiency Conjecture reframes what Epimechanics claims. Epimechanics does not claim that reality "has" mechanical structure. It observes that all representations have epimechanical structure (a mathematical triviality), and proposes — with the support of information-theoretic results but without a complete proof — that representations which track real causal structure have *simple* epimechanical structure. Whether reality is "mechanical" or merely "looks mechanical through well-chosen representations" is a question Epimechanics does not need to answer. The empirical test — epiphysics — is whether the predictions hold.
 
 [Part 5](./05_ontology_and_open_questions.md) develops the formal statement and open questions of this principle.
 

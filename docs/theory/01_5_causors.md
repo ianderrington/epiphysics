@@ -175,7 +175,7 @@ Bond strength $\sigma_b$ has two equivalent descriptions:
 - **Observable Layer:** The energy required to break the bond
 - **Event Layer:** The count of alternative causal sequences required to dissolve the pattern
 
-**Why these are equivalent:** Energy, at the Event Layer, *is* the count of causal events (see [Part 0b](./00b_event_layer.md): time is event count × τ_min, and energy is the Noether charge conjugate to time-translation). Breaking a bond means redirecting causal flow — forcing the system through alternative sequences rather than the established pattern. The energy required to break the bond equals the "causal work" of establishing those alternative paths. This is not a metaphor; it is the same quantity measured two ways.
+**Why these might be equivalent (hypothesis):** If energy at the Event Layer is fundamentally the count of causal events (as proposed in [Part 0b](./00b_event_layer.md)), then breaking a bond means redirecting causal flow — forcing the system through alternative sequences rather than the established pattern. The energy required to break the bond would equal the "causal work" of establishing those alternative paths. This equivalence is the framework's proposal, not established physics. Testing it requires measuring both quantities independently and checking agreement.
 
 ### 2.2 The Loop Operator
 
