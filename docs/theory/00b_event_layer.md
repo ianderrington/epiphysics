@@ -130,11 +130,16 @@ Given P1–P3, the structure of physics emerges:
 
 ### Spacetime
 
-The Lorentzian metric — the geometry of special relativity — emerges from the cause-plex structure. Spacetime is not a container that events happen *in*; spacetime *is* the geometry of causal relationships.
+> **What's established vs what's ours:** The derivation of spacetime geometry from causal structure is **not our contribution** — it is established physics from causal set theory (Bombelli, Lee, Meyer, Sorkin 1987) and Malament's theorem (1977). Epimechanics *builds on* this foundation; it does not claim to have discovered it.
 
-The derivation follows causal set theory ([Bombelli, Lee, Meyer, Sorkin 1987](https://doi.org/10.1103/PhysRevLett.59.521)) and [Malament's theorem (1977)](https://doi.org/10.1063/1.523436): the causal structure determines the metric up to a conformal factor.
+The Lorentzian metric — the geometry of special relativity — emerges from causal structure. Spacetime is not a container that events happen *in*; spacetime *is* the geometry of causal relationships. This is a proven result:
 
-See [Cause-Plex and Spacetime](./causeplex_spacetime.md) for the full derivation.
+- **[Malament's theorem (1977)](https://doi.org/10.1063/1.523436):** The causal ordering uniquely determines the spacetime metric up to a conformal factor. This is established mathematics.
+- **[Causal set theory (Bombelli et al. 1987)](https://doi.org/10.1103/PhysRevLett.59.521):** The "number = volume" conjecture fixes the conformal factor via event counting. Well-supported but not proven.
+
+**What epimechanics adds:** We extend this foundation upward — from Planck-scale causal events through the coarse-graining ladder to biology, cognition, and institutions. The spacetime derivation is the floor we stand on, not our ceiling.
+
+See [Cause-Plex and Spacetime](./causeplex_spacetime.md) for the full technical treatment.
 
 ### Time
 
@@ -225,13 +230,24 @@ The key insight: **quantities like energy and mass live at the Observable Layer,
 
 ### Causal Set Theory
 
-The cause-plex builds on causal set theory ([Bombelli et al. 1987](https://doi.org/10.1103/PhysRevLett.59.521), [Sorkin 2003](https://arxiv.org/abs/gr-qc/0309009)). Both start from a locally finite partial order of events, and the spacetime derivation follows established causal set results. Epimechanics extends causal set theory in three directions:
+> **Credit where due:** The cause-plex IS causal set theory at the physics level. We do not claim to have discovered the causal approach to spacetime — that is the work of Bombelli, Sorkin, Malament, and others over 40+ years.
 
-1. **Quantum mechanics:** Explicitly connecting to the multiway structure where path superposition generates QM
-2. **Coarse-graining:** Building the full ladder from Planck-scale events to biology and institutions
-3. **Mechanical grammar:** Deriving mass, force, and energy as emergent quantities with domain-general definitions
+The cause-plex $(E, \prec)$ is identical to a causal set as defined by [Bombelli et al. 1987](https://doi.org/10.1103/PhysRevLett.59.521). The spacetime derivation (Malament's theorem, number=volume) is theirs. What epimechanics contributes is the *extension* — not the foundation:
 
-The continuum approximation and measure problems remain active research areas. But the foundational claim — that spacetime geometry is determined by causal structure — is established mathematics (Malament's theorem), not conjecture.
+| Inherited from CST | Our contribution |
+|-------------------|------------------|
+| Causal partial order as primitive | — |
+| Spacetime from causal structure | — |
+| Malament's theorem | — |
+| Number = volume conjecture | — |
+| Lorentz invariance derivation | — |
+| **—** | Coarse-graining ladder to biology/society |
+| **—** | Q1-Q5 entity type descriptors |
+| **—** | Generalized mass, auto-causal density |
+| **—** | Observer-selection argument for 3+1D |
+| **—** | Loop-phase derivation of complex amplitudes |
+
+The continuum approximation and measure problems remain active research areas in CST. We inherit those open problems.
 
 ### Wolfram's Ruliad
 
@@ -283,14 +299,20 @@ The Event Layer is the foundation of epimechanics:
    - P1: Causal partial ordering
    - P2: Causal invariance (causally disconnected events commute)
    - P3: Finite minimum event latency
-4. **What emerges (with varying degrees of completion):**
-   - Spacetime from the causal geometry — **established** (Malament's theorem, causal set theory)
-   - Time from event counts — **definitional** (time IS accumulated causation)
-   - Energy from symmetry — **established** (Noether's theorem; technical work remains on discrete→continuum)
-   - Units from reference event counts — **definitional** (SI definitions already work this way)
-   - Quantum mechanics from multiway structure — **research program** (mechanism clear, formal derivation ongoing)
+4. **What emerges (credit: causal set theory, not us):**
+   - Spacetime from causal geometry — **CST result** (Malament 1977, Bombelli et al. 1987)
+   - Time from event counts — **CST framing** (proper time as chain length)
+   - Energy from symmetry — **standard physics** (Noether's theorem)
+   - Lorentz invariance — **CST result** (causal structure → symmetry group)
 
-The framework takes causation as primitive. Most of the physics derivation is established mathematics from causal set theory. The open frontier is quantum mechanics and the coarse-graining ladder to biology.
+5. **What epimechanics adds:**
+   - The coarse-graining ladder from Planck scale to institutions
+   - Q1-Q5 entity descriptors and the causor taxonomy
+   - Generalized mass and auto-causal density as domain-general quantities
+   - Observer-selection argument for dimensionality
+   - Application to biology, cognition, economics
+
+**Be clear:** The physics foundation is inherited. Our contribution is the extension upward through the coarse-graining ladder.
 
 ---
 
