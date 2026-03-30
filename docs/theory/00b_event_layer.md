@@ -120,7 +120,7 @@ Every causal event has a latency $\tau_e \geq \tau_{\min} > 0$:
 
 $$\forall e \in E: \tau_e \geq \tau_{\min} > 0$$
 
-This defines a maximum propagation rate. In the continuum limit, this becomes the speed of light $c$.
+This defines a maximum propagation rate. The mechanism: if causal influence requires at least $\tau_{\min}$ per event, and spatial distance emerges from the causal structure (see Spacetime below), then the maximum rate at which causal influence can propagate through space is $c = \ell_{\min}/\tau_{\min}$, where $\ell_{\min}$ is the minimum spatial interval corresponding to one causal event. In the continuum limit where the discrete structure becomes smooth spacetime, this ratio becomes the speed of light.
 
 ---
 

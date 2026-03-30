@@ -224,6 +224,8 @@ A foundational observation: **all representations have epimechanical structure.*
 
 What distinguishes a *well-chosen* representation from a poorly chosen one is not whether it has epimechanical structure (they all have EMech structure) but whether that structure is **predictive at minimal computational cost.** A well-chosen $X$ — one that tracks the system's actual causal structure — yields a Lagrangian with visible symmetries, a coupling tensor that is sparse, and equations of motion that compress the dynamics into few variables. A poorly chosen $X$ yields equations that require tracking everything to predict anything.
 
+> **Concrete example:** Consider modeling a living cell. A *poorly-chosen* $X$ tracks the 3D position and momentum of every atom (~10¹³ variables). The state space is enormous; predicting the next state requires solving 10¹³ coupled differential equations; the dynamics appear chaotic and unpredictable. A *well-chosen* $X$ tracks metabolic intermediate concentrations (~10³ variables). The state space is small; the dynamics follow recognizable patterns (Michaelis-Menten kinetics, feedback loops); prediction is tractable. Both representations describe the same cell. The difference: the well-chosen $X$ has found the level where causal structure is sparse — where most variables are decoupled most of the time. That's what "representational efficiency" means in practice.
+
 The optimal representation minimizes predictive cost:
 
 $$X^* = \underset{X \in \mathcal{R}}{\operatorname{argmin}}\; C(X, \varepsilon)$$

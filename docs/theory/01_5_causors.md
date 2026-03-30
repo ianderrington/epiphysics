@@ -175,6 +175,8 @@ Bond strength $\sigma_b$ has two equivalent descriptions:
 - **Observable Layer:** The energy required to break the bond
 - **Event Layer:** The count of alternative causal sequences required to dissolve the pattern
 
+**Why these are equivalent:** Energy, at the Event Layer, *is* the count of causal events (see [Part 0b](./00b_event_layer.md): time is event count × τ_min, and energy is the Noether charge conjugate to time-translation). Breaking a bond means redirecting causal flow — forcing the system through alternative sequences rather than the established pattern. The energy required to break the bond equals the "causal work" of establishing those alternative paths. This is not a metaphor; it is the same quantity measured two ways.
+
 ### 2.2 The Loop Operator
 
 A **loop** is a closed composition of bonds — a causal cycle where the output of the last bond feeds back to the input of the first:
@@ -245,6 +247,8 @@ Open chains propagate and dissipate. Closed loops can regenerate. $\rho_{\text{a
 
 $$\Lambda = \frac{\text{output event cluster size}}{\text{input event cluster size}}$$
 
+**What bounds a cluster?** An event cluster is the set of causal events triggered by an input within a specified causal horizon — typically one loop period or one bond latency. The boundary is set by the timescale of interest: for a synapse, the cluster is all events between neurotransmitter release and postsynaptic potential; for a gene regulatory bond, the cluster is all events between transcription factor binding and protein production. The cluster is operationally defined by the bond's characteristic timescale $\tau_b$.
+
 | Value | Type | Meaning |
 |-------|------|---------|
 | $\Lambda \approx 1$ | Symmetric | Output matches input |
@@ -278,6 +282,8 @@ Stable configurations cluster at recognizable poles in the Q1–Q5 parameter spa
 
 Each row is a region in a continuous parameter space. Real entities are intermediate and have mixed subsystems.
 
+> **Loops-of-loops example:** A cell has two core loops: (1) **metabolism** — the Krebs cycle and related pathways that regenerate ATP, and (2) **replication** — DNA copying, protein synthesis, and cell division that reproduce the metabolic machinery. Neither loop alone is an organism. The organism emerges when these loops are coupled: metabolism provides the energy and materials for replication; replication produces new copies of the metabolic machinery. This coupling forms a **loop-of-loops** — a higher-order structure where each component loop enables the other. Institutions have the same architecture: a company's operations loop (producing goods) and its HR loop (reproducing skilled workers) are coupled into a meta-entity that persists beyond any individual employee or product.
+
 > **What Q1–Q5 tell you together:** These five descriptors let you read a bond or loop and predict what kind of entity it belongs to — without invoking labels like "organism" or "institution." A bond that stores energy (Q1: potential), gates a larger cluster (Q2: gating), sits in a closed loop (Q3: closed), has high leverage (Q4: Λ ≫ 1), and fires slowly relative to the loop (Q5: slow) is behaving like a metabolic regulation step. A bond that dissipates energy (Q1: kinetic), connects directly to state (Q2: direct), is open-ended (Q3: open), and is low-leverage (Q4: Λ ≈ 1) is behaving like heat flow. The labels are summaries of structural configurations. The structure comes first.
 
 ---
@@ -292,6 +298,9 @@ Self-containment is not binary. It is tied to the ratio of bond dissolution ener
 | Simple atoms | ~10⁵ | ~0 | Yes |
 | Small molecules | ~10⁴ | ~0 | Yes |
 | Complex molecules (proteins) | ~10²–10³ | Low | Degradable |
+| Viral capsids | ~10¹–10² | ~0 | Yes (no active repair) |
+| Organelles | Variable | Low | Requires host metabolism |
+| Minimal cells (*Mycoplasma*) | Variable | Positive | Requires repair (~500 genes) |
 | Cells | Variable | Positive | Requires repair |
 | Meta-entities (institutions) | Variable | Positive | Requires renewal |
 
@@ -315,6 +324,8 @@ These are the Observable Layer quantities that [Part 1](./01_generalized_mechani
 
 > **Definitional note:** These aggregation rules ($\mathcal{M} = \sum \sigma_b$, etc.) are proposed correspondences, not derived results. The formal connection between bond-level structure and mechanical quantities requires domain-specific operationalization — what counts as a "bond" and how $\sigma_b$ is measured will differ between chemistry, biology, and economics. The framework provides the grammar; the vocabulary is domain-specific.
 
+> **Dimensional analysis:** In the mechanical grammar, $p = \mathcal{M}\dot{X}$, so $[\mathcal{M}] = [p]/[\dot{X}]$. For physical systems where $X$ has dimensions of length, this gives $[\mathcal{M}] = \text{mass}$. For abstract state spaces (beliefs, market positions), $X$ is dimensionless or has domain-specific units, and $\mathcal{M}$ inherits corresponding dimensions. The key constraint: $\sigma_b$ must have the same dimensions as $\mathcal{M}$ for the sum to be meaningful. In chemistry, $\sigma_b$ is bond dissociation energy (Joules); $\mathcal{M}$ then has dimensions of energy, and the Lagrangian $L = \frac{1}{2}\mathcal{M}|\dot{X}|^2 - V$ requires $\dot{X}$ to be dimensionless (a rate of change in a normalized state space). This is the standard physics case with a change of variables.
+
 ---
 
 ## 7. Causal Attack Surface
@@ -323,7 +334,10 @@ High $\rho_{\text{ac}}$ has a dual character. The same loops that sustain an ent
 
 $$\rho_{\text{attack}}(\partial E) = \sum_{b \in \partial E} \kappa_b \cdot \rho_{\text{ac}}(\mathcal{L}_b)$$
 
-where $\kappa_b = \Delta\rho_{\text{ac}} / \Delta\sigma_b$ is the **keystone index** of bond $b$.
+where:
+- $\partial E$ is the **entity boundary** — the set of bonds that connect the entity's internal loops to the external environment. Operationally: bonds whose inputs come from outside the entity or whose outputs go outside. For a cell, $\partial E$ includes membrane transport proteins; for an institution, $\partial E$ includes customer-facing processes and supply chain bonds.
+- $\mathcal{L}_b$ is the loop containing bond $b$ (if $b$ participates in multiple loops, sum over all)
+- $\kappa_b = \Delta\rho_{\text{ac}} / \Delta\sigma_b$ is the **keystone index** — how much the system's auto-causal density depends on this particular bond
 
 A mutation in a tumor suppressor gene has extreme $\rho_{\text{attack}}$: high $\kappa_b$ (failure cascades) and maximum $\rho_{\text{ac}}$ in the replication loop (the entity's own division copies the error). The entity's auto-causal power becomes the propagation mechanism for its own dissolution.
 
