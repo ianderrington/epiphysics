@@ -34,8 +34,12 @@ async function loadContributorsMap(): Promise<Map<string, Contributor>> {
 export async function applyContributorMetadata(metadata: PostMetadata): Promise<PostMetadata> {
   const map = await loadContributorsMap();
 
-  const authorId = metadata.author_id || 'ian_derrington';
-  const authorEntry = map.get(authorId);
+  const hasExplicitAuthor =
+    (typeof metadata.author === 'object' && metadata.author?.name) ||
+    (typeof metadata.author === 'string' && metadata.author);
+
+  const authorId = metadata.author_id || (hasExplicitAuthor ? undefined : 'ian_derrington');
+  const authorEntry = authorId ? map.get(authorId) : undefined;
 
   const aiIds = metadata.ai_author_ids && metadata.ai_author_ids.length > 0
     ? metadata.ai_author_ids
@@ -51,7 +55,7 @@ export async function applyContributorMetadata(metadata: PostMetadata): Promise<
     author: authorEntry
       ? { name: authorEntry.name, title: authorEntry.title }
       : metadata.author,
-    authorUrl: authorEntry?.url || metadata.authorUrl || 'https://ian.ceo',
+    authorUrl: authorEntry?.url || metadata.authorUrl,
     ai_authors: aiAuthors.length > 0 ? aiAuthors : metadata.ai_authors,
   };
 }

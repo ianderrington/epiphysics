@@ -313,7 +313,7 @@ export default function PostComponent({ post }: PostComponentProps) {
       ? post.metadata.author.title
       : 'Author';
 
-  const primaryAuthorUrl = post.metadata.authorUrl || 'https://ian.ceo';
+  const primaryAuthorUrl = post.metadata.authorUrl;
 
   const defaultAiAuthors = [
     { name: 'Codex 5.3', role: 'AI Co-Author' },
@@ -341,15 +341,22 @@ export default function PostComponent({ post }: PostComponentProps) {
           
           <div className="text-sm text-gray-600 dark:text-gray-300">
             <div className="mb-1">
-              <Link
-                href={primaryAuthorUrl}
-                className="text-primary-600 dark:text-primary-400 hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {primaryAuthorName}
-                <span className="text-gray-500 dark:text-gray-400 ml-1">• {primaryAuthorTitle}</span>
-              </Link>
+              {primaryAuthorUrl ? (
+                <Link
+                  href={primaryAuthorUrl}
+                  className="text-primary-600 dark:text-primary-400 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {primaryAuthorName}
+                  <span className="text-gray-500 dark:text-gray-400 ml-1">• {primaryAuthorTitle}</span>
+                </Link>
+              ) : (
+                <span className="text-gray-700 dark:text-gray-200">
+                  {primaryAuthorName}
+                  <span className="text-gray-500 dark:text-gray-400 ml-1">• {primaryAuthorTitle}</span>
+                </span>
+              )}
             </div>
             {Array.isArray(post.metadata.co_authors) && post.metadata.co_authors.length > 0 && (
               <div className="mb-1 text-gray-500 dark:text-gray-400">
@@ -397,7 +404,7 @@ export default function PostComponent({ post }: PostComponentProps) {
           data-enable-progress={post.metadata.tts?.enableProgress ? 'true' : undefined}
         >
           {renderAsChat ? (
-            <DynamicChatRenderer 
+            <DynamicChatRenderer
               chatSegments={post.chatSegmentsHtml || []}
               config={post.metadata.storyConfig}
             />
@@ -405,6 +412,51 @@ export default function PostComponent({ post }: PostComponentProps) {
             <SafeHTML html={post.html} />
           )}
         </div>
+
+        <section className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <h2 className="text-base font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-3">
+            Contributors
+          </h2>
+          <dl className="text-sm space-y-2">
+            <div className="flex flex-wrap gap-x-2">
+              <dt className="text-gray-500 dark:text-gray-400">
+                {primaryAuthorTitle || 'Author'}:
+              </dt>
+              <dd className="text-gray-800 dark:text-gray-200">
+                {primaryAuthorUrl ? (
+                  <Link
+                    href={primaryAuthorUrl}
+                    className="text-primary-600 dark:text-primary-400 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {primaryAuthorName}
+                  </Link>
+                ) : (
+                  primaryAuthorName
+                )}
+              </dd>
+            </div>
+            {Array.isArray(post.metadata.co_authors) && post.metadata.co_authors.length > 0 && (
+              <div className="flex flex-wrap gap-x-2">
+                <dt className="text-gray-500 dark:text-gray-400">Co-authors:</dt>
+                <dd className="text-gray-800 dark:text-gray-200">
+                  {post.metadata.co_authors
+                    .map((c) => (c.role ? `${c.name} (${c.role})` : c.name))
+                    .join(', ')}
+                </dd>
+              </div>
+            )}
+            {aiAuthors.length > 0 && (
+              <div className="flex flex-wrap gap-x-2">
+                <dt className="text-gray-500 dark:text-gray-400">AI contributors:</dt>
+                <dd className="text-gray-800 dark:text-gray-200">
+                  {aiAuthors.map((a) => a.name).join(', ')}
+                </dd>
+              </div>
+            )}
+          </dl>
+        </section>
       </article>
     </div>
   );
