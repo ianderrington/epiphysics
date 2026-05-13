@@ -39,6 +39,10 @@ For irreversible systems, extract the linear correction aᵢ and check whether i
 
 See the [full experimental protocol](./README.md) and the [research note on rate-distortion](../research/rate_distortion_lagrangian.md) for details.
 
+## Prompt-Optimized Prediction (NEW)
+
+- [Prompt Prediction Experiment](./prompt_prediction_experiment.md) — Can we optimize an LLM prompt to predict next-day news? Starting with Trump (highest effective mass single actor) and expanding to multi-entity. Tests prompt-as-Lagrangian, compression-beats-appending, and effective-mass ordering claims. **Runnable today — ~$14 for Phase 1.**
+
 ## Instrumentation Reports
 
 - [TP Bridge Report: Instrumentation, Results, and Readiness](./tp_bridge_report.md) — visual report of the current TP-bridge measurement stack, outputs, and next-step readiness.

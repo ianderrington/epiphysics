@@ -54,6 +54,9 @@ bun.lockb
 #
 # ==============================================================================
 
+# Experiment data (large cloned datasets, not tracked)
+experiments/*/data/
+
 # Supernal local runtime (caches, logs, CLI state)
 .supernal-local/
 .openclaw/
